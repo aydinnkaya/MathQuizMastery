@@ -15,13 +15,19 @@ class GameScreen: UIViewController {
     @IBOutlet weak var buttonThird: UIButton!
     
     
+    var randomQuestionLabel:String?
+    private var viewModel : GameScreenViewModel!
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.backgroundColor = UIColor(red: 242/255, green: 238/255, blue: 230/255, alpha: 1.0)
-        updateQuestionLabel()
+        viewModel = GameScreenViewModel()
         setupQuestionView()
         setupButtonView()
+        loadQuestion()
     }
     
     override func viewDidLayoutSubviews() {
@@ -29,16 +35,26 @@ class GameScreen: UIViewController {
         setupButtonView()
     }
     
-    func updateQuestionLabel() {
-        let randomExpression = MathExpression.randomExpression()
-        questionLabel.text = randomExpression.getExpression()
+    
+    private func loadQuestion(){
+        let expression = viewModel.expression.getExpression()
+        let answers = viewModel.answers
+        
+        if answers.count == 3 {
+            questionLabel.text = expression
+            
+            buttonFirst.setTitle("\(answers[0])", for: .normal)
+            buttonSecond.setTitle("\(answers[1])", for: .normal)
+            buttonThird.setTitle("\(answers[2])", for: .normal)
+        } else {
+            print("Hata: answers dizisinin boyutu 3 değil!")
+        }
     }
     
     private func setupQuestionView(){
         questionView.backgroundColor = UIColor(red: 210/255, green: 240/255, blue: 240/255, alpha: 1.0)
         questionView.layer.cornerRadius = 20
         questionView.layer.masksToBounds = false
-        
         questionView.layer.shadowColor = UIColor(red: 200/255, green: 200/255, blue: 200/255, alpha: 1.0).cgColor
         questionView.layer.shadowOffset = CGSize(width: 5, height: 5)
         questionView.layer.opacity = 0.4
@@ -58,11 +74,25 @@ class GameScreen: UIViewController {
             b?.layer.shadowOpacity = 0.6
             b?.layer.shadowRadius = 5
         }
+        
     }
     
     
     
-    @IBAction func answerSecondButton(_ sender: Any) {
+    @IBAction func answerSecondButton(_ sender: UIButton) {
+        
+        guard let selectedAnswer = sender.title(for: .highlighted), let selectedAnswerInt = Int(selectedAnswer) else {return}
+        
+        let isCorrect = viewModel.checkAnswer(selectedAnswer: selectedAnswerInt)
+        
+        if isCorrect{
+            sender.backgroundColor = UIColor.green
+        }else {
+            sender.backgroundColor = UIColor.red
+        }
+        
+        viewModel = GameScreenViewModel()
+        loadQuestion()
         
     }
     
