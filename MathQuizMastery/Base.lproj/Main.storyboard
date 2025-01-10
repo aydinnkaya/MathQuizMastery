@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vPS-Bo-38q">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vPS-Bo-38q">
                                 <rect key="frame" x="50" y="488" width="300" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="GTW-g6-dgk"/>
@@ -25,12 +25,14 @@
                                     <constraint firstAttribute="height" constant="100" id="aGh-wK-xcG"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Button">
+                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
                                 <connections>
                                     <action selector="answerSecondButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Fkx-Qh-7gB"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6gk-K2-Vyh">
+                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6gk-K2-Vyh">
                                 <rect key="frame" x="50" y="348" width="300" height="100"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <bool key="isElement" value="NO"/>
@@ -48,14 +50,16 @@
                                     <action selector="answerFirstButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="a5D-n8-aUS"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ike-K2-BMk">
+                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ike-K2-BMk">
                                 <rect key="frame" x="50" y="628" width="300" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="FS2-8W-g3f"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="Vjd-lf-XEN"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Button">
+                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
                                 <connections>
                                     <action selector="answerThirdButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="EHx-bT-Bbj"/>
                                 </connections>
@@ -114,7 +118,6 @@
                             <constraint firstItem="MGS-2j-Wc6" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="9vk-lX-pjM"/>
                             <constraint firstItem="Ike-K2-BMk" firstAttribute="top" secondItem="vPS-Bo-38q" secondAttribute="bottom" constant="40" id="CsC-Ii-r2o"/>
                             <constraint firstItem="Tuh-GB-yCa" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="267" id="FEa-Gx-d95"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="6gk-K2-Vyh" secondAttribute="trailing" constant="50" id="GQJ-9b-Rdj"/>
                             <constraint firstItem="LNw-4x-HTO" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Pgz-dv-x44"/>
                             <constraint firstItem="6gk-K2-Vyh" firstAttribute="top" secondItem="LNw-4x-HTO" secondAttribute="bottom" constant="80" id="PpU-NT-mu1"/>
                             <constraint firstItem="LNw-4x-HTO" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="QRG-KF-LnD"/>
@@ -140,6 +143,7 @@
                         <outlet property="buttonThird" destination="Ike-K2-BMk" id="4P5-dU-z28"/>
                         <outlet property="questionLabel" destination="69j-Lk-Ki3" id="7fu-pH-kIN"/>
                         <outlet property="questionView" destination="LNw-4x-HTO" id="IU9-lb-MsF"/>
+                        <outlet property="scoreLabel" destination="MGS-2j-Wc6" id="aVp-1R-BO7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

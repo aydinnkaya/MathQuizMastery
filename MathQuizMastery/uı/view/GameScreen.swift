@@ -14,20 +14,21 @@ class GameScreen: UIViewController {
     @IBOutlet weak var buttonSecond: UIButton!
     @IBOutlet weak var buttonThird: UIButton!
     
+    @IBOutlet weak var scoreLabel: UILabel!
     
     var randomQuestionLabel:String?
     private var viewModel : GameScreenViewModel!
     
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(red: 242/255, green: 238/255, blue: 230/255, alpha: 1.0)
-        viewModel = GameScreenViewModel()
         setupQuestionView()
         setupButtonView()
-        print("load")
+        viewModel = GameScreenViewModel()
         loadQuestion()
+        scoreLabel.text = "Score : O"
+        
     }
     
     override func viewDidLayoutSubviews() {
@@ -37,11 +38,6 @@ class GameScreen: UIViewController {
     
     
     private func loadQuestion(){
-        
-        guard viewModel.answers.count == 3 else {
-                print("Hata: answers dizisinin boyutu 3 değil! : \(viewModel.answers.count)")
-                return
-            }
         
         let expression = viewModel.expression.getExpression()
         let answers = viewModel.answers
@@ -82,58 +78,54 @@ class GameScreen: UIViewController {
         
     }
     
-    @IBAction func answerFirstButton(_ sender: UIButton) {
-        guard let selectedAnswer = sender.title(for: .highlighted), let selectedAnswerInt = Int(selectedAnswer) else {return}
+    func handleAnswerSelection(selectedButton: UIButton, correct: Bool){
         
-        let isCorrect = viewModel.checkAnswer(selectedAnswer: selectedAnswerInt)
+        selectedButton.backgroundColor = correct ? UIColor.green : UIColor.red
         
-        if isCorrect{
-            sender.backgroundColor = UIColor.green
-        }else {
-            sender.backgroundColor = UIColor.red
-            sender.isHidden = true
+        let buttons = [buttonFirst,buttonSecond, buttonThird]
+        
+        for button in buttons {
+            button?.isEnabled = false
         }
+        updateScoreLabel()
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5 ){
+            for button in buttons {
+                button?.isEnabled = true
+                button?.backgroundColor = UIColor(red: 255/255, green: 230/255, blue: 150/255, alpha: 1.0)
+            }
+            
+            self.viewModel.generateQuiz()
+            self.loadQuestion()
+            self.updateScoreLabel()
+        }
+      
         
-        viewModel = GameScreenViewModel()
-        loadQuestion()
     }
     
+    func updateScoreLabel(){
+        scoreLabel.text = String("Score:\(viewModel.score)")
+    }
+    
+    @IBAction func answerFirstButton(_ sender: UIButton) {
+        guard let selectedAnswer = sender.title(for: .highlighted), let selectedAnswerInt = Int(selectedAnswer) else {return}
+        let isCorrect = viewModel.checkAnswer(selectedAnswer: selectedAnswerInt)
+        handleAnswerSelection(selectedButton: sender, correct: isCorrect)
+        
+    }
     
     @IBAction func answerSecondButton(_ sender: UIButton) {
-        
         guard let selectedAnswer = sender.title(for: .highlighted), let selectedAnswerInt = Int(selectedAnswer) else {return}
-        
         let isCorrect = viewModel.checkAnswer(selectedAnswer: selectedAnswerInt)
-        
-        if isCorrect{
-            sender.backgroundColor = UIColor.green
-            
-        }else {
-            sender.backgroundColor = UIColor.red
-            sender.isHidden = true
-        }
-        viewModel = GameScreenViewModel()
-        loadQuestion()
+        handleAnswerSelection(selectedButton: sender, correct: isCorrect)
     }
     
     @IBAction func answerThirdButton(_ sender: UIButton) {
+        
         guard let selectedAnswer = sender.title(for: .highlighted), let selectedAnswerInt = Int(selectedAnswer) else {return}
-        
         let isCorrect = viewModel.checkAnswer(selectedAnswer: selectedAnswerInt)
-        
-        if isCorrect{
-            sender.backgroundColor = UIColor.green
-        }else {
-            sender.backgroundColor = UIColor.red
-            sender.isHidden = true
-        }
-        
-        viewModel = GameScreenViewModel()
-        loadQuestion()
-        
+        handleAnswerSelection(selectedButton: sender, correct: isCorrect)
     }
-    
-    
     
 }
 

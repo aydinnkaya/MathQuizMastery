@@ -11,10 +11,11 @@ class GameScreenViewModel{
     private(set) var expression : MathExpression
     private(set) var answers: [Int] = []
     private(set) var correctAnswer : Int = 0
+    private(set) var score: Int = 0
     
     init() {
         self.expression = MathExpression.randomExpression()
-      //  generateQuiz()
+        self.generateQuiz()
     }
     
     
@@ -24,7 +25,7 @@ class GameScreenViewModel{
         while wrongAnswers.count < 2 {
             let randomWrongAnswer = correctAnswer + Int.random(in: -10...10)
             
-            if randomWrongAnswer != correctAnswer && wrongAnswers.contains(randomWrongAnswer){
+            if randomWrongAnswer != correctAnswer && !wrongAnswers.contains(randomWrongAnswer) {
                 wrongAnswers.append(randomWrongAnswer)
             }
         }
@@ -33,12 +34,13 @@ class GameScreenViewModel{
     }
     
     func generateQuiz(){
-        let correctAnswer = expression.getAnswer()
-        self.correctAnswer = correctAnswer
+        self.expression = MathExpression.randomExpression()
+        let correctAnswers = expression.getAnswer()
+        self.correctAnswer = correctAnswers
         
-        var wrongAnswers = generateWrongAnswers(correctAnswer: correctAnswer)
+        var wrongAnswers = generateWrongAnswers(correctAnswer: correctAnswers)
         
-        wrongAnswers.append(correctAnswer)
+        wrongAnswers.append(correctAnswers)
         wrongAnswers.shuffle()
         
         self.answers = wrongAnswers
@@ -47,6 +49,13 @@ class GameScreenViewModel{
     
     
     func checkAnswer(selectedAnswer: Int) -> Bool {
-        return selectedAnswer == correctAnswer
+        let isCorrect = selectedAnswer == correctAnswer
+        if isCorrect {
+            score += 1
+        }else {
+            score = max(0, score-1)
+        }
+        return isCorrect
+        
     }
 }
