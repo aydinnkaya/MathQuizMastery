@@ -14,8 +14,7 @@ class GameScreenViewModel{
     
     init() {
         self.expression = MathExpression.randomExpression()
-        self.answers = [Int.random(in: 0..<100), Int.random(in: 0..<100), Int.random(in: 0..<100)]
-
+      //  generateQuiz()
     }
     
     
@@ -33,10 +32,9 @@ class GameScreenViewModel{
         return wrongAnswers
     }
     
-    func generateQuiz (){
+    func generateQuiz(){
         let correctAnswer = expression.getAnswer()
         self.correctAnswer = correctAnswer
-        
         
         var wrongAnswers = generateWrongAnswers(correctAnswer: correctAnswer)
         
@@ -44,6 +42,7 @@ class GameScreenViewModel{
         wrongAnswers.shuffle()
         
         self.answers = wrongAnswers
+        print("Generated answers: \(answers)")
     }
     
     

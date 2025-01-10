@@ -22,11 +22,11 @@ class GameScreen: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         view.backgroundColor = UIColor(red: 242/255, green: 238/255, blue: 230/255, alpha: 1.0)
         viewModel = GameScreenViewModel()
         setupQuestionView()
         setupButtonView()
+        print("load")
         loadQuestion()
     }
     
@@ -37,17 +37,22 @@ class GameScreen: UIViewController {
     
     
     private func loadQuestion(){
+        
+        guard viewModel.answers.count == 3 else {
+                print("Hata: answers dizisinin boyutu 3 değil! : \(viewModel.answers.count)")
+                return
+            }
+        
         let expression = viewModel.expression.getExpression()
         let answers = viewModel.answers
         
         if answers.count == 3 {
             questionLabel.text = expression
-            
             buttonFirst.setTitle("\(answers[0])", for: .normal)
             buttonSecond.setTitle("\(answers[1])", for: .normal)
             buttonThird.setTitle("\(answers[2])", for: .normal)
         } else {
-            print("Hata: answers dizisinin boyutu 3 değil!")
+            print("Hata: answers dizisinin boyutu 3 değil! : \(answers.count)")
         }
     }
     
@@ -77,6 +82,21 @@ class GameScreen: UIViewController {
         
     }
     
+    @IBAction func answerFirstButton(_ sender: UIButton) {
+        guard let selectedAnswer = sender.title(for: .highlighted), let selectedAnswerInt = Int(selectedAnswer) else {return}
+        
+        let isCorrect = viewModel.checkAnswer(selectedAnswer: selectedAnswerInt)
+        
+        if isCorrect{
+            sender.backgroundColor = UIColor.green
+        }else {
+            sender.backgroundColor = UIColor.red
+            sender.isHidden = true
+        }
+        
+        viewModel = GameScreenViewModel()
+        loadQuestion()
+    }
     
     
     @IBAction func answerSecondButton(_ sender: UIButton) {
@@ -87,8 +107,25 @@ class GameScreen: UIViewController {
         
         if isCorrect{
             sender.backgroundColor = UIColor.green
+            
         }else {
             sender.backgroundColor = UIColor.red
+            sender.isHidden = true
+        }
+        viewModel = GameScreenViewModel()
+        loadQuestion()
+    }
+    
+    @IBAction func answerThirdButton(_ sender: UIButton) {
+        guard let selectedAnswer = sender.title(for: .highlighted), let selectedAnswerInt = Int(selectedAnswer) else {return}
+        
+        let isCorrect = viewModel.checkAnswer(selectedAnswer: selectedAnswerInt)
+        
+        if isCorrect{
+            sender.backgroundColor = UIColor.green
+        }else {
+            sender.backgroundColor = UIColor.red
+            sender.isHidden = true
         }
         
         viewModel = GameScreenViewModel()
@@ -96,7 +133,7 @@ class GameScreen: UIViewController {
         
     }
     
-    @IBAction func answerThirdButton(_ sender: Any) {
-    }
+    
+    
 }
 
