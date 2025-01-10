@@ -13,7 +13,6 @@ class GameScreen: UIViewController {
     @IBOutlet weak var buttonFirst: UIButton!
     @IBOutlet weak var buttonSecond: UIButton!
     @IBOutlet weak var buttonThird: UIButton!
-    
     @IBOutlet weak var scoreLabel: UILabel!
     
     var randomQuestionLabel:String?
@@ -31,14 +30,8 @@ class GameScreen: UIViewController {
         
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        setupButtonView()
-    }
-    
     
     private func loadQuestion(){
-        
         let expression = viewModel.expression.getExpression()
         let answers = viewModel.answers
         
@@ -79,16 +72,14 @@ class GameScreen: UIViewController {
     }
     
     func handleAnswerSelection(selectedButton: UIButton, correct: Bool){
-        
         selectedButton.backgroundColor = correct ? UIColor.green : UIColor.red
-        
         let buttons = [buttonFirst,buttonSecond, buttonThird]
         
         for button in buttons {
             button?.isEnabled = false
         }
         updateScoreLabel()
-
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5 ){
             for button in buttons {
                 button?.isEnabled = true
@@ -99,19 +90,17 @@ class GameScreen: UIViewController {
             self.loadQuestion()
             self.updateScoreLabel()
         }
-      
         
     }
     
     func updateScoreLabel(){
-        scoreLabel.text = String("Score:\(viewModel.score)")
+        scoreLabel.text = String("Score: \(viewModel.score)")
     }
     
     @IBAction func answerFirstButton(_ sender: UIButton) {
         guard let selectedAnswer = sender.title(for: .highlighted), let selectedAnswerInt = Int(selectedAnswer) else {return}
         let isCorrect = viewModel.checkAnswer(selectedAnswer: selectedAnswerInt)
         handleAnswerSelection(selectedButton: sender, correct: isCorrect)
-        
     }
     
     @IBAction func answerSecondButton(_ sender: UIButton) {
@@ -121,7 +110,6 @@ class GameScreen: UIViewController {
     }
     
     @IBAction func answerThirdButton(_ sender: UIButton) {
-        
         guard let selectedAnswer = sender.title(for: .highlighted), let selectedAnswerInt = Int(selectedAnswer) else {return}
         let isCorrect = viewModel.checkAnswer(selectedAnswer: selectedAnswerInt)
         handleAnswerSelection(selectedButton: sender, correct: isCorrect)

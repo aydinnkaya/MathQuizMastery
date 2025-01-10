@@ -37,7 +37,6 @@ enum MathExpression {
         let b = Int.random(in: 0..<100)
         
         if randomType {
-            
             return .addition(a, b)
         } else {
             return .subtraction(a, b)

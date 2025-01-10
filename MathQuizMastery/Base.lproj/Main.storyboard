@@ -64,7 +64,7 @@
                                     <action selector="answerThirdButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="EHx-bT-Bbj"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Timer: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EJ9-9s-CE8">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Timer : " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EJ9-9s-CE8">
                                 <rect key="frame" x="107" y="76" width="63" height="26"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <nil key="textColor"/>
@@ -77,7 +77,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MGS-2j-Wc6" userLabel="Score">
-                                <rect key="frame" x="169.66666666666666" y="289" width="69" height="28"/>
+                                <rect key="frame" x="166" y="289" width="68.333333333333314" height="28"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -118,6 +118,7 @@
                             <constraint firstItem="MGS-2j-Wc6" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="9vk-lX-pjM"/>
                             <constraint firstItem="Ike-K2-BMk" firstAttribute="top" secondItem="vPS-Bo-38q" secondAttribute="bottom" constant="40" id="CsC-Ii-r2o"/>
                             <constraint firstItem="Tuh-GB-yCa" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="267" id="FEa-Gx-d95"/>
+                            <constraint firstItem="MGS-2j-Wc6" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="KSf-2h-rLd"/>
                             <constraint firstItem="LNw-4x-HTO" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Pgz-dv-x44"/>
                             <constraint firstItem="6gk-K2-Vyh" firstAttribute="top" secondItem="LNw-4x-HTO" secondAttribute="bottom" constant="80" id="PpU-NT-mu1"/>
                             <constraint firstItem="LNw-4x-HTO" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="QRG-KF-LnD"/>
@@ -126,7 +127,6 @@
                             <constraint firstItem="vPS-Bo-38q" firstAttribute="top" secondItem="6gk-K2-Vyh" secondAttribute="bottom" constant="40" id="b6Q-Kw-7oN"/>
                             <constraint firstItem="vPS-Bo-38q" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="d6c-A4-Ge8"/>
                             <constraint firstItem="Tuh-GB-yCa" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="16" id="dqt-B4-9RP"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="MGS-2j-Wc6" secondAttribute="trailing" constant="161.33333333333331" id="esW-SD-rGq"/>
                             <constraint firstItem="LNw-4x-HTO" firstAttribute="top" secondItem="EJ9-9s-CE8" secondAttribute="bottom" constant="37" id="h4V-Re-ROG"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Ike-K2-BMk" secondAttribute="trailing" constant="50" id="jP2-RV-gF4"/>
                             <constraint firstItem="Tuh-GB-yCa" firstAttribute="leading" secondItem="EJ9-9s-CE8" secondAttribute="trailing" constant="97" id="lT2-Hd-cQE"/>
