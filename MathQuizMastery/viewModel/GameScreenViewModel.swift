@@ -67,14 +67,7 @@ class GameScreenViewModel{
             self.questionNumber += 1
         }
         else{
-            let alert = UIAlertController(title: "Perfect", message: "Perfect Question1 \n You scored \(score) out of 10", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { UIAlertAction in
-              
-            }))
             
-            alert.addAction(UIAlertAction(title: "Again", style: .default, handler: { UIAlertAction in
-                self.gameScreen.viewDidLoad()
-            }))
             
         }
        
