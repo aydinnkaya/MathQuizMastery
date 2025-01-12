@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vPS-Bo-38q">
-                                <rect key="frame" x="50" y="491" width="300" height="100"/>
+                                <rect key="frame" x="50" y="491" width="302" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="GTW-g6-dgk"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="RPw-Gb-60F"/>
@@ -51,7 +51,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ike-K2-BMk">
-                                <rect key="frame" x="50" y="631" width="300" height="100"/>
+                                <rect key="frame" x="50" y="631" width="302" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="FS2-8W-g3f"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="Vjd-lf-XEN"/>
@@ -74,16 +74,16 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MGS-2j-Wc6" userLabel="Score">
-                                <rect key="frame" x="166" y="292" width="68.333333333333314" height="28"/>
+                                <rect key="frame" x="167" y="292" width="68.333333333333314" height="28"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LNw-4x-HTO">
-                                <rect key="frame" x="30" y="142" width="340" height="129"/>
+                                <rect key="frame" x="30" y="142" width="342" height="129"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10 + 8" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="69j-Lk-Ki3">
-                                        <rect key="frame" x="44.666666666666671" y="32.333333333333336" width="250.66666666666663" height="64.333333333333314"/>
+                                        <rect key="frame" x="44.666666666666671" y="32.333333333333336" width="252.66666666666663" height="64.333333333333314"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="54"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -101,7 +101,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 /10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tuh-GB-yCa">
-                                <rect key="frame" x="295" y="80" width="53" height="40"/>
+                                <rect key="frame" x="297" y="80" width="53" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="6Cy-MA-6cI"/>
                                 </constraints>
@@ -150,6 +150,7 @@
                         <outlet property="questionNumberLabel" destination="Tuh-GB-yCa" id="AKX-77-6ei"/>
                         <outlet property="questionView" destination="LNw-4x-HTO" id="IU9-lb-MsF"/>
                         <outlet property="scoreLabel" destination="MGS-2j-Wc6" id="aVp-1R-BO7"/>
+                        <outlet property="timeLabel" destination="EJ9-9s-CE8" id="ffN-Td-iwD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -162,7 +163,7 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemCyanColor">
-            <color red="0.1960784314" green="0.67843137249999996" blue="0.90196078430000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.19607843137254902" green="0.67843137254901964" blue="0.90196078431372551" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

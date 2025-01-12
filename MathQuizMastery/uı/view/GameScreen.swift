@@ -11,14 +11,16 @@ class GameScreen: UIViewController {
     @IBOutlet weak var questionNumberLabel: UILabel!
     @IBOutlet weak var questionView: UIView!
     @IBOutlet weak var questionLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var buttonFirst: UIButton!
     @IBOutlet weak var buttonSecond: UIButton!
-    @IBOutlet weak var timeLabel: UILabel!
+    
     @IBOutlet weak var buttonThird: UIButton!
     @IBOutlet weak var scoreLabel: UILabel!
     
     var randomQuestionLabel:String?
     private var viewModel : GameScreenViewModel!
+    private var stopWatch : StopWatch!
     
     
     override func viewDidLoad() {
@@ -29,6 +31,9 @@ class GameScreen: UIViewController {
         loadQuestion()
         scoreLabel.text = "Score : O"
         questionNumberLabel.text = "1 /10"
+        timeLabel.text = "01:00"
+        stopWatch = StopWatch(gameScreen: self)
+        stopWatch.startTimer()
     }
     
     
@@ -46,7 +51,7 @@ class GameScreen: UIViewController {
         }
     }
     
-        
+    
     func handleAnswerSelection(selectedButton: UIButton, correct: Bool){
         selectedButton.backgroundColor = correct ? UIColor.green : UIColor.red
         let buttons = [buttonFirst,buttonSecond, buttonThird]
@@ -70,6 +75,14 @@ class GameScreen: UIViewController {
     
     func updateScoreLabel(){
         scoreLabel.text = String("Score: \(viewModel.score)")
+    }
+    
+    func updateTimeLabel(timeString : String){
+        timeLabel.text = timeString
+    }
+    
+    func timeUp(){
+        print("time up")
     }
     
     func updateQuestionNumberLabel(){
