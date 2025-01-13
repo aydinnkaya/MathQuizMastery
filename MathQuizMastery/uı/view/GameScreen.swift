@@ -37,6 +37,8 @@ class GameScreen: UIViewController {
     }
     
     
+    
+    
     private func loadQuestion(){
         let expression = viewModel.expression.getExpression()
         let answers = viewModel.answers

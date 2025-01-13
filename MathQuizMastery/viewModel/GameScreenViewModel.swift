@@ -15,11 +15,18 @@ class GameScreenViewModel{
     private(set) var score: Int = 0
     private(set) var questionNumber : Int = 1
     private let gameScreen = GameScreen()
+    private var backgroundProvider : BackgroundProvider
     
-    init(questionView: UIView!) {
+    init(questionView: UIView!, backgroundProvider: BackgroundProvider) {
         self.expression = MathExpression.randomExpression()
+        self.backgroundProvider = backgroundProvider
         self.generateQuiz()
         setupQuestionView(questionView: questionView)
+    }
+    
+    
+    func getBackgroundColor() -> UIColor {
+        return backgroundProvider.backgroundColor
     }
     
     
@@ -68,9 +75,8 @@ class GameScreenViewModel{
         }
         else{
             
-            
         }
-       
+        
     }
     
     func setupQuestionView(questionView: UIView!){
