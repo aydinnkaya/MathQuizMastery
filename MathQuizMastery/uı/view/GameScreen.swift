@@ -28,29 +28,22 @@ class GameScreen: UIViewController {
         view.backgroundColor = UIColor(red: 242/255, green: 238/255, blue: 230/255, alpha: 1.0)
         viewModel = GameScreenViewModel(questionView: questionView)
         viewModel?.setupButtonView(buttonFirst: buttonFirst, buttonSecond: buttonSecond, buttonThird: buttonThird)
-        loadQuestion()
+      //  updateUI(question: viewModel.expression.getExpression(), answers: viewModel.answers)
+            
+        
         scoreLabel.text = "Score : O"
         questionNumberLabel.text = "1 /10"
         timeLabel.text = "01:00"
         stopWatch = StopWatch(gameScreen: self)
         stopWatch.startTimer()
     }
-    
-    
-    
-    
-    private func loadQuestion(){
-        let expression = viewModel.expression.getExpression()
-        let answers = viewModel.answers
+   
+    private func updateUI(question: String, answers: [String]){
+        questionLabel.text = question
+        buttonFirst.setTitle("\(answers[0])", for: .normal)
+        buttonSecond.setTitle("\(answers[1])", for: .normal)
+        buttonThird.setTitle("\(answers[2])", for: .normal)
         
-        if answers.count == 3 {
-            questionLabel.text = expression
-            buttonFirst.setTitle("\(answers[0])", for: .normal)
-            buttonSecond.setTitle("\(answers[1])", for: .normal)
-            buttonThird.setTitle("\(answers[2])", for: .normal)
-        } else {
-            print("Hata: answers dizisinin boyutu 3 değil! : \(answers.count)")
-        }
     }
     
     
@@ -69,7 +62,7 @@ class GameScreen: UIViewController {
                 button?.backgroundColor = UIColor(red: 255/255, green: 230/255, blue: 150/255, alpha: 1.0)
             }
             self.viewModel.generateQuiz()
-            self.loadQuestion()
+         //   self.updateUI(question: <#String#>, answers: <#[String]#>)
             self.updateScoreLabel()
             self.updateQuestionNumberLabel()
         }

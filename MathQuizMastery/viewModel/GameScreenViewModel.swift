@@ -15,18 +15,12 @@ class GameScreenViewModel{
     private(set) var score: Int = 0
     private(set) var questionNumber : Int = 1
     private let gameScreen = GameScreen()
-    private var backgroundProvider : BackgroundProvider
     
-    init(questionView: UIView!, backgroundProvider: BackgroundProvider) {
+    
+    init(questionView: UIView!) {
         self.expression = MathExpression.randomExpression()
-        self.backgroundProvider = backgroundProvider
         self.generateQuiz()
         setupQuestionView(questionView: questionView)
-    }
-    
-    
-    func getBackgroundColor() -> UIColor {
-        return backgroundProvider.backgroundColor
     }
     
     
@@ -43,6 +37,16 @@ class GameScreenViewModel{
         
         return wrongAnswers
     }
+    
+    func generateQuizs(){
+        self.expression = MathExpression.randomExpression()
+        self.correctAnswer = expression.getAnswer()
+        self.answers = generateWrongAnswers(correctAnswer: correctAnswer)
+        self.answers.append(correctAnswer)
+        self.answers.shuffle()
+      //  gameScreen.updateUI(question: expression.getExpression(),answers:)
+    }
+    
     
     func generateQuiz(){
         self.expression = MathExpression.randomExpression()
