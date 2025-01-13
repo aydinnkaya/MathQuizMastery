@@ -24,6 +24,27 @@ class GameScreenViewModel{
     }
     
     
+    func handleAnswerSelections(selectedButton: UIButton, correct: Bool,buttons: [UIButton]){
+        selectedButton.backgroundColor = correct ? UIColor.green : UIColor.red
+        let buttons = [buttons[0],buttons[1], buttons[2]]
+        
+        for button in buttons {
+            button.isEnabled = false
+        }
+        //updateScoreLabel()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5 ){
+            for button in buttons {
+                button.isEnabled = true
+                button.backgroundColor = UIColor(red: 255/255, green: 230/255, blue: 150/255, alpha: 1.0)
+            }
+            self.generateQuiz()
+         //   self.updateUI(question: <#String#>, answers: <#[String]#>)
+          //  self.updateScoreLabel()
+           //updateQuestionNumberLabel()
+        }
+    }
+    
     private func generateWrongAnswers(correctAnswer: Int) -> [Int]{
         var wrongAnswers : [Int] = []
         
