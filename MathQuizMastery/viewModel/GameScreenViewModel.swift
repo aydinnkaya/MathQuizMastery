@@ -8,25 +8,22 @@
 import Foundation
 import UIKit
 
-class GameScreenViewModel {
+class GameScreenViewModel : GameScreenViewModelProtocol {
     private(set) var expression: MathExpression.Operation
     private(set) var answers: [Int] = []
     private(set) var correctAnswer: Int = 0
     private(set) var score: Int = 0
     private(set) var questionNumber: Int = 1
+    private var timer: Timer?
+    private var timeRemaining: Int = 60
     
     
-    
+    //*****call back *******
     var onUpdateUI: ((String, [String]) -> Void)?
     var onUpdateScore: ((Int) -> Void)?
     var onUpdateTime: ((String) -> Void)?
     var onUpdateQuestionNumber: ((Int) -> Void)?
     var onTimeUp: (() -> Void)?
-    
-    
-    private var timer: Timer?
-    private var timeRemaining: Int = 60
-    
     
     
     init() {
@@ -52,6 +49,7 @@ class GameScreenViewModel {
         }
     }
     
+    
     func generateQuiz() {
         self.expression = MathExpression.randomExpression()
         self.correctAnswer = expression.getAnswer()
@@ -76,7 +74,14 @@ class GameScreenViewModel {
     
     func checkAnswer(selectedAnswer: Int) -> Bool {
         let isCorrect = selectedAnswer == correctAnswer
-        score += isCorrect ? 1 : max(0, score - 1)
+        
+        if isCorrect{
+            score += 1
+        }else {
+            score = max(0, score - 1)
+        }
+        
+        onUpdateScore?(score)
         return isCorrect
     }
     

@@ -18,7 +18,7 @@ class GameScreen: UIViewController {
     @IBOutlet weak var buttonThird: UIButton!
     @IBOutlet weak var scoreLabel: UILabel!
     
-    private var viewModel: GameScreenViewModel!
+    private var viewModel: GameScreenViewModelProtocol!
     
     
     
@@ -84,6 +84,12 @@ class GameScreen: UIViewController {
         print("Time's up!")
     }
     
+    private func handleAnswer(for button: UIButton) {
+        guard let selectedAnswer = button.title(for: .normal), let selectedAnswerInt = Int(selectedAnswer) else { return }
+        let isCorrect = viewModel.checkAnswer(selectedAnswer: selectedAnswerInt)
+        handleAnswerSelection(selectedButton: button, correct: isCorrect)
+    }
+    
     private func handleAnswerSelection(selectedButton: UIButton, correct: Bool) {
         selectedButton.backgroundColor = correct ? UIColor.green : UIColor.red
         [buttonFirst, buttonSecond, buttonThird].forEach { $0?.isEnabled = false }
@@ -109,10 +115,6 @@ class GameScreen: UIViewController {
         handleAnswer(for: sender)
     }
     
-    private func handleAnswer(for button: UIButton) {
-        guard let selectedAnswer = button.title(for: .normal), let selectedAnswerInt = Int(selectedAnswer) else { return }
-        let isCorrect = viewModel.checkAnswer(selectedAnswer: selectedAnswerInt)
-        handleAnswerSelection(selectedButton: button, correct: isCorrect)
-    }
+    
 }
 
