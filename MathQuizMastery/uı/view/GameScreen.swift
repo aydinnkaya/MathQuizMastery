@@ -51,7 +51,8 @@ class GameScreen: UIViewController {
         questionView.layer.borderWidth = 5
     }
     
-    private func bindViewModel() {
+
+    private func bindViewModel() { //***** observer viewModel -> a two-way independent communication
         viewModel.onUpdateUI = { [weak self] question, answers in
             self?.updateUI(question: question, answers: answers)
         }
