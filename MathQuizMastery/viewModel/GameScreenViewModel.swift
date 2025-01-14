@@ -8,49 +8,64 @@
 import Foundation
 import UIKit
 
-class GameScreenViewModel{
-    private(set) var expression : MathExpression
+class GameScreenViewModel {
+    private(set) var expression: MathExpression.Operation
     private(set) var answers: [Int] = []
-    private(set) var correctAnswer : Int = 0
+    private(set) var correctAnswer: Int = 0
     private(set) var score: Int = 0
-    private(set) var questionNumber : Int = 1
-    private let gameScreen = GameScreen()
+    private(set) var questionNumber: Int = 1
     
     
-    init(questionView: UIView!) {
+    
+    var onUpdateUI: ((String, [String]) -> Void)?
+    var onUpdateScore: ((Int) -> Void)?
+    var onUpdateTime: ((String) -> Void)?
+    var onUpdateQuestionNumber: ((Int) -> Void)?
+    var onTimeUp: (() -> Void)?
+    
+    
+    private var timer: Timer?
+    private var timeRemaining: Int = 60
+    
+    
+    
+    init() {
         self.expression = MathExpression.randomExpression()
-        self.generateQuiz()
-        setupQuestionView(questionView: questionView)
+        generateQuiz()
     }
     
     
-    func handleAnswerSelections(selectedButton: UIButton, correct: Bool,buttons: [UIButton]){
-        selectedButton.backgroundColor = correct ? UIColor.green : UIColor.red
-        let buttons = [buttons[0],buttons[1], buttons[2]]
-        
-        for button in buttons {
-            button.isEnabled = false
-        }
-        //updateScoreLabel()
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5 ){
-            for button in buttons {
-                button.isEnabled = true
-                button.backgroundColor = UIColor(red: 255/255, green: 230/255, blue: 150/255, alpha: 1.0)
-            }
-            self.generateQuiz()
-         //   self.updateUI(question: <#String#>, answers: <#[String]#>)
-          //  self.updateScoreLabel()
-           //updateQuestionNumberLabel()
+    func startGame() {
+        startTimer()
+        onUpdateUI?(expression.createQuestion(), answers.map { String($0) })
+    }
+    
+    
+    func nextQuestion() {
+        if questionNumber < 10 {
+            questionNumber += 1
+            generateQuiz()
+            onUpdateQuestionNumber?(questionNumber)
+            onUpdateUI?(expression.createQuestion(), answers.map { String($0) })
+        } else {
+            // Game over
         }
     }
     
-    private func generateWrongAnswers(correctAnswer: Int) -> [Int]{
-        var wrongAnswers : [Int] = []
+    func generateQuiz() {
+        self.expression = MathExpression.randomExpression()
+        self.correctAnswer = expression.getAnswer()
+        
+        var wrongAnswers = generateWrongAnswers(correctAnswer: correctAnswer)
+        wrongAnswers.append(correctAnswer)
+        self.answers = wrongAnswers.shuffled()
+    }
+    
+    private func generateWrongAnswers(correctAnswer: Int) -> [Int] {
+        var wrongAnswers: [Int] = []
         
         while wrongAnswers.count < 2 {
             let randomWrongAnswer = correctAnswer + Int.random(in: -10...10)
-            
             if randomWrongAnswer != correctAnswer && !wrongAnswers.contains(randomWrongAnswer) {
                 wrongAnswers.append(randomWrongAnswer)
             }
@@ -59,62 +74,28 @@ class GameScreenViewModel{
         return wrongAnswers
     }
     
-    func generateQuizs(){
-        self.expression = MathExpression.randomExpression()
-        self.correctAnswer = expression.getAnswer()
-        self.answers = generateWrongAnswers(correctAnswer: correctAnswer)
-        self.answers.append(correctAnswer)
-        self.answers.shuffle()
-      //  gameScreen.updateUI(question: expression.getExpression(),answers:)
-    }
-    
-    
-    func generateQuiz(){
-        self.expression = MathExpression.randomExpression()
-        let correctAnswers = expression.getAnswer()
-        self.correctAnswer = correctAnswers
-        
-        var wrongAnswers = generateWrongAnswers(correctAnswer: correctAnswers)
-        
-        wrongAnswers.append(correctAnswers)
-        wrongAnswers.shuffle()
-        
-        self.answers = wrongAnswers
-        print("Generated answers: \(answers)")
-    }
-    
-    
     func checkAnswer(selectedAnswer: Int) -> Bool {
         let isCorrect = selectedAnswer == correctAnswer
-        if isCorrect {
-            score += 1
-        }else {
-            score = max(0, score-1)
-        }
+        score += isCorrect ? 1 : max(0, score - 1)
         return isCorrect
     }
     
-    func questionNumberUpdate()  {
-        if questionNumber < 10 {
-            self.questionNumber += 1
-        }
-        else{
+    
+    private func startTimer() {
+        timeRemaining = 60
+        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] _ in
+            guard let self = self else { return }
+            self.timeRemaining -= 1
+            let minutes = self.timeRemaining / 60
+            let seconds = self.timeRemaining % 60
+            self.onUpdateTime?(String(format: "%02d:%02d", minutes, seconds))
             
+            if self.timeRemaining <= 0 {
+                self.timer?.invalidate()
+                self.onTimeUp?()
+            }
         }
-        
     }
-    
-    func setupQuestionView(questionView: UIView!){
-        questionView.backgroundColor = UIColor(red: 210/255, green: 240/255, blue: 240/255, alpha: 1.0)
-        questionView.layer.cornerRadius = 20
-        questionView.layer.masksToBounds = false
-        questionView.layer.shadowColor = UIColor(red: 200/255, green: 200/255, blue: 200/255, alpha: 1.0).cgColor
-        questionView.layer.shadowOffset = CGSize(width: 5, height: 5)
-        questionView.layer.opacity = 0.4
-        questionView.layer.shadowRadius = 8
-        questionView.layer.borderWidth = 5
-    }
-    
     
     func setupButtonView(buttonFirst: UIButton, buttonSecond :UIButton, buttonThird : UIButton){
         let buttonList = [buttonFirst,buttonSecond,buttonThird]
@@ -131,6 +112,14 @@ class GameScreenViewModel{
         
     }
     
-    
-    
 }
+
+
+
+
+
+
+
+
+
+

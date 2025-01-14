@@ -18,90 +18,101 @@ class GameScreen: UIViewController {
     @IBOutlet weak var buttonThird: UIButton!
     @IBOutlet weak var scoreLabel: UILabel!
     
-    var randomQuestionLabel:String?
-    private var viewModel : GameScreenViewModel!
-    private var stopWatch : StopWatch!
+    private var viewModel: GameScreenViewModel!
+    
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupUI()
+        bindViewModel()
+        viewModel.startGame()
+    }
+    
+    private func setupUI() {
         view.backgroundColor = UIColor(red: 242/255, green: 238/255, blue: 230/255, alpha: 1.0)
-        viewModel = GameScreenViewModel(questionView: questionView)
-        viewModel?.setupButtonView(buttonFirst: buttonFirst, buttonSecond: buttonSecond, buttonThird: buttonThird)
-      //  updateUI(question: viewModel.expression.getExpression(), answers: viewModel.answers)
-            
-        
-        scoreLabel.text = "Score : O"
-        questionNumberLabel.text = "1 /10"
+        setupQuestionView(questionView: questionView)
+        viewModel = GameScreenViewModel()
+        viewModel.setupButtonView(buttonFirst: buttonFirst, buttonSecond: buttonSecond, buttonThird: buttonThird)
+        scoreLabel.text = "Score: 0"
+        questionNumberLabel.text = "1 / 10"
         timeLabel.text = "01:00"
-        stopWatch = StopWatch(gameScreen: self)
-        stopWatch.startTimer()
     }
-   
-    private func updateUI(question: String, answers: [String]){
+    
+    
+    func setupQuestionView(questionView: UIView!){
+        questionView.backgroundColor = UIColor(red: 210/255, green: 240/255, blue: 240/255, alpha: 1.0)
+        questionView.layer.cornerRadius = 20
+        questionView.layer.masksToBounds = false
+        questionView.layer.shadowColor = UIColor(red: 200/255, green: 200/255, blue: 200/255, alpha: 1.0).cgColor
+        questionView.layer.shadowOffset = CGSize(width: 5, height: 5)
+        questionView.layer.opacity = 0.4
+        questionView.layer.shadowRadius = 8
+        questionView.layer.borderWidth = 5
+    }
+    
+    private func bindViewModel() {
+        viewModel.onUpdateUI = { [weak self] question, answers in
+            self?.updateUI(question: question, answers: answers)
+        }
+        
+        viewModel.onUpdateScore = { [weak self] score in
+            self?.scoreLabel.text = "Score: \(score)"
+        }
+        
+        viewModel.onUpdateTime = { [weak self] timeString in
+            self?.timeLabel.text = timeString
+        }
+        
+        viewModel.onUpdateQuestionNumber = { [weak self] questionNumber in
+            self?.questionNumberLabel.text = "\(questionNumber) / 10"
+        }
+        
+        viewModel.onTimeUp = { [weak self] in
+            self?.handleTimeUp()
+        }
+    }
+    
+    private func updateUI(question: String, answers: [String]) {
         questionLabel.text = question
-        buttonFirst.setTitle("\(answers[0])", for: .normal)
-        buttonSecond.setTitle("\(answers[1])", for: .normal)
-        buttonThird.setTitle("\(answers[2])", for: .normal)
-        
+        buttonFirst.setTitle(answers[0], for: .normal)
+        buttonSecond.setTitle(answers[1], for: .normal)
+        buttonThird.setTitle(answers[2], for: .normal)
     }
     
+    private func handleTimeUp() {
+        print("Time's up!")
+    }
     
-    func handleAnswerSelection(selectedButton: UIButton, correct: Bool){
+    private func handleAnswerSelection(selectedButton: UIButton, correct: Bool) {
         selectedButton.backgroundColor = correct ? UIColor.green : UIColor.red
-        let buttons = [buttonFirst,buttonSecond, buttonThird]
+        [buttonFirst, buttonSecond, buttonThird].forEach { $0?.isEnabled = false }
         
-        for button in buttons {
-            button?.isEnabled = false
-        }
-        updateScoreLabel()
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5 ){
-            for button in buttons {
-                button?.isEnabled = true
-                button?.backgroundColor = UIColor(red: 255/255, green: 230/255, blue: 150/255, alpha: 1.0)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            [self.buttonFirst, self.buttonSecond, self.buttonThird].forEach {
+                $0?.isEnabled = true
+                $0?.backgroundColor = UIColor(red: 255/255, green: 230/255, blue: 150/255, alpha: 1.0)
             }
-            self.viewModel.generateQuiz()
-         //   self.updateUI(question: <#String#>, answers: <#[String]#>)
-            self.updateScoreLabel()
-            self.updateQuestionNumberLabel()
+            self.viewModel.nextQuestion()
         }
-    }
-    
-    func updateScoreLabel(){
-        scoreLabel.text = String("Score: \(viewModel.score)")
-    }
-    
-    func updateTimeLabel(timeString : String){
-        timeLabel.text = timeString
-    }
-    
-    func timeUp(){
-        print("time up")
-    }
-    
-    func updateQuestionNumberLabel(){
-        self.viewModel.questionNumberUpdate()
-        questionNumberLabel.text = String("\(viewModel.questionNumber) /10")
     }
     
     @IBAction func answerFirstButton(_ sender: UIButton) {
-        guard let selectedAnswer = sender.title(for: .highlighted), let selectedAnswerInt = Int(selectedAnswer) else {return}
-        let isCorrect = viewModel.checkAnswer(selectedAnswer: selectedAnswerInt)
-        handleAnswerSelection(selectedButton: sender, correct: isCorrect)
+        handleAnswer(for: sender)
     }
     
     @IBAction func answerSecondButton(_ sender: UIButton) {
-        guard let selectedAnswer = sender.title(for: .highlighted), let selectedAnswerInt = Int(selectedAnswer) else {return}
-        let isCorrect = viewModel.checkAnswer(selectedAnswer: selectedAnswerInt)
-        handleAnswerSelection(selectedButton: sender, correct: isCorrect)
+        handleAnswer(for: sender)
     }
     
     @IBAction func answerThirdButton(_ sender: UIButton) {
-        guard let selectedAnswer = sender.title(for: .highlighted), let selectedAnswerInt = Int(selectedAnswer) else {return}
-        let isCorrect = viewModel.checkAnswer(selectedAnswer: selectedAnswerInt)
-        handleAnswerSelection(selectedButton: sender, correct: isCorrect)
+        handleAnswer(for: sender)
     }
     
+    private func handleAnswer(for button: UIButton) {
+        guard let selectedAnswer = button.title(for: .normal), let selectedAnswerInt = Int(selectedAnswer) else { return }
+        let isCorrect = viewModel.checkAnswer(selectedAnswer: selectedAnswerInt)
+        handleAnswerSelection(selectedButton: button, correct: isCorrect)
+    }
 }
 
