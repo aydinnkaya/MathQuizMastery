@@ -51,7 +51,7 @@ class GameScreen: UIViewController {
         questionView.layer.borderWidth = 5
     }
     
-
+    
     private func bindViewModel() { //***** observer viewModel -> a two-way independent communication
         viewModel.onUpdateUI = { [weak self] question, answers in
             self?.updateUI(question: question, answers: answers)
@@ -82,8 +82,21 @@ class GameScreen: UIViewController {
     }
     
     private func handleTimeUp() {
-        print("Time's up!")
+        guard let score = scoreLabel.text, !score.isEmpty else {
+            print("Score is empty or nil")
+            return
+        }
+        performSegue(withIdentifier: "goToResult", sender: score)
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToResult",
+           let resultVC = segue.destination as? ResultVC,
+           let score = sender as? String {
+            resultVC.receivedScore = score
+        }
+    }
+    
     
     private func handleAnswer(for button: UIButton) {
         guard let selectedAnswer = button.title(for: .normal), let selectedAnswerInt = Int(selectedAnswer) else { return }
