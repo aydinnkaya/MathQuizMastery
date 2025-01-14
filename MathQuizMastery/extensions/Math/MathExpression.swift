@@ -12,7 +12,7 @@ enum MathExpression {
     case addition(Int,Int)
     case subtraction(Int, Int)
     
-    func getExpression() -> String {
+    func createQuestion() -> String {
         switch self {
         case .addition(let a, let b):
             return "\(a) + \(b)"
@@ -31,7 +31,7 @@ enum MathExpression {
     }
     
     
-    static func randomExpression() -> MathExpression {
+    static func randomQuestionType() -> MathExpression {
         let randomType = Bool.random()
         let a = Int.random(in: 0..<100)
         let b = Int.random(in: 0..<100)
