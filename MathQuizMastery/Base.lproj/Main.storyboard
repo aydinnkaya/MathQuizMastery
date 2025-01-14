@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Zu4-Lc-R4n">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_3" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -96,14 +96,14 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6gk-K2-Vyh">
-                                <rect key="frame" x="50" y="351" width="300" height="100"/>
+                                <rect key="frame" x="50" y="351" width="302" height="100"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <bool key="isElement" value="NO"/>
                                 </accessibility>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="IIG-DE-NfS"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="302" id="ZkF-1T-ZRg"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="iIw-dF-F9X"/>
-                                    <constraint firstAttribute="width" constant="300" id="kHR-pO-N0q"/>
                                 </constraints>
                                 <buttonConfiguration key="configuration" style="plain" title="Fist" cornerStyle="dynamic">
                                     <backgroundConfiguration key="background"/>
@@ -186,15 +186,16 @@
                             <constraint firstItem="MGS-2j-Wc6" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="9vk-lX-pjM"/>
                             <constraint firstItem="EJ9-9s-CE8" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="52" id="A6E-qy-ddx"/>
                             <constraint firstItem="Ike-K2-BMk" firstAttribute="top" secondItem="vPS-Bo-38q" secondAttribute="bottom" constant="40" id="CsC-Ii-r2o"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="6gk-K2-Vyh" secondAttribute="trailing" constant="50" id="Dwc-5z-yOj"/>
                             <constraint firstItem="MGS-2j-Wc6" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="KSf-2h-rLd"/>
                             <constraint firstItem="LNw-4x-HTO" firstAttribute="top" secondItem="Tuh-GB-yCa" secondAttribute="bottom" constant="22" id="KaI-Uu-V8f"/>
                             <constraint firstItem="LNw-4x-HTO" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Pgz-dv-x44"/>
                             <constraint firstItem="6gk-K2-Vyh" firstAttribute="top" secondItem="LNw-4x-HTO" secondAttribute="bottom" constant="80" id="PpU-NT-mu1"/>
                             <constraint firstItem="LNw-4x-HTO" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="QRG-KF-LnD"/>
                             <constraint firstItem="LNw-4x-HTO" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="QzR-ic-7Ry"/>
-                            <constraint firstItem="6gk-K2-Vyh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="TKa-JN-zkw"/>
                             <constraint firstItem="MGS-2j-Wc6" firstAttribute="top" secondItem="LNw-4x-HTO" secondAttribute="bottom" constant="21" id="VMM-K8-AIg"/>
                             <constraint firstItem="vPS-Bo-38q" firstAttribute="top" secondItem="6gk-K2-Vyh" secondAttribute="bottom" constant="40" id="b6Q-Kw-7oN"/>
+                            <constraint firstItem="6gk-K2-Vyh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="cm3-I1-mEE"/>
                             <constraint firstItem="vPS-Bo-38q" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="d6c-A4-Ge8"/>
                             <constraint firstItem="Ike-K2-BMk" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="pIk-H3-MgD"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Ike-K2-BMk" secondAttribute="bottom" constant="109" id="qJ7-nb-dmU"/>
