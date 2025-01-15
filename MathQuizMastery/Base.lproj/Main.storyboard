@@ -278,7 +278,7 @@
                                 <buttonConfiguration key="configuration" style="plain" title="Ana Menü"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bof-WX-Wiz">
-                                <rect key="frame" x="264" y="713" width="121" height="35"/>
+                                <rect key="frame" x="281" y="713.66666666666663" width="121" height="34.333333333333371"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Tekrar Oyna "/>
                             </button>
@@ -287,8 +287,32 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Kategoriler"/>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lfs-VU-QxS" userLabel="label">
-                                <rect key="frame" x="51" y="186" width="300" height="100"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calculate_symbol" translatesAutoresizingMaskIntoConstraints="NO" id="llU-Qm-Khi">
+                                <rect key="frame" x="145.66666666666666" y="182" width="127.99999999999997" height="128"/>
+                                <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="ZbX-ac-Y9i"/>
+                                    <constraint firstAttribute="width" constant="128" id="bsq-4X-j2C"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="4" translatesAutoresizingMaskIntoConstraints="NO" id="A2C-8e-JPc">
+                                <rect key="frame" x="53" y="345" width="313" height="167"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="313" id="DJ0-wv-Ik9"/>
+                                    <constraint firstAttribute="width" constant="313" id="Ivq-V2-Pmv"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="313" id="jbx-PZ-RI4"/>
+                                    <constraint firstAttribute="height" constant="167" id="spU-Mh-rux"/>
+                                </constraints>
+                                <string key="text">TEBRİKLER!
+Matematik kategoresinde 
+10 dogru cevap verdin</string>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="28"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                                <size key="shadowOffset" width="1" height="-1"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lfs-VU-QxS" userLabel="label">
+                                <rect key="frame" x="53" y="584" width="300" height="100"/>
                                 <color key="backgroundColor" systemColor="systemOrangeColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="2Pf-97-mXQ"/>
@@ -302,14 +326,23 @@
                         <viewLayoutGuide key="safeArea" id="YmG-1x-BXw"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="bof-WX-Wiz" firstAttribute="top" secondItem="lfs-VU-QxS" secondAttribute="bottom" constant="100" id="4Aw-Me-ePC"/>
                             <constraint firstItem="Lt0-Af-CvJ" firstAttribute="leading" secondItem="kP6-sG-sys" secondAttribute="leading" constant="152" id="5Mh-lL-lRo"/>
+                            <constraint firstItem="llU-Qm-Khi" firstAttribute="centerX" secondItem="kP6-sG-sys" secondAttribute="centerX" id="8uQ-m4-WOZ"/>
+                            <constraint firstItem="A2C-8e-JPc" firstAttribute="centerX" secondItem="kP6-sG-sys" secondAttribute="centerX" id="9ou-sy-4Jg"/>
+                            <constraint firstItem="A2C-8e-JPc" firstAttribute="leading" secondItem="YmG-1x-BXw" secondAttribute="leading" constant="53" id="KXo-IP-qB2"/>
                             <constraint firstItem="YmG-1x-BXw" firstAttribute="bottom" secondItem="o4P-2j-rwr" secondAttribute="bottom" constant="91" id="Qg8-a2-26r"/>
                             <constraint firstItem="lfs-VU-QxS" firstAttribute="centerX" secondItem="kP6-sG-sys" secondAttribute="centerX" id="SPZ-Po-HnA"/>
-                            <constraint firstItem="lfs-VU-QxS" firstAttribute="top" secondItem="YmG-1x-BXw" secondAttribute="top" constant="80" id="VcN-Aa-j0h"/>
+                            <constraint firstItem="YmG-1x-BXw" firstAttribute="trailing" secondItem="bof-WX-Wiz" secondAttribute="trailing" constant="17" id="ag6-AG-K6q"/>
+                            <constraint firstItem="A2C-8e-JPc" firstAttribute="top" secondItem="llU-Qm-Khi" secondAttribute="bottom" constant="35" id="cav-No-iHa"/>
+                            <constraint firstItem="o4P-2j-rwr" firstAttribute="leading" secondItem="YmG-1x-BXw" secondAttribute="leading" constant="31" id="fYp-DI-MOb"/>
                             <constraint firstItem="YmG-1x-BXw" firstAttribute="bottom" secondItem="bof-WX-Wiz" secondAttribute="bottom" constant="92" id="iAb-yA-O7S"/>
-                            <constraint firstItem="bof-WX-Wiz" firstAttribute="leading" secondItem="Lt0-Af-CvJ" secondAttribute="trailing" constant="11" id="iDt-rk-aZG"/>
+                            <constraint firstItem="bof-WX-Wiz" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Lt0-Af-CvJ" secondAttribute="trailing" constant="8" symbolic="YES" id="iDt-rk-aZG"/>
                             <constraint firstItem="YmG-1x-BXw" firstAttribute="bottom" secondItem="Lt0-Af-CvJ" secondAttribute="bottom" constant="90" id="lC5-il-NLQ"/>
-                            <constraint firstItem="Lt0-Af-CvJ" firstAttribute="leading" secondItem="o4P-2j-rwr" secondAttribute="trailing" constant="14" id="yeT-gk-zSG"/>
+                            <constraint firstItem="llU-Qm-Khi" firstAttribute="centerX" secondItem="kP6-sG-sys" secondAttribute="centerX" id="qKj-DL-nRh"/>
+                            <constraint firstItem="A2C-8e-JPc" firstAttribute="centerX" secondItem="kP6-sG-sys" secondAttribute="centerX" id="qUQ-3c-Iw5"/>
+                            <constraint firstItem="llU-Qm-Khi" firstAttribute="top" secondItem="YmG-1x-BXw" secondAttribute="top" constant="76" id="sqU-tW-X7L"/>
+                            <constraint firstItem="Lt0-Af-CvJ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="o4P-2j-rwr" secondAttribute="trailing" constant="8" symbolic="YES" id="yeT-gk-zSG"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="NRt-Y9-9Mj"/>
@@ -341,19 +374,23 @@
         </scene>
     </scenes>
     <resources>
+        <image name="calculate_symbol" width="12" height="12"/>
         <image name="macWhite" width="1650" height="2170"/>
         <image name="yellowComputer" width="3498" height="4048"/>
         <systemColor name="opaqueSeparatorColor">
-            <color red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="secondarySystemGroupedBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemCyanColor">
-            <color red="0.1960784314" green="0.67843137249999996" blue="0.90196078430000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.19607843137254902" green="0.67843137254901964" blue="0.90196078431372551" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemOrangeColor">
-            <color red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

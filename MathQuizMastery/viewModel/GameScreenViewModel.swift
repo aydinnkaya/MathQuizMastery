@@ -45,7 +45,7 @@ class GameScreenViewModel : GameScreenViewModelProtocol {
             onUpdateQuestionNumber?(questionNumber)
             onUpdateUI?(expression.createQuestion(), answers.map { String($0) })
         } else {
-            // Game over
+            self.onTimeUp?()
         }
     }
     
