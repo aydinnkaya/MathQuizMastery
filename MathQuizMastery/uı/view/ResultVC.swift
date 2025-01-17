@@ -18,8 +18,4 @@ class ResultVC: UIViewController {
         label.text = receivedScore
         
     }
-
-
-    
-
 }
