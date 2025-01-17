@@ -104,7 +104,7 @@ class GameScreenViewModel : GameScreenViewModelProtocol {
     
     func setupButtonView(buttonFirst: UIButton, buttonSecond :UIButton, buttonThird : UIButton){
         let buttonList = [buttonFirst,buttonSecond,buttonThird]
-
+        
         for b in buttonList {
             b.isHidden = false
             b.backgroundColor = UIColor(red: 255/255, green: 230/255, blue: 150/255, alpha: 1.0)

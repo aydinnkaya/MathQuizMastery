@@ -18,14 +18,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="macWhite" highlightedImage="macWhite" translatesAutoresizingMaskIntoConstraints="NO" id="VvL-Gm-i1O">
-                                <rect key="frame" x="-25" y="0.0" width="427" height="574"/>
+                                <rect key="frame" x="0.0" y="0.0" width="402" height="574"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="574" id="FAi-d1-R5M"/>
-                                    <constraint firstAttribute="width" constant="427" id="YXb-XK-Zzw"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="laU-gf-1EG">
-                                <rect key="frame" x="100" y="654.33333333333337" width="186" height="85.666666666666629"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="laU-gf-1EG">
+                                <rect key="frame" x="72" y="652" width="250" height="86"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="START" titleAlignment="center">
                                     <fontDescription key="titleFontDescription" type="boldSystem" pointSize="60"/>
@@ -38,9 +37,11 @@
                         <viewLayoutGuide key="safeArea" id="599-hs-pEU"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="VvL-Gm-i1O" secondAttribute="trailing" id="5ra-61-TWO"/>
                             <constraint firstAttribute="bottomMargin" secondItem="laU-gf-1EG" secondAttribute="bottom" constant="100" id="7JA-7b-oVx"/>
                             <constraint firstAttribute="trailing" secondItem="VvL-Gm-i1O" secondAttribute="trailing" id="99R-aE-f9S"/>
                             <constraint firstItem="VvL-Gm-i1O" firstAttribute="top" secondItem="hsW-Ck-Oae" secondAttribute="top" id="Lfc-dL-VJF"/>
+                            <constraint firstItem="VvL-Gm-i1O" firstAttribute="leading" secondItem="hsW-Ck-Oae" secondAttribute="leading" id="qpC-VM-Acs"/>
                             <constraint firstItem="VvL-Gm-i1O" firstAttribute="top" secondItem="hsW-Ck-Oae" secondAttribute="top" id="qvE-z4-AuE"/>
                             <constraint firstItem="laU-gf-1EG" firstAttribute="leading" secondItem="599-hs-pEU" secondAttribute="leading" constant="100" id="uO4-Ad-dFF"/>
                             <constraint firstAttribute="trailingMargin" secondItem="laU-gf-1EG" secondAttribute="trailing" constant="100" id="zFu-gz-L4g"/>
@@ -96,7 +97,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r0w-wG-5Va" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="292.53731343283579" y="-9.610983981693364"/>
+            <point key="canvasLocation" x="293" y="-12"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="r8n-6t-pBD">
@@ -262,7 +263,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1152" y="-6"/>
+            <point key="canvasLocation" x="1076" y="-11"/>
         </scene>
         <!--ResultScreen-->
         <scene sceneID="FLx-5p-NWQ">
@@ -278,7 +279,7 @@
                                 <buttonConfiguration key="configuration" style="plain" title="Ana Menü"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bof-WX-Wiz">
-                                <rect key="frame" x="281" y="713.66666666666663" width="121" height="34.333333333333371"/>
+                                <rect key="frame" x="264" y="713.66666666666663" width="121" height="34.333333333333371"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Tekrar Oyna "/>
                             </button>
@@ -288,7 +289,7 @@
                                 <buttonConfiguration key="configuration" style="plain" title="Kategoriler"/>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calculate_symbol" translatesAutoresizingMaskIntoConstraints="NO" id="llU-Qm-Khi">
-                                <rect key="frame" x="145.66666666666666" y="182" width="127.99999999999997" height="128"/>
+                                <rect key="frame" x="137" y="182" width="128" height="128"/>
                                 <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="128" id="ZbX-ac-Y9i"/>
@@ -296,10 +297,8 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="4" translatesAutoresizingMaskIntoConstraints="NO" id="A2C-8e-JPc">
-                                <rect key="frame" x="53" y="345" width="313" height="167"/>
+                                <rect key="frame" x="44.666666666666657" y="345" width="313" height="167"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="313" id="DJ0-wv-Ik9"/>
-                                    <constraint firstAttribute="width" constant="313" id="Ivq-V2-Pmv"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="313" id="jbx-PZ-RI4"/>
                                     <constraint firstAttribute="height" constant="167" id="spU-Mh-rux"/>
                                 </constraints>
@@ -311,8 +310,8 @@ Matematik kategoresinde
                                 <nil key="highlightedColor"/>
                                 <size key="shadowOffset" width="1" height="-1"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lfs-VU-QxS" userLabel="label">
-                                <rect key="frame" x="53" y="584" width="300" height="100"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lfs-VU-QxS" userLabel="label">
+                                <rect key="frame" x="51" y="513.66666666666663" width="300" height="100"/>
                                 <color key="backgroundColor" systemColor="systemOrangeColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="2Pf-97-mXQ"/>
@@ -330,7 +329,6 @@ Matematik kategoresinde
                             <constraint firstItem="Lt0-Af-CvJ" firstAttribute="leading" secondItem="kP6-sG-sys" secondAttribute="leading" constant="152" id="5Mh-lL-lRo"/>
                             <constraint firstItem="llU-Qm-Khi" firstAttribute="centerX" secondItem="kP6-sG-sys" secondAttribute="centerX" id="8uQ-m4-WOZ"/>
                             <constraint firstItem="A2C-8e-JPc" firstAttribute="centerX" secondItem="kP6-sG-sys" secondAttribute="centerX" id="9ou-sy-4Jg"/>
-                            <constraint firstItem="A2C-8e-JPc" firstAttribute="leading" secondItem="YmG-1x-BXw" secondAttribute="leading" constant="53" id="KXo-IP-qB2"/>
                             <constraint firstItem="YmG-1x-BXw" firstAttribute="bottom" secondItem="o4P-2j-rwr" secondAttribute="bottom" constant="91" id="Qg8-a2-26r"/>
                             <constraint firstItem="lfs-VU-QxS" firstAttribute="centerX" secondItem="kP6-sG-sys" secondAttribute="centerX" id="SPZ-Po-HnA"/>
                             <constraint firstItem="YmG-1x-BXw" firstAttribute="trailing" secondItem="bof-WX-Wiz" secondAttribute="trailing" constant="17" id="ag6-AG-K6q"/>
@@ -352,7 +350,7 @@ Matematik kategoresinde
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9dJ-od-5V2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1902.9850746268655" y="-8.2379862700228834"/>
+            <point key="canvasLocation" x="1888" y="-9"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="pxH-tc-QPg">
@@ -370,7 +368,7 @@ Matematik kategoresinde
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3hr-aZ-sdZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1413.4328358208954" y="-11.670480549199084"/>
+            <point key="canvasLocation" x="-1307" y="-11"/>
         </scene>
     </scenes>
     <resources>
@@ -378,7 +376,7 @@ Matematik kategoresinde
         <image name="macWhite" width="1650" height="2170"/>
         <image name="yellowComputer" width="3498" height="4048"/>
         <systemColor name="opaqueSeparatorColor">
-            <color red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="secondarySystemGroupedBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -387,10 +385,10 @@ Matematik kategoresinde
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemCyanColor">
-            <color red="0.1960784314" green="0.67843137249999996" blue="0.90196078430000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.19607843137254902" green="0.67843137254901964" blue="0.90196078431372551" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemOrangeColor">
-            <color red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
