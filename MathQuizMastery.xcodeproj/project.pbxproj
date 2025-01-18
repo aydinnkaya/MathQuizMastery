@@ -34,8 +34,16 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
+				MathQuizMasteryTests.swift,
 			);
 			target = 0FA090672D2FAEB000D83F96 /* MathQuizMastery */;
+		};
+		0FDC0F952D3C37410014E88A /* Exceptions for "MathQuizMastery" folder in "MathQuizMasteryTests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				MathQuizMasteryTests.swift,
+			);
+			target = 0FA090802D2FAEB300D83F96 /* MathQuizMasteryTests */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
@@ -44,6 +52,7 @@
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
 				0FA090932D2FAEB300D83F96 /* Exceptions for "MathQuizMastery" folder in "MathQuizMastery" target */,
+				0FDC0F952D3C37410014E88A /* Exceptions for "MathQuizMastery" folder in "MathQuizMasteryTests" target */,
 			);
 			path = MathQuizMastery;
 			sourceTree = "<group>";
