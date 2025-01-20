@@ -8,6 +8,22 @@
 import Foundation
 import UIKit
 
+
+protocol GameScreenViewModelDelegate : AnyObject {
+    /*
+    var onUpdateUI: ((String, [String]) -> Void)?
+    var onUpdateScore: ((Int) -> Void)?
+    var onUpdateTime: ((String) -> Void)?
+    var onUpdateQuestionNumber: ((Int) -> Void)?
+    var onTimeUp: (() -> Void)?
+    
+     */
+    
+    func onUpdateUI(value: String, valueArray : [String])
+    func onUpdateScore(values: Int)
+}
+
+
 class GameScreenViewModel : GameScreenViewModelProtocol {
     private(set) var expression: MathExpression.Operation
     private(set) var answers: [Int] = []
@@ -17,6 +33,8 @@ class GameScreenViewModel : GameScreenViewModelProtocol {
     private var timer: Timer?
     private var timeRemaining: Int = 60
     
+    weak var delegate : GameScreenViewModelDelegate?
+
     
     //*****call back *******
     var onUpdateUI: ((String, [String]) -> Void)?
@@ -26,7 +44,8 @@ class GameScreenViewModel : GameScreenViewModelProtocol {
     var onTimeUp: (() -> Void)?
     
     
-    init() {
+    init(delegate : GameScreenViewModelDelegate? ) {
+        self.delegate = delegate
         self.expression = MathExpression.randomExpression()
         generateQuiz()
     }
@@ -43,6 +62,7 @@ class GameScreenViewModel : GameScreenViewModelProtocol {
             questionNumber += 1
             generateQuiz()
             onUpdateQuestionNumber?(questionNumber)
+            delegate?.onUpdateUI(value: expression.createQuestion(), valueArray: answers.map { String($0)})
             onUpdateUI?(expression.createQuestion(), answers.map { String($0) })
         } else {
             self.onTimeUp?()

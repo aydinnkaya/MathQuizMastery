@@ -7,7 +7,10 @@
 
 import UIKit
 
+
+                                    
 class GameScreen: UIViewController {
+    
     @IBOutlet weak var questionNumberLabel: UILabel!
     @IBOutlet weak var questionView: UIView!
     @IBOutlet weak var questionLabel: UILabel!
@@ -21,7 +24,6 @@ class GameScreen: UIViewController {
     private var viewModel: GameScreenViewModelProtocol!
     
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -32,7 +34,7 @@ class GameScreen: UIViewController {
     private func setupUI() {
         view.backgroundColor = UIColor(red: 242/255, green: 238/255, blue: 230/255, alpha: 1.0)
         setupQuestionView(questionView: questionView)
-        viewModel = GameScreenViewModel()
+        viewModel = GameScreenViewModel(delegate: self)
         viewModel.setupButtonView(buttonFirst: buttonFirst, buttonSecond: buttonSecond, buttonThird: buttonThird)
         scoreLabel.text = "Score: 0"
         questionNumberLabel.text = "1 / 10"
@@ -72,6 +74,8 @@ class GameScreen: UIViewController {
         viewModel.onTimeUp = { [weak self] in
             self?.handleTimeUp()
         }
+        
+        
     }
     
     private func updateUI(question: String, answers: [String]) {
@@ -127,6 +131,19 @@ class GameScreen: UIViewController {
     
     @IBAction func answerThirdButton(_ sender: UIButton) {
         handleAnswer(for: sender)
+    }
+    
+    
+}
+
+
+extension GameScreen :GameScreenViewModelDelegate {
+    func onUpdateUI(value: String, valueArray: [String]) {
+        self.updateUI(question: value, answers: valueArray)
+    }
+    
+    func onUpdateScore(values: Int) {
+        <#code#>
     }
     
     
