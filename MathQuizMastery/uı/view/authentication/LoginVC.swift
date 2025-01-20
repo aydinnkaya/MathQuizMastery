@@ -9,7 +9,6 @@ import UIKit
 
 class LoginVC: UIViewController, UITextFieldDelegate {
     
-    // @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var emailTextField: UITextField!
     
     @IBOutlet weak var passwordTextField: UITextField!
@@ -17,40 +16,27 @@ class LoginVC: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var fargotPasswordButtonLabel: UIButton!
     
     
-    let scrollView = UIScrollView()
-    var iconView: UIImageView?
-    
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         
         setupGradientBackground()
         configureTextFields()
         emailTextField.delegate = self
-        
-        //headerView.transform = CGAffineTransform(rotationAngle: -70 * .pi / 180)
-        
-        emailTextField.delegate = self
         passwordTextField.delegate = self
-        
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tapGesture)
-        
     }
     
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder() // Klavyeyi kapatır
+        textField.resignFirstResponder() // User input object
         return true
     }
     
     @objc func dismissKeyboard() {
         view.endEditing(true)
     }
-    
     
     
     func setupGradientBackground() {
@@ -69,18 +55,16 @@ class LoginVC: UIViewController, UITextFieldDelegate {
     
     
     func configureTextFields() {
-        // TextField temel ayarları
         emailTextField.layer.cornerRadius = 12
         emailTextField.layer.borderWidth = 2
-        emailTextField.layer.borderColor = UIColor(red: 255/255, green: 220/255, blue: 0/255, alpha: 1).cgColor
+        emailTextField.layer.borderColor = UIColor(red: 1.0, green: 0.8627, blue: 0.0, alpha: 1.0).cgColor
         emailTextField.backgroundColor = .clear
         emailTextField.textColor = .black
         emailTextField.font = UIFont.systemFont(ofSize: 16, weight: .medium)
         
-        // Placeholder (örnek yazı) ayarları
         let iconAttachment = NSTextAttachment()
         iconAttachment.image = UIImage(systemName: "envelope.fill")?.withTintColor(.black, renderingMode: .alwaysOriginal)
-        iconAttachment.bounds = CGRect(x: 0, y: -4, width: 25, height: 25) // İkon boyutu ve hizalaması
+        iconAttachment.bounds = CGRect(x: 0, y: -4, width: 25, height: 25)
         
         let iconString = NSAttributedString(attachment: iconAttachment)
         let textString = NSAttributedString(string: " Enter your email", attributes: [
@@ -97,7 +81,6 @@ class LoginVC: UIViewController, UITextFieldDelegate {
         emailTextField.attributedPlaceholder = combinedString
         emailTextField.contentVerticalAlignment = .center
         
-        // TextField'i ekrana ekleme
         emailTextField.frame = CGRect(x: 40, y: 100, width: 300, height: 50)
         self.view.addSubview(emailTextField)
     }
@@ -106,7 +89,6 @@ class LoginVC: UIViewController, UITextFieldDelegate {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        // Gradient ve gölge ayarları
         let gradientLayer = CAGradientLayer()
         gradientLayer.colors = [
             UIColor(red: 0.8, green: 0.85, blue: 0.9, alpha: 1).cgColor, // Açık pastel mavi
@@ -120,7 +102,6 @@ class LoginVC: UIViewController, UITextFieldDelegate {
         gradientLayer.frame = emailTextField.bounds
         gradientLayer.cornerRadius = 8
         
-        // Arka plan görünümü
         let emailBackgroundView = UIView(frame: emailTextField.frame)
         emailBackgroundView.layer.addSublayer(gradientLayer)
         emailBackgroundView.layer.cornerRadius = 8
@@ -130,7 +111,6 @@ class LoginVC: UIViewController, UITextFieldDelegate {
         emailBackgroundView.layer.shadowRadius = 6
         emailBackgroundView.layer.masksToBounds = false
         
-        // Görünüm hiyerarşisine ekleme
         if emailTextField.superview != nil {
             emailTextField.superview?.addSubview(emailBackgroundView)
             emailTextField.superview?.bringSubviewToFront(emailTextField)

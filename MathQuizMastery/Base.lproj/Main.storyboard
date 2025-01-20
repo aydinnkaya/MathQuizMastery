@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="nxB-Hs-Cnb">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="DzU-Rk-BTv">
     <device id="retina6_3" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -188,9 +188,9 @@
                                 <rect key="frame" x="0.0" y="0.0" width="402" height="874"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="27" translatesAutoresizingMaskIntoConstraints="NO" id="JQy-oH-6ps">
-                                <rect key="frame" x="20" y="427" width="362" height="273"/>
+                                <rect key="frame" x="20" y="442.66666666666674" width="362" height="273"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" verticalHuggingPriority="253" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oqd-54-NfH">
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" verticalHuggingPriority="253" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oqd-54-NfH">
                                         <rect key="frame" x="0.0" y="0.0" width="362" height="48"/>
                                         <color key="backgroundColor" systemColor="systemGray5Color"/>
                                         <constraints>
@@ -200,7 +200,7 @@
                                         <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="email"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" verticalHuggingPriority="253" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Bva-ES-gdx">
-                                        <rect key="frame" x="0.0" y="75" width="362" height="48"/>
+                                        <rect key="frame" x="0.0" y="74.999999999999943" width="362" height="48"/>
                                         <color key="backgroundColor" systemColor="systemGray5Color"/>
                                         <constraints>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="48" id="QGg-Gh-g21"/>
@@ -209,7 +209,7 @@
                                         <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="email"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" verticalHuggingPriority="253" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1yU-Pc-JRl">
-                                        <rect key="frame" x="0.0" y="150" width="362" height="48"/>
+                                        <rect key="frame" x="0.0" y="149.99999999999994" width="362" height="48"/>
                                         <color key="backgroundColor" systemColor="systemGray5Color"/>
                                         <constraints>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="48" id="zEE-tf-8hq"/>
@@ -218,7 +218,7 @@
                                         <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="password"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" verticalHuggingPriority="253" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6Sg-44-Hd5">
-                                        <rect key="frame" x="0.0" y="225" width="362" height="48"/>
+                                        <rect key="frame" x="0.0" y="224.99999999999994" width="362" height="48"/>
                                         <color key="backgroundColor" systemColor="systemGray5Color"/>
                                         <constraints>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="48" id="vba-ou-xgL"/>
@@ -228,15 +228,33 @@
                                     </textField>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7kJ-f4-RHm">
+                                <rect key="frame" x="40" y="765.66666666666663" width="322" height="34.333333333333371"/>
+                                <color key="backgroundColor" systemColor="systemGreenColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Create Account">
+                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="Math_Quiz_Mastery_Transparent-removebg-preview" translatesAutoresizingMaskIntoConstraints="NO" id="mJn-2u-oyn">
+                                <rect key="frame" x="0.0" y="82" width="402" height="330.66666666666669"/>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="yZn-iS-SBZ"/>
                         <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="JQy-oH-6ps" firstAttribute="leading" secondItem="yZn-iS-SBZ" secondAttribute="leading" constant="20" id="2Ub-sX-RhJ"/>
+                            <constraint firstItem="mJn-2u-oyn" firstAttribute="top" secondItem="yZn-iS-SBZ" secondAttribute="top" constant="20" id="CLe-2I-m06"/>
+                            <constraint firstItem="JQy-oH-6ps" firstAttribute="top" secondItem="mJn-2u-oyn" secondAttribute="bottom" constant="30" id="CkM-Il-vRm"/>
                             <constraint firstItem="kkS-km-Rxa" firstAttribute="trailing" secondItem="yZn-iS-SBZ" secondAttribute="trailing" id="FAE-dB-hFg"/>
                             <constraint firstItem="kkS-km-Rxa" firstAttribute="leading" secondItem="yZn-iS-SBZ" secondAttribute="leading" id="IM6-Zr-inP"/>
+                            <constraint firstItem="yZn-iS-SBZ" firstAttribute="trailing" secondItem="7kJ-f4-RHm" secondAttribute="trailing" constant="40" id="IiM-tx-rII"/>
+                            <constraint firstItem="7kJ-f4-RHm" firstAttribute="top" secondItem="JQy-oH-6ps" secondAttribute="bottom" constant="50" id="OIu-ds-BSZ"/>
+                            <constraint firstItem="mJn-2u-oyn" firstAttribute="trailing" secondItem="yZn-iS-SBZ" secondAttribute="trailing" id="Ra1-cQ-4JE"/>
                             <constraint firstAttribute="bottom" secondItem="kkS-km-Rxa" secondAttribute="bottom" id="STT-cB-heS"/>
-                            <constraint firstItem="yZn-iS-SBZ" firstAttribute="bottom" secondItem="JQy-oH-6ps" secondAttribute="bottom" constant="140" id="qTI-m4-ehj"/>
+                            <constraint firstItem="mJn-2u-oyn" firstAttribute="leading" secondItem="yZn-iS-SBZ" secondAttribute="leading" id="TQq-yd-2yR"/>
+                            <constraint firstItem="yZn-iS-SBZ" firstAttribute="bottom" secondItem="7kJ-f4-RHm" secondAttribute="bottom" constant="40" id="TeG-rd-BVb"/>
+                            <constraint firstItem="7kJ-f4-RHm" firstAttribute="leading" secondItem="yZn-iS-SBZ" secondAttribute="leading" constant="40" id="l2R-gm-Wak"/>
                             <constraint firstItem="yZn-iS-SBZ" firstAttribute="trailing" secondItem="JQy-oH-6ps" secondAttribute="trailing" constant="20" id="s4M-94-rzJ"/>
                             <constraint firstItem="kkS-km-Rxa" firstAttribute="leading" secondItem="yZn-iS-SBZ" secondAttribute="leading" id="u1f-yY-6dT"/>
                             <constraint firstItem="yZn-iS-SBZ" firstAttribute="trailing" secondItem="kkS-km-Rxa" secondAttribute="trailing" id="uXR-8f-ZhS"/>
@@ -246,7 +264,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wRm-pR-YCx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="263" y="-777"/>
+            <point key="canvasLocation" x="262.68656716417911" y="-777.11670480549196"/>
         </scene>
         <!--Game Screen-->
         <scene sceneID="tne-QT-ifu">
@@ -322,7 +340,7 @@
                                 <rect key="frame" x="30" y="80" width="342" height="274"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10 + 8" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="69j-Lk-Ki3">
-                                        <rect key="frame" x="44.666666666666671" y="32.333333333333329" width="252.66666666666657" height="209.33333333333337"/>
+                                        <rect key="frame" x="44.666666666666671" y="32.333333333333329" width="252.66666666666663" height="209.33333333333337"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="54"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -515,15 +533,16 @@ Matematik kategoresinde
         </scene>
     </scenes>
     <resources>
+        <image name="Math_Quiz_Mastery_Transparent-removebg-preview" width="661" height="377"/>
         <image name="calculate_symbol" width="12" height="12"/>
         <image name="image-removebg" width="1024" height="1024"/>
         <image name="image_4k" width="3840" height="2160"/>
         <image name="yellowComputer" width="3498" height="4048"/>
         <systemColor name="opaqueSeparatorColor">
-            <color red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="secondarySystemBackgroundColor">
-            <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="secondarySystemGroupedBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -532,16 +551,19 @@ Matematik kategoresinde
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemCyanColor">
-            <color red="0.1960784314" green="0.67843137249999996" blue="0.90196078430000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.19607843137254902" green="0.67843137254901964" blue="0.90196078431372551" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray3Color">
-            <color red="0.78039215689999997" green="0.78039215689999997" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.7803921568627451" green="0.7803921568627451" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray5Color">
-            <color red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemOrangeColor">
-            <color red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemYellowColor">
             <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
