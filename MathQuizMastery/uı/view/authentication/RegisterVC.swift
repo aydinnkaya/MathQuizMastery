@@ -1,40 +1,42 @@
 //
-//  LoginVC.swift
+//  RegisterVC.swift
 //  MathQuizMastery
 //
-//  Created by Aydın KAYA on 18.01.2025.
+//  Created by Aydın KAYA on 21.01.2025.
 //
 
 import UIKit
 
-class LoginVC: UIViewController, UITextFieldDelegate {
+class RegisterVC: UIViewController, UITextFieldDelegate {
     
+    @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
-    
     @IBOutlet weak var passwordTextField: UITextField!
-    
-    @IBOutlet weak var fargotPasswordButtonLabel: UIButton!
+    @IBOutlet weak var passwordAgainTextField: UITextField!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupGradientBackground()
-        configureTextField(emailTextField, placeholderText: " Enter your email", iconName: "envelope.fill")
-        configureTextField(passwordTextField, placeholderText: " Enter your password", iconName: "lock.fill")
-        
-        
-        configureTextFieldBackground(for: emailTextField)
-        configureTextFieldBackground(for: passwordTextField)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            self.setupGradientBackground()
+            self.configureTextFieldBackground(for: self.nameTextField)
+            self.configureTextFieldBackground(for: self.emailTextField)
+            self.configureTextFieldBackground(for: self.passwordTextField)
+            self.configureTextFieldBackground(for: self.passwordAgainTextField)
+            
+            self.configureTextField(self.nameTextField, placeholderText: "Enter your name", iconName: "person.fill")
+            self.configureTextField(self.emailTextField, placeholderText: "Enter your email", iconName: "envelope.fill")
+            self.configureTextField(self.passwordTextField, placeholderText: "Enter your password", iconName: "lock.fill")
+            self.configureTextField(self.passwordAgainTextField, placeholderText: "Re enter your password", iconName: "lock.fill")
+        }
         
         emailTextField.delegate = self
         passwordTextField.delegate = self
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tapGesture)
-        
     }
-  
     
     
     @objc func dismissKeyboard() {
@@ -43,21 +45,16 @@ class LoginVC: UIViewController, UITextFieldDelegate {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        
-        
-        print("Email TextField Frame: \(emailTextField.frame)")
-        print("Email TextField Bounds: \(emailTextField.bounds)")
-        print("Password TextField Frame: \(passwordTextField.frame)")
-        print("Password TextField Bounds: \(passwordTextField.bounds)")
-        
-       configureTextFieldBackground(for: emailTextField)
-       configureTextFieldBackground(for: passwordTextField)
+        configureTextFieldBackground(for: nameTextField)
+        configureTextFieldBackground(for: emailTextField)
+        configureTextFieldBackground(for: passwordTextField)
+        configureTextFieldBackground(for: passwordAgainTextField)
     }
     
 }
 
 
-extension LoginVC {
+extension RegisterVC {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
@@ -69,8 +66,8 @@ extension LoginVC {
         gradientLayer.frame = self.view.bounds
         gradientLayer.colors = [
             UIColor(red: 0.3, green: 0.3, blue: 0.3, alpha: 1.0).cgColor,
-            UIColor(red: 0.8, green: 0.1, blue: 0.0, alpha: 1.0).cgColor,
             UIColor(red: 0.9, green: 0.7, blue: 0.0, alpha: 1.0).cgColor,
+            UIColor(red: 0.8, green: 0.1, blue: 0.0, alpha: 1.0).cgColor
         ]
         gradientLayer.startPoint = CGPoint(x: 0, y: 0)
         gradientLayer.endPoint = CGPoint(x: 1, y: 1)
@@ -80,7 +77,8 @@ extension LoginVC {
     func configureTextField(_ textField: UITextField, placeholderText: String, iconName: String) {
         textField.layer.cornerRadius = 12
         textField.layer.borderWidth = 2
-        textField.layer.borderColor = UIColor(red: 1.0, green: 0.8627, blue: 0.0, alpha: 1.0).cgColor
+       // textField.layer.borderColor = UIColor(red: 1.0, green: 0.8627, blue: 0.0, alpha: 1.0).cgColor
+        textField.layer.borderColor = UIColor(red: 0.8, green: 0.1, blue: 0.0, alpha: 1.0).cgColor
         textField.backgroundColor = .clear
         textField.textColor = .black
         textField.font = UIFont.systemFont(ofSize: 16, weight: .bold)
@@ -101,14 +99,9 @@ extension LoginVC {
         
         textField.attributedPlaceholder = combinedString
         textField.contentVerticalAlignment = .center
-        
     }
     
     func configureTextFieldBackground(for textField: UITextField) {
-        
-        textField.superview?.layer.sublayers?
-                .filter { $0 is CAGradientLayer }
-                .forEach { $0.removeFromSuperlayer() }
         let gradientLayer = CAGradientLayer()
         gradientLayer.colors = [
             UIColor(red: 0.8, green: 0.85, blue: 0.9, alpha: 1).cgColor,
@@ -119,24 +112,31 @@ extension LoginVC {
         ]
         gradientLayer.startPoint = CGPoint(x: 0.5, y: 0)
         gradientLayer.endPoint = CGPoint(x: 0.5, y: 1)
+        gradientLayer.frame = textField.bounds
+        gradientLayer.cornerRadius = 12
+        
+        let backgroundView = UIView(frame: textField.frame)
+        backgroundView.layer.addSublayer(gradientLayer)
+        backgroundView.layer.cornerRadius = 12
+        backgroundView.layer.shadowColor = UIColor.purple.cgColor
+        backgroundView.layer.shadowOffset = CGSize(width: 0, height: 3)
+        backgroundView.layer.shadowOpacity = 0.3
+        backgroundView.layer.shadowRadius = 6
+        backgroundView.layer.masksToBounds = false
+        
+        
+        
+        backgroundView.translatesAutoresizingMaskIntoConstraints = false
         
         if let superview = textField.superview {
-            let adjustedFrame = superview.convert(textField.frame, to: superview)
-            let backgroundView = UIView(frame: adjustedFrame)
-            gradientLayer.frame = CGRect(origin: .zero, size: adjustedFrame.size)
-            gradientLayer.cornerRadius = textField.layer.cornerRadius
-            
-            backgroundView.layer.insertSublayer(gradientLayer, at: 0)
-            backgroundView.layer.cornerRadius = textField.layer.cornerRadius
-            backgroundView.layer.shadowColor = UIColor.purple.cgColor
-            backgroundView.layer.shadowOffset = CGSize(width: 0, height: 3)
-            backgroundView.layer.shadowOpacity = 0.3
-            backgroundView.layer.shadowRadius = 6
-            backgroundView.layer.masksToBounds = false
-            
-            superview.addSubview(backgroundView)
-            superview.bringSubviewToFront(textField)
+            superview.insertSubview(backgroundView, belowSubview: textField)
+            NSLayoutConstraint.activate([
+                backgroundView.leadingAnchor.constraint(equalTo: textField.leadingAnchor),
+                backgroundView.trailingAnchor.constraint(equalTo: textField.trailingAnchor),
+                backgroundView.topAnchor.constraint(equalTo: textField.topAnchor),
+                backgroundView.bottomAnchor.constraint(equalTo: textField.bottomAnchor)
+            ])
         }
+        
     }
 }
-
