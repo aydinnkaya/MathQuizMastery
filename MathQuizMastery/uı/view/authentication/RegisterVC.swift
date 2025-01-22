@@ -13,7 +13,7 @@ class RegisterVC: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var passwordAgainTextField: UITextField!
-    
+    @IBOutlet weak var cerateAccountLabel: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,12 +34,14 @@ class RegisterVC: UIViewController, UITextFieldDelegate {
         nameTextField.delegate = self
         emailTextField.delegate = self
         passwordTextField.delegate = self
-        passwordAgainTextField.delegate = self 
+        passwordAgainTextField.delegate = self
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tapGesture)
     }
     
+    @IBAction func CreateAccountButton(_ sender: UIButton, forEvent event: UIEvent) {
+    }
     
     @objc func dismissKeyboard() {
         view.endEditing(true)
@@ -79,7 +81,7 @@ extension RegisterVC {
     func configureTextField(_ textField: UITextField, placeholderText: String, iconName: String) {
         textField.layer.cornerRadius = 12
         textField.layer.borderWidth = 2
-       // textField.layer.borderColor = UIColor(red: 1.0, green: 0.8627, blue: 0.0, alpha: 1.0).cgColor
+        // textField.layer.borderColor = UIColor(red: 1.0, green: 0.8627, blue: 0.0, alpha: 1.0).cgColor
         textField.layer.borderColor = UIColor(red: 0.8, green: 0.1, blue: 0.0, alpha: 1.0).cgColor
         textField.backgroundColor = .clear
         textField.textColor = .black

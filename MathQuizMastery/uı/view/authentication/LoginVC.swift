@@ -14,6 +14,7 @@ class LoginVC: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var passwordTextField: UITextField!
     
     @IBOutlet weak var fargotPasswordButtonLabel: UIButton!
+    @IBOutlet weak var loginButtonLabel: UIButton!
     
     
     override func viewDidLoad() {
@@ -35,6 +36,18 @@ class LoginVC: UIViewController, UITextFieldDelegate {
         
     }
   
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "",
+           let resultVC = segue.destination as? StartVC,
+           let score = sender as? String {
+        }
+    }
+    
+    @IBAction func loginButtonAction(_ sender: Any, forEvent event: UIEvent) {
+    }
+    
+    @IBAction func CreateAnAccountButton(_ sender: UIButton, forEvent event: UIEvent) {
+    }
     
     
     @objc func dismissKeyboard() {

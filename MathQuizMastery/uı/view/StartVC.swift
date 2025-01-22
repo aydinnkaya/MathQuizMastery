@@ -7,7 +7,7 @@
 
 import UIKit
 
-class StartVCV: UIViewController {
+class StartVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

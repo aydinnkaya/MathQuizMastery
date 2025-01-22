@@ -33,6 +33,9 @@
                                             <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="15"/>
                                             <color key="baseForegroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="CreateAnAccountButton:forEvent:" destination="nxB-Hs-Cnb" eventType="touchUpInside" id="vOZ-fs-68r"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -58,6 +61,9 @@
                                 <buttonConfiguration key="configuration" style="filled" title="Log In ">
                                     <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="loginButtonAction:forEvent:" destination="nxB-Hs-Cnb" eventType="touchDragEnter" id="uvT-bl-Z2V"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="54V-Ge-RZ7">
                                 <rect key="frame" x="232" y="650.66666666666663" width="123" height="17"/>
@@ -127,6 +133,7 @@
                     <connections>
                         <outlet property="emailTextField" destination="3ML-Hb-gRb" id="2Dd-XR-ZFO"/>
                         <outlet property="fargotPasswordButtonLabel" destination="54V-Ge-RZ7" id="umV-Q7-EGH"/>
+                        <outlet property="loginButtonLabel" destination="h3S-J7-G1h" id="4xs-19-sbQ"/>
                         <outlet property="passwordTextField" destination="3AX-Af-ekC" id="Drd-5Y-FHn"/>
                         <segue destination="DzU-Rk-BTv" kind="show" id="gc3-GO-qk2"/>
                     </connections>
@@ -259,6 +266,9 @@
                                 <buttonConfiguration key="configuration" style="plain" title="Create Account">
                                     <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="CreateAccountButton:forEvent:" destination="DzU-Rk-BTv" eventType="touchUpInside" id="okN-pd-e7e"/>
+                                </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="Math_Quiz_Mastery_Transparent-removebg-preview" translatesAutoresizingMaskIntoConstraints="NO" id="mJn-2u-oyn">
                                 <rect key="frame" x="0.0" y="113.99999999999999" width="375" height="178.66666666666663"/>
@@ -281,6 +291,7 @@
                     </view>
                     <navigationItem key="navigationItem" style="editor" id="m5S-Dk-QTz"/>
                     <connections>
+                        <outlet property="cerateAccountLabel" destination="7kJ-f4-RHm" id="9KD-yh-geH"/>
                         <outlet property="emailTextField" destination="Bva-ES-gdx" id="8Qx-LF-Bwz"/>
                         <outlet property="nameTextField" destination="oqd-54-NfH" id="BIu-iz-SAA"/>
                         <outlet property="passwordAgainTextField" destination="6Sg-44-Hd5" id="8bl-KX-wpl"/>
