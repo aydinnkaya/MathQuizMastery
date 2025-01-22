@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		0FB3D00B2D40E8100004CB1A /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 0FB3D00A2D40E8100004CB1A /* IQKeyboardManagerSwift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		0FA090822D2FAEB300D83F96 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -74,6 +78,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0FB3D00B2D40E8100004CB1A /* IQKeyboardManagerSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -134,6 +139,7 @@
 			);
 			name = MathQuizMastery;
 			packageProductDependencies = (
+				0FB3D00A2D40E8100004CB1A /* IQKeyboardManagerSwift */,
 			);
 			productName = MathQuizMastery;
 			productReference = 0FA090682D2FAEB000D83F96 /* MathQuizMastery.app */;
@@ -219,6 +225,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				0F7B152C2D35034300BAF7D4 /* XCRemoteSwiftPackageReference "Swinject" */,
+				0FB3D0092D40E8100004CB1A /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 0FA090692D2FAEB000D83F96 /* Products */;
@@ -591,7 +598,23 @@
 				minimumVersion = 2.9.1;
 			};
 		};
+		0FB3D0092D40E8100004CB1A /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		0FB3D00A2D40E8100004CB1A /* IQKeyboardManagerSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0FB3D0092D40E8100004CB1A /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
+			productName = IQKeyboardManagerSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 0FA090602D2FAEB000D83F96 /* Project object */;
 }

@@ -31,8 +31,10 @@ class RegisterVC: UIViewController, UITextFieldDelegate {
             self.configureTextField(self.passwordAgainTextField, placeholderText: "Re enter your password", iconName: "lock.fill")
         }
         
+        nameTextField.delegate = self
         emailTextField.delegate = self
         passwordTextField.delegate = self
+        passwordAgainTextField.delegate = self 
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tapGesture)
