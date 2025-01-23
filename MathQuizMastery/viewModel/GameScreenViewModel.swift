@@ -8,7 +8,18 @@
 import Foundation
 import UIKit
 
+
+protocol GameScreenViewModelDelegate : AnyObject {
+    func onUpdateUI(questionText: String, answers : [String])
+    func onUpdateScore(score: Int)
+    func onUpdateTime(time : String)
+    func onUpdateQuestionNumber(questionNumber: Int)
+    func onTimeUp()
+}
+
+
 class GameScreenViewModel : GameScreenViewModelProtocol {
+    
     private(set) var expression: MathExpression.Operation
     private(set) var answers: [Int] = []
     private(set) var correctAnswer: Int = 0
@@ -17,38 +28,29 @@ class GameScreenViewModel : GameScreenViewModelProtocol {
     private var timer: Timer?
     private var timeRemaining: Int = 60
     
+    weak var delegate : GameScreenViewModelDelegate?
     
-    //*****call back *******
-    var onUpdateUI: ((String, [String]) -> Void)?
-    var onUpdateScore: ((Int) -> Void)?
-    var onUpdateTime: ((String) -> Void)?
-    var onUpdateQuestionNumber: ((Int) -> Void)?
-    var onTimeUp: (() -> Void)?
-    
-    
-    init() {
+    init(delegate: GameScreenViewModelDelegate) {
+        self.delegate = delegate
         self.expression = MathExpression.randomExpression()
         generateQuiz()
     }
     
-    
     func startGame() {
         startTimer()
-        onUpdateUI?(expression.createQuestion(), answers.map { String($0) })
+        delegate?.onUpdateUI(questionText: expression.createQuestion(), answers: answers.map { String($0) })
     }
-    
     
     func nextQuestion() {
         if questionNumber < 10 {
             questionNumber += 1
             generateQuiz()
-            onUpdateQuestionNumber?(questionNumber)
-            onUpdateUI?(expression.createQuestion(), answers.map { String($0) })
+            delegate?.onUpdateQuestionNumber(questionNumber: questionNumber)
+            delegate?.onUpdateUI(questionText: expression.createQuestion(), answers: answers.map { String($0) })
         } else {
-            self.onTimeUp?()
+            delegate?.onTimeUp()
         }
     }
-    
     
     func generateQuiz() {
         self.expression = MathExpression.randomExpression()
@@ -80,11 +82,9 @@ class GameScreenViewModel : GameScreenViewModelProtocol {
         }else {
             score = max(0, score - 1)
         }
-        
-        onUpdateScore?(score)
+        delegate?.onUpdateScore(score: score)
         return isCorrect
     }
-    
     
     private func startTimer() {
         timeRemaining = 60
@@ -93,11 +93,11 @@ class GameScreenViewModel : GameScreenViewModelProtocol {
             self.timeRemaining -= 1
             let minutes = self.timeRemaining / 60
             let seconds = self.timeRemaining % 60
-            self.onUpdateTime?(String(format: "%02d:%02d", minutes, seconds))
+            delegate?.onUpdateTime(time: String(format: "%02d:%02d", minutes, seconds))
             
             if self.timeRemaining <= 0 {
                 self.timer?.invalidate()
-                self.onTimeUp?()
+                delegate?.onTimeUp()
             }
         }
     }

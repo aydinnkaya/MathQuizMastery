@@ -7,7 +7,7 @@
 
 import UIKit
 
-class GameScreen: UIViewController {
+class GameVC: UIViewController {
     @IBOutlet weak var questionNumberLabel: UILabel!
     @IBOutlet weak var questionView: UIView!
     @IBOutlet weak var questionLabel: UILabel!
@@ -25,14 +25,13 @@ class GameScreen: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        bindViewModel()
         viewModel.startGame()
     }
     
     private func setupUI() {
         view.backgroundColor = UIColor(red: 242/255, green: 238/255, blue: 230/255, alpha: 1.0)
         setupQuestionView(questionView: questionView)
-        viewModel = GameScreenViewModel()
+        viewModel = GameScreenViewModel(delegate: self)
         viewModel.setupButtonView(buttonFirst: buttonFirst, buttonSecond: buttonSecond, buttonThird: buttonThird)
         scoreLabel.text = "Score: 0"
         questionNumberLabel.text = "1 / 10"
@@ -49,29 +48,6 @@ class GameScreen: UIViewController {
         questionView.layer.opacity = 0.4
         questionView.layer.shadowRadius = 8
         questionView.layer.borderWidth = 5
-    }
-    
-    
-    private func bindViewModel() { //***** observer viewModel -> a two-way independent communication
-        viewModel.onUpdateUI = { [weak self] question, answers in
-            self?.updateUI(question: question, answers: answers)
-        }
-        
-        viewModel.onUpdateScore = { [weak self] score in
-            self?.scoreLabel.text = "Score: \(score)"
-        }
-        
-        viewModel.onUpdateTime = { [weak self] timeString in
-            self?.timeLabel.text = timeString
-        }
-        
-        viewModel.onUpdateQuestionNumber = { [weak self] questionNumber in
-            self?.questionNumberLabel.text = "\(questionNumber) / 10"
-        }
-        
-        viewModel.onTimeUp = { [weak self] in
-            self?.handleTimeUp()
-        }
     }
     
     private func updateUI(question: String, answers: [String]) {
@@ -96,8 +72,7 @@ class GameScreen: UIViewController {
             resultVC.receivedScore = score
         }
     }
-    
-    
+   
     private func handleAnswer(for button: UIButton) {
         guard let selectedAnswer = button.title(for: .normal), let selectedAnswerInt = Int(selectedAnswer) else { return }
         let isCorrect = viewModel.checkAnswer(selectedAnswer: selectedAnswerInt)
@@ -129,6 +104,32 @@ class GameScreen: UIViewController {
         handleAnswer(for: sender)
     }
     
+    
+}
+
+extension GameVC : GameScreenViewModelDelegate{
+    func onUpdateUI(questionText: String, answers: [String]) {
+        self.updateUI(question: questionText, answers: answers)
+        
+    }
+    
+    func onUpdateScore(score: Int) {
+        self.scoreLabel.text = "Score: \(score)"
+        
+    }
+    
+    func onUpdateTime(time: String) {
+        self.timeLabel.text = time
+    }
+    
+    func onUpdateQuestionNumber(questionNumber: Int) {
+        self.questionNumberLabel.text = "\(questionNumber) / 10"
+        
+    }
+    
+    func onTimeUp() {
+        self.handleTimeUp()
+    }
     
 }
 

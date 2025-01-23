@@ -35,7 +35,7 @@ class LoginVC: UIViewController, UITextFieldDelegate {
         view.addGestureRecognizer(tapGesture)
         
     }
-  
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "",
            let resultVC = segue.destination as? StartVC,
@@ -57,14 +57,8 @@ class LoginVC: UIViewController, UITextFieldDelegate {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        
-        print("Email TextField Frame: \(emailTextField.frame)")
-        print("Email TextField Bounds: \(emailTextField.bounds)")
-        print("Password TextField Frame: \(passwordTextField.frame)")
-        print("Password TextField Bounds: \(passwordTextField.bounds)")
-        
-       configureTextFieldBackground(for: emailTextField)
-       configureTextFieldBackground(for: passwordTextField)
+        configureTextFieldBackground(for: emailTextField)
+        configureTextFieldBackground(for: passwordTextField)
     }
     
 }
@@ -120,8 +114,8 @@ extension LoginVC {
     func configureTextFieldBackground(for textField: UITextField) {
         
         textField.superview?.layer.sublayers?
-                .filter { $0 is CAGradientLayer }
-                .forEach { $0.removeFromSuperlayer() }
+            .filter { $0 is CAGradientLayer }
+            .forEach { $0.removeFromSuperlayer() }
         let gradientLayer = CAGradientLayer()
         gradientLayer.colors = [
             UIColor(red: 0.8, green: 0.85, blue: 0.9, alpha: 1).cgColor,
