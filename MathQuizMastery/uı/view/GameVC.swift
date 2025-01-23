@@ -26,6 +26,7 @@ class GameVC: UIViewController {
         super.viewDidLoad()
         setupUI()
         viewModel.startGame()
+        navigationItem.hidesBackButton = true 
     }
     
     private func setupUI() {
