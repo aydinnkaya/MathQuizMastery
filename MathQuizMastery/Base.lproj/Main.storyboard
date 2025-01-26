@@ -4,7 +4,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -224,6 +223,11 @@
                     </view>
                     <navigationItem key="navigationItem" id="BEI-36-kVP"/>
                     <connections>
+                        <outlet property="ButtonToplamaLabel" destination="AC6-n9-o4C" id="xlO-4Z-Lh1"/>
+                        <outlet property="buttonBölmeLabel" destination="wgl-wl-CfJ" id="Ih3-Sm-FEq"/>
+                        <outlet property="buttonÇarpmaLabel" destination="DI5-Kc-j0N" id="tAB-R4-Ffn"/>
+                        <outlet property="buttonÇıkarmaLabel" destination="11G-Wf-0zX" id="Sia-PN-0wq"/>
+                        <outlet property="buttonKarisikLabel" destination="TPy-2f-2CT" id="for-dp-TYN"/>
                         <segue destination="BYZ-38-t0r" kind="show" id="Gji-Cd-7s1"/>
                     </connections>
                 </viewController>
