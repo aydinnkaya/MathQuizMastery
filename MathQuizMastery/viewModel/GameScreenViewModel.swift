@@ -15,6 +15,8 @@ protocol GameScreenViewModelDelegate : AnyObject { // AnyObject => Class
     func onUpdateTime(time : String)
     func onUpdateQuestionNumber(questionNumber: Int)
     func onTimeUp()
+    // func selectedExpression(expression: String)
+    
 }
 
 
@@ -28,11 +30,12 @@ class GameScreenViewModel : GameScreenViewModelProtocol {
     private var timer: Timer?
     private var timeRemaining: Int = 60
     
+    
     weak var delegate : GameScreenViewModelDelegate? // *** Retain Cycle => çevrimsel bellek sızıntısını önlemek için weak kullanıyoruz.
     
-    init(delegate: GameScreenViewModelDelegate) {
+    init(delegate: GameScreenViewModelDelegate, expressionType: MathExpression.ExpressionType) {
         self.delegate = delegate
-        self.expression = MathExpression.randomExpression()
+        self.expression = MathExpression.generateExpression(type: expressionType)
         generateQuiz()
     }
     
@@ -53,7 +56,7 @@ class GameScreenViewModel : GameScreenViewModelProtocol {
     }
     
     func generateQuiz() {
-        self.expression = MathExpression.randomExpression()
+        self.expression = MathExpression.generateExpression(type: expression.getExpressionType())
         self.correctAnswer = expression.getAnswer()
         
         var wrongAnswers = generateWrongAnswers(correctAnswer: correctAnswer)

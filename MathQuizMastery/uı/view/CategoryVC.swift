@@ -8,7 +8,7 @@
 import UIKit
 
 class CategoryVC: UIViewController {
-
+    
     @IBOutlet weak var ButtonToplamaLabel: UIButton!
     
     @IBOutlet weak var buttonÇıkarmaLabel: UIButton!
@@ -29,9 +29,41 @@ class CategoryVC: UIViewController {
         configureButton(buttonKarisikLabel)
     }
     
+    @IBAction func buttonTapped(_ sender: UIButton) {
+        var selectedExpression: MathExpression.ExpressionType?
 
+        switch sender {
+        case ButtonToplamaLabel:
+            selectedExpression = .addition
+        case buttonÇıkarmaLabel:
+            selectedExpression = .subtraction
+        case buttonÇarpmaLabel:
+            selectedExpression = .multiplication
+        case buttonBölmeLabel:
+            selectedExpression = .division
+        case buttonKarisikLabel:
+            selectedExpression = .mixed
+        default:
+            break
+        }
+
+        if let expression = selectedExpression {
+            performSegue(withIdentifier: "goToGame", sender: expression)
+        }
+    }
     
-
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToGame",
+           let destinationVC = segue.destination as? GameVC,
+           let selectedExpression = sender as? MathExpression.ExpressionType {
+            destinationVC.selectedExpressionType = selectedExpression
+        }
+    }
+    
+    
+    
+    
+    
 }
 
 extension CategoryVC {

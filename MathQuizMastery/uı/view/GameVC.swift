@@ -18,21 +18,23 @@ class GameVC: UIViewController {
     @IBOutlet weak var buttonThird: UIButton!
     @IBOutlet weak var scoreLabel: UILabel!
     
+    
     private var viewModel: GameScreenViewModelProtocol!
-    
-    
+    var selectedExpressionType: MathExpression.ExpressionType?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
         viewModel.startGame()
-        navigationItem.hidesBackButton = true 
+        navigationItem.hidesBackButton = true
     }
     
     private func setupUI() {
         view.backgroundColor = UIColor(red: 242/255, green: 238/255, blue: 230/255, alpha: 1.0)
         setupQuestionView(questionView: questionView)
-        viewModel = GameScreenViewModel(delegate: self) // Yetkilendirme
+        if let expressionType = selectedExpressionType {
+            viewModel = GameScreenViewModel(delegate: self, expressionType: expressionType)
+        }
         setupButtonView(buttonFirst: buttonFirst, buttonSecond: buttonSecond, buttonThird: buttonThird)
       //  viewModel.setupButtonView(buttonFirst: buttonFirst, buttonSecond: buttonSecond, buttonThird: buttonThird)
         scoreLabel.text = "Score: 0"
@@ -90,7 +92,7 @@ class GameVC: UIViewController {
             resultVC.receivedScore = score
         }
     }
-   
+    
     private func handleAnswer(for button: UIButton) {
         guard let selectedAnswer = button.title(for: .normal), let selectedAnswerInt = Int(selectedAnswer) else { return }
         let isCorrect = viewModel.checkAnswer(selectedAnswer: selectedAnswerInt)
@@ -126,6 +128,7 @@ class GameVC: UIViewController {
 }
 
 extension GameVC : GameScreenViewModelDelegate{
+    
     func onUpdateUI(questionText: String, answers: [String]) {
         self.updateUI(question: questionText, answers: answers)
     }

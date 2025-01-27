@@ -146,11 +146,11 @@
             <objects>
                 <viewController id="61v-ZF-bpc" customClass="StartVC" customModule="MathQuizMastery" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tHt-Vx-6Ly">
-                        <rect key="frame" x="0.0" y="0.0" width="440" height="956"/>
+                        <rect key="frame" x="0.0" y="0.0" width="440" height="946"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MP0-cK-6xd">
-                                <rect key="frame" x="189.33333333333334" y="461" width="61.333333333333343" height="34.333333333333314"/>
+                                <rect key="frame" x="189.33333333333334" y="456" width="61.333333333333343" height="34.333333333333314"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Start"/>
                                 <connections>
@@ -173,18 +173,18 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vTU-6y-7QJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="415.90909090909093" y="244.76987447698747"/>
+            <point key="canvasLocation" x="404" y="301"/>
         </scene>
         <!--CategoryVC-->
         <scene sceneID="5Vo-Lm-p83">
             <objects>
                 <viewController id="Zu4-Lc-R4n" customClass="CategoryVC" customModule="MathQuizMastery" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1S6-Qo-JkZ">
-                        <rect key="frame" x="0.0" y="0.0" width="440" height="956"/>
+                        <rect key="frame" x="0.0" y="0.0" width="440" height="946"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="105" translatesAutoresizingMaskIntoConstraints="NO" id="tIl-Me-1Ec">
-                                <rect key="frame" x="40" y="166" width="360" height="591.66666666666663"/>
+                                <rect key="frame" x="40" y="60" width="360" height="591.66666666666663"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AC6-n9-o4C">
                                         <rect key="frame" x="0.0" y="0.0" width="360" height="34.333333333333336"/>
@@ -192,7 +192,7 @@
                                         <buttonConfiguration key="configuration" style="filled" title="Toplama"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="11G-Wf-0zX">
-                                        <rect key="frame" x="0.0" y="139.33333333333331" width="360" height="34.333333333333343"/>
+                                        <rect key="frame" x="0.0" y="139.33333333333334" width="360" height="34.333333333333343"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" title="Çıkarma"/>
                                     </button>
@@ -205,14 +205,14 @@
                                         <rect key="frame" x="0.0" y="418" width="360" height="34.333333333333314"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" title="Bölme"/>
+                                        <connections>
+                                            <action selector="buttonTapped:" destination="Zu4-Lc-R4n" eventType="touchUpInside" id="yQO-46-ud7"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TPy-2f-2CT">
                                         <rect key="frame" x="0.0" y="557.33333333333337" width="360" height="34.333333333333371"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" title="Karışık"/>
-                                        <connections>
-                                            <segue destination="BYZ-38-t0r" kind="show" id="vLT-n4-vgL"/>
-                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -232,12 +232,12 @@
                         <outlet property="buttonÇarpmaLabel" destination="DI5-Kc-j0N" id="tAB-R4-Ffn"/>
                         <outlet property="buttonÇıkarmaLabel" destination="11G-Wf-0zX" id="Sia-PN-0wq"/>
                         <outlet property="buttonKarisikLabel" destination="TPy-2f-2CT" id="for-dp-TYN"/>
-                        <segue destination="BYZ-38-t0r" kind="show" id="Gji-Cd-7s1"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="goToGame" id="Gji-Cd-7s1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r0w-wG-5Va" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1141.5999999999999" y="244.58128078817734"/>
+            <point key="canvasLocation" x="1103" y="301"/>
         </scene>
         <!--RegisterVC-->
         <scene sceneID="r8n-6t-pBD">
@@ -337,14 +337,14 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="GameVC" customModule="MathQuizMastery" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="440" height="956"/>
+                        <rect key="frame" x="0.0" y="0.0" width="440" height="946"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="b0l-Wj-ULI">
-                                <rect key="frame" x="50" y="443" width="340" height="380"/>
+                                <rect key="frame" x="50" y="516" width="340.33333333333331" height="380"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6gk-K2-Vyh">
-                                        <rect key="frame" x="0.0" y="0.0" width="340" height="100"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="340.33333333333331" height="100"/>
                                         <accessibility key="accessibilityConfiguration">
                                             <bool key="isElement" value="NO"/>
                                         </accessibility>
@@ -362,7 +362,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vPS-Bo-38q">
-                                        <rect key="frame" x="0.0" y="140" width="340" height="100"/>
+                                        <rect key="frame" x="0.0" y="140" width="340.33333333333331" height="100"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="GTW-g6-dgk"/>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="RPw-Gb-60F"/>
@@ -377,7 +377,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ike-K2-BMk">
-                                        <rect key="frame" x="0.0" y="280" width="340" height="100"/>
+                                        <rect key="frame" x="0.0" y="280" width="340.33333333333331" height="100"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="100" id="FS2-8W-g3f"/>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="Vjd-lf-XEN"/>
@@ -393,7 +393,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="200" translatesAutoresizingMaskIntoConstraints="NO" id="HiX-wo-5uu">
-                                <rect key="frame" x="42" y="126" width="356" height="40"/>
+                                <rect key="frame" x="42" y="20" width="356.33333333333331" height="40"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="00 : 00" textAlignment="center" lineBreakMode="clip" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="EJ9-9s-CE8">
                                         <rect key="frame" x="0.0" y="0.0" width="81.666666666666671" height="40"/>
@@ -405,7 +405,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="10 / 10" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="Tuh-GB-yCa">
-                                        <rect key="frame" x="281.66666666666669" y="0.0" width="74.333333333333314" height="40"/>
+                                        <rect key="frame" x="281.66666666666669" y="0.0" width="74.666666666666686" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="6Cy-MA-6cI"/>
                                         </constraints>
@@ -419,10 +419,10 @@
                                 </constraints>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LNw-4x-HTO">
-                                <rect key="frame" x="25" y="184" width="390" height="114.66666666666669"/>
+                                <rect key="frame" x="25" y="78" width="390.33333333333331" height="114.66666666666669"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10 + 8" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="69j-Lk-Ki3">
-                                        <rect key="frame" x="30" y="30" width="330" height="64.666666666666671"/>
+                                        <rect key="frame" x="30" y="30" width="330.33333333333331" height="64.666666666666671"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="54"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -437,7 +437,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MGS-2j-Wc6" userLabel="Score">
-                                <rect key="frame" x="185" y="363" width="68.333333333333314" height="27.666666666666686"/>
+                                <rect key="frame" x="185.33333333333334" y="436" width="68.333333333333343" height="27.666666666666686"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -474,18 +474,18 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1865.4545454545455" y="244.76987447698747"/>
+            <point key="canvasLocation" x="2052" y="297"/>
         </scene>
         <!--ResultScreen-->
         <scene sceneID="FLx-5p-NWQ">
             <objects>
                 <viewController id="0Da-OA-VEN" userLabel="ResultScreen" customClass="ResultVC" customModule="MathQuizMastery" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kP6-sG-sys">
-                        <rect key="frame" x="0.0" y="0.0" width="440" height="956"/>
+                        <rect key="frame" x="0.0" y="0.0" width="440" height="946"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lt0-Af-CvJ">
-                                <rect key="frame" x="159" y="682" width="101" height="35"/>
+                                <rect key="frame" x="159" y="755" width="101" height="35"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Ana Menü"/>
                                 <connections>
@@ -509,7 +509,7 @@
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calculate_symbol" translatesAutoresizingMaskIntoConstraints="NO" id="llU-Qm-Khi">
-                                <rect key="frame" x="156" y="182" width="128" height="128"/>
+                                <rect key="frame" x="156" y="76" width="128" height="128"/>
                                 <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="128" id="ZbX-ac-Y9i"/>
@@ -517,7 +517,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="4" translatesAutoresizingMaskIntoConstraints="NO" id="A2C-8e-JPc">
-                                <rect key="frame" x="63.666666666666657" y="345" width="313" height="167"/>
+                                <rect key="frame" x="63.666666666666657" y="239" width="313" height="167"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="313" id="jbx-PZ-RI4"/>
                                     <constraint firstAttribute="height" constant="167" id="spU-Mh-rux"/>
@@ -531,7 +531,7 @@ Matematik kategoresinde
                                 <size key="shadowOffset" width="1" height="-1"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bof-WX-Wiz">
-                                <rect key="frame" x="275" y="680" width="97" height="34.333333333333371"/>
+                                <rect key="frame" x="275" y="753" width="97" height="34.333333333333371"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Tekrar Oyna "/>
                             </button>
@@ -576,7 +576,7 @@ Matematik kategoresinde
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9dJ-od-5V2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2616.818181818182" y="244.76987447698747"/>
+            <point key="canvasLocation" x="1340" y="-602"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="pxH-tc-QPg">
@@ -599,8 +599,8 @@ Matematik kategoresinde
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="Gji-Cd-7s1"/>
-        <segue reference="n7d-hY-d18"/>
-        <segue reference="6br-il-JRE"/>
+        <segue reference="vYm-t7-mdQ"/>
+        <segue reference="mZp-sb-D4v"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Math_Quiz_Mastery_Transparent-removebg-preview" width="661" height="377"/>
