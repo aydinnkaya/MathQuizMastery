@@ -18,5 +18,5 @@ protocol GameScreenViewModelProtocol : AnyObject {
     func startGame()
     func nextQuestion()
     func checkAnswer(selectedAnswer: Int) -> Bool
-    func setupButtonView(buttonFirst: UIButton, buttonSecond: UIButton, buttonThird: UIButton)
+  //  func setupButtonView(buttonFirst: UIButton, buttonSecond: UIButton, buttonThird: UIButton)
 }

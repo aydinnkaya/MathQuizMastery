@@ -32,8 +32,9 @@ class GameVC: UIViewController {
     private func setupUI() {
         view.backgroundColor = UIColor(red: 242/255, green: 238/255, blue: 230/255, alpha: 1.0)
         setupQuestionView(questionView: questionView)
-        viewModel = GameScreenViewModel(delegate: self)
-        viewModel.setupButtonView(buttonFirst: buttonFirst, buttonSecond: buttonSecond, buttonThird: buttonThird)
+        viewModel = GameScreenViewModel(delegate: self) // Yetkilendirme
+        setupButtonView(buttonFirst: buttonFirst, buttonSecond: buttonSecond, buttonThird: buttonThird)
+      //  viewModel.setupButtonView(buttonFirst: buttonFirst, buttonSecond: buttonSecond, buttonThird: buttonThird)
         scoreLabel.text = "Score: 0"
         questionNumberLabel.text = "1 / 10"
         timeLabel.text = "01:00"
@@ -49,6 +50,22 @@ class GameVC: UIViewController {
         questionView.layer.opacity = 0.4
         questionView.layer.shadowRadius = 8
         questionView.layer.borderWidth = 5
+    }
+    
+    
+    func setupButtonView(buttonFirst: UIButton, buttonSecond :UIButton, buttonThird : UIButton){
+        let buttonList = [buttonFirst,buttonSecond,buttonThird]
+        
+        for b in buttonList {
+            b.isHidden = false
+            b.backgroundColor = UIColor(red: 255/255, green: 230/255, blue: 150/255, alpha: 1.0)
+            b.layer.cornerRadius = 25
+            b.layer.shadowColor = UIColor(red: 180/255, green: 180/255, blue: 180/255, alpha: 1.0).cgColor
+            b.layer.shadowOffset = CGSize(width: 3, height: 3)
+            b.layer.shadowOpacity = 0.6
+            b.layer.shadowRadius = 5
+        }
+        
     }
     
     private func updateUI(question: String, answers: [String]) {
@@ -111,12 +128,10 @@ class GameVC: UIViewController {
 extension GameVC : GameScreenViewModelDelegate{
     func onUpdateUI(questionText: String, answers: [String]) {
         self.updateUI(question: questionText, answers: answers)
-        
     }
     
     func onUpdateScore(score: Int) {
         self.scoreLabel.text = "Score: \(score)"
-        
     }
     
     func onUpdateTime(time: String) {
