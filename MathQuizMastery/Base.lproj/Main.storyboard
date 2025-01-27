@@ -149,9 +149,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="440" height="956"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MP0-cK-6xd">
-                                <rect key="frame" x="120" y="642" width="135" height="174"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MP0-cK-6xd">
+                                <rect key="frame" x="189.33333333333334" y="461" width="61.333333333333343" height="34.333333333333314"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Start"/>
                                 <connections>
@@ -161,9 +160,14 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Hid-a7-Egv"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="MP0-cK-6xd" firstAttribute="centerY" secondItem="tHt-Vx-6Ly" secondAttribute="centerY" id="lHc-5u-luN"/>
+                            <constraint firstItem="MP0-cK-6xd" firstAttribute="centerX" secondItem="tHt-Vx-6Ly" secondAttribute="centerX" id="n52-hr-2pr"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="asN-6t-Xou"/>
                     <connections>
+                        <outlet property="buttonStartLabel" destination="MP0-cK-6xd" id="u3J-qV-tsw"/>
                         <segue destination="Zu4-Lc-R4n" kind="show" id="vYm-t7-mdQ"/>
                     </connections>
                 </viewController>
