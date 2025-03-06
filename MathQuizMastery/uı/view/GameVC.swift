@@ -53,7 +53,7 @@ class GameVC: UIViewController {
         questionView.layer.shadowRadius = 8
         questionView.layer.borderWidth = 5
     }
-    
+    // 
     
     func setupButtonView(buttonFirst: UIButton, buttonSecond :UIButton, buttonThird : UIButton){
         let buttonList = [buttonFirst,buttonSecond,buttonThird]
