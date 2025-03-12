@@ -36,7 +36,6 @@ class GameVC: UIViewController {
             viewModel = GameScreenViewModel(delegate: self, expressionType: expressionType)
         }
         setupButtonView(buttonFirst: buttonFirst, buttonSecond: buttonSecond, buttonThird: buttonThird)
-      //  viewModel.setupButtonView(buttonFirst: buttonFirst, buttonSecond: buttonSecond, buttonThird: buttonThird)
         scoreLabel.text = "Score: 0"
         questionNumberLabel.text = "1 / 10"
         timeLabel.text = "01:00"

@@ -10,13 +10,9 @@ import UIKit
 class CategoryVC: UIViewController {
     
     @IBOutlet weak var ButtonToplamaLabel: UIButton!
-    
     @IBOutlet weak var buttonÇıkarmaLabel: UIButton!
-    
     @IBOutlet weak var buttonÇarpmaLabel: UIButton!
-    
     @IBOutlet weak var buttonBölmeLabel: UIButton!
-    
     @IBOutlet weak var buttonKarisikLabel: UIButton!
     
     
@@ -30,7 +26,8 @@ class CategoryVC: UIViewController {
     }
     
     @IBAction func buttonTapped(_ sender: UIButton) {
-        var selectedExpression: MathExpression.ExpressionType?
+        
+        var selectedExpression: MathExpression.ExpressionType? // ifade
 
         switch sender {
         case ButtonToplamaLabel:
@@ -50,6 +47,7 @@ class CategoryVC: UIViewController {
         if let expression = selectedExpression {
             performSegue(withIdentifier: "goToGame", sender: expression)
         }
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -59,11 +57,7 @@ class CategoryVC: UIViewController {
             destinationVC.selectedExpressionType = selectedExpression
         }
     }
-    
-    
-    
-    
-    
+  
 }
 
 extension CategoryVC {
@@ -75,8 +69,6 @@ extension CategoryVC {
         button.layer.borderColor = UIColor(red: 1.0, green: 0.8627, blue: 0.0, alpha: 1.0).cgColor
         button.backgroundColor = .clear
         
-        
-        
         let gradientLayer = CAGradientLayer()
         gradientLayer.colors = [
             UIColor.purple.cgColor,
@@ -84,7 +76,6 @@ extension CategoryVC {
         ]
         gradientLayer.startPoint = CGPoint(x: 0.5, y: 0)
         gradientLayer.endPoint = CGPoint(x: 0.5, y: 1)
-        
         
         
         if let superview = button.superview {

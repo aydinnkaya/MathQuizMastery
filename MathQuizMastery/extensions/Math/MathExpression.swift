@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  MathExpression.swift
 //  MathQuizMastery
 //
 //  Created by AydınKaya on 9.01.2025.
@@ -7,8 +7,8 @@
 
 import Foundation
 
-
 struct MathExpression {
+    
     enum Operation {
         case addition(Int, Int)
         case subtraction(Int, Int)
@@ -22,37 +22,26 @@ struct MathExpression {
             case .subtraction(let a, let b):
                 return "\(a) - \(b)"
             case .multiplication(let a, let b):
-                return "\(a) x \(b)"
+                return "\(a) × \(b)"
             case .division(let a, let b):
                 return "\(a) ÷ \(b)"
             }
         }
         
-        func getAnswer() -> Int {
+        func getAnswer() -> Double {
             switch self {
             case .addition(let a, let b):
-                return a + b
+                return Double(a + b)
             case .subtraction(let a, let b):
-                return a - b
+                return Double(a - b)
             case .multiplication(let a, let b):
-                return  a * b
+                return Double(a * b)
             case .division(let a, let b):
-                return a / b
+                return b != 0 ? Double(a) / Double(b) : 0.0
             }
         }
         
-        private func getOperands() -> (Int, Int) {
-            switch self {
-            case .addition(let a, let b),
-                    .subtraction(let a, let b),
-                    .multiplication(let a, let b),
-                    .division(let a, let b):
-                return (a, b)
-            }
-        }
-        
-        
-        func getExpressionType() -> MathExpression.ExpressionType {
+        func getExpressionType() -> ExpressionType {
             switch self {
             case .addition:
                 return .addition
@@ -64,9 +53,7 @@ struct MathExpression {
                 return .division
             }
         }
-        
     }
-    
     
     enum ExpressionType {
         case addition
@@ -75,7 +62,6 @@ struct MathExpression {
         case division
         case mixed
     }
-    
     
     static func generateExpression(type: ExpressionType) -> Operation {
         switch type {
@@ -92,23 +78,24 @@ struct MathExpression {
         }
     }
     
+    private static func generateOperands(range: Range<Int> = 0..<100) -> (Int, Int) {
+        let a = Int.random(in: range)
+        let b = Int.random(in: range)
+        return (a, b)
+    }
     
     private static func generateAddition() -> Operation {
-        let a = Int.random(in: 0..<100)
-        let b = Int.random(in: 0..<100)
+        let (a, b) = generateOperands()
         return .addition(a, b)
     }
     
     private static func generateSubtraction() -> Operation {
-        let a = Int.random(in: 0..<100)
-        let b = Int.random(in: 0..<100)
+        let (a, b) = generateOperands()
         return .subtraction(a, b)
     }
     
-    
     private static func generateMultiplication() -> Operation {
-        let a = Int.random(in: 0..<100)
-        let b = Int.random(in: 0..<100)
+        let (a, b) = generateOperands()
         return .multiplication(a, b)
     }
     
@@ -119,12 +106,11 @@ struct MathExpression {
         return .division(dividend, divisor)
     }
     
-    
     private static func generateMixedExpression() -> Operation {
         let operations: [ExpressionType] = [.addition, .subtraction, .multiplication, .division]
-        let randomType = operations.randomElement()!
+        guard let randomType = operations.randomElement() else {
+            return generateAddition()
+        }
         return generateExpression(type: randomType)
     }
-    
-    
 }
