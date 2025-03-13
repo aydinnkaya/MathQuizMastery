@@ -9,6 +9,7 @@ import UIKit
 
 class CategoryVC: UIViewController {
     
+    @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var buttonToplama: UIButton!
     @IBOutlet weak var buttonCikarma: UIButton!
     @IBOutlet weak var buttonCarpma: UIButton!
@@ -16,55 +17,34 @@ class CategoryVC: UIViewController {
     @IBOutlet weak var buttonKarisik: UIButton!
     
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        let buttons = [buttonToplama, buttonCikarma, buttonCarpma, buttonBolme, buttonKarisik]
-        buttons.forEach { configureButton($0) }
+        setupStackView()
+        setupButtons()
     }
     
-    
-    @IBAction func buttonToplamaAction(_ sender: Any, forEvent event: UIEvent) {
+    private func setupStackView() {
+        stackView.alignment = .center
+        stackView.distribution = .equalSpacing
+        stackView.spacing = 16
     }
     
-  
-    @IBAction func buttonCikarmaAction(_ sender: Any, forEvent event: UIEvent) {
-    }
-    
-    @IBAction func ButtonCarpmaAction(_ sender: Any) {
-    }
-    
-    @IBAction func ButtonBolmeAction(_ sender: Any, forEvent event: UIEvent) {
-    }
-    
-    @IBAction func ButtonKarisikAction(_ sender: UIButton, forEvent event: UIEvent) {
-    }
-    
-    
-    @IBAction func buttonTapped(_ sender: UIButton) {
+    private func setupButtons() {
+        let titles = ["Toplama", "Çıkarma", "Çarpma", "Bölme", "Karışık"]
+        let expressions: [MathExpression.ExpressionType] = [.addition, .subtraction, .multiplication, .division, .mixed]
         
-        var selectedExpression: MathExpression.ExpressionType? // ifade
-        
-        switch sender {
-        case buttonToplama:
-            selectedExpression = .addition
-        case buttonCikarma:
-            selectedExpression = .subtraction
-        case buttonCarpma:
-            selectedExpression = .multiplication
-        case buttonBolme:
-            selectedExpression = .division
-        case buttonKarisik:
-            selectedExpression = .mixed
-        default:
-            return
+        for (index, title) in titles.enumerated() {
+            let button = createHexButton(title: title)
+            button.tag = index
+            button.addTarget(self, action: #selector(buttonTapped(_:)), for: .touchUpInside)
+            stackView.addArrangedSubview(button)
         }
-        
-        if let expression = selectedExpression {
-            performSegue(withIdentifier: "goToGame", sender: expression)
-        }
-        
+    }
+    
+    @objc private func buttonTapped(_ sender: UIButton) {
+        let expressions: [MathExpression.ExpressionType] = [.addition, .subtraction, .multiplication, .division, .mixed]
+        let selectedExpression = expressions[sender.tag]
+        performSegue(withIdentifier: "goToGame", sender: selectedExpression)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -74,35 +54,72 @@ class CategoryVC: UIViewController {
             destinationVC.selectedExpressionType = selectedExpression
         }
     }
-    
 }
 
 extension CategoryVC {
-    
-    
-    func configureButton(_ button: UIButton?) {
-        guard let button = button else { return }
+    private func createHexButton(title: String) -> UIButton {
+        let button = UIButton(type: .system)
+        button.setTitle(title, for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
         
-        button.layer.cornerRadius = 12
-        button.layer.borderWidth = 2
-        button.layer.borderColor = UIColor(red: 1.0, green: 0.8627, blue: 0.0, alpha: 1.0).cgColor
-        button.backgroundColor = .clear
+        let hexSize = CGSize(width: 140, height: 120)
+        button.frame = CGRect(origin: .zero, size: hexSize)
+        button.clipsToBounds = true
         
-        let gradientLayer = CAGradientLayer()
-        gradientLayer.colors = [UIColor.purple.cgColor, UIColor.red.cgColor]
-        gradientLayer.startPoint = CGPoint(x: 0.5, y: 0)
-        gradientLayer.endPoint = CGPoint(x: 0.5, y: 1)
-        gradientLayer.frame = button.bounds
-        gradientLayer.cornerRadius = button.layer.cornerRadius
+        let hexPath = createHexagonPath(in: CGRect(origin: .zero, size: hexSize))
+        applyHexagonMask(to: button, path: hexPath)
         
-        button.layer.insertSublayer(gradientLayer, at: 0)
+        let gradientColors = [UIColor.systemBlue.cgColor, UIColor.systemPurple.cgColor]
+        applyGradient(to: button, colors: gradientColors, path: hexPath)
         
-        button.layer.shadowColor = UIColor.purple.cgColor
-        button.layer.shadowOffset = CGSize(width: 0, height: 3)
-        button.layer.shadowOpacity = 0.3
-        button.layer.shadowRadius = 6
-        button.layer.masksToBounds = false
+        applyShadow(to: button)
+        return button
     }
     
+    private func applyHexagonMask(to view: UIView, path: UIBezierPath) {
+        let shapeLayer = CAShapeLayer()
+        shapeLayer.path = path.cgPath
+        view.layer.mask = shapeLayer
+    }
     
+    private func applyGradient(to view: UIView, colors: [CGColor], path: UIBezierPath) {
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.colors = colors
+        gradientLayer.startPoint = CGPoint(x: 0.5, y: 0)
+        gradientLayer.endPoint = CGPoint(x: 0.5, y: 1)
+        gradientLayer.frame = view.layer.bounds
+        
+        let maskLayer = CAShapeLayer()
+        maskLayer.path = path.cgPath
+        gradientLayer.mask = maskLayer
+        
+        view.layer.insertSublayer(gradientLayer, at: 0)
+    }
+    
+    private func applyShadow(to view: UIView) {
+        view.layer.shadowColor = UIColor.black.cgColor
+        view.layer.shadowOffset = CGSize(width: 3, height: 4)
+        view.layer.shadowOpacity = 0.4
+        view.layer.shadowRadius = 5
+        view.layer.masksToBounds = false
+    }
+    
+    private func createHexagonPath(in rect: CGRect) -> UIBezierPath {
+        let path = UIBezierPath()
+        let width = rect.width
+        let height = rect.height
+        let sideLength = width / 2
+        let deltaY = sideLength * sqrt(3) / 2
+        
+        path.move(to: CGPoint(x: width * 0.5, y: 0))
+        path.addLine(to: CGPoint(x: width, y: deltaY))
+        path.addLine(to: CGPoint(x: width, y: height - deltaY))
+        path.addLine(to: CGPoint(x: width * 0.5, y: height))
+        path.addLine(to: CGPoint(x: 0, y: height - deltaY))
+        path.addLine(to: CGPoint(x: 0, y: deltaY))
+        path.close()
+        
+        return path
+    }
 }

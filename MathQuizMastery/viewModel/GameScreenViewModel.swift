@@ -57,7 +57,7 @@ class GameScreenViewModel : GameScreenViewModelProtocol {
     
     func generateQuiz() {
         self.expression = MathExpression.generateExpression(type: expression.getExpressionType())
-        self.correctAnswer = Int(expression.getAnswer())
+        self.correctAnswer = Int(expression.getAnswer()) 
         
         var wrongAnswers = generateWrongAnswers(correctAnswer: correctAnswer)
         wrongAnswers.append(correctAnswer)

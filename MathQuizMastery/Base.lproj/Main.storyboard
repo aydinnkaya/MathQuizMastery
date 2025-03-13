@@ -185,11 +185,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="440" height="956"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="105" translatesAutoresizingMaskIntoConstraints="NO" id="tIl-Me-1Ec">
-                                <rect key="frame" x="40" y="166" width="360" height="591.66666666666663"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="157" translatesAutoresizingMaskIntoConstraints="NO" id="tIl-Me-1Ec">
+                                <rect key="frame" x="20" y="126" width="400" height="810"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AC6-n9-o4C" userLabel="ButtonToplama">
-                                        <rect key="frame" x="0.0" y="0.0" width="360" height="34.333333333333336"/>
+                                        <rect key="frame" x="150" y="0.0" width="100" height="34.333333333333336"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="100" id="nDa-Ya-9LV"/>
+                                        </constraints>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" title="Toplama"/>
                                         <connections>
@@ -197,7 +200,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="11G-Wf-0zX" userLabel="ButtonÇıkarma">
-                                        <rect key="frame" x="0.0" y="139.33333333333331" width="360" height="34.333333333333343"/>
+                                        <rect key="frame" x="142.66666666666666" y="194" width="114.66666666666666" height="34.333333333333343"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" image="minus.circle" catalog="system" title="Çıkarma"/>
                                         <connections>
@@ -205,7 +208,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DI5-Kc-j0N" userLabel="ButtonÇarpma">
-                                        <rect key="frame" x="0.0" y="278.66666666666669" width="360" height="34.333333333333314"/>
+                                        <rect key="frame" x="158" y="388" width="84.333333333333314" height="34.333333333333314"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" title="Çarpma"/>
                                         <connections>
@@ -213,7 +216,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wgl-wl-CfJ" userLabel="ButtonBolme">
-                                        <rect key="frame" x="0.0" y="418" width="360" height="34.333333333333314"/>
+                                        <rect key="frame" x="151.33333333333334" y="581.66666666666663" width="97.666666666666657" height="34.333333333333371"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" image="divide.circle.fill" catalog="system" title="Bölme"/>
                                         <connections>
@@ -221,7 +224,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TPy-2f-2CT" userLabel="ButtonKarisik">
-                                        <rect key="frame" x="0.0" y="557.33333333333337" width="360" height="34.333333333333371"/>
+                                        <rect key="frame" x="162.66666666666666" y="775.66666666666663" width="74.666666666666657" height="34.333333333333371"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" title="Karışık"/>
                                         <connections>
@@ -234,9 +237,10 @@
                         <viewLayoutGuide key="safeArea" id="1FT-qU-4H4"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="1FT-qU-4H4" firstAttribute="trailing" secondItem="tIl-Me-1Ec" secondAttribute="trailing" constant="40" id="JuV-Mc-TVc"/>
-                            <constraint firstItem="tIl-Me-1Ec" firstAttribute="top" secondItem="1FT-qU-4H4" secondAttribute="top" constant="60" id="Qpm-qi-6AR"/>
-                            <constraint firstItem="tIl-Me-1Ec" firstAttribute="leading" secondItem="1FT-qU-4H4" secondAttribute="leading" constant="40" id="iiT-HW-kWI"/>
+                            <constraint firstItem="tIl-Me-1Ec" firstAttribute="leading" secondItem="1FT-qU-4H4" secondAttribute="leading" constant="20" id="ClV-n9-GrQ"/>
+                            <constraint firstItem="1FT-qU-4H4" firstAttribute="trailing" secondItem="tIl-Me-1Ec" secondAttribute="trailing" constant="20" id="QCJ-l5-85v"/>
+                            <constraint firstItem="tIl-Me-1Ec" firstAttribute="top" secondItem="1FT-qU-4H4" secondAttribute="top" constant="20" id="mCU-aK-4d1"/>
+                            <constraint firstAttribute="bottom" secondItem="tIl-Me-1Ec" secondAttribute="bottom" constant="20" id="piE-hF-SrU"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="BEI-36-kVP"/>
@@ -246,12 +250,13 @@
                         <outlet property="buttonCikarma" destination="11G-Wf-0zX" id="go8-4x-DWQ"/>
                         <outlet property="buttonKarisik" destination="TPy-2f-2CT" id="yWS-Yq-o3f"/>
                         <outlet property="buttonToplama" destination="AC6-n9-o4C" id="x6b-vx-Pqc"/>
+                        <outlet property="stackView" destination="tIl-Me-1Ec" id="FKC-ct-8OA"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="goToGame" id="Gji-Cd-7s1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r0w-wG-5Va" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1103" y="301"/>
+            <point key="canvasLocation" x="1101.818181818182" y="300"/>
         </scene>
         <!--RegisterVC-->
         <scene sceneID="r8n-6t-pBD">
