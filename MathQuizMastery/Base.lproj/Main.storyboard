@@ -188,33 +188,45 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="105" translatesAutoresizingMaskIntoConstraints="NO" id="tIl-Me-1Ec">
                                 <rect key="frame" x="40" y="166" width="360" height="591.66666666666663"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AC6-n9-o4C">
+                                    <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AC6-n9-o4C" userLabel="ButtonToplama">
                                         <rect key="frame" x="0.0" y="0.0" width="360" height="34.333333333333336"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" title="Toplama"/>
+                                        <connections>
+                                            <action selector="buttonTapped:" destination="Zu4-Lc-R4n" eventType="touchUpInside" id="e4e-xm-jqE"/>
+                                        </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="11G-Wf-0zX">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="11G-Wf-0zX" userLabel="ButtonÇıkarma">
                                         <rect key="frame" x="0.0" y="139.33333333333331" width="360" height="34.333333333333343"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" image="minus.circle" catalog="system" title="Çıkarma"/>
+                                        <connections>
+                                            <action selector="buttonTapped:" destination="Zu4-Lc-R4n" eventType="touchUpInside" id="pro-Ne-5FY"/>
+                                        </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DI5-Kc-j0N">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DI5-Kc-j0N" userLabel="ButtonÇarpma">
                                         <rect key="frame" x="0.0" y="278.66666666666669" width="360" height="34.333333333333314"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" title="Çarpma"/>
+                                        <connections>
+                                            <action selector="buttonTapped:" destination="Zu4-Lc-R4n" eventType="touchUpInside" id="gvp-oh-DUf"/>
+                                        </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wgl-wl-CfJ">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wgl-wl-CfJ" userLabel="ButtonBolme">
                                         <rect key="frame" x="0.0" y="418" width="360" height="34.333333333333314"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" image="divide.circle.fill" catalog="system" title="Bölme"/>
                                         <connections>
-                                            <action selector="buttonTapped:" destination="Zu4-Lc-R4n" eventType="touchUpInside" id="yQO-46-ud7"/>
+                                            <action selector="buttonTapped:" destination="Zu4-Lc-R4n" eventType="touchUpInside" id="CFL-ot-pa6"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TPy-2f-2CT">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TPy-2f-2CT" userLabel="ButtonKarisik">
                                         <rect key="frame" x="0.0" y="557.33333333333337" width="360" height="34.333333333333371"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" title="Karışık"/>
+                                        <connections>
+                                            <action selector="buttonTapped:" destination="Zu4-Lc-R4n" eventType="touchUpInside" id="cwm-oK-dWn"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -229,11 +241,11 @@
                     </view>
                     <navigationItem key="navigationItem" id="BEI-36-kVP"/>
                     <connections>
-                        <outlet property="ButtonToplamaLabel" destination="AC6-n9-o4C" id="xlO-4Z-Lh1"/>
-                        <outlet property="buttonBölmeLabel" destination="wgl-wl-CfJ" id="Ih3-Sm-FEq"/>
-                        <outlet property="buttonÇarpmaLabel" destination="DI5-Kc-j0N" id="tAB-R4-Ffn"/>
-                        <outlet property="buttonÇıkarmaLabel" destination="11G-Wf-0zX" id="Sia-PN-0wq"/>
-                        <outlet property="buttonKarisikLabel" destination="TPy-2f-2CT" id="for-dp-TYN"/>
+                        <outlet property="buttonBolme" destination="wgl-wl-CfJ" id="2i0-Pl-Zt7"/>
+                        <outlet property="buttonCarpma" destination="DI5-Kc-j0N" id="0JR-J4-Lgc"/>
+                        <outlet property="buttonCikarma" destination="11G-Wf-0zX" id="go8-4x-DWQ"/>
+                        <outlet property="buttonKarisik" destination="TPy-2f-2CT" id="yWS-Yq-o3f"/>
+                        <outlet property="buttonToplama" destination="AC6-n9-o4C" id="x6b-vx-Pqc"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="goToGame" id="Gji-Cd-7s1"/>
                     </connections>
                 </viewController>
@@ -601,7 +613,7 @@ Matematik kategoresinde
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="vYm-t7-mdQ"/>
-        <segue reference="6br-il-JRE"/>
+        <segue reference="W3K-B4-Uv1"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Math_Quiz_Mastery_Transparent-removebg-preview" width="661" height="377"/>
@@ -613,7 +625,7 @@ Matematik kategoresinde
             <color red="0.98431372549019602" green="0.73725490196078436" blue="0.019607843137254902" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="secondarySystemBackgroundColor">
-            <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="secondarySystemGroupedBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -622,19 +634,19 @@ Matematik kategoresinde
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemCyanColor">
-            <color red="0.1960784314" green="0.67843137249999996" blue="0.90196078430000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.19607843137254902" green="0.67843137254901964" blue="0.90196078431372551" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray3Color">
-            <color red="0.78039215689999997" green="0.78039215689999997" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.7803921568627451" green="0.7803921568627451" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray5Color">
-            <color red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGreenColor">
-            <color red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemOrangeColor">
-            <color red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="tableSeparatorDarkColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>

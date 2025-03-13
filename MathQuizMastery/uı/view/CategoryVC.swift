@@ -9,41 +9,58 @@ import UIKit
 
 class CategoryVC: UIViewController {
     
-    @IBOutlet weak var ButtonToplamaLabel: UIButton!
-    @IBOutlet weak var buttonÇıkarmaLabel: UIButton!
-    @IBOutlet weak var buttonÇarpmaLabel: UIButton!
-    @IBOutlet weak var buttonBölmeLabel: UIButton!
-    @IBOutlet weak var buttonKarisikLabel: UIButton!
+    @IBOutlet weak var buttonToplama: UIButton!
+    @IBOutlet weak var buttonCikarma: UIButton!
+    @IBOutlet weak var buttonCarpma: UIButton!
+    @IBOutlet weak var buttonBolme: UIButton!
+    @IBOutlet weak var buttonKarisik: UIButton!
+    
+    
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureButton(ButtonToplamaLabel)
-        configureButton(buttonÇıkarmaLabel)
-        configureButton(buttonÇarpmaLabel)
-        configureButton(buttonBölmeLabel)
-        configureButton(buttonKarisikLabel)
+        let buttons = [buttonToplama, buttonCikarma, buttonCarpma, buttonBolme, buttonKarisik]
+        buttons.forEach { configureButton($0) }
     }
+    
+    
+    @IBAction func buttonToplamaAction(_ sender: Any, forEvent event: UIEvent) {
+    }
+    
+  
+    @IBAction func buttonCikarmaAction(_ sender: Any, forEvent event: UIEvent) {
+    }
+    
+    @IBAction func ButtonCarpmaAction(_ sender: Any) {
+    }
+    
+    @IBAction func ButtonBolmeAction(_ sender: Any, forEvent event: UIEvent) {
+    }
+    
+    @IBAction func ButtonKarisikAction(_ sender: UIButton, forEvent event: UIEvent) {
+    }
+    
     
     @IBAction func buttonTapped(_ sender: UIButton) {
         
         var selectedExpression: MathExpression.ExpressionType? // ifade
-
+        
         switch sender {
-        case ButtonToplamaLabel:
+        case buttonToplama:
             selectedExpression = .addition
-        case buttonÇıkarmaLabel:
+        case buttonCikarma:
             selectedExpression = .subtraction
-        case buttonÇarpmaLabel:
+        case buttonCarpma:
             selectedExpression = .multiplication
-        case buttonBölmeLabel:
+        case buttonBolme:
             selectedExpression = .division
-        case buttonKarisikLabel:
+        case buttonKarisik:
             selectedExpression = .mixed
         default:
-            break
+            return
         }
-
+        
         if let expression = selectedExpression {
             performSegue(withIdentifier: "goToGame", sender: expression)
         }
@@ -57,12 +74,14 @@ class CategoryVC: UIViewController {
             destinationVC.selectedExpressionType = selectedExpression
         }
     }
-  
+    
 }
 
 extension CategoryVC {
     
-    func configureButton(_ button : UIButton){
+    
+    func configureButton(_ button: UIButton?) {
+        guard let button = button else { return }
         
         button.layer.cornerRadius = 12
         button.layer.borderWidth = 2
@@ -70,31 +89,20 @@ extension CategoryVC {
         button.backgroundColor = .clear
         
         let gradientLayer = CAGradientLayer()
-        gradientLayer.colors = [
-            UIColor.purple.cgColor,
-            UIColor.red.cgColor
-        ]
+        gradientLayer.colors = [UIColor.purple.cgColor, UIColor.red.cgColor]
         gradientLayer.startPoint = CGPoint(x: 0.5, y: 0)
         gradientLayer.endPoint = CGPoint(x: 0.5, y: 1)
+        gradientLayer.frame = button.bounds
+        gradientLayer.cornerRadius = button.layer.cornerRadius
         
+        button.layer.insertSublayer(gradientLayer, at: 0)
         
-        if let superview = button.superview {
-            let adjustedFrame = superview.convert(button.frame, to: superview)
-            let backgroundView = UIView(frame: adjustedFrame)
-            gradientLayer.frame = CGRect(origin: .zero, size: adjustedFrame.size)
-            gradientLayer.cornerRadius = button.layer.cornerRadius
-            
-            backgroundView.layer.insertSublayer(gradientLayer, at: 0)
-            backgroundView.layer.cornerRadius = button.layer.cornerRadius
-            backgroundView.layer.shadowColor = UIColor.purple.cgColor
-            backgroundView.layer.shadowOffset = CGSize(width: 0, height: 3)
-            backgroundView.layer.shadowOpacity = 0.3
-            backgroundView.layer.shadowRadius = 6
-            backgroundView.layer.masksToBounds = false
-            
-            superview.addSubview(backgroundView)
-            superview.bringSubviewToFront(button)
-        }
-        
+        button.layer.shadowColor = UIColor.purple.cgColor
+        button.layer.shadowOffset = CGSize(width: 0, height: 3)
+        button.layer.shadowOpacity = 0.3
+        button.layer.shadowRadius = 6
+        button.layer.masksToBounds = false
     }
+    
+    
 }
