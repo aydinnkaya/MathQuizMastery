@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fAQ-HY-wm4">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="61v-ZF-bpc">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -63,7 +63,6 @@
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="loginButtonAction:forEvent:" destination="nxB-Hs-Cnb" eventType="touchDragEnter" id="uvT-bl-Z2V"/>
-                                    <segue destination="61v-ZF-bpc" kind="show" id="6br-il-JRE"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="54V-Ge-RZ7">
@@ -158,11 +157,11 @@
                                     <segue destination="Zu4-Lc-R4n" kind="show" id="n7d-hY-d18"/>
                                 </connections>
                             </button>
-                            <stackView opaque="NO" contentMode="scaleAspectFit" alignment="center" spacing="-1" translatesAutoresizingMaskIntoConstraints="NO" id="FFM-Em-vKG" userLabel="userInfoStackView">
-                                <rect key="frame" x="16" y="63" width="361" height="76"/>
+                            <stackView opaque="NO" contentMode="scaleAspectFit" alignment="top" spacing="-1" translatesAutoresizingMaskIntoConstraints="NO" id="FFM-Em-vKG" userLabel="userInfoStackView">
+                                <rect key="frame" x="16" y="0.0" width="361" height="139"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ii6-hj-5u0" userLabel="usernameStackView">
-                                        <rect key="frame" x="0.0" y="13" width="82.666666666666671" height="50"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="82.666666666666671" height="50"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NDA-I5-Vi5" userLabel="userIDIcon">
                                                 <rect key="frame" x="0.0" y="0.0" width="41.333333333333336" height="50"/>
@@ -176,13 +175,13 @@
                                         </subviews>
                                     </stackView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nWA-4E-opf" userLabel="avatarImageView">
-                                        <rect key="frame" x="81.666666666666671" y="13" width="154.33333333333331" height="50"/>
+                                        <rect key="frame" x="81.666666666666671" y="0.0" width="154.33333333333331" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="154.33333333333331" id="nqO-dY-ZkH"/>
                                         </constraints>
                                     </imageView>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5xc-SB-MhO" userLabel="goldStackView">
-                                        <rect key="frame" x="235" y="13" width="126" height="50"/>
+                                        <rect key="frame" x="235" y="0.0" width="126" height="50"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3fE-1L-1So" userLabel="goldLabel">
                                                 <rect key="frame" x="0.0" y="0.0" width="41.333333333333336" height="50"/>
@@ -202,9 +201,9 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Hid-a7-Egv" firstAttribute="trailing" secondItem="MP0-cK-6xd" secondAttribute="trailing" constant="100" id="76P-Yq-Gaf"/>
-                            <constraint firstItem="FFM-Em-vKG" firstAttribute="top" secondItem="Hid-a7-Egv" secondAttribute="top" constant="63" id="F9R-W0-qY1"/>
                             <constraint firstItem="Hid-a7-Egv" firstAttribute="bottom" secondItem="MP0-cK-6xd" secondAttribute="bottom" constant="403.66666666666669" id="Jcq-YE-BN1"/>
                             <constraint firstItem="Hid-a7-Egv" firstAttribute="trailing" secondItem="FFM-Em-vKG" secondAttribute="trailing" constant="16" id="aoT-d9-Sg5"/>
+                            <constraint firstItem="FFM-Em-vKG" firstAttribute="top" secondItem="Hid-a7-Egv" secondAttribute="top" id="dc1-ub-Ozj"/>
                             <constraint firstItem="MP0-cK-6xd" firstAttribute="centerY" secondItem="tHt-Vx-6Ly" secondAttribute="centerY" id="lHc-5u-luN"/>
                             <constraint firstItem="MP0-cK-6xd" firstAttribute="centerX" secondItem="tHt-Vx-6Ly" secondAttribute="centerX" id="n52-hr-2pr"/>
                             <constraint firstAttribute="bottom" secondItem="FFM-Em-vKG" secondAttribute="bottom" constant="703" id="xxr-6E-2Yd"/>
@@ -686,11 +685,12 @@ Matematik kategoresinde
                     <nil name="viewControllers"/>
                     <connections>
                         <segue destination="nxB-Hs-Cnb" kind="relationship" relationship="rootViewController" id="jrU-OH-6dt"/>
+                        <segue destination="Zu4-Lc-R4n" kind="show" id="hRR-yn-gnp"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3hr-aZ-sdZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1307" y="-11"/>
+            <point key="canvasLocation" x="402" y="954"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
@@ -712,7 +712,7 @@ Matematik kategoresinde
             <color red="0.98431372549019602" green="0.73725490196078436" blue="0.019607843137254902" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="secondarySystemBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="secondarySystemGroupedBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -721,19 +721,19 @@ Matematik kategoresinde
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemCyanColor">
-            <color red="0.19607843137254902" green="0.67843137254901964" blue="0.90196078431372551" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.1960784314" green="0.67843137249999996" blue="0.90196078430000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray3Color">
-            <color red="0.7803921568627451" green="0.7803921568627451" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.78039215689999997" green="0.78039215689999997" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray5Color">
-            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGreenColor">
-            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemOrangeColor">
-            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="tableSeparatorDarkColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>

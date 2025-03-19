@@ -48,7 +48,7 @@ private extension StartVC{
         userInfoStackView.axis = .horizontal
         userInfoStackView.alignment = .center
         userInfoStackView.distribution = .equalSpacing
-        userInfoStackView.spacing = 20
+        userInfoStackView.spacing = 0
         userInfoStackView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(userInfoStackView)
     }
@@ -67,11 +67,12 @@ private extension StartVC{
         usernameStackView.spacing = 5
         usernameStackView.translatesAutoresizingMaskIntoConstraints = false
         
-        usernameLabel.text = "Username"
-        usernameLabel.font = .systemFont(ofSize: 20,weight: .semibold)
+        usernameLabel.text = "userName**"
+        usernameLabel.textAlignment = .left
+        usernameLabel.font = .systemFont(ofSize: 12,weight: .semibold)
         usernameLabel.textColor = .black
         
-        userIDIcon.image = UIImage(named: "user_id_icon")
+        userIDIcon.image = UIImage(named: "image2vector")
         userIDIcon.contentMode = .scaleAspectFit
         
         usernameStackView.addArrangedSubview(userIDIcon)
@@ -85,6 +86,7 @@ private extension StartVC{
         goldStackView.translatesAutoresizingMaskIntoConstraints = false
         
         goldLabel.text = "1000"
+        goldLabel.textAlignment = .center
         goldLabel.font = .systemFont(ofSize: 18, weight: .semibold)
         goldLabel.textColor = .yellow
         
@@ -105,19 +107,19 @@ private extension StartVC{
         userInfoStackView.addArrangedSubview(goldStackView)
         
         NSLayoutConstraint.activate([
-            userInfoStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
+            userInfoStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: -10),
             userInfoStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             userInfoStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            userInfoStackView.heightAnchor.constraint(equalToConstant: 60),
+            userInfoStackView.heightAnchor.constraint(equalToConstant: 90),
             
-            avatarImageView.widthAnchor.constraint(equalToConstant: 60),
-            avatarImageView.heightAnchor.constraint(equalToConstant: 60),
+            avatarImageView.widthAnchor.constraint(equalToConstant: 90),
+            avatarImageView.heightAnchor.constraint(equalToConstant: 90),
             
-            userIDIcon.widthAnchor.constraint(equalToConstant: 18),
-            userIDIcon.heightAnchor.constraint(equalToConstant: 18),
+            userIDIcon.widthAnchor.constraint(equalToConstant: 36),
+            userIDIcon.heightAnchor.constraint(equalToConstant: 36),
             
-            goldIcon.widthAnchor.constraint(equalToConstant: 18),
-            goldIcon.heightAnchor.constraint(equalToConstant: 18)
+            goldIcon.widthAnchor.constraint(equalToConstant: 36),
+            goldIcon.heightAnchor.constraint(equalToConstant: 36)
         ])
     }
 }
