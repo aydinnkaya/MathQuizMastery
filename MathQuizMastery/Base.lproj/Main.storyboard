@@ -210,6 +210,7 @@
                             <constraint firstItem="FFM-Em-vKG" firstAttribute="top" secondItem="Hid-a7-Egv" secondAttribute="top" id="dc1-ub-Ozj"/>
                             <constraint firstItem="MP0-cK-6xd" firstAttribute="centerY" secondItem="tHt-Vx-6Ly" secondAttribute="centerY" id="lHc-5u-luN"/>
                             <constraint firstItem="MP0-cK-6xd" firstAttribute="centerX" secondItem="tHt-Vx-6Ly" secondAttribute="centerX" id="n52-hr-2pr"/>
+                            <constraint firstItem="FFM-Em-vKG" firstAttribute="top" secondItem="Hid-a7-Egv" secondAttribute="top" id="u91-LF-BNC"/>
                             <constraint firstItem="FFM-Em-vKG" firstAttribute="top" secondItem="Hid-a7-Egv" secondAttribute="top" id="xfh-tu-GRB"/>
                         </constraints>
                     </view>
@@ -335,7 +336,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r0w-wG-5Va" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1283" y="300"/>
+            <point key="canvasLocation" x="1324" y="444"/>
         </scene>
         <!--RegisterVC-->
         <scene sceneID="r8n-6t-pBD">
@@ -572,7 +573,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2223" y="300"/>
+            <point key="canvasLocation" x="2237" y="457"/>
         </scene>
         <!--ResultScreen-->
         <scene sceneID="FLx-5p-NWQ">
@@ -674,7 +675,7 @@ Matematik kategoresinde
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9dJ-od-5V2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1535" y="-532"/>
+            <point key="canvasLocation" x="2062" y="-286"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="pxH-tc-QPg">
@@ -693,7 +694,7 @@ Matematik kategoresinde
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3hr-aZ-sdZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="402" y="954"/>
+            <point key="canvasLocation" x="-929" y="913"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
