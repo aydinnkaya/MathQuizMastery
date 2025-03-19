@@ -64,13 +64,16 @@ private extension StartVC{
     func configureUsernameStackView(){
         usernameStackView.axis = .horizontal
         usernameStackView.alignment = .center
-        usernameStackView.spacing = 5
+        usernameStackView.spacing = 0
         usernameStackView.translatesAutoresizingMaskIntoConstraints = false
         
         usernameLabel.text = "userName**"
         usernameLabel.textAlignment = .left
-        usernameLabel.font = .systemFont(ofSize: 12,weight: .semibold)
+        usernameLabel.font = .systemFont(ofSize: 18,weight: .semibold)
         usernameLabel.textColor = .black
+        usernameLabel.backgroundColor = UIColor(red: 1.0, green: 0.8627, blue: 0.0, alpha: 1.0)
+        
+    
         
         userIDIcon.image = UIImage(named: "image2vector")
         userIDIcon.contentMode = .scaleAspectFit
@@ -107,9 +110,10 @@ private extension StartVC{
         userInfoStackView.addArrangedSubview(goldStackView)
         
         NSLayoutConstraint.activate([
-            userInfoStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: -10),
+            userInfoStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
             userInfoStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             userInfoStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+//            userInfoStackView.bottomAnchor.constraint(equalTo: avatarImageView.bottomAnchor, constant: 10),
             userInfoStackView.heightAnchor.constraint(equalToConstant: 90),
             
             avatarImageView.widthAnchor.constraint(equalToConstant: 90),
