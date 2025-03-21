@@ -29,13 +29,7 @@ class CategoryVC: UIViewController {
                configureButton(buttonKarisik, title: "Karışık", imageName: "mixed_icon")
         
     }
-    
-    
-    
-    
-    
-    
-    
+
     func applyGradientBackground() {
         let gradientLayer = CAGradientLayer()
         gradientLayer.colors = [
@@ -145,10 +139,7 @@ extension CategoryVC {
 //               button.addSubview(stackView)
         
     }
-    
-    
-    
-    
+ 
     /*
      private func createHexButton(title: String) -> UIButton {
      let button = UIButton(type: .system)

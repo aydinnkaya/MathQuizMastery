@@ -14,9 +14,7 @@ protocol GameScreenViewModelDelegate : AnyObject { // AnyObject => Class
     func onUpdateScore(score: Int)
     func onUpdateTime(time : String)
     func onUpdateQuestionNumber(questionNumber: Int)
-    func onTimeUp()
-    // func selectedExpression(expression: String)
-    
+    func onTimeUp()    
 }
 
 
@@ -57,7 +55,7 @@ class GameScreenViewModel : GameScreenViewModelProtocol {
     
     func generateQuiz() {
         self.expression = MathExpression.generateExpression(type: expression.getExpressionType())
-        self.correctAnswer = Int(expression.getAnswer()) 
+        self.correctAnswer = Int(expression.getAnswer())
         
         var wrongAnswers = generateWrongAnswers(correctAnswer: correctAnswer)
         wrongAnswers.append(correctAnswer)
@@ -104,22 +102,6 @@ class GameScreenViewModel : GameScreenViewModelProtocol {
             }
         }
     }
-    
-//    func setupButtonView(buttonFirst: UIButton, buttonSecond :UIButton, buttonThird : UIButton){
-//        let buttonList = [buttonFirst,buttonSecond,buttonThird]
-//        
-//        for b in buttonList {
-//            b.isHidden = false
-//            b.backgroundColor = UIColor(red: 255/255, green: 230/255, blue: 150/255, alpha: 1.0)
-//            b.layer.cornerRadius = 25
-//            b.layer.shadowColor = UIColor(red: 180/255, green: 180/255, blue: 180/255, alpha: 1.0).cgColor
-//            b.layer.shadowOffset = CGSize(width: 3, height: 3)
-//            b.layer.shadowOpacity = 0.6
-//            b.layer.shadowRadius = 5
-//        }
-//        
-//    }
-    
 }
 
 

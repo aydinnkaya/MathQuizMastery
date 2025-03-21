@@ -15,6 +15,8 @@ class RegisterVC: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var passwordAgainTextField: UITextField!
     @IBOutlet weak var cerateAccountLabel: UIButton!
     
+    private var viewModel: RegisterScreenViewModelProtocol? = RegisterScreenViewModel()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -25,7 +27,7 @@ class RegisterVC: UIViewController, UITextFieldDelegate {
             self.configureTextFieldBackground(for: self.passwordTextField)
             self.configureTextFieldBackground(for: self.passwordAgainTextField)
             self.configureButton(self.cerateAccountLabel)
-
+            
             self.configureTextField(self.nameTextField, placeholderText: "Enter your name", iconName: "person.fill")
             self.configureTextField(self.emailTextField, placeholderText: "Enter your email", iconName: "envelope.fill")
             self.configureTextField(self.passwordTextField, placeholderText: "Enter your password", iconName: "lock.fill")
@@ -39,10 +41,19 @@ class RegisterVC: UIViewController, UITextFieldDelegate {
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tapGesture)
+        
+        
     }
     
     @IBAction func CreateAccountButton(_ sender: UIButton, forEvent event: UIEvent) {
-    }
+        guard let name = nameTextField?.text, !name.isEmpty,
+              let email = emailTextField?.text, !email.isEmpty,
+              let password = passwordTextField?.text, !password.isEmpty else {
+            print("Boş veya nil değer var")
+            return
+        }
+        
+        viewModel?.savePerson(name: name, email: email, password: password)    }
     
     @objc func dismissKeyboard() {
         view.endEditing(true)
@@ -59,13 +70,16 @@ class RegisterVC: UIViewController, UITextFieldDelegate {
     
 }
 
-
+// MARK: - UITextFieldDelegate
 extension RegisterVC {
-    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
+}
+
+
+extension RegisterVC {
     
     func setupGradientBackground() {
         let gradientLayer = CAGradientLayer()

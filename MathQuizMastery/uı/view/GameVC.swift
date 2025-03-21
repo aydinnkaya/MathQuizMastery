@@ -142,7 +142,6 @@ extension GameVC : GameScreenViewModelDelegate{
     
     func onUpdateQuestionNumber(questionNumber: Int) {
         self.questionNumberLabel.text = "\(questionNumber) / 10"
-        
     }
     
     func onTimeUp() {
