@@ -23,14 +23,22 @@ class RegisterScreenViewModel : RegisterScreenViewModelProtocol {
         // early exit
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
         let context = appDelegate.persistentContainer.viewContext
+        //persistentContainer(verileri yönetme) viewContex(verileri üzerinde işlem yapmamıza) Context( core data veri işleme birimi)
         
-        // Created person object
-        let entity = NSEntityDescription.entity(forEntityName: "Person", in: context)!
-        let person = NSManagedObject(entity: entity, insertInto: context)
+        let person = Person(context: context)
+        person.name = name
+        person.email = email
+        person.password = password
         
-        person.setValue(name, forKey: "name")
-        person.setValue(email, forKey: "email")
-        person.setValue(password, forKey:"password")
+//        // Created person object
+//        let entity = NSEntityDescription.entity(forEntityName: "Person", in: context)!
+//        let person = NSManagedObject(entity: entity, insertInto: context)
+//        
+//        person.setValue(name, forKey: "name")
+//        person.setValue(email, forKey: "email")
+//        person.setValue(password, forKey:"password")
+//
+        
         
         do {
             try context.save()
