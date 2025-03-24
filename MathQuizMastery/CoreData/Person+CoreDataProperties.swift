@@ -26,7 +26,6 @@ extension Person{
             print("Error fetching person: \(error.localizedDescription)")
             return nil
         }
-        
     }
     
     @NSManaged public var uuid: UUID?

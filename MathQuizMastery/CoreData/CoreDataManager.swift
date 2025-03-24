@@ -10,7 +10,7 @@ import CoreData
 import UIKit
 
 final class CoreDataManager: CoreDataServiceProtocol {
-    static let shared = CoreDataManager()
+    static let shared = CoreDataManager( )
    
     // MARK: - Singleton yerine bağımsız instance
     private let persistentContainer: NSPersistentContainer
