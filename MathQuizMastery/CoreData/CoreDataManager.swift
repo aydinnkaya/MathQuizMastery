@@ -8,15 +8,16 @@
 import Foundation
 import CoreData
 import UIKit
+import CryptoKit
 
 final class CoreDataManager: CoreDataServiceProtocol {
     static let shared = CoreDataManager( )
-   
+    
     // MARK: - Singleton yerine bağımsız instance
     private let persistentContainer: NSPersistentContainer
     
-    init(container: NSPersistentContainer = NSPersistentContainer(name: "MathQuizMastery")) {
-        self.persistentContainer = container
+    private init() {
+        self.persistentContainer =  NSPersistentContainer(name: "MathQuizMastery")
         self.persistentContainer.loadPersistentStores { _, error in
             if let error = error as NSError? {
                 print("❌ Core Data yükleme hatası: \(error), \(error.userInfo)")
@@ -35,11 +36,12 @@ final class CoreDataManager: CoreDataServiceProtocol {
             user.uuid = UUID()
             user.name = name
             user.email = email
-            user.password = password
+            user.password = self.hashPassword(password)
             
             do {
                 try self.context.save()
                 completion(.success(()))
+                
             } catch {
                 print("❌ Kullanıcı kaydedilirken hata oluştu: \(error.localizedDescription)")
                 completion(.failure(error))
@@ -48,16 +50,23 @@ final class CoreDataManager: CoreDataServiceProtocol {
     }
     
     // MARK: - Kullanıcı Getirme
-    func fetchUser(email: String, password: String) -> Person? {
+    func fetchUser(email: String, password: String,completion: @escaping (Result<Person?, Error>) -> Void) {
         let request: NSFetchRequest<Person> = Person.fetchRequest()
-        request.predicate = NSPredicate(format: "email == %@ AND password == %@", email, password)
+        request.predicate = NSPredicate(format: "email == %@ AND password == %@", email, hashPassword(password)) // Predicate => Filter data
         request.fetchLimit = 1  // En fazla bir kullanıcı getir
         
         do {
-            return try context.fetch(request).first
+            let user = try self.context.fetch(request).first
+            completion(.success(user))
         } catch {
             print("❌ Kullanıcı getirme hatası: \(error.localizedDescription)")
-            return nil
+            completion(.failure(error))
         }
+    }
+    
+    private func hashPassword(_ password: String) -> String {
+        let data = Data(password.utf8)
+        let hashed = SHA256.hash(data: data)
+        return hashed.compactMap { String(format: "%02x", $0) }.joined()
     }
 }
