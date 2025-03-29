@@ -9,44 +9,45 @@ import Foundation
 import CoreData
 import UIKit
 
-
-protocol RegisterScreenViewModelDelegate{
-    
+// MARK: - Register Screen View Model Delegate
+protocol RegisterScreenViewModelDelegate : AnyObject{
+    func registrationSucceeded()
+    func registrationFailed(_ error : Error )
 }
 
-
-class RegisterScreenViewModel : RegisterScreenViewModelProtocol {
+// MARK: - Register Screen View Model
+final class RegisterScreenViewModel : RegisterScreenViewModelProtocol {
     
+    weak var delegate : RegisterScreenViewModelDelegate?
     
     func savePerson(name: String, email: String, password: String){
-        
-        // early exit
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
-        let context = appDelegate.persistentContainer.viewContext
-        //persistentContainer(verileri yönetme) viewContex(verileri üzerinde işlem yapmamıza) Context( core data veri işleme birimi)
-        
-        let person = Person(context: context)
-        person.name = name
-        person.email = email
-        person.password = password
-        
-//        // Created person object
-//        let entity = NSEntityDescription.entity(forEntityName: "Person", in: context)!
-//        let person = NSManagedObject(entity: entity, insertInto: context)
-//        
-//        person.setValue(name, forKey: "name")
-//        person.setValue(email, forKey: "email")
-//        person.setValue(password, forKey:"password")
-//
-        
-        
-        do {
-            try context.save()
-            print("new user saved \(name)")
-
-        }catch{
-            print("Error: not save")
+        guard !name.isEmpty, !email.isEmpty, !password.isEmpty else {
+            let error = NSError(domain: "com.mathquizmastery.registration", code: 1001, userInfo:  [NSLocalizedDescriptionKey: "Lütfen tüm alanları doldurunuz"])
+            delegate?.registrationFailed(error)
+            return
         }
+        
+        CoreDataManager.shared.saveUser(name: name, email: email, password: password, completion: { result in
+            switch result {
+            case .success() :
+                DispatchQueue.main.async {
+                    self.delegate?.registrationSucceeded()
+                }
+                
+            case .failure(let error):
+                let userFriendlyError = NSError(
+                    domain: "com.mathquizmastery.registration",
+                    code: 1002,
+                    userInfo: [NSLocalizedDescriptionKey: "Kayıt sırasında bir hata oluştu. Lütfen tekrar deneyiniz.\n(\(error.localizedDescription))"]
+                )
+                DispatchQueue.main.async {
+                    self.delegate?.registrationFailed(userFriendlyError)
+                }
+                
+            }
+            
+        })
+        
     }
     
 }

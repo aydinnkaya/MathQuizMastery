@@ -9,5 +9,5 @@ import Foundation
 
 
 protocol RegisterScreenViewModelProtocol : AnyObject {
-    func savePerson(name: String, email: String, password: String)
+      func savePerson(name: String, email: String, password: String)
 }

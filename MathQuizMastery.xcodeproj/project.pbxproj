@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0FB3D00B2D40E8100004CB1A /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 0FB3D00A2D40E8100004CB1A /* IQKeyboardManagerSwift */; };
+		0FFA2CF12D98879E00D3E64D /* Person+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFA2CF02D98879E00D3E64D /* Person+CoreDataProperties.swift */; };
+		0FFA2CF22D98879E00D3E64D /* Person+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFA2CEF2D98879E00D3E64D /* Person+CoreDataClass.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,6 +33,8 @@
 		0FA090682D2FAEB000D83F96 /* MathQuizMastery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MathQuizMastery.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FA090812D2FAEB300D83F96 /* MathQuizMasteryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MathQuizMasteryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FA0908B2D2FAEB300D83F96 /* MathQuizMasteryUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MathQuizMasteryUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0FFA2CEF2D98879E00D3E64D /* Person+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Person+CoreDataClass.swift"; sourceTree = "<group>"; };
+		0FFA2CF02D98879E00D3E64D /* Person+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Person+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -102,6 +106,8 @@
 		0FA0905F2D2FAEB000D83F96 = {
 			isa = PBXGroup;
 			children = (
+				0FFA2CEF2D98879E00D3E64D /* Person+CoreDataClass.swift */,
+				0FFA2CF02D98879E00D3E64D /* Person+CoreDataProperties.swift */,
 				0FA0906A2D2FAEB000D83F96 /* MathQuizMastery */,
 				0FA090842D2FAEB300D83F96 /* MathQuizMasteryTests */,
 				0FA0908E2D2FAEB300D83F96 /* MathQuizMasteryUITests */,
@@ -268,6 +274,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0FFA2CF12D98879E00D3E64D /* Person+CoreDataProperties.swift in Sources */,
+				0FFA2CF22D98879E00D3E64D /* Person+CoreDataClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

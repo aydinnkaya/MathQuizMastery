@@ -27,7 +27,6 @@ class LoginViewModel {
         
         CoreDataManager.shared.fetchUser(email: email, password: password, completion: { result in
             switch result{
-                
             case .success(let user) :
                 if let _ = user{
                     DispatchQueue.main.async {

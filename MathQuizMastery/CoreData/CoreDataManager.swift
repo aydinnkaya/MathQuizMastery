@@ -10,14 +10,18 @@ import CoreData
 import UIKit
 import CryptoKit
 
+
+
+// Core Data -> persistentContainer -> Managed Object Context
+
 final class CoreDataManager: CoreDataServiceProtocol {
-    static let shared = CoreDataManager( )
+    static let shared = CoreDataManager()
     
     // MARK: - Singleton yerine bağımsız instance
     private let persistentContainer: NSPersistentContainer
     
     private init() {
-        self.persistentContainer =  NSPersistentContainer(name: "MathQuizMastery")
+        self.persistentContainer =  NSPersistentContainer(name:"dataModel")
         self.persistentContainer.loadPersistentStores { _, error in
             if let error = error as NSError? {
                 print("❌ Core Data yükleme hatası: \(error), \(error.userInfo)")

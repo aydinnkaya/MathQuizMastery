@@ -7,67 +7,111 @@
 
 import UIKit
 
-class RegisterVC: UIViewController, UITextFieldDelegate {
+
+// MARK: - Register View Controller
+final class RegisterVC: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var passwordAgainTextField: UITextField!
-    @IBOutlet weak var cerateAccountLabel: UIButton!
+    @IBOutlet weak var createAccountButton: UIButton!
     
-    private var viewModel: RegisterScreenViewModelProtocol? = RegisterScreenViewModel()
-
+    private var viewModel: RegisterScreenViewModelProtocol = RegisterScreenViewModel()
+    private var loadingAlert : UIAlertController?
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-            self.setupGradientBackground()
-            self.configureTextFieldBackground(for: self.nameTextField)
-            self.configureTextFieldBackground(for: self.emailTextField)
-            self.configureTextFieldBackground(for: self.passwordTextField)
-            self.configureTextFieldBackground(for: self.passwordAgainTextField)
-            self.configureButton(self.cerateAccountLabel)
-            
-            self.configureTextField(self.nameTextField, placeholderText: "Enter your name", iconName: "person.fill")
-            self.configureTextField(self.emailTextField, placeholderText: "Enter your email", iconName: "envelope.fill")
-            self.configureTextField(self.passwordTextField, placeholderText: "Enter your password", iconName: "lock.fill")
-            self.configureTextField(self.passwordAgainTextField, placeholderText: "Re enter your password", iconName: "lock.fill")
-        }
-        
-        nameTextField.delegate = self
-        emailTextField.delegate = self
-        passwordTextField.delegate = self
-        passwordAgainTextField.delegate = self
-        
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-        view.addGestureRecognizer(tapGesture)
-        
+        configureView()
+        configureGesture()
+        assignTextFieldDelegates()
+        bindViewModel()
         
     }
     
-    @IBAction func CreateAccountButton(_ sender: UIButton, forEvent event: UIEvent) {
-        guard let name = nameTextField?.text, !name.isEmpty,
-              let email = emailTextField?.text, !email.isEmpty,
-              let password = passwordTextField?.text, !password.isEmpty else {
-            print("Boş veya nil değer var")
-            return
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        configureGradientBackground()
+        configureUIComponents()
+    }
+    
+    // MARK: - ViewModel Binding
+    private func bindViewModel() {
+        (viewModel as? RegisterScreenViewModel)?.delegate = self
+    }
+    
+    // MARK: - UI Setup
+    private func configureView() {
+        configureTextField(nameTextField, placeholderText: "Enter your name", iconName: "person.fill")
+        configureTextField(emailTextField, placeholderText: "Enter your email", iconName: "envelope.fill")
+        configureTextField(passwordTextField, placeholderText: "Enter your password", iconName: "lock.fill")
+        configureTextField(passwordAgainTextField, placeholderText: "Re-enter your password", iconName: "lock.fill")
+    }
+    
+    private func configureUIComponents() {
+        [nameTextField, emailTextField, passwordTextField, passwordAgainTextField].forEach {
+            configureTextFieldBackground(for: $0)
         }
-        
-        viewModel?.savePerson(name: name, email: email, password: password)    }
+        configureButton(createAccountButton)
+    }
+    
+    private func assignTextFieldDelegates() {
+        [nameTextField, emailTextField, passwordTextField, passwordAgainTextField].forEach {
+            $0?.delegate = self
+        }
+    }
+    
+    private func configureGesture() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tap)
+    }
     
     @objc func dismissKeyboard() {
         view.endEditing(true)
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        configureButton(cerateAccountLabel)
-        configureTextFieldBackground(for: nameTextField)
-        configureTextFieldBackground(for: emailTextField)
-        configureTextFieldBackground(for: passwordTextField)
-        configureTextFieldBackground(for: passwordAgainTextField)
+    
+    // MARK: - Actions
+    @IBAction func createAccountButtonTapped(_ sender: UIButton) {
+        guard let name = nameTextField.text,
+              let email = emailTextField.text,
+              let password = passwordTextField.text,
+              let confirmPassword = passwordAgainTextField.text else {
+            showAlert(title: "Hata", message: "Lütfen tüm alanları doldurun.")
+            return
+        }
+        
+        guard !name.isEmpty, !email.isEmpty, !password.isEmpty else {
+            showAlert(title: "Hata", message: "Lütfen tüm alanları doldurun.")
+            return
+        }
+        
+        guard password == confirmPassword else {
+            showAlert(title: "Hata", message: "Şifreler uyuşmuyor.")
+            return
+        }
+        
+        showLoading()
+        viewModel.savePerson(name: name, email: email, password: password)
+        
     }
     
+}
+
+// MARK: - RegisterScreenViewModelDelegate
+extension RegisterVC : RegisterScreenViewModelDelegate {
+    func registrationSucceeded() {
+        hideLoading()
+        showAlert(title: "Başarılı", message: "Kayıt işlemi tamamlandı.") {
+            self.navigationController?.popViewController(animated: true)
+        }
+    }
+    
+    func registrationFailed(_ error: any Error) {
+        hideLoading()
+        showAlert(title: "Hata", message: error.localizedDescription)
+    }
 }
 
 // MARK: - UITextFieldDelegate
@@ -78,49 +122,63 @@ extension RegisterVC {
     }
 }
 
+// MARK: - Alert & Loading Helpers
+extension RegisterVC {
+    private func showLoading(){
+        loadingAlert = UIAlertController(title: nil, message: "Lütfen bekleyin...", preferredStyle: .alert)
+        let loadingIndicator = UIActivityIndicatorView(style: .large)
+        loadingIndicator.startAnimating()
+        loadingAlert?.view.addSubview(loadingIndicator)
+        loadingIndicator.center = loadingAlert!.view.center
+        present(loadingAlert!, animated: true, completion: nil)
+    }
+    
+    private func hideLoading(){
+        loadingAlert?.dismiss(animated: true, completion: nil)
+    }
+    
+    private func showAlert(title: String, message: String, completion: (() -> Void)? = nil){
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Tamam", style: .default, handler: {  _ in completion?()}))
+        present(alert, animated: true)
+        
+    }
+}
 
+// MARK: - UI Customization
 extension RegisterVC {
     
-    func setupGradientBackground() {
+    private func configureGradientBackground() {
         let gradientLayer = CAGradientLayer()
-        gradientLayer.frame = self.view.bounds
+        gradientLayer.frame = view.bounds
         gradientLayer.colors = [
-            UIColor(red: 0.3, green: 0.3, blue: 0.3, alpha: 1.0).cgColor,
+            UIColor.darkGray.cgColor,
             UIColor(red: 0.9, green: 0.7, blue: 0.0, alpha: 1.0).cgColor,
-            UIColor(red: 0.8, green: 0.1, blue: 0.0, alpha: 1.0).cgColor
+            UIColor.red.cgColor
         ]
         gradientLayer.startPoint = CGPoint(x: 0, y: 0)
         gradientLayer.endPoint = CGPoint(x: 1, y: 1)
-        self.view.layer.insertSublayer(gradientLayer, at: 0)
+        view.layer.insertSublayer(gradientLayer, at: 0)
     }
     
-    
-    func configureButton(_ button : UIButton){
-        
+    private func configureButton(_ button: UIButton) {
         button.layer.cornerRadius = 12
         button.layer.borderWidth = 2
-        button.layer.borderColor = UIColor(red: 1.0, green: 0.8627, blue: 0.0, alpha: 1.0).cgColor
+        button.layer.borderColor = UIColor.yellow.cgColor
         button.backgroundColor = .clear
         
-        
-        
-        let gradientLayer = CAGradientLayer()
-        gradientLayer.colors = [
-            UIColor.purple.cgColor,
-            UIColor.red.cgColor
-        ]
-        gradientLayer.startPoint = CGPoint(x: 0.5, y: 0)
-        gradientLayer.endPoint = CGPoint(x: 0.5, y: 1)
-        
-        
+        let gradient = CAGradientLayer()
+        gradient.colors = [UIColor.purple.cgColor, UIColor.red.cgColor]
+        gradient.startPoint = CGPoint(x: 0.5, y: 0)
+        gradient.endPoint = CGPoint(x: 0.5, y: 1)
         
         if let superview = button.superview {
             let adjustedFrame = superview.convert(button.frame, to: superview)
             let backgroundView = UIView(frame: adjustedFrame)
-            gradientLayer.frame = CGRect(origin: .zero, size: adjustedFrame.size)
-            gradientLayer.cornerRadius = button.layer.cornerRadius
+            gradient.frame = CGRect(origin: .zero, size: adjustedFrame.size)
+            gradient.cornerRadius = button.layer.cornerRadius
             
-            backgroundView.layer.insertSublayer(gradientLayer, at: 0)
+            backgroundView.layer.insertSublayer(gradient, at: 0)
             backgroundView.layer.cornerRadius = button.layer.cornerRadius
             backgroundView.layer.shadowColor = UIColor.purple.cgColor
             backgroundView.layer.shadowOffset = CGSize(width: 0, height: 3)
@@ -131,17 +189,15 @@ extension RegisterVC {
             superview.addSubview(backgroundView)
             superview.bringSubviewToFront(button)
         }
-        
     }
     
-    func configureTextField(_ textField: UITextField, placeholderText: String, iconName: String) {
+    private func configureTextField(_ textField: UITextField, placeholderText: String, iconName: String) {
         textField.layer.cornerRadius = 12
         textField.layer.borderWidth = 2
-        // textField.layer.borderColor = UIColor(red: 1.0, green: 0.8627, blue: 0.0, alpha: 1.0).cgColor
-        textField.layer.borderColor = UIColor(red: 0.8, green: 0.1, blue: 0.0, alpha: 1.0).cgColor
+        textField.layer.borderColor = UIColor.red.cgColor
         textField.backgroundColor = .clear
         textField.textColor = .black
-        textField.font = UIFont.systemFont(ofSize: 16, weight: .bold)
+        textField.font = .systemFont(ofSize: 16, weight: .bold)
         
         let iconAttachment = NSTextAttachment()
         iconAttachment.image = UIImage(systemName: iconName)?.withTintColor(.black, renderingMode: .alwaysOriginal)
@@ -153,22 +209,20 @@ extension RegisterVC {
             .font: UIFont.systemFont(ofSize: 16, weight: .medium)
         ])
         
-        let combinedString = NSMutableAttributedString()
-        combinedString.append(iconString)
-        combinedString.append(textString)
+        let combined = NSMutableAttributedString()
+        combined.append(iconString)
+        combined.append(textString)
         
-        textField.attributedPlaceholder = combinedString
+        textField.attributedPlaceholder = combined
         textField.contentVerticalAlignment = .center
     }
     
-    func configureTextFieldBackground(for textField: UITextField) {
+    private func configureTextFieldBackground(for textField: UITextField?) {
+        guard let textField = textField else { return }
         let gradientLayer = CAGradientLayer()
         gradientLayer.colors = [
-            UIColor(red: 0.8, green: 0.85, blue: 0.9, alpha: 1).cgColor,
-            UIColor(red: 0.75, green: 0.75, blue: 0.9, alpha: 1).cgColor,
-            UIColor(red: 0.7, green: 0.8, blue: 0.85, alpha: 1).cgColor,
-            UIColor(red: 0.65, green: 0.65, blue: 0.8, alpha: 1).cgColor,
-            UIColor(red: 0.6, green: 0.7, blue: 0.75, alpha: 1).cgColor
+            UIColor.systemGray5.cgColor,
+            UIColor.systemGray3.cgColor
         ]
         gradientLayer.startPoint = CGPoint(x: 0.5, y: 0)
         gradientLayer.endPoint = CGPoint(x: 0.5, y: 1)
@@ -183,9 +237,6 @@ extension RegisterVC {
         backgroundView.layer.shadowOpacity = 0.3
         backgroundView.layer.shadowRadius = 6
         backgroundView.layer.masksToBounds = false
-        
-        
-        
         backgroundView.translatesAutoresizingMaskIntoConstraints = false
         
         if let superview = textField.superview {
@@ -197,6 +248,5 @@ extension RegisterVC {
                 backgroundView.bottomAnchor.constraint(equalTo: textField.bottomAnchor)
             ])
         }
-        
     }
 }
