@@ -10,11 +10,14 @@ import UIKit
 class LoginVC: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var emailTextField: UITextField!
-    
     @IBOutlet weak var passwordTextField: UITextField!
-    
     @IBOutlet weak var fargotPasswordButtonLabel: UIButton!
-    @IBOutlet weak var loginButtonLabel: UIButton!
+    @IBOutlet weak var loginButton: UIButton!
+    
+    
+    private var viewModel = LoginViewModel()
+    private var errorLabels: [UITextField: UILabel] = [:]
+    private var loadingAlert: UIAlertController?
     
     
     override func viewDidLoad() {
@@ -27,7 +30,7 @@ class LoginVC: UIViewController, UITextFieldDelegate {
         
         configureTextFieldBackground(for: emailTextField)
         configureTextFieldBackground(for: passwordTextField)
-        configureButton(loginButtonLabel)
+        configureButton(loginButton)
         emailTextField.delegate = self
         passwordTextField.delegate = self
         
@@ -36,6 +39,19 @@ class LoginVC: UIViewController, UITextFieldDelegate {
         
     }
     
+    // MARK: - UI Setup
+    private func configureUI() {
+        configureTextField(emailTextField, placeholderText: L(.enter_email), iconName: "envelope.fill")
+        configureTextField(passwordTextField, placeholderText: L(.enter_password), iconName: "lock.fill")
+        configureButton(loginButton)
+    }
+    
+    
+    private func bindViewModel() {
+        viewModel.delegate = self
+    }
+    
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "",
            let resultVC = segue.destination as? StartVC,
@@ -43,27 +59,142 @@ class LoginVC: UIViewController, UITextFieldDelegate {
         }
     }
     
-    @IBAction func loginButtonAction(_ sender: Any, forEvent event: UIEvent) {
+    // MARK: - Gesture
+    private func configureGesture() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tap)
     }
     
-    @IBAction func CreateAnAccountButton(_ sender: UIButton, forEvent event: UIEvent) {
-    }
-    
-    
-    @objc func dismissKeyboard() {
+    @objc private func dismissKeyboard() {
         view.endEditing(true)
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
+    // MARK: - TextField Delegates
+    private func assignDelegates() {
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
+    }
+    
+    // MARK: - IBAction
+    @IBAction func loginButtonTapped(_ sender: UIButton) {
+        dismissKeyboard()
+        clearErrors()
         
-        configureTextFieldBackground(for: emailTextField)
-        configureTextFieldBackground(for: passwordTextField)
-        configureButton(loginButtonLabel)
+        guard let emailField = emailTextField, let passwordField = passwordTextField else { return }
         
+        let emailValidation = Validations.validateEmail(emailField.text)
+        let passwordValidation = Validations.validateRequired(passwordField.text, messageKey: .field_required)
+        
+        var hasError = false
+        
+        for (validation, field) in [(emailValidation, emailField), (passwordValidation, passwordField)] {
+            switch validation {
+            case .valid:
+                setValid(for: field)
+            case .invalid(let msg):
+                setError(for: field, message: msg)
+                hasError = true
+            }
+        }
+        
+        guard !hasError else {
+            HapticManager.shared.error()
+            return
+        }
+        
+        HapticManager.shared.mediumImpact()
+        showLoading()
+        viewModel.login(email: emailField.text ?? "", password: passwordField.text ?? "")
     }
     
 }
+
+// MARK: - LoginViewModelDelegate
+extension LoginVC: LoginViewModelDelegate {
+    func didLoginSuccessfuly() {
+        hideLoading()
+        HapticManager.shared.success()
+        ToastView.show(in: self.view, message: L(.login_success))
+        // TODO: Navigate to next screen
+    }
+    
+    func didFailWithError(_ error: Error) {
+        hideLoading()
+        HapticManager.shared.error()
+        ToastView.show(in: self.view, message: error.localizedDescription)
+    }
+}
+
+// MARK: - UITextFieldDelegate
+extension LoginVC: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+}
+
+// MARK: - Inline Error Helpers
+extension LoginVC {
+    private func setupErrorLabels() {
+        [emailTextField, passwordTextField].forEach { addErrorLabel(below: $0) }
+    }
+    
+    private func addErrorLabel(below textField: UITextField?) {
+        guard let textField = textField else { return }
+        let label = UILabel()
+        label.textColor = .systemRed
+        label.font = .systemFont(ofSize: 12)
+        label.numberOfLines = 0
+        label.isHidden = true
+        view.addSubview(label)
+        
+        label.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            label.leadingAnchor.constraint(equalTo: textField.leadingAnchor, constant: 8),
+            label.topAnchor.constraint(equalTo: textField.bottomAnchor, constant: 4),
+            label.trailingAnchor.constraint(equalTo: textField.trailingAnchor)
+        ])
+        
+        errorLabels[textField] = label
+    }
+    
+    private func setError(for textField: UITextField, message: String) {
+        textField.layer.borderColor = UIColor.systemRed.cgColor
+        errorLabels[textField]?.text = message
+        errorLabels[textField]?.isHidden = false
+    }
+    
+    private func setValid(for textField: UITextField) {
+        textField.layer.borderColor = UIColor.systemGreen.cgColor
+        errorLabels[textField]?.isHidden = true
+    }
+    
+    private func clearErrors() {
+        for (field, label) in errorLabels {
+            field.layer.borderColor = UIColor.systemGray.cgColor
+            label.isHidden = true
+        }
+    }
+}
+
+// MARK: - Loading
+extension LoginVC {
+    private func showLoading() {
+        loadingAlert = UIAlertController(title: nil, message: L(.loading), preferredStyle: .alert)
+        let indicator = UIActivityIndicatorView(style: .large)
+        indicator.startAnimating()
+        loadingAlert?.view.addSubview(indicator)
+        indicator.center = loadingAlert!.view.center
+        present(loadingAlert!, animated: true)
+    }
+    
+    private func hideLoading() {
+        loadingAlert?.dismiss(animated: true)
+    }
+}
+
+
+
 
 
 extension LoginVC {

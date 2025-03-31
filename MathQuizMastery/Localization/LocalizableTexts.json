@@ -1,0 +1,62 @@
+{
+  "enter_name": {
+    "en": "Enter your name",
+    "tr": "İsminizi giriniz",
+    "de": "Geben Sie Ihren Namen ein",
+    "es": "Ingrese su nombre"
+  },
+  "enter_email": {
+    "en": "Enter your email",
+    "tr": "E-postanızı giriniz",
+    "de": "Geben Sie Ihre E-Mail ein",
+    "es": "Ingrese su correo electrónico"
+  },
+  "enter_password": {
+    "en": "Enter your password",
+    "tr": "Şifrenizi giriniz",
+    "de": "Geben Sie Ihr Passwort ein",
+    "es": "Ingrese su contraseña"
+  },
+  "reenter_password": {
+    "en": "Re-enter your password",
+    "tr": "Şifrenizi tekrar giriniz",
+    "de": "Geben Sie Ihr Passwort erneut ein",
+    "es": "Vuelva a ingresar su contraseña"
+  },
+  "field_required": {
+    "en": "This field is required.",
+    "tr": "Bu alan zorunludur.",
+    "de": "Dieses Feld ist erforderlich.",
+    "es": "Este campo es obligatorio."
+  },
+  "password_mismatch": {
+    "en": "Passwords do not match.",
+    "tr": "Şifreler uyuşmuyor.",
+    "de": "Passwörter stimmen nicht überein.",
+    "es": "Las contraseñas no coinciden."
+  },
+  "registration_success": {
+    "en": "Registration completed successfully!",
+    "tr": "Kayıt başarıyla tamamlandı!",
+    "de": "Registrierung erfolgreich abgeschlossen!",
+    "es": "¡Registro completado con éxito!"
+  },
+  "invalid_email": {
+    "en": "Please enter a valid email address.",
+    "tr": "Geçerli bir e-posta adresi giriniz.",
+    "de": "Bitte geben Sie eine gültige E-Mail-Adresse ein.",
+    "es": "Por favor, introduzca un correo electrónico válido."
+  },
+  "weak_password": {
+    "en": "Password must be at least 6 characters.",
+    "tr": "Şifre en az 6 karakter olmalıdır.",
+    "de": "Das Passwort muss mindestens 6 Zeichen lang sein.",
+    "es": "La contraseña debe tener al menos 6 caracteres."
+  },
+  "loading": {
+    "en": "Please wait...",
+    "tr": "Lütfen bekleyin...",
+    "de": "Bitte warten...",
+    "es": "Por favor espera..."
+  }
+}
