@@ -93,6 +93,7 @@ struct UIStyle {
     static let textFont: UIFont = .systemFont(ofSize: 16, weight: .bold)
     static let placeholderFont: UIFont = .systemFont(ofSize: 16, weight: .medium)
     static let shadowColor: UIColor = .purple
+    static let errorTextColor = UIColor("") ?? .white
     
     static let textFieldGradientColors: [CGColor] = [
         UIColor(red: 0.8, green: 0.85, blue: 0.9, alpha: 1).cgColor,

@@ -62,7 +62,7 @@
                                     <color key="baseBackgroundColor" name="FBBC05"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <action selector="loginButtonAction:forEvent:" destination="nxB-Hs-Cnb" eventType="touchDragEnter" id="uvT-bl-Z2V"/>
+                                    <action selector="loginButtonTapped:" destination="nxB-Hs-Cnb" eventType="touchUpInside" id="BcU-v4-qh8"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="54V-Ge-RZ7">
@@ -713,7 +713,6 @@ Matematik kategoresinde
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="7LL-Qc-dbR"/>
         <segue reference="Aa5-jx-hIN"/>
         <segue reference="mZp-sb-D4v"/>
     </inferredMetricsTieBreakers>

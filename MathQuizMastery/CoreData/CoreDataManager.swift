@@ -68,9 +68,32 @@ final class CoreDataManager: CoreDataServiceProtocol {
         }
     }
     
+    // MARK: - UUID ile Kullanıcı Getirme
+    func fetchUser(with uuid: UUID, completion: @escaping (Result<Person, Error>) -> Void) {
+        let request: NSFetchRequest<Person> = Person.fetchRequest()
+        request.predicate = NSPredicate(format: "uuid == %@", uuid as CVarArg)
+        request.fetchLimit = 1
+
+        do {
+            if let user = try context.fetch(request).first {
+                completion(.success(user))
+            } else {
+                let error = NSError(domain: "CoreData", code: 404, userInfo: [NSLocalizedDescriptionKey: "Kullanıcı bulunamadı"])
+                completion(.failure(error))
+            }
+        } catch {
+            print("❌ UUID ile kullanıcı getirme hatası: \(error.localizedDescription)")
+            completion(.failure(error))
+        }
+    }
+    
+    
     private func hashPassword(_ password: String) -> String {
         let data = Data(password.utf8)
         let hashed = SHA256.hash(data: data)
         return hashed.compactMap { String(format: "%02x", $0) }.joined()
     }
+    
+    
+    
 }

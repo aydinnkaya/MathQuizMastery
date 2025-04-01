@@ -27,8 +27,7 @@ class LoginVC: UIViewController, UITextFieldDelegate {
         assignDelegates()
         bindViewModel()
         setupGradientBackground()
-        loginButton.applyStyledButton(withTitle: "Log In")
-      
+        
     }
     
     override func viewDidLayoutSubviews() {
@@ -39,39 +38,16 @@ class LoginVC: UIViewController, UITextFieldDelegate {
     private func setupUI() {
         emailTextField.applyStyledAppearance(placeholder: L(.enter_email), iconName: "envelope.fill")
         emailTextField.addStyledBackground(in: view)
-
+        
         passwordTextField.applyStyledAppearance(placeholder: L(.enter_password), iconName: "lock.fill")
         passwordTextField.addStyledBackground(in: view)
-
-//        configureButton(loginButton)
+        loginButton.applyStyledButton(withTitle: "Log In")
         addErrorLabel(below: emailTextField)
         addErrorLabel(below: passwordTextField)
     }
     
-    // MARK: - UI Setup
-//    private func setupUI() {
-//        configureTextField(emailTextField, placeholderText: L(.enter_email), iconName: "envelope.fill")
-//        configureTextField(passwordTextField, placeholderText: L(.enter_password), iconName: "lock.fill")
-//        configureButton(loginButton)
-//        addErrorLabel(below: emailTextField)
-//        addErrorLabel(below: passwordTextField)
-//    }
-    
-//    private func configureUI() {
-//        configureTextField(emailTextField, placeholderText: L(.enter_email), iconName: "envelope.fill")
-//        configureTextField(passwordTextField, placeholderText: L(.enter_password), iconName: "lock.fill")
-//        configureButton(loginButton)
-//    }
-    
     private func bindViewModel() {
         viewModel.delegate = self
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "",
-           let resultVC = segue.destination as? StartVC,
-           let score = sender as? String {
-        }
     }
     
     // MARK: - Gesture
@@ -89,6 +65,7 @@ class LoginVC: UIViewController, UITextFieldDelegate {
         emailTextField.delegate = self
         passwordTextField.delegate = self
     }
+    
     
     // MARK: - IBAction
     @IBAction func loginButtonTapped(_ sender: UIButton) {
@@ -122,15 +99,23 @@ class LoginVC: UIViewController, UITextFieldDelegate {
         viewModel.login(email: emailField.text ?? "", password: passwordField.text ?? "")
     }
     
+    private func navigateToStartScreen(with uuid: UUID) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if let startVC = storyboard.instantiateViewController(withIdentifier: "StartVC") as? StartVC {
+            startVC.userUUID = uuid
+            navigationController?.pushViewController(startVC, animated: true)
+        }
+    }
+    
 }
 
 // MARK: - LoginViewModelDelegate
 extension LoginVC: LoginViewModelDelegate {
-    func didLoginSuccessfuly() {
+    func didLoginSuccessfully(uuid: UUID) {
         hideLoading()
         HapticManager.shared.success()
         ToastView.show(in: self.view, message: L(.login_success))
-        // TODO: Navigate to next screen
+        navigateToStartScreen(with: uuid)
     }
     
     func didFailWithError(_ error: Error) {
@@ -155,13 +140,14 @@ extension LoginVC {
     }
     
     private func addErrorLabel(below textField: UITextField?) {
-        guard let textField = textField else { return }
+        guard let textField = textField, let parent = textField.superview else { return }
+        
         let label = UILabel()
-        label.textColor = .systemRed
+        label.textColor = UIStyle.errorTextColor
         label.font = .systemFont(ofSize: 12)
         label.numberOfLines = 0
         label.isHidden = true
-        view.addSubview(label)
+        parent.addSubview(label)
         
         label.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -208,8 +194,8 @@ extension LoginVC {
     }
 }
 
+// MARK: - SetupGradientBackground
 extension LoginVC {
-    
     func setupGradientBackground() {
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = self.view.bounds
@@ -222,39 +208,5 @@ extension LoginVC {
         gradientLayer.endPoint = CGPoint(x: 1, y: 1)
         self.view.layer.insertSublayer(gradientLayer, at: 0)
     }
-    
-//    func configureButton(_ button : UIButton){
-//        button.layer.cornerRadius = 12
-//        button.layer.borderWidth = 2
-//        button.layer.borderColor = UIColor(red: 1.0, green: 0.8627, blue: 0.0, alpha: 1.0).cgColor
-//        button.backgroundColor = .clear
-//      
-//        let gradientLayer = CAGradientLayer()
-//        gradientLayer.colors = [
-//            UIColor.purple.cgColor,
-//            UIColor.red.cgColor
-//        ]
-//        gradientLayer.startPoint = CGPoint(x: 0.5, y: 0)
-//        gradientLayer.endPoint = CGPoint(x: 0.5, y: 1)
-//        
-//        if let superview = button.superview {
-//            let adjustedFrame = superview.convert(button.frame, to: superview)
-//            let backgroundView = UIView(frame: adjustedFrame)
-//            gradientLayer.frame = CGRect(origin: .zero, size: adjustedFrame.size)
-//            gradientLayer.cornerRadius = button.layer.cornerRadius
-//            
-//            backgroundView.layer.insertSublayer(gradientLayer, at: 0)
-//            backgroundView.layer.cornerRadius = button.layer.cornerRadius
-//            backgroundView.layer.shadowColor = UIColor.purple.cgColor
-//            backgroundView.layer.shadowOffset = CGSize(width: 0, height: 3)
-//            backgroundView.layer.shadowOpacity = 0.3
-//            backgroundView.layer.shadowRadius = 6
-//            backgroundView.layer.masksToBounds = false
-//            
-//            superview.addSubview(backgroundView)
-//            superview.bringSubviewToFront(button)
-//        }
-//    }
-    
 }
 
