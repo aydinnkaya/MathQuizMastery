@@ -23,4 +23,5 @@ enum LocalizedKey : String {
     case ok_button
     case cancel_button
     case weak_password
+    case login_success
 }

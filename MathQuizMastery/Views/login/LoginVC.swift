@@ -14,43 +14,58 @@ class LoginVC: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var fargotPasswordButtonLabel: UIButton!
     @IBOutlet weak var loginButton: UIButton!
     
-    
-    private var viewModel = LoginViewModel()
+    // MARK: - Properties
     private var errorLabels: [UITextField: UILabel] = [:]
+    private var viewModel: LoginScreenViewModelProtocol = LoginViewModel()
     private var loadingAlert: UIAlertController?
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setupUI()
+        configureGesture()
+        assignDelegates()
+        bindViewModel()
         setupGradientBackground()
-        configureTextField(emailTextField, placeholderText: " Enter your email", iconName: "envelope.fill")
-        configureTextField(passwordTextField, placeholderText: " Enter your password", iconName: "lock.fill")
-        
-        
-        configureTextFieldBackground(for: emailTextField)
-        configureTextFieldBackground(for: passwordTextField)
-        configureButton(loginButton)
-        emailTextField.delegate = self
-        passwordTextField.delegate = self
-        
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-        view.addGestureRecognizer(tapGesture)
-        
+        loginButton.applyStyledButton(withTitle: "Log In")
+      
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        loginButton.updateGradientFrameIfNeeded()
+    }
+    
+    private func setupUI() {
+        emailTextField.applyStyledAppearance(placeholder: L(.enter_email), iconName: "envelope.fill")
+        emailTextField.addStyledBackground(in: view)
+
+        passwordTextField.applyStyledAppearance(placeholder: L(.enter_password), iconName: "lock.fill")
+        passwordTextField.addStyledBackground(in: view)
+
+//        configureButton(loginButton)
+        addErrorLabel(below: emailTextField)
+        addErrorLabel(below: passwordTextField)
     }
     
     // MARK: - UI Setup
-    private func configureUI() {
-        configureTextField(emailTextField, placeholderText: L(.enter_email), iconName: "envelope.fill")
-        configureTextField(passwordTextField, placeholderText: L(.enter_password), iconName: "lock.fill")
-        configureButton(loginButton)
-    }
+//    private func setupUI() {
+//        configureTextField(emailTextField, placeholderText: L(.enter_email), iconName: "envelope.fill")
+//        configureTextField(passwordTextField, placeholderText: L(.enter_password), iconName: "lock.fill")
+//        configureButton(loginButton)
+//        addErrorLabel(below: emailTextField)
+//        addErrorLabel(below: passwordTextField)
+//    }
     
+//    private func configureUI() {
+//        configureTextField(emailTextField, placeholderText: L(.enter_email), iconName: "envelope.fill")
+//        configureTextField(passwordTextField, placeholderText: L(.enter_password), iconName: "lock.fill")
+//        configureButton(loginButton)
+//    }
     
     private func bindViewModel() {
         viewModel.delegate = self
     }
-    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "",
@@ -126,7 +141,7 @@ extension LoginVC: LoginViewModelDelegate {
 }
 
 // MARK: - UITextFieldDelegate
-extension LoginVC: UITextFieldDelegate {
+extension LoginVC {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
@@ -193,16 +208,7 @@ extension LoginVC {
     }
 }
 
-
-
-
-
 extension LoginVC {
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
-    }
     
     func setupGradientBackground() {
         let gradientLayer = CAGradientLayer()
@@ -215,109 +221,40 @@ extension LoginVC {
         gradientLayer.startPoint = CGPoint(x: 0, y: 0)
         gradientLayer.endPoint = CGPoint(x: 1, y: 1)
         self.view.layer.insertSublayer(gradientLayer, at: 0)
-        
     }
     
-    func configureButton(_ button : UIButton){
-        
-        button.layer.cornerRadius = 12
-        button.layer.borderWidth = 2
-        button.layer.borderColor = UIColor(red: 1.0, green: 0.8627, blue: 0.0, alpha: 1.0).cgColor
-        button.backgroundColor = .clear
-        
-        
-        
-        let gradientLayer = CAGradientLayer()
-        gradientLayer.colors = [
-            UIColor.purple.cgColor,
-            UIColor.red.cgColor
-        ]
-        gradientLayer.startPoint = CGPoint(x: 0.5, y: 0)
-        gradientLayer.endPoint = CGPoint(x: 0.5, y: 1)
-        
-        
-        
-        if let superview = button.superview {
-            let adjustedFrame = superview.convert(button.frame, to: superview)
-            let backgroundView = UIView(frame: adjustedFrame)
-            gradientLayer.frame = CGRect(origin: .zero, size: adjustedFrame.size)
-            gradientLayer.cornerRadius = button.layer.cornerRadius
-            
-            backgroundView.layer.insertSublayer(gradientLayer, at: 0)
-            backgroundView.layer.cornerRadius = button.layer.cornerRadius
-            backgroundView.layer.shadowColor = UIColor.purple.cgColor
-            backgroundView.layer.shadowOffset = CGSize(width: 0, height: 3)
-            backgroundView.layer.shadowOpacity = 0.3
-            backgroundView.layer.shadowRadius = 6
-            backgroundView.layer.masksToBounds = false
-            
-            superview.addSubview(backgroundView)
-            superview.bringSubviewToFront(button)
-        }
-        
-    }
+//    func configureButton(_ button : UIButton){
+//        button.layer.cornerRadius = 12
+//        button.layer.borderWidth = 2
+//        button.layer.borderColor = UIColor(red: 1.0, green: 0.8627, blue: 0.0, alpha: 1.0).cgColor
+//        button.backgroundColor = .clear
+//      
+//        let gradientLayer = CAGradientLayer()
+//        gradientLayer.colors = [
+//            UIColor.purple.cgColor,
+//            UIColor.red.cgColor
+//        ]
+//        gradientLayer.startPoint = CGPoint(x: 0.5, y: 0)
+//        gradientLayer.endPoint = CGPoint(x: 0.5, y: 1)
+//        
+//        if let superview = button.superview {
+//            let adjustedFrame = superview.convert(button.frame, to: superview)
+//            let backgroundView = UIView(frame: adjustedFrame)
+//            gradientLayer.frame = CGRect(origin: .zero, size: adjustedFrame.size)
+//            gradientLayer.cornerRadius = button.layer.cornerRadius
+//            
+//            backgroundView.layer.insertSublayer(gradientLayer, at: 0)
+//            backgroundView.layer.cornerRadius = button.layer.cornerRadius
+//            backgroundView.layer.shadowColor = UIColor.purple.cgColor
+//            backgroundView.layer.shadowOffset = CGSize(width: 0, height: 3)
+//            backgroundView.layer.shadowOpacity = 0.3
+//            backgroundView.layer.shadowRadius = 6
+//            backgroundView.layer.masksToBounds = false
+//            
+//            superview.addSubview(backgroundView)
+//            superview.bringSubviewToFront(button)
+//        }
+//    }
     
-    func configureTextField(_ textField: UITextField, placeholderText: String, iconName: String) {
-        textField.layer.cornerRadius = 12
-        textField.layer.borderWidth = 2
-        textField.layer.borderColor = UIColor(red: 1.0, green: 0.8627, blue: 0.0, alpha: 1.0).cgColor
-        textField.backgroundColor = .clear
-        textField.textColor = .black
-        textField.font = UIFont.systemFont(ofSize: 16, weight: .bold)
-        
-        let iconAttachment = NSTextAttachment()
-        iconAttachment.image = UIImage(systemName: iconName)?.withTintColor(.black, renderingMode: .alwaysOriginal)
-        iconAttachment.bounds = CGRect(x: 0, y: -4, width: 25, height: 25)
-        
-        let iconString = NSAttributedString(attachment: iconAttachment)
-        let textString = NSAttributedString(string: " \(placeholderText)", attributes: [
-            .foregroundColor: UIColor.black,
-            .font: UIFont.systemFont(ofSize: 16, weight: .medium)
-        ])
-        
-        let combinedString = NSMutableAttributedString()
-        combinedString.append(iconString)
-        combinedString.append(textString)
-        
-        textField.attributedPlaceholder = combinedString
-        textField.contentVerticalAlignment = .center
-        
-    }
-    
-    func configureTextFieldBackground(for textField: UITextField) {
-        
-        textField.superview?.layer.sublayers?
-            .filter { $0 is CAGradientLayer }
-            .forEach { $0.removeFromSuperlayer() }
-        
-        let gradientLayer = CAGradientLayer()
-        gradientLayer.colors = [
-            UIColor(red: 0.8, green: 0.85, blue: 0.9, alpha: 1).cgColor,
-            UIColor(red: 0.75, green: 0.75, blue: 0.9, alpha: 1).cgColor,
-            UIColor(red: 0.7, green: 0.8, blue: 0.85, alpha: 1).cgColor,
-            UIColor(red: 0.65, green: 0.65, blue: 0.8, alpha: 1).cgColor,
-            UIColor(red: 0.6, green: 0.7, blue: 0.75, alpha: 1).cgColor
-        ]
-        gradientLayer.startPoint = CGPoint(x: 0.5, y: 0)
-        gradientLayer.endPoint = CGPoint(x: 0.5, y: 1)
-        
-        if let superview = textField.superview {
-            let adjustedFrame = superview.convert(textField.frame, to: superview)
-            let backgroundView = UIView(frame: adjustedFrame)
-            gradientLayer.frame = CGRect(origin: .zero, size: adjustedFrame.size)
-            gradientLayer.cornerRadius = textField.layer.cornerRadius
-            
-            backgroundView.layer.insertSublayer(gradientLayer, at: 0)
-            backgroundView.layer.cornerRadius = textField.layer.cornerRadius
-            backgroundView.layer.shadowColor = UIColor.purple.cgColor
-            backgroundView.layer.shadowOffset = CGSize(width: 0, height: 3)
-            backgroundView.layer.shadowOpacity = 0.3
-            backgroundView.layer.shadowRadius = 6
-            backgroundView.layer.masksToBounds = false
-            
-            superview.addSubview(backgroundView)
-            superview.bringSubviewToFront(textField)
-        }
-    }
 }
 

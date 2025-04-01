@@ -14,7 +14,7 @@ protocol LoginViewModelDelegate : AnyObject {
 }
 
 
-class LoginViewModel {
+final class LoginViewModel : LoginScreenViewModelProtocol {
     
     weak var delegate : LoginViewModelDelegate?
     
