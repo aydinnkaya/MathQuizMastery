@@ -10,8 +10,6 @@ import CoreData
 import UIKit
 import CryptoKit
 
-
-
 // Core Data -> persistentContainer -> Managed Object Context
 
 final class CoreDataManager: CoreDataServiceProtocol {

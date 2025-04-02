@@ -9,6 +9,7 @@ import UIKit
 
 class LoginVC: UIViewController, UITextFieldDelegate {
     
+    // MARK: - IBOutlets
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var fargotPasswordButtonLabel: UIButton!
@@ -16,9 +17,20 @@ class LoginVC: UIViewController, UITextFieldDelegate {
     
     // MARK: - Properties
     private var errorLabels: [UITextField: UILabel] = [:]
-    private var viewModel: LoginScreenViewModelProtocol = LoginViewModel()
+    private let viewModel: LoginScreenViewModelProtocol
     private var loadingAlert: UIAlertController?
     
+    // MARK: - Initializer
+    init(viewModel: LoginScreenViewModelProtocol) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -33,6 +45,7 @@ class LoginVC: UIViewController, UITextFieldDelegate {
         loginButton.updateGradientFrameIfNeeded()
     }
     
+    // MARK: - UI Setup
     private func setupUI() {
         emailTextField.applyStyledAppearance(placeholder: L(.enter_email), iconName: "envelope.fill")
         emailTextField.addStyledBackground(in: view)
@@ -44,11 +57,12 @@ class LoginVC: UIViewController, UITextFieldDelegate {
         addErrorLabel(below: passwordTextField)
     }
     
+    // MARK: - ViewModel Binding
     private func bindViewModel() {
         viewModel.delegate = self
     }
     
-    // MARK: - Gesture
+    // MARK: - Gesture Configuration
     private func configureGesture() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tap)
@@ -58,14 +72,13 @@ class LoginVC: UIViewController, UITextFieldDelegate {
         view.endEditing(true)
     }
     
-    // MARK: - TextField Delegates
+    // MARK: - Delegate Assignment
     private func assignDelegates() {
         emailTextField.delegate = self
         passwordTextField.delegate = self
     }
     
-    
-    // MARK: - IBAction
+    // MARK: - IBActions
     @IBAction func loginButtonTapped(_ sender: UIButton) {
         dismissKeyboard()
         clearErrors()
@@ -73,7 +86,7 @@ class LoginVC: UIViewController, UITextFieldDelegate {
         guard let emailField = emailTextField, let passwordField = passwordTextField else { return }
         
         let emailValidation = Validations.validateEmail(emailField.text)
-        let passwordValidation = Validations.validateRequired(passwordField.text, messageKey: .field_required)
+        let passwordValidation = Validations.validateRequired(passwordField.text, message: ValidationMessages.fieldRequired)
         
         var hasError = false
         
@@ -97,6 +110,7 @@ class LoginVC: UIViewController, UITextFieldDelegate {
         viewModel.login(email: emailField.text ?? "", password: passwordField.text ?? "")
     }
     
+    // MARK: - Navigation
     private func navigateToStartScreen(with uuid: UUID) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if let startVC = storyboard.instantiateViewController(withIdentifier: "StartVC") as? StartVC {
@@ -104,12 +118,11 @@ class LoginVC: UIViewController, UITextFieldDelegate {
             navigationController?.pushViewController(startVC, animated: true)
         }
     }
-    
 }
 
 // MARK: - LoginViewModelDelegate
 extension LoginVC: LoginViewModelDelegate {
-    func didLoginSuccessfully(uuid: UUID) {
+    func didLoginSuccessfully(userUUID uuid: UUID) {
         hideLoading()
         HapticManager.shared.success()
         ToastView.show(in: self.view, message: L(.login_success))
@@ -192,7 +205,7 @@ extension LoginVC {
     }
 }
 
-// MARK: - SetupGradientBackground
+// MARK: - Gradient Background
 extension LoginVC {
     func setupGradientBackground() {
         let gradientLayer = CAGradientLayer()
@@ -207,4 +220,3 @@ extension LoginVC {
         self.view.layer.insertSublayer(gradientLayer, at: 0)
     }
 }
-
