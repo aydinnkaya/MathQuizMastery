@@ -19,7 +19,6 @@ class LoginVC: UIViewController, UITextFieldDelegate {
     private var viewModel: LoginScreenViewModelProtocol = LoginViewModel()
     private var loadingAlert: UIAlertController?
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -27,7 +26,6 @@ class LoginVC: UIViewController, UITextFieldDelegate {
         assignDelegates()
         bindViewModel()
         setupGradientBackground()
-        
     }
     
     override func viewDidLayoutSubviews() {
