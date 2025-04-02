@@ -7,10 +7,17 @@
 
 import Foundation
 
+import Foundation
+
 final class Localizer {
     static let shared = Localizer()
+    
     private var currentLanguage: String {
-        return Locale.current.language.languageCode?.identifier ?? "en"
+        if #available(iOS 16, *) {
+            return Locale.current.language.languageCode?.identifier ?? "en"
+        } else {
+            return "en"
+        }
     }
 
     private var translations: [String: [String: String]] = [:]
@@ -39,5 +46,9 @@ final class Localizer {
 }
 
 func L(_ key: LocalizedKey) -> String {
-    return Localizer.shared.localized(for: key)
+    if #available(iOS 16, *) {
+        return Localizer.shared.localized(for: key)
+    } else {
+        return NSLocalizedString(key.rawValue, comment: "")
+    }
 }

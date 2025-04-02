@@ -21,49 +21,38 @@ final class LoginViewModel: LoginScreenViewModelProtocol {
     }
     
     func login(email: String, password: String) {
-        let emailValidation = Validator.validateEmail(
-            email,
-            emptyMessage: "E-posta alanı boş olamaz",
-            invalidMessage: "Geçersiz e-posta formatı"
-        )
-        let passwordValidation = Validator.validatePassword(
-            password,
-            emptyMessage: "Şifre alanı boş olamaz",
-            weakMessage: "Şifre en az 6 karakter olmalıdır"
-        )
-        
-        let validationResult = Validator.validate([emailValidation, passwordValidation])
-        if case .invalid(let message) = validationResult {
-            delegate?.didFailWithError(NSError(
-                domain: "Validation",
-                code: 400,
-                userInfo: [NSLocalizedDescriptionKey: message]
-            ))
+        guard case .valid = Validator.validateEmail(email) else {
+            notifyFailure(with: "Geçersiz e-posta formatı")
             return
         }
         
-        coreDataManager.fetchUser(email: email, password: password) { result in
-            switch result {
-            case .success(let user):
-                if let user = user, let userUUID = user.uuid {
-                    DispatchQueue.main.async {
-                        self.delegate?.didLoginSuccessfully(userUUID: userUUID)
-                    }
-                } else {
-                    let error = NSError(
-                        domain: "Auth",
-                        code: 403,
-                        userInfo: [NSLocalizedDescriptionKey: "Geçersiz e-posta veya şifre"]
-                    )
-                    DispatchQueue.main.async {
-                        self.delegate?.didFailWithError(error)
-                    }
-                }
-            case .failure(let error):
-                DispatchQueue.main.async {
+        guard case .valid = Validator.validatePassword(password) else {
+            notifyFailure(with: "Şifre gereksinimleri karşılanmıyor")
+            return
+        }
+        
+        coreDataManager.fetchUser(email: email, password: password) { [weak self] result in
+            guard let self = self else { return }
+            
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let user) where user?.uuid != nil:
+                    self.delegate?.didLoginSuccessfully(userUUID: user!.uuid!)
+                case .success:
+                    self.notifyFailure(with: "Geçersiz e-posta veya şifre")
+                case .failure(let error):
                     self.delegate?.didFailWithError(error)
                 }
             }
         }
+    }
+    
+    private func notifyFailure(with message: String) {
+        let error = NSError(
+            domain: "Auth",
+            code: 403,
+            userInfo: [NSLocalizedDescriptionKey: message]
+        )
+        delegate?.didFailWithError(error)
     }
 }

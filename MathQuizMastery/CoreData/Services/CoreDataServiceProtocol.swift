@@ -14,3 +14,4 @@ protocol CoreDataServiceProtocol {
     func fetchUser(with uuid: UUID, completion: @escaping (Result<Person, Error>) -> Void)
 }
 
+

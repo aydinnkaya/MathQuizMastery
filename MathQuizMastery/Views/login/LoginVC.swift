@@ -7,6 +7,7 @@
 
 import UIKit
 
+@available(iOS 16, *)
 class LoginVC: UIViewController, UITextFieldDelegate {
     
     // MARK: - IBOutlets
@@ -27,7 +28,9 @@ class LoginVC: UIViewController, UITextFieldDelegate {
     }
     
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        let defaultViewModel = LoginViewModel()
+        self.viewModel = defaultViewModel
+        super.init(coder: coder)
     }
     
     // MARK: - Lifecycle Methods
@@ -52,9 +55,10 @@ class LoginVC: UIViewController, UITextFieldDelegate {
         
         passwordTextField.applyStyledAppearance(placeholder: L(.enter_password), iconName: "lock.fill")
         passwordTextField.addStyledBackground(in: view)
-        loginButton.applyStyledButton(withTitle: "Log In")
-        addErrorLabel(below: emailTextField)
-        addErrorLabel(below: passwordTextField)
+        
+        loginButton.applyStyledButton(withTitle: "Login")
+        
+        [emailTextField, passwordTextField].forEach { addErrorLabel(below: $0) }
     }
     
     // MARK: - ViewModel Binding
@@ -83,14 +87,17 @@ class LoginVC: UIViewController, UITextFieldDelegate {
         dismissKeyboard()
         clearErrors()
         
-        guard let emailField = emailTextField, let passwordField = passwordTextField else { return }
+        let emailValidation = Validator.validateEmail(emailTextField.text)
+        let passwordValidation = Validator.validateRequired(passwordTextField.text, message: L(.enter_password_required))
         
-        let emailValidation = Validations.validateEmail(emailField.text)
-        let passwordValidation = Validations.validateRequired(passwordField.text, message: ValidationMessages.fieldRequired)
+        let validations: [(ValidationResult, UITextField)] = [
+            (emailValidation, emailTextField),
+            (passwordValidation, passwordTextField)
+        ]
         
         var hasError = false
         
-        for (validation, field) in [(emailValidation, emailField), (passwordValidation, passwordField)] {
+        for (validation, field) in validations {
             switch validation {
             case .valid:
                 setValid(for: field)
@@ -107,7 +114,7 @@ class LoginVC: UIViewController, UITextFieldDelegate {
         
         HapticManager.shared.mediumImpact()
         showLoading()
-        viewModel.login(email: emailField.text ?? "", password: passwordField.text ?? "")
+        viewModel.login(email: emailTextField.text ?? "", password: passwordTextField.text ?? "")
     }
     
     // MARK: - Navigation
@@ -121,6 +128,7 @@ class LoginVC: UIViewController, UITextFieldDelegate {
 }
 
 // MARK: - LoginViewModelDelegate
+@available(iOS 16, *)
 extension LoginVC: LoginViewModelDelegate {
     func didLoginSuccessfully(userUUID uuid: UUID) {
         hideLoading()
@@ -137,7 +145,8 @@ extension LoginVC: LoginViewModelDelegate {
 }
 
 // MARK: - UITextFieldDelegate
-extension LoginVC {
+@available(iOS 16, *)
+extension LoginVC: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
@@ -145,11 +154,8 @@ extension LoginVC {
 }
 
 // MARK: - Inline Error Helpers
+@available(iOS 16, *)
 extension LoginVC {
-    private func setupErrorLabels() {
-        [emailTextField, passwordTextField].forEach { addErrorLabel(below: $0) }
-    }
-    
     private func addErrorLabel(below textField: UITextField?) {
         guard let textField = textField, let parent = textField.superview else { return }
         
@@ -182,22 +188,25 @@ extension LoginVC {
     }
     
     private func clearErrors() {
-        for (field, label) in errorLabels {
-            field.layer.borderColor = UIColor.systemGray.cgColor
-            label.isHidden = true
-        }
+        errorLabels.forEach { $0.key.layer.borderColor = UIColor.systemGray.cgColor; $0.value.isHidden = true }
     }
 }
 
 // MARK: - Loading
+@available(iOS 16, *)
 extension LoginVC {
     private func showLoading() {
         loadingAlert = UIAlertController(title: nil, message: L(.loading), preferredStyle: .alert)
         let indicator = UIActivityIndicatorView(style: .large)
         indicator.startAnimating()
+        
         loadingAlert?.view.addSubview(indicator)
-        indicator.center = loadingAlert!.view.center
-        present(loadingAlert!, animated: true)
+        indicator.translatesAutoresizingMaskIntoConstraints = false
+        
+        present(loadingAlert!, animated: true) {
+            indicator.centerXAnchor.constraint(equalTo: self.loadingAlert!.view.centerXAnchor).isActive = true
+            indicator.centerYAnchor.constraint(equalTo: self.loadingAlert!.view.centerYAnchor).isActive = true
+        }
     }
     
     private func hideLoading() {
@@ -206,6 +215,7 @@ extension LoginVC {
 }
 
 // MARK: - Gradient Background
+@available(iOS 16, *)
 extension LoginVC {
     func setupGradientBackground() {
         let gradientLayer = CAGradientLayer()

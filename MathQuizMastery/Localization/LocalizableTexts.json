@@ -58,5 +58,11 @@
     "tr": "Lütfen bekleyin...",
     "de": "Bitte warten...",
     "es": "Por favor espera..."
-  }
+  },
+  "enter_password_required": {  
+      "en": "Please enter your password.",
+      "tr": "Lütfen şifrenizi giriniz.",
+      "de": "Bitte geben Sie Ihr Passwort ein.",
+      "es": "Por favor ingrese su contraseña."
+    }
 }
