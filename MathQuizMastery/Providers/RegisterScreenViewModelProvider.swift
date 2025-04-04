@@ -12,4 +12,5 @@ protocol RegisterScreenViewModelProtocol : AnyObject {
     func savePerson(name: String, email: String, password: String)
     func validateEmail(_ email: String) -> ValidationResult
     func validatePassword(_ password: String) -> ValidationResult
+    func validateName(_ name: String) -> ValidationResult
 }

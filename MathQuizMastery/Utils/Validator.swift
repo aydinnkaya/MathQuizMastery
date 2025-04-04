@@ -29,12 +29,10 @@ class Validator {
     private var rules: [ValidationRule]
     weak var delegate: ValidatorDelegate?
     
-    // Dependency Injection constructor
     init(rules: [ValidationRule]) {
         self.rules = rules
     }
     
-    // Tek bir alanı doğrulama
     func validate(value: String?) {
         for rule in rules {
             let result = rule.validate(value)
@@ -46,7 +44,6 @@ class Validator {
         delegate?.validationDidComplete(result: .valid)
     }
     
-    // Birden fazla alanı doğrulama
     func validateAll(values: [String?]) {
         for (index, rule) in rules.enumerated() {
             let result = rule.validate(values[safe: index] ?? nil)
@@ -59,11 +56,10 @@ class Validator {
     }
 }
 
-
 extension Validator {
     func validateEmail(_ value: String?) -> ValidationResult {
         guard let email = value, !email.isEmpty else {
-            return .invalid(ValidationMessages.fieldRequired)
+            return .invalid(L(.email_required))
         }
         
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
@@ -71,31 +67,28 @@ extension Validator {
         if emailTest.evaluate(with: email) {
             return .valid
         } else {
-            return .invalid(ValidationMessages.invalidEmailFormat)
+            return .invalid(L(.invalid_email))
         }
     }
 
     func validatePassword(_ value: String?) -> ValidationResult {
         guard let password = value, !password.isEmpty else {
-            return .invalid(ValidationMessages.fieldRequired)
+            return .invalid(L(.password_required))
         }
         if password.count < 6 {
-            return .invalid(ValidationMessages.shortPassword)
+            return .invalid(L(.password_too_short))
         }
         return .valid
     }
 
-    // Zorunlu alan doğrulama fonksiyonu
-    func validateRequiredField(_ value: String?, message: String) -> ValidationResult {
+    func validateRequiredField(_ value: String?, message: LocalizedKey) -> ValidationResult {
         guard let value = value, !value.isEmpty else {
-            return .invalid(message)
+            return .invalid(L(message))
         }
         return .valid
     }
-
 }
 
-// MARK: - Safe Array Extension (Index Out of Range hatasını önlemek için)
 extension Collection {
     subscript(safe index: Index) -> Element? {
         return indices.contains(index) ? self[index] : nil

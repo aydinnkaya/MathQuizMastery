@@ -26,4 +26,12 @@ enum LocalizedKey : String {
     case login_success
     case log_in
     case enter_password_required
+    case email_required
+    case password_required
+    case password_too_short
+    case name_required
+    case passwords_do_not_match
+    case success
+    case error
+    case warning 
 }

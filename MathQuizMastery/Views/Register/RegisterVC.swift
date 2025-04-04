@@ -8,8 +8,10 @@
 import UIKit
 
 
+import UIKit
+
 // MARK: - Register View Controller
-final class RegisterVC: UIViewController, UITextFieldDelegate {
+final class RegisterVC: UIViewController {
     
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
@@ -18,22 +20,14 @@ final class RegisterVC: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var createAccountButton: UIButton!
     
     private var errorLabels: [UITextField: UILabel] = [:]
-    private var viewModel: RegisterScreenViewModelProtocol = RegisterScreenViewModel()
-    private var loadingAlert : UIAlertController?
+    private var viewModel: RegisterScreenViewModel
     
+    private var loadingAlert: UIAlertController?
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        configureTextFields()
-        configureGesture()
-        assignTextFieldDelegates()
-        bindViewModel()
-        setupErrorLabels()
-    }
-    
-    init(viewModel: RegisterScreenViewModelProtocol = RegisterScreenViewModel()) {
-           self.viewModel = viewModel
-           super.init(nibName: nil, bundle: nil)
+    // MARK: - Init
+    init(viewModel: RegisterScreenViewModel = RegisterScreenViewModel()) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
     }
     
     required init?(coder: NSCoder) {
@@ -42,15 +36,23 @@ final class RegisterVC: UIViewController, UITextFieldDelegate {
         super.init(coder: coder)
     }
     
+    // MARK: - Lifecycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        configureUI()
+        bindViewModel()
+    }
+    
     // MARK: - ViewModel Binding
     private func bindViewModel() {
-      //  (viewModel as? RegisterScreenViewModel)?.delegate = self
+        viewModel.delegate = self
     }
     
     // MARK: - UI Setup
     private func configureUI() {
         configureTextFields()
         configureGesture()
+        assignTextFieldDelegates()
         setupErrorLabels()
     }
     
@@ -81,12 +83,43 @@ final class RegisterVC: UIViewController, UITextFieldDelegate {
     // MARK: - Actions
     @IBAction func createAccountButtonTapped(_ sender: UIButton) {
         dismissKeyboard()
+        clearErrors()
         
+        guard let name = nameTextField.text, let email = emailTextField.text,
+              let password = passwordTextField.text, let passwordAgain = passwordAgainTextField.text else {
+            return
+        }
+        
+        if password != passwordAgain {
+            setError(for: passwordAgainTextField, message: L(.passwords_do_not_match))
+            return
+        }
+        
+        showLoading()
+        viewModel.savePerson(name: name, email: email, password: password)
+    }
+}
+
+// MARK: - ViewModel Delegate
+extension RegisterVC: RegisterScreenViewModelDelegate {
+    func registrationSucceeded() {
+        hideLoading()
+       // showAlert(title: L(.success), message: L(.registration_success))
+    }
+
+    func registrationFailed(_ error: Error) {
+        hideLoading()
+       // showAlert(title: L(.error), message: error.localizedDescription)
+    }
+
+    func validationFailed(message: String) {
+        hideLoading()
+       // showAlert(title: L(.warning), message: message)
     }
 }
 
 // MARK: - UITextFieldDelegate
-extension RegisterVC {
+extension RegisterVC: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
@@ -179,7 +212,6 @@ extension RegisterVC {
 
 // MARK: - UI Customization
 extension RegisterVC {
-    
     private func configureGradientBackground() {
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = view.bounds
@@ -192,6 +224,4 @@ extension RegisterVC {
         gradientLayer.endPoint = CGPoint(x: 1, y: 1)
         view.layer.insertSublayer(gradientLayer, at: 0)
     }
-    
 }
-
