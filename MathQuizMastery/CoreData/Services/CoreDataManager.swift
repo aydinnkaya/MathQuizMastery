@@ -13,6 +13,7 @@ import CryptoKit
 class CoreDataManager: CoreDataServiceProtocol {
     private var persistenceService: PersistenceServiceProtocol
     
+    
     init(persistenceService: PersistenceServiceProtocol = CoreDataPersistenceService()) {
         self.persistenceService = persistenceService
     }
@@ -32,6 +33,7 @@ class CoreDataManager: CoreDataServiceProtocol {
         }
     }
     
+    // Result -> succes or fail
     func fetchUser(email: String, password: String, completion: @escaping (Result<Person?, Error>) -> Void) {
         let request: NSFetchRequest<Person> = Person.fetchRequest()
         request.predicate = NSPredicate(format: "email == %@ AND password == %@", email, hashPassword(password))
@@ -47,7 +49,6 @@ class CoreDataManager: CoreDataServiceProtocol {
     func fetchUser(with uuid: UUID, completion: @escaping (Result<Person, Error>) -> Void) {
         let request: NSFetchRequest<Person> = Person.fetchRequest()
         request.predicate = NSPredicate(format: "uuid == %@", uuid as CVarArg)
-        
         do {
             let users = try persistenceService.fetch(request: request)
             if let user = users.first {

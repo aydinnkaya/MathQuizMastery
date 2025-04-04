@@ -31,6 +31,17 @@ final class RegisterVC: UIViewController, UITextFieldDelegate {
         setupErrorLabels()
     }
     
+    init(viewModel: RegisterScreenViewModelProtocol = RegisterScreenViewModel()) {
+           self.viewModel = viewModel
+           super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        let defaultViewModel = RegisterScreenViewModel()
+        self.viewModel = defaultViewModel
+        super.init(coder: coder)
+    }
+    
     // MARK: - ViewModel Binding
     private func bindViewModel() {
       //  (viewModel as? RegisterScreenViewModel)?.delegate = self

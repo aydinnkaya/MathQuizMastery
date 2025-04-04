@@ -17,8 +17,12 @@ protocol RegisterScreenViewModelDelegate : AnyObject{
 
 // MARK: - Register Screen View Model
 final class RegisterScreenViewModel : RegisterScreenViewModelProtocol {
-    
+    private let coreDataManger : CoreDataServiceProtocol
     weak var delegate : RegisterScreenViewModelDelegate?
+    
+    init(coreDataManger : CoreDataServiceProtocol = CoreDataManager()) {
+        self.coreDataManger = coreDataManger
+    }
     
     func savePerson(name: String, email: String, password: String){
         guard !name.isEmpty, !email.isEmpty, !password.isEmpty else {
@@ -27,13 +31,12 @@ final class RegisterScreenViewModel : RegisterScreenViewModelProtocol {
             return
         }
         
-        CoreDataManager.shared.saveUser(name: name, email: email, password: password, completion: { result in
+        coreDataManger.saveUser(name: name, email: email, password: password, completion: { result in
             switch result {
             case .success() :
                 DispatchQueue.main.async {
                     self.delegate?.registrationSucceeded()
                 }
-                
             case .failure(let error):
                 let userFriendlyError = NSError(
                     domain: "com.mathquizmastery.registration",
@@ -43,11 +46,27 @@ final class RegisterScreenViewModel : RegisterScreenViewModelProtocol {
                 DispatchQueue.main.async {
                     self.delegate?.registrationFailed(userFriendlyError)
                 }
-                
             }
             
         })
-        
     }
+    
+    func validateEmail(_ email: String) -> ValidationResult {
+        if email.isEmpty {
+            return .invalid(L(.field_required))
+        } else if !email.contains("@") {
+            return .invalid(L(.invalid_email))
+        }
+        return .valid
+    }
+
+    func validPassword(_ password : String) -> ValidationResult{
+        if password.isEmpty{
+            return .invalid(L(.enter_password))
+        }
+        return .valid
+    }
+    
+    
     
 }

@@ -28,6 +28,7 @@ class CoreDataPersistenceService: PersistenceServiceProtocol {
         try context.save()
     }
 
+    // <T: NSManagedObject> -> generics Belirli bir veri türüne uygulanmasını sağlar (NSManagedObject ve onun alt sınıflarına)
     func fetch<T: NSManagedObject>(request: NSFetchRequest<T>) throws -> [T] {
         return try context.fetch(request)
     }

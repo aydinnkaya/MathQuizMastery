@@ -21,6 +21,7 @@ class StartVC: UIViewController {
     @IBOutlet weak var goldIcon: UIImageView!
     
     var userUUID: UUID?
+    private let coreDataManager: CoreDataServiceProtocol = CoreDataManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,13 +29,14 @@ class StartVC: UIViewController {
         navigationItem.hidesBackButton = true
         configureButton(buttonStartLabel)
         setupUserInfoView()
+        fetchUserData()
     }
     
     
     private func fetchUserData() {
         guard let uuid = userUUID else { return }
         
-        CoreDataManager.shared.fetchUser(with: uuid) { result in
+        coreDataManager.fetchUser(with: uuid) { result in
             switch result {
             case .success(let user):
                 DispatchQueue.main.async {

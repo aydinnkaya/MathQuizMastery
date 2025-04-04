@@ -22,9 +22,9 @@ class LoginVC: UIViewController, UITextFieldDelegate {
     private var loadingAlert: UIAlertController?
     
     // MARK: - Initializer
-    init(viewModel: LoginScreenViewModelProtocol) {
-        self.viewModel = viewModel
-        super.init(nibName: nil, bundle: nil)
+    init(viewModel: LoginScreenViewModelProtocol = LoginViewModel()) {
+           self.viewModel = viewModel
+           super.init(nibName: nil, bundle: nil)
     }
     
     required init?(coder: NSCoder) {
@@ -87,8 +87,8 @@ class LoginVC: UIViewController, UITextFieldDelegate {
         dismissKeyboard()
         clearErrors()
         
-        let emailValidation = Validator.validateEmail(emailTextField.text)
-        let passwordValidation = Validator.validateRequired(passwordTextField.text, message: L(.enter_password_required))
+        let emailValidation = viewModel.validateEmail(emailTextField.text ?? "")
+        let passwordValidation = viewModel.validatePassword(passwordTextField.text ?? "")
         
         let validations: [(ValidationResult, UITextField)] = [
             (emailValidation, emailTextField),
@@ -130,6 +130,12 @@ class LoginVC: UIViewController, UITextFieldDelegate {
 // MARK: - LoginViewModelDelegate
 @available(iOS 16, *)
 extension LoginVC: LoginViewModelDelegate {
+    func didValidationFail(message: String) {
+           hideLoading()
+           HapticManager.shared.error()
+           ToastView.show(in: self.view, message: message)
+       }
+ 
     func didLoginSuccessfully(userUUID uuid: UUID) {
         hideLoading()
         HapticManager.shared.success()
