@@ -12,25 +12,31 @@ protocol LoginViewModelDelegate: AnyObject {
     func didFailWithError(_ error: Error)
 }
 
-final class LoginViewModel: LoginScreenViewModelProtocol {
+final class LoginViewModel: LoginScreenViewModelProtocol, ValidatorDelegate {
     weak var delegate: LoginViewModelDelegate?
     private let coreDataManager: CoreDataServiceProtocol
+    private var validator: Validator
     
     init(coreDataManager: CoreDataServiceProtocol = CoreDataManager.shared) {
         self.coreDataManager = coreDataManager
+        self.validator = Validator(rules: [EmailValidator(), PasswordValidator()])
+        self.validator.delegate = self
     }
     
     func login(email: String, password: String) {
-        guard case .valid = Validator.validateEmail(email) else {
-            notifyFailure(with: "Geçersiz e-posta formatı")
-            return
+        validator.validateAll(values: [email, password])
+    }
+    
+    func validationDidComplete(result: ValidationResult) {
+        switch result {
+        case .valid:
+            performLogin()
+        case .invalid(let message):
+            notifyFailure(with: message)
         }
-        
-        guard case .valid = Validator.validatePassword(password) else {
-            notifyFailure(with: "Şifre gereksinimleri karşılanmıyor")
-            return
-        }
-        
+    }
+    
+    private func performLogin() {
         coreDataManager.fetchUser(email: email, password: password) { [weak self] result in
             guard let self = self else { return }
             
