@@ -28,7 +28,7 @@ final class Localizer {
 
     private func loadTranslations() {
         guard let url = Bundle.main.url(forResource: "LocalizableTexts", withExtension: "json") else {
-            print("⚠️ LocalizableTexts.json bulunamadı.")
+            print("LocalizableTexts.json bulunamadı.")
             return
         }
 
@@ -36,7 +36,7 @@ final class Localizer {
             let data = try Data(contentsOf: url)
             translations = try JSONDecoder().decode([String: [String: String]].self, from: data)
         } catch {
-            print("⚠️ JSON decode hatası: \(error.localizedDescription)")
+            print("JSON decode hatası: \(error.localizedDescription)")
         }
     }
 

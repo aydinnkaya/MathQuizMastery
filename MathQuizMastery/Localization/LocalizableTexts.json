@@ -3,150 +3,350 @@
     "en": "Register",
     "tr": "Kayıt Ol",
     "de": "Registrieren",
-    "es": "Registrarse"
+    "es": "Registrarse",
+    "fr": "S'inscrire",
+    "it": "Registrati",
+    "pt-BR": "Registrar",
+    "ja": "登録",
+    "ko": "가입하기",
+    "zh-Hans": "注册",
+    "ar": "تسجيل",
+    "nl": "Registreren"
   },
   "enter_name": {
     "en": "Enter your name",
     "tr": "İsminizi giriniz",
     "de": "Geben Sie Ihren Namen ein",
-    "es": "Ingrese su nombre"
+    "es": "Ingrese su nombre",
+    "fr": "Entrez votre nom",
+    "it": "Inserisci il tuo nome",
+    "pt-BR": "Digite seu nome",
+    "ja": "名前を入力してください",
+    "ko": "이름을 입력하세요",
+    "zh-Hans": "请输入您的姓名",
+    "ar": "أدخل اسمك",
+    "nl": "Voer uw naam in"
   },
   "enter_email": {
     "en": "Enter your email",
     "tr": "E-postanızı giriniz",
     "de": "Geben Sie Ihre E-Mail ein",
-    "es": "Ingrese su correo electrónico"
+    "es": "Ingrese su correo electrónico",
+    "fr": "Entrez votre e-mail",
+    "it": "Inserisci la tua email",
+    "pt-BR": "Digite seu e-mail",
+    "ja": "メールアドレスを入力してください",
+    "ko": "이메일을 입력하세요",
+    "zh-Hans": "请输入您的电子邮件",
+    "ar": "أدخل بريدك الإلكتروني",
+    "nl": "Voer uw e-mailadres in"
   },
   "enter_password": {
     "en": "Enter your password",
     "tr": "Şifrenizi giriniz",
     "de": "Geben Sie Ihr Passwort ein",
-    "es": "Ingrese su contraseña"
+    "es": "Ingrese su contraseña",
+    "fr": "Entrez votre mot de passe",
+    "it": "Inserisci la tua password",
+    "pt-BR": "Digite sua senha",
+    "ja": "パスワードを入力してください",
+    "ko": "비밀번호를 입력하세요",
+    "zh-Hans": "请输入您的密码",
+    "ar": "أدخل كلمة المرور",
+    "nl": "Voer uw wachtwoord in"
   },
   "reenter_password": {
     "en": "Re-enter your password",
     "tr": "Şifrenizi tekrar giriniz",
     "de": "Geben Sie Ihr Passwort erneut ein",
-    "es": "Vuelva a ingresar su contraseña"
+    "es": "Vuelva a ingresar su contraseña",
+    "fr": "Entrez à nouveau votre mot de passe",
+    "it": "Reinserisci la tua password",
+    "pt-BR": "Digite sua senha novamente",
+    "ja": "パスワードを再入力してください",
+    "ko": "비밀번호를 다시 입력하세요",
+    "zh-Hans": "请再次输入您的密码",
+    "ar": "أعد إدخال كلمة المرور",
+    "nl": "Voer uw wachtwoord opnieuw in"
   },
   "password_mismatch": {
     "en": "Passwords do not match.",
     "tr": "Şifreler uyuşmuyor.",
     "de": "Passwörter stimmen nicht überein.",
-    "es": "Las contraseñas no coinciden."
+    "es": "Las contraseñas no coinciden.",
+    "fr": "Les mots de passe ne correspondent pas.",
+    "it": "Le password non corrispondono.",
+    "pt-BR": "As senhas não coincidem.",
+    "ja": "パスワードが一致しません。",
+    "ko": "비밀번호가 일치하지 않습니다.",
+    "zh-Hans": "两次输入的密码不一致。",
+    "ar": "كلمتا المرور غير متطابقتين.",
+    "nl": "Wachtwoorden komen niet overeen."
   },
   "field_required": {
     "en": "This field is required.",
     "tr": "Bu alan zorunludur.",
     "de": "Dieses Feld ist erforderlich.",
-    "es": "Este campo es obligatorio."
+    "es": "Este campo es obligatorio.",
+    "fr": "Ce champ est obligatoire.",
+    "it": "Questo campo è obbligatorio.",
+    "pt-BR": "Este campo é obrigatório.",
+    "ja": "この項目は必須です。",
+    "ko": "이 필드는 필수입니다.",
+    "zh-Hans": "这是必填字段。",
+    "ar": "هذه الخانة مطلوبه.",
+    "nl": "Dit veld is verplicht."
   },
   "registration_success": {
     "en": "Registration completed successfully!",
     "tr": "Kayıt başarıyla tamamlandı!",
     "de": "Registrierung erfolgreich abgeschlossen!",
-    "es": "¡Registro completado con éxito!"
+    "es": "¡Registro completado con éxito!",
+    "fr": "Inscription réussie !",
+    "it": "Registrazione completata con successo!",
+    "pt-BR": "Registro concluído com sucesso!",
+    "ja": "登録が完了しました！",
+    "ko": "등록이 완료되었습니다!",
+    "zh-Hans": "注册成功！",
+    "ar": "تم التسجيل بنجاح!",
+    "nl": "Registratie succesvol voltooid!"
   },
   "registration_failed": {
     "en": "Registration failed. Please try again.",
     "tr": "Kayıt başarısız oldu. Lütfen tekrar deneyin.",
     "de": "Registrierung fehlgeschlagen. Bitte versuchen Sie es erneut.",
-    "es": "El registro ha fallado. Por favor, inténtelo de nuevo."
+    "es": "El registro ha fallado. Por favor, inténtelo de nuevo.",
+    "fr": "Échec de l'inscription. Veuillez réessayer.",
+    "it": "Registrazione fallita. Riprova.",
+    "pt-BR": "Falha no registro. Por favor, tente novamente.",
+    "ja": "登録に失敗しました。もう一度お試しください。",
+    "ko": "등록에 실패했습니다. 다시 시도해주세요.",
+    "zh-Hans": "注册失败。请再试一次。",
+    "ar": "فشل في التسجيل. حاول مرة أخرى.",
+    "nl": "Registratie mislukt. Probeer het opnieuw."
   },
   "invalid_email": {
     "en": "Please enter a valid email address.",
     "tr": "Geçerli bir e-posta adresi giriniz.",
     "de": "Bitte geben Sie eine gültige E-Mail-Adresse ein.",
-    "es": "Por favor, introduzca un correo electrónico válido."
+    "es": "Por favor, introduzca un correo electrónico válido.",
+    "fr": "Veuillez entrer une adresse e-mail valide.",
+    "it": "Inserisci un indirizzo email valido.",
+    "pt-BR": "Por favor, insira um endereço de e-mail válido.",
+    "ja": "有効なメールアドレスを入力してください。",
+    "ko": "유효한 이메일 주소를 입력하세요.",
+    "zh-Hans": "请输入有效的电子邮件地址。",
+    "ar": "يرجى إدخال عنوان بريد إلكتروني صالح.",
+    "nl": "Voer een geldig e-mailadres in."
   },
   "loading": {
     "en": "Please wait...",
     "tr": "Lütfen bekleyin...",
     "de": "Bitte warten...",
-    "es": "Por favor espera..."
+    "es": "Por favor espera...",
+    "fr": "Veuillez patienter...",
+    "it": "Attendere prego...",
+    "pt-BR": "Por favor, aguarde...",
+    "ja": "お待ちください...",
+    "ko": "잠시만 기다려주세요...",
+    "zh-Hans": "请稍候...",
+    "ar": "يرجى الانتظار...",
+    "nl": "Even geduld alstublieft..."
   },
   "ok_button": {
     "en": "OK",
     "tr": "Tamam",
     "de": "OK",
-    "es": "Aceptar"
+    "es": "Aceptar",
+    "fr": "OK",
+    "it": "OK",
+    "pt-BR": "OK",
+    "ja": "OK",
+    "ko": "확인",
+    "zh-Hans": "确定",
+    "ar": "موافق",
+    "nl": "OK"
   },
   "cancel_button": {
     "en": "Cancel",
     "tr": "İptal",
     "de": "Abbrechen",
-    "es": "Cancelar"
+    "es": "Cancelar",
+    "fr": "Annuler",
+    "it": "Annulla",
+    "pt-BR": "Cancelar",
+    "ja": "キャンセル",
+    "ko": "취소",
+    "zh-Hans": "取消",
+    "ar": "إلغاء",
+    "nl": "Annuleren"
   },
   "weak_password": {
     "en": "Password must be at least 6 characters.",
     "tr": "Şifre en az 6 karakter olmalıdır.",
     "de": "Das Passwort muss mindestens 6 Zeichen lang sein.",
-    "es": "La contraseña debe tener al menos 6 caracteres."
+    "es": "La contraseña debe tener al menos 6 caracteres.",
+    "fr": "Le mot de passe doit comporter au moins 6 caractères.",
+    "it": "La password deve contenere almeno 6 caratteri.",
+    "pt-BR": "A senha deve ter pelo menos 6 caracteres.",
+    "ja": "パスワードは6文字以上である必要があります。",
+    "ko": "비밀번호는 최소 6자 이상이어야 합니다.",
+    "zh-Hans": "密码至少需要6个字符。",
+    "ar": "يجب أن تتكون كلمة المرور من 6 أحرف على الأقل.",
+    "nl": "Wachtwoord moet minimaal 6 tekens bevatten."
   },
   "login_success": {
     "en": "Login successful!",
     "tr": "Giriş başarılı!",
     "de": "Anmeldung erfolgreich!",
-    "es": "¡Inicio de sesión exitoso!"
+    "es": "¡Inicio de sesión exitoso!",
+    "fr": "Connexion réussie !",
+    "it": "Accesso riuscito!",
+    "pt-BR": "Login bem-sucedido!",
+    "ja": "ログイン成功！",
+    "ko": "로그인 성공!",
+    "zh-Hans": "登录成功！",
+    "ar": "تم تسجيل الدخول بنجاح!",
+    "nl": "Succesvol ingelogd!"
   },
   "log_in": {
     "en": "Log In",
     "tr": "Giriş Yap",
     "de": "Anmelden",
-    "es": "Iniciar sesión"
+    "es": "Iniciar sesión",
+    "fr": "Connexion",
+    "it": "Accedi",
+    "pt-BR": "Entrar",
+    "ja": "ログイン",
+    "ko": "로그인",
+    "zh-Hans": "登录",
+    "ar": "تسجيل الدخول",
+    "nl": "Inloggen"
   },
   "enter_password_required": {
     "en": "Please enter your password.",
     "tr": "Lütfen şifrenizi giriniz.",
     "de": "Bitte geben Sie Ihr Passwort ein.",
-    "es": "Por favor ingrese su contraseña."
+    "es": "Por favor ingrese su contraseña.",
+    "fr": "Veuillez entrer votre mot de passe.",
+    "it": "Inserisci la tua password.",
+    "pt-BR": "Por favor, digite sua senha.",
+    "ja": "パスワードを入力してください。",
+    "ko": "비밀번호를 입력하세요.",
+    "zh-Hans": "请输入您的密码。",
+    "ar": "يرجى إدخال كلمة المرور.",
+    "nl": "Voer uw wachtwoord in."
   },
   "email_required": {
     "en": "Email is required.",
     "tr": "E-posta gereklidir.",
     "de": "E-Mail ist erforderlich.",
-    "es": "Se requiere correo electrónico."
+    "es": "Se requiere correo electrónico.",
+    "fr": "L'e-mail est requis.",
+    "it": "L'e-mail è obbligatoria.",
+    "pt-BR": "E-mail é obrigatório.",
+    "ja": "メールアドレスは必須です。",
+    "ko": "이메일은 필수입니다.",
+    "zh-Hans": "需要电子邮件地址。",
+    "ar": "البريد الإلكتروني مطلوب.",
+    "nl": "E-mailadres is verplicht."
   },
   "password_required": {
     "en": "Password is required.",
     "tr": "Şifre gereklidir.",
     "de": "Passwort ist erforderlich.",
-    "es": "Se requiere contraseña."
+    "es": "Se requiere contraseña.",
+    "fr": "Le mot de passe est requis.",
+    "it": "La password è obbligatoria.",
+    "pt-BR": "Senha é obrigatória.",
+    "ja": "パスワードは必須です。",
+    "ko": "비밀번호는 필수입니다.",
+    "zh-Hans": "需要密码。",
+    "ar": "كلمة المرور مطلوبة.",
+    "nl": "Wachtwoord is verplicht."
   },
   "password_too_short": {
     "en": "Password is too short.",
     "tr": "Şifre çok kısa.",
     "de": "Passwort ist zu kurz.",
-    "es": "La contraseña es demasiado corta."
+    "es": "La contraseña es demasiado corta.",
+    "fr": "Le mot de passe est trop court.",
+    "it": "La password è troppo corta.",
+    "pt-BR": "A senha é muito curta.",
+    "ja": "パスワードが短すぎます。",
+    "ko": "비밀번호가 너무 짧습니다.",
+    "zh-Hans": "密码太短。",
+    "ar": "كلمة المرور قصيرة جداً.",
+    "nl": "Wachtwoord is te kort."
   },
   "name_required": {
     "en": "Name is required.",
     "tr": "İsim gereklidir.",
     "de": "Name ist erforderlich.",
-    "es": "Se requiere nombre."
+    "es": "Se requiere nombre.",
+    "fr": "Le nom est requis.",
+    "it": "Il nome è obbligatorio.",
+    "pt-BR": "Nome é obrigatório.",
+    "ja": "名前は必須です。",
+    "ko": "이름은 필수입니다.",
+    "zh-Hans": "需要姓名。",
+    "ar": "الاسم مطلوب.",
+    "nl": "Naam is verplicht."
   },
   "passwords_do_not_match": {
     "en": "Passwords do not match.",
     "tr": "Şifreler uyuşmuyor.",
     "de": "Passwörter stimmen nicht überein.",
-    "es": "Las contraseñas no coinciden."
+    "es": "Las contraseñas no coinciden.",
+    "fr": "Les mots de passe ne correspondent pas.",
+    "it": "Le password non corrispondono.",
+    "pt-BR": "As senhas não coincidem.",
+    "ja": "パスワードが一致しません。",
+    "ko": "비밀번호가 일치하지 않습니다.",
+    "zh-Hans": "两次输入的密码不一致。",
+    "ar": "كلمتا المرور غير متطابقتين.",
+    "nl": "Wachtwoorden komen niet overeen."
   },
   "success": {
     "en": "Success",
     "tr": "Başarılı",
     "de": "Erfolg",
-    "es": "Éxito"
+    "es": "Éxito",
+    "fr": "Succès",
+    "it": "Successo",
+    "pt-BR": "Sucesso",
+    "ja": "成功",
+    "ko": "성공",
+    "zh-Hans": "成功",
+    "ar": "نجاح",
+    "nl": "Succes"
   },
   "error": {
     "en": "Error",
     "tr": "Hata",
     "de": "Fehler",
-    "es": "Error"
+    "es": "Error",
+    "fr": "Erreur",
+    "it": "Errore",
+    "pt-BR": "Erro",
+    "ja": "エラー",
+    "ko": "오류",
+    "zh-Hans": "错误",
+    "ar": "خطأ",
+    "nl": "Fout"
   },
   "warning": {
     "en": "Warning",
     "tr": "Uyarı",
     "de": "Warnung",
-    "es": "Advertencia"
+    "es": "Advertencia",
+    "fr": "Avertissement",
+    "it": "Avviso",
+    "pt-BR": "Aviso",
+    "ja": "警告",
+    "ko": "경고",
+    "zh-Hans": "警告",
+    "ar": "تحذير",
+    "nl": "Waarschuwing"
   }
 }

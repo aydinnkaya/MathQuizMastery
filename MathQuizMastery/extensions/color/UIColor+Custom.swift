@@ -36,7 +36,6 @@ extension UIColor {
     }
 }
 
-
 extension UIColor {
     struct Custom {
         static let background = UIColor("0095FF") ?? UIColor.white
