@@ -10,25 +10,31 @@ import Foundation
 protocol LoginViewModelDelegate: AnyObject {
     func didLoginSuccessfully(userUUID: UUID)
     func didFailWithError(_ error: Error)
-    func didValidationFail(message: String)
+    func didValidationFail(results: [ValidationResult])
 }
 
 class LoginViewModel: LoginScreenViewModelProtocol {
-    var delegate: LoginViewModelDelegate?
+    weak var delegate: LoginViewModelDelegate?
     private var coreDataManager: CoreDataServiceProtocol
-
-    init(coreDataManager: CoreDataServiceProtocol = CoreDataManager()) {
+    private var validator: ValidatorProtocol
+    
+    init(coreDataManager: CoreDataServiceProtocol = CoreDataManager(), validator: ValidatorProtocol = Validator()) {
         self.coreDataManager = coreDataManager
+        self.validator = Validator()
+        self.validator.delegate = self
     }
 
     func login(email: String, password: String) {
         coreDataManager.fetchUser(email: email, password: password) { result in
             switch result {
             case .success(let person):
-                if let user = person {
-                    self.delegate?.didLoginSuccessfully(userUUID: user.uuid!)
+                if let user = person, let uuid = user.uuid {
+                    self.delegate?.didLoginSuccessfully(userUUID: uuid)
                 } else {
-                    self.delegate?.didFailWithError(NSError(domain: "LoginError", code: 401, userInfo: [NSLocalizedDescriptionKey: "Invalid credentials."]))
+                    let error = NSError(domain: "LoginError",
+                                        code: 401,
+                                        userInfo: [NSLocalizedDescriptionKey: L(.registration_failed)])
+                    self.delegate?.didFailWithError(error)
                 }
             case .failure(let error):
                 self.delegate?.didFailWithError(error)
@@ -36,19 +42,13 @@ class LoginViewModel: LoginScreenViewModelProtocol {
         }
     }
 
-    func validateEmail(_ email: String) -> ValidationResult {
-        if email.isEmpty {
-            return .invalid(L(.field_required))
-        } else if !email.contains("@") {
-            return .invalid(L(.invalid_email))
-        }
-        return .valid
+    func validateInputs(email: String, password: String) {
+            validator.validateLogin(email: email, password: password)
     }
+}
 
-    func validatePassword(_ password: String) -> ValidationResult {
-        if password.isEmpty {
-            return .invalid(L(.password_mismatch))
-        }
-        return .valid
+extension LoginViewModel : ValidatorDelegate {
+    func validationDidComplete(results: [ValidationResult]) {
+        delegate?.didValidationFail(results: results)
     }
 }

@@ -2,226 +2,84 @@
 //  RegisterVC.swift
 //  MathQuizMastery
 //
-//  Created by Aydın KAYA on 21.01.2025.
+//  Created by Aydın KAYA on 6.04.2025.
 //
 
+import Foundation
 import UIKit
 
 
-import UIKit
-
-// MARK: - Register View Controller
-final class RegisterVC: UIViewController {
+class RegisterVC:  UIViewController, UITextFieldDelegate {
     
-    @IBOutlet weak var nameTextField: UITextField!
-    @IBOutlet weak var emailTextField: UITextField!
-    @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var passwordAgainTextField: UITextField!
-    @IBOutlet weak var createAccountButton: UIButton!
+    @IBOutlet weak var registerFullNameField: UITextField!
+    @IBOutlet weak var registerEmailField: UITextField!
+    @IBOutlet weak var registerPasswordField: UITextField!
+    @IBOutlet weak var registerConfirmPasswordField: UITextField!
+    @IBOutlet weak var registerSubmitButton: UIButton!
     
-    private var errorLabels: [UITextField: UILabel] = [:]
-    private var viewModel: RegisterScreenViewModel
-    
-    private var loadingAlert: UIAlertController?
-    
-    // MARK: - Init
-    init(viewModel: RegisterScreenViewModel = RegisterScreenViewModel()) {
-        self.viewModel = viewModel
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder: NSCoder) {
-        let defaultViewModel = RegisterScreenViewModel()
-        self.viewModel = defaultViewModel
-        super.init(coder: coder)
-    }
-    
-    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureUI()
-        bindViewModel()
-    }
-    
-    // MARK: - ViewModel Binding
-    private func bindViewModel() {
-        viewModel.delegate = self
-    }
-    
-    // MARK: - UI Setup
-    private func configureUI() {
-        configureTextFields()
+        setupUI()
         configureGesture()
-        assignTextFieldDelegates()
-        setupErrorLabels()
+        assignDelegates()
+        setupGradientBackground()
+
     }
     
-    private func configureTextFields() {
-        configureTextField(nameTextField, placeholderText: L(.enter_name), iconName: "person.fill")
-        configureTextField(emailTextField, placeholderText: L(.enter_email), iconName: "envelope.fill")
-        configureTextField(passwordTextField, placeholderText: L(.enter_password), iconName: "lock.fill")
-        configureTextField(passwordAgainTextField, placeholderText: L(.reenter_password), iconName: "lock.fill")
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        registerSubmitButton.updateGradientFrameIfNeeded()
     }
     
-    private func assignTextFieldDelegates() {
-        [nameTextField, emailTextField, passwordTextField, passwordAgainTextField].forEach { $0?.delegate = self }
+    
+    @IBAction func registerSubmitButtonTapped(_ sender: UIButton, forEvent event: UIEvent) {
+        
+    }
+
+}
+
+
+extension RegisterVC {
+    func setupUI(){
+        registerFullNameField.applyStyledAppearance(placeholder: L(.enter_email), iconName: "")
+        registerEmailField.applyStyledAppearance(placeholder: L(.enter_email), iconName: "envelope.fill")
+        registerPasswordField.applyStyledAppearance(placeholder: L(.enter_password), iconName: "lock.fill")
+        registerConfirmPasswordField.applyStyledAppearance(placeholder: L(.reenter_password), iconName: "lock.fill")
+        
+        registerFullNameField.addStyledBackground(in: view)
+        registerEmailField.addStyledBackground(in: view)
+        registerPasswordField.addStyledBackground(in: view)
+        registerConfirmPasswordField.addStyledBackground(in: view)
+
+        registerSubmitButton.applyStyledButton(withTitle: L(.register_title))
     }
     
-    private func configureGesture() {
+    func configureGesture() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tap)
     }
     
-    @objc private func dismissKeyboard() {
+    @objc func dismissKeyboard() {
         view.endEditing(true)
     }
     
-    private func setupErrorLabels() {
-        [nameTextField, emailTextField, passwordTextField, passwordAgainTextField].forEach { addErrorLabel(below: $0) }
+    func assignDelegates() {
+        registerFullNameField.delegate = self
+        registerEmailField.delegate = self
+        registerPasswordField.delegate = self
+        registerConfirmPasswordField.delegate = self
     }
     
-    // MARK: - Actions
-    @IBAction func createAccountButtonTapped(_ sender: UIButton) {
-        dismissKeyboard()
-        clearErrors()
-        
-        guard let name = nameTextField.text, let email = emailTextField.text,
-              let password = passwordTextField.text, let passwordAgain = passwordAgainTextField.text else {
-            return
-        }
-        
-        if password != passwordAgain {
-            setError(for: passwordAgainTextField, message: L(.passwords_do_not_match))
-            return
-        }
-        
-        showLoading()
-        viewModel.savePerson(name: name, email: email, password: password)
-    }
-}
-
-// MARK: - ViewModel Delegate
-extension RegisterVC: RegisterScreenViewModelDelegate {
-    func registrationSucceeded() {
-        hideLoading()
-       // showAlert(title: L(.success), message: L(.registration_success))
-    }
-
-    func registrationFailed(_ error: Error) {
-        hideLoading()
-       // showAlert(title: L(.error), message: error.localizedDescription)
-    }
-
-    func validationFailed(message: String) {
-        hideLoading()
-       // showAlert(title: L(.warning), message: message)
-    }
-}
-
-// MARK: - UITextFieldDelegate
-extension RegisterVC: UITextFieldDelegate {
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
-    }
-}
-
-// MARK: - UI Helpers
-extension RegisterVC {
-    private func configureTextField(_ textField: UITextField, placeholderText: String, iconName: String) {
-        textField.layer.cornerRadius = 12
-        textField.layer.borderWidth = 1.5
-        textField.layer.borderColor = UIColor.systemGray.cgColor
-        textField.backgroundColor = UIColor.tertiarySystemFill
-        textField.textColor = .label
-        textField.font = .systemFont(ofSize: 16, weight: .medium)
-        
-        let iconAttachment = NSTextAttachment()
-        iconAttachment.image = UIImage(systemName: iconName)?.withTintColor(.gray, renderingMode: .alwaysOriginal)
-        iconAttachment.bounds = CGRect(x: 0, y: -2, width: 20, height: 20)
-        
-        let iconString = NSAttributedString(attachment: iconAttachment)
-        let placeholder = NSAttributedString(string: " \(placeholderText)", attributes: [
-            .foregroundColor: UIColor.gray,
-            .font: UIFont.systemFont(ofSize: 16)
-        ])
-        
-        let final = NSMutableAttributedString()
-        final.append(iconString)
-        final.append(placeholder)
-        
-        textField.attributedPlaceholder = final
-    }
-}
-
-// MARK: - Error Label Management
-extension RegisterVC {
-    private func addErrorLabel(below textField: UITextField?) {
-        guard let textField = textField else { return }
-        let label = UILabel()
-        label.textColor = .systemRed
-        label.font = .systemFont(ofSize: 12)
-        label.numberOfLines = 0
-        label.isHidden = true
-        view.addSubview(label)
-        
-        label.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            label.leadingAnchor.constraint(equalTo: textField.leadingAnchor, constant: 8),
-            label.topAnchor.constraint(equalTo: textField.bottomAnchor, constant: 4),
-            label.trailingAnchor.constraint(equalTo: textField.trailingAnchor)
-        ])
-        
-        errorLabels[textField] = label
-    }
-    
-    private func setError(for textField: UITextField, message: String) {
-        textField.layer.borderColor = UIColor.systemRed.cgColor
-        errorLabels[textField]?.text = message
-        errorLabels[textField]?.isHidden = false
-    }
-    
-    private func setValid(for textField: UITextField) {
-        textField.layer.borderColor = UIColor.systemGreen.cgColor
-        errorLabels[textField]?.isHidden = true
-    }
-    
-    private func clearErrors() {
-        for (field, label) in errorLabels {
-            field.layer.borderColor = UIColor.systemGray.cgColor
-            label.isHidden = true
-        }
-    }
-}
-
-// MARK: - Loading Helpers
-extension RegisterVC {
-    private func showLoading() {
-        loadingAlert = UIAlertController(title: nil, message: L(.loading), preferredStyle: .alert)
-        let indicator = UIActivityIndicatorView(style: .large)
-        indicator.startAnimating()
-        loadingAlert?.view.addSubview(indicator)
-        indicator.center = loadingAlert!.view.center
-        present(loadingAlert!, animated: true)
-    }
-    
-    private func hideLoading() {
-        loadingAlert?.dismiss(animated: true)
-    }
-}
-
-// MARK: - UI Customization
-extension RegisterVC {
-    private func configureGradientBackground() {
+    func setupGradientBackground() {
         let gradientLayer = CAGradientLayer()
-        gradientLayer.frame = view.bounds
+        gradientLayer.frame = self.view.bounds
         gradientLayer.colors = [
-            UIColor.darkGray.cgColor,
             UIColor(red: 0.9, green: 0.7, blue: 0.0, alpha: 1.0).cgColor,
-            UIColor.red.cgColor
+           // UIColor(red: 0.8, green: 0.1, blue: 0.0, alpha: 1.0).cgColor,
+            UIColor(red: 0.3, green: 0.3, blue: 0.3, alpha: 1.0).cgColor
         ]
         gradientLayer.startPoint = CGPoint(x: 0, y: 0)
         gradientLayer.endPoint = CGPoint(x: 1, y: 1)
-        view.layer.insertSublayer(gradientLayer, at: 0)
+        self.view.layer.insertSublayer(gradientLayer, at: 0)
     }
 }

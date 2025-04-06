@@ -1,96 +1,106 @@
+//
+//  Validator.swift
+//  MathQuizMastery
+//
+//  Created by Aydın KAYA on 6.04.2025.
+//
+
 import Foundation
 
-// MARK: - ValidationResult
+protocol ValidatorProtocol {
+    var delegate: ValidatorDelegate? { get set }
+    func validateLogin(email: String?, password: String?)
+    func validateSignUp(name: String?, email: String?, password: String?, confirmPassword: String?)
+    
+}
+
+protocol ValidatorDelegate : AnyObject {
+    func validationDidComplete(results: [ValidationResult])
+}
+
 enum ValidationResult {
     case valid
-    case invalid(String)
+    case invalid(field: FieldKey, message: String)
 }
 
-// MARK: - ValidationMessages
-enum ValidationMessages {
-    static let fieldRequired = "Bu alan zorunludur."
-    static let invalidEmailFormat = "Geçersiz e-posta formatı."
-    static let shortPassword = "Şifre en az 6 karakter olmalıdır."
-}
-
-// MARK: - ValidationRule Protokolü
-protocol ValidationRule {
-    func validate(_ value: String?) -> ValidationResult
-}
-
-// MARK: - ValidatorDelegate
-protocol ValidatorDelegate: AnyObject {
-    func validationDidComplete(result: ValidationResult)
+enum FieldKey {
+    case email
+    case password
+    case name
+    case confirmPassword
 }
 
 
-// MARK: - Validator
-class Validator {
-    private var rules: [ValidationRule]
-    weak var delegate: ValidatorDelegate?
+class Validator : ValidatorProtocol { //  SOLID - Dependency Inversion
+    var delegate: (any ValidatorDelegate)? // retain cycle
     
-    init(rules: [ValidationRule]) {
-        self.rules = rules
-    }
-    
-    func validate(value: String?) {
-        for rule in rules {
-            let result = rule.validate(value)
-            if case .invalid = result {
-                delegate?.validationDidComplete(result: result)
-                return
-            }
+    func validateLogin(email: String?, password: String?) {
+        var results: [ValidationResult] = []
+        
+        if case .invalid = validateEmail(email) {
+            results.append(validateEmail(email))
         }
-        delegate?.validationDidComplete(result: .valid)
+        
+        if case .invalid = validatePassword(password) {
+            results.append(validatePassword(password))
+        }
+        
+        delegate?.validationDidComplete(results: results)
     }
     
-    func validateAll(values: [String?]) {
-        for (index, rule) in rules.enumerated() {
-            let result = rule.validate(values[safe: index] ?? nil)
-            if case .invalid = result {
-                delegate?.validationDidComplete(result: result)
-                return
-            }
+    func validateSignUp(name: String?, email: String?, password: String?, confirmPassword: String?) {
+        var results: [ValidationResult] = []
+        
+        if case .invalid = validateRequiredField(name, for: .name, message: .name_required) {
+            results.append(validateRequiredField(name, for: .name, message: .name_required))
         }
-        delegate?.validationDidComplete(result: .valid)
+        
+        if case .invalid = validateEmail(email) {
+            results.append(validateEmail(email))
+        }
+        
+        if case .invalid = validatePassword(password) {
+            results.append(validatePassword(password))
+        }
+        
+        if case .invalid = validatePasswordsMatch(password, confirmPassword) {
+            results.append(validatePasswordsMatch(password, confirmPassword))
+        }
+        
+        delegate?.validationDidComplete(results: results)
     }
+    
+    
 }
 
 extension Validator {
-    func validateEmail(_ value: String?) -> ValidationResult {
+    
+    private func validateEmail(_ value: String?) -> ValidationResult {
         guard let email = value, !email.isEmpty else {
-            return .invalid(L(.email_required))
+            return .invalid(field: .email, message: L(.email_required))
         }
+        let regex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}" // Regular Expression
+        let predicate = NSPredicate(format: "SELF MATCHES %@", regex)
         
-        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
-        let emailTest = NSPredicate(format: "SELF MATCHES %@", emailRegEx)
-        if emailTest.evaluate(with: email) {
-            return .valid
-        } else {
-            return .invalid(L(.invalid_email))
-        }
+        return predicate.evaluate(with: email) ? .valid : .invalid(field: .email, message: L(.invalid_email))
     }
-
-    func validatePassword(_ value: String?) -> ValidationResult {
+    
+    private func validatePassword(_ value: String?) -> ValidationResult {
         guard let password = value, !password.isEmpty else {
-            return .invalid(L(.password_required))
+            return .invalid(field: .password, message: L(.password_required))
         }
-        if password.count < 6 {
-            return .invalid(L(.password_too_short))
-        }
-        return .valid
+        return password.count < 6 ? .invalid(field: .password, message: L(.password_too_short)) : .valid
     }
-
-    func validateRequiredField(_ value: String?, message: LocalizedKey) -> ValidationResult {
+    
+    private func validateRequiredField(_ value: String?, for field : FieldKey, message: LocalizedKey) -> ValidationResult {
         guard let value = value, !value.isEmpty else {
-            return .invalid(L(message))
+            return .invalid(field: field, message: L(message))
         }
         return .valid
     }
-}
-
-extension Collection {
-    subscript(safe index: Index) -> Element? {
-        return indices.contains(index) ? self[index] : nil
+    
+    private func validatePasswordsMatch(_ password: String?, _ confirmPassword: String?) -> ValidationResult {
+        return password == confirmPassword ? .valid : .invalid(field: .confirmPassword, message: L(.passwords_do_not_match))
     }
+    
 }

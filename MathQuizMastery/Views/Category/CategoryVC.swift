@@ -27,7 +27,6 @@ class CategoryVC: UIViewController {
                configureButton(buttonCarpma, title: "Çarpma", imageName: "multiplication_icon")
                configureButton(buttonBolme, title: "Bölme", imageName: "division_icon")
                configureButton(buttonKarisik, title: "Karışık", imageName: "mixed_icon")
-        
     }
 
     func applyGradientBackground() {
