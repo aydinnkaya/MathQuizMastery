@@ -17,6 +17,17 @@ class RegisterVC:  UIViewController, UITextFieldDelegate {
     @IBOutlet weak var registerConfirmPasswordField: UITextField!
     @IBOutlet weak var registerSubmitButton: UIButton!
     
+    private var viewModel : RegisterViewModelProtocol
+    
+    
+    init(viewModel : RegisterViewModelProtocol = RegisterViewModel()){
+        self.viewModel = viewModel
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -32,16 +43,32 @@ class RegisterVC:  UIViewController, UITextFieldDelegate {
     }
     
     
-    @IBAction func registerSubmitButtonTapped(_ sender: UIButton, forEvent event: UIEvent) {
-        
+    @IBAction func registerSubmitButtonTapped(_ sender: Any) {
     }
+    
 
 }
 
+extension RegisterVC : RegisterViewModelDelegate{
+    func didRegisterSuccessfully() {
+        <#code#>
+    }
+    
+    func didFailWithError(_ error: any Error) {
+        HapticManager.shared.error()
+        ToastView.show(in: self.view, message: error.localizedDescription)
+    }
+    
+    func didValidationFail(results: [ValidationResult]) {
+        <#code#>
+    }
+    
+    
+}
 
 extension RegisterVC {
     func setupUI(){
-        registerFullNameField.applyStyledAppearance(placeholder: L(.enter_email), iconName: "")
+        registerFullNameField.applyStyledAppearance(placeholder: L(.enter_name), iconName: "person.fill")
         registerEmailField.applyStyledAppearance(placeholder: L(.enter_email), iconName: "envelope.fill")
         registerPasswordField.applyStyledAppearance(placeholder: L(.enter_password), iconName: "lock.fill")
         registerConfirmPasswordField.applyStyledAppearance(placeholder: L(.reenter_password), iconName: "lock.fill")

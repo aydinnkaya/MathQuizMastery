@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Zu4-Lc-R4n">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="DzU-Rk-BTv">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -228,7 +228,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vTU-6y-7QJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2181" y="428"/>
+            <point key="canvasLocation" x="598" y="245"/>
         </scene>
         <!--CategoryVC-->
         <scene sceneID="5Vo-Lm-p83">
@@ -330,7 +330,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r0w-wG-5Va" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="564" y="427"/>
+            <point key="canvasLocation" x="599" y="993"/>
         </scene>
         <!--RegisterVC-->
         <scene sceneID="r8n-6t-pBD">
@@ -377,19 +377,19 @@
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="48" id="vba-ou-xgL"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="password"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                                     </textField>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7kJ-f4-RHm">
+                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="252" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XpU-VK-n7Y" userLabel="Register Submit Button">
                                 <rect key="frame" x="40" y="660.66666666666663" width="313" height="34.333333333333371"/>
-                                <color key="backgroundColor" systemColor="systemGreenColor"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Create Account">
-                                    <color key="baseBackgroundColor" systemColor="systemGreenColor"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Sign up">
+                                    <color key="baseBackgroundColor" name="FBBC05"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <action selector="registerSubmitButtonTapped:forEvent:" destination="DzU-Rk-BTv" eventType="touchUpInside" id="oeY-SP-rVL"/>
+                                    <action selector="loginButtonTapped:" destination="nxB-Hs-Cnb" eventType="touchUpInside" id="HNs-aG-LUi"/>
+                                    <action selector="registerSubmitButtonTapped:" destination="DzU-Rk-BTv" eventType="touchUpInside" id="lkn-Uv-6v2"/>
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="Math_Quiz_Mastery_Transparent-removebg-preview" translatesAutoresizingMaskIntoConstraints="NO" id="mJn-2u-oyn">
@@ -399,15 +399,15 @@
                         <viewLayoutGuide key="safeArea" id="yZn-iS-SBZ"/>
                         <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="XpU-VK-n7Y" firstAttribute="leading" secondItem="yZn-iS-SBZ" secondAttribute="leading" constant="40" id="003-ln-Dqe"/>
                             <constraint firstItem="JQy-oH-6ps" firstAttribute="leading" secondItem="yZn-iS-SBZ" secondAttribute="leading" constant="20" id="2Ub-sX-RhJ"/>
+                            <constraint firstItem="XpU-VK-n7Y" firstAttribute="top" secondItem="JQy-oH-6ps" secondAttribute="bottom" constant="50" id="5hj-do-w87"/>
                             <constraint firstItem="mJn-2u-oyn" firstAttribute="top" secondItem="yZn-iS-SBZ" secondAttribute="top" constant="20" id="CLe-2I-m06"/>
                             <constraint firstItem="JQy-oH-6ps" firstAttribute="top" secondItem="mJn-2u-oyn" secondAttribute="bottom" constant="30" id="CkM-Il-vRm"/>
-                            <constraint firstItem="yZn-iS-SBZ" firstAttribute="trailing" secondItem="7kJ-f4-RHm" secondAttribute="trailing" constant="40" id="IiM-tx-rII"/>
-                            <constraint firstItem="7kJ-f4-RHm" firstAttribute="top" secondItem="JQy-oH-6ps" secondAttribute="bottom" constant="50" id="OIu-ds-BSZ"/>
                             <constraint firstItem="mJn-2u-oyn" firstAttribute="trailing" secondItem="yZn-iS-SBZ" secondAttribute="trailing" id="Ra1-cQ-4JE"/>
+                            <constraint firstItem="yZn-iS-SBZ" firstAttribute="bottom" secondItem="XpU-VK-n7Y" secondAttribute="bottom" constant="40" id="Rwp-vE-HzZ"/>
                             <constraint firstItem="mJn-2u-oyn" firstAttribute="leading" secondItem="yZn-iS-SBZ" secondAttribute="leading" id="TQq-yd-2yR"/>
-                            <constraint firstItem="yZn-iS-SBZ" firstAttribute="bottom" secondItem="7kJ-f4-RHm" secondAttribute="bottom" constant="40" id="TeG-rd-BVb"/>
-                            <constraint firstItem="7kJ-f4-RHm" firstAttribute="leading" secondItem="yZn-iS-SBZ" secondAttribute="leading" constant="40" id="l2R-gm-Wak"/>
+                            <constraint firstItem="yZn-iS-SBZ" firstAttribute="trailing" secondItem="XpU-VK-n7Y" secondAttribute="trailing" constant="40" id="cFH-DY-pxv"/>
                             <constraint firstItem="yZn-iS-SBZ" firstAttribute="trailing" secondItem="JQy-oH-6ps" secondAttribute="trailing" constant="20" id="s4M-94-rzJ"/>
                         </constraints>
                     </view>
@@ -417,12 +417,12 @@
                         <outlet property="registerEmailField" destination="Bva-ES-gdx" id="mvl-Ts-OId"/>
                         <outlet property="registerFullNameField" destination="oqd-54-NfH" id="1AV-zO-fTa"/>
                         <outlet property="registerPasswordField" destination="1yU-Pc-JRl" id="TJJ-XB-yIq"/>
-                        <outlet property="registerSubmitButton" destination="7kJ-f4-RHm" id="R8K-GL-KH7"/>
+                        <outlet property="registerSubmitButton" destination="XpU-VK-n7Y" id="5j2-uV-I7Z"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wRm-pR-YCx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="373" y="-473"/>
+            <point key="canvasLocation" x="371.75572519083966" y="-473.23943661971833"/>
         </scene>
         <!--GameVC-->
         <scene sceneID="tne-QT-ifu">
@@ -564,7 +564,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2900" y="468"/>
+            <point key="canvasLocation" x="1329" y="-468"/>
         </scene>
         <!--ResultScreen-->
         <scene sceneID="FLx-5p-NWQ">
@@ -666,7 +666,7 @@ Matematik kategoresinde
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9dJ-od-5V2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2002" y="-501"/>
+            <point key="canvasLocation" x="2074" y="-218"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="pxH-tc-QPg">
@@ -689,7 +689,7 @@ Matematik kategoresinde
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="n7d-hY-d18"/>
+        <segue reference="hRR-yn-gnp"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Image1" width="800" height="800"/>
@@ -706,7 +706,7 @@ Matematik kategoresinde
             <color red="0.98431372549019602" green="0.73725490196078436" blue="0.019607843137254902" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="secondarySystemBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="secondarySystemGroupedBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -715,19 +715,16 @@ Matematik kategoresinde
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemCyanColor">
-            <color red="0.19607843137254902" green="0.67843137254901964" blue="0.90196078431372551" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.1960784314" green="0.67843137249999996" blue="0.90196078430000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray3Color">
-            <color red="0.7803921568627451" green="0.7803921568627451" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.78039215689999997" green="0.78039215689999997" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray5Color">
-            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemGreenColor">
-            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemOrangeColor">
-            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="tableSeparatorDarkColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
