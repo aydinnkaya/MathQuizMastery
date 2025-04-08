@@ -10,4 +10,5 @@ import Foundation
 
 protocol RegisterViewModelProtocol{
     var delegate : RegisterViewModelDelegate? {get set}
+    func validateInputs(name: String?, email: String?, password: String?, confirmPassword: String?)
 }

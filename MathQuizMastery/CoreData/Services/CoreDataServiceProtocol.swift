@@ -13,5 +13,3 @@ protocol CoreDataServiceProtocol {
     func fetchUser(email: String, password: String, completion: @escaping (Result<Person?, Error>) -> Void)
     func fetchUser(with uuid: UUID, completion: @escaping (Result<Person, Error>) -> Void)
 }
-
-

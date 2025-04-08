@@ -28,7 +28,7 @@ class RegisterViewModel : RegisterViewModelProtocol {
         self.validator.delegate = self
     }
     
-    func validateInputs(username: String?, email: String?, password: String?, confirmPassword: String?){
+    func validateInputs(name username: String?, email: String?, password: String?, confirmPassword: String?){
         self.cachedName = username
         self.cachedEmail = email
         self.cachedPassword = password
@@ -40,6 +40,7 @@ class RegisterViewModel : RegisterViewModelProtocol {
             confirmPassword: confirmPassword
         )
     }
+    
     private func performRegistration() {
         guard let name = cachedName,
               let email = cachedEmail,

@@ -11,13 +11,16 @@ import CoreData
 class CoreDataPersistenceService: PersistenceServiceProtocol {
     private let persistentContainer: NSPersistentContainer
 
-    init(container: NSPersistentContainer = NSPersistentContainer(name: "DataModel")) {
+    init(container: NSPersistentContainer = NSPersistentContainer(name:"DataModel")) {
         self.persistentContainer = container
-        self.persistentContainer.loadPersistentStores { _, error in
+        self.persistentContainer.loadPersistentStores { (description, error) in
             if let error = error as NSError? {
                 print("❌ Core Data yükleme hatası: \(error), \(error.userInfo)")
+                return
             }
+            print("Persistent Store Yükleme Başarılı")
         }
+
     }
 
     var context: NSManagedObjectContext {

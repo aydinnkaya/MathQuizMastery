@@ -11,14 +11,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		0FA090822D2FAEB300D83F96 /* PBXContainerItemProxy */ = {
+		0FA0908C2D2FAEB300D83F96 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0FA090602D2FAEB000D83F96 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 0FA090672D2FAEB000D83F96;
 			remoteInfo = MathQuizMastery;
 		};
-		0FA0908C2D2FAEB300D83F96 /* PBXContainerItemProxy */ = {
+		0FCB455F2DA54296002D6239 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0FA090602D2FAEB000D83F96 /* Project object */;
 			proxyType = 1;
@@ -29,8 +29,9 @@
 
 /* Begin PBXFileReference section */
 		0FA090682D2FAEB000D83F96 /* MathQuizMastery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MathQuizMastery.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		0FA090812D2FAEB300D83F96 /* MathQuizMasteryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MathQuizMasteryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FA0908B2D2FAEB300D83F96 /* MathQuizMasteryUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MathQuizMasteryUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0FCB455B2DA54295002D6239 /* MathQuizMasteryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MathQuizMasteryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0FCB45672DA547CC002D6239 /* MathQuizMastery.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = MathQuizMastery.xctestplan; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -38,16 +39,8 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
-				MathQuizMasteryTests.swift,
 			);
 			target = 0FA090672D2FAEB000D83F96 /* MathQuizMastery */;
-		};
-		0FDC0F952D3C37410014E88A /* Exceptions for "MathQuizMastery" folder in "MathQuizMasteryTests" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				MathQuizMasteryTests.swift,
-			);
-			target = 0FA090802D2FAEB300D83F96 /* MathQuizMasteryTests */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
@@ -56,19 +49,18 @@
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
 				0FA090932D2FAEB300D83F96 /* Exceptions for "MathQuizMastery" folder in "MathQuizMastery" target */,
-				0FDC0F952D3C37410014E88A /* Exceptions for "MathQuizMastery" folder in "MathQuizMasteryTests" target */,
 			);
 			path = MathQuizMastery;
-			sourceTree = "<group>";
-		};
-		0FA090842D2FAEB300D83F96 /* MathQuizMasteryTests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = MathQuizMasteryTests;
 			sourceTree = "<group>";
 		};
 		0FA0908E2D2FAEB300D83F96 /* MathQuizMasteryUITests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = MathQuizMasteryUITests;
+			sourceTree = "<group>";
+		};
+		0FCB455C2DA54296002D6239 /* MathQuizMasteryTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = MathQuizMasteryTests;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -82,14 +74,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		0FA0907E2D2FAEB300D83F96 /* Frameworks */ = {
+		0FA090882D2FAEB300D83F96 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		0FA090882D2FAEB300D83F96 /* Frameworks */ = {
+		0FCB45582DA54295002D6239 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -102,9 +94,10 @@
 		0FA0905F2D2FAEB000D83F96 = {
 			isa = PBXGroup;
 			children = (
+				0FCB45672DA547CC002D6239 /* MathQuizMastery.xctestplan */,
 				0FA0906A2D2FAEB000D83F96 /* MathQuizMastery */,
-				0FA090842D2FAEB300D83F96 /* MathQuizMasteryTests */,
 				0FA0908E2D2FAEB300D83F96 /* MathQuizMasteryUITests */,
+				0FCB455C2DA54296002D6239 /* MathQuizMasteryTests */,
 				0FA090692D2FAEB000D83F96 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -113,8 +106,8 @@
 			isa = PBXGroup;
 			children = (
 				0FA090682D2FAEB000D83F96 /* MathQuizMastery.app */,
-				0FA090812D2FAEB300D83F96 /* MathQuizMasteryTests.xctest */,
 				0FA0908B2D2FAEB300D83F96 /* MathQuizMasteryUITests.xctest */,
+				0FCB455B2DA54295002D6239 /* MathQuizMasteryTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -145,29 +138,6 @@
 			productReference = 0FA090682D2FAEB000D83F96 /* MathQuizMastery.app */;
 			productType = "com.apple.product-type.application";
 		};
-		0FA090802D2FAEB300D83F96 /* MathQuizMasteryTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 0FA090992D2FAEB300D83F96 /* Build configuration list for PBXNativeTarget "MathQuizMasteryTests" */;
-			buildPhases = (
-				0FA0907D2D2FAEB300D83F96 /* Sources */,
-				0FA0907E2D2FAEB300D83F96 /* Frameworks */,
-				0FA0907F2D2FAEB300D83F96 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				0FA090832D2FAEB300D83F96 /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				0FA090842D2FAEB300D83F96 /* MathQuizMasteryTests */,
-			);
-			name = MathQuizMasteryTests;
-			packageProductDependencies = (
-			);
-			productName = MathQuizMasteryTests;
-			productReference = 0FA090812D2FAEB300D83F96 /* MathQuizMasteryTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 		0FA0908A2D2FAEB300D83F96 /* MathQuizMasteryUITests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0FA0909C2D2FAEB300D83F96 /* Build configuration list for PBXNativeTarget "MathQuizMasteryUITests" */;
@@ -191,6 +161,29 @@
 			productReference = 0FA0908B2D2FAEB300D83F96 /* MathQuizMasteryUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		0FCB455A2DA54295002D6239 /* MathQuizMasteryTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0FCB45612DA54296002D6239 /* Build configuration list for PBXNativeTarget "MathQuizMasteryTests" */;
+			buildPhases = (
+				0FCB45572DA54295002D6239 /* Sources */,
+				0FCB45582DA54295002D6239 /* Frameworks */,
+				0FCB45592DA54295002D6239 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0FCB45602DA54296002D6239 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				0FCB455C2DA54296002D6239 /* MathQuizMasteryTests */,
+			);
+			name = MathQuizMasteryTests;
+			packageProductDependencies = (
+			);
+			productName = MathQuizMasteryTests;
+			productReference = 0FCB455B2DA54295002D6239 /* MathQuizMasteryTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -198,18 +191,18 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1620;
+				LastSwiftUpdateCheck = 1630;
 				LastUpgradeCheck = 1620;
 				TargetAttributes = {
 					0FA090672D2FAEB000D83F96 = {
 						CreatedOnToolsVersion = 16.2;
 					};
-					0FA090802D2FAEB300D83F96 = {
+					0FA0908A2D2FAEB300D83F96 = {
 						CreatedOnToolsVersion = 16.2;
 						TestTargetID = 0FA090672D2FAEB000D83F96;
 					};
-					0FA0908A2D2FAEB300D83F96 = {
-						CreatedOnToolsVersion = 16.2;
+					0FCB455A2DA54295002D6239 = {
+						CreatedOnToolsVersion = 16.3;
 						TestTargetID = 0FA090672D2FAEB000D83F96;
 					};
 				};
@@ -233,8 +226,8 @@
 			projectRoot = "";
 			targets = (
 				0FA090672D2FAEB000D83F96 /* MathQuizMastery */,
-				0FA090802D2FAEB300D83F96 /* MathQuizMasteryTests */,
 				0FA0908A2D2FAEB300D83F96 /* MathQuizMasteryUITests */,
+				0FCB455A2DA54295002D6239 /* MathQuizMasteryTests */,
 			);
 		};
 /* End PBXProject section */
@@ -247,14 +240,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		0FA0907F2D2FAEB300D83F96 /* Resources */ = {
+		0FA090892D2FAEB300D83F96 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		0FA090892D2FAEB300D83F96 /* Resources */ = {
+		0FCB45592DA54295002D6239 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -271,14 +264,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		0FA0907D2D2FAEB300D83F96 /* Sources */ = {
+		0FA090872D2FAEB300D83F96 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		0FA090872D2FAEB300D83F96 /* Sources */ = {
+		0FCB45572DA54295002D6239 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -288,15 +281,15 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		0FA090832D2FAEB300D83F96 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 0FA090672D2FAEB000D83F96 /* MathQuizMastery */;
-			targetProxy = 0FA090822D2FAEB300D83F96 /* PBXContainerItemProxy */;
-		};
 		0FA0908D2D2FAEB300D83F96 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 0FA090672D2FAEB000D83F96 /* MathQuizMastery */;
 			targetProxy = 0FA0908C2D2FAEB300D83F96 /* PBXContainerItemProxy */;
+		};
+		0FCB45602DA54296002D6239 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0FA090672D2FAEB000D83F96 /* MathQuizMastery */;
+			targetProxy = 0FCB455F2DA54296002D6239 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -480,42 +473,6 @@
 			};
 			name = Release;
 		};
-		0FA0909A2D2FAEB300D83F96 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.aydinkaya.MathQuizMasteryTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MathQuizMastery.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MathQuizMastery";
-			};
-			name = Debug;
-		};
-		0FA0909B2D2FAEB300D83F96 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.aydinkaya.MathQuizMasteryTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MathQuizMastery.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MathQuizMastery";
-			};
-			name = Release;
-		};
 		0FA0909D2D2FAEB300D83F96 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -550,6 +507,44 @@
 			};
 			name = Release;
 		};
+		0FCB45622DA54296002D6239 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = Y4R5JS3HL6;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.aydinkaya.MathQuizMasteryTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MathQuizMastery.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MathQuizMastery";
+			};
+			name = Debug;
+		};
+		0FCB45632DA54296002D6239 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = Y4R5JS3HL6;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.aydinkaya.MathQuizMasteryTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MathQuizMastery.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MathQuizMastery";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -571,20 +566,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		0FA090992D2FAEB300D83F96 /* Build configuration list for PBXNativeTarget "MathQuizMasteryTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				0FA0909A2D2FAEB300D83F96 /* Debug */,
-				0FA0909B2D2FAEB300D83F96 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		0FA0909C2D2FAEB300D83F96 /* Build configuration list for PBXNativeTarget "MathQuizMasteryUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0FA0909D2D2FAEB300D83F96 /* Debug */,
 				0FA0909E2D2FAEB300D83F96 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0FCB45612DA54296002D6239 /* Build configuration list for PBXNativeTarget "MathQuizMasteryTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0FCB45622DA54296002D6239 /* Debug */,
+				0FCB45632DA54296002D6239 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

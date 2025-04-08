@@ -2,7 +2,7 @@
 //  Person+CoreDataProperties.swift
 //  MathQuizMastery
 //
-//  Created by AydınKaya on 2.04.2025.
+//  Created by AydınKaya on 8.04.2025.
 //
 //
 
