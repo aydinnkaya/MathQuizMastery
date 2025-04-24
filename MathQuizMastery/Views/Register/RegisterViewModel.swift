@@ -22,11 +22,15 @@ class RegisterViewModel : RegisterViewModelProtocol {
     private var cachedEmail: String?
     private var cachedPassword: String?
     
-    init(coreDataManager: CoreDataServiceProtocol = CoreDataManager(), validator: ValidatorProtocol = Validator()) {
+    init(
+        coreDataManager: CoreDataServiceProtocol = CoreDataManager(persistenceService: CoreDataPersistenceService()),
+        validator: ValidatorProtocol = Validator()
+    ) {
         self.coreDataManager = coreDataManager
-        self.validator = Validator()
+        self.validator = validator
         self.validator.delegate = self
     }
+
     
     func validateInputs(name username: String?, email: String?, password: String?, confirmPassword: String?){
         self.cachedName = username

@@ -18,11 +18,12 @@ class LoginViewModel: LoginScreenViewModelProtocol {
     private var coreDataManager: CoreDataServiceProtocol
     private var validator: ValidatorProtocol
     
-    init(coreDataManager: CoreDataServiceProtocol = CoreDataManager(), validator: ValidatorProtocol = Validator()) {
-        self.coreDataManager = coreDataManager
-        self.validator = Validator()
-        self.validator.delegate = self
-    }
+    init(coreDataManager: CoreDataServiceProtocol = CoreDataManager(persistenceService: CoreDataPersistenceService()),
+             validator: ValidatorProtocol = Validator()) {
+            self.coreDataManager = coreDataManager
+            self.validator = validator
+            self.validator.delegate = self
+        }
 
     func login(email: String, password: String) {
         coreDataManager.fetchUser(email: email, password: password) { result in

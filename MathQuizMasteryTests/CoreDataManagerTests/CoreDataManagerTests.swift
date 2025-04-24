@@ -12,13 +12,12 @@ import CoreData
 final class CoreDataManagerTests: XCTestCase {
     
     var coreDataManager: CoreDataManager!
-    var mockPersistenceService: MockPersistenceService!
     var context: NSManagedObjectContext!
-    
+
     override func setUpWithError() throws {
-        mockPersistenceService = MockPersistenceService()
-        coreDataManager = CoreDataManager(persistenceService: mockPersistenceService)
-        context = mockPersistenceService.context
+        let inMemoryService = CoreDataPersistenceService(inMemory: true)
+        coreDataManager = CoreDataManager(persistenceService: inMemoryService)
+        context = inMemoryService.context
     }
     
     override func tearDownWithError() throws {
@@ -50,8 +49,9 @@ final class CoreDataManagerTests: XCTestCase {
             }
         }
         
-        waitForExpectations(timeout: 100, handler: nil)
+        waitForExpectations(timeout: 5, handler: nil)
     }
+
     
     func testFetchUser() throws {
         let expectation = self.expectation(description: "Kullanıcı başarıyla çekildi")
@@ -65,18 +65,19 @@ final class CoreDataManagerTests: XCTestCase {
                         XCTAssertNotNil(user)
                         XCTAssertEqual(user?.name, "Aydın Kaya")
                         XCTAssertEqual(user?.email, "aydin@example.com")
+                        expectation.fulfill()
                     case .failure(let error):
                         XCTFail("Kullanıcı çekilemedi: \(error)")
                     }
-                    expectation.fulfill()
                 }
             case .failure(let error):
                 XCTFail("Kullanıcı kaydedilemedi: \(error)")
             }
         }
         
-        waitForExpectations(timeout: 100, handler: nil)
+        waitForExpectations(timeout: 5, handler: nil)
     }
+
     
     func testFetchUserWithUUID() throws {
         let expectation = self.expectation(description: "UUID ile kullanıcı başarıyla çekildi")
@@ -112,38 +113,7 @@ final class CoreDataManagerTests: XCTestCase {
             }
         }
         
-        waitForExpectations(timeout: 100, handler: nil)
-    }
-    
-    class MockPersistenceService: PersistenceServiceProtocol {
-        private var mockContext: NSManagedObjectContext
-        
-        init() {
-            let container = NSPersistentContainer(name: "DataModel")
-            container.loadPersistentStores { (description, error) in
-                if let error = error as NSError? {
-                    print("❌ Core Data yükleme hatası: \(error), \(error.userInfo)")
-                }
-            }
-            mockContext = container.viewContext
-        }
-        
-        var context: NSManagedObjectContext {
-            return mockContext
-        }
-        
-        func save<T: NSManagedObject>(_ object: T) throws {
-            try context.save()
-        }
-        
-        func fetch<T: NSManagedObject>(request: NSFetchRequest<T>) throws -> [T] {
-            return try context.fetch(request)
-        }
-        
-        func delete<T: NSManagedObject>(_ object: T) throws {
-            context.delete(object)
-            try context.save()
-        }
+        waitForExpectations(timeout: 5, handler: nil)
     }
 }
 

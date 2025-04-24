@@ -14,8 +14,12 @@ class CoreDataManager: CoreDataServiceProtocol {
     private var persistenceService: PersistenceServiceProtocol
     
     
-    init(persistenceService: PersistenceServiceProtocol = CoreDataPersistenceService()) {
-        self.persistenceService = persistenceService
+    init(inMemory: Bool = false, persistenceService: PersistenceServiceProtocol? = nil) {
+        if let service = persistenceService {
+            self.persistenceService = service
+        } else {
+            self.persistenceService = CoreDataPersistenceService(inMemory: inMemory)
+        }
     }
     
     func saveUser(name: String, email: String, password: String, completion: @escaping (Result<Void, Error>) -> Void) {

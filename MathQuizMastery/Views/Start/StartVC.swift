@@ -21,8 +21,8 @@ class StartVC: UIViewController {
     @IBOutlet weak var goldIcon: UIImageView!
     
     var userUUID: UUID?
-    private let coreDataManager: CoreDataServiceProtocol = CoreDataManager()
-    
+    private let coreDataManager: CoreDataServiceProtocol = CoreDataManager(inMemory: false)
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
