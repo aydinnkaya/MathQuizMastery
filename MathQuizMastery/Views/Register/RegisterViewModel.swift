@@ -15,7 +15,6 @@ protocol RegisterViewModelDelegate : AnyObject {
 
 class RegisterViewModel : RegisterViewModelProtocol {
     weak var delegate : RegisterViewModelDelegate?
-    private var coreDataManager: CoreDataServiceProtocol
     private var validator: ValidatorProtocol
     
     private var cachedName: String?
@@ -23,10 +22,8 @@ class RegisterViewModel : RegisterViewModelProtocol {
     private var cachedPassword: String?
     
     init(
-        coreDataManager: CoreDataServiceProtocol = CoreDataManager(persistenceService: CoreDataPersistenceService()),
         validator: ValidatorProtocol = Validator()
     ) {
-        self.coreDataManager = coreDataManager
         self.validator = validator
         self.validator.delegate = self
     }
@@ -51,22 +48,7 @@ class RegisterViewModel : RegisterViewModelProtocol {
               let password = cachedPassword else {
             return
         }
-        
-        coreDataManager.saveUser(name: name, email: email, password: password) { [weak self] result in
-            DispatchQueue.main.async {
-                switch result {
-                case .success():
-                    self?.delegate?.didRegisterSuccessfully()
-                case .failure(let error):
-                    let error = NSError(
-                        domain: "com.mathquizmastery.registration",
-                        code: 1002,
-                        userInfo: [NSLocalizedDescriptionKey: L(.registration_failed) + "\n(\(error.localizedDescription))"]
-                    )
-                    self?.delegate?.didFailWithError(error)
-                }
-            }
-        }
+       
     }
 }
 

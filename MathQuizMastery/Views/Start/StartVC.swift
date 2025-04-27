@@ -21,8 +21,6 @@ class StartVC: UIViewController {
     @IBOutlet weak var goldIcon: UIImageView!
     
     var userUUID: UUID?
-    private let coreDataManager: CoreDataServiceProtocol = CoreDataManager(inMemory: false)
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -36,21 +34,11 @@ class StartVC: UIViewController {
     private func fetchUserData() {
         guard let uuid = userUUID else { return }
         
-        coreDataManager.fetchUser(with: uuid) { result in
-            switch result {
-            case .success(let user):
-                DispatchQueue.main.async {
-                    self.updateUI(with: user)
-                }
-            case .failure(let error):
-                print("x Kullanıcı alınamadı: \(error.localizedDescription)")
-            }
-        }
+       
     }
     
-    private func updateUI(with user: Person) {
-        
-        print("Hoş geldin, \(user.name ?? "Kullanıcı")")
+    private func updateUI(with user: User) {
+        print("Hoş geldin, \(user.username ?? "Kullanıcı")")
     }
     
     

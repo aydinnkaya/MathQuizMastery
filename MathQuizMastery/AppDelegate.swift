@@ -10,6 +10,7 @@ import CoreData
 import IQKeyboardManagerSwift
 import IQKeyboardToolbarManager
 import IQKeyboardReturnManager
+import FirebaseCore
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -39,6 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         IQKeyboardToolbarManager.shared.playInputClicks = false
         
         IQKeyboardToolbarManager.shared.deepResponderAllowedContainerClasses.append(UIStackView.self)
+        FirebaseApp.configure()
         
         return true
     }

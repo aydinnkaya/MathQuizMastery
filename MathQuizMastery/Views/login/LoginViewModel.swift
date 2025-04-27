@@ -15,32 +15,15 @@ protocol LoginViewModelDelegate: AnyObject {
 
 class LoginViewModel: LoginScreenViewModelProtocol {
     weak var delegate: LoginViewModelDelegate?
-    private var coreDataManager: CoreDataServiceProtocol
     private var validator: ValidatorProtocol
     
-    init(coreDataManager: CoreDataServiceProtocol = CoreDataManager(persistenceService: CoreDataPersistenceService()),
-             validator: ValidatorProtocol = Validator()) {
-            self.coreDataManager = coreDataManager
+    init(validator: ValidatorProtocol = Validator()) {
             self.validator = validator
             self.validator.delegate = self
         }
 
     func login(email: String, password: String) {
-        coreDataManager.fetchUser(email: email, password: password) { result in
-            switch result {
-            case .success(let person):
-                if let user = person, let uuid = user.uuid {
-                    self.delegate?.didLoginSuccessfully(userUUID: uuid)
-                } else {
-                    let error = NSError(domain: "LoginError",
-                                        code: 401,
-                                        userInfo: [NSLocalizedDescriptionKey: L(.registration_failed)])
-                    self.delegate?.didFailWithError(error)
-                }
-            case .failure(let error):
-                self.delegate?.didFailWithError(error)
-            }
-        }
+        
     }
 
     func validateInputs(email: String, password: String) {
