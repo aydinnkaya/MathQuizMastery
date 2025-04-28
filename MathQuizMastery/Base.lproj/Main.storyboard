@@ -196,28 +196,16 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mj3-l8-ybz">
-                                <rect key="frame" x="159" y="683.66666666666663" width="75" height="34.333333333333371"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="out"/>
-                                <connections>
-                                    <action selector="didTabLogout:forEvent:" destination="61v-ZF-bpc" eventType="touchUpInside" id="h3h-Lc-yvQ"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Hid-a7-Egv"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Hid-a7-Egv" firstAttribute="trailing" secondItem="MP0-cK-6xd" secondAttribute="trailing" constant="100" id="76P-Yq-Gaf"/>
                             <constraint firstItem="Hid-a7-Egv" firstAttribute="trailing" secondItem="FFM-Em-vKG" secondAttribute="trailing" constant="20" id="EBB-aT-AFh"/>
-                            <constraint firstItem="Hid-a7-Egv" firstAttribute="trailing" secondItem="mj3-l8-ybz" secondAttribute="trailing" constant="159" id="ElK-O4-c2j"/>
-                            <constraint firstItem="Hid-a7-Egv" firstAttribute="bottom" secondItem="mj3-l8-ybz" secondAttribute="bottom" constant="100" id="IaU-2r-EKe"/>
                             <constraint firstItem="FFM-Em-vKG" firstAttribute="leading" secondItem="Hid-a7-Egv" secondAttribute="leading" constant="20" id="NTu-a4-ZaY"/>
-                            <constraint firstItem="mj3-l8-ybz" firstAttribute="leading" secondItem="Hid-a7-Egv" secondAttribute="leading" constant="159" id="QtZ-DE-dWq"/>
                             <constraint firstItem="Hid-a7-Egv" firstAttribute="trailing" secondItem="FFM-Em-vKG" secondAttribute="trailing" constant="20" id="aoT-d9-Sg5"/>
                             <constraint firstItem="FFM-Em-vKG" firstAttribute="top" secondItem="Hid-a7-Egv" secondAttribute="top" id="dc1-ub-Ozj"/>
                             <constraint firstItem="MP0-cK-6xd" firstAttribute="centerY" secondItem="tHt-Vx-6Ly" secondAttribute="centerY" id="lHc-5u-luN"/>
-                            <constraint firstItem="mj3-l8-ybz" firstAttribute="centerX" secondItem="tHt-Vx-6Ly" secondAttribute="centerX" id="mCD-jC-KAi"/>
                             <constraint firstItem="MP0-cK-6xd" firstAttribute="centerX" secondItem="tHt-Vx-6Ly" secondAttribute="centerX" id="n52-hr-2pr"/>
                             <constraint firstItem="MP0-cK-6xd" firstAttribute="top" secondItem="tHt-Vx-6Ly" secondAttribute="top" constant="403.66666666666663" id="qjd-oC-maW"/>
                             <constraint firstItem="FFM-Em-vKG" firstAttribute="top" secondItem="Hid-a7-Egv" secondAttribute="top" id="u91-LF-BNC"/>
@@ -228,7 +216,6 @@
                     <connections>
                         <outlet property="avatarImageView" destination="nWA-4E-opf" id="YQ1-n4-U2c"/>
                         <outlet property="buttonStartLabel" destination="MP0-cK-6xd" id="u3J-qV-tsw"/>
-                        <outlet property="didTapLogout" destination="tHt-Vx-6Ly" id="jc6-yH-bQ3"/>
                         <outlet property="goldIcon" destination="v9O-7b-601" id="5Zp-yZ-yUE"/>
                         <outlet property="goldLabel" destination="3fE-1L-1So" id="KSD-HJ-FPi"/>
                         <outlet property="goldStackView" destination="5xc-SB-MhO" id="IoE-SB-AMg"/>
@@ -236,7 +223,6 @@
                         <outlet property="userInfoStackView" destination="FFM-Em-vKG" id="wae-wf-fMz"/>
                         <outlet property="usernameLabel" destination="2pi-Vn-fh9" id="XgO-I1-Gmf"/>
                         <outlet property="usernameStackView" destination="ii6-hj-5u0" id="Ygp-RR-xih"/>
-                        <outletCollection property="didTabLogout" destination="tHt-Vx-6Ly" collectionClass="NSMutableArray" id="YOa-UB-xe7"/>
                         <segue destination="Zu4-Lc-R4n" kind="show" id="vYm-t7-mdQ"/>
                     </connections>
                 </viewController>

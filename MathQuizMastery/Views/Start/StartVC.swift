@@ -41,10 +41,10 @@ class StartVC: UIViewController {
         print("Hoş geldin, \(user.username ?? "Kullanıcı")")
     }
     
-    @IBAction func didTabLogout(_ sender: UIButton, forEvent event: UIEvent) {
-        
-        
-    }
+//    @IBAction func didTabLogout(_ sender: UIButton, forEvent event: UIEvent) {
+//        
+//        
+//    }
     
     
     

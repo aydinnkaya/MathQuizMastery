@@ -18,16 +18,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image-removebg" translatesAutoresizingMaskIntoConstraints="NO" id="NVJ-zP-oe1">
-                                <rect key="frame" x="73" y="306" width="265" height="313"/>
+                                <rect key="frame" x="0.0" y="148" width="393" height="486"/>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="NVJ-zP-oe1" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" constant="36.5" id="YZK-X5-244"/>
-                            <constraint firstItem="NVJ-zP-oe1" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" constant="9" id="Zlm-QG-wBX"/>
-                            <constraint firstItem="NVJ-zP-oe1" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="188" id="cSN-Km-ssn"/>
-                            <constraint firstItem="NVJ-zP-oe1" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="73" id="rrC-HW-MOW"/>
+                            <constraint firstItem="NVJ-zP-oe1" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="8M6-89-JJb"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="NVJ-zP-oe1" secondAttribute="bottom" constant="150" id="8QJ-Wb-j2G"/>
+                            <constraint firstItem="NVJ-zP-oe1" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="30" id="Na4-Pu-cFI"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="NVJ-zP-oe1" secondAttribute="trailing" id="PSM-dT-Qzd"/>
                         </constraints>
                     </view>
                 </viewController>
