@@ -18,7 +18,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         self.setupWindow(with: scene)
-        self.checkAuthentication()
+      //  self.checkAuthentication()
     }
     
     private func setupWindow(with scene: UIScene) {
@@ -27,7 +27,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         self.window = window
         self.window?.makeKeyAndVisible()
         
-       
+        
     }
     
     public func checkAuthentication() {
@@ -52,8 +52,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     private func goToController(with viewController: UIViewController) {
         DispatchQueue.main.async { [weak self] in
             UIView.animate(withDuration: 0.25) {
-                self?.window?.layer.opacity = 0
-                
+ 
             } completion: { [weak self] _ in
                 
                 let nav = UINavigationController(rootViewController: viewController)
