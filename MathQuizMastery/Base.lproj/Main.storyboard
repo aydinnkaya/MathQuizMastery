@@ -13,7 +13,7 @@
         <!--LoginVC-->
         <scene sceneID="lGM-I1-y2L">
             <objects>
-                <viewController id="nxB-Hs-Cnb" customClass="LoginVC" customModule="MathQuizMastery" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginVC" id="nxB-Hs-Cnb" customClass="LoginVC" customModule="MathQuizMastery" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hsW-Ck-Oae">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -142,7 +142,7 @@
         <!--StartVC-->
         <scene sceneID="GuZ-ag-Vze">
             <objects>
-                <viewController id="61v-ZF-bpc" customClass="StartVC" customModule="MathQuizMastery" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="StartVC" id="61v-ZF-bpc" customClass="StartVC" customModule="MathQuizMastery" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" ambiguous="YES" id="tHt-Vx-6Ly">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="783"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -335,7 +335,7 @@
         <!--RegisterVC-->
         <scene sceneID="r8n-6t-pBD">
             <objects>
-                <viewController id="DzU-Rk-BTv" customClass="RegisterVC" customModule="MathQuizMastery" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RegisterVC" id="DzU-Rk-BTv" customClass="RegisterVC" customModule="MathQuizMastery" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="FH9-Dm-l6h">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -688,7 +688,8 @@ Matematik kategoresinde
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="hRR-yn-gnp"/>
+        <segue reference="Gji-Cd-7s1"/>
+        <segue reference="vYm-t7-mdQ"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Image1" width="800" height="800"/>

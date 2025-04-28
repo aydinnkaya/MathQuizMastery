@@ -28,12 +28,6 @@ class LoginVC: UIViewController, UITextFieldDelegate {
         ]
     }
     
-    // MARK: - Initializer
-    init(viewModel: LoginScreenViewModelProtocol = LoginViewModel()) {
-        self.viewModel = viewModel
-        super.init(nibName: nil, bundle: nil)
-    }
-    
     required init?(coder: NSCoder) {
         let defaultViewModel = LoginViewModel()
         self.viewModel = defaultViewModel
@@ -103,7 +97,6 @@ extension LoginVC: LoginViewModelDelegate {
     }
 }
 
-@available(iOS 16, *)
 extension LoginVC {
     func setupUI() {
         emailTextField.applyStyledAppearance(placeholder: L(.enter_email), iconName: "envelope.fill")
