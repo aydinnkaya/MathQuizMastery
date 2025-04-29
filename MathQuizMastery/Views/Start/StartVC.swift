@@ -33,13 +33,17 @@ class StartVC: UIViewController {
     
     private func fetchUserData() {
         guard let uuid = userUUID else { return }
-        
-       
     }
     
     private func updateUI(with user: User) {
         print("Hoş geldin, \(user.username ?? "Kullanıcı")")
     }
+    
+//    @IBAction func didTabLogout(_ sender: UIButton, forEvent event: UIEvent) {
+//        
+//        
+//    }
+    
     
     
 }
@@ -66,6 +70,8 @@ private extension StartVC{
         userInfoStackView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(userInfoStackView)
     }
+    
+    
     
     func configureAvatarImageView(){
         avatarImageView.image = UIImage(named: "image2vector")

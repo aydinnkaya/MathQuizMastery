@@ -15,94 +15,50 @@ import FirebaseCore
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
-    
-    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
-        IQKeyboardManager.shared.isEnabled = true
-        //IQKeyboardManager.shared.isDebuggingEnabled = true
-        IQKeyboardToolbarManager.shared.isEnabled = true
-        IQKeyboardToolbarManager.shared.isDebuggingEnabled = true
-        IQKeyboardToolbarManager.shared.playInputClicks = false
-        
-        IQKeyboardToolbarManager.shared.toolbarConfiguration.useTextInputViewTintColor = true
-        IQKeyboardToolbarManager.shared.toolbarConfiguration.tintColor = UIColor.systemGreen
-        IQKeyboardToolbarManager.shared.toolbarConfiguration.barTintColor = UIColor.systemYellow
-        IQKeyboardToolbarManager.shared.toolbarConfiguration.previousNextDisplayMode = .alwaysShow
-        IQKeyboardToolbarManager.shared.toolbarConfiguration.manageBehavior = .byPosition
-        
-        
-        IQKeyboardToolbarManager.shared.toolbarConfiguration.placeholderConfiguration.showPlaceholder = false
-        IQKeyboardToolbarManager.shared.toolbarConfiguration.placeholderConfiguration.font = UIFont.italicSystemFont(ofSize: 14)
-        IQKeyboardToolbarManager.shared.toolbarConfiguration.placeholderConfiguration.color = UIColor.systemPurple
-        IQKeyboardToolbarManager.shared.toolbarConfiguration.placeholderConfiguration.buttonColor = UIColor.systemBrown
-        
-        IQKeyboardToolbarManager.shared.playInputClicks = false
-        
-        IQKeyboardToolbarManager.shared.deepResponderAllowedContainerClasses.append(UIStackView.self)
-        FirebaseApp.configure()
-        
+        configureKeyboardManager()
+        configureToolbarManager()
+        configureFirebase()
         return true
     }
     
-    // MARK: UISceneSession Lifecycle
+    // MARK: - Configuration Methods
+    private func configureKeyboardManager() {
+        let keyboardManager = IQKeyboardManager.shared
+        keyboardManager.isEnabled = true
+        // keyboardManager.isDebuggingEnabled = true
+    }
     
+    private func configureToolbarManager() {
+        let toolbarManager = IQKeyboardToolbarManager.shared
+        toolbarManager.isEnabled = true
+        toolbarManager.isDebuggingEnabled = true
+        toolbarManager.playInputClicks = false
+        
+        let toolbarConfig = toolbarManager.toolbarConfiguration
+        toolbarConfig.useTextInputViewTintColor = true
+        toolbarConfig.tintColor = .systemGreen
+        toolbarConfig.barTintColor = .systemYellow
+        toolbarConfig.previousNextDisplayMode = .alwaysShow
+        toolbarConfig.manageBehavior = .byPosition
+        
+        let placeholderConfig = toolbarConfig.placeholderConfiguration
+        placeholderConfig.showPlaceholder = false
+        placeholderConfig.font = UIFont.italicSystemFont(ofSize: 14)
+        placeholderConfig.color = .systemPurple
+        placeholderConfig.buttonColor = .systemBrown
+        
+        toolbarManager.deepResponderAllowedContainerClasses.append(UIStackView.self)
+    }
+    
+    private func configureFirebase() {
+        FirebaseApp.configure()
+    }
+    
+    // MARK: - UISceneSession Lifecycle
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
-        // Called when a new scene session is being created.
-        // Use this method to select a configuration to create the new scene with.
         return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
     }
     
-    func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
-        // Called when the user discards a scene session.
-        // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
-        // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
-    }
-    
-    // MARK: - Core Data stack
-    
-    lazy var persistentContainer: NSPersistentContainer = {
-        /*
-         The persistent container for the application. This implementation
-         creates and returns a container, having loaded the store for the
-         application to it. This property is optional since there are legitimate
-         error conditions that could cause the creation of the store to fail.
-         */
-        let container = NSPersistentContainer(name: "MathQuizMastery")
-        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
-            if let error = error as NSError? {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                
-                /*
-                 Typical reasons for an error here include:
-                 * The parent directory does not exist, cannot be created, or disallows writing.
-                 * The persistent store is not accessible, due to permissions or data protection when the device is locked.
-                 * The device is out of space.
-                 * The store could not be migrated to the current model version.
-                 Check the error message to determine what the actual problem was.
-                 */
-                fatalError("Unresolved error \(error), \(error.userInfo)")
-            }
-        })
-        return container
-    }()
-    
-    // MARK: - Core Data Saving support
-    
-    func saveContext () {
-        let context = persistentContainer.viewContext
-        if context.hasChanges {
-            do {
-                try context.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nserror = error as NSError
-                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
-            }
-        }
-    }
-    
+    func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {}
 }
-

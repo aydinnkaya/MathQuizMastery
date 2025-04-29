@@ -13,7 +13,7 @@
         <!--LoginVC-->
         <scene sceneID="lGM-I1-y2L">
             <objects>
-                <viewController id="nxB-Hs-Cnb" customClass="LoginVC" customModule="MathQuizMastery" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginVC" id="nxB-Hs-Cnb" customClass="LoginVC" customModule="MathQuizMastery" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hsW-Ck-Oae">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -137,18 +137,18 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="slM-aq-aE9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-410" y="-472"/>
+            <point key="canvasLocation" x="515.26717557251902" y="-472.53521126760563"/>
         </scene>
         <!--StartVC-->
         <scene sceneID="GuZ-ag-Vze">
             <objects>
-                <viewController id="61v-ZF-bpc" customClass="StartVC" customModule="MathQuizMastery" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="tHt-Vx-6Ly">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="783"/>
+                <viewController storyboardIdentifier="StartVC" id="61v-ZF-bpc" customClass="StartVC" customModule="MathQuizMastery" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="tHt-Vx-6Ly" userLabel="StartVC">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MP0-cK-6xd">
-                                <rect key="frame" x="100" y="403.66666666666669" width="193" height="34.333333333333314"/>
+                                <rect key="frame" x="100" y="403.66666666666669" width="193" height="44.666666666666686"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Play"/>
                                 <connections>
@@ -223,12 +223,11 @@
                         <outlet property="userInfoStackView" destination="FFM-Em-vKG" id="wae-wf-fMz"/>
                         <outlet property="usernameLabel" destination="2pi-Vn-fh9" id="XgO-I1-Gmf"/>
                         <outlet property="usernameStackView" destination="ii6-hj-5u0" id="Ygp-RR-xih"/>
-                        <segue destination="Zu4-Lc-R4n" kind="show" id="vYm-t7-mdQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vTU-6y-7QJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="598" y="245"/>
+            <point key="canvasLocation" x="2166" y="211"/>
         </scene>
         <!--CategoryVC-->
         <scene sceneID="5Vo-Lm-p83">
@@ -330,12 +329,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r0w-wG-5Va" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="599" y="993"/>
+            <point key="canvasLocation" x="98" y="1080"/>
         </scene>
         <!--RegisterVC-->
         <scene sceneID="r8n-6t-pBD">
             <objects>
-                <viewController id="DzU-Rk-BTv" customClass="RegisterVC" customModule="MathQuizMastery" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RegisterVC" id="DzU-Rk-BTv" customClass="RegisterVC" customModule="MathQuizMastery" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="FH9-Dm-l6h">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -421,7 +420,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wRm-pR-YCx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="371.75572519083966" y="-473.23943661971833"/>
+            <point key="canvasLocation" x="1296.9465648854962" y="-473.23943661971833"/>
         </scene>
         <!--GameVC-->
         <scene sceneID="tne-QT-ifu">
@@ -563,7 +562,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1329" y="-468"/>
+            <point key="canvasLocation" x="972" y="1079"/>
         </scene>
         <!--ResultScreen-->
         <scene sceneID="FLx-5p-NWQ">
@@ -578,7 +577,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Ana Menü"/>
                                 <connections>
-                                    <segue destination="61v-ZF-bpc" kind="show" id="mZp-sb-D4v"/>
+                                    <segue destination="61v-ZF-bpc" kind="presentation" modalPresentationStyle="fullScreen" id="mZp-sb-D4v"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o4P-2j-rwr">
@@ -665,12 +664,13 @@ Matematik kategoresinde
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9dJ-od-5V2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2074" y="-218"/>
+            <point key="canvasLocation" x="903" y="180"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Item-->
         <scene sceneID="pxH-tc-QPg">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fAQ-HY-wm4" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="qMo-JX-Z3k"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="lpk-ur-hBU">
                         <rect key="frame" x="0.0" y="118" width="393" height="44"/>
@@ -684,7 +684,7 @@ Matematik kategoresinde
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3hr-aZ-sdZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1181" y="104"/>
+            <point key="canvasLocation" x="-255.72519083969465" y="103.52112676056339"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
@@ -705,7 +705,7 @@ Matematik kategoresinde
             <color red="0.98431372549019602" green="0.73725490196078436" blue="0.019607843137254902" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="secondarySystemBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="secondarySystemGroupedBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -714,16 +714,16 @@ Matematik kategoresinde
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemCyanColor">
-            <color red="0.19607843137254902" green="0.67843137254901964" blue="0.90196078431372551" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.1960784314" green="0.67843137249999996" blue="0.90196078430000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray3Color">
-            <color red="0.7803921568627451" green="0.7803921568627451" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.78039215689999997" green="0.78039215689999997" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray5Color">
-            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemOrangeColor">
-            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="tableSeparatorDarkColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>

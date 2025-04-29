@@ -11,7 +11,6 @@ protocol ValidatorProtocol {
     var delegate: ValidatorDelegate? { get set }
     func validateLogin(email: String?, password: String?)
     func validateSignUp(name: String?, email: String?, password: String?, confirmPassword: String?)
-    
 }
 
 protocol ValidatorDelegate : AnyObject {

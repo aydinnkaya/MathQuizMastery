@@ -27,7 +27,7 @@ class LoginViewModel: LoginScreenViewModelProtocol {
     }
 
     func validateInputs(email: String, password: String) {
-            validator.validateLogin(email: email, password: password)
+        validator.validateLogin(email: email, password: password)
     }
 }
 
