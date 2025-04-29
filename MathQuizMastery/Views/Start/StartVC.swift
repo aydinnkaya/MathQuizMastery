@@ -33,8 +33,6 @@ class StartVC: UIViewController {
     
     private func fetchUserData() {
         guard let uuid = userUUID else { return }
-        
-       
     }
     
     private func updateUI(with user: User) {
