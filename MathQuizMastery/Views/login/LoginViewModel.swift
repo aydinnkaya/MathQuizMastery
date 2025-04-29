@@ -16,14 +16,25 @@ protocol LoginViewModelDelegate: AnyObject {
 class LoginViewModel: LoginScreenViewModelProtocol {
     weak var delegate: LoginViewModelDelegate?
     private var validator: ValidatorProtocol
+    private var authService: AuthServiceProtocol
     
-    init(validator: ValidatorProtocol = Validator()) {
+    init(validator: ValidatorProtocol = Validator(),
+         authService: AuthServiceProtocol = AuthService.shared) {
             self.validator = validator
+            self.authService = authService
             self.validator.delegate = self
+        
         }
 
     func login(email: String, password: String) {
-        
+        let loginUserRequest = LoginUserRequest(email: email, password: password)
+        authService.signIn(with: loginUserRequest) { error in
+            if let error = error {
+                self.?.didLoginSuccessfully(userUUID: <#UUID#>)
+            }
+            
+            
+        }
     }
 
     func validateInputs(email: String, password: String) {

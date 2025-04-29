@@ -67,29 +67,7 @@ class RegisterVC: UIViewController, UITextFieldDelegate {
             password: registerPasswordField.text,
             confirmPassword: registerConfirmPasswordField.text
         )
-        
-        let registerUserRequest = RegisterUserRequest(
-                   username: self.registerFullNameField.text ?? "",
-                   email: self.registerEmailField.text ?? "",
-                   password: self.registerPasswordField.text ?? ""
-               )
-        
-        AuthService.shared.registerUser(with: registerUserRequest) { [weak self] wasRegistered, error in
-            guard let self = self else { return }
-            
-            if let error = error {
-              //  AlertManager.showRegistrationErrorAlert(on: self, with: error)
-                return
-            }
-            
-            if wasRegistered {
-                if let sceneDelegate = self.view.window?.windowScene?.delegate as? SceneDelegate {
-                    sceneDelegate.checkAuthentication()
-                }
-            } else {
-              //  AlertManager.showRegistrationErrorAlert(on: self)
-            }
-        }
+        didRegisterSuccessfully()
     }
     
 }
