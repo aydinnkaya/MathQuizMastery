@@ -17,8 +17,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-       // self.setupWindow(with: scene)
-        //self.checkAuthentication()
+        self.setupWindow(with: scene)
+        self.checkAuthentication()
     }
     
     private func setupWindow(with scene: UIScene) {
@@ -30,20 +30,28 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
     }
     
-    public func checkAuthentication() {
+    func checkAuthentication() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
         if Auth.auth().currentUser == nil {
             if let loginVC = storyboard.instantiateViewController(withIdentifier: "LoginVC") as? LoginVC {
-                self.goToController(with: loginVC)
-            } else {
-                print("LoginVC bulunamadı!")
+                goToController(with: loginVC)
             }
         } else {
-            if let startVC = storyboard.instantiateViewController(withIdentifier: "StartVC") as? StartVC {
-                self.goToController(with: startVC)
-            } else {
-                print("StartVC bulunamadı!")
+            guard let uid = Auth.auth().currentUser?.uid else { return }
+            AuthService.shared.fetchUserData(uid: uid) { [weak self] result in
+                switch result {
+                case .success(let user):
+                    let homeVC = HomeVC.instantiate(with: user)
+                    self?.goToController(with: homeVC)
+                case .failure(let error):
+                    print("Kullanıcı verisi alınamadı: \(error.localizedDescription)")
+                    AuthService.shared.signOut { _ in
+                        if let loginVC = storyboard.instantiateViewController(withIdentifier: "LoginVC") as? LoginVC {
+                            self?.goToController(with: loginVC)
+                        }
+                    }
+                }
             }
         }
     }

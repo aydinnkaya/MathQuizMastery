@@ -153,7 +153,7 @@ extension RegisterVC {
     
     func navigateToStartScreen() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        if let startVC = storyboard.instantiateViewController(withIdentifier: "StartVC") as? StartVC {
+        if let startVC = storyboard.instantiateViewController(withIdentifier: "StartVC") as? HomeVC {
             navigationController?.pushViewController(startVC, animated: true)
         }
     }
