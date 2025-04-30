@@ -20,7 +20,7 @@ class StartVC: UIViewController {
     @IBOutlet weak var goldLabel: UILabel!
     @IBOutlet weak var goldIcon: UIImageView!
     
-    var userUUID: UUID?
+    var user: User?
     override func viewDidLoad() {
         super.viewDidLoad()
         

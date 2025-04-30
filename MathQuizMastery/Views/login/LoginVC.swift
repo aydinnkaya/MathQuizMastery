@@ -53,14 +53,15 @@ class LoginVC: UIViewController, UITextFieldDelegate {
     @IBAction func loginButtonTapped(_ sender: UIButton) {
         prepareForValidation()
         viewModel.validateInputs(
-            email: emailTextField.text ?? "",
-            password: passwordTextField.text ?? ""
+                   email: emailTextField.text ?? "",
+                   password: passwordTextField.text ?? ""
         )
     }
 }
 
 @available(iOS 16, *)
 extension LoginVC: LoginViewModelDelegate {
+    
     func didValidationFail(results: [ValidationResult]) {
         hideLoading()
         clearErrors()
@@ -83,12 +84,13 @@ extension LoginVC: LoginViewModelDelegate {
         )
     }
     
-    func didLoginSuccessfully(userUUID uuid: UUID) {
+    func didLoginSuccessfully(user: User) {
         hideLoading()
         HapticManager.shared.success()
         ToastView.show(in: self.view, message: L(.login_success))
-        navigateToStartScreen(with: uuid)
+        navigateToStartScreen(with: user)
     }
+    
     
     func didFailWithError(_ error: Error) {
         hideLoading()
@@ -133,10 +135,10 @@ extension LoginVC {
         clearErrors()
     }
     
-    func navigateToStartScreen(with uuid: UUID) {
+    func navigateToStartScreen(with user: User) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if let startVC = storyboard.instantiateViewController(withIdentifier: "StartVC") as? StartVC {
-            startVC.userUUID = uuid
+            startVC.user = user
             navigationController?.pushViewController(startVC, animated: true)
         }
     }
