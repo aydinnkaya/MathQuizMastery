@@ -56,7 +56,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         }
     }
     
-    
     private func goToController(with viewController: UIViewController) {
         DispatchQueue.main.async { [weak self] in
             UIView.animate(withDuration: 0.25) {
