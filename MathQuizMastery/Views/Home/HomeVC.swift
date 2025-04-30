@@ -7,7 +7,7 @@
 
 import UIKit
 
-class StartVC: UIViewController {
+class HomeVC: UIViewController {
     
     @IBOutlet weak var userInfoStackView: UIStackView!
     @IBOutlet weak var buttonStartLabel: UIButton!
@@ -20,38 +20,46 @@ class StartVC: UIViewController {
     @IBOutlet weak var goldLabel: UILabel!
     @IBOutlet weak var goldIcon: UIImageView!
     
-    var userUUID: UUID?
+    var user: User?
+    var viewModel: HomeViewModel! {
+        didSet {
+            viewModel.delegate = self
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         navigationItem.hidesBackButton = true
         configureButton(buttonStartLabel)
         setupUserInfoView()
-        fetchUserData()
+        viewModel.notifyViewDidLoad()
     }
-    
-    
-    private func fetchUserData() {
-        guard let uuid = userUUID else { return }
-    }
-    
-    private func updateUI(with user: User) {
-        print("Hoş geldin, \(user.username ?? "Kullanıcı")")
-    }
-    
-//    @IBAction func didTabLogout(_ sender: UIButton, forEvent event: UIEvent) {
-//        
-//        
-//    }
-    
-    
     
 }
+// MARK: - Instantiate with User
+extension HomeVC {
+    static func instantiate(with user: User) -> HomeVC {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let homeVC = storyboard.instantiateViewController(withIdentifier: "HomeVC") as? HomeVC else {
+            return HomeVC() // Default fallback view controller
+        }
+        let viewModel = HomeViewModel(user: user)
+        homeVC.viewModel = viewModel
+        return homeVC
+    }
+}
 
+// MARK: - ViewModel Delegate
+extension HomeVC: HomeViewModelDelegate {
+    func didReceiveUser(_ user: User?) {
+        guard let user = user else { return }
+        usernameLabel.text = user.username
+    }
+}
 
-//Mark: - UI Setup
-private extension StartVC {
-    func setupUserInfoView(){
+// MARK: - UI Setup
+private extension HomeVC {
+    func setupUserInfoView() {
         configureUserInfoStackView()
         configureAvatarImageView()
         configureUsernameStackView()
@@ -60,9 +68,9 @@ private extension StartVC {
     }
 }
 
-// Mark: - UI Configuration
-private extension StartVC{
-    func configureUserInfoStackView (){
+// MARK: - UI Configuration
+private extension HomeVC {
+    func configureUserInfoStackView() {
         userInfoStackView.axis = .horizontal
         userInfoStackView.alignment = .center
         userInfoStackView.distribution = .equalSpacing
@@ -71,9 +79,7 @@ private extension StartVC{
         view.addSubview(userInfoStackView)
     }
     
-    
-    
-    func configureAvatarImageView(){
+    func configureAvatarImageView() {
         avatarImageView.image = UIImage(named: "image2vector")
         avatarImageView.contentMode = .scaleAspectFit
         avatarImageView.layer.cornerRadius = 30
@@ -81,7 +87,7 @@ private extension StartVC{
         avatarImageView.translatesAutoresizingMaskIntoConstraints = false
     }
     
-    func configureUsernameStackView(){
+    func configureUsernameStackView() {
         usernameStackView.axis = .horizontal
         usernameStackView.alignment = .center
         usernameStackView.spacing = 0
@@ -89,11 +95,9 @@ private extension StartVC{
         
         usernameLabel.text = "userName**"
         usernameLabel.textAlignment = .left
-        usernameLabel.font = .systemFont(ofSize: 18,weight: .semibold)
+        usernameLabel.font = .systemFont(ofSize: 18, weight: .semibold)
         usernameLabel.textColor = .black
         usernameLabel.backgroundColor = UIColor(red: 1.0, green: 0.8627, blue: 0.0, alpha: 1.0)
-        
-        
         
         userIDIcon.image = UIImage(named: "image2vector")
         userIDIcon.contentMode = .scaleAspectFit
@@ -102,7 +106,7 @@ private extension StartVC{
         usernameStackView.addArrangedSubview(usernameLabel)
     }
     
-    func configureGoldStackView(){
+    func configureGoldStackView() {
         goldStackView.axis = .horizontal
         goldStackView.alignment = .center
         goldStackView.spacing = 5
@@ -121,9 +125,8 @@ private extension StartVC{
     }
 }
 
-
-// MARK: - Layout
-private extension StartVC{
+// MARK: - Layout Configuration
+private extension HomeVC {
     func layoutUserInfoView() {
         userInfoStackView.addArrangedSubview(usernameStackView)
         userInfoStackView.addArrangedSubview(avatarImageView)
@@ -133,7 +136,6 @@ private extension StartVC{
             userInfoStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
             userInfoStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             userInfoStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            //            userInfoStackView.bottomAnchor.constraint(equalTo: avatarImageView.bottomAnchor, constant: 10),
             userInfoStackView.heightAnchor.constraint(equalToConstant: 90),
             
             avatarImageView.widthAnchor.constraint(equalToConstant: 90),
@@ -148,9 +150,9 @@ private extension StartVC{
     }
 }
 
-
-private extension StartVC {
-    func configureButton(_ button : UIButton){
+// MARK: - Button Configuration
+private extension HomeVC {
+    func configureButton(_ button: UIButton) {
         button.layer.cornerRadius = 12
         button.layer.borderWidth = 2
         button.layer.borderColor = UIColor(red: 1.0, green: 0.8627, blue: 0.0, alpha: 1.0).cgColor
@@ -181,6 +183,5 @@ private extension StartVC {
             superview.addSubview(backgroundView)
             superview.bringSubviewToFront(button)
         }
-        
     }
 }

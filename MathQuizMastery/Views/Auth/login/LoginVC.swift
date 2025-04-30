@@ -61,6 +61,7 @@ class LoginVC: UIViewController, UITextFieldDelegate {
 
 @available(iOS 16, *)
 extension LoginVC: LoginViewModelDelegate {
+    
     func didValidationFail(results: [ValidationResult]) {
         hideLoading()
         clearErrors()
@@ -83,11 +84,11 @@ extension LoginVC: LoginViewModelDelegate {
         )
     }
     
-    func didLoginSuccessfully(userUUID uuid: UUID) {
+    func didLoginSuccessfully(user: User) {
         hideLoading()
         HapticManager.shared.success()
         ToastView.show(in: self.view, message: L(.login_success))
-        navigateToStartScreen(with: uuid)
+        navigateToHomeScreen(with: user)
     }
     
     func didFailWithError(_ error: Error) {
@@ -133,11 +134,14 @@ extension LoginVC {
         clearErrors()
     }
     
-    func navigateToStartScreen(with uuid: UUID) {
+    func navigateToHomeScreen(with user: User) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        if let startVC = storyboard.instantiateViewController(withIdentifier: "StartVC") as? StartVC {
-            startVC.userUUID = uuid
-            navigationController?.pushViewController(startVC, animated: true)
+        if let homeVC = storyboard.instantiateViewController(withIdentifier: "HomeVC") as? HomeVC {
+            let viewModel = HomeViewModel(user: user)
+            homeVC.viewModel = viewModel
+            let navController = UINavigationController(rootViewController: homeVC)
+            navController.modalPresentationStyle = .fullScreen
+            self.present(navController, animated: true, completion: nil)
         }
     }
     

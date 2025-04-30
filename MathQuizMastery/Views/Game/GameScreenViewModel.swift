@@ -103,13 +103,3 @@ class GameScreenViewModel : GameScreenViewModelProtocol {
         }
     }
 }
-
-
-
-
-
-
-
-
-
-

@@ -16,18 +16,20 @@ protocol RegisterViewModelDelegate : AnyObject {
 class RegisterViewModel : RegisterViewModelProtocol {
     weak var delegate : RegisterViewModelDelegate?
     private var validator: ValidatorProtocol
-    
+    private var authService: AuthServiceProtocol
     private var cachedName: String?
     private var cachedEmail: String?
     private var cachedPassword: String?
     
     init(
-        validator: ValidatorProtocol = Validator()
+        validator: ValidatorProtocol = Validator(),
+        authService: AuthServiceProtocol = AuthService.shared
     ) {
         self.validator = validator
+        self.authService = authService
         self.validator.delegate = self
     }
-
+    
     
     func validateInputs(name username: String?, email: String?, password: String?, confirmPassword: String?){
         self.cachedName = username
@@ -48,7 +50,16 @@ class RegisterViewModel : RegisterViewModelProtocol {
               let password = cachedPassword else {
             return
         }
-       
+        
+        let userRequest = RegisterUserRequest(username: name, email: email, password: password)
+        
+        authService.registerUser(with: userRequest) { [weak self] success, error in
+            if success {
+                self?.delegate?.didRegisterSuccessfully()
+            } else if let error = error {
+                self?.delegate?.didFailWithError(error)
+            }
+        }
     }
 }
 

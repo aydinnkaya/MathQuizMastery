@@ -9,7 +9,15 @@ import Foundation
 import FirebaseAuth
 import FirebaseFirestore
 
-class AuthService {
+
+protocol AuthServiceProtocol{
+    func registerUser(with userRequest: RegisterUserRequest, completion: @escaping (Bool, Error?) -> Void)
+    func signIn(with userRequest: LoginUserRequest, completion: @escaping (String?, Error?) -> Void)
+    func signOut(completion: @escaping (Error?) -> Void)
+    func fetchUserData(uid: String, completion: @escaping (Result<User,Error>)-> Void)
+}
+
+class AuthService : AuthServiceProtocol {
     
     public static let shared = AuthService()
     private init() {}
@@ -18,7 +26,7 @@ class AuthService {
     /// A method to register the user
     /// - Parameters:
     ///   - userRequest: the users information (email, password, username)
-    ///   - completion: A completion with two values
+    ///   - completion: A completion with two values(- Bool: wasRegistered - Determines if the user was registered and saved in the database correctly, Error?: An optional error if firebase provides once)
     ///   - Bool: wasRegistered - Determines if the user was registered and saved in the database correctly
     ///   - Error?: An optional error if firebase provides once
     public func registerUser(with userRequest: RegisterUserRequest, completion: @escaping (Bool, Error?) -> Void){
@@ -37,10 +45,10 @@ class AuthService {
                 return
             }
             
-            guard let uid = authResult?.user.uid else {
-                completion(false, nil)
-                return
-            }
+            //            guard let uid = authResult?.user.uid else {
+            //                completion(false, nil)
+            //                return
+            //            }
             
             self.db.collection("users")
                 .document(resultUser.uid)
@@ -57,20 +65,27 @@ class AuthService {
         }
     }
     
-    
-    public func sıgIn(with userRequest: LoginUserRequest, completion: @escaping (Error?) -> Void){
-        Auth.auth().signIn(withEmail: userRequest.email, password: userRequest.password){ result, error in
+    /// A method signIn the user
+    /// - Parameters:
+    ///   - userRequest: the users information (email, password)
+    ///   - completion: A completion with two values(String?:  uid information ,Error?: An optional error if firebase provides once)
+    ///   - String?:  uid information
+    ///   - Error?: An optional error if firebase provides once
+    public func signIn(with userRequest: LoginUserRequest, completion: @escaping (String?, Error?) -> Void) {
+        Auth.auth().signIn(withEmail: userRequest.email, password: userRequest.password) { result, error in
             if let error = error {
-                completion(error)
+                completion(nil, error)
                 return
-            }else {
-                completion(nil)
             }
-            
+            if let user = result?.user {
+                completion(user.uid, nil)
+            } else {
+                completion(nil, nil)
+            }
         }
     }
     
-    public func sıgnOut(completion: @escaping (Error?)-> Void ){
+    public func signOut(completion: @escaping (Error?)-> Void ){
         do {
             try Auth.auth().signOut()
             completion(nil)
@@ -79,6 +94,32 @@ class AuthService {
             completion(error)
         }
     }
+    
+    
+    /// Fetches user data from Firestore for the given user ID (uid).
+    /// - Parameters:
+    ///   - uid: The unique identifier of the user whose data will be fetched from the "users" collection in Firestore.
+    ///   - completion: A closure that returns a `Result` containing a `User` on success, or an `Error` if the fetch fails or data is incomplete.
+    public func fetchUserData(uid: String, completion: @escaping (Result<User,Error>)-> Void) {
+        db.collection("users").document(uid).getDocument(){ snapshot,error in
+            if let error = error {
+                completion(.failure(error))
+                return
+            }
+            
+            guard let data = snapshot?.data(),
+                  let username = data["username"] as? String,
+                  let email = data["email"] as? String else {
+                let error = NSError(domain: "", code: -1, userInfo:[NSLocalizedDescriptionKey: "Kullanıcı verisi eksik."])
+                completion(.failure(error))
+                return
+            }
+            
+            let user = User(uid: uid, username: username, email: email)
+            completion(.success(user))
+        }
+    }
+    
     
 }
 
