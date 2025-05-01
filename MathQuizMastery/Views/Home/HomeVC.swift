@@ -60,11 +60,26 @@ extension HomeVC: HomeViewModelDelegate {
 // MARK: - UI Setup
 private extension HomeVC {
     func setupUserInfoView() {
+        setGradientBackground()
         configureUserInfoStackView()
         configureAvatarImageView()
         configureUsernameStackView()
         configureGoldStackView()
         layoutUserInfoView()
+    }
+}
+
+private extension HomeVC {
+    private func setGradientBackground() {
+        let gradient = CAGradientLayer()
+        gradient.colors = [
+            UIColor.Custom.background.cgColor,
+            UIColor.Custom.buttonPrimary.cgColor
+        ]
+        gradient.startPoint = CGPoint(x: 0.5, y: 0)
+        gradient.endPoint = CGPoint(x: 0.5, y: 1)
+        gradient.frame = view.bounds
+        view.layer.insertSublayer(gradient, at: 0)
     }
 }
 
@@ -80,9 +95,9 @@ private extension HomeVC {
     }
     
     func configureAvatarImageView() {
-        avatarImageView.image = UIImage(named: "image2vector")
+        avatarImageView.image = UIImage(named: "Ellipse")
         avatarImageView.contentMode = .scaleAspectFit
-        avatarImageView.layer.cornerRadius = 30
+        avatarImageView.layer.cornerRadius = 50
         avatarImageView.clipsToBounds = true
         avatarImageView.translatesAutoresizingMaskIntoConstraints = false
     }
@@ -99,7 +114,9 @@ private extension HomeVC {
         usernameLabel.textColor = .black
         usernameLabel.backgroundColor = UIColor(red: 1.0, green: 0.8627, blue: 0.0, alpha: 1.0)
         
-        userIDIcon.image = UIImage(named: "image2vector")
+        userIDIcon.image = UIImage(named: "usernameIcon");        userIDIcon.clipsToBounds = true
+        userIDIcon.translatesAutoresizingMaskIntoConstraints = false
+
         userIDIcon.contentMode = .scaleAspectFit
         
         usernameStackView.addArrangedSubview(userIDIcon)
@@ -117,8 +134,10 @@ private extension HomeVC {
         goldLabel.font = .systemFont(ofSize: 18, weight: .semibold)
         goldLabel.textColor = .yellow
         
-        goldIcon.image = UIImage(named: "circle_circle_symbol")
-        goldIcon.contentMode = .scaleAspectFit
+        goldIcon.image = UIImage(named: "coinIcon")
+        goldIcon.clipsToBounds = true
+        goldIcon.translatesAutoresizingMaskIntoConstraints = false
+      
         
         goldStackView.addArrangedSubview(goldLabel)
         goldStackView.addArrangedSubview(goldIcon)
