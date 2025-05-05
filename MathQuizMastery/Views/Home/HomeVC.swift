@@ -9,16 +9,17 @@ import UIKit
 
 class HomeVC: UIViewController {
     
+    @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var userInfoStackView: UIStackView!
     @IBOutlet weak var buttonStartLabel: UIButton!
-    
     @IBOutlet weak var userIDIcon: UIImageView!
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var usernameStackView: UIStackView!
     @IBOutlet weak var avatarImageView: UIImageView!
-    @IBOutlet weak var goldStackView: UIStackView!
-    @IBOutlet weak var goldLabel: UILabel!
-    @IBOutlet weak var goldIcon: UIImageView!
+    @IBOutlet weak var coinStackView: UIStackView!
+    @IBOutlet weak var coinLabel: UILabel!
+    @IBOutlet weak var coinIcon: UIImageView!
+    
     
     var user: User?
     var viewModel: HomeViewModel! {
@@ -83,13 +84,74 @@ private extension HomeVC {
     }
 }
 
+private extension HomeVC {
+    
+    func setupUserInfoViews() {
+        containerView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(containerView)
+        
+        // Username StackView (left of avatar)
+        userIDIcon.image = UIImage(systemName: "usernameIcon")
+        userIDIcon.contentMode = .scaleAspectFit
+        userIDIcon.translatesAutoresizingMaskIntoConstraints = false
+        userIDIcon.widthAnchor.constraint(equalToConstant: 24).isActive = true
+        userIDIcon.heightAnchor.constraint(equalToConstant: 24).isActive = true
+        
+        usernameLabel.text = "userName**"
+        usernameLabel.textColor = .white
+        usernameLabel.font = .systemFont(ofSize: 16, weight: .semibold)
+        usernameLabel.textAlignment = .left
+        
+        usernameStackView.axis = .horizontal
+        usernameStackView.spacing = 8
+        usernameStackView.alignment = .center
+        usernameStackView.translatesAutoresizingMaskIntoConstraints = false
+        usernameStackView.addArrangedSubview(userIDIcon)
+        usernameStackView.addArrangedSubview(usernameLabel)
+        containerView.addSubview(usernameStackView)
+        
+        // Avatar Setup (Centered)
+        avatarImageView.image = UIImage(named: "Ellipse")
+        avatarImageView.layer.cornerRadius = 50
+        avatarImageView.clipsToBounds = true
+        avatarImageView.layer.borderColor = UIColor.yellow.cgColor
+        avatarImageView.layer.borderWidth = 3
+        avatarImageView.contentMode = .scaleAspectFill
+        avatarImageView.translatesAutoresizingMaskIntoConstraints = false
+        containerView.addSubview(avatarImageView)
+
+        // Coin StackView (right of avatar)
+        coinIcon.image = UIImage(systemName: "coinIcon")
+        coinIcon.contentMode = .scaleAspectFit
+        coinIcon.translatesAutoresizingMaskIntoConstraints = false
+        coinIcon.widthAnchor.constraint(equalToConstant: 24).isActive = true
+        coinIcon.heightAnchor.constraint(equalToConstant: 24).isActive = true
+        
+        coinLabel.text = "1000"
+        coinLabel.textColor = UIColor("#FFD700")
+        coinLabel.font = .systemFont(ofSize: 16, weight: .semibold)
+        
+        coinStackView.axis = .horizontal
+        coinStackView.spacing = 8
+        coinStackView.alignment = .center
+        coinStackView.translatesAutoresizingMaskIntoConstraints = false
+        coinStackView.addArrangedSubview(coinLabel)
+        coinStackView.addArrangedSubview(coinIcon)
+        containerView.addSubview(coinStackView)
+    }
+    
+}
+
+
+
+
 // MARK: - UI Configuration
 private extension HomeVC {
     func configureUserInfoStackView() {
         userInfoStackView.axis = .horizontal
         userInfoStackView.alignment = .center
-        userInfoStackView.distribution = .equalSpacing
-        userInfoStackView.spacing = 0
+     //   userInfoStackView.distribution = .equalSpacing
+        userInfoStackView.spacing = -2
         userInfoStackView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(userInfoStackView)
     }
@@ -106,15 +168,19 @@ private extension HomeVC {
         usernameStackView.axis = .horizontal
         usernameStackView.alignment = .center
         usernameStackView.spacing = 0
+        usernameStackView.backgroundColor = UIColor("2F2F72")
+        usernameStackView.layer.cornerRadius = 15
+        usernameStackView.clipsToBounds = true
         usernameStackView.translatesAutoresizingMaskIntoConstraints = false
         
         usernameLabel.text = "userName**"
         usernameLabel.textAlignment = .left
-        usernameLabel.font = .systemFont(ofSize: 18, weight: .semibold)
+        usernameLabel.font = .systemFont(ofSize: 16, weight: .semibold)
         usernameLabel.textColor = .black
-        usernameLabel.backgroundColor = UIColor(red: 1.0, green: 0.8627, blue: 0.0, alpha: 1.0)
+      //  usernameLabel.backgroundColor = UIColor("2F2F72")
         
-        userIDIcon.image = UIImage(named: "usernameIcon");        userIDIcon.clipsToBounds = true
+        userIDIcon.image = UIImage(named: "usernameIcon");
+        userIDIcon.clipsToBounds = true
         userIDIcon.translatesAutoresizingMaskIntoConstraints = false
 
         userIDIcon.contentMode = .scaleAspectFit
@@ -124,23 +190,26 @@ private extension HomeVC {
     }
     
     func configureGoldStackView() {
-        goldStackView.axis = .horizontal
-        goldStackView.alignment = .center
-        goldStackView.spacing = 5
-        goldStackView.translatesAutoresizingMaskIntoConstraints = false
+        coinStackView.axis = .horizontal
+        coinStackView.alignment = .center
+        coinStackView.spacing = 5
+        coinStackView.layer.cornerRadius = 15
+        coinStackView.clipsToBounds = true
+        coinStackView.backgroundColor = UIColor("2F2F72")
+        coinStackView.translatesAutoresizingMaskIntoConstraints = false
         
-        goldLabel.text = "1000"
-        goldLabel.textAlignment = .center
-        goldLabel.font = .systemFont(ofSize: 18, weight: .semibold)
-        goldLabel.textColor = .yellow
+        coinLabel.text = "1000"
+        coinLabel.textAlignment = .center
+        coinLabel.font = .systemFont(ofSize: 18, weight: .semibold)
+        coinLabel.textColor = .yellow
         
-        goldIcon.image = UIImage(named: "coinIcon")
-        goldIcon.clipsToBounds = true
-        goldIcon.translatesAutoresizingMaskIntoConstraints = false
+        coinIcon.image = UIImage(named: "coinIcon")
+        coinIcon.clipsToBounds = true
+        coinIcon.translatesAutoresizingMaskIntoConstraints = false
       
         
-        goldStackView.addArrangedSubview(goldLabel)
-        goldStackView.addArrangedSubview(goldIcon)
+        coinStackView.addArrangedSubview(coinLabel)
+        coinStackView.addArrangedSubview(coinIcon)
     }
 }
 
@@ -149,7 +218,7 @@ private extension HomeVC {
     func layoutUserInfoView() {
         userInfoStackView.addArrangedSubview(usernameStackView)
         userInfoStackView.addArrangedSubview(avatarImageView)
-        userInfoStackView.addArrangedSubview(goldStackView)
+        userInfoStackView.addArrangedSubview(coinStackView)
         
         NSLayoutConstraint.activate([
             userInfoStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
@@ -163,8 +232,8 @@ private extension HomeVC {
             userIDIcon.widthAnchor.constraint(equalToConstant: 36),
             userIDIcon.heightAnchor.constraint(equalToConstant: 36),
             
-            goldIcon.widthAnchor.constraint(equalToConstant: 36),
-            goldIcon.heightAnchor.constraint(equalToConstant: 36)
+            coinIcon.widthAnchor.constraint(equalToConstant: 36),
+            coinIcon.heightAnchor.constraint(equalToConstant: 36)
         ])
     }
 }
