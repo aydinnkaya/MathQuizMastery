@@ -40,11 +40,11 @@ class HomeVC: UIViewController {
     
     
     @IBAction func playButtonTapped(_ sender: UIButton) {
-        let warpView = WarpTransitionView(frame: view.bounds)
-        view.addSubview(warpView)
+//        let warpView = WarpTransitionView(frame: view.bounds)
+//        view.addSubview(warpView)
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-            warpView.removeFromSuperview()
+            //warpView.removeFromSuperview()
             
             let categoryVC = CategoryVC()
             self.navigationController?.pushViewController(categoryVC, animated: false)

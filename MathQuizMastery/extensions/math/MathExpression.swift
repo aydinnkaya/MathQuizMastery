@@ -17,64 +17,47 @@ struct MathExpression {
         
         func createQuestion() -> String {
             switch self {
-            case .addition(let a, let b):
-                return "\(a) + \(b)"
-            case .subtraction(let a, let b):
-                return "\(a) - \(b)"
-            case .multiplication(let a, let b):
-                return "\(a) × \(b)"
-            case .division(let a, let b):
-                return "\(a) ÷ \(b)"
+            case .addition(let a, let b): return "\(a) + \(b)"
+            case .subtraction(let a, let b): return "\(a) - \(b)"
+            case .multiplication(let a, let b): return "\(a) × \(b)"
+            case .division(let a, let b): return "\(a) ÷ \(b)"
             }
         }
         
         func getAnswer() -> Double {
             switch self {
-            case .addition(let a, let b):
-                return Double(a + b)
-            case .subtraction(let a, let b):
-                return Double(a - b)
-            case .multiplication(let a, let b):
-                return Double(a * b)
-            case .division(let a, let b):
-                return b != 0 ? Double(a) / Double(b) : 0.0
+            case .addition(let a, let b): return Double(a + b)
+            case .subtraction(let a, let b): return Double(a - b)
+            case .multiplication(let a, let b): return Double(a * b)
+            case .division(let a, let b): return b != 0 ? Double(a) / Double(b) : 0.0
             }
         }
         
         func getExpressionType() -> ExpressionType {
             switch self {
-            case .addition:
-                return .addition
-            case .subtraction:
-                return .subtraction
-            case .multiplication:
-                return .multiplication
-            case .division:
-                return .division
+            case .addition: return .addition
+            case .subtraction: return .subtraction
+            case .multiplication: return .multiplication
+            case .division: return .division
             }
         }
     }
     
-    enum ExpressionType {
+    enum ExpressionType: CaseIterable {
         case addition
         case subtraction
         case multiplication
         case division
-        case mixed
+        case random
     }
     
     static func generateExpression(type: ExpressionType) -> Operation {
         switch type {
-        case .addition:
-            return generateAddition()
-        case .subtraction:
-            return generateSubtraction()
-        case .multiplication:
-            return generateMultiplication()
-        case .division:
-            return generateSafeDivision()
-        case .mixed:
-            return generateMixedExpression()
+        case .addition: return generateAddition()
+        case .subtraction: return generateSubtraction()
+        case .multiplication: return generateMultiplication()
+        case .division: return generateSafeDivision()
+        case .random: return generateMixedExpression()
         }
     }
     
