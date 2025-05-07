@@ -40,14 +40,12 @@ class HomeVC: UIViewController {
     
     
     @IBAction func playButtonTapped(_ sender: UIButton) {
-        let warpView = WarpTransitionView(frame: view.bounds)
-        view.addSubview(warpView)
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-            warpView.removeFromSuperview()
-            
-            let categoryVC = CategoryVC()
-            self.navigationController?.pushViewController(categoryVC, animated: false)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if let categoryVC = storyboard.instantiateViewController(withIdentifier: "CategoryVC") as? CategoryVC {
+            self.navigationController?.pushViewController(categoryVC, animated: true)
+
+        }else {
+            print("❌ CategoryVC bulunamadı. Storyboard ID doğru mu kontrol et.")
         }
     }
     
