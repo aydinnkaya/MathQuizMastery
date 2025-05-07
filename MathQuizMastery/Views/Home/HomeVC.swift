@@ -46,8 +46,8 @@ class HomeVC: UIViewController {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
             //warpView.removeFromSuperview()
             
-            let categoryVC = CategoryVC()
-            self.navigationController?.pushViewController(categoryVC, animated: false)
+            //let categoryVC = CategoryVC()
+       //     self.navigationController?.pushViewController(categoryVC, animated: false)
         }
     }
     
