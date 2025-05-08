@@ -38,9 +38,14 @@ extension UIColor {
 
 extension UIColor {
     struct Custom {
-        static let background = UIColor("0095FF") ?? UIColor.white
-        static let navigationBar = UIColor("0095FF") ?? UIColor.white
-        static let buttonPrimary = UIColor("FF5733") ?? UIColor.red
-        static let textPrimary = UIColor("333333") ?? UIColor.black
+        static let backgroundDark1 = UIColor("0D0D2B") ?? .black
+        static let backgroundDark2 = UIColor("111138") ?? .black
+        static let backgroundDark3 = UIColor("1E1E5A") ?? .black
+        
+        static let background = UIColor("0095FF") ?? .white
+        static let navigationBar = UIColor("0095FF") ?? .white
+        static let buttonPrimary = UIColor("FF5733") ?? .red
+        static let textPrimary = UIColor("333333") ?? .black
     }
 }
+
