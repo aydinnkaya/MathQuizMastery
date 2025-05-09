@@ -9,16 +9,9 @@ import UIKit
 
 class HomeVC: UIViewController {
     
-    @IBOutlet weak var userInfoView: UIView!
-    @IBOutlet weak var userInfoStackView: UIStackView!
     @IBOutlet weak var buttonStartLabel: UIButton!
-    @IBOutlet weak var userIDIcon: UIImageView!
     @IBOutlet weak var usernameLabel: UILabel!
-    @IBOutlet weak var usernameStackView: UIStackView!
-    @IBOutlet weak var avatarImageView: UIImageView!
-    @IBOutlet weak var coinStackView: UIStackView!
     @IBOutlet weak var coinLabel: UILabel!
-    @IBOutlet weak var coinIcon: UIImageView!
     
     
     var user: User?
@@ -31,9 +24,7 @@ class HomeVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.hidesBackButton = true
-        configureButton(buttonStartLabel)
         setGradientBackground()
-        setupUserInfoView()
         viewModel.notifyViewDidLoad()
     }
     
