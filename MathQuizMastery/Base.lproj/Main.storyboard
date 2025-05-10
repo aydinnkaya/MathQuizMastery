@@ -152,52 +152,79 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MP0-cK-6xd">
-                                <rect key="frame" x="169" y="606" width="55.666666666666657" height="34.333333333333329"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Play"/>
-                                <connections>
-                                    <action selector="playButtonTapped:" destination="61v-ZF-bpc" eventType="touchUpInside" id="Hpp-f0-hxR"/>
-                                </connections>
-                            </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="aSu-uP-GkX">
-                                <rect key="frame" x="279" y="101" width="79.333333333333314" height="30"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="U8c-5E-nnb">
+                                <rect key="frame" x="16" y="108" width="103" height="36"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coinIcon" translatesAutoresizingMaskIntoConstraints="NO" id="H4w-6U-3LE">
-                                        <rect key="frame" x="0.0" y="0.0" width="28" height="30"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user_icon" translatesAutoresizingMaskIntoConstraints="NO" id="qEt-a4-uXl" userLabel="UsernameBadgeView">
+                                        <rect key="frame" x="0.0" y="0.0" width="36" height="36"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3fE-1L-1So" userLabel="coinLabel">
-                                        <rect key="frame" x="38" y="0.0" width="41.333333333333343" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" semanticContentAttribute="forceLeftToRight" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="test1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2pi-Vn-fh9" userLabel="usernameLabel">
+                                        <rect key="frame" x="38" y="1.3333333333333286" width="65" height="33.666666666666664"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" spacing="60" translatesAutoresizingMaskIntoConstraints="NO" id="U8c-5E-nnb">
-                                <rect key="frame" x="25" y="95" width="141" height="36"/>
+                            <stackView opaque="NO" contentMode="scaleAspectFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="aSu-uP-GkX">
+                                <rect key="frame" x="302.33333333333331" y="108" width="83.666666666666686" height="36"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="usernameIcon" translatesAutoresizingMaskIntoConstraints="NO" id="qEt-a4-uXl" userLabel="UsernameBadgeView">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coin_icon" translatesAutoresizingMaskIntoConstraints="NO" id="H4w-6U-3LE">
                                         <rect key="frame" x="0.0" y="0.0" width="36" height="36"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" semanticContentAttribute="forceLeftToRight" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="test1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2pi-Vn-fh9" userLabel="usernameLabel">
-                                        <rect key="frame" x="96" y="0.0" width="45" height="36"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="400" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3fE-1L-1So" userLabel="coinLabel">
+                                        <rect key="frame" x="46" y="6.6666666666666714" width="37.666666666666657" height="23"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                             </stackView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile_badge" translatesAutoresizingMaskIntoConstraints="NO" id="n4a-FP-BNx">
+                                <rect key="frame" x="76" y="183" width="250" height="374"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleAspectFit" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pXY-Fp-4Wq" userLabel="settingsButton">
+                                <rect key="frame" x="16" y="760" width="50" height="50"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="settings_icon"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleAspectFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MXg-p8-L7I" userLabel="profileButton">
+                                <rect key="frame" x="76" y="180" width="254" height="242"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="batman"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleAspectFit" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MP0-cK-6xd" userLabel="playButton">
+                                <rect key="frame" x="115" y="599" width="172" height="150"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="fly"/>
+                                <connections>
+                                    <action selector="playButtonTapped:" destination="61v-ZF-bpc" eventType="touchUpInside" id="Hpp-f0-hxR"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="yhV-2d-mT1"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="aSu-uP-GkX" firstAttribute="leading" secondItem="tHt-Vx-6Ly" secondAttribute="leadingMargin" id="2AP-Yy-QCr"/>
-                            <constraint firstItem="yhV-2d-mT1" firstAttribute="top" secondItem="aSu-uP-GkX" secondAttribute="top" constant="20" id="d6S-bO-puR"/>
+                            <constraint firstItem="yhV-2d-mT1" firstAttribute="top" secondItem="aSu-uP-GkX" secondAttribute="top" constant="16" id="3uh-k3-BAb"/>
+                            <constraint firstItem="U8c-5E-nnb" firstAttribute="leading" secondItem="yhV-2d-mT1" secondAttribute="leading" constant="16" id="6Rp-KA-Tir"/>
+                            <constraint firstItem="yhV-2d-mT1" firstAttribute="top" secondItem="U8c-5E-nnb" secondAttribute="top" constant="16" id="8L7-3o-rki"/>
+                            <constraint firstItem="MXg-p8-L7I" firstAttribute="top" secondItem="yhV-2d-mT1" secondAttribute="top" constant="56" id="9dH-vj-1UL"/>
+                            <constraint firstItem="n4a-FP-BNx" firstAttribute="centerX" secondItem="yhV-2d-mT1" secondAttribute="centerX" id="BXc-Jo-2P0"/>
+                            <constraint firstItem="yhV-2d-mT1" firstAttribute="trailing" secondItem="aSu-uP-GkX" secondAttribute="trailing" constant="16.000000000000057" id="H40-RC-toG"/>
+                            <constraint firstItem="yhV-2d-mT1" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="pXY-Fp-4Wq" secondAttribute="trailing" symbolic="YES" id="LOG-e3-30t"/>
+                            <constraint firstItem="MP0-cK-6xd" firstAttribute="leading" secondItem="yhV-2d-mT1" secondAttribute="leading" constant="115" id="RvT-Bl-0NH"/>
+                            <constraint firstItem="pXY-Fp-4Wq" firstAttribute="leading" secondItem="yhV-2d-mT1" secondAttribute="leading" constant="16" id="dKk-9W-g2k"/>
+                            <constraint firstItem="MP0-cK-6xd" firstAttribute="centerX" secondItem="yhV-2d-mT1" secondAttribute="centerX" id="hAN-nw-fDJ"/>
+                            <constraint firstItem="pXY-Fp-4Wq" firstAttribute="bottom" secondItem="yhV-2d-mT1" secondAttribute="bottom" constant="4" id="iSu-da-HLk"/>
+                            <constraint firstItem="MXg-p8-L7I" firstAttribute="centerX" secondItem="yhV-2d-mT1" secondAttribute="centerX" id="lLg-FX-sX3"/>
+                            <constraint firstItem="n4a-FP-BNx" firstAttribute="top" secondItem="yhV-2d-mT1" secondAttribute="top" constant="59" id="lRf-4j-QzS"/>
+                            <constraint firstItem="yhV-2d-mT1" firstAttribute="bottom" secondItem="MP0-cK-6xd" secondAttribute="bottom" constant="57" id="lmn-Dw-djo"/>
+                            <constraint firstItem="MP0-cK-6xd" firstAttribute="top" secondItem="n4a-FP-BNx" secondAttribute="bottom" constant="42" id="yIT-Zb-bvu"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="dFW-rs-zbS"/>
@@ -647,15 +674,19 @@ Matematik kategoresinde
     <resources>
         <image name="Math_Quiz_Mastery_Transparent-removebg-preview" width="661" height="377"/>
         <image name="background_image" width="419" height="837"/>
+        <image name="batman" width="228" height="228"/>
         <image name="calculate_symbol" width="12" height="12"/>
-        <image name="coinIcon" width="28" height="30"/>
+        <image name="coin_icon" width="36" height="36"/>
+        <image name="fly" width="167" height="167"/>
         <image name="image-removebg" width="1024" height="1024"/>
-        <image name="usernameIcon" width="36" height="36"/>
+        <image name="profile_badge" width="250" height="374"/>
+        <image name="settings_icon" width="66" height="66"/>
+        <image name="user_icon" width="36" height="36"/>
         <namedColor name="FBBC05">
             <color red="0.98431372549019602" green="0.73725490196078436" blue="0.019607843137254902" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="secondarySystemBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="secondarySystemGroupedBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -664,16 +695,16 @@ Matematik kategoresinde
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemCyanColor">
-            <color red="0.19607843137254902" green="0.67843137254901964" blue="0.90196078431372551" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.1960784314" green="0.67843137249999996" blue="0.90196078430000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray3Color">
-            <color red="0.7803921568627451" green="0.7803921568627451" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.78039215689999997" green="0.78039215689999997" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray5Color">
-            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemOrangeColor">
-            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="tableSeparatorDarkColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
