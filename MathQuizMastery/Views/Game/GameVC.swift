@@ -9,12 +9,11 @@ import UIKit
 
 class GameVC: UIViewController {
     @IBOutlet weak var questionNumberLabel: NeonLabel!
-    @IBOutlet weak var questionView: UIView!
-    @IBOutlet weak var questionLabel: UILabel!
-    @IBOutlet weak var buttonFirst: UIButton!
-    @IBOutlet weak var buttonSecond: UIButton!
+    @IBOutlet weak var questionLabel: QuestionLabel!
+    @IBOutlet weak var buttonFirst: NeonButton!
+    @IBOutlet weak var buttonSecond: NeonButton!
     @IBOutlet weak var timeLabel: NeonCircleLabel!
-    @IBOutlet weak var buttonThird: UIButton!
+    @IBOutlet weak var buttonThird: NeonButton!
     @IBOutlet weak var scoreLabel: NeonLabel!
     
     private var viewModel: GameScreenViewModelProtocol!
@@ -25,61 +24,23 @@ class GameVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupUI()
+        configureViewModel()
+        setupUIElements()
         viewModel.startGame()
         navigationItem.hidesBackButton = true
     }
     
-    private func setupUI() {
-        view.backgroundColor = UIColor(red: 242/255, green: 238/255, blue: 230/255, alpha: 1.0)
-        setupQuestionView(questionView: questionView)
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        setupLabelStyles()
+        setupQuestionLabelStyle()
+        setupButtonStyles()
+    }
+    
+    private func configureViewModel() {
         if let expressionType = selectedExpressionType {
             viewModel = GameScreenViewModel(delegate: self, expressionType: expressionType)
         }
-        setupButtonView(buttonFirst: buttonFirst, buttonSecond: buttonSecond, buttonThird: buttonThird)
-        scoreLabel.text = "Score: 0"
-        questionNumberLabel.text = "1 / 10"
-        timeLabel.text = "60"
-        
-    }
-    
-    override func viewDidLayoutSubviews() {
-        
-        questionNumberLabel.neonColor = UIColor.cyan
-        questionNumberLabel.cornerRadius = 8
-        questionNumberLabel.font = UIFont.systemFont(ofSize: 18, weight: .bold)
-        
-        timeLabel.neonColor = UIColor.systemTeal
-        
-        scoreLabel.neonColor = UIColor.cyan
-        scoreLabel.cornerRadius = 8
-        scoreLabel.font = UIFont.systemFont(ofSize: 18, weight: .bold)
-    }
-    
-    func setupQuestionView(questionView: UIView!){
-        questionView.backgroundColor = UIColor(red: 210/255, green: 240/255, blue: 240/255, alpha: 1.0)
-        questionView.layer.cornerRadius = 20
-        questionView.layer.masksToBounds = false
-        questionView.layer.shadowColor = UIColor(red: 200/255, green: 200/255, blue: 200/255, alpha: 1.0).cgColor
-        questionView.layer.shadowOffset = CGSize(width: 5, height: 5)
-        questionView.layer.opacity = 0.4
-        questionView.layer.shadowRadius = 8
-        questionView.layer.borderWidth = 5
-    }
-    
-    func setupButtonView(buttonFirst: UIButton, buttonSecond :UIButton, buttonThird : UIButton){
-        let buttonList = [buttonFirst,buttonSecond,buttonThird]
-        
-        for b in buttonList {
-            b.isHidden = false
-            b.backgroundColor = UIColor(red: 255/255, green: 230/255, blue: 150/255, alpha: 1.0)
-            b.layer.cornerRadius = 25
-            b.layer.shadowColor = UIColor(red: 180/255, green: 180/255, blue: 180/255, alpha: 1.0).cgColor
-            b.layer.shadowOffset = CGSize(width: 3, height: 3)
-            b.layer.shadowOpacity = 0.6
-            b.layer.shadowRadius = 5
-        }
-        
     }
     
     private func updateUI(question: String, answers: [String]) {
@@ -161,6 +122,50 @@ extension GameVC : GameScreenViewModelDelegate{
         self.handleTimeUp()
     }
     
+}
+
+extension GameVC {
+    
+    func setupUIElements() {        
+        scoreLabel.text = "Score: 0"
+        questionNumberLabel.text = "1 / 10"
+        timeLabel.text = "60"
+    }
+    
+    func setupLabelStyles() {
+        questionNumberLabel.neonColor = UIColor.cyan
+        questionNumberLabel.cornerRadius = 8
+        questionNumberLabel.font = UIFont.systemFont(ofSize: 18, weight: .bold)
+        
+        timeLabel.neonColor = UIColor.magenta
+        timeLabel.layer.cornerRadius = timeLabel.frame.height / 2
+        timeLabel.clipsToBounds = true
+        
+        scoreLabel.neonColor = UIColor.cyan
+        scoreLabel.cornerRadius = 8
+        scoreLabel.font = UIFont.systemFont(ofSize: 18, weight: .bold)
+    }
+    
+    func setupQuestionLabelStyle() {
+        questionLabel.neonColors = [UIColor.systemBlue, UIColor.green]
+        questionLabel.layer.cornerRadius = 16
+        questionLabel.layer.masksToBounds = true
+        questionLabel.font = UIFont.systemFont(ofSize: 20, weight: .bold)
+        questionLabel.textAlignment = .center
+        questionLabel.backgroundColor = .clear
+    }
+    
+    func setupButtonStyles() {
+        let buttonList = [buttonFirst, buttonSecond, buttonThird]
+        
+        for button in buttonList {
+            button?.neonColors = [UIColor.systemPink, UIColor.systemPurple]
+            button?.layer.cornerRadius = 15
+            button?.layer.masksToBounds = true
+            button?.layer.borderWidth = 2
+            button?.layer.borderColor = UIColor.systemPink.cgColor
+        }
+    }
 }
 
 

@@ -8,11 +8,14 @@
 import Foundation
 import UIKit
 
+import UIKit
+
 class NeonLabel: UILabel {
     
     private let outerBorder = CAShapeLayer()
     private let innerBorder = CAShapeLayer()
     private let glowEffect = CALayer()
+    private var lastSize: CGSize = .zero
     
     var neonColor: UIColor = UIColor.cyan {
         didSet {
@@ -50,20 +53,25 @@ class NeonLabel: UILabel {
         innerBorder.fillColor = UIColor.clear.cgColor
         
         glowEffect.backgroundColor = neonColor.withAlphaComponent(0.25).cgColor
-        glowEffect.frame = bounds
         glowEffect.cornerRadius = cornerRadius
         
-        layer.insertSublayer(glowEffect, at: 0)
-        layer.addSublayer(outerBorder)
-        layer.addSublayer(innerBorder)
+        if glowEffect.superlayer == nil {
+            layer.insertSublayer(glowEffect, at: 0)
+            layer.addSublayer(outerBorder)
+            layer.addSublayer(innerBorder)
+        }
         
         self.textColor = neonColor
         self.textAlignment = .center
-        self.font = UIFont.systemFont(ofSize: 18, weight: .bold)
+        self.adjustsFontSizeToFitWidth = true
+        self.minimumScaleFactor = 0.5
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
+        
+        guard bounds.size != lastSize else { return }
+        lastSize = bounds.size
         
         let outerPath = UIBezierPath(roundedRect: bounds, cornerRadius: cornerRadius)
         outerBorder.path = outerPath.cgPath
@@ -73,6 +81,9 @@ class NeonLabel: UILabel {
         innerBorder.path = innerPath.cgPath
         
         glowEffect.frame = bounds
+        
+        let optimalFontSize = bounds.height * 0.5
+        self.font = UIFont.systemFont(ofSize: optimalFontSize, weight: .bold)
     }
     
     func animateTextChange(newText: String) {

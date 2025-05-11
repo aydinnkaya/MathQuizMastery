@@ -417,25 +417,34 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background_image" translatesAutoresizingMaskIntoConstraints="NO" id="80g-oG-ZRJ">
-                                <rect key="frame" x="0.0" y="0.0" width="402" height="874"/>
+                                <rect key="frame" x="0.0" y="0.0" width="419" height="874"/>
                             </imageView>
-                            <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFill" misplaced="YES" distribution="fillProportionally" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="HiX-wo-5uu">
-                                <rect key="frame" x="31" y="76" width="370" height="31.333333333333343"/>
+                            <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFill" misplaced="YES" distribution="fillEqually" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="HiX-wo-5uu">
+                                <rect key="frame" x="31" y="76" width="387" height="126.33333333333331"/>
                                 <subviews>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MGS-2j-Wc6" userLabel="Score" customClass="NeonLabel" customModule="MathQuizMastery" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="2" width="122" height="27.666666666666668"/>
+                                        <rect key="frame" x="0.0" y="18" width="126.33333333333333" height="90.333333333333329"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="MGS-2j-Wc6" secondAttribute="height" multiplier="1.4" id="MRS-pu-JKu"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="00" textAlignment="center" lineBreakMode="clip" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="EJ9-9s-CE8" userLabel="timeLabel" customClass="NeonCircleLabel" customModule="MathQuizMastery" customModuleProvider="target">
-                                        <rect key="frame" x="138" y="0.0" width="94" height="31.333333333333332"/>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="00" textAlignment="center" lineBreakMode="clip" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="EJ9-9s-CE8" userLabel="timeLabel" customClass="NeonCircleLabel" customModule="MathQuizMastery" customModuleProvider="target">
+                                        <rect key="frame" x="130.33333333333334" y="0.0" width="126.33333333333334" height="126.33333333333333"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="EJ9-9s-CE8" secondAttribute="height" multiplier="1:1" id="tqh-0Q-qI2"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="26"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="10 / 10" lineBreakMode="clip" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tuh-GB-yCa" customClass="NeonLabel" customModule="MathQuizMastery" customModuleProvider="target">
-                                        <rect key="frame" x="248" y="0.0" width="122" height="31.333333333333332"/>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="10 / 10" textAlignment="center" lineBreakMode="clip" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tuh-GB-yCa" customClass="NeonLabel" customModule="MathQuizMastery" customModuleProvider="target">
+                                        <rect key="frame" x="260.66666666666669" y="18" width="126.33333333333331" height="90.333333333333329"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="Tuh-GB-yCa" secondAttribute="height" multiplier="1.4" id="67m-sI-X0q"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -446,19 +455,23 @@
                                     <constraint firstItem="EJ9-9s-CE8" firstAttribute="centerX" secondItem="HiX-wo-5uu" secondAttribute="centerX" id="q0x-0Y-war"/>
                                 </constraints>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="b0l-Wj-ULI">
-                                <rect key="frame" x="50" y="376" width="302" height="380"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="10 + 8" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="69j-Lk-Ki3" customClass="QuestionLabel" customModule="MathQuizMastery" customModuleProvider="target">
+                                <rect key="frame" x="31" y="262" width="339" height="65"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="339" id="P7E-Gd-hBP"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="54"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleAspectFit" axis="vertical" distribution="fillEqually" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="b0l-Wj-ULI">
+                                <rect key="frame" x="50" y="593" width="319" height="183"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6gk-K2-Vyh">
-                                        <rect key="frame" x="0.0" y="0.0" width="302" height="100"/>
+                                    <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6gk-K2-Vyh" customClass="NeonButton" customModule="MathQuizMastery" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="319" height="34.333333333333336"/>
                                         <accessibility key="accessibilityConfiguration">
                                             <bool key="isElement" value="NO"/>
                                         </accessibility>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="100" id="IIG-DE-NfS"/>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="302" id="ZkF-1T-ZRg"/>
-                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="iIw-dF-F9X"/>
-                                        </constraints>
                                         <buttonConfiguration key="configuration" style="plain" title="Fist" cornerStyle="dynamic">
                                             <backgroundConfiguration key="background"/>
                                             <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -467,12 +480,8 @@
                                             <action selector="answerFirstButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="a5D-n8-aUS"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vPS-Bo-38q">
-                                        <rect key="frame" x="0.0" y="140" width="302" height="100"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="RPw-Gb-60F"/>
-                                            <constraint firstAttribute="height" constant="100" id="aGh-wK-xcG"/>
-                                        </constraints>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vPS-Bo-38q" customClass="NeonButton" customModule="MathQuizMastery" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="74.333333333333371" width="319" height="34.333333333333343"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Button">
                                             <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -481,12 +490,8 @@
                                             <action selector="answerSecondButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Fkx-Qh-7gB"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ike-K2-BMk">
-                                        <rect key="frame" x="0.0" y="280" width="302" height="100"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="100" id="FS2-8W-g3f"/>
-                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="Vjd-lf-XEN"/>
-                                        </constraints>
+                                    <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ike-K2-BMk" customClass="NeonButton" customModule="MathQuizMastery" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="148.66666666666663" width="319" height="34.333333333333343"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Button">
                                             <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -497,41 +502,24 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LNw-4x-HTO">
-                                <rect key="frame" x="25" y="205.33333333333334" width="352" height="114.66666666666666"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10 + 8" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="69j-Lk-Ki3">
-                                        <rect key="frame" x="30" y="30" width="292" height="64.666666666666671"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="54"/>
-                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" systemColor="systemCyanColor"/>
-                                <constraints>
-                                    <constraint firstItem="69j-Lk-Ki3" firstAttribute="top" secondItem="LNw-4x-HTO" secondAttribute="top" constant="30" id="3wo-f5-Fy4"/>
-                                    <constraint firstAttribute="trailing" secondItem="69j-Lk-Ki3" secondAttribute="trailing" constant="30" id="7Af-b8-O8B"/>
-                                    <constraint firstItem="69j-Lk-Ki3" firstAttribute="leading" secondItem="LNw-4x-HTO" secondAttribute="leading" constant="30" id="YgB-Lt-m9x"/>
-                                    <constraint firstAttribute="bottom" secondItem="69j-Lk-Ki3" secondAttribute="bottom" constant="20" id="Z7K-uR-w4F"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="top" secondItem="HiX-wo-5uu" secondAttribute="top" constant="20" id="2qm-1C-UJt"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="LNw-4x-HTO" secondAttribute="trailing" constant="25" id="EsN-fF-oyy"/>
-                            <constraint firstItem="LNw-4x-HTO" firstAttribute="top" secondItem="HiX-wo-5uu" secondAttribute="bottom" constant="70" id="GXI-Nd-Zeu"/>
+                            <constraint firstItem="69j-Lk-Ki3" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="31" id="HBM-kc-AJt"/>
+                            <constraint firstItem="EJ9-9s-CE8" firstAttribute="width" secondItem="6Tk-OE-BBY" secondAttribute="width" multiplier="0.2" id="IDc-e6-lFl"/>
+                            <constraint firstItem="69j-Lk-Ki3" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="KbA-oS-u8q"/>
                             <constraint firstItem="80g-oG-ZRJ" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" constant="68" id="MhK-u0-n0v"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="HiX-wo-5uu" secondAttribute="trailing" constant="16" id="UHk-LL-bsT"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="top" secondItem="80g-oG-ZRJ" secondAttribute="top" constant="124" id="XjO-H1-1H4"/>
                             <constraint firstItem="80g-oG-ZRJ" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="ZO9-Qt-V4L"/>
                             <constraint firstItem="80g-oG-ZRJ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="bEf-u4-C96"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="b0l-Wj-ULI" secondAttribute="bottom" constant="50" id="dTk-bp-NQv"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="b0l-Wj-ULI" secondAttribute="bottom" constant="30" id="dTk-bp-NQv"/>
                             <constraint firstItem="HiX-wo-5uu" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="mkT-63-jd4"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="b0l-Wj-ULI" secondAttribute="trailing" constant="50" id="nQZ-SY-OBX"/>
+                            <constraint firstItem="69j-Lk-Ki3" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="138" id="sRe-mR-a5w"/>
                             <constraint firstItem="b0l-Wj-ULI" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="xJb-Hg-P9u"/>
-                            <constraint firstItem="LNw-4x-HTO" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="25" id="ys9-iD-Dyh"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="5Vb-Bk-Sgx"/>
@@ -541,7 +529,6 @@
                         <outlet property="buttonThird" destination="Ike-K2-BMk" id="4P5-dU-z28"/>
                         <outlet property="questionLabel" destination="69j-Lk-Ki3" id="7fu-pH-kIN"/>
                         <outlet property="questionNumberLabel" destination="Tuh-GB-yCa" id="AKX-77-6ei"/>
-                        <outlet property="questionView" destination="LNw-4x-HTO" id="IU9-lb-MsF"/>
                         <outlet property="scoreLabel" destination="MGS-2j-Wc6" id="Wkz-8a-d1H"/>
                         <outlet property="timeLabel" destination="EJ9-9s-CE8" id="7e4-eR-NSx"/>
                     </connections>
@@ -717,9 +704,6 @@ Matematik kategoresinde
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemCyanColor">
-            <color red="0.1960784314" green="0.67843137249999996" blue="0.90196078430000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray3Color">
             <color red="0.78039215689999997" green="0.78039215689999997" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

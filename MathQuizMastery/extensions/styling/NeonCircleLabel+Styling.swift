@@ -5,7 +5,7 @@
 //  Created by Aydın KAYA on 11.05.2025.
 //
 
-import Foundation
+
 import UIKit
 
 class NeonCircleLabel: UILabel {
@@ -13,10 +13,13 @@ class NeonCircleLabel: UILabel {
     private let outerBorder = CAShapeLayer()
     private let innerBorder = CAShapeLayer()
     private let glowEffect = CALayer()
+    private var hasBeenConfigured = false
     
-    var neonColor: UIColor = UIColor.cyan {
+    var neonColor: UIColor = UIColor.magenta {
         didSet {
-            setupBorders()
+            if !hasBeenConfigured {
+                setupBorders()
+            }
         }
     }
     
@@ -31,44 +34,64 @@ class NeonCircleLabel: UILabel {
     }
     
     private func setupBorders() {
-        layer.cornerRadius = bounds.width / 2
-        layer.masksToBounds = true
+        if hasBeenConfigured { return }
+        hasBeenConfigured = true
         
         outerBorder.strokeColor = neonColor.cgColor
-        outerBorder.lineWidth = 2
+        outerBorder.lineWidth = 3
         outerBorder.fillColor = UIColor.clear.cgColor
         
-        innerBorder.strokeColor = neonColor.withAlphaComponent(0.5).cgColor
+        outerBorder.shadowColor = neonColor.cgColor
+        outerBorder.shadowOffset = CGSize(width: 0, height: 0)
+        outerBorder.shadowRadius = 5
+        outerBorder.shadowOpacity = 0.7
+        
+        innerBorder.strokeColor = neonColor.withAlphaComponent(0.6).cgColor
         innerBorder.lineWidth = 1.5
         innerBorder.fillColor = UIColor.clear.cgColor
         
-        glowEffect.backgroundColor = neonColor.withAlphaComponent(0.15).cgColor
-        glowEffect.frame = bounds
-        glowEffect.cornerRadius = bounds.width / 2
+        glowEffect.backgroundColor = neonColor.withAlphaComponent(0.25).cgColor
         
-        layer.insertSublayer(glowEffect, at: 0)
-        layer.addSublayer(outerBorder)
-        layer.addSublayer(innerBorder)
+        if glowEffect.superlayer == nil {
+            layer.insertSublayer(glowEffect, at: 0)
+            layer.addSublayer(outerBorder)
+            layer.addSublayer(innerBorder)
+        }
         
         self.textColor = neonColor
         self.textAlignment = .center
-        self.font = UIFont.systemFont(ofSize: bounds.width * 0.3, weight: .bold)
+        self.adjustsFontSizeToFitWidth = true
+        self.minimumScaleFactor = 0.5
+        self.clipsToBounds = true
+        self.layer.masksToBounds = true
+        
+        layoutIfNeeded()
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        let diameter = min(bounds.width, bounds.height)
-        layer.cornerRadius = diameter / 2
-        
-        let outerPath = UIBezierPath(ovalIn: bounds)
-        outerBorder.path = outerPath.cgPath
-        
-        let insetBounds = bounds.insetBy(dx: 3, dy: 3)
-        let innerPath = UIBezierPath(ovalIn: insetBounds)
-        innerBorder.path = innerPath.cgPath
-        
-        glowEffect.frame = bounds
-        glowEffect.cornerRadius = diameter / 2
+        if hasBeenConfigured {
+            let diameter = min(bounds.width, bounds.height)
+            layer.cornerRadius = diameter / 2
+            glowEffect.cornerRadius = diameter / 2
+            glowEffect.frame = bounds
+            
+            let outerPath = UIBezierPath(ovalIn: bounds)
+            outerBorder.path = outerPath.cgPath
+            
+            let insetBounds = bounds.insetBy(dx: 3, dy: 3)
+            let innerPath = UIBezierPath(ovalIn: insetBounds)
+            innerBorder.path = innerPath.cgPath
+            
+            let optimalFontSize = diameter * 0.45
+            self.font = UIFont.systemFont(ofSize: optimalFontSize, weight: .bold)
+        }
+    }
+    
+    func animateTextChange(newText: String) {
+        UIView.transition(with: self, duration: 0.3, options: .transitionFlipFromTop, animations: {
+            self.text = newText
+        }, completion: nil)
     }
 }
