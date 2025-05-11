@@ -7,14 +7,28 @@
 
 import Foundation
 
-class CategoryViewModel {
-    
+protocol CategoryViewModelProtocol {
+    var delegate: CategoryViewModelDelegate? { get set }
+    var coordinator: CategoryCoordinatorProtocol? { get set }
+    var numberOfItems: Int { get }
+    func categorySelected(at index: Int)
+    func category(at index: Int) -> CategoryModel
+}
+
+protocol CategoryViewModelDelegate: AnyObject {
+}
+
+class CategoryViewModel : CategoryViewModelProtocol {
+     
+    var delegate: (any CategoryViewModelDelegate)?
+    var coordinator: (any CategoryCoordinatorProtocol)?
+        
     private let categories: [CategoryModel] = [
-        CategoryModel(iconName: "subtract_icon", categoryName: "Addition"),
-        CategoryModel(iconName: "minus_icon", categoryName: "Subtraction"),
-        CategoryModel(iconName: "multiply_icon", categoryName: "Multiplication"),
-        CategoryModel(iconName: "divide_icon", categoryName: "Division"),
-        CategoryModel(iconName: "random_icon", categoryName: "Random")
+        CategoryModel(iconName: "subtract_icon", categoryName: "addition"),
+        CategoryModel(iconName: "minus_icon", categoryName: "subtraction"),
+        CategoryModel(iconName: "multiply_icon", categoryName: "multiplication"),
+        CategoryModel(iconName: "divide_icon", categoryName: "division"),
+        CategoryModel(iconName: "random_icon", categoryName: "mixed")
     ]
     
     var numberOfItems: Int {
@@ -24,4 +38,23 @@ class CategoryViewModel {
     func category(at index: Int) -> CategoryModel {
         return categories[index]
     }
+    
+    
+    func categorySelected(at index: Int) {
+        switch index {
+        case 0:
+            coordinator?.navigateToGameVC(with: .addition)
+        case 1:
+            coordinator?.navigateToGameVC(with: .subtraction)
+        case 2:
+            coordinator?.navigateToGameVC(with: .multiplication)
+        case 3:
+            coordinator?.navigateToGameVC(with: .division)
+        case 4:
+            coordinator?.navigateToGameVC(with: .mixed)
+        default:
+            break
+        }
+    }
+    
 }

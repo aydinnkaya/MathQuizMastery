@@ -8,19 +8,20 @@
 import UIKit
 
 class GameVC: UIViewController {
-    @IBOutlet weak var questionNumberLabel: UILabel!
+    @IBOutlet weak var questionNumberLabel: NeonLabel!
     @IBOutlet weak var questionView: UIView!
     @IBOutlet weak var questionLabel: UILabel!
-    @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var buttonFirst: UIButton!
     @IBOutlet weak var buttonSecond: UIButton!
-    
+    @IBOutlet weak var timeLabel: NeonCircleLabel!
     @IBOutlet weak var buttonThird: UIButton!
-    @IBOutlet weak var scoreLabel: UILabel!
-    
+    @IBOutlet weak var scoreLabel: NeonLabel!
     
     private var viewModel: GameScreenViewModelProtocol!
     var selectedExpressionType: MathExpression.ExpressionType?
+    
+    private var neonQuestionLabel: NeonLabel!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,9 +39,22 @@ class GameVC: UIViewController {
         setupButtonView(buttonFirst: buttonFirst, buttonSecond: buttonSecond, buttonThird: buttonThird)
         scoreLabel.text = "Score: 0"
         questionNumberLabel.text = "1 / 10"
-        timeLabel.text = "01:00"
+        timeLabel.text = "60"
+        
     }
     
+    override func viewDidLayoutSubviews() {
+        
+        questionNumberLabel.neonColor = UIColor.cyan
+        questionNumberLabel.cornerRadius = 8
+        questionNumberLabel.font = UIFont.systemFont(ofSize: 18, weight: .bold)
+        
+        timeLabel.neonColor = UIColor.systemTeal
+        
+        scoreLabel.neonColor = UIColor.cyan
+        scoreLabel.cornerRadius = 8
+        scoreLabel.font = UIFont.systemFont(ofSize: 18, weight: .bold)
+    }
     
     func setupQuestionView(questionView: UIView!){
         questionView.backgroundColor = UIColor(red: 210/255, green: 240/255, blue: 240/255, alpha: 1.0)
@@ -52,7 +66,6 @@ class GameVC: UIViewController {
         questionView.layer.shadowRadius = 8
         questionView.layer.borderWidth = 5
     }
-    // 
     
     func setupButtonView(buttonFirst: UIButton, buttonSecond :UIButton, buttonThird : UIButton){
         let buttonList = [buttonFirst,buttonSecond,buttonThird]
@@ -149,4 +162,6 @@ extension GameVC : GameScreenViewModelDelegate{
     }
     
 }
+
+
 

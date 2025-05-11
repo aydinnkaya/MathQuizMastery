@@ -84,5 +84,3 @@ extension UITextField {
         }
     }
 }
-
-//self.layer.borderColor = UIColor(red: 1.0, green: 0.8627, blue: 0.0, alpha: 1.0).cgColor

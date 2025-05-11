@@ -14,7 +14,7 @@ protocol GameScreenViewModelDelegate : AnyObject { // AnyObject => Class
     func onUpdateScore(score: Int)
     func onUpdateTime(time : String)
     func onUpdateQuestionNumber(questionNumber: Int)
-    func onTimeUp()    
+    func onTimeUp()
 }
 
 
@@ -92,9 +92,8 @@ class GameScreenViewModel : GameScreenViewModelProtocol {
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] _ in
             guard let self = self else { return }
             self.timeRemaining -= 1
-            let minutes = self.timeRemaining / 60
-            let seconds = self.timeRemaining % 60
-            delegate?.onUpdateTime(time: String(format: "%02d:%02d", minutes, seconds))
+            let formattedTime = String(format: "%02d", self.timeRemaining)
+            delegate?.onUpdateTime(time: formattedTime)
             
             if self.timeRemaining <= 0 {
                 self.timer?.invalidate()

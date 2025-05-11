@@ -9,10 +9,14 @@ import UIKit
 
 class HomeVC: UIViewController {
     
-    @IBOutlet weak var buttonStartLabel: UIButton!
+    @IBOutlet weak var coinInfoStackView: UIStackView!
+    @IBOutlet weak var userInfoStackView: UIStackView!
+    @IBOutlet weak var playButton: UIButton!
+    @IBOutlet weak var profileImageButton: UIButton!
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var coinLabel: UILabel!
     
+    @IBOutlet weak var settingsButton: UIButton!
     
     var user: User?
     var viewModel: HomeViewModel! {
@@ -24,17 +28,18 @@ class HomeVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.hidesBackButton = true
-        setGradientBackground()
         viewModel.notifyViewDidLoad()
+        setupUI()
     }
     
+    @IBAction func profileButtonTapped(_ sender: Any) {
+    }
     
     
     @IBAction func playButtonTapped(_ sender: UIButton) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if let categoryVC = storyboard.instantiateViewController(withIdentifier: "CategoryVC") as? CategoryVC {
             self.navigationController?.pushViewController(categoryVC, animated: true)
-
         }else {
             print("❌ CategoryVC bulunamadı. Storyboard ID doğru mu kontrol et.")
         }
@@ -63,17 +68,10 @@ extension HomeVC: HomeViewModelDelegate {
     }
 }
 
-private extension HomeVC {
-    func setGradientBackground() {
-        let gradient = CAGradientLayer()
-        gradient.colors = [
-            UIColor.Custom.backgroundDark1.cgColor,
-            UIColor.Custom.backgroundDark2.cgColor,
-            UIColor.Custom.backgroundDark3.cgColor
-        ]
-        gradient.startPoint = CGPoint(x: 0.5, y: 1)
-        gradient.endPoint = CGPoint(x: 1, y: 0.5)
-        gradient.frame = view.bounds
-        view.layer.insertSublayer(gradient, at: 0)
+extension HomeVC {
+    
+    func setupUI() {
+        userInfoStackView.layer.cornerRadius = 12.0
+      //  userInfoStackView.backgroundColor = .purple
     }
 }
