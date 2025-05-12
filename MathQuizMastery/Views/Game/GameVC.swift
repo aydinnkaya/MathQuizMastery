@@ -51,21 +51,12 @@ class GameVC: UIViewController {
     }
     
     private func handleTimeUp() {
-        guard let score = scoreLabel.text, !score.isEmpty else {
-            print("Score is empty or nil")
-            return
-        }
-        performSegue(withIdentifier: "goToResult", sender: score)
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "goToResult",
-           let resultVC = segue.destination as? ResultVC,
-           let score = sender as? String {
-            resultVC.receivedScore = score
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if let resultVC = storyboard.instantiateViewController(withIdentifier: "ResultVC") as? ResultVC {
+            navigationController?.pushViewController(resultVC, animated: true)
         }
     }
-    
+
     private func handleAnswer(for button: UIButton) {
         guard let selectedAnswer = button.title(for: .normal), let selectedAnswerInt = Int(selectedAnswer) else { return }
         let isCorrect = viewModel.checkAnswer(selectedAnswer: selectedAnswerInt)
@@ -147,12 +138,12 @@ extension GameVC {
     }
     
     func setupQuestionLabelStyle() {
-        questionLabel.neonColors = [UIColor.systemBlue, UIColor.green]
+        questionLabel.neonColors = [UIColor.magenta, UIColor.green]
         questionLabel.layer.cornerRadius = 16
         questionLabel.layer.masksToBounds = true
         questionLabel.font = UIFont.systemFont(ofSize: 20, weight: .bold)
         questionLabel.textAlignment = .center
-        questionLabel.backgroundColor = .clear
+      //  questionLabel.backgroundColor = .clear
     }
     
     func setupButtonStyles() {

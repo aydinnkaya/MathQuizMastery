@@ -227,7 +227,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wRm-pR-YCx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="881" y="-494"/>
+            <point key="canvasLocation" x="845" y="-493"/>
         </scene>
         <!--HomeVC-->
         <scene sceneID="GuZ-ag-Vze">
@@ -406,7 +406,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cyA-Sf-bW2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="881" y="213"/>
+            <point key="canvasLocation" x="836" y="214"/>
         </scene>
         <!--GameVC-->
         <scene sceneID="tne-QT-ifu">
@@ -455,13 +455,10 @@
                                     <constraint firstItem="EJ9-9s-CE8" firstAttribute="centerX" secondItem="HiX-wo-5uu" secondAttribute="centerX" id="q0x-0Y-war"/>
                                 </constraints>
                             </stackView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="10 + 8" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="69j-Lk-Ki3" customClass="QuestionLabel" customModule="MathQuizMastery" customModuleProvider="target">
-                                <rect key="frame" x="31" y="262" width="339" height="65"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="339" id="P7E-Gd-hBP"/>
-                                </constraints>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="10 + 8" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="69j-Lk-Ki3" customClass="QuestionLabel" customModule="MathQuizMastery" customModuleProvider="target">
+                                <rect key="frame" x="31" y="290" width="339" height="64.666666666666686"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="54"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleAspectFit" axis="vertical" distribution="fillEqually" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="b0l-Wj-ULI">
@@ -507,9 +504,8 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="top" secondItem="HiX-wo-5uu" secondAttribute="top" constant="20" id="2qm-1C-UJt"/>
-                            <constraint firstItem="69j-Lk-Ki3" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="31" id="HBM-kc-AJt"/>
+                            <constraint firstItem="69j-Lk-Ki3" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="31" id="8h9-mp-hrl"/>
                             <constraint firstItem="EJ9-9s-CE8" firstAttribute="width" secondItem="6Tk-OE-BBY" secondAttribute="width" multiplier="0.2" id="IDc-e6-lFl"/>
-                            <constraint firstItem="69j-Lk-Ki3" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="KbA-oS-u8q"/>
                             <constraint firstItem="80g-oG-ZRJ" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" constant="68" id="MhK-u0-n0v"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="HiX-wo-5uu" secondAttribute="trailing" constant="16" id="UHk-LL-bsT"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="top" secondItem="80g-oG-ZRJ" secondAttribute="top" constant="124" id="XjO-H1-1H4"/>
@@ -518,7 +514,6 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="b0l-Wj-ULI" secondAttribute="bottom" constant="30" id="dTk-bp-NQv"/>
                             <constraint firstItem="HiX-wo-5uu" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="mkT-63-jd4"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="b0l-Wj-ULI" secondAttribute="trailing" constant="50" id="nQZ-SY-OBX"/>
-                            <constraint firstItem="69j-Lk-Ki3" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="138" id="sRe-mR-a5w"/>
                             <constraint firstItem="b0l-Wj-ULI" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="xJb-Hg-P9u"/>
                         </constraints>
                     </view>
@@ -535,51 +530,22 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1608.955223880597" y="211.44164759725399"/>
+            <point key="canvasLocation" x="1597" y="213"/>
         </scene>
-        <!--ResultScreen-->
+        <!--Result Screen-->
         <scene sceneID="FLx-5p-NWQ">
             <objects>
-                <viewController id="0Da-OA-VEN" userLabel="ResultScreen" customClass="ResultVC" customModule="MathQuizMastery" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ResultVC" id="0Da-OA-VEN" customClass="ResultVC" customModule="MathQuizMastery" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kP6-sG-sys">
                         <rect key="frame" x="0.0" y="0.0" width="402" height="874"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="spaceship_cockpit" translatesAutoresizingMaskIntoConstraints="NO" id="ZG8-iT-m8f">
-                                <rect key="frame" x="0.0" y="0.0" width="402" height="874"/>
+                                <rect key="frame" x="0.0" y="0.0" width="440" height="956"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lt0-Af-CvJ">
-                                <rect key="frame" x="159" y="615" width="100.66666666666669" height="35"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Ana Menü"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o4P-2j-rwr">
-                                <rect key="frame" x="31" y="613" width="100" height="50"/>
-                                <color key="backgroundColor" systemColor="tableSeparatorDarkColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="100" id="3jw-VT-teL"/>
-                                    <constraint firstAttribute="height" constant="50" id="sSr-UQ-g0M"/>
-                                </constraints>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Kategoriler">
-                                    <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="12"/>
-                                    <color key="baseForegroundColor" systemColor="systemOrangeColor"/>
-                                </buttonConfiguration>
-                            </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calculate_symbol" translatesAutoresizingMaskIntoConstraints="NO" id="llU-Qm-Khi">
-                                <rect key="frame" x="137" y="200" width="128" height="128"/>
-                                <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="128" id="ZbX-ac-Y9i"/>
-                                    <constraint firstAttribute="width" constant="128" id="bsq-4X-j2C"/>
-                                </constraints>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="4" translatesAutoresizingMaskIntoConstraints="NO" id="A2C-8e-JPc">
-                                <rect key="frame" x="44.666666666666657" y="363" width="313" height="167"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="313" id="jbx-PZ-RI4"/>
-                                    <constraint firstAttribute="height" constant="167" id="spU-Mh-rux"/>
-                                </constraints>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="4" translatesAutoresizingMaskIntoConstraints="NO" id="A2C-8e-JPc">
+                                <rect key="frame" x="41" y="174" width="313" height="167"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <string key="text">TEBRİKLER!
 Matematik kategoresinde 
 10 dogru cevap verdin</string>
@@ -588,18 +554,41 @@ Matematik kategoresinde
                                 <nil key="highlightedColor"/>
                                 <size key="shadowOffset" width="1" height="-1"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bof-WX-Wiz">
-                                <rect key="frame" x="274.66666666666669" y="613" width="59.333333333333314" height="34.333333333333371"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Tekrar Oyna "/>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lfs-VU-QxS" userLabel="label">
-                                <rect key="frame" x="51" y="457" width="300" height="100"/>
-                                <color key="backgroundColor" systemColor="systemOrangeColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="2Pf-97-mXQ"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="cuY-gK-pJF"/>
-                                </constraints>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pFb-Wn-UVR">
+                                <rect key="frame" x="43" y="703" width="316" height="54.333333333333371"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lt0-Af-CvJ">
+                                        <rect key="frame" x="0.0" y="0.0" width="105.33333333333333" height="54.333333333333336"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Ana Menü"/>
+                                        <connections>
+                                            <action selector="goToHome:forEvent:" destination="0Da-OA-VEN" eventType="touchUpInside" id="ltk-8B-spo"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o4P-2j-rwr">
+                                        <rect key="frame" x="105.33333333333334" y="0.0" width="105.33333333333334" height="54.333333333333336"/>
+                                        <color key="backgroundColor" systemColor="tableSeparatorDarkColor"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Kategoriler">
+                                            <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="12"/>
+                                            <color key="baseForegroundColor" systemColor="systemOrangeColor"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="goToCategory:forEvent:" destination="0Da-OA-VEN" eventType="touchUpOutside" id="GJ7-Vt-dO3"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bof-WX-Wiz">
+                                        <rect key="frame" x="210.66666666666666" y="0.0" width="105.33333333333334" height="54.333333333333336"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Tekrar Oyna "/>
+                                        <connections>
+                                            <action selector="goToGame:" destination="0Da-OA-VEN" eventType="touchUpInside" id="hth-10-nou"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Score: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HOi-lK-dC0" customClass="NeonLabel" customModule="MathQuizMastery" customModuleProvider="target">
+                                <rect key="frame" x="168" y="406" width="54" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -608,37 +597,26 @@ Matematik kategoresinde
                         <viewLayoutGuide key="safeArea" id="YmG-1x-BXw"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Lt0-Af-CvJ" firstAttribute="leading" secondItem="kP6-sG-sys" secondAttribute="leading" constant="159" id="5Mh-lL-lRo"/>
-                            <constraint firstItem="YmG-1x-BXw" firstAttribute="bottom" secondItem="bof-WX-Wiz" secondAttribute="bottom" constant="158.66666666666663" id="5Qx-bo-zMw"/>
-                            <constraint firstItem="llU-Qm-Khi" firstAttribute="centerX" secondItem="kP6-sG-sys" secondAttribute="centerX" id="8uQ-m4-WOZ"/>
-                            <constraint firstItem="A2C-8e-JPc" firstAttribute="centerX" secondItem="kP6-sG-sys" secondAttribute="centerX" id="9ou-sy-4Jg"/>
-                            <constraint firstItem="ZG8-iT-m8f" firstAttribute="bottom" secondItem="YmG-1x-BXw" secondAttribute="bottom" constant="68" id="Ddg-XW-YdE"/>
-                            <constraint firstItem="ZG8-iT-m8f" firstAttribute="leading" secondItem="YmG-1x-BXw" secondAttribute="leading" id="KLJ-Ce-mVx"/>
-                            <constraint firstItem="bof-WX-Wiz" firstAttribute="top" secondItem="lfs-VU-QxS" secondAttribute="bottom" constant="56" id="KwG-Da-9Kf"/>
-                            <constraint firstItem="YmG-1x-BXw" firstAttribute="top" secondItem="ZG8-iT-m8f" secondAttribute="top" constant="124" id="QAm-Gk-IyJ"/>
-                            <constraint firstItem="YmG-1x-BXw" firstAttribute="trailing" secondItem="bof-WX-Wiz" secondAttribute="trailing" constant="68" id="R95-C9-eIJ"/>
-                            <constraint firstItem="bof-WX-Wiz" firstAttribute="top" secondItem="o4P-2j-rwr" secondAttribute="top" id="Rhc-ny-Jur"/>
-                            <constraint firstItem="lfs-VU-QxS" firstAttribute="centerX" secondItem="kP6-sG-sys" secondAttribute="centerX" id="SPZ-Po-HnA"/>
-                            <constraint firstItem="bof-WX-Wiz" firstAttribute="leading" secondItem="Lt0-Af-CvJ" secondAttribute="trailing" constant="15" id="XSv-Vg-YTy"/>
-                            <constraint firstItem="A2C-8e-JPc" firstAttribute="top" secondItem="llU-Qm-Khi" secondAttribute="bottom" constant="35" id="cav-No-iHa"/>
-                            <constraint firstItem="o4P-2j-rwr" firstAttribute="leading" secondItem="YmG-1x-BXw" secondAttribute="leading" constant="31" id="fYp-DI-MOb"/>
-                            <constraint firstItem="YmG-1x-BXw" firstAttribute="bottom" secondItem="Lt0-Af-CvJ" secondAttribute="bottom" constant="156" id="lC5-il-NLQ"/>
-                            <constraint firstItem="llU-Qm-Khi" firstAttribute="centerX" secondItem="kP6-sG-sys" secondAttribute="centerX" id="qKj-DL-nRh"/>
-                            <constraint firstItem="A2C-8e-JPc" firstAttribute="centerX" secondItem="kP6-sG-sys" secondAttribute="centerX" id="qUQ-3c-Iw5"/>
-                            <constraint firstItem="llU-Qm-Khi" firstAttribute="top" secondItem="YmG-1x-BXw" secondAttribute="top" constant="76" id="sqU-tW-X7L"/>
-                            <constraint firstItem="Lt0-Af-CvJ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="o4P-2j-rwr" secondAttribute="trailing" constant="8" symbolic="YES" id="yeT-gk-zSG"/>
-                            <constraint firstItem="YmG-1x-BXw" firstAttribute="trailing" secondItem="ZG8-iT-m8f" secondAttribute="trailing" id="ymq-I5-b13"/>
+                            <constraint firstItem="pFb-Wn-UVR" firstAttribute="centerX" secondItem="YmG-1x-BXw" secondAttribute="centerX" id="0AU-vD-7mx"/>
+                            <constraint firstItem="pFb-Wn-UVR" firstAttribute="leading" secondItem="YmG-1x-BXw" secondAttribute="leading" constant="43" id="0gd-hO-FtJ"/>
+                            <constraint firstItem="YmG-1x-BXw" firstAttribute="top" secondItem="ZG8-iT-m8f" secondAttribute="top" constant="124" id="H3o-Qd-bbX"/>
+                            <constraint firstItem="ZG8-iT-m8f" firstAttribute="leading" secondItem="YmG-1x-BXw" secondAttribute="leading" id="Ke9-4O-U4x"/>
+                            <constraint firstItem="YmG-1x-BXw" firstAttribute="bottom" secondItem="pFb-Wn-UVR" secondAttribute="bottom" constant="48.666666666666629" id="eOW-b5-Edp"/>
+                            <constraint firstItem="YmG-1x-BXw" firstAttribute="bottom" secondItem="HOi-lK-dC0" secondAttribute="bottom" constant="379" id="h8V-fy-LBx"/>
+                            <constraint firstItem="HOi-lK-dC0" firstAttribute="centerX" secondItem="YmG-1x-BXw" secondAttribute="centerX" id="prR-Bg-nnI"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Result Screen" id="NRt-Y9-9Mj"/>
                     <connections>
-                        <outlet property="kategoriButtonLabel" destination="o4P-2j-rwr" id="Vcd-pe-dDR"/>
-                        <outlet property="label" destination="lfs-VU-QxS" id="jxK-Wx-j0c"/>
+                        <outlet property="categoryButton" destination="o4P-2j-rwr" id="yIe-Pv-vjy"/>
+                        <outlet property="homeButton" destination="Lt0-Af-CvJ" id="dLK-6M-oAu"/>
+                        <outlet property="restartButton" destination="bof-WX-Wiz" id="JqS-iZ-pfX"/>
+                        <outlet property="scoreLabel" destination="HOi-lK-dC0" id="NYN-gC-L0d"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9dJ-od-5V2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2314.9253731343283" y="212.81464530892447"/>
+            <point key="canvasLocation" x="2428" y="214"/>
         </scene>
         <!--Item-->
         <scene sceneID="pxH-tc-QPg">
@@ -684,7 +662,6 @@ Matematik kategoresinde
         <image name="Math_Quiz_Mastery_Transparent-removebg-preview" width="661" height="377"/>
         <image name="background_image" width="419" height="837"/>
         <image name="batman" width="228" height="228"/>
-        <image name="calculate_symbol" width="12" height="12"/>
         <image name="category_background_image" width="393" height="852"/>
         <image name="coin_icon" width="36" height="36"/>
         <image name="fly" width="167" height="167"/>

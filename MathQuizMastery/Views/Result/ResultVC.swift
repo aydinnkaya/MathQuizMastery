@@ -8,19 +8,49 @@
 import UIKit
 
 class ResultVC: UIViewController {
-    @IBOutlet weak var label: UILabel!
+    @IBOutlet weak var scoreLabel: NeonLabel!
+    @IBOutlet weak var homeButton: UIButton!
+    @IBOutlet weak var restartButton: UIButton!
+    @IBOutlet weak var categoryButton: UIButton!
     
-    @IBOutlet weak var kategoriButtonLabel: UIButton!
-    var receivedScore: String = ""
+    var receivedScore: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        label.text = receivedScore
+        scoreLabel.text = "\(receivedScore)"
         
-        kategoriButtonLabel.layer.cornerRadius = 20
-        kategoriButtonLabel.clipsToBounds = true
+        categoryButton.clipsToBounds = true
         navigationItem.hidesBackButton = true
+    }
+    
+    @IBAction func goToHome(_ sender: UIButton, forEvent event: UIEvent) {
+       // navigateToHome()
+    }
+    
+    @IBAction func goToCategory(_ sender: Any, forEvent event: UIEvent) {
+       // navigateToCategory()
+    }
+    
+    @IBAction func goToGame(_ sender: Any) {
         
     }
 }
+
+extension ResultVC {
+    
+    func navigateToHome() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if let homeVC = storyboard.instantiateViewController(withIdentifier: "HomeVC") as? HomeVC {
+            navigationController?.setViewControllers([homeVC], animated: true)
+        }
+    }
+
+    func navigateToCategory() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if let categoryVC = storyboard.instantiateViewController(withIdentifier: "CategoryVC") as? CategoryVC {
+            navigationController?.setViewControllers([categoryVC], animated: true)
+        }
+    }
+}
+

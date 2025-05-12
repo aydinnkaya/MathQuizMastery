@@ -10,4 +10,6 @@ import Foundation
 struct CategoryModel {
     let iconName: String
     let categoryName: String
+    let expressionType: MathExpression.ExpressionType
 }
+

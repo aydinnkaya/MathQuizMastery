@@ -12,26 +12,46 @@ class CategoryVC: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     
     private var viewModel: CategoryViewModelProtocol!
-    private var coordinator: CategoryCoordinatorProtocol!
     private var _numerOfIndexPaths: Int = 0
-
+    
+    init?(coder: NSCoder, viewModel: CategoryViewModelProtocol) {
+            self.viewModel = viewModel
+            super.init(coder: coder)
+            self.viewModel.delegate = self
+    }
+    
+    required init?(coder: NSCoder) {
+            fatalError("Use init(coder:viewModel:) instead.")
+        }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         collectionView.delegate = self
         collectionView.dataSource = self
-        
-        coordinator = CategoryCoordinator(navigationController: self.navigationController!)
-        viewModel = CategoryViewModel()
-        viewModel.coordinator = coordinator
     }
-    
 }
 
-extension CategoryVC: CategoryViewModelDelegate{
-  
+extension CategoryVC: CategoryViewModelDelegate {
+    func navigateToGameVC(with type: MathExpression.ExpressionType) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let gameVC = storyboard.instantiateViewController(withIdentifier: "GameVC") as? GameVC else { return }
+        gameVC.selectedExpressionType = type
+        navigationController?.pushViewController(gameVC, animated: true)
+    }
 }
+
+extension CategoryVC {
+    static func instantiate() -> CategoryVC {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let viewModel = CategoryViewModel()
+        let creator: (NSCoder) -> CategoryVC? = { coder in
+            return CategoryVC(coder: coder, viewModel: viewModel)
+        }
+        return storyboard.instantiateViewController(identifier: "CategoryVC", creator: creator)
+    }
+}
+
 
 extension CategoryVC: UICollectionViewDataSource, UICollectionViewDelegate {
     

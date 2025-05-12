@@ -9,6 +9,19 @@ import Foundation
 import UIKit
 
 
+protocol GameScreenViewModelProtocol : AnyObject {
+    var expression: MathExpression.Operation { get }
+    var answers: [Int] { get }
+    var correctAnswer: Int { get }
+    var score: Int { get }
+    var questionNumber: Int { get }
+    
+    func startGame()
+    func nextQuestion()
+    func checkAnswer(selectedAnswer: Int) -> Bool
+}
+
+
 protocol GameScreenViewModelDelegate : AnyObject { // AnyObject => Class
     func onUpdateUI(questionText: String, answers : [String])
     func onUpdateScore(score: Int)

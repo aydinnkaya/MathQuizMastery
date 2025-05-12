@@ -135,15 +135,12 @@ extension LoginVC {
     }
     
     func navigateToHomeScreen(with user: User) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        if let homeVC = storyboard.instantiateViewController(withIdentifier: "HomeVC") as? HomeVC {
-            let viewModel = HomeViewModel(user: user)
-            homeVC.viewModel = viewModel
-            let navController = UINavigationController(rootViewController: homeVC)
-            navController.modalPresentationStyle = .fullScreen
-            self.present(navController, animated: true, completion: nil)
-        }
+        let homeVC = HomeVC.instantiate(with: user)
+        let navController = UINavigationController(rootViewController: homeVC)
+        navController.modalPresentationStyle = .fullScreen
+        self.present(navController, animated: true, completion: nil)
     }
+
     
     func setupGradientBackground() {
         let gradientLayer = CAGradientLayer()

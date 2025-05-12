@@ -19,12 +19,17 @@ class HomeVC: UIViewController {
     @IBOutlet weak var settingsButton: UIButton!
     
     var user: User?
-    var viewModel: HomeViewModel! {
-        didSet {
-            viewModel.delegate = self
-        }
+    private var viewModel: HomeViewModelProtocol!
+    
+    init?(coder: NSCoder, viewModel: HomeViewModelProtocol) {
+        self.viewModel = viewModel
+        super.init(coder: coder)
+        self.viewModel.delegate = self
     }
     
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.hidesBackButton = true
@@ -33,45 +38,41 @@ class HomeVC: UIViewController {
     }
     
     @IBAction func profileButtonTapped(_ sender: Any) {
+        
     }
-    
     
     @IBAction func playButtonTapped(_ sender: UIButton) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        if let categoryVC = storyboard.instantiateViewController(withIdentifier: "CategoryVC") as? CategoryVC {
-            self.navigationController?.pushViewController(categoryVC, animated: true)
-        }else {
-            print("❌ CategoryVC bulunamadı. Storyboard ID doğru mu kontrol et.")
-        }
+        viewModel.playButtonTapped()
     }
     
-    
 }
+
 // MARK: - Instantiate with User
 extension HomeVC {
-    static func instantiate(with user: User) -> HomeVC {
+    static func instantiate(with user: User, authService: AuthServiceProtocol = AuthService.shared) -> HomeVC {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        guard let homeVC = storyboard.instantiateViewController(withIdentifier: "HomeVC") as? HomeVC else {
-            return HomeVC() // Default fallback view controller
+        let viewModel = HomeViewModel(user: user, authService: authService)
+        let creator: (NSCoder) -> HomeVC? = { coder in
+            return HomeVC(coder: coder, viewModel: viewModel)
         }
-        let viewModel = HomeViewModel(user: user)
-        homeVC.viewModel = viewModel
-        return homeVC
+        return storyboard.instantiateViewController(identifier: "HomeVC", creator: creator)
     }
 }
 
 // MARK: - ViewModel Delegate
 extension HomeVC: HomeViewModelDelegate {
+    func navigateToCategory() {
+        let categoryVC = CategoryVC.instantiate()
+        navigationController?.pushViewController(categoryVC, animated: true)
+    }
+    
     func didReceiveUser(_ user: User?) {
         guard let user = user else { return }
         usernameLabel.text = user.username
     }
 }
-
 extension HomeVC {
-    
     func setupUI() {
         userInfoStackView.layer.cornerRadius = 12.0
-      //  userInfoStackView.backgroundColor = .purple
     }
 }

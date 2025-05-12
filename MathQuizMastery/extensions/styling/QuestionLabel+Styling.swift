@@ -14,7 +14,7 @@ class QuestionLabel: UILabel {
     private let glowEffect = CALayer()
     private var lastSize: CGSize = .zero
     
-    var neonColors: [UIColor] = [UIColor.systemCyan, UIColor.green] {
+    var neonColors: [UIColor] = [UIColor.black, UIColor.magenta] {
         didSet {
             setupBorders()
         }
