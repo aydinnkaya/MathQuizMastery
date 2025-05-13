@@ -141,11 +141,12 @@ extension GameVC {
         questionLabel.neonColors = [UIColor.magenta, UIColor.green]
         questionLabel.layer.cornerRadius = 16
         questionLabel.layer.masksToBounds = true
-        questionLabel.font = UIFont.systemFont(ofSize: 20, weight: .bold)
+        questionLabel.font = UIFont.systemFont(ofSize: 22, weight: .bold)
         questionLabel.textAlignment = .center
-      //  questionLabel.backgroundColor = .clear
+        questionLabel.textColor = .purple
+        questionLabel.backgroundColor = .clear
+
     }
-    
     func setupButtonStyles() {
         let buttonList = [buttonFirst, buttonSecond, buttonThird]
         

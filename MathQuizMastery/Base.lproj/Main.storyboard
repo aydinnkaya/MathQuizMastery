@@ -455,17 +455,17 @@
                                     <constraint firstItem="EJ9-9s-CE8" firstAttribute="centerX" secondItem="HiX-wo-5uu" secondAttribute="centerX" id="q0x-0Y-war"/>
                                 </constraints>
                             </stackView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="10 + 8" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="69j-Lk-Ki3" customClass="QuestionLabel" customModule="MathQuizMastery" customModuleProvider="target">
-                                <rect key="frame" x="31" y="290" width="339" height="64.666666666666686"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="54"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <stackView opaque="NO" contentMode="scaleAspectFit" axis="vertical" distribution="fillEqually" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="b0l-Wj-ULI">
-                                <rect key="frame" x="50" y="593" width="319" height="183"/>
+                                <rect key="frame" x="50" y="304" width="319" height="472"/>
                                 <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g2o-7x-DQw" customClass="QuestionLabel" customModule="MathQuizMastery" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="319" height="88"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6gk-K2-Vyh" customClass="NeonButton" customModule="MathQuizMastery" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="319" height="34.333333333333336"/>
+                                        <rect key="frame" x="0.0" y="128" width="319" height="88"/>
                                         <accessibility key="accessibilityConfiguration">
                                             <bool key="isElement" value="NO"/>
                                         </accessibility>
@@ -478,7 +478,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vPS-Bo-38q" customClass="NeonButton" customModule="MathQuizMastery" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="74.333333333333371" width="319" height="34.333333333333343"/>
+                                        <rect key="frame" x="0.0" y="256" width="319" height="88"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Button">
                                             <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -488,7 +488,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ike-K2-BMk" customClass="NeonButton" customModule="MathQuizMastery" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="148.66666666666663" width="319" height="34.333333333333343"/>
+                                        <rect key="frame" x="0.0" y="384" width="319" height="88"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Button">
                                             <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -504,9 +504,9 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="top" secondItem="HiX-wo-5uu" secondAttribute="top" constant="20" id="2qm-1C-UJt"/>
-                            <constraint firstItem="69j-Lk-Ki3" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="31" id="8h9-mp-hrl"/>
                             <constraint firstItem="EJ9-9s-CE8" firstAttribute="width" secondItem="6Tk-OE-BBY" secondAttribute="width" multiplier="0.2" id="IDc-e6-lFl"/>
                             <constraint firstItem="80g-oG-ZRJ" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" constant="68" id="MhK-u0-n0v"/>
+                            <constraint firstItem="b0l-Wj-ULI" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="180" id="R9O-vq-ONn"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="HiX-wo-5uu" secondAttribute="trailing" constant="16" id="UHk-LL-bsT"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="top" secondItem="80g-oG-ZRJ" secondAttribute="top" constant="124" id="XjO-H1-1H4"/>
                             <constraint firstItem="80g-oG-ZRJ" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="ZO9-Qt-V4L"/>
@@ -522,7 +522,7 @@
                         <outlet property="buttonFirst" destination="6gk-K2-Vyh" id="NkB-ev-Eyr"/>
                         <outlet property="buttonSecond" destination="vPS-Bo-38q" id="47w-CI-cXh"/>
                         <outlet property="buttonThird" destination="Ike-K2-BMk" id="4P5-dU-z28"/>
-                        <outlet property="questionLabel" destination="69j-Lk-Ki3" id="7fu-pH-kIN"/>
+                        <outlet property="questionLabel" destination="g2o-7x-DQw" id="5qS-a9-0x0"/>
                         <outlet property="questionNumberLabel" destination="Tuh-GB-yCa" id="AKX-77-6ei"/>
                         <outlet property="scoreLabel" destination="MGS-2j-Wc6" id="Wkz-8a-d1H"/>
                         <outlet property="timeLabel" destination="EJ9-9s-CE8" id="7e4-eR-NSx"/>

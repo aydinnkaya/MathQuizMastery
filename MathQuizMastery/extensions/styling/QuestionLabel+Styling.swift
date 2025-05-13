@@ -14,7 +14,7 @@ class QuestionLabel: UILabel {
     private let glowEffect = CALayer()
     private var lastSize: CGSize = .zero
     
-    var neonColors: [UIColor] = [UIColor.black, UIColor.magenta] {
+    var neonColors: [UIColor] = [UIColor.white, UIColor.magenta] {
         didSet {
             setupBorders()
         }
@@ -41,7 +41,9 @@ class QuestionLabel: UILabel {
         gradientLayer.startPoint = CGPoint(x: 0, y: 0)
         gradientLayer.endPoint = CGPoint(x: 1, y: 1)
         gradientLayer.cornerRadius = 16
+        
         layer.insertSublayer(gradientLayer, at: 0)
+        layer.insertSublayer(glowEffect, at: 1)
         
         outerBorder.strokeColor = UIColor.cyan.cgColor
         outerBorder.lineWidth = 3
@@ -51,16 +53,16 @@ class QuestionLabel: UILabel {
         outerBorder.shadowRadius = 5
         outerBorder.shadowOpacity = 0.8
         layer.addSublayer(outerBorder)
-        
+
         glowEffect.backgroundColor = UIColor.cyan.withAlphaComponent(0.15).cgColor
         glowEffect.frame = bounds
         glowEffect.cornerRadius = 16
-        layer.insertSublayer(glowEffect, at: 0)
         
         self.textColor = .white
         self.textAlignment = .center
         self.adjustsFontSizeToFitWidth = true
         self.minimumScaleFactor = 0.5
+        self.layer.masksToBounds = false
     }
     
     override func layoutSubviews() {
@@ -70,13 +72,13 @@ class QuestionLabel: UILabel {
         lastSize = bounds.size
         
         gradientLayer.frame = bounds
+        glowEffect.frame = bounds
+        outerBorder.frame = bounds
         
         let outerPath = UIBezierPath(roundedRect: bounds, cornerRadius: 16)
         outerBorder.path = outerPath.cgPath
         
-        glowEffect.frame = bounds
-        
-        let optimalFontSize = bounds.height * 0.4
+        let optimalFontSize = max(bounds.height * 0.4, 18)
         self.font = UIFont.systemFont(ofSize: optimalFontSize, weight: .bold)
     }
     
