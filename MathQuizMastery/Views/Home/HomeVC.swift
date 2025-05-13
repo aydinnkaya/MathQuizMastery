@@ -38,7 +38,12 @@ class HomeVC: UIViewController {
     }
     
     @IBAction func profileButtonTapped(_ sender: Any) {
-        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if let avatarPopupVC = storyboard.instantiateViewController(withIdentifier: "AvatarPopupVC") as? AvatarPopupVC{
+            avatarPopupVC.modalPresentationStyle = .overCurrentContext
+            avatarPopupVC.modalTransitionStyle = .crossDissolve
+            self.present(avatarPopupVC, animated: true, completion: nil)
+        }
     }
     
     @IBAction func playButtonTapped(_ sender: UIButton) {
