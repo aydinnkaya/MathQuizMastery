@@ -9,7 +9,7 @@ import UIKit
 
 class GameVC: UIViewController {
     @IBOutlet weak var questionNumberLabel: NeonLabel!
-    @IBOutlet weak var questionLabel: QuestionLabel!
+    @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var buttonFirst: NeonButton!
     @IBOutlet weak var buttonSecond: NeonButton!
     @IBOutlet weak var timeLabel: NeonCircleLabel!
@@ -56,7 +56,7 @@ class GameVC: UIViewController {
             navigationController?.pushViewController(resultVC, animated: true)
         }
     }
-
+    
     private func handleAnswer(for button: UIButton) {
         guard let selectedAnswer = button.title(for: .normal), let selectedAnswerInt = Int(selectedAnswer) else { return }
         let isCorrect = viewModel.checkAnswer(selectedAnswer: selectedAnswerInt)
@@ -117,14 +117,15 @@ extension GameVC : GameScreenViewModelDelegate{
 
 extension GameVC {
     
-    func setupUIElements() {        
+    func setupUIElements() {
         scoreLabel.text = "Score: 0"
         questionNumberLabel.text = "1 / 10"
         timeLabel.text = "60"
+        setupQuestionLabelStyle()
     }
     
     func setupLabelStyles() {
-        questionNumberLabel.neonColor = UIColor.cyan
+        questionNumberLabel.neonColor = UIColor.blue
         questionNumberLabel.cornerRadius = 8
         questionNumberLabel.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         
@@ -132,26 +133,32 @@ extension GameVC {
         timeLabel.layer.cornerRadius = timeLabel.frame.height / 2
         timeLabel.clipsToBounds = true
         
-        scoreLabel.neonColor = UIColor.cyan
+        scoreLabel.neonColor = UIColor(red: 0.96, green: 0.26, blue: 0.21, alpha: 1)
         scoreLabel.cornerRadius = 8
         scoreLabel.font = UIFont.systemFont(ofSize: 18, weight: .bold)
     }
     
     func setupQuestionLabelStyle() {
-        questionLabel.neonColors = [UIColor.magenta, UIColor.green]
-        questionLabel.layer.cornerRadius = 16
-        questionLabel.layer.masksToBounds = true
-        questionLabel.font = UIFont.systemFont(ofSize: 22, weight: .bold)
+        //        questionLabel.gradientColors = [.purple, .red]
+        //        questionLabel.borderColor = UIColor(red: 1.0, green: 0.8627, blue: 0.0, alpha: 1.0)
+//        questionLabel.neonColors = [
+//            UIColor(red: 0.96, green: 0.26, blue: 0.21, alpha: 1).cgColor, // Kırmızı Neon
+//            UIColor(red: 0.29, green: 0.63, blue: 0.96, alpha: 1).cgColor, // Mavi Neon
+//            UIColor(red: 0.44, green: 0.89, blue: 0.33, alpha: 1).cgColor  // Yeşil Neon
+//        ]
         questionLabel.textAlignment = .center
-        questionLabel.textColor = .purple
-        questionLabel.backgroundColor = .clear
-
+        questionLabel.textColor = .white
     }
+    
     func setupButtonStyles() {
         let buttonList = [buttonFirst, buttonSecond, buttonThird]
         
         for button in buttonList {
-            button?.neonColors = [UIColor.systemPink, UIColor.systemPurple]
+            button?.neonColors = [
+                UIColor(red: 138/255, green: 43/255, blue: 226/255, alpha: 1),  // #8A2BE2 - BlueViolet
+                UIColor(red: 0/255, green: 245/255, blue: 255/255, alpha: 1),   // #00F5FF - Electric Blue
+                UIColor(red: 255/255, green: 0/255, blue: 255/255, alpha: 1)    // #FF00FF - Magenta
+            ]
             button?.layer.cornerRadius = 15
             button?.layer.masksToBounds = true
             button?.layer.borderWidth = 2

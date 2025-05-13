@@ -8,7 +8,6 @@
 import Foundation
 import UIKit
 
-
 protocol GameScreenViewModelProtocol : AnyObject {
     var expression: MathExpression.Operation { get }
     var answers: [Int] { get }
@@ -21,7 +20,6 @@ protocol GameScreenViewModelProtocol : AnyObject {
     func checkAnswer(selectedAnswer: Int) -> Bool
 }
 
-
 protocol GameScreenViewModelDelegate : AnyObject { // AnyObject => Class
     func onUpdateUI(questionText: String, answers : [String])
     func onUpdateScore(score: Int)
@@ -29,7 +27,6 @@ protocol GameScreenViewModelDelegate : AnyObject { // AnyObject => Class
     func onUpdateQuestionNumber(questionNumber: Int)
     func onTimeUp()
 }
-
 
 class GameScreenViewModel : GameScreenViewModelProtocol {
     

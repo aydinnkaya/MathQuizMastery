@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_3" orientation="portrait" appearance="dark"/>
+    <device id="retina6_3" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
@@ -336,6 +336,43 @@
             </objects>
             <point key="canvasLocation" x="39" y="213"/>
         </scene>
+        <!--Avatar PopupVC-->
+        <scene sceneID="WH6-4Z-RSU">
+            <objects>
+                <viewController storyboardIdentifier="AvatarPopupVC" modalPresentationStyle="overCurrentContext" id="OES-Xx-PCq" customClass="AvatarPopupVC" customModule="MathQuizMastery" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="b2G-2M-mlp">
+                        <rect key="frame" x="0.0" y="0.0" width="402" height="874"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" horizontalHuggingPriority="400" verticalHuggingPriority="600" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s1R-ef-y2y">
+                                <rect key="frame" x="40.333333333333343" y="232.33333333333337" width="322.66666666666663" height="409.33333333333326"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Düzenle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fPl-uz-oTa">
+                                <rect key="frame" x="145" y="186" width="109" height="37"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="31"/>
+                                <color key="textColor" red="0.17254901959999999" green="0.24313725489999999" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="q8O-pf-bIt"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="fPl-uz-oTa" firstAttribute="centerX" secondItem="q8O-pf-bIt" secondAttribute="centerX" id="5sd-nr-tPh"/>
+                            <constraint firstItem="s1R-ef-y2y" firstAttribute="width" secondItem="q8O-pf-bIt" secondAttribute="width" multiplier="0.8" id="6Qj-Lw-ZI7"/>
+                            <constraint firstItem="q8O-pf-bIt" firstAttribute="trailing" secondItem="s1R-ef-y2y" secondAttribute="trailing" constant="40.333333333333371" id="h1I-KO-P1Y"/>
+                            <constraint firstItem="s1R-ef-y2y" firstAttribute="top" secondItem="q8O-pf-bIt" secondAttribute="top" constant="108.33333333333334" id="lY1-fS-9n1"/>
+                            <constraint firstItem="s1R-ef-y2y" firstAttribute="centerX" secondItem="b2G-2M-mlp" secondAttribute="centerX" id="oGD-XZ-ZCw"/>
+                            <constraint firstItem="s1R-ef-y2y" firstAttribute="height" secondItem="q8O-pf-bIt" secondAttribute="height" multiplier="0.6" id="urv-Dm-YfJ"/>
+                            <constraint firstItem="s1R-ef-y2y" firstAttribute="centerY" secondItem="b2G-2M-mlp" secondAttribute="centerY" id="uuh-tr-mQc"/>
+                        </constraints>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KE9-6Q-EQ1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="37" y="881"/>
+        </scene>
         <!--CategoryVC-->
         <scene sceneID="06u-qU-sZY">
             <objects>
@@ -422,12 +459,12 @@
                             <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFill" misplaced="YES" distribution="fillEqually" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="HiX-wo-5uu">
                                 <rect key="frame" x="31" y="76" width="387" height="126.33333333333331"/>
                                 <subviews>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MGS-2j-Wc6" userLabel="Score" customClass="NeonLabel" customModule="MathQuizMastery" customModuleProvider="target">
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="10 / 10" textAlignment="center" lineBreakMode="clip" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tuh-GB-yCa" customClass="NeonLabel" customModule="MathQuizMastery" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="18" width="126.33333333333333" height="90.333333333333329"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" secondItem="MGS-2j-Wc6" secondAttribute="height" multiplier="1.4" id="MRS-pu-JKu"/>
+                                            <constraint firstAttribute="width" secondItem="Tuh-GB-yCa" secondAttribute="height" multiplier="1.4" id="67m-sI-X0q"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -440,12 +477,12 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="10 / 10" textAlignment="center" lineBreakMode="clip" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tuh-GB-yCa" customClass="NeonLabel" customModule="MathQuizMastery" customModuleProvider="target">
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MGS-2j-Wc6" userLabel="Score" customClass="NeonLabel" customModule="MathQuizMastery" customModuleProvider="target">
                                         <rect key="frame" x="260.66666666666669" y="18" width="126.33333333333331" height="90.333333333333329"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" secondItem="Tuh-GB-yCa" secondAttribute="height" multiplier="1.4" id="67m-sI-X0q"/>
+                                            <constraint firstAttribute="width" secondItem="MGS-2j-Wc6" secondAttribute="height" multiplier="1.4" id="MRS-pu-JKu"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -458,7 +495,7 @@
                             <stackView opaque="NO" contentMode="scaleAspectFit" axis="vertical" distribution="fillEqually" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="b0l-Wj-ULI">
                                 <rect key="frame" x="50" y="304" width="319" height="472"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g2o-7x-DQw" customClass="QuestionLabel" customModule="MathQuizMastery" customModuleProvider="target">
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g2o-7x-DQw" customClass="QuestionLabel" customModule="MathQuizMastery" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="319" height="88"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
