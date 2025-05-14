@@ -139,13 +139,6 @@ extension GameVC {
     }
     
     func setupQuestionLabelStyle() {
-        //        questionLabel.gradientColors = [.purple, .red]
-        //        questionLabel.borderColor = UIColor(red: 1.0, green: 0.8627, blue: 0.0, alpha: 1.0)
-//        questionLabel.neonColors = [
-//            UIColor(red: 0.96, green: 0.26, blue: 0.21, alpha: 1).cgColor, // Kırmızı Neon
-//            UIColor(red: 0.29, green: 0.63, blue: 0.96, alpha: 1).cgColor, // Mavi Neon
-//            UIColor(red: 0.44, green: 0.89, blue: 0.33, alpha: 1).cgColor  // Yeşil Neon
-//        ]
         questionLabel.textAlignment = .center
         questionLabel.textColor = .white
     }
