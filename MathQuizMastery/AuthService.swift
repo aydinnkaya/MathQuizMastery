@@ -44,12 +44,7 @@ class AuthService : AuthServiceProtocol {
                 completion(false, nil)
                 return
             }
-            
-            //            guard let uid = authResult?.user.uid else {
-            //                completion(false, nil)
-            //                return
-            //            }
-            
+
             self.db.collection("users")
                 .document(resultUser.uid)
                 .setData([

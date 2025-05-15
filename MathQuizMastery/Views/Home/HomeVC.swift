@@ -15,7 +15,7 @@ class HomeVC: UIViewController {
     @IBOutlet weak var profileImageButton: UIButton!
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var coinLabel: UILabel!
-    
+    @IBOutlet weak var backgroundImage: UIImageView!
     @IBOutlet weak var settingsButton: UIButton!
     
     var user: User?
@@ -37,6 +37,11 @@ class HomeVC: UIViewController {
         setupUI()
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        backgroundImage.frame = view.bounds
+    }
+    
     @IBAction func profileButtonTapped(_ sender: Any) {
         
         //        let viewModel = AvatarPopupViewModel()
@@ -45,15 +50,36 @@ class HomeVC: UIViewController {
         //        avatarPopupVC.modalTransitionStyle = .coverVertical
         //        self.present(avatarPopupVC, animated: true, completion: nil)
         
+        //        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        //        if let avatarPopupVC = storyboard.instantiateViewController(withIdentifier: "AvatarPopupVC") as? AvatarPopupVC{
+        //            let viewModel = AvatarPopupViewModel()
+        //            avatarPopupVC.configure(with: viewModel)
+        //
+        //            avatarPopupVC.modalPresentationStyle = .overCurrentContext
+        //            avatarPopupVC.view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+        //            avatarPopupVC.modalTransitionStyle = .coverVertical
+        //            self.present(avatarPopupVC, animated: true, completion: nil)
+        //        }
+        
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        if let avatarPopupVC = storyboard.instantiateViewController(withIdentifier: "AvatarPopupVC") as? AvatarPopupVC{
-            let viewModel = AvatarPopupViewModel()
-            avatarPopupVC.configure(with: viewModel)
-            
-            avatarPopupVC.modalPresentationStyle = .overCurrentContext
-            avatarPopupVC.modalTransitionStyle = .crossDissolve
-            self.present(avatarPopupVC, animated: true, completion: nil)
-        }
+        guard let avatarPopupVC = storyboard.instantiateViewController(withIdentifier: "AvatarPopupVC") as? AvatarPopupVC else { return}
+//        
+//        let viewModel = AvatarPopupViewModel()
+//        avatarPopupVC.configure(with: viewModel)
+//        
+//        var config = SwiftMessages.Config()
+//        config.presentationStyle = .center
+//        config.dimMode = .blur(style: .dark, alpha: 0.5, interactive: true)
+//        config.duration = .forever
+//        config.interactiveHide = true
+//        
+//        config.presentationContext = .window(windowLevel: .normal)
+//       // config.transitionStyle = .bounce   // ➡️ Bounce animasyonu ile görünsün
+//      //  config.dimMode = .gray(interactive: true)
+//        
+//        // 4️⃣ SwiftMessages ile Popup Gösterimi
+//        SwiftMessages.show(config: config, view: avatarPopupVC.view)
+        
     }
     
     @IBAction func playButtonTapped(_ sender: UIButton) {

@@ -14,7 +14,6 @@ class AvatarPopupCell:UICollectionViewCell{
     
     func configure(with icon: UIImage) {
         iconImageView.image = icon
-       // layer.borderColor = UIColor.gray.cgColor
-        //layer.borderWidth = 2.0
     }
 }
+
