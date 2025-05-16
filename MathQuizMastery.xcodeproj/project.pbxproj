@@ -32,7 +32,6 @@
 		0FCC52D52DBE7217002D6794 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 0FCC52D42DBE7217002D6794 /* FirebaseStorage */; };
 		0FCC52D72DBE7217002D6794 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 0FCC52D62DBE7217002D6794 /* FirebaseStorageCombine-Community */; };
 		0FCC52D92DBE7217002D6794 /* FirebaseVertexAI in Frameworks */ = {isa = PBXBuildFile; productRef = 0FCC52D82DBE7217002D6794 /* FirebaseVertexAI */; };
-		0FCCFF912DD665E600CB7448 /* SwiftMessages in Frameworks */ = {isa = PBXBuildFile; productRef = 0FCCFF902DD665E600CB7448 /* SwiftMessages */; };
 		0FCCFF932DD665E600CB7448 /* SwiftMessages-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 0FCCFF922DD665E600CB7448 /* SwiftMessages-Dynamic */; };
 /* End PBXBuildFile section */
 
@@ -103,7 +102,6 @@
 				0FCC52B12DBE7217002D6794 /* FirebaseAppCheck in Frameworks */,
 				0FCC52C92DBE7217002D6794 /* FirebaseInAppMessaging-Beta in Frameworks */,
 				0FCC52AF2DBE7217002D6794 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
-				0FCCFF912DD665E600CB7448 /* SwiftMessages in Frameworks */,
 				0FCC52B52DBE7217002D6794 /* FirebaseAuth in Frameworks */,
 				0FCC52C72DBE7217002D6794 /* FirebaseFunctionsCombine-Community in Frameworks */,
 				0FCC52D72DBE7217002D6794 /* FirebaseStorageCombine-Community in Frameworks */,
