@@ -338,105 +338,6 @@
             </objects>
             <point key="canvasLocation" x="37.31343283582089" y="212.12814645308922"/>
         </scene>
-        <!--Avatar PopupVC-->
-        <scene sceneID="WH6-4Z-RSU">
-            <objects>
-                <viewController storyboardIdentifier="AvatarPopupVC" modalPresentationStyle="overCurrentContext" useStoryboardIdentifierAsRestorationIdentifier="YES" id="OES-Xx-PCq" customClass="AvatarPopupVC" customModule="MathQuizMastery" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleAspectFit" id="b2G-2M-mlp">
-                        <rect key="frame" x="0.0" y="0.0" width="402" height="874"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="400" verticalHuggingPriority="600" translatesAutoresizingMaskIntoConstraints="NO" id="s1R-ef-y2y" customClass="AvatarPopupCell" customModule="MathQuizMastery" customModuleProvider="target">
-                                <rect key="frame" x="40.333333333333343" y="260.33333333333337" width="321.33333333333326" height="409.33333333333337"/>
-                                <subviews>
-                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" tag="1" contentMode="scaleAspectFit" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="MZA-Hy-O7O">
-                                        <rect key="frame" x="20" y="144" width="281.33333333333331" height="201.33333333333337"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="20" minimumInteritemSpacing="10" id="7dd-cC-6yX">
-                                            <size key="itemSize" width="48" height="48"/>
-                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                            <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
-                                        </collectionViewFlowLayout>
-                                        <cells>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" reuseIdentifier="AvatarPopupCell" id="UQP-3J-T88" customClass="AvatarPopupCell" customModule="MathQuizMastery" customModuleProvider="target">
-                                                <rect key="frame" x="10" y="10" width="48" height="48"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                                    <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <subviews>
-                                                        <imageView clipsSubviews="YES" tag="1" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oX8-DW-Ogs">
-                                                            <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        </imageView>
-                                                    </subviews>
-                                                </view>
-                                                <size key="customSize" width="48" height="48"/>
-                                                <connections>
-                                                    <outlet property="iconImageView" destination="oX8-DW-Ogs" id="oNK-RW-Mv1"/>
-                                                </connections>
-                                            </collectionViewCell>
-                                        </cells>
-                                    </collectionView>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="248" misplaced="YES" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Gtj-7k-iOk">
-                                        <rect key="frame" x="20" y="104" width="281.33333333333331" height="34"/>
-                                        <color key="backgroundColor" red="0.16470588235294117" green="0.1764705882352941" blue="0.24313725490196078" alpha="0.89634209437086088" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ox5-hg-zEn">
-                                        <rect key="frame" x="130.33333333333331" y="358.33333333333331" width="61" height="35"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="filled" title="Save" cornerStyle="capsule">
-                                            <color key="baseBackgroundColor" systemColor="systemGreenColor"/>
-                                        </buttonConfiguration>
-                                        <connections>
-                                            <action selector="saveButtonTapped:forEvent:" destination="OES-Xx-PCq" eventType="touchUpInside" id="kv7-Oh-sc4"/>
-                                        </connections>
-                                    </button>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="batman_icon_64" translatesAutoresizingMaskIntoConstraints="NO" id="aFA-aX-4jM">
-                                        <rect key="frame" x="124" y="8" width="72" height="72"/>
-                                    </imageView>
-                                </subviews>
-                                <color key="backgroundColor" red="0.10588235294117647" green="0.12156862745098039" blue="0.23137254901960785" alpha="0.89634209437086088" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="Gtj-7k-iOk" secondAttribute="trailing" constant="20" id="1fR-AI-Ffm"/>
-                                    <constraint firstAttribute="trailing" secondItem="MZA-Hy-O7O" secondAttribute="trailing" constant="19.999999999999943" id="7nk-EY-a1v"/>
-                                    <constraint firstItem="aFA-aX-4jM" firstAttribute="centerX" secondItem="s1R-ef-y2y" secondAttribute="centerX" id="8Fe-d4-fWg"/>
-                                    <constraint firstItem="aFA-aX-4jM" firstAttribute="top" secondItem="s1R-ef-y2y" secondAttribute="top" constant="16" id="F6h-Df-09h"/>
-                                    <constraint firstItem="Ox5-hg-zEn" firstAttribute="centerX" secondItem="s1R-ef-y2y" secondAttribute="centerX" id="G0Y-w2-8Uf"/>
-                                    <constraint firstAttribute="bottom" secondItem="MZA-Hy-O7O" secondAttribute="bottom" constant="64" id="PO7-RQ-o6p"/>
-                                    <constraint firstItem="Gtj-7k-iOk" firstAttribute="leading" secondItem="s1R-ef-y2y" secondAttribute="leading" constant="20" id="ckU-kG-GB3"/>
-                                    <constraint firstItem="MZA-Hy-O7O" firstAttribute="top" secondItem="Gtj-7k-iOk" secondAttribute="bottom" constant="12" id="czP-zk-Ufd"/>
-                                    <constraint firstItem="MZA-Hy-O7O" firstAttribute="leading" secondItem="s1R-ef-y2y" secondAttribute="leading" constant="20" id="gOV-a1-fhZ"/>
-                                    <constraint firstItem="Gtj-7k-iOk" firstAttribute="top" secondItem="s1R-ef-y2y" secondAttribute="top" constant="98" id="kQS-Yl-DvJ"/>
-                                    <constraint firstAttribute="bottom" secondItem="Ox5-hg-zEn" secondAttribute="bottom" constant="16" id="wZK-1k-mXR"/>
-                                </constraints>
-                            </view>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="q8O-pf-bIt"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="s1R-ef-y2y" firstAttribute="centerX" secondItem="q8O-pf-bIt" secondAttribute="centerX" id="1Lz-vD-Ika"/>
-                            <constraint firstItem="s1R-ef-y2y" firstAttribute="width" secondItem="q8O-pf-bIt" secondAttribute="width" multiplier="0.8" id="6Qj-Lw-ZI7"/>
-                            <constraint firstItem="s1R-ef-y2y" firstAttribute="centerY" secondItem="q8O-pf-bIt" secondAttribute="centerY" id="sfB-Zn-KwR"/>
-                            <constraint firstItem="s1R-ef-y2y" firstAttribute="height" secondItem="q8O-pf-bIt" secondAttribute="height" multiplier="0.6" id="urv-Dm-YfJ"/>
-                        </constraints>
-                    </view>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <connections>
-                        <outlet property="avatarPopupView" destination="s1R-ef-y2y" id="Vcs-Aq-6Hu"/>
-                        <outlet property="collectionView" destination="MZA-Hy-O7O" id="ZaS-KW-40J"/>
-                        <outlet property="profileImage" destination="aFA-aX-4jM" id="1qy-01-ANb"/>
-                        <outlet property="saveButton" destination="Ox5-hg-zEn" id="hy3-dJ-4tG"/>
-                        <outlet property="usernameTextField" destination="Gtj-7k-iOk" id="wdi-T3-q8R"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="KE9-6Q-EQ1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="37.31343283582089" y="947.36842105263156"/>
-        </scene>
         <!--CategoryVC-->
         <scene sceneID="06u-qU-sZY">
             <objects>
@@ -756,14 +657,13 @@ Matematik kategoresinde
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xck-O5-h0X" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-816" y="213"/>
+            <point key="canvasLocation" x="-1203" y="212"/>
         </scene>
     </scenes>
     <resources>
         <image name="Math_Quiz_Mastery_Transparent-removebg-preview" width="661" height="377"/>
         <image name="background_image" width="419" height="837"/>
         <image name="batman" width="228" height="228"/>
-        <image name="batman_icon_64" width="64" height="64"/>
         <image name="category_background_image" width="393" height="852"/>
         <image name="coin_icon" width="36" height="36"/>
         <image name="fly" width="167" height="167"/>
@@ -776,7 +676,7 @@ Matematik kategoresinde
             <color red="0.98431372549019602" green="0.73725490196078436" blue="0.019607843137254902" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="secondarySystemBackgroundColor">
-            <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="secondarySystemGroupedBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -785,16 +685,13 @@ Matematik kategoresinde
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGray3Color">
-            <color red="0.78039215689999997" green="0.78039215689999997" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.7803921568627451" green="0.7803921568627451" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray5Color">
-            <color red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemGreenColor">
-            <color red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemOrangeColor">
-            <color red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="tableSeparatorDarkColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>

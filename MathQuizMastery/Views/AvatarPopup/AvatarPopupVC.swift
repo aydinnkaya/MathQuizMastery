@@ -11,18 +11,20 @@ import UIKit
 
 class AvatarPopupVC: UIViewController {
     
-    @IBOutlet weak var profileImage: UIImageView!
-    @IBOutlet weak var usernameTextField: UITextField!
-    @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var avatarPopupView: UIView!
     @IBOutlet weak var saveButton: UIButton!
+    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var usernameTextField: UITextField!
+    @IBOutlet weak var profileImage: UIImageView!
+    @IBOutlet weak var AvatarPopupView: UIView!
+    
+    
     
     var viewModel: AvatarPopupViewModelProtocol!
     private var selectedIndexPath: IndexPath?
     
     init(viewModel: AvatarPopupViewModelProtocol){
         self.viewModel = viewModel
-        super.init(nibName:nil, bundle: nil)
+        super.init(nibName:"AvatarPopupViewController", bundle: nil)
     }
     
     required init?(coder: NSCoder) {
@@ -39,12 +41,12 @@ class AvatarPopupVC: UIViewController {
         setupCollectionView()
         setupViewModel()
         setupInitialProfileImage()
+        setuStyles()
     }
     
     // MARK: - ??????
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        setuStyles()
     }
     
     // MARK: - Setup Methods

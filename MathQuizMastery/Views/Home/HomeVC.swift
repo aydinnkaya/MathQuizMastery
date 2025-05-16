@@ -44,42 +44,38 @@ class HomeVC: UIViewController {
     
     @IBAction func profileButtonTapped(_ sender: Any) {
         
+        // XIB'den yükleme işlemi
+        let avatarPopupVC = AvatarPopupVC(nibName: "AvatarPopupVC", bundle: nil)
+
+        // ViewModel'i initialize et
+        let viewModel = AvatarPopupViewModel()
+        avatarPopupVC.configure(with: viewModel)
+
+        // Geçiş ayarları
+        avatarPopupVC.modalPresentationStyle = .overCurrentContext
+        avatarPopupVC.view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+        avatarPopupVC.modalTransitionStyle = .coverVertical
+
+        // Geçiş işlemi
+        self.present(avatarPopupVC, animated: true, completion: nil)
+        
+        
         //        let viewModel = AvatarPopupViewModel()
         //        let avatarPopupVC = AvatarPopupVC(viewModel: viewModel)
         //        avatarPopupVC.modalPresentationStyle = .overCurrentContext
         //        avatarPopupVC.modalTransitionStyle = .coverVertical
         //        self.present(avatarPopupVC, animated: true, completion: nil)
         
-        //        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        //        if let avatarPopupVC = storyboard.instantiateViewController(withIdentifier: "AvatarPopupVC") as? AvatarPopupVC{
-        //            let viewModel = AvatarPopupViewModel()
-        //            avatarPopupVC.configure(with: viewModel)
-        //
-        //            avatarPopupVC.modalPresentationStyle = .overCurrentContext
-        //            avatarPopupVC.view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
-        //            avatarPopupVC.modalTransitionStyle = .coverVertical
-        //            self.present(avatarPopupVC, animated: true, completion: nil)
-        //        }
-        
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        guard let avatarPopupVC = storyboard.instantiateViewController(withIdentifier: "AvatarPopupVC") as? AvatarPopupVC else { return}
-//        
-//        let viewModel = AvatarPopupViewModel()
-//        avatarPopupVC.configure(with: viewModel)
-//        
-//        var config = SwiftMessages.Config()
-//        config.presentationStyle = .center
-//        config.dimMode = .blur(style: .dark, alpha: 0.5, interactive: true)
-//        config.duration = .forever
-//        config.interactiveHide = true
-//        
-//        config.presentationContext = .window(windowLevel: .normal)
-//       // config.transitionStyle = .bounce   // ➡️ Bounce animasyonu ile görünsün
-//      //  config.dimMode = .gray(interactive: true)
-//        
-//        // 4️⃣ SwiftMessages ile Popup Gösterimi
-//        SwiftMessages.show(config: config, view: avatarPopupVC.view)
-        
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        if let avatarPopupVC = storyboard.instantiateViewController(withIdentifier: "AvatarPopupVC") as? AvatarPopupVC{
+//            let viewModel = AvatarPopupViewModel()
+//            avatarPopupVC.configure(with: viewModel)
+//            
+//            avatarPopupVC.modalPresentationStyle = .overCurrentContext
+//            avatarPopupVC.view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+//            avatarPopupVC.modalTransitionStyle = .coverVertical
+//            self.present(avatarPopupVC, animated: true, completion: nil)
+//        }
     }
     
     @IBAction func playButtonTapped(_ sender: UIButton) {

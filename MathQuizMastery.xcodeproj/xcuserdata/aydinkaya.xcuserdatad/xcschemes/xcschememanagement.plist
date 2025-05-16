@@ -9,34 +9,6 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
-		<key>MathQuizMasteryTests.xcscheme_^#shared#^_</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>0</integer>
-		</dict>
-		<key>MathQuizMasteryUITests.xcscheme_^#shared#^_</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>1</integer>
-		</dict>
-		<key>Sample-iOS (Playground).xcscheme</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>2</integer>
-		</dict>
-	</dict>
-	<key>SuppressBuildableAutocreation</key>
-	<dict>
-		<key>0FA090672D2FAEB000D83F96</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>0FCB455A2DA54295002D6239</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 	</dict>
 </dict>
 </plist>

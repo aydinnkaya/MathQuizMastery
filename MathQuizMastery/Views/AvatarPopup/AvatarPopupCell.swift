@@ -2,18 +2,14 @@
 //  AvatarPopupCell.swift
 //  MathQuizMastery
 //
-//  Created by AydınKaya on 14.05.2025.
+//  Created by Aydın KAYA on 16.05.2025.
 //
 
-import Foundation
 import UIKit
 
-class AvatarPopupCell:UICollectionViewCell{
+class AvatarPopupCell : UICollectionViewCell {
     
-    @IBOutlet weak var iconImageView: UIImageView!
     
-    func configure(with icon: UIImage) {
-        iconImageView.image = icon
-    }
+    
+    
 }
-
