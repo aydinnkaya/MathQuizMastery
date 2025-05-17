@@ -7,7 +7,9 @@
 
 import UIKit
 
-// MARK: - Section Name
+protocol AvatarPopupCoordinatorProtocol {
+    func dismissPopup()
+}
 
 class AvatarPopupVC: UIViewController {
     
@@ -17,14 +19,17 @@ class AvatarPopupVC: UIViewController {
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var AvatarPopupView: UIView!
     
+    @IBOutlet weak var popupView: UIView!
+    @IBOutlet weak var backgroundView: UIView!
     
     
     var viewModel: AvatarPopupViewModelProtocol!
-    private var selectedIndexPath: IndexPath?
+    var coordinator: AppCoordinator?
     
-    init(viewModel: AvatarPopupViewModelProtocol){
+    init(viewModel: AvatarPopupViewModelProtocol, coordinator: AppCoordinator) {
         self.viewModel = viewModel
-        super.init(nibName:"AvatarPopupViewController", bundle: nil)
+        self.coordinator = coordinator
+        super.init(nibName:"AvatarPopupVC", bundle: nil)
     }
     
     required init?(coder: NSCoder) {
@@ -40,19 +45,24 @@ class AvatarPopupVC: UIViewController {
         super.viewDidLoad()
         setupCollectionView()
         setupViewModel()
-        setupInitialProfileImage()
         setuStyles()
-    }
-    
-    // MARK: - ??????
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
+        setupBackgroundView()
     }
     
     // MARK: - Setup Methods
     private func setupCollectionView() {
         collectionView.delegate = self
         collectionView.dataSource = self
+        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "AvatarCell")
+        
+    }
+    
+    private func commonInit() {
+        let nib = UINib(nibName: "AvatarPopupVC", bundle: nil)
+        if let view = nib.instantiate(withOwner: self, options: nil).first as? UIView {
+            view.frame = self.view.bounds
+            self.view.addSubview(view)
+        }
     }
     
     // MARK: - Setup ViewModel
@@ -61,59 +71,54 @@ class AvatarPopupVC: UIViewController {
         viewModel.loadAvatars()
     }
     
-    // MARK: - Setup Initial Profile Image
-    private func setupInitialProfileImage() {
-        profileImage.image = UIImage(named: viewModel.getAvatar(at: 0).imageName)
-    }
-    
-    // MARK: - Save Button Tapped
-    @IBAction func saveButtonTapped(_ sender: UIButton, forEvent event: UIEvent) {
-        
-    }
+    //    // MARK: - Save Button Tapped
+    //    @IBAction func saveButtonTapped(_ sender: UIButton, forEvent event: UIEvent) {
+    //
+    //    }
     
 }
 
-extension AvatarPopupVC : UICollectionViewDelegate, UICollectionViewDataSource{
+extension AvatarPopupVC: UICollectionViewDelegate, UICollectionViewDataSource {
     
-    // MARK: - Collection View Number of Items in Section
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.getAvtarCount()
+        return viewModel.getAvatarCount()
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AvatarPopupCell", for: indexPath) as? AvatarPopupCell else {
-            fatalError("AvtarPopupCell bulunamadı.")
-        }
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AvatarCell", for: indexPath)
         
+        // Hücreyi yapılandır
         let avatar = viewModel.getAvatar(at: indexPath.row)
-        if let image = UIImage(named: avatar.imageName) {
-            cell.configure(with: image)
-        }
+        let isSelected = (viewModel.getSelectedIndexPath() == indexPath)
+        
+        // Extension ile hücreyi güncelleyelim
+        cell.configure(with: avatar, isSelected: isSelected)
         
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         viewModel.selectAvatar(at: indexPath.row)
-        
-        for cell in collectionView.visibleCells as! [AvatarPopupCell] {
-            cell.layer.cornerRadius = cell.layer.frame.width / 2
-            cell.clipsToBounds = true
-            cell.layer.borderColor = UIColor.gray.cgColor
-            cell.layer.borderWidth = 3
-        }
-        
-        if let cell = collectionView.cellForItem(at: indexPath) as? AvatarPopupCell {
-            cell.layer.cornerRadius = cell.layer.frame.width / 2
-            cell.clipsToBounds = true
-            cell.layer.borderColor = UIColor.green.cgColor
-            cell.layer.borderWidth = 3
-        }
     }
 }
 
 extension AvatarPopupVC : AvatarPopupViewModelDelegate {
-    func avatarSellectionDidChange(_ viewModel: any AvatarPopupViewModelProtocol, selectedAvatar: Avatar) {
+    func avatarCellStyleUpdate(selectedIndexPath: IndexPath?, previousIndexPath: IndexPath?) {
+        // Eski seçili hücreyi griye döndür
+        // Eski seçili hücreyi griye döndür
+        if let previous = previousIndexPath,
+           let previousCell = collectionView.cellForItem(at: previous) {
+            previousCell.configureBorder(isSelected: false)
+        }
+        
+        // Yeni seçili hücreyi yeşile boyama
+        if let current = selectedIndexPath,
+           let currentCell = collectionView.cellForItem(at: current) {
+            currentCell.configureBorder(isSelected: true)
+        }
+    }
+    
+    func avatarSelectionDidChange(selectedAvatar: Avatar) {
         if let image =  UIImage(named: selectedAvatar.imageName) {
             profileImage.image = image
             profileImage.layer.cornerRadius = profileImage.frame.width / 2
@@ -124,15 +129,58 @@ extension AvatarPopupVC : AvatarPopupViewModelDelegate {
     }
 }
 
+extension AvatarPopupVC {
+    private func setupBackgroundView() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(backgroundTapped))
+        backgroundView.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc private func backgroundTapped() {
+        coordinator?.dismissPopup()
+    }
+}
+
+extension UICollectionViewCell {
+    func configureBorder(isSelected: Bool) {
+        layer.borderColor = isSelected ? UIColor.green.cgColor : UIColor.gray.cgColor
+        layer.borderWidth = isSelected ? 3 : 2
+    }
+    
+    func configure(with avatar: Avatar, isSelected: Bool) {
+        
+        // Görsel daha önce eklenmediyse ekle
+        if contentView.viewWithTag(100) == nil {
+            let imageView = UIImageView(frame: contentView.bounds)
+            imageView.contentMode = .scaleAspectFit
+            imageView.layer.cornerRadius = frame.width / 2
+            imageView.clipsToBounds = true
+            imageView.tag = 100
+            contentView.addSubview(imageView)
+        }
+        
+        // Görseli güncelle
+        if let imageView = contentView.viewWithTag(100) as? UIImageView {
+            imageView.image = UIImage(named: avatar.imageName)
+        }
+        
+        // Hücre Stili Güncellemeleri
+        layer.cornerRadius = frame.width / 2
+        layer.borderColor = isSelected ? UIColor.green.cgColor : UIColor.gray.cgColor
+        layer.borderWidth = isSelected ? 3 : 2
+    }
+}
+
 //Throws: - avatarPopupView.layer.cornerRadius = 20
 extension AvatarPopupVC {
     func setuStyles(){
-        avatarPopupView.layer.cornerRadius = 20
-        avatarPopupView.layer.borderWidth = 8.0
-        avatarPopupView.layer.borderColor = UIColor("#7B61FF")?.cgColor;
-        avatarPopupView.clipsToBounds = true
-        avatarPopupView.center = view.center
-
+        profileImage.image = UIImage(named: viewModel.getAvatar(at: 0).imageName)
+        
+        popupView.layer.cornerRadius = 20
+        popupView.layer.borderWidth = 8.0
+        popupView.layer.borderColor = UIColor("#7B61FF")?.cgColor;
+        popupView.clipsToBounds = true
+        popupView.center = view.center
+        
         collectionView.layer.cornerRadius = 12
         collectionView.layer.borderWidth = 3.0
         collectionView.layer.borderColor = UIColor.blue.cgColor

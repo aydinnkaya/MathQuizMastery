@@ -20,9 +20,11 @@ class HomeVC: UIViewController {
     
     var user: User?
     private var viewModel: HomeViewModelProtocol!
+    var coordinator: AppCoordinator?
     
-    init?(coder: NSCoder, viewModel: HomeViewModelProtocol) {
+    init?(coder: NSCoder, viewModel: HomeViewModelProtocol, coordinator: AppCoordinator) {
         self.viewModel = viewModel
+        self.coordinator = coordinator
         super.init(coder: coder)
         self.viewModel.delegate = self
     }
@@ -43,39 +45,7 @@ class HomeVC: UIViewController {
     }
     
     @IBAction func profileButtonTapped(_ sender: Any) {
-        
-        // XIB'den yükleme işlemi
-        let avatarPopupVC = AvatarPopupVC(nibName: "AvatarPopupVC", bundle: nil)
-
-        // ViewModel'i initialize et
-        let viewModel = AvatarPopupViewModel()
-        avatarPopupVC.configure(with: viewModel)
-
-        // Geçiş ayarları
-        avatarPopupVC.modalPresentationStyle = .overCurrentContext
-        avatarPopupVC.view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
-        avatarPopupVC.modalTransitionStyle = .coverVertical
-
-        // Geçiş işlemi
-        self.present(avatarPopupVC, animated: true, completion: nil)
-        
-        
-        //        let viewModel = AvatarPopupViewModel()
-        //        let avatarPopupVC = AvatarPopupVC(viewModel: viewModel)
-        //        avatarPopupVC.modalPresentationStyle = .overCurrentContext
-        //        avatarPopupVC.modalTransitionStyle = .coverVertical
-        //        self.present(avatarPopupVC, animated: true, completion: nil)
-        
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        if let avatarPopupVC = storyboard.instantiateViewController(withIdentifier: "AvatarPopupVC") as? AvatarPopupVC{
-//            let viewModel = AvatarPopupViewModel()
-//            avatarPopupVC.configure(with: viewModel)
-//            
-//            avatarPopupVC.modalPresentationStyle = .overCurrentContext
-//            avatarPopupVC.view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
-//            avatarPopupVC.modalTransitionStyle = .coverVertical
-//            self.present(avatarPopupVC, animated: true, completion: nil)
-//        }
+        coordinator?.goToAvatarPopup()
     }
     
     @IBAction func playButtonTapped(_ sender: UIButton) {
@@ -86,11 +56,11 @@ class HomeVC: UIViewController {
 
 // MARK: - Instantiate with User
 extension HomeVC {
-    static func instantiate(with user: User, authService: AuthServiceProtocol = AuthService.shared) -> HomeVC {
+    static func instantiate(with user: User, coordinator: AppCoordinator, authService: AuthServiceProtocol = AuthService.shared) -> HomeVC {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let viewModel = HomeViewModel(user: user, authService: authService)
         let creator: (NSCoder) -> HomeVC? = { coder in
-            return HomeVC(coder: coder, viewModel: viewModel)
+            return HomeVC(coder: coder, viewModel: viewModel, coordinator: coordinator)
         }
         return storyboard.instantiateViewController(identifier: "HomeVC", creator: creator)
     }

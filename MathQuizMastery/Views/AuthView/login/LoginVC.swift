@@ -20,6 +20,7 @@ class LoginVC: UIViewController, UITextFieldDelegate {
     private var errorLabels: [UITextField: UILabel] = [:]
     private let viewModel: LoginScreenViewModelProtocol
     private var loadingAlert: UIAlertController?
+    var coordinator: AppCoordinator?
     
     private var fieldMap: [FieldKey: UITextField] {
         return [
@@ -88,7 +89,7 @@ extension LoginVC: LoginViewModelDelegate {
         hideLoading()
         HapticManager.shared.success()
         ToastView.show(in: self.view, message: L(.login_success))
-        navigateToHomeScreen(with: user)
+        coordinator?.goToHome(with: user)
     }
     
     func didFailWithError(_ error: Error) {
@@ -135,7 +136,7 @@ extension LoginVC {
     }
     
     func navigateToHomeScreen(with user: User) {
-        let homeVC = HomeVC.instantiate(with: user)
+        let homeVC = HomeVC.instantiate(with: user, coordinator: coordinator! )
         let navController = UINavigationController(rootViewController: homeVC)
         navController.modalPresentationStyle = .fullScreen
         self.present(navController, animated: true, completion: nil)

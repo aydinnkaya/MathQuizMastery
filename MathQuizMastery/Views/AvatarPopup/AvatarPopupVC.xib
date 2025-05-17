@@ -12,10 +12,13 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AvatarPopupVC" customModule="MathQuizMastery" customModuleProvider="target">
             <connections>
                 <outlet property="AvatarPopupView" destination="iN0-l3-epB" id="MbU-Lo-WXm"/>
+                <outlet property="backgroundView" destination="OJg-dg-aZy" id="uJ8-Uk-9Y5"/>
                 <outlet property="collectionView" destination="hTm-mD-jNN" id="6An-H6-F72"/>
+                <outlet property="popupView" destination="VA6-4K-Qcw" id="Eoj-ln-IsL"/>
                 <outlet property="profileImage" destination="hh4-qw-Qy2" id="R0b-Pv-8dN"/>
                 <outlet property="saveButton" destination="MaI-Sh-VbX" id="EsG-Rr-nPI"/>
                 <outlet property="usernameTextField" destination="hwK-C1-IuI" id="z99-13-TIN"/>
+                <outlet property="view" destination="iN0-l3-epB" id="3r4-K0-Kcw"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -23,7 +26,12 @@
             <rect key="frame" x="0.0" y="0.0" width="402" height="874"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="400" verticalHuggingPriority="600" id="VA6-4K-Qcw" userLabel="AvatarPopupView" customClass="AvatarPopupVc">
+                <view clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OJg-dg-aZy">
+                    <rect key="frame" x="0.0" y="0.0" width="402" height="874"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
+                <view clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="400" verticalHuggingPriority="600" id="VA6-4K-Qcw" userLabel="AvatarPopupView">
                     <rect key="frame" x="40" y="229" width="321" height="416"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
@@ -37,7 +45,7 @@
                                 <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
                             </collectionViewFlowLayout>
                             <cells>
-                                <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" reuseIdentifier="AvatarPopupCell" id="gpD-az-R5T" customClass="AvatarPopupCell" customModule="MathQuizMastery" customModuleProvider="target">
+                                <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" reuseIdentifier="AvatarCell" id="gpD-az-R5T">
                                     <rect key="frame" x="10" y="10" width="48" height="48"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -72,8 +80,8 @@
                                 <color key="baseBackgroundColor" systemColor="systemGreenColor"/>
                             </buttonConfiguration>
                         </button>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="batman_icon_64" translatesAutoresizingMaskIntoConstraints="NO" id="hh4-qw-Qy2">
-                            <rect key="frame" x="124" y="8" width="72" height="72"/>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="batman_icon_64" translatesAutoresizingMaskIntoConstraints="NO" id="hh4-qw-Qy2" userLabel="profileImage">
+                            <rect key="frame" x="124" y="8" width="80" height="80"/>
                         </imageView>
                     </subviews>
                     <viewLayoutGuide key="safeArea" id="oKw-dT-Qjj"/>
@@ -95,7 +103,7 @@
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-            <point key="canvasLocation" x="-1172" y="-85"/>
+            <point key="canvasLocation" x="-1734.328358208955" y="-202.51716247139586"/>
         </view>
     </objects>
     <resources>
@@ -104,7 +112,7 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGreenColor">
-            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

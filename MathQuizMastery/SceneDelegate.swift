@@ -11,68 +11,32 @@ import FirebaseAuth
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     var window: UIWindow?
+    var appCoordinator: AppCoordinator?
     
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
-        // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
-        // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-        self.setupWindow(with: scene)
-       self.checkAuthentication()
-    }
-    
-    private func setupWindow(with scene: UIScene) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
-        let window = UIWindow(windowScene: windowScene)
-        self.window = window
-        self.window?.makeKeyAndVisible()
         
+        // Navigation Controller oluşturuluyor
+        let navigationController = UINavigationController()
         
+        // AppCoordinator başlatılıyor
+        appCoordinator = AppCoordinator(navigationController: navigationController)
+        appCoordinator?.start()
+        
+        // Pencere ayarları
+        window = UIWindow(windowScene: windowScene)
+        window?.rootViewController = navigationController
+        window?.makeKeyAndVisible()
     }
     
-    func checkAuthentication() {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        
-        if Auth.auth().currentUser == nil {
-            if let loginVC = storyboard.instantiateViewController(withIdentifier: "LoginVC") as? LoginVC {
-                goToController(with: loginVC)
-            }
-        } else {
-            guard let uid = Auth.auth().currentUser?.uid else { return }
-            AuthService.shared.fetchUserData(uid: uid) { [weak self] result in
-                switch result {
-                case .success(let user):
-                    let homeVC = HomeVC.instantiate(with: user)
-                    self?.goToController(with: homeVC)
-                case .failure(let error):
-                    print("Kullanıcı verisi alınamadı: \(error.localizedDescription)")
-                    AuthService.shared.signOut { _ in
-                        if let loginVC = storyboard.instantiateViewController(withIdentifier: "LoginVC") as? LoginVC {
-                            self?.goToController(with: loginVC)
-                        }
-                    }
-                }
-            }
-        }
-    }
-    
-    private func goToController(with viewController: UIViewController) {
-        DispatchQueue.main.async { [weak self] in
-            UIView.animate(withDuration: 0.25) {
-                self?.window?.layer.opacity = 0
-                
-            } completion: { [weak self] _ in
-                
-                let nav = UINavigationController(rootViewController: viewController)
-                nav.modalPresentationStyle = .fullScreen
-                self?.window?.rootViewController = nav
-                
-                UIView.animate(withDuration: 0.25) { [weak self] in
-                    self?.window?.layer.opacity = 1
-                }
-            }
-        }
-    }
+//    private func setupWindow(with scene: UIScene) {
+//        guard let windowScene = (scene as? UIWindowScene) else { return }
+//        let window = UIWindow(windowScene: windowScene)
+//        self.window = window
+//        self.window?.makeKeyAndVisible()
+//        
+//    }
     
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.
