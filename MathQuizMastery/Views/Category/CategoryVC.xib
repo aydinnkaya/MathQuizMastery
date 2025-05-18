@@ -5,73 +5,18 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CategoryVC" customModule="MathQuizMastery" customModuleProvider="target">
             <connections>
-                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="backgroundView" destination="b1N-yW-bya" id="tKS-Ld-cB1"/>
+                <outlet property="categoryView" destination="Z95-zI-wB2" id="xrr-x7-iPN"/>
+                <outlet property="collectionView" destination="NP5-Ni-XTn" id="5Nf-an-scX"/>
+                <outlet property="view" destination="JFE-ax-fg3" id="RrI-3s-RdZ"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="440" height="956"/>
-            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <subviews>
-                <button opaque="NO" contentMode="scaleAspectFit" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bew-wi-kzw" userLabel="minusButton">
-                    <rect key="frame" x="259" y="184" width="128" height="128"/>
-                    <state key="normal" title="Button"/>
-                    <buttonConfiguration key="configuration" style="plain" image="minus_icon"/>
-                </button>
-                <button opaque="NO" contentMode="scaleAspectFit" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sEa-xp-Izt" userLabel="multiplyButton">
-                    <rect key="frame" x="38" y="400" width="128" height="128"/>
-                    <state key="normal" title="Button"/>
-                    <buttonConfiguration key="configuration" style="plain" image="multiply_icon"/>
-                </button>
-                <button opaque="NO" contentMode="scaleAspectFit" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VJo-y8-Bkv" userLabel="divideButton">
-                    <rect key="frame" x="248" y="400" width="128" height="128"/>
-                    <state key="normal" title="Button"/>
-                    <buttonConfiguration key="configuration" style="plain" image="divide_icon"/>
-                </button>
-                <button opaque="NO" contentMode="scaleAspectFit" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z8m-WF-agN" userLabel="randomButton">
-                    <rect key="frame" x="151" y="685" width="128" height="128"/>
-                    <state key="normal" title="Button"/>
-                    <buttonConfiguration key="configuration" style="plain" image="random_icon"/>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QqR-DZ-pnO">
-                    <rect key="frame" x="28" y="90" width="149" height="35"/>
-                    <state key="normal" title="Button"/>
-                    <buttonConfiguration key="configuration" style="plain" title="Button"/>
-                </button>
-                <button opaque="NO" contentMode="scaleAspectFit" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eZj-JA-OmL" userLabel="subtractButton">
-                    <rect key="frame" x="38" y="184" width="128" height="128"/>
-                    <state key="normal" title="Button"/>
-                    <buttonConfiguration key="configuration" style="plain" image="subtract_icon"/>
-                </button>
-            </subviews>
-            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-            <constraints>
-                <constraint firstItem="sEa-xp-Izt" firstAttribute="top" secondItem="VJo-y8-Bkv" secondAttribute="top" id="0az-Uc-U8P"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="VJo-y8-Bkv" secondAttribute="trailing" constant="38" id="3Fn-Yd-3Vx"/>
-                <constraint firstItem="eZj-JA-OmL" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="40" id="77P-A8-Ggb"/>
-                <constraint firstItem="QqR-DZ-pnO" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="8vo-Bv-znm"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Z8m-WF-agN" secondAttribute="bottom" constant="50" id="F8x-ZO-w77"/>
-                <constraint firstItem="sEa-xp-Izt" firstAttribute="bottom" secondItem="VJo-y8-Bkv" secondAttribute="bottom" id="GU3-vc-Ak2"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="bew-wi-kzw" secondAttribute="trailing" constant="38" id="KkB-eU-nqt"/>
-                <constraint firstItem="sEa-xp-Izt" firstAttribute="trailing" secondItem="eZj-JA-OmL" secondAttribute="trailing" id="Pae-gj-QfC"/>
-                <constraint firstItem="sEa-xp-Izt" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="38" id="Pct-Cy-K79"/>
-                <constraint firstItem="sEa-xp-Izt" firstAttribute="top" secondItem="eZj-JA-OmL" secondAttribute="bottom" constant="97" id="QAE-ZB-rVI"/>
-                <constraint firstItem="Z8m-WF-agN" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="Qbu-4C-x4W"/>
-                <constraint firstItem="sEa-xp-Izt" firstAttribute="centerX" secondItem="QqR-DZ-pnO" secondAttribute="centerX" id="WB0-xs-jwt"/>
-                <constraint firstItem="bew-wi-kzw" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="57" id="WcY-OI-1C4"/>
-                <constraint firstItem="sEa-xp-Izt" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="400" id="afD-hw-WLg"/>
-                <constraint firstItem="eZj-JA-OmL" firstAttribute="top" secondItem="QqR-DZ-pnO" secondAttribute="bottom" constant="50" id="eiJ-Te-JfJ"/>
-                <constraint firstItem="eZj-JA-OmL" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="57" id="k3J-8l-KY7"/>
-            </constraints>
-            <point key="canvasLocation" x="-75" y="-987.23849372384939"/>
-        </view>
         <view contentMode="scaleToFill" id="JFE-ax-fg3">
             <rect key="frame" x="0.0" y="0.0" width="440" height="956"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -80,29 +25,29 @@
                     <rect key="frame" x="0.0" y="0.0" width="440" height="956"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
-                <view clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="400" verticalHuggingPriority="600" id="Z95-zI-wB2" userLabel="AvatarPopupView">
-                    <rect key="frame" x="-29" y="0.0" width="488" height="956"/>
+                <view clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="400" verticalHuggingPriority="600" id="Z95-zI-wB2" userLabel="categoryView">
+                    <rect key="frame" x="0.0" y="0.0" width="452" height="956"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" tag="1" contentMode="scaleAspectFit" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="NP5-Ni-XTn">
-                            <rect key="frame" x="20" y="144" width="448" height="748"/>
+                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" misplaced="YES" scrollEnabled="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="NP5-Ni-XTn">
+                            <rect key="frame" x="0.0" y="144" width="432" height="748"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="20" minimumInteritemSpacing="10" id="4Y5-ol-9iV">
-                                <size key="itemSize" width="48" height="48"/>
+                            <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="80" minimumInteritemSpacing="20" id="4Y5-ol-9iV">
+                                <size key="itemSize" width="130" height="130"/>
                                 <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                 <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
+                                <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                             </collectionViewFlowLayout>
                             <cells>
-                                <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" reuseIdentifier="AvatarCell" id="E4Z-mr-9KO">
-                                    <rect key="frame" x="10" y="10" width="48" height="48"/>
+                                <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" reuseIdentifier="CategoryCell" id="E4Z-mr-9KO" userLabel="CategoryCell">
+                                    <rect key="frame" x="0.0" y="0.0" width="130" height="130"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                        <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="130" height="130"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" tag="1" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2uc-hL-ISf">
-                                                <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
+                                            <imageView clipsSubviews="YES" tag="10" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2uc-hL-ISf">
+                                                <rect key="frame" x="0.0" y="0.0" width="130" height="130"/>
                                             </imageView>
                                         </subviews>
                                     </view>
@@ -112,40 +57,27 @@
                                         <constraint firstItem="2uc-hL-ISf" firstAttribute="top" secondItem="E4Z-mr-9KO" secondAttribute="top" id="XIY-tO-6G8"/>
                                         <constraint firstAttribute="bottom" secondItem="2uc-hL-ISf" secondAttribute="bottom" id="lL1-XS-ErO"/>
                                     </constraints>
-                                    <size key="customSize" width="48" height="48"/>
+                                    <size key="customSize" width="130" height="130"/>
                                 </collectionViewCell>
                             </cells>
                         </collectionView>
                     </subviews>
                     <viewLayoutGuide key="safeArea" id="kmt-vp-Qee"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <constraints>
-                        <constraint firstAttribute="bottom" secondItem="NP5-Ni-XTn" secondAttribute="bottom" constant="64" id="Sjg-u8-Jpz"/>
-                        <constraint firstAttribute="trailing" secondItem="NP5-Ni-XTn" secondAttribute="trailing" constant="19.999999999999943" id="jmo-cw-gS7"/>
-                        <constraint firstItem="NP5-Ni-XTn" firstAttribute="leading" secondItem="Z95-zI-wB2" secondAttribute="leading" constant="20" id="pPZ-Cq-VWP"/>
-                    </constraints>
                 </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="cey-cc-nno"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="NP5-Ni-XTn" firstAttribute="bottom" secondItem="cey-cc-nno" secondAttribute="bottom" constant="4" id="DKx-XI-Lfp"/>
-                <constraint firstItem="cey-cc-nno" firstAttribute="trailing" secondItem="NP5-Ni-XTn" secondAttribute="trailing" constant="1" id="P09-ds-djt"/>
-                <constraint firstItem="NP5-Ni-XTn" firstAttribute="top" secondItem="cey-cc-nno" secondAttribute="top" constant="20" id="SQu-Xo-GMM"/>
-                <constraint firstItem="cey-cc-nno" firstAttribute="leading" secondItem="NP5-Ni-XTn" secondAttribute="leading" constant="9" id="zTI-X1-xxa"/>
+                <constraint firstItem="NP5-Ni-XTn" firstAttribute="bottom" secondItem="cey-cc-nno" secondAttribute="bottom" id="DKx-XI-Lfp"/>
+                <constraint firstItem="cey-cc-nno" firstAttribute="trailing" secondItem="NP5-Ni-XTn" secondAttribute="trailing" id="P09-ds-djt"/>
+                <constraint firstItem="NP5-Ni-XTn" firstAttribute="top" secondItem="cey-cc-nno" secondAttribute="top" id="SQu-Xo-GMM"/>
+                <constraint firstItem="cey-cc-nno" firstAttribute="leading" secondItem="NP5-Ni-XTn" secondAttribute="leading" id="zTI-X1-xxa"/>
             </constraints>
-            <point key="canvasLocation" x="-844.09090909090912" y="-987.23849372384939"/>
+            <point key="canvasLocation" x="-978" y="-1079"/>
         </view>
     </objects>
     <resources>
         <image name="background_category" width="393" height="852"/>
-        <image name="divide_icon" width="120" height="120"/>
-        <image name="minus_icon" width="120" height="120"/>
-        <image name="multiply_icon" width="119" height="119"/>
-        <image name="random_icon" width="120" height="120"/>
-        <image name="subtract_icon" width="120" height="120"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
     </resources>
 </document>

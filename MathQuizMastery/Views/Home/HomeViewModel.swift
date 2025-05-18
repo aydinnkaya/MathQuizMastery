@@ -33,6 +33,6 @@ class HomeViewModel: HomeViewModelProtocol {
     }
     
     func playButtonTapped() {
-        delegate?.navigateToCategory()
+        
     }
 }

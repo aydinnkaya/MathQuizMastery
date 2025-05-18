@@ -12,4 +12,3 @@ struct CategoryModel {
     let categoryName: String
     let expressionType: MathExpression.ExpressionType
 }
-

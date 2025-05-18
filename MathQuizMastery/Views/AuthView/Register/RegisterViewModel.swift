@@ -7,6 +7,12 @@
 
 import Foundation
 
+
+protocol RegisterViewModelProtocol{
+    var delegate : RegisterViewModelDelegate? {get set}
+    func validateInputs(name: String?, email: String?, password: String?, confirmPassword: String?)
+}
+
 protocol RegisterViewModelDelegate : AnyObject {
     func didRegisterSuccessfully()
     func didFailWithError(_ error: Error)
@@ -62,7 +68,6 @@ class RegisterViewModel : RegisterViewModelProtocol {
         }
     }
 }
-
 
 extension RegisterViewModel : ValidatorDelegate {
     func validationDidComplete(results: [ValidationResult]) {

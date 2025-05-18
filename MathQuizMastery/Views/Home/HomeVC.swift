@@ -49,7 +49,7 @@ class HomeVC: UIViewController {
     }
     
     @IBAction func playButtonTapped(_ sender: UIButton) {
-        viewModel.playButtonTapped()
+        coordinator?.goToCategory()
     }
     
 }
@@ -69,8 +69,8 @@ extension HomeVC {
 // MARK: - ViewModel Delegate
 extension HomeVC: HomeViewModelDelegate {
     func navigateToCategory() {
-        let categoryVC = CategoryVC.instantiate()
-        navigationController?.pushViewController(categoryVC, animated: true)
+//        let categoryVC = CategoryVC.instantiate()
+//        navigationController?.pushViewController(categoryVC, animated: true)
     }
     
     func didReceiveUser(_ user: User?) {

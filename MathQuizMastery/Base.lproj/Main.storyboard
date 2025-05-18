@@ -136,7 +136,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="slM-aq-aE9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="37" y="-494"/>
+            <point key="canvasLocation" x="-34" y="-494"/>
         </scene>
         <!--RegisterVC-->
         <scene sceneID="r8n-6t-pBD">
@@ -227,7 +227,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wRm-pR-YCx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="845" y="-494"/>
+            <point key="canvasLocation" x="781" y="-494"/>
         </scene>
         <!--HomeVC-->
         <scene sceneID="GuZ-ag-Vze">
@@ -336,96 +336,24 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vTU-6y-7QJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="37.31343283582089" y="212.12814645308922"/>
-        </scene>
-        <!--CategoryVC-->
-        <scene sceneID="06u-qU-sZY">
-            <objects>
-                <viewController storyboardIdentifier="CategoryVC" id="1e4-8o-uGp" customClass="CategoryVC" customModule="MathQuizMastery" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="L1n-W5-RJp">
-                        <rect key="frame" x="0.0" y="0.0" width="402" height="874"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="category_background_image" translatesAutoresizingMaskIntoConstraints="NO" id="NP4-Ep-kSg">
-                                <rect key="frame" x="0.0" y="-16" width="440" height="985"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" scrollEnabled="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="UJa-Il-v09">
-                                <rect key="frame" x="0.0" y="124" width="402" height="750"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="UJa-Il-v09" secondAttribute="height" multiplier="67:125" id="gRB-qF-kii"/>
-                                </constraints>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="80" minimumInteritemSpacing="20" id="y0r-F7-GbN">
-                                    <size key="itemSize" width="130" height="130"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CategoryCell" id="kJd-ja-9Lj" customClass="CategoryCell" customModule="MathQuizMastery" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="130" height="130"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="130" height="130"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Hso-6b-Y6N">
-                                                    <rect key="frame" x="0.0" y="0.0" width="130" height="130"/>
-                                                </imageView>
-                                            </subviews>
-                                        </view>
-                                        <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="Hso-6b-Y6N" secondAttribute="bottom" id="5Et-BO-xSc"/>
-                                            <constraint firstAttribute="trailing" secondItem="Hso-6b-Y6N" secondAttribute="trailing" id="Wqd-Bk-Rgb"/>
-                                            <constraint firstItem="Hso-6b-Y6N" firstAttribute="top" secondItem="kJd-ja-9Lj" secondAttribute="top" id="YwV-FV-4bC"/>
-                                            <constraint firstItem="Hso-6b-Y6N" firstAttribute="centerX" secondItem="kJd-ja-9Lj" secondAttribute="centerX" id="mEb-zZ-VVJ"/>
-                                            <constraint firstItem="Hso-6b-Y6N" firstAttribute="centerY" secondItem="kJd-ja-9Lj" secondAttribute="centerY" id="oap-M4-QTS"/>
-                                            <constraint firstItem="Hso-6b-Y6N" firstAttribute="leading" secondItem="kJd-ja-9Lj" secondAttribute="leading" id="pYx-JK-whF"/>
-                                        </constraints>
-                                        <size key="customSize" width="130" height="130"/>
-                                        <connections>
-                                            <outlet property="iconImageView" destination="Hso-6b-Y6N" id="Qfj-oy-KwF"/>
-                                        </connections>
-                                    </collectionViewCell>
-                                </cells>
-                            </collectionView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="4ns-jk-Dez"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="4ns-jk-Dez" firstAttribute="trailing" secondItem="UJa-Il-v09" secondAttribute="trailing" id="0sG-XB-ZCy"/>
-                            <constraint firstAttribute="bottom" secondItem="UJa-Il-v09" secondAttribute="bottom" id="Tjq-d5-Gfd"/>
-                            <constraint firstItem="UJa-Il-v09" firstAttribute="bottom" secondItem="4ns-jk-Dez" secondAttribute="bottom" constant="68" id="UJs-W4-v6b"/>
-                            <constraint firstItem="UJa-Il-v09" firstAttribute="top" secondItem="4ns-jk-Dez" secondAttribute="top" id="v0P-4N-UTf"/>
-                            <constraint firstItem="UJa-Il-v09" firstAttribute="leading" secondItem="4ns-jk-Dez" secondAttribute="leading" id="xRm-z5-4vh"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="collectionView" destination="UJa-Il-v09" id="oPr-aN-cZg"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="cyA-Sf-bW2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="845" y="211"/>
+            <point key="canvasLocation" x="-34" y="209"/>
         </scene>
         <!--GameVC-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="GameVC" id="BYZ-38-t0r" customClass="GameVC" customModule="MathQuizMastery" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController restorationIdentifier="GameVC" storyboardIdentifier="GameVC" id="BYZ-38-t0r" customClass="GameVC" customModule="MathQuizMastery" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="402" height="874"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background_image" translatesAutoresizingMaskIntoConstraints="NO" id="80g-oG-ZRJ">
-                                <rect key="frame" x="0.0" y="0.0" width="419" height="874"/>
+                                <rect key="frame" x="0.0" y="0.0" width="402" height="874"/>
                             </imageView>
                             <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFill" misplaced="YES" distribution="fillEqually" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="HiX-wo-5uu">
-                                <rect key="frame" x="31" y="76" width="387" height="126.33333333333331"/>
+                                <rect key="frame" x="31" y="76" width="370" height="120.66666666666669"/>
                                 <subviews>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="10 / 10" textAlignment="center" lineBreakMode="clip" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tuh-GB-yCa" customClass="NeonLabel" customModule="MathQuizMastery" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="18" width="126.33333333333333" height="90.333333333333329"/>
+                                        <rect key="frame" x="0.0" y="17.333333333333329" width="120.66666666666667" height="86"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="Tuh-GB-yCa" secondAttribute="height" multiplier="1.4" id="67m-sI-X0q"/>
                                         </constraints>
@@ -434,7 +362,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="00" textAlignment="center" lineBreakMode="clip" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="EJ9-9s-CE8" userLabel="timeLabel" customClass="NeonCircleLabel" customModule="MathQuizMastery" customModuleProvider="target">
-                                        <rect key="frame" x="130.33333333333334" y="0.0" width="126.33333333333334" height="126.33333333333333"/>
+                                        <rect key="frame" x="124.66666666666666" y="0.0" width="120.66666666666666" height="120.66666666666667"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="EJ9-9s-CE8" secondAttribute="height" multiplier="1:1" id="tqh-0Q-qI2"/>
                                         </constraints>
@@ -443,7 +371,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MGS-2j-Wc6" userLabel="Score" customClass="NeonLabel" customModule="MathQuizMastery" customModuleProvider="target">
-                                        <rect key="frame" x="260.66666666666669" y="18" width="126.33333333333331" height="90.333333333333329"/>
+                                        <rect key="frame" x="249.33333333333329" y="17.333333333333329" width="120.66666666666666" height="86"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="MGS-2j-Wc6" secondAttribute="height" multiplier="1.4" id="MRS-pu-JKu"/>
                                         </constraints>
@@ -458,16 +386,16 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleAspectFit" axis="vertical" distribution="fillEqually" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="b0l-Wj-ULI">
-                                <rect key="frame" x="50" y="304" width="319" height="472"/>
+                                <rect key="frame" x="50" y="304" width="302" height="472"/>
                                 <subviews>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g2o-7x-DQw" customClass="QuestionLabel" customModule="MathQuizMastery" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="319" height="88"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="302" height="88"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6gk-K2-Vyh" customClass="NeonButton" customModule="MathQuizMastery" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="128" width="319" height="88"/>
+                                        <rect key="frame" x="0.0" y="128" width="302" height="88"/>
                                         <accessibility key="accessibilityConfiguration">
                                             <bool key="isElement" value="NO"/>
                                         </accessibility>
@@ -480,7 +408,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vPS-Bo-38q" customClass="NeonButton" customModule="MathQuizMastery" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="256" width="319" height="88"/>
+                                        <rect key="frame" x="0.0" y="256" width="302" height="88"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Button">
                                             <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -490,7 +418,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ike-K2-BMk" customClass="NeonButton" customModule="MathQuizMastery" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="384" width="319" height="88"/>
+                                        <rect key="frame" x="0.0" y="384" width="302" height="88"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Button">
                                             <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -532,7 +460,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1600" y="212"/>
+            <point key="canvasLocation" x="781" y="209"/>
         </scene>
         <!--Result Screen-->
         <scene sceneID="FLx-5p-NWQ">
@@ -618,7 +546,7 @@ Matematik kategoresinde
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9dJ-od-5V2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2372" y="211"/>
+            <point key="canvasLocation" x="1575" y="209"/>
         </scene>
         <!--Item-->
         <scene sceneID="pxH-tc-QPg">
@@ -664,7 +592,6 @@ Matematik kategoresinde
         <image name="Math_Quiz_Mastery_Transparent-removebg-preview" width="661" height="377"/>
         <image name="background_image" width="419" height="837"/>
         <image name="batman" width="228" height="228"/>
-        <image name="category_background_image" width="393" height="852"/>
         <image name="coin_icon" width="36" height="36"/>
         <image name="fly" width="167" height="167"/>
         <image name="image-removebg" width="1024" height="1024"/>

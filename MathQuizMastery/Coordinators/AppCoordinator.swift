@@ -71,4 +71,22 @@ class AppCoordinator : Coordinator {
         navigationController.topViewController?.dismiss(animated: true, completion: nil)
     }
     
+    func goToCategory() {
+        let viewModel = CategoryViewModel()
+        let categoryVC = CategoryVC(viewModel: viewModel, coordinator: self)
+        navigationController.pushViewController(categoryVC, animated: true)
+    }
+    
+    
+    func goToGameVC(with type: MathExpression.ExpressionType) {
+            print("🟢 AppCoordinator → GameVC'ye gidiliyor. Tür: \(type)")
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            if let gameVC = storyboard.instantiateViewController(withIdentifier: "GameVC") as? GameVC {
+                gameVC.selectedExpressionType = type
+                navigationController.pushViewController(gameVC, animated: true)
+            } else {
+                print("🔴 GameVC bulunamadı!")
+            }
+        }
+    
 }

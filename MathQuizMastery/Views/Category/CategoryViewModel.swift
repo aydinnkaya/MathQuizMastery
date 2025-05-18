@@ -42,5 +42,5 @@ class CategoryViewModel : CategoryViewModelProtocol {
         let selectedCategory = categories[index]
         delegate?.navigateToGameVC(with: selectedCategory.expressionType)
     }
-    
+
 }
