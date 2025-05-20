@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		0FB3D00B2D40E8100004CB1A /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 0FB3D00A2D40E8100004CB1A /* IQKeyboardManagerSwift */; };
-		0FBB6D362DD779E80050162D /* SwiftMessages in Frameworks */ = {isa = PBXBuildFile; productRef = 0FBB6D352DD779E80050162D /* SwiftMessages */; };
 		0FCC52AB2DBE7217002D6794 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 0FCC52AA2DBE7217002D6794 /* FirebaseAnalytics */; };
 		0FCC52AD2DBE7217002D6794 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = 0FCC52AC2DBE7217002D6794 /* FirebaseAnalyticsOnDeviceConversion */; };
 		0FCC52AF2DBE7217002D6794 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 0FCC52AE2DBE7217002D6794 /* FirebaseAnalyticsWithoutAdIdSupport */; };
@@ -102,7 +101,6 @@
 				0FCC52B12DBE7217002D6794 /* FirebaseAppCheck in Frameworks */,
 				0FCC52C92DBE7217002D6794 /* FirebaseInAppMessaging-Beta in Frameworks */,
 				0FCC52AF2DBE7217002D6794 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
-				0FBB6D362DD779E80050162D /* SwiftMessages in Frameworks */,
 				0FCC52B52DBE7217002D6794 /* FirebaseAuth in Frameworks */,
 				0FCC52C72DBE7217002D6794 /* FirebaseFunctionsCombine-Community in Frameworks */,
 				0FCC52D72DBE7217002D6794 /* FirebaseStorageCombine-Community in Frameworks */,
@@ -205,7 +203,6 @@
 				0FCC52D42DBE7217002D6794 /* FirebaseStorage */,
 				0FCC52D62DBE7217002D6794 /* FirebaseStorageCombine-Community */,
 				0FCC52D82DBE7217002D6794 /* FirebaseVertexAI */,
-				0FBB6D352DD779E80050162D /* SwiftMessages */,
 			);
 			productName = MathQuizMastery;
 			productReference = 0FA090682D2FAEB000D83F96 /* MathQuizMastery.app */;
@@ -293,7 +290,6 @@
 				0F7B152C2D35034300BAF7D4 /* XCRemoteSwiftPackageReference "Swinject" */,
 				0FB3D0092D40E8100004CB1A /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 				0FCC52A92DBE7217002D6794 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
-				0FBB6D342DD779E80050162D /* XCRemoteSwiftPackageReference "SwiftMessages" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 0FA090692D2FAEB000D83F96 /* Products */;
@@ -680,14 +676,6 @@
 				minimumVersion = 8.0.0;
 			};
 		};
-		0FBB6D342DD779E80050162D /* XCRemoteSwiftPackageReference "SwiftMessages" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SwiftKickMobile/SwiftMessages.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 10.0.1;
-			};
-		};
 		0FCC52A92DBE7217002D6794 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
@@ -703,11 +691,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 0FB3D0092D40E8100004CB1A /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
 			productName = IQKeyboardManagerSwift;
-		};
-		0FBB6D352DD779E80050162D /* SwiftMessages */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 0FBB6D342DD779E80050162D /* XCRemoteSwiftPackageReference "SwiftMessages" */;
-			productName = SwiftMessages;
 		};
 		0FCC52AA2DBE7217002D6794 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
