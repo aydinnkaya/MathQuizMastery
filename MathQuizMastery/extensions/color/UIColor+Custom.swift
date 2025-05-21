@@ -44,6 +44,15 @@ extension UIColor {
         static let navigationBar = UIColor("0095FF") ?? .white
         static let buttonPrimary = UIColor("FF5733") ?? .red
         static let textPrimary = UIColor("333333") ?? .black
+        
+        static let galacticBackground: [CGColor] = [
+            UIColor("#060F2F")?.cgColor ?? UIColor.black.cgColor,
+            UIColor("#152D7A")?.cgColor ?? UIColor.darkGray.cgColor,
+            UIColor("#2890D2")?.cgColor ?? UIColor.blue.cgColor,
+            UIColor("#7CEEFF")?.cgColor ?? UIColor.cyan.cgColor,
+            UIColor("#173985")?.cgColor ?? UIColor.blue.cgColor,
+            UIColor("#060F2F")?.cgColor ?? UIColor.black.cgColor
+        ]
     }
 }
 

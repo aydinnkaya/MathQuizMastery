@@ -17,10 +17,20 @@ class GameVC: UIViewController {
     @IBOutlet weak var scoreLabel: NeonLabel!
     
     private var viewModel: GameScreenViewModelProtocol!
+    private var cordinator: AppCoordinator!
     var selectedExpressionType: MathExpression.ExpressionType?
-    
     private var neonQuestionLabel: NeonLabel!
     
+    
+    init(viewModel: GameScreenViewModelProtocol!, cordinator: AppCoordinator!, selectedExpressionType: MathExpression.ExpressionType? = nil) {
+        self.viewModel = viewModel
+        self.cordinator = cordinator
+        self.selectedExpressionType = selectedExpressionType
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

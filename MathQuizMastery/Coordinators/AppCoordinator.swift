@@ -46,15 +46,12 @@ class AppCoordinator : Coordinator {
     
     // MARK: - Geçişler
     func goToLogin() {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        if let loginVC = storyboard.instantiateViewController(withIdentifier: "LoginVC") as? LoginVC {
-            loginVC.coordinator = self
-            navigationController.setViewControllers([loginVC], animated: false)
-        }
+        let loginVC = LoginVC(viewModel: LoginViewModel(), coordinator: self)
+        navigationController.setViewControllers([loginVC], animated: false)
     }
     
     func goToHome(with user: User) {
-        let homeVC = HomeVC.instantiate(with: user, coordinator: self)
+        let homeVC = HomeVC(user: user, coordinator: self)
         navigationController.setViewControllers([homeVC], animated: false)
     }
     
@@ -77,16 +74,34 @@ class AppCoordinator : Coordinator {
         navigationController.pushViewController(categoryVC, animated: true)
     }
     
-    
     func goToGameVC(with type: MathExpression.ExpressionType) {
-            print("🟢 AppCoordinator → GameVC'ye gidiliyor. Tür: \(type)")
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            if let gameVC = storyboard.instantiateViewController(withIdentifier: "GameVC") as? GameVC {
-                gameVC.selectedExpressionType = type
-                navigationController.pushViewController(gameVC, animated: true)
-            } else {
-                print("🔴 GameVC bulunamadı!")
+        let viewModel = GameScreenViewModel(delegate: <#any GameScreenViewModelDelegate#>, expressionType: <#MathExpression.ExpressionType#>)
+        let gameVC = GameVC(viewModel: viewModel, cordinator: self, selectedExpressionType: type)
+        }
+    }
+    
+    func goToResult(score: String, expressionType: MathExpression.ExpressionType) {
+        let viewModel = ResultViewModel(score: score, expressionType: expressionType)
+        let resultVC = ResultVC(viewModel: viewModel, coordinator: self)
+        viewModel.delegate = resultVC
+        navigationController.pushViewController(resultVC, animated: true)
+    }
+    
+    func goToHomeAfterResult() {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        AuthService.shared.fetchUserData(uid: uid) { [weak self] result in
+            switch result {
+            case .success(let user):
+                self?.goToHome(with: user)
+            case .failure(let error):
+                print("Home fetch failed: \(error.localizedDescription)")
             }
         }
+    }
+    
+    func restartGame() {
+        let type: MathExpression.ExpressionType = .multiplication
+        goToGameVC(with: type)
+    }
     
 }

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="dark"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GameVC" customModule="MathQuizMastery" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background_image" id="3IC-ua-Fjc">
+                    <rect key="frame" x="-5" y="-11" width="402" height="874"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
+                <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFill" distribution="fillEqually" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="SR5-gt-SJP">
+                    <rect key="frame" x="16" y="98" width="361" height="117.66666666666669"/>
+                    <subviews>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="00" textAlignment="center" lineBreakMode="clip" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="FeE-No-nNG" userLabel="timeLabel" customClass="NeonCircleLabel" customModule="MathQuizMastery" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="117.66666666666667" height="117.66666666666667"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="FeE-No-nNG" secondAttribute="height" multiplier="1:1" id="5BR-Gr-lnq"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="26"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="saR-dP-Dvb" userLabel="Score" customClass="NeonLabel" customModule="MathQuizMastery" customModuleProvider="target">
+                            <rect key="frame" x="121.66666666666666" y="16.666666666666671" width="117.66666666666666" height="84.333333333333329"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="saR-dP-Dvb" secondAttribute="height" multiplier="1.4" id="jTP-bL-pVV"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="10 / 10" textAlignment="center" lineBreakMode="clip" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XmK-xK-bnP" customClass="NeonLabel" customModule="MathQuizMastery" customModuleProvider="target">
+                            <rect key="frame" x="243.33333333333329" y="16.666666666666671" width="117.66666666666666" height="84.333333333333329"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="XmK-xK-bnP" secondAttribute="height" multiplier="1.4" id="UaA-La-SSZ"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                </stackView>
+                <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" axis="vertical" distribution="fillEqually" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="qiH-Di-pY7">
+                    <rect key="frame" x="50" y="298" width="293" height="456"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XEu-2e-qgU" customClass="NeonButton" customModule="MathQuizMastery" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="293" height="84"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" title="Button">
+                                <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </buttonConfiguration>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Es-1c-oMs" customClass="NeonButton" customModule="MathQuizMastery" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="124" width="293" height="84"/>
+                            <accessibility key="accessibilityConfiguration">
+                                <bool key="isElement" value="NO"/>
+                            </accessibility>
+                            <buttonConfiguration key="configuration" style="plain" title="Fist" cornerStyle="dynamic">
+                                <backgroundConfiguration key="background"/>
+                            </buttonConfiguration>
+                        </button>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jrr-Ny-p4b" customClass="QuestionLabel" customModule="MathQuizMastery" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="248" width="293" height="84"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8wA-OP-8g0" customClass="NeonButton" customModule="MathQuizMastery" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="372" width="293" height="84"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                        </button>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="qiH-Di-pY7" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="50" id="2px-Mo-dQZ"/>
+                <constraint firstItem="SR5-gt-SJP" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="INq-TK-jdZ"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="qiH-Di-pY7" secondAttribute="trailing" constant="50" id="Inh-4g-m1W"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="top" secondItem="SR5-gt-SJP" secondAttribute="top" constant="20" id="JHX-lq-jdu"/>
+                <constraint firstItem="SR5-gt-SJP" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="RzQ-aL-HO7"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="SR5-gt-SJP" secondAttribute="trailing" constant="16" id="Ukd-Aq-TXh"/>
+                <constraint firstItem="qiH-Di-pY7" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="180" id="gPj-hm-WLB"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="qiH-Di-pY7" secondAttribute="bottom" constant="30" id="mQt-z6-rsd"/>
+                <constraint firstItem="qiH-Di-pY7" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="mpc-sO-S8y"/>
+            </constraints>
+            <point key="canvasLocation" x="139.69465648854961" y="19.718309859154932"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="background_image" width="419" height="837"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

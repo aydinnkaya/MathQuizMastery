@@ -8,49 +8,92 @@
 import UIKit
 
 class ResultVC: UIViewController {
-    @IBOutlet weak var scoreLabel: NeonLabel!
     @IBOutlet weak var homeButton: UIButton!
-    @IBOutlet weak var restartButton: UIButton!
     @IBOutlet weak var categoryButton: UIButton!
+    @IBOutlet weak var restartButton: UIButton!
+    @IBOutlet weak var scoreLabel: UILabel!
     
-    var receivedScore: Int = 0
+    var receivedScore: String = "0"
+    var viewModel: ResultViewModelProtocol!
+    var coordinator: AppCoordinator!
+    
+    
+    init(viewModel: ResultViewModelProtocol, coordinator: AppCoordinator) {
+        self.viewModel = viewModel
+        self.coordinator = coordinator
+        super.init(nibName: "ResultVC", bundle: nil)
+        self.viewModel.delegate = self
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("Storyboard üzerinden başlatma kullanılmıyor.")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        scoreLabel.text = "\(receivedScore)"
+        scoreLabel.text = viewModel.getScoreText()
         
+        categoryButton.clipsToBounds = true
+        navigationItem.hidesBackButton = true
+        
+        viewModel.delegate = self
+        setupUI()
+    }
+    
+    private func setupUI() {
         categoryButton.clipsToBounds = true
         navigationItem.hidesBackButton = true
     }
     
-    @IBAction func goToHome(_ sender: UIButton, forEvent event: UIEvent) {
-       // navigateToHome()
-    }
-    
-    @IBAction func goToCategory(_ sender: Any, forEvent event: UIEvent) {
-       // navigateToCategory()
-    }
-    
-    @IBAction func goToGame(_ sender: Any) {
+    @IBAction func goToHome(_ sender: Any) {
+        viewModel.handleHomeTapped()
         
     }
+    
+    @IBAction func goToCategory(_ sender: Any) {
+        viewModel.handleCategoryTapped()
+    }
+    
+    @IBAction func goToRestart(_ sender: Any) {
+        viewModel.handleRestartTapped()
+    }
+    
+}
+
+extension ResultVC : ResultViewModelDelegate {
+ 
+   func navigateToHome() {
+       self.coordinator.goToHomeAfterResult()
+    }
+    
+    func navigateToCategory() {
+        self.coordinator.goToCategory()
+    }
+    
+    func restartGame(with type: MathExpression.ExpressionType) {
+        self.coordinator.restartGame()
+    }
+    
 }
 
 extension ResultVC {
-    
-    func navigateToHome() {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        if let homeVC = storyboard.instantiateViewController(withIdentifier: "HomeVC") as? HomeVC {
-            navigationController?.setViewControllers([homeVC], animated: true)
-        }
-    }
-
-    func navigateToCategory() {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        if let categoryVC = storyboard.instantiateViewController(withIdentifier: "CategoryVC") as? CategoryVC {
-            navigationController?.setViewControllers([categoryVC], animated: true)
-        }
+    private func setupBackground(){
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = view.bounds
+        
+        gradientLayer.colors = UIColor.Custom.galacticBackground as [Any]
+        
+        gradientLayer.startPoint = CGPoint(x: 0.5, y: 0.0) // üst merkez
+        gradientLayer.endPoint = CGPoint(x: 0.5, y: 1.0)   // alt merkez
+        gradientLayer.locations = [0.0, 0.2, 0.4, 0.6, 0.8, 1.0] as [NSNumber]
+        gradientLayer.opacity = 0.95
+        view.layer.insertSublayer(gradientLayer, at: 0)
+        
+        let blur = UIVisualEffectView(effect: UIBlurEffect(style: .systemUltraThinMaterialDark))
+        blur.frame = view.bounds
+        blur.alpha = 0.08
+        view.addSubview(blur)
     }
 }
 

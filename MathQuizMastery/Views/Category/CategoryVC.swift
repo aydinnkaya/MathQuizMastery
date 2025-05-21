@@ -17,6 +17,7 @@ class CategoryVC: UIViewController{
     
     var viewModel: CategoryViewModelProtocol?
     var coordinator: AppCoordinator!
+    
     private var _numerOfIndexPaths: Int = 0
     
     init(viewModel: CategoryViewModelProtocol, coordinator: AppCoordinator) {

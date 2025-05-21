@@ -7,6 +7,12 @@
 
 import Foundation
 
+protocol LoginScreenViewModelProtocol: AnyObject {
+    var delegate: LoginViewModelDelegate? { get set }
+    func login(email: String, password: String)
+    func validateInputs(email: String, password: String)
+}
+
 protocol LoginViewModelDelegate: AnyObject {
     func didLoginSuccessfully(user: User)
     func didFailWithError(_ error: Error)

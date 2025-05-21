@@ -13,8 +13,12 @@ class LoginVC: UIViewController, UITextFieldDelegate {
     // MARK: - IBOutlets
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var fargotPasswordButtonLabel: UIButton!
     @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var fargotPasswordButtonLabel: UIButton!
+    
+    @IBOutlet weak var createAnAccountButton: UIButton!
+    
+    
     
     // MARK: - Properties
     private var errorLabels: [UITextField: UILabel] = [:]
@@ -29,10 +33,14 @@ class LoginVC: UIViewController, UITextFieldDelegate {
         ]
     }
     
+    init(viewModel: LoginScreenViewModelProtocol = LoginViewModel(), coordinator: AppCoordinator?) {
+        self.viewModel = viewModel
+        self.coordinator = coordinator
+        super.init(nibName: String(describing: LoginVC.self), bundle: nil)
+    }
+    
     required init?(coder: NSCoder) {
-        let defaultViewModel = LoginViewModel()
-        self.viewModel = defaultViewModel
-        super.init(coder: coder)
+        fatalError("init(coder:) has not been implemented. Use init(viewModel:coordinator:) instead.")
     }
     
     // MARK: - Lifecycle Methods
@@ -134,15 +142,7 @@ extension LoginVC {
         dismissKeyboard()
         clearErrors()
     }
-    
-    func navigateToHomeScreen(with user: User) {
-        let homeVC = HomeVC.instantiate(with: user, coordinator: coordinator! )
-        let navController = UINavigationController(rootViewController: homeVC)
-        navController.modalPresentationStyle = .fullScreen
-        self.present(navController, animated: true, completion: nil)
-    }
-
-    
+   
     func setupGradientBackground() {
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = self.view.bounds
