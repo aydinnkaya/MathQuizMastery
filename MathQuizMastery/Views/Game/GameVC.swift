@@ -16,16 +16,20 @@ class GameVC: UIViewController {
     @IBOutlet weak var buttonThird: NeonButton!
     @IBOutlet weak var scoreLabel: NeonLabel!
     
+    @IBOutlet weak var backgroundImage: UIImageView!
+    
+    
     private var viewModel: GameScreenViewModelProtocol!
-    private var cordinator: AppCoordinator!
+    private var coordinator: AppCoordinator!
     var selectedExpressionType: MathExpression.ExpressionType?
     private var neonQuestionLabel: NeonLabel!
     
     
-    init(viewModel: GameScreenViewModelProtocol!, cordinator: AppCoordinator!, selectedExpressionType: MathExpression.ExpressionType? = nil) {
+    init(viewModel: GameScreenViewModelProtocol!, coordinator: AppCoordinator!, selectedExpressionType: MathExpression.ExpressionType? = nil) {
         self.viewModel = viewModel
-        self.cordinator = cordinator
+        self.coordinator = coordinator
         self.selectedExpressionType = selectedExpressionType
+        super.init(nibName: "GameVC", bundle: nil)
     }
     
     required init?(coder: NSCoder) {
@@ -45,6 +49,7 @@ class GameVC: UIViewController {
         setupLabelStyles()
         setupQuestionLabelStyle()
         setupButtonStyles()
+        backgroundImage.frame = view.bounds
     }
     
     private func configureViewModel() {
@@ -58,13 +63,6 @@ class GameVC: UIViewController {
         buttonFirst.setTitle(answers[0], for: .normal)
         buttonSecond.setTitle(answers[1], for: .normal)
         buttonThird.setTitle(answers[2], for: .normal)
-    }
-    
-    private func handleTimeUp() {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        if let resultVC = storyboard.instantiateViewController(withIdentifier: "ResultVC") as? ResultVC {
-            navigationController?.pushViewController(resultVC, animated: true)
-        }
     }
     
     private func handleAnswer(for button: UIButton) {
@@ -98,7 +96,6 @@ class GameVC: UIViewController {
         handleAnswer(for: sender)
     }
     
-    
 }
 
 extension GameVC : GameScreenViewModelDelegate{
@@ -119,8 +116,8 @@ extension GameVC : GameScreenViewModelDelegate{
         self.questionNumberLabel.text = "\(questionNumber) / 10"
     }
     
-    func onTimeUp() {
-        self.handleTimeUp()
+    func onGameFinished(score: Int, expressionType: MathExpression.ExpressionType) {
+        coordinator.goToResult(score: "\(score)", expressionType: expressionType)
     }
     
 }
@@ -169,6 +166,3 @@ extension GameVC {
         }
     }
 }
-
-
-

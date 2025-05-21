@@ -9,7 +9,19 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GameVC" customModule="MathQuizMastery" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GameVC" customModule="MathQuizMastery" customModuleProvider="target">
+            <connections>
+                <outlet property="backgroundImage" destination="3IC-ua-Fjc" id="hje-Jd-wUE"/>
+                <outlet property="buttonFirst" destination="1Es-1c-oMs" id="bjs-Bq-gyx"/>
+                <outlet property="buttonSecond" destination="XEu-2e-qgU" id="hU4-cs-Um8"/>
+                <outlet property="buttonThird" destination="8wA-OP-8g0" id="XOj-wS-ZMC"/>
+                <outlet property="questionLabel" destination="jrr-Ny-p4b" id="YAu-Xq-rli"/>
+                <outlet property="questionNumberLabel" destination="XmK-xK-bnP" id="W30-C7-LFG"/>
+                <outlet property="scoreLabel" destination="saR-dP-Dvb" id="Eiz-6Y-Cat"/>
+                <outlet property="timeLabel" destination="FeE-No-nNG" id="YUW-lE-UQP"/>
+                <outlet property="view" destination="iN0-l3-epB" id="EHb-3k-apL"/>
+            </connections>
+        </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
             <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
@@ -22,21 +34,21 @@
                 <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFill" distribution="fillEqually" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="SR5-gt-SJP">
                     <rect key="frame" x="16" y="98" width="361" height="117.66666666666669"/>
                     <subviews>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="00" textAlignment="center" lineBreakMode="clip" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="FeE-No-nNG" userLabel="timeLabel" customClass="NeonCircleLabel" customModule="MathQuizMastery" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="0.0" width="117.66666666666667" height="117.66666666666667"/>
-                            <constraints>
-                                <constraint firstAttribute="width" secondItem="FeE-No-nNG" secondAttribute="height" multiplier="1:1" id="5BR-Gr-lnq"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="26"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="saR-dP-Dvb" userLabel="Score" customClass="NeonLabel" customModule="MathQuizMastery" customModuleProvider="target">
-                            <rect key="frame" x="121.66666666666666" y="16.666666666666671" width="117.66666666666666" height="84.333333333333329"/>
+                            <rect key="frame" x="0.0" y="16.666666666666671" width="117.66666666666667" height="84.333333333333329"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="saR-dP-Dvb" secondAttribute="height" multiplier="1.4" id="jTP-bL-pVV"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="00" textAlignment="center" lineBreakMode="clip" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="FeE-No-nNG" userLabel="timeLabel" customClass="NeonCircleLabel" customModule="MathQuizMastery" customModuleProvider="target">
+                            <rect key="frame" x="121.66666666666666" y="0.0" width="117.66666666666666" height="117.66666666666667"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="FeE-No-nNG" secondAttribute="height" multiplier="1:1" id="5BR-Gr-lnq"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="26"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
@@ -54,13 +66,12 @@
                 <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" axis="vertical" distribution="fillEqually" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="qiH-Di-pY7">
                     <rect key="frame" x="50" y="298" width="293" height="456"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XEu-2e-qgU" customClass="NeonButton" customModule="MathQuizMastery" customModuleProvider="target">
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jrr-Ny-p4b" customClass="QuestionLabel" customModule="MathQuizMastery" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="0.0" width="293" height="84"/>
-                            <state key="normal" title="Button"/>
-                            <buttonConfiguration key="configuration" style="plain" title="Button">
-                                <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </buttonConfiguration>
-                        </button>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                         <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Es-1c-oMs" customClass="NeonButton" customModule="MathQuizMastery" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="124" width="293" height="84"/>
                             <accessibility key="accessibilityConfiguration">
@@ -69,17 +80,27 @@
                             <buttonConfiguration key="configuration" style="plain" title="Fist" cornerStyle="dynamic">
                                 <backgroundConfiguration key="background"/>
                             </buttonConfiguration>
+                            <connections>
+                                <action selector="answerFirstButton:" destination="-1" eventType="touchUpInside" id="aAl-BR-ez0"/>
+                            </connections>
                         </button>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jrr-Ny-p4b" customClass="QuestionLabel" customModule="MathQuizMastery" customModuleProvider="target">
+                        <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XEu-2e-qgU" customClass="NeonButton" customModule="MathQuizMastery" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="248" width="293" height="84"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" title="Button">
+                                <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </buttonConfiguration>
+                            <connections>
+                                <action selector="answerSecondButton:" destination="-1" eventType="touchUpInside" id="5Th-Rp-pc1"/>
+                            </connections>
+                        </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8wA-OP-8g0" customClass="NeonButton" customModule="MathQuizMastery" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="372" width="293" height="84"/>
                             <state key="normal" title="Button"/>
                             <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                            <connections>
+                                <action selector="answerThirdButton:" destination="-1" eventType="touchUpInside" id="0TB-vo-hqD"/>
+                            </connections>
                         </button>
                     </subviews>
                 </stackView>

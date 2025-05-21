@@ -25,7 +25,7 @@ protocol GameScreenViewModelDelegate : AnyObject { // AnyObject => Class
     func onUpdateScore(score: Int)
     func onUpdateTime(time : String)
     func onUpdateQuestionNumber(questionNumber: Int)
-    func onTimeUp()
+    func onGameFinished(score: Int, expressionType: MathExpression.ExpressionType)
 }
 
 class GameScreenViewModel : GameScreenViewModelProtocol {
@@ -59,7 +59,7 @@ class GameScreenViewModel : GameScreenViewModelProtocol {
             delegate?.onUpdateQuestionNumber(questionNumber: questionNumber)
             delegate?.onUpdateUI(questionText: expression.createQuestion(), answers: answers.map { String($0) })
         } else {
-            delegate?.onTimeUp()
+            delegate?.onGameFinished(score: score, expressionType: expression.getExpressionType())
         }
     }
     
@@ -107,7 +107,7 @@ class GameScreenViewModel : GameScreenViewModelProtocol {
             
             if self.timeRemaining <= 0 {
                 self.timer?.invalidate()
-                delegate?.onTimeUp()
+                delegate?.onGameFinished(score: self.score, expressionType: self.expression.getExpressionType())
             }
         }
     }

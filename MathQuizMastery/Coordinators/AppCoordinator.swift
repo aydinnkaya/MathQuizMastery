@@ -75,9 +75,8 @@ class AppCoordinator : Coordinator {
     }
     
     func goToGameVC(with type: MathExpression.ExpressionType) {
-        let viewModel = GameScreenViewModel(delegate: <#any GameScreenViewModelDelegate#>, expressionType: <#MathExpression.ExpressionType#>)
-        let gameVC = GameVC(viewModel: viewModel, cordinator: self, selectedExpressionType: type)
-        }
+        let gameVC = GameVC(viewModel: nil, coordinator: self, selectedExpressionType: type)
+        navigationController.pushViewController(gameVC, animated: true)
     }
     
     func goToResult(score: String, expressionType: MathExpression.ExpressionType) {
@@ -99,8 +98,7 @@ class AppCoordinator : Coordinator {
         }
     }
     
-    func restartGame() {
-        let type: MathExpression.ExpressionType = .multiplication
+    func restartGame(with type: MathExpression.ExpressionType) {
         goToGameVC(with: type)
     }
     
