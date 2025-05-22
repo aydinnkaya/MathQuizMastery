@@ -16,7 +16,6 @@ protocol HomeViewModelProtocol {
 protocol HomeViewModelDelegate: AnyObject {
     func didReceiveUser(_ user: User?)
     func navigateToCategory()
-    
 }
 
 class HomeViewModel: HomeViewModelProtocol {

@@ -53,6 +53,19 @@ extension UIColor {
             UIColor("#173985")?.cgColor ?? UIColor.blue.cgColor,
             UIColor("#060F2F")?.cgColor ?? UIColor.black.cgColor
         ]
+        
+        static let loginBackground : [CGColor] = [
+            UIColor(red: 0.3, green: 0.3, blue: 0.3, alpha: 1.0).cgColor,
+            UIColor(red: 0.8, green: 0.1, blue: 0.0, alpha: 1.0).cgColor,
+            UIColor(red: 0.9, green: 0.7, blue: 0.0, alpha: 1.0).cgColor,
+        ]
+        
+        static let registerBackground : [CGColor] = [
+                UIColor(red: 0.9, green: 0.7, blue: 0.0, alpha: 1.0).cgColor,
+                // UIColor(red: 0.8, green: 0.1, blue: 0.0, alpha: 1.0).cgColor,
+                UIColor(red: 0.3, green: 0.3, blue: 0.3, alpha: 1.0).cgColor
+        ]
+        
     }
 }
 

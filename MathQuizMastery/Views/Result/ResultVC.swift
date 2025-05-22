@@ -67,9 +67,9 @@ class ResultVC: UIViewController {
 }
 
 extension ResultVC : ResultViewModelDelegate {
- 
-   func navigateToHome() {
-       self.coordinator.goToHomeAfterResult()
+    
+    func navigateToHome() {
+        self.coordinator.goToHomeAfterResult()
     }
     
     func navigateToCategory() {
@@ -77,8 +77,8 @@ extension ResultVC : ResultViewModelDelegate {
     }
     
     func restartGame(with type: MathExpression.ExpressionType) {
-           self.coordinator.restartGame(with: type)
-       }
+        self.coordinator.restartGame(with: type)
+    }
     
 }
 
@@ -90,15 +90,15 @@ extension ResultVC {
         gradientLayer.colors = UIColor.Custom.galacticBackground as [Any]
         
         gradientLayer.startPoint = CGPoint(x: 0.5, y: 0.0)
-        gradientLayer.endPoint = CGPoint(x: 0.5, y: 1.0)   
+        gradientLayer.endPoint = CGPoint(x: 0.5, y: 1.0)
         gradientLayer.locations = [0.0, 0.2, 0.4, 0.6, 0.8, 1.0] as [NSNumber]
         gradientLayer.opacity = 0.95
         view.layer.insertSublayer(gradientLayer, at: 0)
         
-//        let blur = UIVisualEffectView(effect: UIBlurEffect(style: .systemUltraThinMaterialDark))
-//        blur.frame = view.bounds
-//        blur.alpha = 0.08
-//        view.addSubview(blur)
+        //        let blur = UIVisualEffectView(effect: UIBlurEffect(style: .systemUltraThinMaterialDark))
+        //        blur.frame = view.bounds
+        //        blur.alpha = 0.08
+        //        view.addSubview(blur)
     }
 }
 

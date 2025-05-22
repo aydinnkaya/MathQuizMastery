@@ -14,11 +14,13 @@ protocol AvatarPopupViewModelProtocol {
     func getAvatar(at index: Int) -> Avatar
     func selectAvatar(at index: Int)
     func getSelectedIndexPath() -> IndexPath?
+    func handleSaveTapped()
 }
 
 protocol AvatarPopupViewModelDelegate: AnyObject {
     func avatarSelectionDidChange(selectedAvatar: Avatar)
     func avatarCellStyleUpdate(selectedIndexPath: IndexPath?, previousIndexPath: IndexPath?)
+    func tappedSave()
 }
 
 class AvatarPopupViewModel: AvatarPopupViewModelProtocol {
@@ -65,4 +67,9 @@ class AvatarPopupViewModel: AvatarPopupViewModelProtocol {
         delegate?.avatarSelectionDidChange(selectedAvatar: avatars[index])
         delegate?.avatarCellStyleUpdate(selectedIndexPath: getSelectedIndexPath(), previousIndexPath: previousIndexPath)
     }
+    
+    func handleSaveTapped(){
+        delegate?.tappedSave()
+    }
+    
 }

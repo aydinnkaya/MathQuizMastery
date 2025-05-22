@@ -161,11 +161,7 @@ extension RegisterVC {
     func setupGradientBackground() {
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = self.view.bounds
-        gradientLayer.colors = [
-            UIColor(red: 0.9, green: 0.7, blue: 0.0, alpha: 1.0).cgColor,
-            // UIColor(red: 0.8, green: 0.1, blue: 0.0, alpha: 1.0).cgColor,
-            UIColor(red: 0.3, green: 0.3, blue: 0.3, alpha: 1.0).cgColor
-        ]
+        gradientLayer.colors = UIColor.Custom.registerBackground
         gradientLayer.startPoint = CGPoint(x: 0, y: 0)
         gradientLayer.endPoint = CGPoint(x: 1, y: 1)
         self.view.layer.insertSublayer(gradientLayer, at: 0)

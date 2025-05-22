@@ -18,8 +18,6 @@ class LoginVC: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var createAnAccountButton: UIButton!
     
-    
-    
     // MARK: - Properties
     private var errorLabels: [UITextField: UILabel] = [:]
     private let viewModel: LoginScreenViewModelProtocol
@@ -46,16 +44,16 @@ class LoginVC: UIViewController, UITextFieldDelegate {
     // MARK: - Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupUI()
-        configureGesture()
         bindViewModel()
-        assignDelegates()
-        setupGradientBackground()
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         loginButton.updateGradientFrameIfNeeded()
+        setupUI()
+        configureGesture()
+        assignDelegates()
+        setupGradientBackground()
     }
     
     // MARK: - IBActions
@@ -146,11 +144,7 @@ extension LoginVC {
     func setupGradientBackground() {
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = self.view.bounds
-        gradientLayer.colors = [
-            UIColor(red: 0.3, green: 0.3, blue: 0.3, alpha: 1.0).cgColor,
-            UIColor(red: 0.8, green: 0.1, blue: 0.0, alpha: 1.0).cgColor,
-            UIColor(red: 0.9, green: 0.7, blue: 0.0, alpha: 1.0).cgColor,
-        ]
+        gradientLayer.colors = UIColor.Custom.loginBackground
         gradientLayer.startPoint = CGPoint(x: 0, y: 0)
         gradientLayer.endPoint = CGPoint(x: 1, y: 1)
         self.view.layer.insertSublayer(gradientLayer, at: 0)

@@ -54,15 +54,6 @@ class AvatarPopupVC: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "AvatarCell")
-        
-    }
-    
-    private func commonInit() {
-        let nib = UINib(nibName: "AvatarPopupVC", bundle: nil)
-        if let view = nib.instantiate(withOwner: self, options: nil).first as? UIView {
-            view.frame = self.view.bounds
-            self.view.addSubview(view)
-        }
     }
     
     // MARK: - Setup ViewModel
@@ -71,10 +62,10 @@ class AvatarPopupVC: UIViewController {
         viewModel.loadAvatars()
     }
     
-    //    // MARK: - Save Button Tapped
-    //    @IBAction func saveButtonTapped(_ sender: UIButton, forEvent event: UIEvent) {
-    //
-    //    }
+    // MARK: - Save Button Tapped
+    @IBAction func saveButtonTapped(_ sender: UIButton, forEvent event: UIEvent) {
+        viewModel.handleSaveTapped()
+    }
     
 }
 
@@ -100,11 +91,15 @@ extension AvatarPopupVC: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         viewModel.selectAvatar(at: indexPath.row)
     }
+    
 }
 
 extension AvatarPopupVC : AvatarPopupViewModelDelegate {
+    func tappedSave() {
+        coordinator?.dismissPopup()
+    }
+    
     func avatarCellStyleUpdate(selectedIndexPath: IndexPath?, previousIndexPath: IndexPath?) {
-        // Eski seçili hücreyi griye döndür
         // Eski seçili hücreyi griye döndür
         if let previous = previousIndexPath,
            let previousCell = collectionView.cellForItem(at: previous) {
@@ -173,6 +168,7 @@ extension UICollectionViewCell {
 //Throws: - avatarPopupView.layer.cornerRadius = 20
 extension AvatarPopupVC {
     func setuStyles(){
+        
         profileImage.image = UIImage(named: viewModel.getAvatar(at: 0).imageName)
         
         popupView.layer.cornerRadius = 20
