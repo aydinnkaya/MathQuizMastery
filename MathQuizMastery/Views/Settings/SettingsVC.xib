@@ -18,25 +18,43 @@
                 <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ILB-6E-Lim">
                     <rect key="frame" x="-2" y="-2" width="400" height="853"/>
                     <subviews>
-                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QuT-Ht-qLp">
-                            <rect key="frame" x="73" y="96" width="271" height="624"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QuT-Ht-qLp">
+                            <rect key="frame" x="71" y="134" width="271" height="624"/>
                             <subviews>
                                 <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="WK9-vz-c1D">
-                                    <rect key="frame" x="29" y="91" width="211" height="481"/>
+                                    <rect key="frame" x="23" y="21" width="233" height="566"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 </tableView>
+                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UNO-ui-kOu">
+                                    <rect key="frame" x="104" y="605" width="62" height="35"/>
+                                    <state key="normal" title="Button"/>
+                                    <buttonConfiguration key="configuration" style="filled" title="Back"/>
+                                </button>
                             </subviews>
                             <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                            <constraints>
+                                <constraint firstItem="UNO-ui-kOu" firstAttribute="centerX" secondItem="QuT-Ht-qLp" secondAttribute="centerX" id="Juh-PT-DVV"/>
+                                <constraint firstAttribute="bottom" secondItem="UNO-ui-kOu" secondAttribute="bottom" constant="-16" id="kP6-Ui-Sn0"/>
+                            </constraints>
                         </view>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Settings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PfA-on-Clp">
+                            <rect key="frame" x="167" y="105" width="63" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="QuT-Ht-qLp" firstAttribute="top" secondItem="PfA-on-Clp" secondAttribute="bottom" constant="8" symbolic="YES" id="cTN-cI-DzG"/>
+                    </constraints>
                 </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
+                <constraint firstItem="PfA-on-Clp" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="ZQ6-Ai-Esa"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="leading" secondItem="ILB-6E-Lim" secondAttribute="leading" constant="2" id="lUK-kO-JJw"/>
                 <constraint firstItem="ILB-6E-Lim" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" constant="5" id="uab-CC-vZd"/>
             </constraints>

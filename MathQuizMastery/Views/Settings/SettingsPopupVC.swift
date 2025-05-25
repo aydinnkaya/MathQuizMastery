@@ -8,6 +8,6 @@
 import Foundation
 
 
-class SettingsVC {
+class SettingsPopupVC {
     
 }
