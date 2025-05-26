@@ -55,6 +55,11 @@ class HomeVC: UIViewController {
         viewModel.playButtonTapped()
     }
     
+    
+    @IBAction func settingsButtonTapped(_ sender: Any) {
+        coordinator?.goToSettingsPopup()
+    }
+    
 }
 
 

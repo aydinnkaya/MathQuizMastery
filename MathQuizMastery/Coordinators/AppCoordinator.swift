@@ -15,6 +15,7 @@ protocol Coordinator{
 }
 
 class AppCoordinator : Coordinator {
+   
     var navigationController: UINavigationController
     
     init(navigationController: UINavigationController) {
@@ -62,6 +63,14 @@ class AppCoordinator : Coordinator {
         avatarPopupVC.modalPresentationStyle = .overFullScreen
         avatarPopupVC.modalTransitionStyle = .flipHorizontal
         navigationController.present(avatarPopupVC, animated: true, completion: nil)
+    }
+    
+    func goToSettingsPopup() {
+        let viewModel = SettingsPopupViewModel()
+        let popupVC = SettingsPopupVC(viewModel: viewModel, coordinator: self)
+        popupVC.modalPresentationStyle = .overFullScreen
+        popupVC.modalTransitionStyle = .crossDissolve
+        navigationController.topViewController?.present(popupVC, animated: true)
     }
     
     func dismissPopup() {
