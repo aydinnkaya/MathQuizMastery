@@ -68,9 +68,10 @@ class AppCoordinator : Coordinator {
     func goToSettingsPopup() {
         let viewModel = SettingsPopupViewModel()
         let popupVC = SettingsPopupVC(viewModel: viewModel, coordinator: self)
+        popupVC.view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
         popupVC.modalPresentationStyle = .overFullScreen
-        popupVC.modalTransitionStyle = .crossDissolve
-        navigationController.topViewController?.present(popupVC, animated: true)
+        popupVC.modalTransitionStyle = .flipHorizontal
+        navigationController.present(popupVC, animated: true, completion: nil)
     }
     
     func dismissPopup() {
