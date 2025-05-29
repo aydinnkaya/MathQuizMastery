@@ -12,6 +12,7 @@ class ResultVC: UIViewController {
     @IBOutlet weak var categoryButton: UIButton!
     @IBOutlet weak var restartButton: UIButton!
     @IBOutlet weak var scoreLabel: UILabel!
+    @IBOutlet weak var coinLabel: UILabel!
     
     var receivedScore: String = "0"
     var viewModel: ResultViewModelProtocol!
@@ -33,7 +34,7 @@ class ResultVC: UIViewController {
         super.viewDidLoad()
         
         scoreLabel.text = viewModel.getScoreText()
-        
+        coinLabel.text = viewModel.getCoinText()
         categoryButton.clipsToBounds = true
         navigationItem.hidesBackButton = true
         

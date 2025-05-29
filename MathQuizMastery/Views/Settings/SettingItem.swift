@@ -8,7 +8,11 @@
 import Foundation
 
 enum SettingType {
-    case profile, account, statistics, notifications, faq, report, logout
+    case profile
+    case notifications
+    case faq
+    case report
+    case logout
 }
 
 struct SettingItem {

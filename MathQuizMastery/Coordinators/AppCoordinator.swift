@@ -90,7 +90,17 @@ class AppCoordinator : Coordinator {
     }
     
     func goToResult(score: String, expressionType: MathExpression.ExpressionType) {
-        let viewModel = ResultViewModel(score: score, expressionType: expressionType)
+        guard let uid = Auth.auth().currentUser?.uid else {
+            print("❌ Kullanıcı UID bulunamadı.")
+            return
+        }
+        
+        let viewModel = ResultViewModel(
+            score: score,
+            expressionType: expressionType,
+            userUID: uid
+        )
+        
         let resultVC = ResultVC(viewModel: viewModel, coordinator: self)
         viewModel.delegate = resultVC
         navigationController.pushViewController(resultVC, animated: true)

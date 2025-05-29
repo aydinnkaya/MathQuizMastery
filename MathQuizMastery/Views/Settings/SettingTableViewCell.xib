@@ -4,8 +4,8 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -18,39 +18,44 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <stackView opaque="NO" contentMode="scaleAspectFit" ambiguous="YES" distribution="fillEqually" spacing="141" translatesAutoresizingMaskIntoConstraints="NO" id="tf9-lt-Fne">
-                        <rect key="frame" x="23" y="14" width="274" height="50"/>
+                    <stackView opaque="NO" contentMode="scaleAspectFit" alignment="center" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="tf9-lt-Fne">
+                        <rect key="frame" x="12" y="2" width="296" height="76"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mZh-Kh-nuB">
-                                <rect key="frame" x="0.0" y="0.0" width="66.666666666666671" height="50"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="252" verticalHuggingPriority="251" image="settings_profile_icon" translatesAutoresizingMaskIntoConstraints="NO" id="mZh-Kh-nuB">
+                                <rect key="frame" x="0.0" y="6" width="64" height="64"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t5P-zO-7cE">
-                                <rect key="frame" x="207.66666666666666" y="0.0" width="66.333333333333343" height="50"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Profile" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t5P-zO-7cE">
+                                <rect key="frame" x="88" y="24.333333333333329" width="208" height="27.666666666666671"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <color key="textColor" name="80C9D4"/>
                                 <nil key="highlightedColor"/>
+                                <lineBreakStrategy key="lineBreakStrategy"/>
                             </label>
                         </subviews>
                     </stackView>
                 </subviews>
-                <color key="backgroundColor" systemColor="systemYellowColor"/>
                 <constraints>
-                    <constraint firstItem="tf9-lt-Fne" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="1QA-W3-Okl"/>
-                    <constraint firstAttribute="trailing" secondItem="tf9-lt-Fne" secondAttribute="trailing" constant="23" id="SiD-mU-0pZ"/>
-                    <constraint firstItem="tf9-lt-Fne" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="23" id="kFh-Um-4cV"/>
+                    <constraint firstItem="tf9-lt-Fne" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="4O9-wk-ydo"/>
+                    <constraint firstAttribute="bottom" secondItem="tf9-lt-Fne" secondAttribute="bottom" constant="2" id="mHz-8Q-BqT"/>
+                    <constraint firstItem="tf9-lt-Fne" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="2" id="u3e-iP-4xG"/>
+                    <constraint firstAttribute="trailing" secondItem="tf9-lt-Fne" secondAttribute="trailing" constant="12" id="ujz-wp-NKC"/>
+                    <constraint firstItem="tf9-lt-Fne" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="zcA-5A-eU4"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
                 <outlet property="iconImageView" destination="mZh-Kh-nuB" id="sFo-kL-FZI"/>
                 <outlet property="titleLabel" destination="t5P-zO-7cE" id="MW2-AT-ga6"/>
             </connections>
-            <point key="canvasLocation" x="54.961832061068698" y="32.394366197183103"/>
+            <point key="canvasLocation" x="13.740458015267174" y="-74.647887323943664"/>
         </tableViewCell>
     </objects>
     <resources>
-        <systemColor name="systemYellowColor">
-            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
+        <image name="settings_profile_icon" width="64" height="64"/>
+        <namedColor name="80C9D4">
+            <color red="0.50196078431372548" green="0.78823529411764703" blue="0.83137254901960789" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

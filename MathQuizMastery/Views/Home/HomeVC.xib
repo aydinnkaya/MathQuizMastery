@@ -51,17 +51,17 @@
                     </subviews>
                 </stackView>
                 <stackView opaque="NO" contentMode="scaleAspectFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="qgW-hS-K1Q" userLabel="Coin Info Stack View">
-                    <rect key="frame" x="302.33333333333331" y="108" width="83.666666666666686" height="36"/>
+                    <rect key="frame" x="323.33333333333331" y="108" width="62.666666666666686" height="36"/>
                     <subviews>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coin_icon" translatesAutoresizingMaskIntoConstraints="NO" id="Ogx-5m-Id5">
-                            <rect key="frame" x="0.0" y="0.0" width="36" height="36"/>
-                        </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="400" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zoI-cg-cgn" userLabel="coinLabel">
-                            <rect key="frame" x="46" y="6.6666666666666714" width="37.666666666666657" height="23"/>
-                            <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zoI-cg-cgn" userLabel="coinLabel">
+                            <rect key="frame" x="0.0" y="3" width="16.666666666666668" height="30"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coin_icon" translatesAutoresizingMaskIntoConstraints="NO" id="Ogx-5m-Id5">
+                            <rect key="frame" x="26.666666666666686" y="0.0" width="36" height="36"/>
+                        </imageView>
                     </subviews>
                 </stackView>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="profile_badge" translatesAutoresizingMaskIntoConstraints="NO" id="twS-ok-sRG">

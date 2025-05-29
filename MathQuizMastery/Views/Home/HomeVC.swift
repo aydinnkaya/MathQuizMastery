@@ -70,8 +70,10 @@ extension HomeVC: HomeViewModelDelegate {
     func didReceiveUser(_ user: User?) {
         guard let user = user else { return }
         usernameLabel.text = user.username
+        coinLabel.text = "\(user.coin)"
     }
 }
+
 extension HomeVC {
     func setupUI() {
         userInfoStackView.layer.cornerRadius = 12.0

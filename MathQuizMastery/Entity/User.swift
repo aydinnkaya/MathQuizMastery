@@ -11,4 +11,5 @@ struct User {
     let uid: String
     let username: String
     let email: String
+    var coin : Int 
 }

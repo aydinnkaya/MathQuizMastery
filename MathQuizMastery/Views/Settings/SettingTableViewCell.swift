@@ -34,11 +34,7 @@ class SettingTableViewCell: UITableViewCell {
     
     private func setupCellStyle() {
         selectionStyle = .none
-        backgroundColor = .clear
-        
-        titleLabel.textColor = .white
-        titleLabel.font = UIFont.systemFont(ofSize: 16, weight: .medium)
-        
+                
         iconImageView.contentMode = .scaleAspectFit
         iconImageView.tintColor = .white
     }

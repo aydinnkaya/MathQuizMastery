@@ -7,8 +7,9 @@
 
 import Foundation
 
-
-enum LocalizedKey : String {
+enum LocalizedKey: String {
+    
+    // MARK: - Register Ekranı
     case register_title
     case enter_name
     case enter_email
@@ -19,19 +20,32 @@ enum LocalizedKey : String {
     case registration_success
     case registration_failed
     case invalid_email
-    case loading
-    case ok_button
-    case cancel_button
     case weak_password
-    case login_success
+    case name_required
+    case passwords_do_not_match
+
+    // MARK: - Login Ekranı
     case log_in
+    case login_success
     case enter_password_required
     case email_required
     case password_required
     case password_too_short
-    case name_required
-    case passwords_do_not_match
+
+    // MARK: - Genel Butonlar
+    case ok_button
+    case cancel_button
+
+    // MARK: - Uyarılar
+    case loading
     case success
     case error
-    case warning 
+    case warning
+
+    // MARK: - Ayarlar
+    case settings_profile
+    case settings_notifications
+    case settings_faq
+    case settings_report
+    case settings_logout
 }

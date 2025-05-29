@@ -12,6 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ResultVC" customModule="MathQuizMastery" customModuleProvider="target">
             <connections>
                 <outlet property="categoryButton" destination="4ek-yE-3JJ" id="De9-oG-wCj"/>
+                <outlet property="coinLabel" destination="S7l-xU-skj" id="mI3-yn-h7T"/>
                 <outlet property="homeButton" destination="fAD-yL-TGS" id="rWY-nq-Mt9"/>
                 <outlet property="restartButton" destination="V8S-gG-oN3" id="JXP-e3-L7F"/>
                 <outlet property="scoreLabel" destination="uNc-kB-bbG" id="FEI-WN-Hr5"/>
@@ -53,9 +54,9 @@
                     </subviews>
                 </stackView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="4" translatesAutoresizingMaskIntoConstraints="NO" id="uNc-kB-bbG">
-                    <rect key="frame" x="40" y="416" width="313" height="167"/>
+                    <rect key="frame" x="40" y="416" width="313" height="101"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="167" id="zgN-X1-0sa"/>
+                        <constraint firstAttribute="height" constant="101" id="C3E-EA-9yI"/>
                     </constraints>
                     <string key="text">Çarpma
  kategoresinde 
@@ -68,21 +69,33 @@
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cup_gold" translatesAutoresizingMaskIntoConstraints="NO" id="sHc-Ab-AuW">
                     <rect key="frame" x="72" y="106" width="249" height="319"/>
                 </imageView>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="result_coin" translatesAutoresizingMaskIntoConstraints="NO" id="nL1-I6-VWH">
+                    <rect key="frame" x="140.66666666666666" y="531" width="112" height="112"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="10" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S7l-xU-skj" userLabel="coin_label">
+                    <rect key="frame" x="159" y="546" width="80" height="80"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="51"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="b9W-x0-Ffw" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="32" id="6il-uH-Xdv"/>
+                <constraint firstItem="nL1-I6-VWH" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="DbW-MU-ihc"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="sHc-Ab-AuW" secondAttribute="trailing" constant="72" id="MYg-uV-Wjq"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="b9W-x0-Ffw" secondAttribute="bottom" constant="22" id="NMR-Np-hgO"/>
-                <constraint firstItem="uNc-kB-bbG" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="298" id="SH1-yo-HlC"/>
-                <constraint firstItem="uNc-kB-bbG" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="TBH-5l-afJ"/>
+                <constraint firstItem="uNc-kB-bbG" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="40" id="TI2-e7-loM"/>
                 <constraint firstItem="sHc-Ab-AuW" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="72" id="Uyg-ZD-pBA"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="b9W-x0-Ffw" secondAttribute="trailing" constant="32" id="Wjm-a0-QEH"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="uNc-kB-bbG" secondAttribute="trailing" constant="40" id="fI1-UO-iWC"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="S7l-xU-skj" secondAttribute="bottom" constant="157" id="X0e-34-Nf0"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="nL1-I6-VWH" secondAttribute="bottom" constant="141" id="Z5C-6N-9up"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="top" secondItem="sHc-Ab-AuW" secondAttribute="top" constant="12" id="fls-OV-viw"/>
                 <constraint firstItem="b9W-x0-Ffw" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="oML-64-aWq"/>
-                <constraint firstItem="uNc-kB-bbG" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="40" id="u89-iq-Eiu"/>
+                <constraint firstItem="S7l-xU-skj" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="pns-7Z-I0D"/>
+                <constraint firstItem="uNc-kB-bbG" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="298" id="tKH-6W-Rdy"/>
+                <constraint firstItem="uNc-kB-bbG" firstAttribute="centerX" secondItem="nL1-I6-VWH" secondAttribute="centerX" id="tKJ-yW-lTD"/>
             </constraints>
             <point key="canvasLocation" x="57.251908396946561" y="20.422535211267608"/>
         </view>
@@ -92,6 +105,7 @@
         <image name="cup_gold" width="319" height="319"/>
         <image name="home_icon" width="88" height="88"/>
         <image name="play_again_icon" width="88" height="88"/>
+        <image name="result_coin" width="112" height="112"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
