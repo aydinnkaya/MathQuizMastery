@@ -21,7 +21,7 @@ class SettingsPopupViewModel: SettingsPopupViewModelProtocol {
     weak var delegate: SettingsPopupDelegate?
 
     let settings: [SettingItem] = [
-        SettingItem(title: L(.settings_profile), iconName: "settings_profile_icon", type: .profile),
+        SettingItem(title: L(.settings_profile), iconName: "profile_settings", type: .profile),
         SettingItem(title: L(.settings_notifications), iconName: "settings_notification_icon", type: .notifications),
         SettingItem(title: L(.settings_faq), iconName: "settings_sss_icon", type: .faq),
         SettingItem(title: L(.settings_report), iconName: "settings_report_icon", type: .report),

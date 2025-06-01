@@ -106,17 +106,9 @@ extension SettingsPopupVC: UITableViewDelegate, UITableViewDataSource {
 extension SettingsPopupVC {
     
     func stylePopupView() {
-        //        popupView.translatesAutoresizingMaskIntoConstraints = false
         popupView.layer.cornerRadius = 20
         popupView.layer.borderWidth = 8.0
-        popupView.layer.borderColor = UIColor("#7B61FF")?.cgColor
+        popupView.layer.borderColor = UIColor("#9F7BFF")?.cgColor
         popupView.clipsToBounds = true
-        
-        //        NSLayoutConstraint.activate([
-        //            popupView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-        //            popupView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-        //            popupView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8),
-        //            popupView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.5)
-        //        ])
     }
 }
