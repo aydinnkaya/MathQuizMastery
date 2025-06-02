@@ -18,13 +18,13 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleAspectFit" alignment="center" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="tf9-lt-Fne">
-                        <rect key="frame" x="12" y="2" width="296" height="76"/>
+                        <rect key="frame" x="20" y="2" width="280" height="76"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="252" verticalHuggingPriority="251" image="settings_profile_icon" translatesAutoresizingMaskIntoConstraints="NO" id="mZh-Kh-nuB">
-                                <rect key="frame" x="0.0" y="6" width="64" height="64"/>
+                                <rect key="frame" x="0.0" y="17.333333333333332" width="40" height="41.333333333333343"/>
                             </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Profile" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t5P-zO-7cE">
-                                <rect key="frame" x="88" y="25.666666666666671" width="208" height="25"/>
+                                <rect key="frame" x="64" y="25.666666666666671" width="216" height="25"/>
                                 <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="23"/>
                                 <color key="textColor" red="0.066666666666666666" green="0.15686274509803921" blue="0.61568627450980395" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -33,12 +33,14 @@
                         </subviews>
                     </stackView>
                 </subviews>
+                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstItem="tf9-lt-Fne" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="4O9-wk-ydo"/>
                     <constraint firstAttribute="bottom" secondItem="tf9-lt-Fne" secondAttribute="bottom" constant="2" id="mHz-8Q-BqT"/>
                     <constraint firstItem="tf9-lt-Fne" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="2" id="u3e-iP-4xG"/>
-                    <constraint firstAttribute="trailing" secondItem="tf9-lt-Fne" secondAttribute="trailing" constant="12" id="ujz-wp-NKC"/>
-                    <constraint firstItem="tf9-lt-Fne" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="zcA-5A-eU4"/>
+                    <constraint firstAttribute="trailing" secondItem="tf9-lt-Fne" secondAttribute="trailing" constant="20" id="ujz-wp-NKC"/>
+                    <constraint firstItem="tf9-lt-Fne" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="zcA-5A-eU4"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
@@ -52,6 +54,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="settings_profile_icon" width="64" height="64"/>
+        <image name="settings_profile_icon" width="40" height="41.333332061767578"/>
     </resources>
 </document>

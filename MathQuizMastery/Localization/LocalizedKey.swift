@@ -48,4 +48,10 @@ enum LocalizedKey: String {
     case settings_faq
     case settings_report
     case settings_logout
+    
+    // MARK: - Logout Alert
+    case logout_title
+    case logout_message
+    case logout_cancel
+    case logout_confirm
 }

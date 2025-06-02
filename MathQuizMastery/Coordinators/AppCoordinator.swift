@@ -15,7 +15,7 @@ protocol Coordinator{
 }
 
 class AppCoordinator : Coordinator {
-   
+    
     var navigationController: UINavigationController
     
     init(navigationController: UINavigationController) {
@@ -54,6 +54,30 @@ class AppCoordinator : Coordinator {
     func goToHome(with user: User) {
         let homeVC = HomeVC(user: user, coordinator: self)
         navigationController.setViewControllers([homeVC], animated: false)
+    }
+    
+    enum PopupType {
+        case avatar
+        case settings
+    }
+    
+    func replacePopup(with popupType: PopupType) {
+        if let presentedVC = navigationController.presentedViewController {
+            presentedVC.dismiss(animated: true) { [weak self] in
+                self?.presentPopup(popupType)
+            }
+        } else {
+            presentPopup(popupType)
+        }
+    }
+    
+    private func presentPopup(_ type: PopupType) {
+        switch type {
+        case .avatar:
+            self.goToAvatarPopup()
+        case .settings:
+            self.goToSettingsPopup()
+        }
     }
     
     func goToAvatarPopup() {
@@ -123,3 +147,4 @@ class AppCoordinator : Coordinator {
     }
     
 }
+

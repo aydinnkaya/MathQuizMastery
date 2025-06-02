@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "settings_logout_ icon.png",
+      "filename" : "settings_logout_icon.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "settings_logout_ icon_2x.png",
+      "filename" : "settings_logout_icon_2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "settings_logout_ icon_3x.png",
+      "filename" : "settings_logout_icon_3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

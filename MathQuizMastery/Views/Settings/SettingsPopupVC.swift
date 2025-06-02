@@ -33,18 +33,14 @@ class SettingsPopupVC: UIViewController {
         super.viewDidLoad()
         backgroundView.frame = view.bounds
         setupBackgroundView()
+        viewModel.delegate = self
         setupTableView()
         stylePopupView()
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        tableView.layoutIfNeeded()
-        let contentHeight = titleLabel.frame.height + tableView.contentSize.height 
-        let maxHeight = view.frame.height * 0.7
-        let finalHeight = min(contentHeight, maxHeight)
-        popupView.frame.size.height = finalHeight
-        popupView.center = view.center
+        framePopupView()
     }
     
     private func setupTableView(){
@@ -55,6 +51,37 @@ class SettingsPopupVC: UIViewController {
         tableView.separatorStyle = .none
     }
     
+}
+
+extension SettingsPopupVC: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return viewModel.settings.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "SettingTableViewCell", for: indexPath) as? SettingTableViewCell else {
+            return UITableViewCell()
+        }
+        let item = viewModel.settings[indexPath.row]
+        cell.configure(with: item)
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        viewModel.selectItem(at: indexPath.row)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 70
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        return UIView()
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 16
+    }
 }
 
 extension SettingsPopupVC {
@@ -69,46 +96,68 @@ extension SettingsPopupVC {
     
 }
 
-extension SettingsPopupVC: UITableViewDelegate, UITableViewDataSource {
-
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.settings.count
+extension SettingsPopupVC: SettingsPopupDelegate {
+    
+    func didSelectSetting(_ item: SettingItem) {
+        // Gerekirse haptics, animasyon veya log eklenebilir
+        print("Seçilen Ayar: \(item.title)")
     }
 
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "SettingTableViewCell", for: indexPath) as? SettingTableViewCell else {
-            return UITableViewCell()
-        }
-        let item = viewModel.settings[indexPath.row]
-        cell.configure(with: item)
-        return cell
+    func tappedProfile() {
+        coordinator?.replacePopup(with: .avatar)
     }
 
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let item = viewModel.settings[indexPath.row]
-        delegate?.didSelectSetting(item)
-        viewModel.selectItem(at: indexPath.row)
+    func tappedNotifications() {
+        // Bildirim ayarları ekranına yönlendir
     }
 
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 70 // Hücre yüksekliği (XIB'e göre ayarla)
+    func tappedFAQ() {
+        // Sıkça Sorulan Sorular ekranına yönlendir
     }
 
-    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        return UIView()
+    func tappedReport() {
+        // Raporlama ekranına yönlendir
     }
 
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 0.1 // Minimum boşluk, görünmesin diye
+    func tappedLogout() {
+        guard let topVC = navigationController?.topViewController else { return }
+
+        let alert = UIAlertController(
+            title: L(.logout_title),
+            message: L(.logout_message),
+            preferredStyle: .alert
+        )
+
+        alert.addAction(UIAlertAction(title: L(.logout_cancel), style: .cancel))
+
+        alert.addAction(UIAlertAction(title: L(.logout_confirm), style: .destructive, handler: { [weak self] _ in
+            AuthService.shared.signOut { error in
+                if let error = error {
+                    print("Çıkış yapılamadı: \(error.localizedDescription)")
+                } else {
+                    self?.coordinator?.goToLogin()
+                }
+            }
+        }))
+
+        topVC.present(alert, animated: true)
     }
 }
 
 extension SettingsPopupVC {
-    
     func stylePopupView() {
         popupView.layer.cornerRadius = 20
         popupView.layer.borderWidth = 8.0
-        popupView.layer.borderColor = UIColor("#9F7BFF")?.cgColor
+        popupView.layer.borderColor = UIColor("#7B61FF")?.cgColor
         popupView.clipsToBounds = true
+    }
+    
+    func framePopupView(){
+        tableView.layoutIfNeeded()
+        let contentHeight = tableView.contentSize.height
+        let maxHeight = view.frame.height * 0.8
+        let finalHeight = min(contentHeight, maxHeight)
+        popupView.frame.size.height = finalHeight
+        popupView.center = view.center
     }
 }

@@ -586,6 +586,62 @@
         "zh-Hans": "退出登录",
         "ar": "تسجيل الخروج",
         "nl": "Uitloggen"
+    },
+    "logout_title": {
+      "en": "Logout",
+      "tr": "Çıkış Yap",
+      "de": "Abmelden",
+      "es": "Cerrar sesión",
+      "fr": "Déconnexion",
+      "it": "Disconnetti",
+      "pt-BR": "Sair",
+      "ja": "ログアウト",
+      "ko": "로그아웃",
+      "zh-Hans": "退出登录",
+      "ar": "تسجيل الخروج",
+      "nl": "Uitloggen"
+    },
+    "logout_message": {
+      "en": "Are you sure you want to log out?",
+      "tr": "Çıkış yapmak istediğinizden emin misiniz?",
+      "de": "Möchten Sie sich wirklich abmelden?",
+      "es": "¿Está seguro de que desea cerrar sesión?",
+      "fr": "Êtes-vous sûr de vouloir vous déconnecter ?",
+      "it": "Sei sicuro di voler disconnetterti?",
+      "pt-BR": "Tem certeza de que deseja sair?",
+      "ja": "本当にログアウトしますか？",
+      "ko": "정말 로그아웃하시겠습니까?",
+      "zh-Hans": "您确定要退出登录吗？",
+      "ar": "هل أنت متأكد أنك تريد تسجيل الخروج؟",
+      "nl": "Weet u zeker dat u wilt uitloggen?"
+    },
+    "logout_cancel": {
+      "en": "Cancel",
+      "tr": "İptal",
+      "de": "Abbrechen",
+      "es": "Cancelar",
+      "fr": "Annuler",
+      "it": "Annulla",
+      "pt-BR": "Cancelar",
+      "ja": "キャンセル",
+      "ko": "취소",
+      "zh-Hans": "取消",
+      "ar": "إلغاء",
+      "nl": "Annuleren"
+    },
+    "logout_confirm": {
+      "en": "Log out",
+      "tr": "Çıkış Yap",
+      "de": "Abmelden",
+      "es": "Cerrar sesión",
+      "fr": "Déconnexion",
+      "it": "Disconnetti",
+      "pt-BR": "Sair",
+      "ja": "ログアウト",
+      "ko": "로그아웃",
+      "zh-Hans": "退出登录",
+      "ar": "تسجيل الخروج",
+      "nl": "Uitloggen"
     }
-    
+
 }
