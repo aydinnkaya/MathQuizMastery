@@ -14,21 +14,23 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var appCoordinator: AppCoordinator?
     
     
-    func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        guard let windowScene = (scene as? UIWindowScene) else { return }
+    func scene(_ scene: UIScene,
+               willConnectTo session: UISceneSession,
+               options connectionOptions: UIScene.ConnectionOptions) {
         
-        // 1. LaunchScreenVC anında gösterilsin (tıpkı storyboard gibi)
-        let launchVC = LaunchScreenVC()
-        window?.rootViewController = launchVC
-        window?.makeKeyAndVisible()
+        guard let windowScene = scene as? UIWindowScene else { return }
         
-        // 2. Uygulama yüklendikten hemen sonra Coordinator başlasın
-        DispatchQueue.main.async { [weak self] in
-            let navigationController = UINavigationController()
-            self?.appCoordinator = AppCoordinator(navigationController: navigationController)
-            self?.appCoordinator?.start()
-            self?.window?.rootViewController = navigationController
-        }
+        let window = UIWindow(windowScene: windowScene)
+        
+        let navigationController = UINavigationController()
+        
+        appCoordinator = AppCoordinator(navigationController: navigationController)
+        appCoordinator?.start()
+        
+        window.rootViewController = navigationController
+        window.makeKeyAndVisible()
+        
+        self.window = window
     }
     
     //    private func setupWindow(with scene: UIScene) {

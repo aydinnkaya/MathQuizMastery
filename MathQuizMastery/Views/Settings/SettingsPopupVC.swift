@@ -141,6 +141,7 @@ extension SettingsPopupVC: SettingsPopupDelegate {
 
         topVC.present(alert, animated: true)
     }
+    
 }
 
 extension SettingsPopupVC {
