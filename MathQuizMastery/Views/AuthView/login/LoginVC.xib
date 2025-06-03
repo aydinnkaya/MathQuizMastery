@@ -53,8 +53,8 @@
                         <color key="titleColor" systemColor="secondarySystemBackgroundColor"/>
                     </state>
                 </button>
-                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="X57-0d-jPk" userLabel="ViewLine">
-                    <rect key="frame" x="6" y="760" width="393" height="2"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X57-0d-jPk" userLabel="ViewLine">
+                    <rect key="frame" x="6" y="760" width="390" height="4"/>
                     <color key="backgroundColor" systemColor="systemGray3Color"/>
                 </view>
                 <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="4XF-9S-E6u">
@@ -91,14 +91,15 @@
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="FxK-Br-jfk" secondAttribute="trailing" constant="22" id="00e-3E-VfR"/>
+                <constraint firstItem="4XF-9S-E6u" firstAttribute="top" secondItem="X57-0d-jPk" secondAttribute="bottom" constant="10.666666666666629" id="AiG-lA-hcq"/>
+                <constraint firstItem="X57-0d-jPk" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="760" id="BA2-qf-tau"/>
                 <constraint firstItem="4XF-9S-E6u" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="110" id="I1q-bk-9sm"/>
                 <constraint firstItem="NQ4-Qc-fEk" firstAttribute="top" secondItem="GWY-1e-lVa" secondAttribute="bottom" constant="12" id="Ilz-sq-jMa"/>
                 <constraint firstItem="GWY-1e-lVa" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" constant="12" id="KUc-AG-RaB"/>
-                <constraint firstItem="4XF-9S-E6u" firstAttribute="top" secondItem="X57-0d-jPk" secondAttribute="top" constant="8" id="Kuk-5Q-eoy"/>
+                <constraint firstItem="X57-0d-jPk" firstAttribute="centerX" secondItem="NQ4-Qc-fEk" secondAttribute="centerX" id="Oxe-Ph-1hZ"/>
                 <constraint firstItem="FxK-Br-jfk" firstAttribute="top" secondItem="NQ4-Qc-fEk" secondAttribute="bottom" constant="8" id="PNW-2x-XUu"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="NQ4-Qc-fEk" secondAttribute="trailing" constant="18" id="Q5N-hV-s7o"/>
                 <constraint firstItem="jVO-st-C1k" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="VMQ-cn-f3R"/>
-                <constraint firstItem="GWY-1e-lVa" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" symbolic="YES" id="Vts-Vh-U6u"/>
                 <constraint firstItem="GWY-1e-lVa" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="WUm-xT-kTu"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="4XF-9S-E6u" secondAttribute="trailing" constant="110" id="Y0e-vn-H4B"/>
                 <constraint firstItem="NQ4-Qc-fEk" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="Yao-ds-ZxK"/>
@@ -109,6 +110,7 @@
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="jVO-st-C1k" secondAttribute="trailing" constant="32" id="shd-Of-Ukx"/>
                 <constraint firstItem="4XF-9S-E6u" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="t8N-zf-eUP"/>
                 <constraint firstItem="jVO-st-C1k" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="32" id="vcc-k8-rza"/>
+                <constraint firstItem="X57-0d-jPk" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="6" id="x9c-9l-28M"/>
             </constraints>
             <point key="canvasLocation" x="-35.820895522388057" y="19.221967963386728"/>
         </view>

@@ -99,7 +99,6 @@ extension SettingsPopupVC {
 extension SettingsPopupVC: SettingsPopupDelegate {
     
     func didSelectSetting(_ item: SettingItem) {
-        // Gerekirse haptics, animasyon veya log eklenebilir
         print("Seçilen Ayar: \(item.title)")
     }
 

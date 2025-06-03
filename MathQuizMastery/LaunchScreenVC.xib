@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LaunchScreenVC" customModule="MathQuizMastery" customModuleProvider="target">
+            <connections>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="login_icon" translatesAutoresizingMaskIntoConstraints="NO" id="E1C-rV-G7c">
+                    <rect key="frame" x="8" y="216" width="378" height="364"/>
+                </imageView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="E1C-rV-G7c" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="0wo-qr-bor"/>
+                <constraint firstItem="E1C-rV-G7c" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" id="5Yv-LB-tZR"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="E1C-rV-G7c" secondAttribute="trailing" id="NOZ-dR-xPh"/>
+                <constraint firstItem="E1C-rV-G7c" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="ncr-LK-TRf"/>
+                <constraint firstItem="E1C-rV-G7c" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="puV-ZW-2hR"/>
+            </constraints>
+            <point key="canvasLocation" x="-48.091603053435115" y="19.718309859154932"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="login_icon" width="267" height="263"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

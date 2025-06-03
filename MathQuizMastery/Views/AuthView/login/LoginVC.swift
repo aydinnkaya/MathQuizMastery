@@ -10,7 +10,6 @@ import UIKit
 @available(iOS 16, *)
 class LoginVC: UIViewController, UITextFieldDelegate {
     
-    // MARK: - IBOutlets
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
@@ -18,7 +17,6 @@ class LoginVC: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var createAnAccountButton: UIButton!
     
-    // MARK: - Properties
     private var errorLabels: [UITextField: UILabel] = [:]
     private let viewModel: LoginScreenViewModelProtocol
     private var loadingAlert: UIAlertController?
@@ -41,7 +39,6 @@ class LoginVC: UIViewController, UITextFieldDelegate {
         fatalError("init(coder:) has not been implemented. Use init(viewModel:coordinator:) instead.")
     }
     
-    // MARK: - Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         bindViewModel()

@@ -17,26 +17,27 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
-        // Navigation Controller oluşturuluyor
-        let navigationController = UINavigationController()
-        
-        // AppCoordinator başlatılıyor
-        appCoordinator = AppCoordinator(navigationController: navigationController)
-        appCoordinator?.start()
-        
-        // Pencere ayarları
-        window = UIWindow(windowScene: windowScene)
-        window?.rootViewController = navigationController
+        // 1. LaunchScreenVC anında gösterilsin (tıpkı storyboard gibi)
+        let launchVC = LaunchScreenVC()
+        window?.rootViewController = launchVC
         window?.makeKeyAndVisible()
+        
+        // 2. Uygulama yüklendikten hemen sonra Coordinator başlasın
+        DispatchQueue.main.async { [weak self] in
+            let navigationController = UINavigationController()
+            self?.appCoordinator = AppCoordinator(navigationController: navigationController)
+            self?.appCoordinator?.start()
+            self?.window?.rootViewController = navigationController
+        }
     }
     
-//    private func setupWindow(with scene: UIScene) {
-//        guard let windowScene = (scene as? UIWindowScene) else { return }
-//        let window = UIWindow(windowScene: windowScene)
-//        self.window = window
-//        self.window?.makeKeyAndVisible()
-//        
-//    }
+    //    private func setupWindow(with scene: UIScene) {
+    //        guard let windowScene = (scene as? UIWindowScene) else { return }
+    //        let window = UIWindow(windowScene: windowScene)
+    //        self.window = window
+    //        self.window?.makeKeyAndVisible()
+    //
+    //    }
     
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.

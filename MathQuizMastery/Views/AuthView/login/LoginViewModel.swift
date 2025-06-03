@@ -50,12 +50,10 @@ class LoginViewModel: LoginScreenViewModelProtocol {
             
             AuthService.shared.fetchUserData(uid: uid) { result in
                 switch result {
-                    
                 case .success(let user):
                     self.delegate?.didLoginSuccessfully(user: user)
                 case .failure(let error):
                     self.delegate?.didFailWithError(error)
-                    
                 }
             }
             
@@ -65,6 +63,7 @@ class LoginViewModel: LoginScreenViewModelProtocol {
     func validateInputs(email: String, password: String) {
         validator.validateLogin(email: email, password: password)
     }
+    
 }
 
 extension LoginViewModel : ValidatorDelegate {
