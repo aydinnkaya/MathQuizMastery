@@ -38,10 +38,15 @@ class RegisterVC: UIViewController, UITextFieldDelegate {
         super.init(nibName: nil, bundle: nil)
     }
     
+    init(viewModel: LoginScreenViewModelProtocol = RegisterViewModel(), coordinator: AppCoordinator?) {
+        self.viewModel = viewModel
+        self.coordinator = coordinator
+        super.init(nibName:nil, bundle: nil)
+    }
+    
+    @available(*, unavailable, message: "Use init(viewModel:coordinator:) instead.")
     required init?(coder: NSCoder) {
-        let defaultViewModel = RegisterViewModel()
-        self.viewModel = defaultViewModel
-        super.init(coder: coder)
+        fatalError("Storyboard initialization not supported.")
     }
     
     override func viewDidLoad() {

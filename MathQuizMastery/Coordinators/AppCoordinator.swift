@@ -22,33 +22,45 @@ class AppCoordinator : Coordinator {
         self.navigationController = navigationController
     }
     
-    // MARK: - Uygulama Başlangıç Noktası
     func start() {
-        checkAuthentication()
+        goToLogin()
     }
     
-    // MARK: - Giriş Kontrolü
     private func checkAuthentication() {
-        if Auth.auth().currentUser == nil {
-            goToLogin()
-        } else {
-            guard let uid = Auth.auth().currentUser?.uid else { return }
-            AuthService.shared.fetchUserData(uid: uid) { [weak self] result in
-                switch result {
-                case .success(let user):
-                    self?.goToHome(with: user)
-                case .failure(let error):
-                    print("Kullanıcı verisi alınamadı: \(error.localizedDescription)")
+        guard let currentUser = Auth.auth().currentUser else {
+            print("❌ Kullanıcı giriş yapmamış.")
+            DispatchQueue.main.async { [weak self] in
+                self?.goToLogin()
+            }
+            return
+        }
+        
+        let uid = currentUser.uid
+        print("✅ Kullanıcı UID bulundu: \(uid)")
+        
+        AuthService.shared.fetchUserData(uid: uid) { [weak self] result in
+            switch result {
+            case .success(let user):
+                print("✅ Kullanıcı verisi alındı: \(user)")
+                DispatchQueue.main.async {
+                    [weak self] in
+                    guard let self else { return }
+                    self.goToHome(with: user)
+                }
+            case .failure(let error):
+                print("❌ Kullanıcı verisi alınamadı: \(error.localizedDescription)")
+                DispatchQueue.main.async {
                     self?.goToLogin()
                 }
             }
         }
     }
-    
+
     // MARK: - Geçişler
     func goToLogin() {
-        let loginVC = LoginVC(viewModel: LoginViewModel(), coordinator: self)
-        navigationController.setViewControllers([loginVC], animated: false)
+        let viewModel =  LoginViewModel()
+        let loginVC = LoginVC(viewModel:viewModel, coordinator: self)
+        navigationController.setViewControllers([loginVC], animated: true)
     }
     
     func goToHome(with user: User) {
@@ -115,7 +127,6 @@ class AppCoordinator : Coordinator {
     
     func goToResult(score: String, expressionType: MathExpression.ExpressionType) {
         guard let uid = Auth.auth().currentUser?.uid else {
-            print("❌ Kullanıcı UID bulunamadı.")
             return
         }
         

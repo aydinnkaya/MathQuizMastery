@@ -17,8 +17,7 @@ class HomeVC: UIViewController {
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var backgroundImage: UIImageView!
     @IBOutlet weak var settingsButton: UIButton!
-    
-    
+        
     var user: User?
     private var viewModel: HomeViewModelProtocol!
     var coordinator: AppCoordinator?

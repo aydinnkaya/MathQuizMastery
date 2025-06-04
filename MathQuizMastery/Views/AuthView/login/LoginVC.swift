@@ -32,25 +32,29 @@ class LoginVC: UIViewController, UITextFieldDelegate {
     init(viewModel: LoginScreenViewModelProtocol = LoginViewModel(), coordinator: AppCoordinator?) {
         self.viewModel = viewModel
         self.coordinator = coordinator
-        super.init(nibName: String(describing: LoginVC.self), bundle: nil)
+        super.init(nibName:nil, bundle: nil)
     }
     
+    @available(*, unavailable, message: "Use init(viewModel:coordinator:) instead.")
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented. Use init(viewModel:coordinator:) instead.")
+        fatalError("Storyboard initialization not supported.")
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        bindViewModel()
+        viewModel.delegate = self
+        loginButton.updateGradientFrameIfNeeded()
+        configureGesture()
+        assignDelegates()
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        setupGradientBackground()
+        setupUI()
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        loginButton.updateGradientFrameIfNeeded()
-        setupUI()
-        configureGesture()
-        assignDelegates()
-        setupGradientBackground()
+
     }
     
     // MARK: - IBActions
@@ -121,7 +125,7 @@ extension LoginVC {
     }
     
     func bindViewModel() {
-        viewModel.delegate = self
+        
     }
     
     func configureGesture() {
