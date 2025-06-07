@@ -54,7 +54,6 @@ class ResultVC: UIViewController {
     
     @IBAction func goToHome(_ sender: Any) {
         viewModel.handleHomeTapped()
-        
     }
     
     @IBAction func goToCategory(_ sender: Any) {
@@ -95,11 +94,6 @@ extension ResultVC {
         gradientLayer.locations = [0.0, 0.2, 0.4, 0.6, 0.8, 1.0] as [NSNumber]
         gradientLayer.opacity = 0.95
         view.layer.insertSublayer(gradientLayer, at: 0)
-        
-        //        let blur = UIVisualEffectView(effect: UIBlurEffect(style: .systemUltraThinMaterialDark))
-        //        blur.frame = view.bounds
-        //        blur.alpha = 0.08
-        //        view.addSubview(blur)
     }
 }
 

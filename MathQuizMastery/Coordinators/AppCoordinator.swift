@@ -55,7 +55,7 @@ class AppCoordinator : Coordinator {
             }
         }
     }
-
+    
     // MARK: - Geçişler
     func goToLogin() {
         let viewModel =  LoginViewModel()
@@ -63,9 +63,33 @@ class AppCoordinator : Coordinator {
         navigationController.setViewControllers([loginVC], animated: true)
     }
     
+    func goToRegister() {
+        let viewModel =  RegisterViewModel()
+        let registerVC = RegisterVC(viewModel:viewModel, coordinator: self)
+        navigationController.setViewControllers([registerVC], animated: true)
+    }
+    
     func goToHome(with user: User) {
         let homeVC = HomeVC(user: user, coordinator: self)
         navigationController.setViewControllers([homeVC], animated: false)
+    }
+    
+    func goToAvatarPopup() {
+        let viewModel = AvatarPopupViewModel()
+        let avatarPopupVC = AvatarPopupVC(viewModel: viewModel, coordinator: self)
+        avatarPopupVC.view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+        avatarPopupVC.modalPresentationStyle = .overFullScreen
+        avatarPopupVC.modalTransitionStyle = .flipHorizontal
+        navigationController.present(avatarPopupVC, animated: true, completion: nil)
+    }
+    
+    func goToSettingsPopup() {
+        let viewModel = SettingsPopupViewModel()
+        let popupVC = SettingsPopupVC(viewModel: viewModel, coordinator: self)
+        popupVC.view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+        popupVC.modalPresentationStyle = .overFullScreen
+        popupVC.modalTransitionStyle = .flipHorizontal
+        navigationController.present(popupVC, animated: true, completion: nil)
     }
     
     enum PopupType {
@@ -90,24 +114,6 @@ class AppCoordinator : Coordinator {
         case .settings:
             self.goToSettingsPopup()
         }
-    }
-    
-    func goToAvatarPopup() {
-        let viewModel = AvatarPopupViewModel()
-        let avatarPopupVC = AvatarPopupVC(viewModel: viewModel, coordinator: self)
-        avatarPopupVC.view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
-        avatarPopupVC.modalPresentationStyle = .overFullScreen
-        avatarPopupVC.modalTransitionStyle = .flipHorizontal
-        navigationController.present(avatarPopupVC, animated: true, completion: nil)
-    }
-    
-    func goToSettingsPopup() {
-        let viewModel = SettingsPopupViewModel()
-        let popupVC = SettingsPopupVC(viewModel: viewModel, coordinator: self)
-        popupVC.view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
-        popupVC.modalPresentationStyle = .overFullScreen
-        popupVC.modalTransitionStyle = .flipHorizontal
-        navigationController.present(popupVC, animated: true, completion: nil)
     }
     
     func dismissPopup() {

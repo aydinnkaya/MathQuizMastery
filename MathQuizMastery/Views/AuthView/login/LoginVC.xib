@@ -72,6 +72,9 @@
                                 <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="15"/>
                                 <color key="baseForegroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
                             </buttonConfiguration>
+                            <connections>
+                                <action selector="createAnAccountTapped:forEvent:" destination="-1" eventType="touchUpInside" id="FtW-Cr-gmo"/>
+                            </connections>
                         </button>
                     </subviews>
                 </stackView>

@@ -47,6 +47,7 @@ class LoginVC: UIViewController, UITextFieldDelegate {
         configureGesture()
         assignDelegates()
     }
+    
     override func viewDidAppear(_ animated: Bool) {
         setupGradientBackground()
         setupUI()
@@ -57,7 +58,6 @@ class LoginVC: UIViewController, UITextFieldDelegate {
 
     }
     
-    // MARK: - IBActions
     @IBAction func loginButtonTapped(_ sender: UIButton) {
         prepareForValidation()
         viewModel.validateInputs(
@@ -65,10 +65,18 @@ class LoginVC: UIViewController, UITextFieldDelegate {
             password: passwordTextField.text ?? ""
         )
     }
+    
+    @IBAction func createAnAccountTapped(_ sender: Any, forEvent event: UIEvent) {
+        viewModel.handleRegiserTapped()
+    }
+    
 }
 
 @available(iOS 16, *)
 extension LoginVC: LoginViewModelDelegate {
+    func navigateToRegister() {
+        coordinator?.goToRegister()
+    }
     
     func didValidationFail(results: [ValidationResult]) {
         hideLoading()

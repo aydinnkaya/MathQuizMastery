@@ -23,6 +23,7 @@ class RegisterVC: UIViewController, UITextFieldDelegate {
     private var viewModel : RegisterViewModelProtocol
     private var errorLabels: [UITextField: UILabel] = [:]
     private var loadingAlert: UIAlertController?
+    private var coordinator: AppCoordinator?
     
     private var fieldMap: [FieldKey: UITextField] {
         return [
@@ -38,10 +39,10 @@ class RegisterVC: UIViewController, UITextFieldDelegate {
         super.init(nibName: nil, bundle: nil)
     }
     
-    init(viewModel: LoginScreenViewModelProtocol = RegisterViewModel(), coordinator: AppCoordinator?) {
+    init(viewModel: RegisterViewModelProtocol = RegisterViewModel(), coordinator: AppCoordinator?) {
         self.viewModel = viewModel
         self.coordinator = coordinator
-        super.init(nibName:nil, bundle: nil)
+        super.init(nibName: nil, bundle: nil)
     }
     
     @available(*, unavailable, message: "Use init(viewModel:coordinator:) instead.")
