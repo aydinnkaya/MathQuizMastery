@@ -17,6 +17,7 @@ protocol Coordinator{
 class AppCoordinator : Coordinator {
     
     var navigationController: UINavigationController
+    let backImage = UIImage(named: "back_button")?.withRenderingMode(.alwaysOriginal)
     
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
@@ -28,7 +29,6 @@ class AppCoordinator : Coordinator {
     
     private func checkAuthentication() {
         guard let currentUser = Auth.auth().currentUser else {
-            print("❌ Kullanıcı giriş yapmamış.")
             DispatchQueue.main.async { [weak self] in
                 self?.goToLogin()
             }
@@ -36,19 +36,16 @@ class AppCoordinator : Coordinator {
         }
         
         let uid = currentUser.uid
-        print("✅ Kullanıcı UID bulundu: \(uid)")
         
         AuthService.shared.fetchUserData(uid: uid) { [weak self] result in
             switch result {
             case .success(let user):
-                print("✅ Kullanıcı verisi alındı: \(user)")
                 DispatchQueue.main.async {
                     [weak self] in
                     guard let self else { return }
                     self.goToHome(with: user)
                 }
             case .failure(let error):
-                print("❌ Kullanıcı verisi alınamadı: \(error.localizedDescription)")
                 DispatchQueue.main.async {
                     self?.goToLogin()
                 }
@@ -66,7 +63,11 @@ class AppCoordinator : Coordinator {
     func goToRegister() {
         let viewModel =  RegisterViewModel()
         let registerVC = RegisterVC(viewModel:viewModel, coordinator: self)
-        navigationController.setViewControllers([registerVC], animated: true)
+        
+        navigationController.navigationBar.backIndicatorImage = backImage
+        navigationController.navigationBar.backIndicatorTransitionMaskImage = backImage
+        navigationController.topViewController?.navigationItem.backButtonTitle = ""
+        navigationController.pushViewController(registerVC, animated: true)
     }
     
     func goToHome(with user: User) {
@@ -123,6 +124,9 @@ class AppCoordinator : Coordinator {
     func goToCategory() {
         let viewModel = CategoryViewModel()
         let categoryVC = CategoryVC(viewModel: viewModel, coordinator: self)
+        navigationController.navigationBar.backIndicatorImage = backImage
+        navigationController.navigationBar.backIndicatorTransitionMaskImage = backImage
+        navigationController.topViewController?.navigationItem.backButtonTitle = ""
         navigationController.pushViewController(categoryVC, animated: true)
     }
     

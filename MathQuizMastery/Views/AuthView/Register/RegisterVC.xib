@@ -24,21 +24,11 @@
             <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="252" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5N0-Zz-7zs" userLabel="Register Submit Button">
-                    <rect key="frame" x="40" y="729.66666666666663" width="313" height="34.333333333333371"/>
-                    <state key="normal" title="Button"/>
-                    <buttonConfiguration key="configuration" style="filled" title="Sign up">
-                        <color key="baseBackgroundColor" name="FBBC05"/>
-                    </buttonConfiguration>
-                    <connections>
-                        <action selector="registerSubmitButtonTapped:" destination="-1" eventType="touchUpInside" id="f2Y-aA-GcE"/>
-                    </connections>
-                </button>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" misplaced="YES" image="Math_Quiz_Mastery_Transparent-removebg-preview" translatesAutoresizingMaskIntoConstraints="NO" id="YVx-zO-qLX">
-                    <rect key="frame" x="-2" y="125" width="393" height="225.66666666666652"/>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="register_background" translatesAutoresizingMaskIntoConstraints="NO" id="oa1-Ne-NsV">
+                    <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                 </imageView>
-                <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="4fJ-td-Cu5">
-                    <rect key="frame" x="24" y="415" width="353" height="282"/>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="4fJ-td-Cu5">
+                    <rect key="frame" x="20" y="242" width="353" height="282"/>
                     <subviews>
                         <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" verticalHuggingPriority="253" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your name" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cUl-qh-ZdT">
                             <rect key="frame" x="0.0" y="0.0" width="353" height="48"/>
@@ -78,27 +68,47 @@
                         </textField>
                     </subviews>
                 </stackView>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KkH-oE-Yg0">
+                    <rect key="frame" x="40" y="144" width="313" height="76"/>
+                    <string key="text">Launch Your Brain 
+Into Orbit</string>
+                    <fontDescription key="fontDescription" name="AmericanTypewriter-Bold" family="American Typewriter" pointSize="28"/>
+                    <color key="textColor" systemColor="systemOrangeColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="252" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5N0-Zz-7zs" userLabel="Register Submit Button">
+                    <rect key="frame" x="40" y="555" width="313" height="34.333333333333371"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="filled" title="Sign up">
+                        <color key="baseBackgroundColor" name="FBBC05"/>
+                    </buttonConfiguration>
+                    <connections>
+                        <action selector="registerSubmitButtonTapped:" destination="-1" eventType="touchUpInside" id="f2Y-aA-GcE"/>
+                    </connections>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="4fJ-td-Cu5" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="1SZ-fG-2mF"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="5N0-Zz-7zs" secondAttribute="bottom" constant="20" id="2lL-kw-azZ"/>
-                <constraint firstItem="YVx-zO-qLX" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="82N-Mu-WI1"/>
-                <constraint firstItem="YVx-zO-qLX" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="94J-Oy-gI6"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="leading" secondItem="YVx-zO-qLX" secondAttribute="leading" id="Ncn-BE-mGZ"/>
-                <constraint firstItem="YVx-zO-qLX" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="QeK-CE-VAE"/>
+                <constraint firstItem="oa1-Ne-NsV" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="26s-3O-ggK"/>
+                <constraint firstItem="4fJ-td-Cu5" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="124" id="4h6-tC-W8H"/>
+                <constraint firstItem="4fJ-td-Cu5" firstAttribute="top" secondItem="KkH-oE-Yg0" secondAttribute="bottom" constant="24" id="GgP-vK-AAb"/>
+                <constraint firstAttribute="bottom" secondItem="oa1-Ne-NsV" secondAttribute="bottom" id="OBQ-2I-B9K"/>
+                <constraint firstItem="oa1-Ne-NsV" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Ubu-QA-Yh0"/>
+                <constraint firstItem="oa1-Ne-NsV" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="Vun-IK-eRp"/>
                 <constraint firstItem="4fJ-td-Cu5" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="XMw-74-OYR"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="4fJ-td-Cu5" secondAttribute="trailing" constant="20" id="bGh-C6-1NW"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="5N0-Zz-7zs" secondAttribute="trailing" constant="40" id="gXh-1q-XKX"/>
                 <constraint firstItem="5N0-Zz-7zs" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="40" id="hJo-qZ-AeF"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="4fJ-td-Cu5" secondAttribute="bottom" constant="74" id="vEx-M0-NzV"/>
+                <constraint firstItem="KkH-oE-Yg0" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="hwV-dA-pQF"/>
+                <constraint firstItem="5N0-Zz-7zs" firstAttribute="top" secondItem="4fJ-td-Cu5" secondAttribute="bottom" constant="32" id="yr0-4D-ZIb"/>
             </constraints>
-            <point key="canvasLocation" x="58" y="21"/>
+            <point key="canvasLocation" x="57.251908396946561" y="20.422535211267608"/>
         </view>
     </objects>
     <resources>
-        <image name="Math_Quiz_Mastery_Transparent-removebg-preview" width="661" height="377"/>
+        <image name="register_background" width="393" height="892"/>
         <namedColor name="FBBC05">
             <color red="0.98431372549019602" green="0.73725490196078436" blue="0.019607843137254902" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
@@ -107,6 +117,9 @@
         </systemColor>
         <systemColor name="systemGray5Color">
             <color red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

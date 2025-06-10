@@ -53,15 +53,20 @@ class RegisterVC: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel.delegate = self
+       
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        registerSubmitButton.updateGradientFrameIfNeeded()
+        
         setupUI()
         configureGesture()
         assignDelegates()
         setupGradientBackground()
+
     }
-    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        registerSubmitButton.updateGradientFrameIfNeeded()
     }
     
     
