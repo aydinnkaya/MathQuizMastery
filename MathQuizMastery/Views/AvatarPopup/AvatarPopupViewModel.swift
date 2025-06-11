@@ -30,18 +30,11 @@ class AvatarPopupViewModel: AvatarPopupViewModelProtocol {
     private var selectedAvatarIndex: Int?
     
     func loadAvatars() {
-        avatars = [
-            Avatar(id: "1", imageName: "profile_image_1"),
-            Avatar(id: "2", imageName: "profile_image_2"),
-            Avatar(id: "3", imageName: "profile_image_3"),
-            Avatar(id: "4", imageName: "profile_image_4"),
-            Avatar(id: "5", imageName: "profile_image_5"),
-            Avatar(id: "6", imageName: "profile_image_6"),
-            Avatar(id: "7", imageName: "profile_image_7"),
-            Avatar(id: "8", imageName: "profile_image_1"),
-            Avatar(id: "9", imageName: "profile_image_2"),
-            Avatar(id: "10", imageName: "profile_image_3")
-        ]
+        avatars = []
+        for i in 1...19 {
+            let avatar = Avatar(id: "\(i)", imageName: "profile_icon_\(i)")
+            avatars.append(avatar)
+        }
     }
     
     func getAvatarCount() -> Int {

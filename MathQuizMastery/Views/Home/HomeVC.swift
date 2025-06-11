@@ -17,6 +17,7 @@ class HomeVC: UIViewController {
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var backgroundImage: UIImageView!
     @IBOutlet weak var settingsButton: UIButton!
+    
         
     var user: User?
     private var viewModel: HomeViewModelProtocol!
@@ -37,11 +38,14 @@ class HomeVC: UIViewController {
         navigationItem.hidesBackButton = true
         viewModel.notifyViewDidLoad()
         setupUI()
+        let profileImage = UIImage(named: "profile_image_9")
+        profileImageButton.setImage(profileImage, for: .normal)
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         backgroundImage.frame = view.bounds
+       
     }
     
     @IBAction func profileButtonTapped(_ sender: Any) {
