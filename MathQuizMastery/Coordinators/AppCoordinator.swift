@@ -93,9 +93,19 @@ class AppCoordinator : Coordinator {
         navigationController.present(popupVC, animated: true, completion: nil)
     }
     
+    func goToFAQPopup() {
+        let viewModel = FAQViewModel()
+        let FAQVC = FAQVC(viewModel: viewModel, coordinator: self)
+        FAQVC.view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+        FAQVC.modalPresentationStyle = .overFullScreen
+        FAQVC.modalTransitionStyle = .flipHorizontal
+        navigationController.present(FAQVC, animated: true, completion: nil)
+    }
+    
     enum PopupType {
         case avatar
         case settings
+        case faq
     }
     
     func replacePopup(with popupType: PopupType) {
@@ -111,9 +121,11 @@ class AppCoordinator : Coordinator {
     private func presentPopup(_ type: PopupType) {
         switch type {
         case .avatar:
-            self.goToAvatarPopup()
+            goToAvatarPopup()
         case .settings:
-            self.goToSettingsPopup()
+            goToSettingsPopup()
+        case .faq:
+            goToFAQPopup()
         }
     }
     

@@ -38,7 +38,6 @@ class GameScreenViewModel : GameScreenViewModelProtocol {
     private var timer: Timer?
     private var timeRemaining: Int = 60
     
-    
     weak var delegate : GameScreenViewModelDelegate? // *** Retain Cycle => çevrimsel bellek sızıntısını önlemek için weak kullanıyoruz.
     
     init(delegate: GameScreenViewModelDelegate, expressionType: MathExpression.ExpressionType) {
@@ -81,7 +80,6 @@ class GameScreenViewModel : GameScreenViewModelProtocol {
                 wrongAnswers.append(randomWrongAnswer)
             }
         }
-        
         return wrongAnswers
     }
     

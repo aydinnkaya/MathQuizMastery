@@ -14,7 +14,7 @@ class GameVC: UIViewController {
     @IBOutlet weak var buttonSecond: NeonButton!
     @IBOutlet weak var timeLabel: NeonCircleLabel!
     @IBOutlet weak var buttonThird: NeonButton!
-    @IBOutlet weak var scoreLabel: NeonLabel!
+    @IBOutlet weak var scoreLabel: UILabel!
     
     @IBOutlet weak var backgroundImage: UIImageView!
     
@@ -139,10 +139,18 @@ extension GameVC {
         timeLabel.neonColor = UIColor.magenta
         timeLabel.layer.cornerRadius = timeLabel.frame.height / 2
         timeLabel.clipsToBounds = true
-        
-        scoreLabel.neonColor = UIColor(red: 0.96, green: 0.26, blue: 0.21, alpha: 1)
-        scoreLabel.cornerRadius = 8
+         
+     //   scoreLabel.layer.borderColor = UIColor.Custom.galacticBackground 
         scoreLabel.font = UIFont.systemFont(ofSize: 18, weight: .bold)
+        scoreLabel.layer.cornerRadius = 8
+        scoreLabel.backgroundColor = .clear
+        scoreLabel.shadowColor = UIColor.white
+        scoreLabel.textColor = .white
+
+        
+//        scoreLabel.neonColor = UIColor(red: 0.96, green: 0.26, blue: 0.21, alpha: 1)
+//        scoreLabel.cornerRadius = 8
+//        scoreLabel.font = UIFont.systemFont(ofSize: 18, weight: .bold)
     }
     
     func setupQuestionLabelStyle() {

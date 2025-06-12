@@ -69,7 +69,6 @@ class NeonLabel: UILabel {
         innerBorder.lineWidth = 1.5
         innerBorder.fillColor = UIColor.clear.cgColor
 
-        // Text color ayrı yönetilmeli, çünkü görünmeyebilir
         textColor = .white
     }
 

@@ -26,9 +26,9 @@ class SettingsPopupVC: UIViewController {
     }
     
     required init?(coder: NSCoder) {
-        super.init(coder: coder)
+        fatalError("init(coder:) has not been implemented. Use init(viewModel:delegate:coordinator:) instead.")
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         backgroundView.frame = view.bounds
@@ -39,10 +39,9 @@ class SettingsPopupVC: UIViewController {
     }
     
     override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
         framePopupView()
     }
-    
+
     private func setupTableView(){
         let nib = UINib(nibName: "SettingTableViewCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "SettingTableViewCell")
@@ -111,7 +110,7 @@ extension SettingsPopupVC: SettingsPopupDelegate {
     }
 
     func tappedFAQ() {
-        // Sıkça Sorulan Sorular ekranına yönlendir
+        coordinator?.replacePopup(with: .faq)
     }
 
     func tappedReport() {
