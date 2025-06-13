@@ -66,19 +66,19 @@ extension FAQVC: UITableViewDelegate, UITableViewDataSource {
         viewModel.items.count
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        viewModel.toggleItem(at: indexPath.row)
-        tableView.beginUpdates()
-        tableView.reloadRows(at: [indexPath], with: .automatic)
-        tableView.endUpdates()
-    }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "FAQTableViewCell", for: indexPath) as? FAQTableViewCell else {
             return UITableViewCell()
         }
         cell.configure(with: viewModel.items[indexPath.row])
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        viewModel.toggleItem(at: indexPath.row)
+        tableView.beginUpdates()
+        tableView.reloadRows(at: [indexPath], with: .automatic)
+        tableView.endUpdates()
     }
 }
 
