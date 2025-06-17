@@ -17,6 +17,9 @@ protocol AuthServiceProtocol{
     func fetchUserData(uid: String, completion: @escaping (Result<User,Error>)-> Void)
     func updateUserCoin(uid: String, by amount: Int, completion: @escaping (Result<Void, Error>) -> Void)
     func incrementUserCoin(uid: String, by amount: Int, completion: @escaping (Error?) -> Void)
+    func updateUserAvatar(uid: String, avatarImageName: String, completion: @escaping (Error?) -> Void)
+    func fetchUserAvatar(uid: String, completion: @escaping (Result<String, Error>) -> Void)
+    func updateUsername(uid: String, username: String, completion: @escaping (Error?) -> Void)
 }
 
 class AuthService : AuthServiceProtocol {
@@ -128,20 +131,20 @@ class AuthService : AuthServiceProtocol {
     ///   - completion: İşlem tamamlandığında hata varsa `error`, yoksa `nil` döner.
     func updateUserCoin(uid: String, by amount: Int, completion: @escaping (Result<Void, Error>) -> Void) {
         let userRef = db.collection("users").document(uid)
-
+        
         userRef.getDocument { snapshot, error in
             if let error = error {
                 completion(.failure(error))
                 return
             }
-
+            
             guard let data = snapshot?.data(),
                   let currentCoin = data["coin"] as? Int else {
                 let dataError = NSError(domain: "Firestore", code: -1, userInfo: [NSLocalizedDescriptionKey: "Geçersiz kullanıcı verisi"])
                 completion(.failure(dataError))
                 return
             }
-
+            
             let updatedCoin = currentCoin + amount
             userRef.updateData(["coin": updatedCoin]) { error in
                 if let error = error {
@@ -152,10 +155,9 @@ class AuthService : AuthServiceProtocol {
             }
         }
     }
-
+    
     
     /// Kullanıcının coin bilgisini belirtilen miktar kadar artırır.
-    ///
     /// - Parameters:
     ///   - uid: Coin’i artırılacak kullanıcının UID’si.
     ///   - amount: Coin’e eklenecek değer.
@@ -168,4 +170,92 @@ class AuthService : AuthServiceProtocol {
         }
     }
     
+    // MARK: - Avatar İşlemleri
+    
+    /// Kullanıcının avatar bilgisini günceller
+    /// - Parameters:
+    ///   - uid: Kullanıcının UID'si
+    ///   - avatarImageName: Seçilen avatar'ın image name'i
+    ///   - completion: İşlem tamamlandığında çağrılır
+    func updateUserAvatar(uid: String, avatarImageName: String, completion: @escaping (Error?) -> Void) {
+        db.collection("users").document(uid).updateData([
+            "avatarImageName": avatarImageName
+        ]) { error in
+            completion(error)
+        }
+    }
+    
+    /// Kullanıcının avatar bilgisini getirir
+    /// - Parameters:
+    ///   - uid: Kullanıcının UID'si
+    ///   - completion: Avatar image name'i veya hata döner
+    func fetchUserAvatar(uid: String, completion: @escaping (Result<String, Error>) -> Void) {
+        db.collection("users").document(uid).getDocument { snapshot, error in
+            if let error = error {
+                completion(.failure(error))
+                return
+            }
+            
+            guard let data = snapshot?.data(),
+                  let avatarImageName = data["avatarImageName"] as? String else {
+                completion(.success("profile_icon_1"))
+                return
+            }
+            
+            completion(.success(avatarImageName))
+        }
+    }
+    
+    // MARK: - Username İşlemleri
+    
+    /// Kullanıcının username bilgisini günceller
+    /// - Parameters:
+    ///   - uid: Kullanıcının UID'si
+    ///   - username: Yeni kullanıcı adı
+    ///   - completion: İşlem tamamlandığında çağrılır
+    func updateUsername(uid: String, username: String, completion: @escaping (Error?) -> Void) {
+        let trimmedUsername = username.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        guard !trimmedUsername.isEmpty else {
+            let error = NSError(domain: "AuthService", code: -1, userInfo: [NSLocalizedDescriptionKey: "Kullanıcı adı boş olamaz."])
+            completion(error)
+            return
+        }
+        
+        guard trimmedUsername.count >= 3 else {
+            let error = NSError(domain: "AuthService", code: -2, userInfo: [NSLocalizedDescriptionKey: "Kullanıcı adı en az 3 karakter olmalıdır."])
+            completion(error)
+            return
+        }
+        
+        guard trimmedUsername.count <= 20 else {
+            let error = NSError(domain: "AuthService", code: -3, userInfo: [NSLocalizedDescriptionKey: "Kullanıcı adı en fazla 20 karakter olabilir."])
+            completion(error)
+            return
+        }
+        
+        db.collection("users").document(uid).updateData([
+            "username": trimmedUsername
+        ]) { error in
+            completion(error)
+        }
+        
+    }
+}
+
+// MARK: - User Model
+struct User {
+    let uid: String
+    let username: String
+    let email: String
+    let coin: Int
+    let avatarImageName: String
+    
+    init(uid: String, username: String, email: String, coin: Int, avatarImageName: String = "profile_icon_1") {
+        self.uid = uid
+        self.username = username
+        self.email = email
+        self.coin = coin
+        self.avatarImageName = avatarImageName
+    }
 }

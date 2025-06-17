@@ -11,3 +11,4 @@ struct Avatar {
     let id: String
     let imageName : String
 }
+

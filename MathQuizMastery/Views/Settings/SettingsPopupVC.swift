@@ -28,7 +28,7 @@ class SettingsPopupVC: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented. Use init(viewModel:delegate:coordinator:) instead.")
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         backgroundView.frame = view.bounds
@@ -41,7 +41,7 @@ class SettingsPopupVC: UIViewController {
     override func viewDidLayoutSubviews() {
         framePopupView()
     }
-
+    
     private func setupTableView(){
         let nib = UINib(nibName: "SettingTableViewCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "SettingTableViewCell")
@@ -100,45 +100,74 @@ extension SettingsPopupVC: SettingsPopupDelegate {
     func didSelectSetting(_ item: SettingItem) {
         print("Seçilen Ayar: \(item.title)")
     }
-
+    
     func tappedProfile() {
         coordinator?.replacePopup(with: .avatar)
     }
-
+    
     func tappedNotifications() {
         // Bildirim ayarları ekranına yönlendir
     }
-
+    
     func tappedFAQ() {
         coordinator?.replacePopup(with: .faq)
     }
-
+    
     func tappedReport() {
         // Raporlama ekranına yönlendir
     }
-
+    
     func tappedLogout() {
-        guard let topVC = navigationController?.topViewController else { return }
-
         let alert = UIAlertController(
             title: L(.logout_title),
             message: L(.logout_message),
             preferredStyle: .alert
         )
-
+        
         alert.addAction(UIAlertAction(title: L(.logout_cancel), style: .cancel))
-
+        
         alert.addAction(UIAlertAction(title: L(.logout_confirm), style: .destructive, handler: { [weak self] _ in
-            AuthService.shared.signOut { error in
-                if let error = error {
-                    print("Çıkış yapılamadı: \(error.localizedDescription)")
-                } else {
-                    self?.coordinator?.goToLogin()
+            // Loading indicator göster (opsiyonel)
+            self?.showLogoutLoading()
+            
+            AuthService.shared.signOut { [weak self] error in
+                DispatchQueue.main.async {
+                    // Loading indicator'ı gizle
+                    self?.hideLogoutLoading()
+                    
+                    if let error = error {
+                        print("Çıkış yapılamadı: \(error.localizedDescription)")
+                        self?.showLogoutError(error.localizedDescription)
+                    } else {
+                        print("Başarıyla çıkış yapıldı")
+                        // Popup'ı kapat ve login ekranına yönlendir
+                        self?.coordinator?.dismissPopup()
+                        self?.coordinator?.goToLogin()
+                    }
                 }
             }
         }))
-
-        topVC.present(alert, animated: true)
+        
+        self.present(alert, animated: true)
+    }
+    
+    // MARK: - Loading & Error Helpers
+    private func showLogoutLoading() {
+        view.isUserInteractionEnabled = false
+    }
+    
+    private func hideLogoutLoading() {
+        view.isUserInteractionEnabled = true
+    }
+    
+    private func showLogoutError(_ message: String) {
+        let errorAlert = UIAlertController(
+            title: "Hata",
+            message: "Çıkış yapılırken bir hata oluştu: \(message)",
+            preferredStyle: .alert
+        )
+        errorAlert.addAction(UIAlertAction(title: "Tamam", style: .default))
+        self.present(errorAlert, animated: true)
     }
     
 }

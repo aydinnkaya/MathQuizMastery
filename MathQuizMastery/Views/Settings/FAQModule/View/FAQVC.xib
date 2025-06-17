@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -25,42 +26,64 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GDM-KP-fwW" userLabel="popupView">
                     <rect key="frame" x="78.666666666666671" y="284.66666666666669" width="235.66666666666663" height="333.00000000000006"/>
                     <subviews>
-                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="UF7-cL-t2O">
-                            <rect key="frame" x="0.0" y="0.0" width="235.66666666666666" height="333"/>
+                        <button opaque="NO" contentMode="scaleAspectFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jfm-qR-Xp2">
+                            <rect key="frame" x="202" y="2" width="26" height="28"/>
+                            <color key="tintColor" name="E80B26"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" image="x.circle" catalog="system"/>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Title Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vcu-d7-wtE">
+                            <rect key="frame" x="29" y="8" width="178" height="20"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="UF7-cL-t2O">
+                            <rect key="frame" x="0.0" y="30" width="236" height="303"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         </tableView>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wLC-GE-E8J" userLabel="backgroundView">
+                            <rect key="frame" x="-71" y="-285.33333333333337" width="393" height="852.33333333333337"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
                     </subviews>
                     <constraints>
+                        <constraint firstItem="vcu-d7-wtE" firstAttribute="leading" secondItem="GDM-KP-fwW" secondAttribute="leading" constant="8" id="0c8-Kz-upE"/>
+                        <constraint firstAttribute="trailing" secondItem="Jfm-qR-Xp2" secondAttribute="trailing" constant="8" id="4ZW-Di-qgS"/>
+                        <constraint firstAttribute="trailing" secondItem="wLC-GE-E8J" secondAttribute="trailing" constant="-86.333333333333371" id="5eW-Zt-cgM"/>
+                        <constraint firstItem="Jfm-qR-Xp2" firstAttribute="centerX" secondItem="vcu-d7-wtE" secondAttribute="centerX" constant="97" id="6Fw-Av-gu9"/>
                         <constraint firstItem="UF7-cL-t2O" firstAttribute="leading" secondItem="GDM-KP-fwW" secondAttribute="leading" id="7dh-ph-dQo"/>
                         <constraint firstItem="UF7-cL-t2O" firstAttribute="centerX" secondItem="GDM-KP-fwW" secondAttribute="centerX" id="D8S-W4-ZF9"/>
+                        <constraint firstItem="UF7-cL-t2O" firstAttribute="top" secondItem="Jfm-qR-Xp2" secondAttribute="bottom" id="GNV-oj-C1c"/>
+                        <constraint firstItem="vcu-d7-wtE" firstAttribute="centerX" secondItem="GDM-KP-fwW" secondAttribute="centerX" id="IUH-6p-PQQ"/>
+                        <constraint firstAttribute="trailing" secondItem="vcu-d7-wtE" secondAttribute="trailing" constant="8" id="K7s-bg-ysJ"/>
+                        <constraint firstAttribute="bottom" secondItem="wLC-GE-E8J" secondAttribute="bottom" constant="-233.99999999999994" id="l2Y-cM-q7w"/>
+                        <constraint firstItem="vcu-d7-wtE" firstAttribute="top" secondItem="GDM-KP-fwW" secondAttribute="top" constant="4" id="lBe-tF-Aj5"/>
                         <constraint firstAttribute="trailing" secondItem="UF7-cL-t2O" secondAttribute="trailing" id="ptR-Oz-uKi"/>
-                        <constraint firstAttribute="bottom" secondItem="UF7-cL-t2O" secondAttribute="bottom" id="w71-sN-lvd"/>
+                        <constraint firstItem="wLC-GE-E8J" firstAttribute="leading" secondItem="GDM-KP-fwW" secondAttribute="leading" constant="-71" id="tOQ-OM-p4Z"/>
+                        <constraint firstItem="wLC-GE-E8J" firstAttribute="top" secondItem="GDM-KP-fwW" secondAttribute="top" constant="-285" id="vnl-Hl-6bS"/>
                         <constraint firstItem="UF7-cL-t2O" firstAttribute="top" secondItem="GDM-KP-fwW" secondAttribute="top" id="xX6-Ls-0VF"/>
                         <constraint firstItem="UF7-cL-t2O" firstAttribute="centerY" secondItem="GDM-KP-fwW" secondAttribute="centerY" id="y0C-qj-G9h"/>
                     </constraints>
-                </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wLC-GE-E8J" userLabel="backgroundView">
-                    <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="GDM-KP-fwW" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" id="A00-MO-P9L"/>
-                <constraint firstItem="wLC-GE-E8J" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="DFF-r7-lvl"/>
                 <constraint firstItem="GDM-KP-fwW" firstAttribute="height" secondItem="fnl-2z-Ty3" secondAttribute="height" multiplier="0.5" id="DKe-fo-GAs"/>
                 <constraint firstItem="GDM-KP-fwW" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="UkI-Yj-C9q"/>
-                <constraint firstAttribute="trailing" secondItem="wLC-GE-E8J" secondAttribute="trailing" id="g2y-rb-WRw"/>
-                <constraint firstItem="wLC-GE-E8J" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="oBX-77-E0d"/>
                 <constraint firstItem="GDM-KP-fwW" firstAttribute="width" secondItem="fnl-2z-Ty3" secondAttribute="width" multiplier="0.6" id="ob6-T0-u4v"/>
-                <constraint firstAttribute="bottom" secondItem="wLC-GE-E8J" secondAttribute="bottom" id="zao-K0-AJl"/>
             </constraints>
             <point key="canvasLocation" x="101.5267175572519" y="20.422535211267608"/>
         </view>
     </objects>
     <resources>
+        <image name="x.circle" catalog="system" width="128" height="123"/>
+        <namedColor name="E80B26">
+            <color red="0.90980392156862744" green="0.043137254901960784" blue="0.14901960784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -45,6 +45,7 @@ class AvatarPopupVC: UIViewController {
         super.viewDidLoad()
         setupCollectionView()
         setupViewModel()
+        setupTextField()
         setuStyles()
         setupBackgroundView()
     }
@@ -56,17 +57,43 @@ class AvatarPopupVC: UIViewController {
         collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "AvatarCell")
     }
     
+    private func setupTextField() {
+        usernameTextField.delegate = self
+        usernameTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+    }
+    
+    @objc private func textFieldDidChange() {
+        viewModel.updateUsername(usernameTextField.text ?? "")
+    }
+    
     // MARK: - Setup ViewModel
     private func setupViewModel() {
         viewModel.delegate = self
-        viewModel.loadAvatars()
+        viewModel.loadUserData()
     }
     
     // MARK: - Save Button Tapped
     @IBAction func saveButtonTapped(_ sender: UIButton, forEvent event: UIEvent) {
+        usernameTextField.resignFirstResponder()
         viewModel.handleSaveTapped()
     }
     
+}
+
+// MARK: - UITextField Delegate
+extension AvatarPopupVC: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        // Username için karakter limiti (örn: 20 karakter)
+        let maxLength = 20
+        let currentString = (textField.text ?? "") as NSString
+        let newString = currentString.replacingCharacters(in: range, with: string)
+        return newString.count <= maxLength
+    }
 }
 
 extension AvatarPopupVC: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -99,6 +126,20 @@ extension AvatarPopupVC : AvatarPopupViewModelDelegate {
         coordinator?.dismissPopup()
     }
     
+    func userDataLoaded(username: String, avatar: Avatar) {
+        DispatchQueue.main.async { [weak self] in
+            self?.usernameTextField.text = username
+            
+            if let image = UIImage(named: avatar.imageName) {
+                self?.profileImage.image = image
+                self?.profileImage.layer.cornerRadius = self?.profileImage.frame.width ?? 0 / 2
+                self?.profileImage.clipsToBounds = true
+                self?.profileImage.layer.borderColor = UIColor.green.cgColor
+                self?.profileImage.layer.borderWidth = 5.0
+            }
+        }
+    }
+    
     func avatarCellStyleUpdate(selectedIndexPath: IndexPath?, previousIndexPath: IndexPath?) {
         // Eski seçili hücreyi griye döndür
         if let previous = previousIndexPath,
@@ -122,6 +163,26 @@ extension AvatarPopupVC : AvatarPopupViewModelDelegate {
             profileImage.layer.borderWidth = 5.0
         }
     }
+    
+    func showError(message: String) {
+        let alert = UIAlertController(title: "Hata", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Tamam", style: .default))
+        present(alert, animated: true)
+    }
+    
+    func showSuccess(message: String) {
+        let alert = UIAlertController(title: "Başarılı", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Tamam", style: .default))
+        present(alert, animated: true)
+    }
+    
+    func showLoading(_ show: Bool) {
+        DispatchQueue.main.async { [weak self] in
+            self?.saveButton.isEnabled = !show
+            self?.saveButton.setTitle(show ? "Kaydediliyor..." : "Kaydet", for: .normal)
+        }
+    }
+    
 }
 
 extension AvatarPopupVC {
@@ -165,11 +226,8 @@ extension UICollectionViewCell {
     }
 }
 
-//Throws: - avatarPopupView.layer.cornerRadius = 20
 extension AvatarPopupVC {
     func setuStyles(){
-        
-        profileImage.image = UIImage(named: viewModel.getAvatar(at: 0).imageName)
         
         popupView.layer.cornerRadius = 20
         popupView.layer.borderWidth = 8.0
@@ -189,12 +247,18 @@ extension AvatarPopupVC {
         
         usernameTextField.layer.borderColor = UIColor.systemTeal.cgColor
         usernameTextField.backgroundColor = UIColor(named: "NebulaGray")
+        usernameTextField.layer.cornerRadius = 8
+        usernameTextField.layer.borderWidth = 1
         
         usernameTextField.attributedPlaceholder = NSAttributedString(
-            string: "Enter your username",
+            string: "Kullanıcı adınızı girin",
             attributes: [
                 .foregroundColor: UIColor.lightGray
             ]
         )
+        
+        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: usernameTextField.frame.height))
+        usernameTextField.leftView = paddingView
+        usernameTextField.leftViewMode = .always
     }
 }
