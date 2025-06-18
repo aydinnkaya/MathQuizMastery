@@ -15,15 +15,16 @@ class FAQVC: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var closeButton: UIButton!
 
-    private var viewModel: FAQViewModelProtocol
-    weak var delegate: FAQViewModelDelegate?
-    var coordinator: AppCoordinator?
+    private let viewModel: FAQViewModel
+    weak var coordinator: AppCoordinator?
     
-    init(viewModel: FAQViewModelProtocol, delegate: FAQViewModelDelegate? = nil, coordinator: AppCoordinator) {
-        self.viewModel = viewModel
-        self.delegate = delegate
+    init(coordinator: AppCoordinator) {
+        self.viewModel = FAQViewModel()
         self.coordinator = coordinator
         super.init(nibName: "FAQVC", bundle: nil)
+        self.viewModel.delegate = self
+        modalPresentationStyle = .overFullScreen
+        modalTransitionStyle = .crossDissolve
     }
     
     required init?(coder: NSCoder) {
@@ -32,88 +33,111 @@ class FAQVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-      //  setupUI()
-        setupBackgroundView()
-        viewModel.delegate = self
+        setupUI()
         setupTableView()
-        stylePopupView()
+        setupGestures()
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        framePopupView()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        animateIn()
     }
     
-//    private func setupUI() {
-//        titleLabel.text = "Sıkça Sorulan Sorular"
-//        titleLabel.font = UIFont.boldSystemFont(ofSize: 18)
-//        titleLabel.textColor = .black
-//        titleLabel.textAlignment = .center
-//        
-//        closeButton.setTitle("✕", for: .normal)
-//        closeButton.setTitleColor(.gray, for: .normal)
-//        closeButton.titleLabel?.font = UIFont.systemFont(ofSize: 18)
-//        closeButton.addTarget(self, action: #selector(closeButtonTapped), for: .touchUpInside)
-//    }
-    
-    @objc private func closeButtonTapped() {
-        coordinator?.dismissPopup()
+    private func setupUI() {
+        view.backgroundColor = .clear
+        backgroundView.alpha = 0
+        backgroundView.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+        
+        popupView.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
+        popupView.alpha = 0
+        
+        titleLabel.text = "Sıkça Sorulan Sorular"
+        titleLabel.textColor = .white
+        
+        closeButton.tintColor = .white
     }
     
     private func setupTableView() {
-        let nib = UINib(nibName: "FAQTableViewCell", bundle: nil)
-        tableView.register(nib, forCellReuseIdentifier: "FAQTableViewCell")
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.separatorStyle = .none
         tableView.backgroundColor = .clear
+        tableView.separatorStyle = .none
         
+        // Register FAQTableViewCell with its nib
+        let nib = UINib(nibName: "FAQTableViewCell", bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: "FAQTableViewCell")
+        
+        // Set estimated row height for better performance
+        tableView.estimatedRowHeight = 100
         tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = 60
-        tableView.showsVerticalScrollIndicator = false
+    }
+    
+    private func setupGestures() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(backgroundTapped))
+        backgroundView.addGestureRecognizer(tapGesture)
+        backgroundView.isUserInteractionEnabled = true
+    }
+    
+    private func animateIn() {
+        UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut) {
+            self.backgroundView.alpha = 1
+            self.popupView.transform = .identity
+            self.popupView.alpha = 1
+        }
+    }
+    
+    private func animateOut(completion: @escaping () -> Void) {
+        UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut) {
+            self.backgroundView.alpha = 0
+            self.popupView.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
+            self.popupView.alpha = 0
+        } completion: { _ in
+            completion()
+        }
+    }
+    
+    @objc private func backgroundTapped() {
+        dismissPopup()
+    }
+    
+    @IBAction func closeButtonTapped(_ sender: Any) {
+        dismissPopup()
+    }
+    
+    private func dismissPopup() {
+        animateOut { [weak self] in
+            self?.coordinator?.dismissCurrentPopup {
+                self?.coordinator?.replacePopup(with: .settings)
+            }
+        }
     }
 }
 
 // MARK: - FAQViewModelDelegate
 extension FAQVC: FAQViewModelDelegate {
     func didUpdateFAQItems() {
-        DispatchQueue.main.async {
-            self.tableView.beginUpdates()
-            self.tableView.endUpdates()
-        }
+        tableView.reloadData()
     }
 }
 
 // MARK: - UITableViewDelegate, UITableViewDataSource
 extension FAQVC: UITableViewDelegate, UITableViewDataSource {
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.items.count
+        return viewModel.numberOfItems
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "FAQTableViewCell", for: indexPath) as? FAQTableViewCell else {
             return UITableViewCell()
         }
-        cell.configure(with: viewModel.items[indexPath.row])
+        
+        let item = viewModel.item(at: indexPath.row)
+        cell.configure(with: item)
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        viewModel.toggleItem(at: indexPath.row)
-    }
-}
-
-// MARK: - Background Gesture
-extension FAQVC {
-    private func setupBackgroundView() {
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(backgroundTapped))
-        backgroundView.addGestureRecognizer(tapGesture)
-    }
-    
-    @objc private func backgroundTapped() {
-        coordinator?.dismissPopup()
+        viewModel.toggleExpansion(at: indexPath.row)
     }
 }
 
@@ -121,24 +145,41 @@ extension FAQVC {
 extension FAQVC {
     func stylePopupView() {
         popupView.layer.cornerRadius = 20
-        popupView.layer.borderWidth = 3.0
-        popupView.layer.borderColor = UIColor.systemBlue.cgColor
-        popupView.backgroundColor = .white
         popupView.clipsToBounds = true
         
-        // Shadow
-        popupView.layer.shadowColor = UIColor.black.cgColor
+        // Space theme styling
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = popupView.bounds
+        gradientLayer.colors = [
+            UIColor(red: 0.1, green: 0.1, blue: 0.2, alpha: 0.95).cgColor,
+            UIColor(red: 0.05, green: 0.05, blue: 0.1, alpha: 0.95).cgColor
+        ]
+        gradientLayer.locations = [0.0, 1.0]
+        popupView.layer.insertSublayer(gradientLayer, at: 0)
+        
+        // Add subtle border glow
+        popupView.layer.borderWidth = 1.0
+        popupView.layer.borderColor = UIColor(red: 0.455, green: 0.816, blue: 0.988, alpha: 0.3).cgColor
+        
+        // Add shadow
+        popupView.layer.shadowColor = UIColor(red: 0.455, green: 0.816, blue: 0.988, alpha: 0.5).cgColor
         popupView.layer.shadowOffset = CGSize(width: 0, height: 2)
-        popupView.layer.shadowRadius = 10
-        popupView.layer.shadowOpacity = 0.3
+        popupView.layer.shadowRadius = 15
+        popupView.layer.shadowOpacity = 0.5
+        popupView.layer.masksToBounds = false
     }
     
     func framePopupView() {
-        let maxHeight = view.frame.height * 0.8
+        let maxHeight = view.frame.height * 0.7
         let maxWidth = view.frame.width * 0.9
         
         popupView.frame.size.width = maxWidth
         popupView.frame.size.height = maxHeight
         popupView.center = view.center
+        
+        // Update gradient layer frame
+        if let gradientLayer = popupView.layer.sublayers?.first as? CAGradientLayer {
+            gradientLayer.frame = popupView.bounds
+        }
     }
 }

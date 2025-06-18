@@ -33,14 +33,17 @@ enum LocalizedKey: String {
     case password_too_short
 
     // MARK: - Genel Butonlar
-    case ok_button
-    case cancel_button
+    case ok
+    case cancel
+    case settings 
 
     // MARK: - Uyarılar
     case loading
     case success
     case error
     case warning
+    case error_title
+
 
     // MARK: - Ayarlar
     case settings_profile
@@ -54,4 +57,105 @@ enum LocalizedKey: String {
     case logout_message
     case logout_cancel
     case logout_confirm
+
+    // MARK: - Notification Permission Alerts (Yeni eklendi)
+    case notification_permission_title
+    case notification_permission_message
+    case notification_permission_error
+
+    // Auth
+    case login_title = "login_title"
+    case login_button = "login_button"
+    case register_button = "register_button"
+    case username_placeholder = "username_placeholder"
+    case password_placeholder = "password_placeholder"
+    case register_success = "register_success"
+    case register_error = "register_error"
+    case login_error = "login_error"
+    case validation_error = "validation_error"
+    case settings_title = "settings_title"
+
+    // Game
+    case game_title = "game_title"
+    case game_score = "game_score"
+    case game_time = "game_time"
+    case game_level = "game_level"
+    case game_over = "game_over"
+    case game_pause = "game_pause"
+    case game_resume = "game_resume"
+    case game_restart = "game_restart"
+    case game_quit = "game_quit"
+    case game_next = "game_next"
+    case game_previous = "game_previous"
+
+    // Notifications
+    case notification_title = "notification_title"
+    case notification_message = "notification_message"
+    case notification_settings = "notification_settings"
+    case notification_permission_denied = "notification_permission_denied"
+    case notification_permission_granted = "notification_permission_granted"
+
+    // MARK: - Common
+    case yes = "yes"
+    case no = "no"
+    
+    // MARK: - Home
+    case home_title = "home_title"
+    case home_welcome = "home_welcome"
+    case home_play = "home_play"
+    case home_settings = "home_settings"
+    case home_profile = "home_profile"
+    
+    // MARK: - Settings
+    case settings_logout_message = "settings_logout_message"
+    
+    // MARK: - Profile
+    case profile_title = "profile_title"
+    case profile_username = "profile_username"
+    case profile_score = "profile_score"
+    case profile_rank = "profile_rank"
+    case profile_achievements = "profile_achievements"
+    
+    // MARK: - Game
+    case game_quit_message = "game_quit_message"
+    case game_over_message = "game_over_message"
+    case game_win = "game_win"
+    case game_win_message = "game_win_message"
+    
+    // MARK: - Category
+    case category_title = "category_title"
+    case category_addition = "category_addition"
+    case category_subtraction = "category_subtraction"
+    case category_multiplication = "category_multiplication"
+    case category_division = "category_division"
+    case category_mixed = "category_mixed"
+    
+    // MARK: - Result
+    case result_title = "result_title"
+    case result_score = "result_score"
+    case result_time = "result_time"
+    case result_accuracy = "result_accuracy"
+    case result_new_record = "result_new_record"
+    case result_play_again = "result_play_again"
+    case result_home = "result_home"
+    case result_share = "result_share"
+    
+    // MARK: - Notifications
+    case notifications_title = "notifications_title"
+    case notifications_enable = "notifications_enable"
+    case notifications_disable = "notifications_disable"
+    case notifications_daily = "notifications_daily"
+    case notifications_weekly = "notifications_weekly"
+    case notifications_time = "notifications_time"
+    
+    // MARK: - FAQ
+    case faq_title = "faq_title"
+    case faq_empty = "faq_empty"
+    
+    // MARK: - Report
+    case report_title = "report_title"
+    case report_description = "report_description"
+    case report_submit = "report_submit"
+    case report_success = "report_success"
+    case report_error = "report_error"
 }

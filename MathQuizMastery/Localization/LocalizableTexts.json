@@ -588,60 +588,223 @@
         "nl": "Uitloggen"
     },
     "logout_title": {
-      "en": "Logout",
-      "tr": "Çıkış Yap",
-      "de": "Abmelden",
-      "es": "Cerrar sesión",
-      "fr": "Déconnexion",
-      "it": "Disconnetti",
-      "pt-BR": "Sair",
-      "ja": "ログアウト",
-      "ko": "로그아웃",
-      "zh-Hans": "退出登录",
-      "ar": "تسجيل الخروج",
-      "nl": "Uitloggen"
+        "en": "Logout",
+        "tr": "Çıkış Yap",
+        "de": "Abmelden",
+        "es": "Cerrar sesión",
+        "fr": "Déconnexion",
+        "it": "Disconnetti",
+        "pt-BR": "Sair",
+        "ja": "ログアウト",
+        "ko": "로그아웃",
+        "zh-Hans": "退出登录",
+        "ar": "تسجيل الخروج",
+        "nl": "Uitloggen"
     },
     "logout_message": {
-      "en": "Are you sure you want to log out?",
-      "tr": "Çıkış yapmak istediğinizden emin misiniz?",
-      "de": "Möchten Sie sich wirklich abmelden?",
-      "es": "¿Está seguro de que desea cerrar sesión?",
-      "fr": "Êtes-vous sûr de vouloir vous déconnecter ?",
-      "it": "Sei sicuro di voler disconnetterti?",
-      "pt-BR": "Tem certeza de que deseja sair?",
-      "ja": "本当にログアウトしますか？",
-      "ko": "정말 로그아웃하시겠습니까?",
-      "zh-Hans": "您确定要退出登录吗？",
-      "ar": "هل أنت متأكد أنك تريد تسجيل الخروج؟",
-      "nl": "Weet u zeker dat u wilt uitloggen?"
+        "en": "Are you sure you want to log out?",
+        "tr": "Çıkış yapmak istediğinizden emin misiniz?",
+        "de": "Möchten Sie sich wirklich abmelden?",
+        "es": "¿Está seguro de que desea cerrar sesión?",
+        "fr": "Êtes-vous sûr de vouloir vous déconnecter ?",
+        "it": "Sei sicuro di voler disconnetterti?",
+        "pt-BR": "Tem certeza de que deseja sair?",
+        "ja": "本当にログアウトしますか？",
+        "ko": "정말 로그아웃하시겠습니까?",
+        "zh-Hans": "您确定要退出登录吗？",
+        "ar": "هل أنت متأكد أنك تريد تسجيل الخروج؟",
+        "nl": "Weet u zeker dat u wilt uitloggen?"
     },
     "logout_cancel": {
-      "en": "Cancel",
-      "tr": "İptal",
-      "de": "Abbrechen",
-      "es": "Cancelar",
-      "fr": "Annuler",
-      "it": "Annulla",
-      "pt-BR": "Cancelar",
-      "ja": "キャンセル",
-      "ko": "취소",
-      "zh-Hans": "取消",
-      "ar": "إلغاء",
-      "nl": "Annuleren"
+        "en": "Cancel",
+        "tr": "İptal",
+        "de": "Abbrechen",
+        "es": "Cancelar",
+        "fr": "Annuler",
+        "it": "Annulla",
+        "pt-BR": "Cancelar",
+        "ja": "キャンセル",
+        "ko": "취소",
+        "zh-Hans": "取消",
+        "ar": "إلغاء",
+        "nl": "Annuleren"
     },
     "logout_confirm": {
-      "en": "Log out",
-      "tr": "Çıkış Yap",
-      "de": "Abmelden",
-      "es": "Cerrar sesión",
-      "fr": "Déconnexion",
-      "it": "Disconnetti",
-      "pt-BR": "Sair",
-      "ja": "ログアウト",
-      "ko": "로그아웃",
-      "zh-Hans": "退出登录",
-      "ar": "تسجيل الخروج",
-      "nl": "Uitloggen"
-    }
-
+        "en": "Log out",
+        "tr": "Çıkış Yap",
+        "de": "Abmelden",
+        "es": "Cerrar sesión",
+        "fr": "Déconnexion",
+        "it": "Disconnetti",
+        "pt-BR": "Sair",
+        "ja": "ログアウト",
+        "ko": "로그아웃",
+        "zh-Hans": "退出登录",
+        "ar": "تسجيل الخروج",
+        "nl": "Uitloggen"
+    },
+    
+    "notification_permission_title": {
+        "en": "Notification Permission",
+        "tr": "Bildirim İzni"
+    },
+    "notification_permission_message": {
+        "en": "Please enable notifications in Settings to stay updated.",
+        "tr": "Güncel kalmak için lütfen Ayarlar'dan bildirimleri etkinleştirin."
+    },
+    "notification_permission_error": {
+        "en": "There was an error requesting notification permission.",
+        "tr": "Bildirim izni alınırken bir hata oluştu."
+    },
+    "settings": {
+        "en": "Settings",
+        "tr": "Ayarlar"
+    },
+    "ok": {
+        "en": "OK",
+        "tr": "Tamam"
+    },
+    "cancel": {
+        "en": "Cancel",
+        "tr": "İptal"
+    },
+    "logout_cancel": {
+        "en": "Cancel",
+        "tr": "İptal",
+        "de": "Abbrechen",
+        "es": "Cancelar",
+        "fr": "Annuler",
+        "it": "Annulla",
+        "pt-BR": "Cancelar",
+        "ja": "キャンセル",
+        "ko": "취소",
+        "zh-Hans": "取消",
+        "ar": "إلغاء",
+        "nl": "Annuleren"
+    },
+    "logout_confirm": {
+        "en": "Log out",
+        "tr": "Çıkış Yap",
+        "de": "Abmelden",
+        "es": "Cerrar sesión",
+        "fr": "Déconnexion",
+        "it": "Disconnetti",
+        "pt-BR": "Sair",
+        "ja": "ログアウト",
+        "ko": "로그아웃",
+        "zh-Hans": "退出登录",
+        "ar": "تسجيل الخروج",
+        "nl": "Uitloggen"
+    },
+    "error_title": {
+      "en": "Error",
+      "tr": "Hata"
+    },
+    "login_title": {
+        "tr": "Giriş Yap",
+        "en": "Login"
+    },
+    "login_button": {
+        "tr": "Giriş Yap",
+        "en": "Login"
+    },
+    "register_button": {
+        "tr": "Kayıt Ol",
+        "en": "Register"
+    },
+    "username_placeholder": {
+        "tr": "Kullanıcı Adı",
+        "en": "Username"
+    },
+    "password_placeholder": {
+        "tr": "Şifre",
+        "en": "Password"
+    },
+    "register_success": {
+        "tr": "Kayıt başarılı!",
+        "en": "Registration successful!"
+    },
+    "register_error": {
+        "tr": "Kayıt başarısız!",
+        "en": "Registration failed!"
+    },
+    "login_error": {
+        "tr": "Giriş başarısız!",
+        "en": "Login failed!"
+    },
+    "validation_error": {
+        "tr": "Lütfen tüm alanları doldurun!",
+        "en": "Please fill all fields!"
+    },
+    "notification_title": {
+        "tr": "Bildirim",
+        "en": "Notification"
+    },
+    "notification_message": {
+        "tr": "Bildirim mesajı",
+        "en": "Notification message"
+    },
+    "notification_settings": {
+        "tr": "Bildirim Ayarları",
+        "en": "Notification Settings"
+    },
+    "notification_permission_denied": {
+        "tr": "Bildirim izni reddedildi.",
+        "en": "Notification permission denied."
+    },
+    "notification_permission_granted": {
+        "tr": "Bildirim izni verildi.",
+        "en": "Notification permission granted."
+    },
+    "yes": "Yes",
+    "no": "No",
+    "home_title": "Math Quiz Mastery",
+    "home_welcome": "Welcome, %@!",
+    "home_play": "Play",
+    "home_settings": "Settings",
+    "home_profile": "Profile",
+    "profile_title": "Profile",
+    "profile_username": "Username",
+    "profile_score": "Total Score",
+    "profile_rank": "Rank",
+    "profile_achievements": "Achievements",
+    "game_title": "Game",
+    "game_score": "Score: %d",
+    "game_time": "Time: %d",
+    "game_level": "Level %d",
+    "game_pause": "Pause",
+    "game_resume": "Resume",
+    "game_quit": "Quit",
+    "game_quit_message": "Are you sure you want to quit?",
+    "game_over": "Game Over",
+    "game_over_message": "Your score: %d",
+    "game_win": "Congratulations!",
+    "game_win_message": "You completed the level with score: %d",
+    "category_title": "Select Category",
+    "category_addition": "Addition",
+    "category_subtraction": "Subtraction",
+    "category_multiplication": "Multiplication",
+    "category_division": "Division",
+    "category_mixed": "Mixed",
+    "result_title": "Result",
+    "result_score": "Score: %d",
+    "result_time": "Time: %@",
+    "result_accuracy": "Accuracy: %d%%",
+    "result_new_record": "New Record!",
+    "result_play_again": "Play Again",
+    "result_home": "Home",
+    "result_share": "Share",
+    "notifications_title": "Notifications",
+    "notifications_enable": "Enable Notifications",
+    "notifications_disable": "Disable Notifications",
+    "notifications_daily": "Daily Reminder",
+    "notifications_weekly": "Weekly Summary",
+    "notifications_time": "Reminder Time",
+    "faq_title": "FAQ",
+    "faq_empty": "No FAQs available",
+    "report_title": "Report a Problem",
+    "report_description": "Please describe the problem you encountered:",
+    "report_submit": "Submit",
+    "report_success": "Thank you for your report!",
+    "report_error": "Failed to submit report"
 }

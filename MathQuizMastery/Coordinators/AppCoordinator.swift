@@ -14,10 +14,17 @@ protocol Coordinator{
     func start()
 }
 
+enum PopupType {
+    case settings
+    case avatar
+    case faq
+}
+
 class AppCoordinator : Coordinator {
     
     var navigationController: UINavigationController
     let backImage = UIImage(named: "back_button")?.withRenderingMode(.alwaysOriginal)
+    private var currentPopupViewController: UIViewController?
     
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
@@ -27,28 +34,23 @@ class AppCoordinator : Coordinator {
         goToLogin()
     }
     
-    private func checkAuthentication() {
-        guard let currentUser = Auth.auth().currentUser else {
+    func checkAuthentication() {
+        if let currentUser = Auth.auth().currentUser {
+            let uid = currentUser.uid
+            AuthService.shared.fetchUserData(uid: uid) { [weak self] result in
+                DispatchQueue.main.async {
+                    guard let self = self else { return }
+                    switch result {
+                    case .success(let user):
+                        self.goToHome(with: user)
+                    case .failure(_):
+                        self.goToLogin()
+                    }
+                }
+            }
+        } else {
             DispatchQueue.main.async { [weak self] in
                 self?.goToLogin()
-            }
-            return
-        }
-        
-        let uid = currentUser.uid
-        
-        AuthService.shared.fetchUserData(uid: uid) { [weak self] result in
-            switch result {
-            case .success(let user):
-                DispatchQueue.main.async {
-                    [weak self] in
-                    guard let self else { return }
-                    self.goToHome(with: user)
-                }
-            case .failure(let error):
-                DispatchQueue.main.async {
-                    self?.goToLogin()
-                }
             }
         }
     }
@@ -94,43 +96,39 @@ class AppCoordinator : Coordinator {
     }
     
     func goToFAQPopup() {
-        let viewModel = FAQViewModel()
-        let FAQVC = FAQVC(viewModel: viewModel, coordinator: self)
-        FAQVC.view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
-        FAQVC.modalPresentationStyle = .overFullScreen
-        FAQVC.modalTransitionStyle = .flipHorizontal
-        navigationController.present(FAQVC, animated: true, completion: nil)
-    }
-    
-    enum PopupType {
-        case avatar
-        case settings
-        case faq
+        let faqVC = FAQVC(coordinator: self)
+        faqVC.view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+        faqVC.modalPresentationStyle = .overFullScreen
+        faqVC.modalTransitionStyle = .flipHorizontal
+        navigationController.present(faqVC, animated: true, completion: nil)
     }
     
     func replacePopup(with popupType: PopupType) {
+        dismissCurrentPopup { [weak self] in
+            switch popupType {
+            case .avatar:
+                self?.goToAvatarPopup()
+            case .settings:
+                self?.goToSettingsPopup()
+            case .faq:
+                self?.goToFAQPopup()
+            }
+        }
+    }
+    
+    func dismissCurrentPopup(completion: (() -> Void)? = nil) {
         if let presentedVC = navigationController.presentedViewController {
-            presentedVC.dismiss(animated: true) { [weak self] in
-                self?.presentPopup(popupType)
+            presentedVC.dismiss(animated: true) {
+                self.currentPopupViewController = nil
+                completion?()
             }
         } else {
-            presentPopup(popupType)
+            completion?()
         }
     }
     
-    private func presentPopup(_ type: PopupType) {
-        switch type {
-        case .avatar:
-            goToAvatarPopup()
-        case .settings:
-            goToSettingsPopup()
-        case .faq:
-            goToFAQPopup()
-        }
-    }
-    
-    func dismissPopup() {
-        navigationController.topViewController?.dismiss(animated: true, completion: nil)
+    func dismissPopup(completion: (() -> Void)? = nil) {
+        dismissCurrentPopup(completion: completion)
     }
     
     func goToCategory() {
@@ -178,6 +176,25 @@ class AppCoordinator : Coordinator {
     func restartGame(with type: MathExpression.ExpressionType) {
         goToGameVC(with: type)
     }
+    
+    // MARK: - Private Methods
+    private func presentPopupViewController(_ viewController: UIViewController) {
+        viewController.modalPresentationStyle = .overFullScreen
+        viewController.modalTransitionStyle = .crossDissolve
+        viewController.view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+        
+        if let presentedVC = navigationController.presentedViewController {
+            presentedVC.dismiss(animated: false) { [weak self] in
+                self?.navigationController.present(viewController, animated: true)
+                self?.currentPopupViewController = viewController
+            }
+        } else {
+            navigationController.present(viewController, animated: true)
+            currentPopupViewController = viewController
+        }
+    }
+    
+    
     
 }
 

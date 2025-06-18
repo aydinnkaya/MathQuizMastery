@@ -6,27 +6,28 @@
 //
 
 import UIKit
+import UserNotifications
 
 class SettingsPopupVC: UIViewController {
     @IBOutlet weak var backgroundView: UIView!
     @IBOutlet weak var popupView: UIView!
-    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
-    var viewModel : SettingsPopupViewModelProtocol!
-    weak var delegate: SettingsPopupDelegate?
-    var coordinator: AppCoordinator?
     
+    private let viewModel: SettingsPopupViewModel
+    //    private var notificationViewModel: NotificationSettingsViewModel?
+    weak var coordinator: AppCoordinator?
     
-    init(viewModel: SettingsPopupViewModelProtocol, delegate: SettingsPopupDelegate? = nil, coordinator: AppCoordinator) {
+    init(viewModel: SettingsPopupViewModel, coordinator: AppCoordinator) {
         self.viewModel = viewModel
-        self.delegate = delegate
         self.coordinator = coordinator
         super.init(nibName: "SettingsPopupVC", bundle: nil)
+        modalPresentationStyle = .overFullScreen
+        modalTransitionStyle = .crossDissolve
     }
     
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented. Use init(viewModel:delegate:coordinator:) instead.")
+        fatalError("init(coder:) has not been implemented")
     }
     
     override func viewDidLoad() {
@@ -102,7 +103,9 @@ extension SettingsPopupVC: SettingsPopupDelegate {
     }
     
     func tappedProfile() {
-        coordinator?.replacePopup(with: .avatar)
+        dismiss(animated: false) { [weak self] in
+            self?.coordinator?.replacePopup(with: .avatar)
+        }
     }
     
     func tappedNotifications() {
@@ -110,11 +113,28 @@ extension SettingsPopupVC: SettingsPopupDelegate {
     }
     
     func tappedFAQ() {
-        coordinator?.replacePopup(with: .faq)
-    }
+        dismiss(animated: false) { [weak self] in
+            self?.coordinator?.replacePopup(with: .faq)
+        }    }
     
     func tappedReport() {
-        // Raporlama ekranına yönlendir
+        let alert = UIAlertController(
+            title: "Sorun Bildir",
+            message: "Lütfen sorununuzu açıklayın",
+            preferredStyle: .alert
+        )
+        
+        alert.addTextField { textField in
+            textField.placeholder = "Sorununuzu yazın..."
+        }
+        
+        alert.addAction(UIAlertAction(title: "İptal", style: .cancel))
+        alert.addAction(UIAlertAction(title: "Gönder", style: .default) { _ in
+            // Rapor gönderme işlemi
+            print("Rapor gönderildi")
+        })
+        
+        present(alert, animated: true)
     }
     
     func tappedLogout() {
@@ -140,7 +160,6 @@ extension SettingsPopupVC: SettingsPopupDelegate {
                         self?.showLogoutError(error.localizedDescription)
                     } else {
                         print("Başarıyla çıkış yapıldı")
-                        // Popup'ı kapat ve login ekranına yönlendir
                         self?.coordinator?.dismissPopup()
                         self?.coordinator?.goToLogin()
                     }

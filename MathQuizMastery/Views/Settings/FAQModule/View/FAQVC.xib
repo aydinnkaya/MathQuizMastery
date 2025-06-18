@@ -4,18 +4,18 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FAQVC" customModule="MathQuizMastery" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" customClass="FAQVC" customModule="MathQuizMastery" customModuleProvider="target">
             <connections>
-                <outlet property="backgroundView" destination="wLC-GE-E8J" id="VL0-RU-ped"/>
-                <outlet property="popupView" destination="GDM-KP-fwW" id="VP3-Ha-PX9"/>
-                <outlet property="tableView" destination="UF7-cL-t2O" id="trZ-GM-vja"/>
-                <outlet property="view" destination="i5M-Pr-FkT" id="mDp-iX-hxK"/>
+                <outlet property="backgroundView" destination="background-view" id="background-outlet"/>
+                <outlet property="closeButton" destination="close-button" id="close-button-outlet"/>
+                <outlet property="popupView" destination="popup-view" id="popup-view-outlet"/>
+                <outlet property="tableView" destination="table-view" id="table-view-outlet"/>
+                <outlet property="titleLabel" destination="title-label" id="title-label-outlet"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="rBE-Sh-grN"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -23,69 +23,78 @@
             <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GDM-KP-fwW" userLabel="popupView">
-                    <rect key="frame" x="78.666666666666671" y="284.66666666666669" width="235.66666666666663" height="333.00000000000006"/>
+                <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="background-view">
+                    <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="popup-view">
+                    <rect key="frame" x="20" y="126" width="353" height="600"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleAspectFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jfm-qR-Xp2">
-                            <rect key="frame" x="202" y="2" width="26" height="28"/>
-                            <color key="tintColor" name="E80B26"/>
-                            <state key="normal" title="Button"/>
-                            <buttonConfiguration key="configuration" style="plain" image="x.circle" catalog="system"/>
-                        </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Title Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vcu-d7-wtE">
-                            <rect key="frame" x="29" y="8" width="178" height="20"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="UF7-cL-t2O">
-                            <rect key="frame" x="0.0" y="30" width="236" height="303"/>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        </tableView>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wLC-GE-E8J" userLabel="backgroundView">
-                            <rect key="frame" x="-71" y="-285.33333333333337" width="393" height="852.33333333333337"/>
+                        <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="header-stack">
+                            <rect key="frame" x="20" y="20" width="313" height="32"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sıkça Sorulan Sorular" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="title-label">
+                                    <rect key="frame" x="0.0" y="4" width="269" height="24"/>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="close-button">
+                                    <rect key="frame" x="281" y="0.0" width="32" height="32"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="32" id="close-height"/>
+                                        <constraint firstAttribute="width" constant="32" id="close-width"/>
+                                    </constraints>
+                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" image="xmark.circle.fill" catalog="system"/>
+                                    <connections>
+                                        <action selector="closeButtonTapped:" destination="-1" eventType="touchUpInside" id="close-action"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="32" id="header-height"/>
+                            </constraints>
+                        </stackView>
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="100" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="table-view">
+                            <rect key="frame" x="0.0" y="72" width="353" height="508"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        </view>
+                        </tableView>
                     </subviews>
+                    <color key="backgroundColor" red="0.078431372549019607" green="0.078431372549019607" blue="0.078431372549019607" alpha="0.90000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstItem="vcu-d7-wtE" firstAttribute="leading" secondItem="GDM-KP-fwW" secondAttribute="leading" constant="8" id="0c8-Kz-upE"/>
-                        <constraint firstAttribute="trailing" secondItem="Jfm-qR-Xp2" secondAttribute="trailing" constant="8" id="4ZW-Di-qgS"/>
-                        <constraint firstAttribute="trailing" secondItem="wLC-GE-E8J" secondAttribute="trailing" constant="-86.333333333333371" id="5eW-Zt-cgM"/>
-                        <constraint firstItem="Jfm-qR-Xp2" firstAttribute="centerX" secondItem="vcu-d7-wtE" secondAttribute="centerX" constant="97" id="6Fw-Av-gu9"/>
-                        <constraint firstItem="UF7-cL-t2O" firstAttribute="leading" secondItem="GDM-KP-fwW" secondAttribute="leading" id="7dh-ph-dQo"/>
-                        <constraint firstItem="UF7-cL-t2O" firstAttribute="centerX" secondItem="GDM-KP-fwW" secondAttribute="centerX" id="D8S-W4-ZF9"/>
-                        <constraint firstItem="UF7-cL-t2O" firstAttribute="top" secondItem="Jfm-qR-Xp2" secondAttribute="bottom" id="GNV-oj-C1c"/>
-                        <constraint firstItem="vcu-d7-wtE" firstAttribute="centerX" secondItem="GDM-KP-fwW" secondAttribute="centerX" id="IUH-6p-PQQ"/>
-                        <constraint firstAttribute="trailing" secondItem="vcu-d7-wtE" secondAttribute="trailing" constant="8" id="K7s-bg-ysJ"/>
-                        <constraint firstAttribute="bottom" secondItem="wLC-GE-E8J" secondAttribute="bottom" constant="-233.99999999999994" id="l2Y-cM-q7w"/>
-                        <constraint firstItem="vcu-d7-wtE" firstAttribute="top" secondItem="GDM-KP-fwW" secondAttribute="top" constant="4" id="lBe-tF-Aj5"/>
-                        <constraint firstAttribute="trailing" secondItem="UF7-cL-t2O" secondAttribute="trailing" id="ptR-Oz-uKi"/>
-                        <constraint firstItem="wLC-GE-E8J" firstAttribute="leading" secondItem="GDM-KP-fwW" secondAttribute="leading" constant="-71" id="tOQ-OM-p4Z"/>
-                        <constraint firstItem="wLC-GE-E8J" firstAttribute="top" secondItem="GDM-KP-fwW" secondAttribute="top" constant="-285" id="vnl-Hl-6bS"/>
-                        <constraint firstItem="UF7-cL-t2O" firstAttribute="top" secondItem="GDM-KP-fwW" secondAttribute="top" id="xX6-Ls-0VF"/>
-                        <constraint firstItem="UF7-cL-t2O" firstAttribute="centerY" secondItem="GDM-KP-fwW" secondAttribute="centerY" id="y0C-qj-G9h"/>
+                        <constraint firstItem="header-stack" firstAttribute="leading" secondItem="popup-view" secondAttribute="leading" constant="20" id="header-leading"/>
+                        <constraint firstItem="header-stack" firstAttribute="top" secondItem="popup-view" secondAttribute="top" constant="20" id="header-top"/>
+                        <constraint firstAttribute="trailing" secondItem="header-stack" secondAttribute="trailing" constant="20" id="header-trailing"/>
+                        <constraint firstAttribute="height" constant="600" id="popup-height"/>
+                        <constraint firstAttribute="bottom" secondItem="table-view" secondAttribute="bottom" constant="20" id="table-bottom"/>
+                        <constraint firstItem="table-view" firstAttribute="leading" secondItem="popup-view" secondAttribute="leading" id="table-leading"/>
+                        <constraint firstItem="table-view" firstAttribute="top" secondItem="header-stack" secondAttribute="bottom" constant="20" id="table-top"/>
+                        <constraint firstAttribute="trailing" secondItem="table-view" secondAttribute="trailing" id="table-trailing"/>
                     </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="16"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                 </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="GDM-KP-fwW" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" id="A00-MO-P9L"/>
-                <constraint firstItem="GDM-KP-fwW" firstAttribute="height" secondItem="fnl-2z-Ty3" secondAttribute="height" multiplier="0.5" id="DKe-fo-GAs"/>
-                <constraint firstItem="GDM-KP-fwW" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="UkI-Yj-C9q"/>
-                <constraint firstItem="GDM-KP-fwW" firstAttribute="width" secondItem="fnl-2z-Ty3" secondAttribute="width" multiplier="0.6" id="ob6-T0-u4v"/>
+                <constraint firstAttribute="bottom" secondItem="background-view" secondAttribute="bottom" id="background-bottom"/>
+                <constraint firstItem="background-view" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="background-leading"/>
+                <constraint firstItem="background-view" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="background-top"/>
+                <constraint firstAttribute="trailing" secondItem="background-view" secondAttribute="trailing" id="background-trailing"/>
+                <constraint firstItem="popup-view" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="popup-centerY"/>
+                <constraint firstItem="popup-view" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="popup-leading"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="popup-view" secondAttribute="trailing" constant="20" id="popup-trailing"/>
             </constraints>
-            <point key="canvasLocation" x="101.5267175572519" y="20.422535211267608"/>
+            <point key="canvasLocation" x="35.877862595419849" y="19.718309859154932"/>
         </view>
     </objects>
     <resources>
-        <image name="x.circle" catalog="system" width="128" height="123"/>
-        <namedColor name="E80B26">
-            <color red="0.90980392156862744" green="0.043137254901960784" blue="0.14901960784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
+        <image name="xmark.circle.fill" catalog="system" width="128" height="123"/>
     </resources>
 </document>

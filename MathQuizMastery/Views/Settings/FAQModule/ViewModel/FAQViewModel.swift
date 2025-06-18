@@ -7,53 +7,41 @@
 
 import Foundation
 
-protocol FAQViewModelProtocol {
-    var delegate: FAQViewModelDelegate? { get set }
-    var items: [FAQItem] { get }
-    
-    func toggleItem(at index: Int)
-}
 
 protocol FAQViewModelDelegate: AnyObject {
     func didUpdateFAQItems()
 }
 
-class FAQViewModel: FAQViewModelProtocol {
-    
+class FAQViewModel {
     weak var delegate: FAQViewModelDelegate?
     
-    private(set) var items: [FAQItem]
+    private var items: [FAQItem] = [
+        FAQItem(question: "Oyun nasıl oynanır?", 
+               answer: "Matematik sorularını doğru cevaplamaya çalışın. Her doğru cevap için puan kazanırsınız.", 
+               isExpanded: false),
+        FAQItem(question: "Puanlar nasıl hesaplanır?", 
+               answer: "Her doğru cevap için 10 puan kazanırsınız. Hızlı cevaplar için bonus puanlar verilir.", 
+               isExpanded: false),
+        FAQItem(question: "Seviyeler nasıl açılır?", 
+               answer: "Her kategoride belirli bir puana ulaştığınızda yeni seviyeler açılır.", 
+               isExpanded: false),
+        FAQItem(question: "Bildirimler ne işe yarar?", 
+               answer: "Günlük pratik hatırlatmaları ve haftalık başarı özetleri için bildirimler alabilirsiniz.", 
+               isExpanded: false),
+        FAQItem(question: "Profil resmimi nasıl değiştirebilirim?", 
+               answer: "Ayarlar > Profil menüsünden avatar seçimi yapabilirsiniz.", 
+               isExpanded: false)
+    ]
     
-    init() {
-        self.items = [
-            FAQItem(question: "MathQuizMastery nedir?",
-                   answer: "MathQuizMastery, matematiksel işlem becerilerinizi geliştiren eğlenceli ve öğretici bir quiz oyunudur.",
-                   isExpanded: false),
-            FAQItem(question: "Nasıl oynanır?",
-                   answer: "Kategori seçtikten sonra karşınıza çıkan matematik sorularını süre dolmadan yanıtlamalısınız.",
-                   isExpanded: false),
-            FAQItem(question: "Kategori türleri nelerdir?",
-                   answer: "Toplama, çıkarma, çarpma, bölme, karışık işlemler ve zorluk seviyelerine göre kategoriler mevcuttur.",
-                   isExpanded: false),
-            FAQItem(question: "Puanlar nasıl hesaplanıyor?",
-                   answer: "Doğru cevap, süreye göre bonus ve zorluk seviyesine göre ekstra puan verilir.",
-                   isExpanded: false),
-            FAQItem(question: "Yanlış cevap verirsem ne olur?",
-                   answer: "Yanlış cevap verdiğinizde doğru cevabı öğrenirsiniz ve puan alamazsınız.",
-                   isExpanded: false),
-            FAQItem(question: "Ses ve animasyonları kapatabilir miyim?",
-                   answer: "Evet, Ayarlar menüsünden sesleri ve animasyonları kapatabilirsiniz.",
-                   isExpanded: false),
-            FAQItem(question: "İstatistiklerimi nereden görebilirim?",
-                   answer: "Ana ekrandan 'Profil' bölümüne girerek başarılarınızı ve istatistiklerinizi görebilirsiniz.",
-                   isExpanded: false),
-            FAQItem(question: "Bu oyun hangi yaş grubuna uygundur?",
-                   answer: "Temel aritmetik bilgisine sahip 7 yaş ve üzeri herkes için uygundur.",
-                   isExpanded: false)
-        ]
+    var numberOfItems: Int {
+        return items.count
     }
     
-    func toggleItem(at index: Int) {
+    func item(at index: Int) -> FAQItem {
+        return items[index]
+    }
+    
+    func toggleExpansion(at index: Int) {
         guard items.indices.contains(index) else { return }
         items[index].isExpanded.toggle()
         delegate?.didUpdateFAQItems()

@@ -11,14 +11,16 @@ import IQKeyboardManagerSwift
 import IQKeyboardToolbarManager
 import IQKeyboardReturnManager
 import FirebaseCore
+import UserNotifications
 
 @main
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         configureKeyboardManager()
         configureToolbarManager()
         configureFirebase()
+        UNUserNotificationCenter.current().delegate = self
         return true
     }
     

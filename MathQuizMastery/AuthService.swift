@@ -118,7 +118,8 @@ class AuthService : AuthServiceProtocol {
                 return
             }
             
-            let user = User(uid: uid, username: username, email: email, coin: coin)
+            let avatarImageName = data["avatarImageName"] as? String
+            let user = User(uid: uid, username: username, email: email, coin: coin, avatarImageName: avatarImageName!)
             completion(.success(user))
         }
     }
@@ -126,7 +127,7 @@ class AuthService : AuthServiceProtocol {
     /// Kullanıcının coin bilgisini manuel olarak belirli bir değere günceller.
     ///
     /// - Parameters:
-    ///   - uid: Güncellenecek kullanıcının UID’si.
+    ///   - uid: Güncellenecek kullanıcının UID'si.
     ///   - newCoin: Yeni coin değeri.
     ///   - completion: İşlem tamamlandığında hata varsa `error`, yoksa `nil` döner.
     func updateUserCoin(uid: String, by amount: Int, completion: @escaping (Result<Void, Error>) -> Void) {
@@ -159,8 +160,8 @@ class AuthService : AuthServiceProtocol {
     
     /// Kullanıcının coin bilgisini belirtilen miktar kadar artırır.
     /// - Parameters:
-    ///   - uid: Coin’i artırılacak kullanıcının UID’si.
-    ///   - amount: Coin’e eklenecek değer.
+    ///   - uid: Coin'i artırılacak kullanıcının UID'si.
+    ///   - amount: Coin'e eklenecek değer.
     ///   - completion: İşlem tamamlandığında hata varsa `error`, yoksa `nil` döner.
     func incrementUserCoin(uid: String, by amount: Int, completion: @escaping ((any Error)?) -> Void) {
         db.collection("users").document(uid).updateData([

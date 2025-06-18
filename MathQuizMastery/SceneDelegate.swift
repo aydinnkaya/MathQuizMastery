@@ -21,11 +21,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let window = UIWindow(windowScene: windowScene)
         let navController = UINavigationController()
         let coordinator = AppCoordinator(navigationController: navController)
-        coordinator.start()
-
+        self.appCoordinator = coordinator
         window.rootViewController = navController
         self.window = window
         window.makeKeyAndVisible()
+        coordinator.checkAuthentication()
     }
     
     //    private func setupWindow(with scene: UIScene) {
