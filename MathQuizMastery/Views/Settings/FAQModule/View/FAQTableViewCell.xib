@@ -55,6 +55,7 @@
                                     <constraint firstItem="ans-Lb-FkT" firstAttribute="leading" secondItem="ans-Pr-FkT" secondAttribute="leading" constant="8" id="2Ux-Oe-Ygl"/>
                                     <constraint firstAttribute="trailing" secondItem="ans-Lb-FkT" secondAttribute="trailing" constant="8" id="3Ux-Oe-Ygm"/>
                                     <constraint firstItem="ans-Lb-FkT" firstAttribute="top" secondItem="ans-Pr-FkT" secondAttribute="top" constant="8" id="4Ux-Oe-Ygn"/>
+                                    <constraint firstAttribute="height" constant="40" id="ans-height"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -96,6 +97,7 @@
                 <outlet property="answerContainer" destination="ans-Pr-FkT" id="gUx-Oe-Ygz"/>
                 <outlet property="answerLabel" destination="ans-Lb-FkT" id="hUx-Oe-Yg0"/>
                 <outlet property="arrowImageView" destination="img-Pr-FkT" id="iUx-Oe-Yg1"/>
+                <outlet property="answerHeightConstraint" destination="ans-height" id="ans-height-outlet"/>
                 <outlet property="questionLabel" destination="ttl-Pr-FkT" id="jUx-Oe-Yg2"/>
             </connections>
             <point key="canvasLocation" x="139" y="20"/>

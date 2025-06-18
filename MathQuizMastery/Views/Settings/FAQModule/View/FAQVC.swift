@@ -51,10 +51,16 @@ class FAQVC: UIViewController {
         popupView.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
         popupView.alpha = 0
         
+        // Apply space theme styling
+        stylePopupView()
+        
+        // Set up title label
         titleLabel.text = "Sıkça Sorulan Sorular"
         titleLabel.textColor = .white
+        titleLabel.font = .systemFont(ofSize: 20, weight: .bold)
         
-        closeButton.tintColor = .white
+        // Set up close button
+        closeButton.tintColor = UIColor(red: 0.455, green: 0.816, blue: 0.988, alpha: 1.0)
     }
     
     private func setupTableView() {
@@ -70,6 +76,9 @@ class FAQVC: UIViewController {
         // Set estimated row height for better performance
         tableView.estimatedRowHeight = 100
         tableView.rowHeight = UITableView.automaticDimension
+        
+        // Add some padding to the tableView
+        tableView.contentInset = UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0)
     }
     
     private func setupGestures() {
@@ -79,7 +88,7 @@ class FAQVC: UIViewController {
     }
     
     private func animateIn() {
-        UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut) {
+        UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.5, options: .curveEaseOut) {
             self.backgroundView.alpha = 1
             self.popupView.transform = .identity
             self.popupView.alpha = 1
@@ -87,7 +96,7 @@ class FAQVC: UIViewController {
     }
     
     private func animateOut(completion: @escaping () -> Void) {
-        UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut) {
+        UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseIn) {
             self.backgroundView.alpha = 0
             self.popupView.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
             self.popupView.alpha = 0

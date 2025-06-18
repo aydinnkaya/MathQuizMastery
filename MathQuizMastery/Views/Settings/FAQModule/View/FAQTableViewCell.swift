@@ -72,7 +72,7 @@ class FAQTableViewCell: UITableViewCell {
         guard let text = answerLabel.text else { return 0 }
         
         // Get the available width for the answer label
-        let availableWidth = answerContainer.bounds.width - 24 // 12pt padding on each side
+        let availableWidth = answerContainer.bounds.width - 16 // 8pt padding on each side
         
         let font = answerLabel.font ?? .systemFont(ofSize: 14)
         let constraintRect = CGSize(width: availableWidth, height: .greatestFiniteMagnitude)
@@ -92,7 +92,11 @@ class FAQTableViewCell: UITableViewCell {
         
         // Update answer height if expanded
         if answerHeightConstraint.constant > 0 {
-            answerHeightConstraint.constant = calculateAnswerHeight()
+            let newHeight = calculateAnswerHeight()
+            if newHeight != answerHeightConstraint.constant {
+                answerHeightConstraint.constant = newHeight
+                layoutIfNeeded()
+            }
         }
     }
 }

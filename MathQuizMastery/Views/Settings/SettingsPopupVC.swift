@@ -109,7 +109,7 @@ extension SettingsPopupVC: SettingsPopupDelegate {
     }
     
     func tappedNotifications() {
-        // Bildirim ayarları ekranına yönlendir
+        NotificationPermissionService.shared.openSettings()
     }
     
     func tappedFAQ() {

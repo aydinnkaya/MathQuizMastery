@@ -60,6 +60,10 @@
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="100" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="table-view">
                             <rect key="frame" x="0.0" y="72" width="353" height="508"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <outlet property="dataSource" destination="-1" id="table-datasource"/>
+                                <outlet property="delegate" destination="-1" id="table-delegate"/>
+                            </connections>
                         </tableView>
                     </subviews>
                     <color key="backgroundColor" red="0.078431372549019607" green="0.078431372549019607" blue="0.078431372549019607" alpha="0.90000000000000002" colorSpace="custom" customColorSpace="sRGB"/>

@@ -9,8 +9,8 @@ import Foundation
 import UIKit
 import FirebaseAuth
 
-protocol Coordinator{
-    var navigationController: UINavigationController { get set}
+protocol Coordinator {
+    var navigationController: UINavigationController { get set }
     func start()
 }
 
@@ -20,7 +20,7 @@ enum PopupType {
     case faq
 }
 
-class AppCoordinator : Coordinator {
+class AppCoordinator: Coordinator {
     
     var navigationController: UINavigationController
     let backImage = UIImage(named: "back_button")?.withRenderingMode(.alwaysOriginal)
@@ -31,7 +31,7 @@ class AppCoordinator : Coordinator {
     }
     
     func start() {
-        goToLogin()
+        checkAuthentication()
     }
     
     func checkAuthentication() {
@@ -57,14 +57,14 @@ class AppCoordinator : Coordinator {
     
     // MARK: - Geçişler
     func goToLogin() {
-        let viewModel =  LoginViewModel()
-        let loginVC = LoginVC(viewModel:viewModel, coordinator: self)
+        let viewModel = LoginViewModel()
+        let loginVC = LoginVC(viewModel: viewModel, coordinator: self)
         navigationController.setViewControllers([loginVC], animated: true)
     }
     
     func goToRegister() {
-        let viewModel =  RegisterViewModel()
-        let registerVC = RegisterVC(viewModel:viewModel, coordinator: self)
+        let viewModel = RegisterViewModel()
+        let registerVC = RegisterVC(viewModel: viewModel, coordinator: self)
         
         navigationController.navigationBar.backIndicatorImage = backImage
         navigationController.navigationBar.backIndicatorTransitionMaskImage = backImage
@@ -78,47 +78,48 @@ class AppCoordinator : Coordinator {
     }
     
     func goToAvatarPopup() {
-        let viewModel = AvatarPopupViewModel()
-        let avatarPopupVC = AvatarPopupVC(viewModel: viewModel, coordinator: self)
-        avatarPopupVC.view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
-        avatarPopupVC.modalPresentationStyle = .overFullScreen
-        avatarPopupVC.modalTransitionStyle = .flipHorizontal
-        navigationController.present(avatarPopupVC, animated: true, completion: nil)
-    }
+            let viewModel = AvatarPopupViewModel()
+            let avatarPopupVC = AvatarPopupVC(viewModel: viewModel, coordinator: self)
+            avatarPopupVC.view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+            avatarPopupVC.modalPresentationStyle = .overFullScreen
+            avatarPopupVC.modalTransitionStyle = .flipHorizontal
+            navigationController.present(avatarPopupVC, animated: true, completion: nil)
+        }
     
     func goToSettingsPopup() {
-        let viewModel = SettingsPopupViewModel()
-        let popupVC = SettingsPopupVC(viewModel: viewModel, coordinator: self)
-        popupVC.view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
-        popupVC.modalPresentationStyle = .overFullScreen
-        popupVC.modalTransitionStyle = .flipHorizontal
-        navigationController.present(popupVC, animated: true, completion: nil)
-    }
+           let viewModel = SettingsPopupViewModel()
+           let popupVC = SettingsPopupVC(viewModel: viewModel, coordinator: self)
+           popupVC.view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+           popupVC.modalPresentationStyle = .overFullScreen
+           popupVC.modalTransitionStyle = .flipHorizontal
+           navigationController.present(popupVC, animated: true, completion: nil)
+       }
     
     func goToFAQPopup() {
         let faqVC = FAQVC(coordinator: self)
-        faqVC.view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
-        faqVC.modalPresentationStyle = .overFullScreen
-        faqVC.modalTransitionStyle = .flipHorizontal
-        navigationController.present(faqVC, animated: true, completion: nil)
+        presentPopupViewController(faqVC)
+    }
+    
+    func showPopup(_ type: PopupType) {
+        switch type {
+        case .settings:
+            goToSettingsPopup()
+        case .avatar:
+            goToAvatarPopup()
+        case .faq:
+            goToFAQPopup()
+        }
     }
     
     func replacePopup(with popupType: PopupType) {
         dismissCurrentPopup { [weak self] in
-            switch popupType {
-            case .avatar:
-                self?.goToAvatarPopup()
-            case .settings:
-                self?.goToSettingsPopup()
-            case .faq:
-                self?.goToFAQPopup()
-            }
+            self?.showPopup(popupType)
         }
     }
     
     func dismissCurrentPopup(completion: (() -> Void)? = nil) {
         if let presentedVC = navigationController.presentedViewController {
-            presentedVC.dismiss(animated: true) {
+            presentedVC.dismiss(animated: false) {
                 self.currentPopupViewController = nil
                 completion?()
             }
@@ -164,11 +165,13 @@ class AppCoordinator : Coordinator {
     func goToHomeAfterResult() {
         guard let uid = Auth.auth().currentUser?.uid else { return }
         AuthService.shared.fetchUserData(uid: uid) { [weak self] result in
-            switch result {
-            case .success(let user):
-                self?.goToHome(with: user)
-            case .failure(let error):
-                print("Home fetch failed: \(error.localizedDescription)")
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let user):
+                    self?.goToHome(with: user)
+                case .failure(let error):
+                    print("Home fetch failed: \(error.localizedDescription)")
+                }
             }
         }
     }
@@ -181,7 +184,6 @@ class AppCoordinator : Coordinator {
     private func presentPopupViewController(_ viewController: UIViewController) {
         viewController.modalPresentationStyle = .overFullScreen
         viewController.modalTransitionStyle = .crossDissolve
-        viewController.view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
         
         if let presentedVC = navigationController.presentedViewController {
             presentedVC.dismiss(animated: false) { [weak self] in
@@ -193,8 +195,4 @@ class AppCoordinator : Coordinator {
             currentPopupViewController = viewController
         }
     }
-    
-    
-    
 }
-
