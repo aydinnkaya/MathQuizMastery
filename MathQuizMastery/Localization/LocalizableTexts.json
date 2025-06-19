@@ -697,8 +697,8 @@
         "nl": "Uitloggen"
     },
     "error_title": {
-      "en": "Error",
-      "tr": "Hata"
+        "en": "Error",
+        "tr": "Hata"
     },
     "login_title": {
         "tr": "Giriş Yap",
@@ -756,6 +756,97 @@
         "tr": "Bildirim izni verildi.",
         "en": "Notification permission granted."
     },
+    "notification_permission_cancel": {
+        "en": "Cancel",
+        "tr": "İptal"
+    },
+    "notification_section_general": {
+        "en": "General",
+        "tr": "Genel"
+    },
+    "notification_section_quiz": {
+        "en": "Quiz",
+        "tr": "Quiz"
+    },
+    "notification_time_format": {
+      "en": "Time: %@",
+      "tr": "Saat: %@"
+    },
+    "notification_section_achievement": {
+        "en": "Achievement",
+        "tr": "Başarılar"
+    },
+    "notification_time_format": {
+      "en": "Time: %@",
+      "tr": "Saat: %@"
+    },
+    "notification_new_features": {
+        "en": "New Features",
+        "tr": "Yeni Özellikler"
+    },
+    "notification_new_features_desc": {
+        "en": "Stay updated with the latest features.",
+        "tr": "En son özelliklerden haberdar olun."
+    },
+    
+    "notification_weekly_report": {
+        "en": "Weekly Report",
+        "tr": "Haftalık Rapor"
+    },
+    "notification_weekly_report_desc": {
+        "en": "Receive a report of your weekly progress.",
+        "tr": "Haftalık ilerleme raporunu alın."
+    },
+    
+    "notification_quiz_reminder": {
+        "en": "Quiz Reminder",
+        "tr": "Quiz Hatırlatıcısı"
+    },
+    "notification_quiz_reminder_desc": {
+        "en": "Don't forget to complete your daily quiz.",
+        "tr": "Günlük quizini tamamlamayı unutma."
+    },
+    
+    "notification_daily_challenge": {
+        "en": "Daily Challenge",
+        "tr": "Günlük Görev"
+    },
+    "notification_daily_challenge_desc": {
+        "en": "Take part in daily challenges and improve.",
+        "tr": "Günlük görevlerde yer al ve geliş."
+    },
+    
+    "notification_streak_reminder": {
+        "en": "Streak Reminder",
+        "tr": "Seri Hatırlatıcısı"
+    },
+    "notification_streak_reminder_desc": {
+        "en": "Keep your streak alive with daily practice.",
+        "tr": "Serini günlük pratikle sürdür."
+    },
+    
+    "notification_achievements": {
+        "en": "Achievements",
+        "tr": "Başarılar"
+    },
+    "notification_achievements_desc": {
+        "en": "Get notified when you unlock new achievements.",
+        "tr": "Yeni başarılar kazandığında bildirim al."
+    },
+    
+    "quiz_reminder_title": {
+        "en": "Time for your quiz!",
+        "tr": "Quiz zamanı!"
+    },
+    "quiz_reminder_body": {
+        "en": "Don't forget to complete today's quiz to keep your streak.",
+        "tr": "Serini devam ettirmek için bugünün quizini yapmayı unutma."
+    },
+    
+    "notification_permission_settings": {
+        "en": "Settings",
+        "tr": "Ayarlar"
+    },
     "yes": "Yes",
     "no": "No",
     "home_title": "Math Quiz Mastery",
@@ -807,4 +898,6 @@
     "report_submit": "Submit",
     "report_success": "Thank you for your report!",
     "report_error": "Failed to submit report"
+    
+    
 }

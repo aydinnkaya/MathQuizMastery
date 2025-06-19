@@ -23,7 +23,7 @@ enum LocalizedKey: String {
     case weak_password
     case name_required
     case passwords_do_not_match
-
+    
     // MARK: - Login Ekranı
     case log_in
     case login_success
@@ -31,20 +31,19 @@ enum LocalizedKey: String {
     case email_required
     case password_required
     case password_too_short
-
+    
     // MARK: - Genel Butonlar
     case ok
     case cancel
-    case settings 
-
+    case settings
+    
     // MARK: - Uyarılar
     case loading
     case success
     case error
     case warning
     case error_title
-
-
+    
     // MARK: - Ayarlar
     case settings_profile
     case settings_notifications
@@ -57,12 +56,16 @@ enum LocalizedKey: String {
     case logout_message
     case logout_cancel
     case logout_confirm
-
+    
     // MARK: - Notification Permission Alerts (Yeni eklendi)
     case notification_permission_title
     case notification_permission_message
     case notification_permission_error
-
+    
+    // MARK: - Notification Permission Buttons (Yeni eklendi)
+    case notification_permission_cancel
+    case notification_permission_settings
+    
     // Auth
     case login_title = "login_title"
     case login_button = "login_button"
@@ -74,7 +77,7 @@ enum LocalizedKey: String {
     case login_error = "login_error"
     case validation_error = "validation_error"
     case settings_title = "settings_title"
-
+    
     // Game
     case game_title = "game_title"
     case game_score = "game_score"
@@ -87,14 +90,14 @@ enum LocalizedKey: String {
     case game_quit = "game_quit"
     case game_next = "game_next"
     case game_previous = "game_previous"
-
+    
     // Notifications
     case notification_title = "notification_title"
     case notification_message = "notification_message"
     case notification_settings = "notification_settings"
     case notification_permission_denied = "notification_permission_denied"
     case notification_permission_granted = "notification_permission_granted"
-
+    
     // MARK: - Common
     case yes = "yes"
     case no = "no"
@@ -148,6 +151,28 @@ enum LocalizedKey: String {
     case notifications_weekly = "notifications_weekly"
     case notifications_time = "notifications_time"
     
+    // Notification Sections
+    case notification_section_general
+    case notification_section_quiz
+    case notification_section_achievement
+    
+    // Notification Settings Titles & Descriptions
+    case notification_new_features
+    case notification_new_features_desc
+    case notification_weekly_report
+    case notification_weekly_report_desc
+    case notification_quiz_reminder
+    case notification_quiz_reminder_desc
+    case notification_daily_challenge
+    case notification_daily_challenge_desc
+    case notification_streak_reminder
+    case notification_streak_reminder_desc
+    case notification_achievements
+    case notification_achievements_desc
+    
+    // Notification Content Titles & Bodies
+    case quiz_reminder_title
+    case quiz_reminder_body
     // MARK: - FAQ
     case faq_title = "faq_title"
     case faq_empty = "faq_empty"
@@ -158,4 +183,7 @@ enum LocalizedKey: String {
     case report_submit = "report_submit"
     case report_success = "report_success"
     case report_error = "report_error"
+    
+    case notification_time_format
+
 }
