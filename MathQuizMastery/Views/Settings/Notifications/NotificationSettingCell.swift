@@ -31,6 +31,9 @@ class NotificationSettingCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         setupUI()
+        descriptionLabel.numberOfLines = 0
+        descriptionLabel.lineBreakMode = .byWordWrapping
+        self.layoutIfNeeded()
     }
     
     override func prepareForReuse() {
@@ -107,8 +110,10 @@ class NotificationSettingCell: UITableViewCell {
         
         // Time label
         if let defaultTime = setting.defaultTime {
-            timeLabel.text = L(.notification_time_format)
+            timeLabel.text = defaultTime
             timeLabel.isHidden = false
+            timeLabel.numberOfLines = 1
+            timeLabel.textAlignment = .right
         } else {
             timeLabel.isHidden = true
         }

@@ -42,6 +42,8 @@ class NotificationSettingsVC: UIViewController {
         setupTableView()
         setupViewModel()
         checkNotificationPermission()
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 60
     }
     
     override func viewDidLayoutSubviews() {

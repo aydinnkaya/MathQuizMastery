@@ -37,11 +37,8 @@
                                 <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Günlük quiz çözme hatırlatıcısı" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UZR-wK-Q3a">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Günlük quiz çözme hatırlatıcısı" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UZR-wK-Q3a">
                                 <rect key="frame" x="44" y="29" width="172.5" height="14.5"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="200" id="FLf-YX-G73"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -50,7 +47,7 @@
                                 <rect key="frame" x="298" y="10.5" width="51" height="31"/>
                                 <color key="onTintColor" red="0.48235294117647065" green="0.38039215686274508" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </switch>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lGI-Ig-cYf">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lGI-Ig-cYf">
                                 <rect key="frame" x="245" y="6" width="20" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="20" id="8J4-JZ-sHi"/>
@@ -60,14 +57,16 @@
                                     <color key="titleColor" red="0.48235294117647065" green="0.38039215686274508" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="09:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MfL-Nc-cgh">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="09:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MfL-Nc-cgh">
                                 <rect key="frame" x="243" y="29" width="31.5" height="13.5"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="50" id="Cjj-7x-xBp"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
+                                <color key="textColor" red="0.48199999999999998" green="0.38" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="setContentCompressionResistancePriority:forAxis:">
+                                        <integer key="value" value="0"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -78,13 +77,13 @@
                             <constraint firstItem="UZR-wK-Q3a" firstAttribute="leading" secondItem="vuo-pI-eHp" secondAttribute="trailing" constant="12" id="AH8-XJ-vYA"/>
                             <constraint firstItem="wad-8A-drJ" firstAttribute="centerY" secondItem="mCP-Ag-wGF" secondAttribute="centerY" id="BZR-Sx-QGL"/>
                             <constraint firstItem="vuo-pI-eHp" firstAttribute="leading" secondItem="mCP-Ag-wGF" secondAttribute="leading" constant="12" id="CLF-M4-b7L"/>
-                            <constraint firstItem="MfL-Nc-cgh" firstAttribute="top" secondItem="lGI-Ig-cYf" secondAttribute="bottom" constant="3" id="DYz-a8-uGU"/>
+                            <constraint firstItem="MfL-Nc-cgh" firstAttribute="top" secondItem="lGI-Ig-cYf" secondAttribute="bottom" constant="6" id="DYz-a8-uGU"/>
                             <constraint firstItem="UZR-wK-Q3a" firstAttribute="top" secondItem="fEF-gW-7zT" secondAttribute="bottom" constant="2" id="OQD-mq-dvC"/>
-                            <constraint firstItem="lGI-Ig-cYf" firstAttribute="trailing" secondItem="wad-8A-drJ" secondAttribute="leading" constant="46" id="UlM-eS-M8B"/>
                             <constraint firstItem="fEF-gW-7zT" firstAttribute="top" secondItem="mCP-Ag-wGF" secondAttribute="top" constant="8" id="YlU-tl-DtF"/>
                             <constraint firstAttribute="bottom" secondItem="MfL-Nc-cgh" secondAttribute="bottom" id="fBl-Hf-e6h"/>
                             <constraint firstItem="lGI-Ig-cYf" firstAttribute="centerY" secondItem="mCP-Ag-wGF" secondAttribute="centerY" id="frY-ce-lKj"/>
-                            <constraint firstItem="MfL-Nc-cgh" firstAttribute="trailing" secondItem="lGI-Ig-cYf" secondAttribute="trailing" constant="10" id="gpF-Jk-7OY"/>
+                            <constraint firstItem="MfL-Nc-cgh" firstAttribute="leading" secondItem="lGI-Ig-cYf" secondAttribute="leading" id="time-leading-to-info"/>
+                            <constraint firstItem="MfL-Nc-cgh" firstAttribute="trailing" secondItem="lGI-Ig-cYf" secondAttribute="trailing" id="time-trailing-to-info"/>
                         </constraints>
                     </view>
                 </subviews>
