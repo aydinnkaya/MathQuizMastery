@@ -62,16 +62,16 @@
                         <constraint firstItem="HlT-Zm-0ex" firstAttribute="trailing" secondItem="0FB-EQ-P8a" secondAttribute="trailing" constant="-16" id="close-trailing"/>
                         <constraint firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="popup-centerX"/>
                         <constraint firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="popup-centerY"/>
+                        <constraint firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.75" id="popup-height-ratio"/>
                         <constraint firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="32" id="popup-leading"/>
                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="480" id="popup-min-height"/>
                         <constraint firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailing" constant="-32" id="popup-trailing"/>
+                        <constraint firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.9" id="popup-width-ratio"/>
                         <constraint firstItem="WJd-eI-B8M" firstAttribute="leading" secondItem="0FB-EQ-P8a" secondAttribute="leading" id="table-leading"/>
                         <constraint firstItem="WJd-eI-B8M" firstAttribute="top" secondItem="4cF-y7-Rks" secondAttribute="bottom" constant="16" id="table-top"/>
                         <constraint firstItem="WJd-eI-B8M" firstAttribute="trailing" secondItem="0FB-EQ-P8a" secondAttribute="trailing" id="table-trailing"/>
                         <constraint firstItem="4cF-y7-Rks" firstAttribute="leading" secondItem="0FB-EQ-P8a" secondAttribute="leading" constant="16" id="title-leading"/>
                         <constraint firstItem="4cF-y7-Rks" firstAttribute="top" secondItem="0FB-EQ-P8a" secondAttribute="top" constant="24" id="title-top"/>
-                        <constraint firstItem="0FB-EQ-P8a" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.9" id="popup-width-ratio"/>
-                        <constraint firstItem="0FB-EQ-P8a" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.75" id="popup-height-ratio"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -82,7 +82,13 @@
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YMz-YL-QSV">
                     <rect key="frame" x="16" y="420" width="318" height="44"/>
                     <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="0FB-EQ-P8a" secondAttribute="bottom" id="save-bottom"/>
+                        <constraint firstAttribute="centerX" secondItem="0FB-EQ-P8a" secondAttribute="centerX" id="save-centerX"/>
+                        <constraint firstAttribute="height" constant="44" id="save-height"/>
+                        <constraint firstAttribute="width" secondItem="0FB-EQ-P8a" secondAttribute="width" multiplier="0.45" id="save-width-half"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                     <state key="normal" title="Kaydet">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -91,25 +97,20 @@
                             <real key="value" value="22"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
-                    <constraints>
-                        <constraint firstAttribute="centerX" secondItem="0FB-EQ-P8a" secondAttribute="centerX" id="save-centerX"/>
-                        <constraint firstAttribute="bottom" secondItem="0FB-EQ-P8a" secondAttribute="bottom" id="save-bottom"/>
-                        <constraint firstAttribute="width" secondItem="0FB-EQ-P8a" secondAttribute="width" multiplier="0.45" id="save-width-half"/>
-                        <constraint firstAttribute="height" constant="44" id="save-height"/>
-                    </constraints>
                 </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2D-GAO"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
+                <constraint firstItem="YMz-YL-QSV" firstAttribute="centerX" secondItem="fnl-2D-GAO" secondAttribute="centerX" id="4vt-QC-Rbh"/>
                 <constraint firstItem="BGV-001" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="5b3-oG-MoL"/>
                 <constraint firstItem="0FB-EQ-P8a" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="BLe-QH-7V7"/>
                 <constraint firstAttribute="trailing" secondItem="BGV-001" secondAttribute="trailing" id="HWq-7g-mPD"/>
                 <constraint firstItem="0FB-EQ-P8a" firstAttribute="leading" secondItem="BGV-001" secondAttribute="leading" constant="32" id="KWi-vU-3X9"/>
                 <constraint firstItem="BGV-001" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Q5G-Xl-1tN"/>
                 <constraint firstAttribute="bottom" secondItem="BGV-001" secondAttribute="bottom" id="Ul5-UD-U6r"/>
-                <constraint firstItem="BGV-001" firstAttribute="trailing" secondItem="0FB-EQ-P8a" secondAttribute="trailing" constant="32" id="zev-1V-UvW"/>
                 <constraint firstItem="WJd-eI-B8M" firstAttribute="bottom" secondItem="YMz-YL-QSV" secondAttribute="top" constant="-12" id="table-bottom"/>
+                <constraint firstItem="BGV-001" firstAttribute="trailing" secondItem="0FB-EQ-P8a" secondAttribute="trailing" constant="32" id="zev-1V-UvW"/>
             </constraints>
             <point key="canvasLocation" x="139" y="14"/>
         </view>
