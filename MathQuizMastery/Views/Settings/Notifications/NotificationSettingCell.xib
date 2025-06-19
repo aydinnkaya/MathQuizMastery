@@ -77,13 +77,14 @@
                             <constraint firstItem="UZR-wK-Q3a" firstAttribute="leading" secondItem="vuo-pI-eHp" secondAttribute="trailing" constant="12" id="AH8-XJ-vYA"/>
                             <constraint firstItem="wad-8A-drJ" firstAttribute="centerY" secondItem="mCP-Ag-wGF" secondAttribute="centerY" id="BZR-Sx-QGL"/>
                             <constraint firstItem="vuo-pI-eHp" firstAttribute="leading" secondItem="mCP-Ag-wGF" secondAttribute="leading" constant="12" id="CLF-M4-b7L"/>
-                            <constraint firstItem="MfL-Nc-cgh" firstAttribute="top" secondItem="lGI-Ig-cYf" secondAttribute="bottom" constant="6" id="DYz-a8-uGU"/>
-                            <constraint firstItem="UZR-wK-Q3a" firstAttribute="top" secondItem="fEF-gW-7zT" secondAttribute="bottom" constant="2" id="OQD-mq-dvC"/>
-                            <constraint firstItem="fEF-gW-7zT" firstAttribute="top" secondItem="mCP-Ag-wGF" secondAttribute="top" constant="8" id="YlU-tl-DtF"/>
-                            <constraint firstAttribute="bottom" secondItem="MfL-Nc-cgh" secondAttribute="bottom" id="fBl-Hf-e6h"/>
+                            <constraint firstItem="lGI-Ig-cYf" firstAttribute="trailing" secondItem="wad-8A-drJ" secondAttribute="leading" constant="-16" id="info-to-switch"/>
                             <constraint firstItem="lGI-Ig-cYf" firstAttribute="centerY" secondItem="mCP-Ag-wGF" secondAttribute="centerY" id="frY-ce-lKj"/>
+                            <constraint firstItem="MfL-Nc-cgh" firstAttribute="top" secondItem="lGI-Ig-cYf" secondAttribute="bottom" constant="4" id="time-to-info-vertical"/>
                             <constraint firstItem="MfL-Nc-cgh" firstAttribute="leading" secondItem="lGI-Ig-cYf" secondAttribute="leading" id="time-leading-to-info"/>
                             <constraint firstItem="MfL-Nc-cgh" firstAttribute="trailing" secondItem="lGI-Ig-cYf" secondAttribute="trailing" id="time-trailing-to-info"/>
+                            <constraint firstAttribute="bottom" secondItem="MfL-Nc-cgh" secondAttribute="bottom" id="fBl-Hf-e6h"/>
+                            <constraint firstItem="fEF-gW-7zT" firstAttribute="top" secondItem="mCP-Ag-wGF" secondAttribute="top" constant="8" id="YlU-tl-DtF"/>
+                            <constraint firstItem="UZR-wK-Q3a" firstAttribute="top" secondItem="fEF-gW-7zT" secondAttribute="bottom" constant="2" id="OQD-mq-dvC"/>
                         </constraints>
                     </view>
                 </subviews>

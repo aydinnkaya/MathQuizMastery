@@ -35,6 +35,13 @@ class ResultVC: UIViewController {
         
         scoreLabel.text = viewModel.getScoreText()
         coinLabel.text = viewModel.getCoinText()
+        coinLabel.textAlignment = .center
+        coinLabel.textColor = .white
+        coinLabel.font = UIFont.boldSystemFont(ofSize: 51)
+        coinLabel.layer.shadowColor = UIColor.black.cgColor
+        coinLabel.layer.shadowRadius = 4
+        coinLabel.layer.shadowOpacity = 0.4
+        coinLabel.layer.shadowOffset = CGSize(width: 0, height: 2)
         categoryButton.clipsToBounds = true
         navigationItem.hidesBackButton = true
         

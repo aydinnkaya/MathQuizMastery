@@ -175,6 +175,8 @@ enum LocalizedKey: String {
     case result_play_again = "result_play_again"
     case result_home = "result_home"
     case result_share = "result_share"
+    /// Sonuç ekranı: "{0} kategorisinde {1} doğru cevap verdin!"
+    case result_score_text = "result_score_text"
     
     // MARK: - FAQ
     case faq_title = "faq_title"

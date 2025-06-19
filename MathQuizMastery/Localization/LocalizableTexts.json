@@ -798,5 +798,19 @@
         "zh-Hans": "跟踪你的成就。",
         "ar": "تتبع إنجازاتك.",
         "nl": "Volg je prestaties."
+    },
+    "result_score_text": {
+        "tr": "%@ kategorisinde %@ doğru cevap verdin!",
+        "en": "You answered %@ questions correctly in the %@ category!",
+        "de": "Du hast %@ Fragen richtig in der Kategorie %@ beantwortet!",
+        "es": "¡Respondiste correctamente %@ preguntas en la categoría %@!",
+        "fr": "Vous avez répondu correctement à %@ questions dans la catégorie %@ !",
+        "it": "Hai risposto correttamente a %@ domande nella categoria %@!",
+        "pt-BR": "Você respondeu corretamente %@ perguntas na categoria %@!",
+        "ja": "あなたは%@カテゴリで%@問正解しました！",
+        "ko": "%@ 카테고리에서 %@문제를 맞췄어요!",
+        "zh-Hans": "你在%@类别中答对了%@道题！",
+        "ar": "لقد أجبت بشكل صحيح على %@ أسئلة في فئة %@!",
+        "nl": "Je hebt %@ vragen correct beantwoord in de categorie %@!"
     }
 }

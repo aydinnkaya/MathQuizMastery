@@ -69,11 +69,15 @@
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cup_gold" translatesAutoresizingMaskIntoConstraints="NO" id="sHc-Ab-AuW">
                     <rect key="frame" x="72" y="106" width="249" height="319"/>
                 </imageView>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="result_coin" translatesAutoresizingMaskIntoConstraints="NO" id="nL1-I6-VWH">
-                    <rect key="frame" x="140.66666666666666" y="531" width="112" height="112"/>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="result_coin" translatesAutoresizingMaskIntoConstraints="NO" id="nL1-I6-VWH">
+                    <rect key="frame" x="140.66666666666666" y="499" width="112" height="144"/>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="10" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S7l-xU-skj" userLabel="coin_label">
-                    <rect key="frame" x="159" y="546" width="80" height="80"/>
+                    <rect key="frame" x="137" y="531" width="112" height="112"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="112" id="height-coin-label"/>
+                        <constraint firstAttribute="width" constant="112" id="width-coin-label"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="51"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -91,9 +95,10 @@
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="b9W-x0-Ffw" secondAttribute="trailing" constant="32" id="Wjm-a0-QEH"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="S7l-xU-skj" secondAttribute="bottom" constant="157" id="X0e-34-Nf0"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="nL1-I6-VWH" secondAttribute="bottom" constant="141" id="Z5C-6N-9up"/>
+                <constraint firstItem="S7l-xU-skj" firstAttribute="centerX" secondItem="nL1-I6-VWH" secondAttribute="centerX" id="centerX-coin-label-to-coin-image"/>
+                <constraint firstItem="S7l-xU-skj" firstAttribute="centerY" secondItem="nL1-I6-VWH" secondAttribute="centerY" id="centerY-coin-label-to-coin-image"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="top" secondItem="sHc-Ab-AuW" secondAttribute="top" constant="12" id="fls-OV-viw"/>
                 <constraint firstItem="b9W-x0-Ffw" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="oML-64-aWq"/>
-                <constraint firstItem="S7l-xU-skj" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="pns-7Z-I0D"/>
                 <constraint firstItem="uNc-kB-bbG" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="298" id="tKH-6W-Rdy"/>
                 <constraint firstItem="uNc-kB-bbG" firstAttribute="centerX" secondItem="nL1-I6-VWH" secondAttribute="centerX" id="tKJ-yW-lTD"/>
             </constraints>
