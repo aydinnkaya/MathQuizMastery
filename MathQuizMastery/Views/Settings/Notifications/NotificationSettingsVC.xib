@@ -39,6 +39,9 @@
                                 <constraint firstAttribute="width" constant="24" id="keF-jD-HFP"/>
                             </constraints>
                             <state key="normal" image="xmark"/>
+                            <connections>
+                                <action selector="closeButtonTapped:" destination="-1" eventType="touchUpInside" id="SJH-Vb-mU6"/>
+                            </connections>
                         </button>
                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Bildirim Ayarları" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4cF-y7-Rks">
                             <rect key="frame" x="16" y="24" width="156" height="26.5"/>
@@ -62,6 +65,9 @@
                                     <real key="value" value="12"/>
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="saveButtonTapped:" destination="-1" eventType="touchUpInside" id="Mh8-95-qnc"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
