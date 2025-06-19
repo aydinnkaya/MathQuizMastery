@@ -56,10 +56,10 @@
                                     <constraint firstAttribute="width" constant="20" id="8J4-JZ-sHi"/>
                                     <constraint firstAttribute="height" constant="20" id="iDb-Hl-aL7"/>
                                 </constraints>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" image="info.circle" catalog="system">
                                     <color key="titleColor" red="0.48235294117647065" green="0.38039215686274508" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <constraint firstAttribute="trailing" secondItem="wad-8A-drJ" secondAttribute="leading" constant="-32" id="info-to-switch"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="09:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MfL-Nc-cgh">
                                 <rect key="frame" x="292.5" y="38.5" width="31.5" height="13.5"/>
