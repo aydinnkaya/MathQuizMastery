@@ -274,8 +274,8 @@ class GameVC: UIViewController {
         }
         
         // Trigger quantum explosion for new question
-        questionLabel.triggerCosmicExplosion()
-        timeLabel.triggerTimeWarp()
+       // questionLabel.triggerCosmicExplosion()
+     //   timeLabel.triggerTimeWarp()
     }
     
     private func handleAnswer(for button: SpaceNeonButton) {
@@ -292,7 +292,7 @@ class GameVC: UIViewController {
         
         if correct {
             // Correct answer effects
-            selectedButton.triggerQuantumExplosion()
+       //     selectedButton.triggerQuantumExplosion()
             triggerCorrectAnswerCosmicEffect()
             
             // Change button appearance for correct answer
@@ -415,16 +415,16 @@ extension GameVC: GameScreenViewModelDelegate {
     
     func onUpdateScore(score: Int) {
         scoreLabel.animateTextChange(newText: "Score: \(score)")
-        scoreLabel.activateQuantumField()
+        //scoreLabel.activateQuantumField()
     }
     
     func onUpdateTime(time: String) {
         timeLabel.animateTextChange(newText: time)
         
-        // Warning effects for low time
-        if let timeInt = Int(time), timeInt <= 10 {
-            timeLabel.triggerTimeWarp()
-        }
+//        // Warning effects for low time
+//        if let timeInt = Int(time), timeInt <= 10 {
+//            timeLabel.triggerTimeWarp()
+//        }
     }
     
     func onUpdateQuestionNumber(questionNumber: Int) {
@@ -495,30 +495,30 @@ extension GameVC {
         questionNumberLabel.cosmicTheme = .questionNumber
         questionNumberLabel.font = UIFont.systemFont(ofSize: 16, weight: .black)
         
-        // Time label: Aurora green theme
-        timeLabel.quantumColors = [
-            UIColor(red: 0.3, green: 1.0, blue: 0.6, alpha: 1.0),    // Aurora Green
-            UIColor(red: 0.2, green: 0.9, blue: 0.8, alpha: 1.0),   // Mint Cosmic
-            UIColor(red: 0.4, green: 0.8, blue: 1.0, alpha: 1.0),   // Ice Blue
-            UIColor(red: 0.6, green: 1.0, blue: 0.4, alpha: 1.0),   // Lime Energy
-            UIColor(red: 0.1, green: 0.9, blue: 0.9, alpha: 1.0)    // Cyan Glow
-        ]
+//        // Time label: Aurora green theme
+//        timeLabel.quantumColors = [
+//            UIColor(red: 0.3, green: 1.0, blue: 0.6, alpha: 1.0),    // Aurora Green
+//            UIColor(red: 0.2, green: 0.9, blue: 0.8, alpha: 1.0),   // Mint Cosmic
+//            UIColor(red: 0.4, green: 0.8, blue: 1.0, alpha: 1.0),   // Ice Blue
+//            UIColor(red: 0.6, green: 1.0, blue: 0.4, alpha: 1.0),   // Lime Energy
+//            UIColor(red: 0.1, green: 0.9, blue: 0.9, alpha: 1.0)    // Cyan Glow
+//        ]
         
-        // Question label: Cosmic gradient theme
-        questionLabel.cosmicColors = [
-            UIColor(red: 0.05, green: 0.1, blue: 0.3, alpha: 0.95).cgColor,   // Deep Space
-            UIColor(red: 0.1, green: 0.15, blue: 0.4, alpha: 0.9).cgColor,    // Cosmic Blue
-            UIColor(red: 0.15, green: 0.08, blue: 0.35, alpha: 0.85).cgColor, // Void Purple
-            UIColor(red: 0.08, green: 0.2, blue: 0.45, alpha: 0.9).cgColor,   // Nebula Teal
-            UIColor(red: 0.12, green: 0.05, blue: 0.3, alpha: 0.95).cgColor   // Galaxy Purple
-        ]
-        
-        questionLabel.borderColors = [
-            UIColor(red: 0.0, green: 0.9, blue: 1.0, alpha: 1.0).cgColor,     // Quantum Cyan
-            UIColor(red: 0.8, green: 0.3, blue: 1.0, alpha: 1.0).cgColor,     // Cosmic Purple
-            UIColor(red: 1.0, green: 0.5, blue: 0.8, alpha: 1.0).cgColor,     // Stellar Pink
-            UIColor(red: 0.3, green: 1.0, blue: 0.6, alpha: 1.0).cgColor      // Aurora Green
-        ]
+//        // Question label: Cosmic gradient theme
+//        questionLabel.cosmicColors = [
+//            UIColor(red: 0.05, green: 0.1, blue: 0.3, alpha: 0.95).cgColor,   // Deep Space
+//            UIColor(red: 0.1, green: 0.15, blue: 0.4, alpha: 0.9).cgColor,    // Cosmic Blue
+//            UIColor(red: 0.15, green: 0.08, blue: 0.35, alpha: 0.85).cgColor, // Void Purple
+//            UIColor(red: 0.08, green: 0.2, blue: 0.45, alpha: 0.9).cgColor,   // Nebula Teal
+//            UIColor(red: 0.12, green: 0.05, blue: 0.3, alpha: 0.95).cgColor   // Galaxy Purple
+//        ]
+//        
+//        questionLabel.borderColors = [
+//            UIColor(red: 0.0, green: 0.9, blue: 1.0, alpha: 1.0).cgColor,     // Quantum Cyan
+//            UIColor(red: 0.8, green: 0.3, blue: 1.0, alpha: 1.0).cgColor,     // Cosmic Purple
+//            UIColor(red: 1.0, green: 0.5, blue: 0.8, alpha: 1.0).cgColor,     // Stellar Pink
+//            UIColor(red: 0.3, green: 1.0, blue: 0.6, alpha: 1.0).cgColor      // Aurora Green
+//        ]
     }
     
     func setupButtonStyles() {
