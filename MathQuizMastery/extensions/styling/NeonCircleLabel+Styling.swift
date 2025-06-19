@@ -94,4 +94,17 @@ class NeonCircleLabel: UILabel {
             self.text = newText
         }, completion: nil)
     }
+    
+    func animateNeonBorder() {
+        let color1 = UIColor(red: 0, green: 234/255, blue: 1, alpha: 1).cgColor // Neon mavi
+        let color2 = UIColor(red: 162/255, green: 89/255, blue: 1, alpha: 1).cgColor // Neon mor
+        let color3 = UIColor(red: 1, green: 78/255, blue: 205/255, alpha: 1).cgColor // Neon pembe
+        let animation = CAKeyframeAnimation(keyPath: "strokeColor")
+        animation.values = [color1, color2, color3, color1]
+        animation.keyTimes = [0, 0.33, 0.66, 1]
+        animation.duration = 2.0
+        animation.repeatCount = .infinity
+        animation.autoreverses = true
+        outerBorder.add(animation, forKey: "neonBorderColor")
+    }
 }

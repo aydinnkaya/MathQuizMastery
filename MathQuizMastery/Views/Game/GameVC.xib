@@ -4,7 +4,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -28,108 +27,150 @@
             <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background_image" id="3IC-ua-Fjc">
-                    <rect key="frame" x="-5" y="-11" width="402" height="874"/>
+                <!-- Deep Space Background Image -->
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="space_background" id="3IC-ua-Fjc">
+                    <rect key="frame" x="0" y="0" width="393" height="852"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="0.01" green="0.01" blue="0.05" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </imageView>
-                <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFill" distribution="fillEqually" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="SR5-gt-SJP">
-                    <rect key="frame" x="16" y="98" width="361" height="117.66666666666669"/>
+                
+                <!-- Top Information Panel -->
+                <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFill" distribution="fillEqually" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="SR5-gt-SJP" userLabel="Top Info Stack">
+                    <rect key="frame" x="20" y="80" width="353" height="120"/>
                     <subviews>
-                        <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score: " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="saR-dP-Dvb" userLabel="Score">
-                            <rect key="frame" x="0.0" y="16.666666666666671" width="117.66666666666667" height="84.333333333333329"/>
+                        <!-- Score Display -->
+                        <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score: 0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="saR-dP-Dvb" userLabel="Score Label" customClass="CosmicInfoLabel" customModule="MathQuizMastery" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="15" width="113" height="90"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstAttribute="width" secondItem="saR-dP-Dvb" secondAttribute="height" multiplier="1.4" id="jTP-bL-pVV"/>
+                                <constraint firstAttribute="width" secondItem="saR-dP-Dvb" secondAttribute="height" multiplier="1.25:1" id="jTP-bL-pVV"/>
+                                <constraint firstAttribute="height" constant="90" id="score-height-constraint"/>
                             </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="23"/>
-                            <color key="textColor" name="E80B26"/>
-                            <color key="highlightedColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <color key="shadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        </label>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="00" textAlignment="center" lineBreakMode="clip" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="FeE-No-nNG" userLabel="timeLabel" customClass="NeonCircleLabel" customModule="MathQuizMastery" customModuleProvider="target">
-                            <rect key="frame" x="121.66666666666666" y="0.0" width="117.66666666666666" height="117.66666666666667"/>
-                            <constraints>
-                                <constraint firstAttribute="width" secondItem="FeE-No-nNG" secondAttribute="height" multiplier="1:1" id="5BR-Gr-lnq"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="26"/>
-                            <nil key="textColor"/>
+                            <fontDescription key="fontDescription" type="system" weight="black" pointSize="18"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="10 / 10" textAlignment="center" lineBreakMode="clip" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XmK-xK-bnP" customClass="NeonLabel" customModule="MathQuizMastery" customModuleProvider="target">
-                            <rect key="frame" x="243.33333333333329" y="16.666666666666671" width="117.66666666666666" height="84.333333333333329"/>
+                        
+                        <!-- Quantum Timer Circle -->
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="60" textAlignment="center" lineBreakMode="clip" minimumScaleFactor="0.4" translatesAutoresizingMaskIntoConstraints="NO" id="FeE-No-nNG" userLabel="Quantum Timer" customClass="QuantumCircleLabel" customModule="MathQuizMastery" customModuleProvider="target">
+                            <rect key="frame" x="121" y="0.0" width="120" height="120"/>
                             <constraints>
-                                <constraint firstAttribute="width" secondItem="XmK-xK-bnP" secondAttribute="height" multiplier="1.4" id="UaA-La-SSZ"/>
+                                <constraint firstAttribute="width" secondItem="FeE-No-nNG" secondAttribute="height" multiplier="1:1" id="5BR-Gr-lnq"/>
+                                <constraint firstAttribute="width" constant="120" id="timer-width-constraint"/>
+                                <constraint firstAttribute="height" constant="120" id="timer-height-constraint"/>
                             </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="26"/>
-                            <nil key="textColor"/>
+                            <fontDescription key="fontDescription" type="system" weight="black" pointSize="32"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        
+                        <!-- Question Progress -->
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 / 10" textAlignment="center" lineBreakMode="clip" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XmK-xK-bnP" userLabel="Question Progress" customClass="CosmicInfoLabel" customModule="MathQuizMastery" customModuleProvider="target">
+                            <rect key="frame" x="249" y="15" width="113" height="90"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="XmK-xK-bnP" secondAttribute="height" multiplier="1.25:1" id="UaA-La-SSZ"/>
+                                <constraint firstAttribute="height" constant="90" id="progress-height-constraint"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" weight="black" pointSize="16"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="120" id="top-stack-height"/>
+                    </constraints>
                 </stackView>
-                <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" axis="vertical" distribution="fillEqually" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="qiH-Di-pY7">
-                    <rect key="frame" x="50" y="298" width="293" height="456"/>
+                
+                <!-- Main Game Content Stack -->
+                <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" axis="vertical" distribution="fillProportionally" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="qiH-Di-pY7" userLabel="Game Content Stack">
+                    <rect key="frame" x="30" y="240" width="333" height="550"/>
                     <subviews>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jrr-Ny-p4b" customClass="QuestionLabel" customModule="MathQuizMastery" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="0.0" width="293" height="84"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <nil key="textColor"/>
+                        <!-- Cosmic Question Display -->
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What is 2 + 2?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jrr-Ny-p4b" userLabel="Question Display" customClass="CosmicQuestionLabel" customModule="MathQuizMastery" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="333" height="100"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="100" id="question-height-constraint"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" weight="black" pointSize="24"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Es-1c-oMs" customClass="NeonButton" customModule="MathQuizMastery" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="124" width="293" height="84"/>
-                            <accessibility key="accessibilityConfiguration">
-                                <bool key="isElement" value="NO"/>
-                            </accessibility>
-                            <buttonConfiguration key="configuration" style="plain" title="Fist" cornerStyle="dynamic">
-                                <backgroundConfiguration key="background"/>
-                            </buttonConfiguration>
-                            <connections>
-                                <action selector="answerFirstButton:" destination="-1" eventType="touchUpInside" id="aAl-BR-ez0"/>
-                            </connections>
-                        </button>
-                        <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XEu-2e-qgU" customClass="NeonButton" customModule="MathQuizMastery" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="248" width="293" height="84"/>
-                            <state key="normal" title="Button"/>
-                            <buttonConfiguration key="configuration" style="plain" title="Button">
-                                <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </buttonConfiguration>
-                            <connections>
-                                <action selector="answerSecondButton:" destination="-1" eventType="touchUpInside" id="5Th-Rp-pc1"/>
-                            </connections>
-                        </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8wA-OP-8g0" customClass="NeonButton" customModule="MathQuizMastery" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="372" width="293" height="84"/>
-                            <state key="normal" title="Button"/>
-                            <buttonConfiguration key="configuration" style="plain" title="Button"/>
-                            <connections>
-                                <action selector="answerThirdButton:" destination="-1" eventType="touchUpInside" id="0TB-vo-hqD"/>
-                            </connections>
-                        </button>
+                        
+                        <!-- Answer Buttons Container -->
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="answer-buttons-stack" userLabel="Answer Buttons">
+                            <rect key="frame" x="0.0" y="125" width="333" height="425"/>
+                            <subviews>
+                                <!-- First Answer Button -->
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Es-1c-oMs" userLabel="Answer Button 1" customClass="SpaceNeonButton" customModule="MathQuizMastery" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="0.0" width="333" height="128"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="75" priority="999" id="button1-min-height"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" weight="black" pointSize="20"/>
+                                    <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    <state key="normal" title="Answer 1">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="answerFirstButton:" destination="-1" eventType="touchUpInside" id="aAl-BR-ez0"/>
+                                    </connections>
+                                </button>
+                                
+                                <!-- Second Answer Button -->
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XEu-2e-qgU" userLabel="Answer Button 2" customClass="SpaceNeonButton" customModule="MathQuizMastery" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="148" width="333" height="129"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="75" priority="999" id="button2-min-height"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" weight="black" pointSize="20"/>
+                                    <state key="normal" title="Answer 2">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="answerSecondButton:" destination="-1" eventType="touchUpInside" id="5Th-Rp-pc1"/>
+                                    </connections>
+                                </button>
+                                
+                                <!-- Third Answer Button -->
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8wA-OP-8g0" userLabel="Answer Button 3" customClass="SpaceNeonButton" customModule="MathQuizMastery" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="297" width="333" height="128"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="75" priority="999" id="button3-min-height"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" weight="black" pointSize="20"/>
+                                    <state key="normal" title="Answer 3">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="answerThirdButton:" destination="-1" eventType="touchUpInside" id="0TB-vo-hqD"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                        </stackView>
                     </subviews>
                 </stackView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <color key="backgroundColor" red="0.01" green="0.01" blue="0.05" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="qiH-Di-pY7" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="50" id="2px-Mo-dQZ"/>
-                <constraint firstItem="SR5-gt-SJP" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="INq-TK-jdZ"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="qiH-Di-pY7" secondAttribute="trailing" constant="50" id="Inh-4g-m1W"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="top" secondItem="SR5-gt-SJP" secondAttribute="top" constant="20" id="JHX-lq-jdu"/>
+                <!-- Top Information Panel Constraints -->
+                <constraint firstItem="SR5-gt-SJP" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="INq-TK-jdZ"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="SR5-gt-SJP" secondAttribute="trailing" constant="20" id="Ukd-Aq-TXh"/>
+                <constraint firstItem="SR5-gt-SJP" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="20" id="JHX-lq-jdu"/>
                 <constraint firstItem="SR5-gt-SJP" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="RzQ-aL-HO7"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="SR5-gt-SJP" secondAttribute="trailing" constant="16" id="Ukd-Aq-TXh"/>
-                <constraint firstItem="qiH-Di-pY7" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="180" id="gPj-hm-WLB"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="qiH-Di-pY7" secondAttribute="bottom" constant="30" id="mQt-z6-rsd"/>
+                
+                <!-- Main Game Content Constraints -->
+                <constraint firstItem="qiH-Di-pY7" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="30" id="2px-Mo-dQZ"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="qiH-Di-pY7" secondAttribute="trailing" constant="30" id="Inh-4g-m1W"/>
+                <constraint firstItem="qiH-Di-pY7" firstAttribute="top" secondItem="SR5-gt-SJP" secondAttribute="bottom" constant="40" id="gPj-hm-WLB"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="qiH-Di-pY7" secondAttribute="bottom" constant="40" id="mQt-z6-rsd"/>
                 <constraint firstItem="qiH-Di-pY7" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="mpc-sO-S8y"/>
             </constraints>
             <point key="canvasLocation" x="139.69465648854961" y="19.718309859154932"/>
         </view>
     </objects>
     <resources>
-        <image name="background_image" width="419" height="837"/>
-        <namedColor name="E80B26">
-            <color red="0.90980392156862744" green="0.043137254901960784" blue="0.14901960784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
+        <image name="space_background" width="393" height="852"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
