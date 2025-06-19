@@ -50,8 +50,8 @@
                                 <rect key="frame" x="298" y="10.5" width="51" height="31"/>
                                 <color key="onTintColor" red="0.48235294117647065" green="0.38039215686274508" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </switch>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lGI-Ig-cYf">
-                                <rect key="frame" x="294" y="16" width="20" height="20"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lGI-Ig-cYf">
+                                <rect key="frame" x="245" y="6" width="20" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="20" id="8J4-JZ-sHi"/>
                                     <constraint firstAttribute="height" constant="20" id="iDb-Hl-aL7"/>
@@ -59,10 +59,9 @@
                                 <state key="normal" image="info.circle" catalog="system">
                                     <color key="titleColor" red="0.48235294117647065" green="0.38039215686274508" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
-                                <constraint firstAttribute="trailing" secondItem="wad-8A-drJ" secondAttribute="leading" constant="-32" id="info-to-switch"/>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="09:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MfL-Nc-cgh">
-                                <rect key="frame" x="292.5" y="38.5" width="31.5" height="13.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="09:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MfL-Nc-cgh">
+                                <rect key="frame" x="243" y="29" width="31.5" height="13.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="50" id="Cjj-7x-xBp"/>
                                 </constraints>
@@ -79,8 +78,9 @@
                             <constraint firstItem="UZR-wK-Q3a" firstAttribute="leading" secondItem="vuo-pI-eHp" secondAttribute="trailing" constant="12" id="AH8-XJ-vYA"/>
                             <constraint firstItem="wad-8A-drJ" firstAttribute="centerY" secondItem="mCP-Ag-wGF" secondAttribute="centerY" id="BZR-Sx-QGL"/>
                             <constraint firstItem="vuo-pI-eHp" firstAttribute="leading" secondItem="mCP-Ag-wGF" secondAttribute="leading" constant="12" id="CLF-M4-b7L"/>
+                            <constraint firstItem="MfL-Nc-cgh" firstAttribute="top" secondItem="lGI-Ig-cYf" secondAttribute="bottom" constant="3" id="DYz-a8-uGU"/>
                             <constraint firstItem="UZR-wK-Q3a" firstAttribute="top" secondItem="fEF-gW-7zT" secondAttribute="bottom" constant="2" id="OQD-mq-dvC"/>
-                            <constraint firstItem="lGI-Ig-cYf" firstAttribute="trailing" secondItem="wad-8A-drJ" secondAttribute="leading" constant="16" id="UlM-eS-M8B"/>
+                            <constraint firstItem="lGI-Ig-cYf" firstAttribute="trailing" secondItem="wad-8A-drJ" secondAttribute="leading" constant="46" id="UlM-eS-M8B"/>
                             <constraint firstItem="fEF-gW-7zT" firstAttribute="top" secondItem="mCP-Ag-wGF" secondAttribute="top" constant="8" id="YlU-tl-DtF"/>
                             <constraint firstAttribute="bottom" secondItem="MfL-Nc-cgh" secondAttribute="bottom" id="fBl-Hf-e6h"/>
                             <constraint firstItem="lGI-Ig-cYf" firstAttribute="centerY" secondItem="mCP-Ag-wGF" secondAttribute="centerY" id="frY-ce-lKj"/>
