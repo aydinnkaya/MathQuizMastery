@@ -50,6 +50,7 @@ enum LocalizedKey: String {
     case settings_faq
     case settings_report
     case settings_logout
+    case settings_logout_message
     
     // MARK: - Logout Alert
     case logout_title
@@ -66,7 +67,7 @@ enum LocalizedKey: String {
     case notification_permission_cancel
     case notification_permission_settings
     
-    // Auth
+    // MARK: - Auth
     case login_title = "login_title"
     case login_button = "login_button"
     case register_button = "register_button"
@@ -78,7 +79,7 @@ enum LocalizedKey: String {
     case validation_error = "validation_error"
     case settings_title = "settings_title"
     
-    // Game
+    // MARK: - Game
     case game_title = "game_title"
     case game_score = "game_score"
     case game_time = "game_time"
@@ -91,12 +92,53 @@ enum LocalizedKey: String {
     case game_next = "game_next"
     case game_previous = "game_previous"
     
-    // Notifications
+    case game_quit_message = "game_quit_message"
+    case game_over_message = "game_over_message"
+    case game_win = "game_win"
+    case game_win_message = "game_win_message"
+    
+    // MARK: - Notifications
     case notification_title = "notification_title"
     case notification_message = "notification_message"
     case notification_settings = "notification_settings"
     case notification_permission_denied = "notification_permission_denied"
     case notification_permission_granted = "notification_permission_granted"
+    
+    case notifications_title = "notifications_title"
+    case notifications_enable = "notifications_enable"
+    case notifications_disable = "notifications_disable"
+    case notifications_daily = "notifications_daily"
+    case notifications_weekly = "notifications_weekly"
+    case notifications_time = "notifications_time"
+    
+    // MARK: - Notification Sections
+    case notification_section_general
+    case notification_section_quiz
+    case notification_section_achievement
+    
+    // MARK: - Notification Settings Titles & Descriptions
+    case notification_new_features
+    case notification_new_features_desc
+    case notification_weekly_report
+    case notification_weekly_report_desc
+    case notification_quiz_reminder
+    case notification_quiz_reminder_desc
+    case notification_daily_challenge
+    case notification_daily_challenge_desc
+    case notification_streak_reminder
+    case notification_streak_reminder_desc
+    case notification_achievements
+    case notification_achievements_desc
+    
+    // MARK: - Notification Content Titles & Bodies
+    case quiz_reminder_title
+    case quiz_reminder_body
+    case daily_challenge_title
+    case daily_challenge_body
+    case weekly_report_title
+    case weekly_report_body
+    case streak_reminder_title
+    case streak_reminder_body
     
     // MARK: - Common
     case yes = "yes"
@@ -109,21 +151,12 @@ enum LocalizedKey: String {
     case home_settings = "home_settings"
     case home_profile = "home_profile"
     
-    // MARK: - Settings
-    case settings_logout_message = "settings_logout_message"
-    
     // MARK: - Profile
     case profile_title = "profile_title"
     case profile_username = "profile_username"
     case profile_score = "profile_score"
     case profile_rank = "profile_rank"
     case profile_achievements = "profile_achievements"
-    
-    // MARK: - Game
-    case game_quit_message = "game_quit_message"
-    case game_over_message = "game_over_message"
-    case game_win = "game_win"
-    case game_win_message = "game_win_message"
     
     // MARK: - Category
     case category_title = "category_title"
@@ -143,36 +176,6 @@ enum LocalizedKey: String {
     case result_home = "result_home"
     case result_share = "result_share"
     
-    // MARK: - Notifications
-    case notifications_title = "notifications_title"
-    case notifications_enable = "notifications_enable"
-    case notifications_disable = "notifications_disable"
-    case notifications_daily = "notifications_daily"
-    case notifications_weekly = "notifications_weekly"
-    case notifications_time = "notifications_time"
-    
-    // Notification Sections
-    case notification_section_general
-    case notification_section_quiz
-    case notification_section_achievement
-    
-    // Notification Settings Titles & Descriptions
-    case notification_new_features
-    case notification_new_features_desc
-    case notification_weekly_report
-    case notification_weekly_report_desc
-    case notification_quiz_reminder
-    case notification_quiz_reminder_desc
-    case notification_daily_challenge
-    case notification_daily_challenge_desc
-    case notification_streak_reminder
-    case notification_streak_reminder_desc
-    case notification_achievements
-    case notification_achievements_desc
-    
-    // Notification Content Titles & Bodies
-    case quiz_reminder_title
-    case quiz_reminder_body
     // MARK: - FAQ
     case faq_title = "faq_title"
     case faq_empty = "faq_empty"
@@ -184,6 +187,13 @@ enum LocalizedKey: String {
     case report_success = "report_success"
     case report_error = "report_error"
     
+    // MARK: - Other
     case notification_time_format
-
+    
+    case notification_settings_saved
+    case notification_permission_denied_title
+    case notification_permission_denied_message
+    case notification_settings_title
+    case open_settings
+    case save
 }

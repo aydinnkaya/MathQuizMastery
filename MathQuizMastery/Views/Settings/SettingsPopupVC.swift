@@ -109,7 +109,9 @@ extension SettingsPopupVC: SettingsPopupDelegate {
     }
     
     func tappedNotifications() {
-        NotificationPermissionService.shared.openSettings()
+        dismiss(animated: false) { [weak self] in
+            self?.coordinator?.replacePopup(with: .notificationSettings)
+        }
     }
     
     func tappedFAQ() {

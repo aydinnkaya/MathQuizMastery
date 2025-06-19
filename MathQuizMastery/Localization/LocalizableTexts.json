@@ -69,6 +69,20 @@
         "ar": "أعد إدخال كلمة المرور",
         "nl": "Voer uw wachtwoord opnieuw in"
     },
+    "passwords_do_not_match": {
+        "en": "Passwords do not match.",
+        "tr": "Şifreler uyuşmuyor.",
+        "de": "Passwörter stimmen nicht überein.",
+        "es": "Las contraseñas no coinciden.",
+        "fr": "Les mots de passe ne correspondent pas.",
+        "it": "Le password non corrispondono.",
+        "pt-BR": "As senhas não coincidem.",
+        "ja": "パスワードが一致しません。",
+        "ko": "비밀번호가 일치하지 않습니다.",
+        "zh-Hans": "两次输入的密码不一致。",
+        "ar": "كلمتا المرور غير متطابقتين.",
+        "nl": "Wachtwoorden komen niet overeen."
+    },
     "password_mismatch": {
         "en": "Passwords do not match.",
         "tr": "Şifreler uyuşmuyor.",
@@ -321,6 +335,7 @@
         "ar": "نجاح",
         "nl": "Succes"
     },
+    
     "settings_profile": {
         "en": "Profile",
         "tr": "Profil",
@@ -391,34 +406,6 @@
         "ar": "تسجيل الخروج",
         "nl": "Uitloggen"
     },
-    "error": {
-        "en": "Error",
-        "tr": "Hata",
-        "de": "Fehler",
-        "es": "Error",
-        "fr": "Erreur",
-        "it": "Errore",
-        "pt-BR": "Erro",
-        "ja": "エラー",
-        "ko": "오류",
-        "zh-Hans": "错误",
-        "ar": "خطأ",
-        "nl": "Fout"
-    },
-    "warning": {
-        "en": "Warning",
-        "tr": "Uyarı",
-        "de": "Warnung",
-        "es": "Advertencia",
-        "fr": "Avertissement",
-        "it": "Avviso",
-        "pt-BR": "Aviso",
-        "ja": "警告",
-        "ko": "경고",
-        "zh-Hans": "警告",
-        "ar": "تحذير",
-        "nl": "Waarschuwing"
-    },
     "settings_title": {
         "en": "Settings",
         "tr": "Ayarlar",
@@ -433,167 +420,13 @@
         "ar": "الإعدادات",
         "nl": "Instellingen"
     },
-    "settings_edit_profile": {
-        "en": "Edit Profile",
-        "tr": "Profili Düzenle",
-        "de": "Profil bearbeiten",
-        "es": "Editar perfil",
-        "fr": "Modifier le profil",
-        "it": "Modifica profilo",
-        "pt-BR": "Editar perfil",
-        "ja": "プロフィールを編集",
-        "ko": "프로필 편집",
-        "zh-Hans": "编辑资料",
-        "ar": "تعديل الملف الشخصي",
-        "nl": "Profiel bewerken"
-    },
-    "settings_notifications": {
-        "en": "Notifications",
-        "tr": "Bildirimler",
-        "de": "Benachrichtigungen",
-        "es": "Notificaciones",
-        "fr": "Notifications",
-        "it": "Notifiche",
-        "pt-BR": "Notificações",
-        "ja": "通知",
-        "ko": "알림",
-        "zh-Hans": "通知",
-        "ar": "الإشعارات",
-        "nl": "Meldingen"
-    },
-    "settings_language": {
-        "en": "Language",
-        "tr": "Dil",
-        "de": "Sprache",
-        "es": "Idioma",
-        "fr": "Langue",
-        "it": "Lingua",
-        "pt-BR": "Idioma",
-        "ja": "言語",
-        "ko": "언어",
-        "zh-Hans": "语言",
-        "ar": "اللغة",
-        "nl": "Taal"
-    },
-    "settings_privacy_policy": {
-        "en": "Privacy Policy",
-        "tr": "Gizlilik Politikası",
-        "de": "Datenschutzrichtlinie",
-        "es": "Política de privacidad",
-        "fr": "Politique de confidentialité",
-        "it": "Informativa sulla privacy",
-        "pt-BR": "Política de Privacidade",
-        "ja": "プライバシーポリシー",
-        "ko": "개인정보 보호정책",
-        "zh-Hans": "隐私政策",
-        "ar": "سياسة الخصوصية",
-        "nl": "Privacybeleid"
-    },
-    "settings_terms_of_service": {
-        "en": "Terms of Service",
-        "tr": "Hizmet Şartları",
-        "de": "Nutzungsbedingungen",
-        "es": "Términos de servicio",
-        "fr": "Conditions d'utilisation",
-        "it": "Termini di servizio",
-        "pt-BR": "Termos de Serviço",
-        "ja": "利用規約",
-        "ko": "서비스 약관",
-        "zh-Hans": "服务条款",
-        "ar": "شروط الخدمة",
-        "nl": "Servicevoorwaarden"
-    },
-    "settings_rate_us": {
-        "en": "Rate Us",
-        "tr": "Bizi Değerlendir",
-        "de": "Bewerten Sie uns",
-        "es": "Califícanos",
-        "fr": "Évaluez-nous",
-        "it": "Valutaci",
-        "pt-BR": "Avalie-nos",
-        "ja": "評価する",
-        "ko": "평가하기",
-        "zh-Hans": "为我们评分",
-        "ar": "قيّمنا",
-        "nl": "Beoordeel ons"
-    },
-    "settings_logout": {
-        "en": "Logout",
-        "tr": "Çıkış Yap",
-        "de": "Abmelden",
-        "es": "Cerrar sesión",
-        "fr": "Se déconnecter",
-        "it": "Disconnettersi",
-        "pt-BR": "Sair",
-        "ja": "ログアウト",
-        "ko": "로그아웃",
-        "zh-Hans": "退出登录",
-        "ar": "تسجيل الخروج",
-        "nl": "Uitloggen"
-    },
-    "settings_logout_alert_title": {
-        "en": "Are you sure?",
-        "tr": "Emin misiniz?",
-        "de": "Bist du sicher?",
-        "es": "¿Estás seguro?",
-        "fr": "Êtes-vous sûr ?",
-        "it": "Sei sicuro?",
-        "pt-BR": "Tem certeza?",
-        "ja": "よろしいですか？",
-        "ko": "정말 로그아웃하시겠습니까?",
-        "zh-Hans": "你确定吗？",
-        "ar": "هل أنت متأكد؟",
-        "nl": "Weet je het zeker?"
-    },
-    "settings_logout_alert_message": {
-        "en": "Do you really want to logout?",
-        "tr": "Gerçekten çıkış yapmak istiyor musunuz?",
-        "de": "Möchten Sie sich wirklich abmelden?",
-        "es": "¿Realmente quieres cerrar sesión?",
-        "fr": "Voulez-vous vraiment vous déconnecter ?",
-        "it": "Vuoi davvero disconnetterti?",
-        "pt-BR": "Deseja realmente sair?",
-        "ja": "本当にログアウトしますか？",
-        "ko": "정말로 로그아웃하시겠습니까?",
-        "zh-Hans": "你真的要退出登录吗？",
-        "ar": "هل تريد تسجيل الخروج فعلاً؟",
-        "nl": "Wil je echt uitloggen?"
-    },
-    "settings_logout_alert_cancel": {
-        "en": "Cancel",
-        "tr": "İptal",
-        "de": "Abbrechen",
-        "es": "Cancelar",
-        "fr": "Annuler",
-        "it": "Annulla",
-        "pt-BR": "Cancelar",
-        "ja": "キャンセル",
-        "ko": "취소",
-        "zh-Hans": "取消",
-        "ar": "إلغاء",
-        "nl": "Annuleren"
-    },
-    "settings_logout_alert_confirm": {
-        "en": "Logout",
-        "tr": "Çıkış Yap",
-        "de": "Abmelden",
-        "es": "Cerrar sesión",
-        "fr": "Se déconnecter",
-        "it": "Disconnettersi",
-        "pt-BR": "Sair",
-        "ja": "ログアウト",
-        "ko": "로그아웃",
-        "zh-Hans": "退出登录",
-        "ar": "تسجيل الخروج",
-        "nl": "Uitloggen"
-    },
     "logout_title": {
-        "en": "Logout",
-        "tr": "Çıkış Yap",
+        "en": "Log Out",
+        "tr": "Çıkış",
         "de": "Abmelden",
         "es": "Cerrar sesión",
         "fr": "Déconnexion",
-        "it": "Disconnetti",
+        "it": "Disconnettersi",
         "pt-BR": "Sair",
         "ja": "ログアウト",
         "ko": "로그아웃",
@@ -603,15 +436,15 @@
     },
     "logout_message": {
         "en": "Are you sure you want to log out?",
-        "tr": "Çıkış yapmak istediğinizden emin misiniz?",
+        "tr": "Çıkış yapmak istediğinize emin misiniz?",
         "de": "Möchten Sie sich wirklich abmelden?",
-        "es": "¿Está seguro de que desea cerrar sesión?",
-        "fr": "Êtes-vous sûr de vouloir vous déconnecter ?",
-        "it": "Sei sicuro di voler disconnetterti?",
-        "pt-BR": "Tem certeza de que deseja sair?",
-        "ja": "本当にログアウトしますか？",
-        "ko": "정말 로그아웃하시겠습니까?",
-        "zh-Hans": "您确定要退出登录吗？",
+        "es": "¿Estás seguro de que quieres cerrar sesión?",
+        "fr": "Voulez-vous vraiment vous déconnecter ?",
+        "it": "Sei sicuro di voler uscire?",
+        "pt-BR": "Tem certeza que deseja sair?",
+        "ja": "ログアウトしてもよろしいですか？",
+        "ko": "로그아웃 하시겠습니까?",
+        "zh-Hans": "确定要退出登录吗？",
         "ar": "هل أنت متأكد أنك تريد تسجيل الخروج؟",
         "nl": "Weet u zeker dat u wilt uitloggen?"
     },
@@ -630,12 +463,12 @@
         "nl": "Annuleren"
     },
     "logout_confirm": {
-        "en": "Log out",
+        "en": "Log Out",
         "tr": "Çıkış Yap",
         "de": "Abmelden",
         "es": "Cerrar sesión",
         "fr": "Déconnexion",
-        "it": "Disconnetti",
+        "it": "Disconnettersi",
         "pt-BR": "Sair",
         "ja": "ログアウト",
         "ko": "로그아웃",
@@ -645,30 +478,48 @@
     },
     
     "notification_permission_title": {
-        "en": "Notification Permission",
-        "tr": "Bildirim İzni"
+        "en": "Enable Notifications",
+        "tr": "Bildirimleri Etkinleştir",
+        "de": "Benachrichtigungen aktivieren",
+        "es": "Habilitar notificaciones",
+        "fr": "Activer les notifications",
+        "it": "Abilita notifiche",
+        "pt-BR": "Ativar notificações",
+        "ja": "通知を有効にする",
+        "ko": "알림 활성화",
+        "zh-Hans": "启用通知",
+        "ar": "تمكين الإشعارات",
+        "nl": "Meldingen inschakelen"
     },
     "notification_permission_message": {
-        "en": "Please enable notifications in Settings to stay updated.",
-        "tr": "Güncel kalmak için lütfen Ayarlar'dan bildirimleri etkinleştirin."
+        "en": "Please allow notifications to stay updated.",
+        "tr": "Güncel kalmak için bildirimlere izin verin.",
+        "de": "Bitte erlauben Sie Benachrichtigungen, um auf dem Laufenden zu bleiben.",
+        "es": "Por favor, permita las notificaciones para mantenerse actualizado.",
+        "fr": "Veuillez autoriser les notifications pour rester informé.",
+        "it": "Consenti le notifiche per rimanere aggiornato.",
+        "pt-BR": "Por favor, permita notificações para se manter atualizado.",
+        "ja": "最新情報を受け取るには通知を許可してください。",
+        "ko": "최신 정보를 받으려면 알림을 허용하세요.",
+        "zh-Hans": "请允许通知以保持更新。",
+        "ar": "يرجى السماح بالإشعارات للبقاء على اطلاع.",
+        "nl": "Sta meldingen toe om op de hoogte te blijven."
     },
     "notification_permission_error": {
-        "en": "There was an error requesting notification permission.",
-        "tr": "Bildirim izni alınırken bir hata oluştu."
+        "en": "Notifications permission denied.",
+        "tr": "Bildirim izni reddedildi.",
+        "de": "Benachrichtigungsberechtigung verweigert.",
+        "es": "Permiso de notificaciones denegado.",
+        "fr": "Permission de notifications refusée.",
+        "it": "Permesso notifiche negato.",
+        "pt-BR": "Permissão para notificações negada.",
+        "ja": "通知の許可が拒否されました。",
+        "ko": "알림 권한이 거부되었습니다.",
+        "zh-Hans": "通知权限被拒绝。",
+        "ar": "تم رفض إذن الإشعارات.",
+        "nl": "Toestemming voor meldingen geweigerd."
     },
-    "settings": {
-        "en": "Settings",
-        "tr": "Ayarlar"
-    },
-    "ok": {
-        "en": "OK",
-        "tr": "Tamam"
-    },
-    "cancel": {
-        "en": "Cancel",
-        "tr": "İptal"
-    },
-    "logout_cancel": {
+    "notification_permission_cancel": {
         "en": "Cancel",
         "tr": "İptal",
         "de": "Abbrechen",
@@ -682,222 +533,46 @@
         "ar": "إلغاء",
         "nl": "Annuleren"
     },
-    "logout_confirm": {
-        "en": "Log out",
-        "tr": "Çıkış Yap",
-        "de": "Abmelden",
-        "es": "Cerrar sesión",
-        "fr": "Déconnexion",
-        "it": "Disconnetti",
-        "pt-BR": "Sair",
-        "ja": "ログアウト",
-        "ko": "로그아웃",
-        "zh-Hans": "退出登录",
-        "ar": "تسجيل الخروج",
-        "nl": "Uitloggen"
-    },
-    "error_title": {
-        "en": "Error",
-        "tr": "Hata"
-    },
-    "login_title": {
-        "tr": "Giriş Yap",
-        "en": "Login"
-    },
-    "login_button": {
-        "tr": "Giriş Yap",
-        "en": "Login"
-    },
-    "register_button": {
-        "tr": "Kayıt Ol",
-        "en": "Register"
-    },
-    "username_placeholder": {
-        "tr": "Kullanıcı Adı",
-        "en": "Username"
-    },
-    "password_placeholder": {
-        "tr": "Şifre",
-        "en": "Password"
-    },
-    "register_success": {
-        "tr": "Kayıt başarılı!",
-        "en": "Registration successful!"
-    },
-    "register_error": {
-        "tr": "Kayıt başarısız!",
-        "en": "Registration failed!"
-    },
-    "login_error": {
-        "tr": "Giriş başarısız!",
-        "en": "Login failed!"
-    },
-    "validation_error": {
-        "tr": "Lütfen tüm alanları doldurun!",
-        "en": "Please fill all fields!"
-    },
-    "notification_title": {
-        "tr": "Bildirim",
-        "en": "Notification"
-    },
-    "notification_message": {
-        "tr": "Bildirim mesajı",
-        "en": "Notification message"
-    },
-    "notification_settings": {
-        "tr": "Bildirim Ayarları",
-        "en": "Notification Settings"
+    "notification_permission_settings": {
+        "en": "Open Settings",
+        "tr": "Ayarları Aç",
+        "de": "Einstellungen öffnen",
+        "es": "Abrir ajustes",
+        "fr": "Ouvrir les paramètres",
+        "it": "Apri impostazioni",
+        "pt-BR": "Abrir configurações",
+        "ja": "設定を開く",
+        "ko": "설정 열기",
+        "zh-Hans": "打开设置",
+        "ar": "افتح الإعدادات",
+        "nl": "Instellingen openen"
     },
     "notification_permission_denied": {
+        "en": "Notifications permission denied.",
         "tr": "Bildirim izni reddedildi.",
-        "en": "Notification permission denied."
+        "de": "Benachrichtigungsberechtigung verweigert.",
+        "es": "Permiso de notificaciones denegado.",
+        "fr": "Permission de notifications refusée.",
+        "it": "Permesso notifiche negato.",
+        "pt-BR": "Permissão para notificações negada.",
+        "ja": "通知の許可が拒否されました。",
+        "ko": "알림 권한이 거부되었습니다.",
+        "zh-Hans": "通知权限被拒绝。",
+        "ar": "تم رفض إذن الإشعارات.",
+        "nl": "Toestemming voor meldingen geweigerd."
     },
     "notification_permission_granted": {
+        "en": "Notifications permission granted.",
         "tr": "Bildirim izni verildi.",
-        "en": "Notification permission granted."
-    },
-    "notification_permission_cancel": {
-        "en": "Cancel",
-        "tr": "İptal"
-    },
-    "notification_section_general": {
-        "en": "General",
-        "tr": "Genel"
-    },
-    "notification_section_quiz": {
-        "en": "Quiz",
-        "tr": "Quiz"
-    },
-    "notification_time_format": {
-      "en": "Time: %@",
-      "tr": "Saat: %@"
-    },
-    "notification_section_achievement": {
-        "en": "Achievement",
-        "tr": "Başarılar"
-    },
-    "notification_time_format": {
-      "en": "Time: %@",
-      "tr": "Saat: %@"
-    },
-    "notification_new_features": {
-        "en": "New Features",
-        "tr": "Yeni Özellikler"
-    },
-    "notification_new_features_desc": {
-        "en": "Stay updated with the latest features.",
-        "tr": "En son özelliklerden haberdar olun."
-    },
-    
-    "notification_weekly_report": {
-        "en": "Weekly Report",
-        "tr": "Haftalık Rapor"
-    },
-    "notification_weekly_report_desc": {
-        "en": "Receive a report of your weekly progress.",
-        "tr": "Haftalık ilerleme raporunu alın."
-    },
-    
-    "notification_quiz_reminder": {
-        "en": "Quiz Reminder",
-        "tr": "Quiz Hatırlatıcısı"
-    },
-    "notification_quiz_reminder_desc": {
-        "en": "Don't forget to complete your daily quiz.",
-        "tr": "Günlük quizini tamamlamayı unutma."
-    },
-    
-    "notification_daily_challenge": {
-        "en": "Daily Challenge",
-        "tr": "Günlük Görev"
-    },
-    "notification_daily_challenge_desc": {
-        "en": "Take part in daily challenges and improve.",
-        "tr": "Günlük görevlerde yer al ve geliş."
-    },
-    
-    "notification_streak_reminder": {
-        "en": "Streak Reminder",
-        "tr": "Seri Hatırlatıcısı"
-    },
-    "notification_streak_reminder_desc": {
-        "en": "Keep your streak alive with daily practice.",
-        "tr": "Serini günlük pratikle sürdür."
-    },
-    
-    "notification_achievements": {
-        "en": "Achievements",
-        "tr": "Başarılar"
-    },
-    "notification_achievements_desc": {
-        "en": "Get notified when you unlock new achievements.",
-        "tr": "Yeni başarılar kazandığında bildirim al."
-    },
-    
-    "quiz_reminder_title": {
-        "en": "Time for your quiz!",
-        "tr": "Quiz zamanı!"
-    },
-    "quiz_reminder_body": {
-        "en": "Don't forget to complete today's quiz to keep your streak.",
-        "tr": "Serini devam ettirmek için bugünün quizini yapmayı unutma."
-    },
-    
-    "notification_permission_settings": {
-        "en": "Settings",
-        "tr": "Ayarlar"
-    },
-    "yes": "Yes",
-    "no": "No",
-    "home_title": "Math Quiz Mastery",
-    "home_welcome": "Welcome, %@!",
-    "home_play": "Play",
-    "home_settings": "Settings",
-    "home_profile": "Profile",
-    "profile_title": "Profile",
-    "profile_username": "Username",
-    "profile_score": "Total Score",
-    "profile_rank": "Rank",
-    "profile_achievements": "Achievements",
-    "game_title": "Game",
-    "game_score": "Score: %d",
-    "game_time": "Time: %d",
-    "game_level": "Level %d",
-    "game_pause": "Pause",
-    "game_resume": "Resume",
-    "game_quit": "Quit",
-    "game_quit_message": "Are you sure you want to quit?",
-    "game_over": "Game Over",
-    "game_over_message": "Your score: %d",
-    "game_win": "Congratulations!",
-    "game_win_message": "You completed the level with score: %d",
-    "category_title": "Select Category",
-    "category_addition": "Addition",
-    "category_subtraction": "Subtraction",
-    "category_multiplication": "Multiplication",
-    "category_division": "Division",
-    "category_mixed": "Mixed",
-    "result_title": "Result",
-    "result_score": "Score: %d",
-    "result_time": "Time: %@",
-    "result_accuracy": "Accuracy: %d%%",
-    "result_new_record": "New Record!",
-    "result_play_again": "Play Again",
-    "result_home": "Home",
-    "result_share": "Share",
-    "notifications_title": "Notifications",
-    "notifications_enable": "Enable Notifications",
-    "notifications_disable": "Disable Notifications",
-    "notifications_daily": "Daily Reminder",
-    "notifications_weekly": "Weekly Summary",
-    "notifications_time": "Reminder Time",
-    "faq_title": "FAQ",
-    "faq_empty": "No FAQs available",
-    "report_title": "Report a Problem",
-    "report_description": "Please describe the problem you encountered:",
-    "report_submit": "Submit",
-    "report_success": "Thank you for your report!",
-    "report_error": "Failed to submit report"
-    
-    
+        "de": "Benachrichtigungsberechtigung erteilt.",
+        "es": "Permiso de notificaciones concedido.",
+        "fr": "Permission de notifications accordée.",
+        "it": "Permesso notifiche concesso.",
+        "pt-BR": "Permissão para notificações concedida.",
+        "ja": "通知の許可が与えられました。",
+        "ko": "알림 권한이 허용되었습니다.",
+        "zh-Hans": "通知权限已授予。",
+        "ar": "تم منح إذن الإشعارات.",
+        "nl": "Toestemming voor meldingen verleend."
+    }
 }

@@ -65,11 +65,12 @@ class NotificationPermissionService : NSObject {
     
     // MARK: - Properties
     weak var delegate: NotificationPermissionServiceDelegate?
-    private let notificationCenter = UNUserNotificationCenter.current()
+    let notificationCenter = UNUserNotificationCenter.current()
     
     // MARK: - Private Init
     private override init() {
-        setupNotificationCenter()
+        super.init()
+        self.setupNotificationCenter()
     }
     
     // MARK: - Setup
@@ -88,7 +89,7 @@ class NotificationPermissionService : NSObject {
             }
         }
     }
-    
+
     /// Bildirim izni ister
     func requestPermission(completion: @escaping (Bool, NotificationPermissionError?) -> Void) {
         let options: UNAuthorizationOptions = [.alert, .sound, .badge]
