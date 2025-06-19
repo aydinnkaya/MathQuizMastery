@@ -56,8 +56,14 @@
                             <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                         </tableView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YMz-YL-QSV">
-                            <rect key="frame" x="16" y="376" width="318" height="44"/>
+                            <rect key="frame" x="16" y="420" width="318" height="44"/>
                             <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="bottom" secondItem="0FB-EQ-P8a" secondAttribute="bottom" constant="22" id="save-bottom-outside"/>
+                                <constraint firstAttribute="centerX" secondItem="0FB-EQ-P8a" secondAttribute="centerX" id="save-centerX"/>
+                                <constraint firstAttribute="height" constant="44" id="save-height"/>
+                                <constraint firstAttribute="width" secondItem="0FB-EQ-P8a" secondAttribute="width" constant="-32" id="save-width"/>
+                            </constraints>
                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                             <state key="normal" title="Kaydet">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -76,18 +82,14 @@
                         <constraint firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="popup-centerX"/>
                         <constraint firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="popup-centerY"/>
                         <constraint firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="32" id="popup-leading"/>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="420" id="popup-min-height"/>
                         <constraint firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailing" constant="-32" id="popup-trailing"/>
-                        <constraint firstItem="YMz-YL-QSV" firstAttribute="bottom" secondItem="0FB-EQ-P8a" secondAttribute="bottom" constant="-16" id="save-bottom"/>
-                        <constraint firstItem="YMz-YL-QSV" firstAttribute="height" constant="44" id="save-height"/>
-                        <constraint firstItem="YMz-YL-QSV" firstAttribute="leading" secondItem="0FB-EQ-P8a" secondAttribute="leading" constant="16" id="save-leading"/>
-                        <constraint firstItem="YMz-YL-QSV" firstAttribute="trailing" secondItem="0FB-EQ-P8a" secondAttribute="trailing" constant="-16" id="save-trailing"/>
+                        <constraint firstItem="WJd-eI-B8M" firstAttribute="bottom" secondItem="0FB-EQ-P8a" secondAttribute="bottom" id="table-bottom"/>
+                        <constraint firstItem="WJd-eI-B8M" firstAttribute="leading" secondItem="0FB-EQ-P8a" secondAttribute="leading" id="table-leading"/>
                         <constraint firstItem="WJd-eI-B8M" firstAttribute="top" secondItem="4cF-y7-Rks" secondAttribute="bottom" constant="16" id="table-top"/>
-                        <constraint firstItem="WJd-eI-B8M" firstAttribute="leading" secondItem="0FB-EQ-P8a" secondAttribute="leading" constant="0" id="table-leading"/>
-                        <constraint firstItem="WJd-eI-B8M" firstAttribute="trailing" secondItem="0FB-EQ-P8a" secondAttribute="trailing" constant="0" id="table-trailing"/>
-                        <constraint firstItem="WJd-eI-B8M" firstAttribute="bottom" secondItem="YMz-YL-QSV" secondAttribute="top" constant="-8" id="table-bottom"/>
+                        <constraint firstItem="WJd-eI-B8M" firstAttribute="trailing" secondItem="0FB-EQ-P8a" secondAttribute="trailing" id="table-trailing"/>
                         <constraint firstItem="4cF-y7-Rks" firstAttribute="leading" secondItem="0FB-EQ-P8a" secondAttribute="leading" constant="16" id="title-leading"/>
                         <constraint firstItem="4cF-y7-Rks" firstAttribute="top" secondItem="0FB-EQ-P8a" secondAttribute="top" constant="24" id="title-top"/>
-                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="420" id="popup-min-height"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">

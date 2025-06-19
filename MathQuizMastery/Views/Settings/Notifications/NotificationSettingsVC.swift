@@ -270,7 +270,6 @@ extension NotificationSettingsVC {
         popupView.backgroundColor = .white
         popupView.clipsToBounds = true
         
-        // Shadow
         popupView.layer.shadowColor = UIColor.black.cgColor
         popupView.layer.shadowOpacity = 0.1
         popupView.layer.shadowOffset = CGSize(width: 0, height: 4)
