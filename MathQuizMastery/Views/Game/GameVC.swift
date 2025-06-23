@@ -375,7 +375,7 @@ extension GameVC {
         scoreLabel.cosmicTheme = .score
         
         questionNumberLabel.text = "1 / 10"
-        questionNumberLabel.cosmicTheme = .score
+        questionNumberLabel.cosmicTheme = .questionNumber
         
         timeLabel.text = "60"
     }
