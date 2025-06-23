@@ -42,7 +42,6 @@
                                 <constraint firstAttribute="height" constant="70" id="score-height-constraint"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" weight="black" pointSize="18"/>
-                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="60" textAlignment="center" lineBreakMode="clip" minimumScaleFactor="0.40000000000000002" translatesAutoresizingMaskIntoConstraints="NO" id="FeE-No-nNG" userLabel="Quantum Timer" customClass="TimerLabel" customModule="MathQuizMastery" customModuleProvider="target">
@@ -62,7 +61,6 @@
                                 <constraint firstAttribute="height" constant="70" id="progress-height-constraint"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" weight="black" pointSize="18"/>
-                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>

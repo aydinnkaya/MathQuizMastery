@@ -9,28 +9,37 @@ import Foundation
 import UIKit
 
 @objc class TimerLabel: UILabel {
-    
+
     private let backgroundLayer = CAGradientLayer()
     private let borderLayer = CAShapeLayer()
     private let glowLayer = CALayer()
     private let warningLayer = CAShapeLayer()
+
+    private let textGradientLayer = CAGradientLayer()
+    private let textMaskLayer = CATextLayer()
+
     private var isWarningActive = false
-    
+
+    private let gradientTextColors: [CGColor] = [
+        UIColor(red: 255/255, green: 180/255, blue: 50/255, alpha: 1).cgColor, // Gold
+        UIColor(red: 255/255, green: 100/255, blue: 0/255, alpha: 1).cgColor   // Orange
+    ]
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupLabel()
     }
-    
+
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         setupLabel()
     }
-    
+
     private func setupLabel() {
         clipsToBounds = true
         layer.masksToBounds = true
-        
-        // TURUNCU gradient background
+
+        // Background gradient
         backgroundLayer.colors = [
             UIColor(red: 0.4, green: 0.15, blue: 0.05, alpha: 0.95).cgColor,
             UIColor(red: 0.5, green: 0.2, blue: 0.1, alpha: 0.95).cgColor
@@ -38,16 +47,16 @@ import UIKit
         backgroundLayer.startPoint = CGPoint(x: 0, y: 0)
         backgroundLayer.endPoint = CGPoint(x: 1, y: 1)
         layer.insertSublayer(backgroundLayer, at: 0)
-        
-        // Güçlü turuncu glow
+
+        // Glow effect
         glowLayer.backgroundColor = UIColor.clear.cgColor
         glowLayer.shadowColor = UIColor(red: 1.0, green: 0.6, blue: 0.2, alpha: 1.0).cgColor
         glowLayer.shadowRadius = 18
         glowLayer.shadowOpacity = 0.8
         glowLayer.shadowOffset = .zero
         layer.insertSublayer(glowLayer, below: backgroundLayer)
-        
-        // Parlak turuncu border
+
+        // Border
         borderLayer.fillColor = UIColor.clear.cgColor
         borderLayer.strokeColor = UIColor(red: 1.0, green: 0.6, blue: 0.2, alpha: 1.0).cgColor
         borderLayer.lineWidth = 3.5
@@ -56,8 +65,8 @@ import UIKit
         borderLayer.shadowOpacity = 1.0
         borderLayer.shadowOffset = .zero
         layer.addSublayer(borderLayer)
-        
-        // Warning effect layer
+
+        // Warning effect
         warningLayer.fillColor = UIColor.clear.cgColor
         warningLayer.strokeColor = UIColor(red: 1.0, green: 0.3, blue: 0.3, alpha: 1.0).cgColor
         warningLayer.lineWidth = 5
@@ -67,54 +76,72 @@ import UIKit
         warningLayer.shadowOffset = .zero
         warningLayer.opacity = 0
         layer.addSublayer(warningLayer)
-        
-        // PARLAK BEYAZ TEXT
+
+        // Gradient text setup
+        textGradientLayer.colors = gradientTextColors
+        textGradientLayer.startPoint = CGPoint(x: 0.5, y: 0)
+        textGradientLayer.endPoint = CGPoint(x: 0.5, y: 1)
+        layer.addSublayer(textGradientLayer)
+        textGradientLayer.mask = textMaskLayer
+
+        // Text mask properties
+        textMaskLayer.contentsScale = UIScreen.main.scale
+        textMaskLayer.alignmentMode = .center
+        textMaskLayer.truncationMode = .end
+
+        textColor = .clear // we use mask
         textAlignment = .center
-        textColor = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)  // Parlak beyaz
         adjustsFontSizeToFitWidth = true
         minimumScaleFactor = 0.6
-        
-        // Text glow
-        layer.shadowColor = UIColor.white.cgColor
-        layer.shadowRadius = 2
-        layer.shadowOpacity = 0.9
-        layer.shadowOffset = .zero
     }
-    
+
     override func layoutSubviews() {
         super.layoutSubviews()
-        
+
         let diameter = min(bounds.width, bounds.height)
         let radius = diameter / 2
-        
-        // Perfect circle
+
         layer.cornerRadius = radius
         backgroundLayer.cornerRadius = radius
         glowLayer.cornerRadius = radius
-        
+
         backgroundLayer.frame = bounds
         glowLayer.frame = bounds
-        
-        let borderPath = UIBezierPath(ovalIn: bounds)
-        borderLayer.path = borderPath.cgPath
-        warningLayer.path = borderPath.cgPath
-        
-        // Optimal font sizing
+        textGradientLayer.frame = bounds
+
+        let path = UIBezierPath(ovalIn: bounds)
+        borderLayer.path = path.cgPath
+        warningLayer.path = path.cgPath
+
+        // Optimal font
         let optimalFontSize = diameter * 0.35
         font = UIFont.systemFont(ofSize: optimalFontSize, weight: .bold)
+
+        // Update CATextLayer to match label's text
+        let textHeight = font.lineHeight
+        let yOffset = (bounds.height - textHeight) / 2
+        textMaskLayer.frame = CGRect(x: 0, y: yOffset, width: bounds.width, height: textHeight)
+        textMaskLayer.font = font
+        textMaskLayer.fontSize = font.pointSize
+        textMaskLayer.string = text
     }
-    
+
+    override var text: String? {
+        didSet {
+            textMaskLayer.string = text
+        }
+    }
+
     func animateTextChange(newText: String) {
         UIView.transition(with: self, duration: 0.2, options: .transitionFlipFromTop) {
             self.text = newText
         }
     }
-    
+
     func triggerWarning() {
         guard !isWarningActive else { return }
         isWarningActive = true
-        
-        // KIRMIZI warning colors
+
         UIView.animate(withDuration: 0.3) {
             self.borderLayer.strokeColor = UIColor(red: 1.0, green: 0.3, blue: 0.3, alpha: 1.0).cgColor
             self.borderLayer.shadowColor = UIColor(red: 1.0, green: 0.3, blue: 0.3, alpha: 1.0).cgColor
@@ -124,21 +151,20 @@ import UIKit
                 UIColor(red: 0.5, green: 0.15, blue: 0.15, alpha: 0.95).cgColor
             ]
         }
-        
-        // Güçlü pulsing warning effect
-        let pulseAnimation = CABasicAnimation(keyPath: "opacity")
-        pulseAnimation.fromValue = 0.0
-        pulseAnimation.toValue = 1.0
-        pulseAnimation.duration = 0.4
-        pulseAnimation.autoreverses = true
-        pulseAnimation.repeatCount = .infinity
-        warningLayer.add(pulseAnimation, forKey: "warningPulse")
+
+        let pulse = CABasicAnimation(keyPath: "opacity")
+        pulse.fromValue = 0
+        pulse.toValue = 1
+        pulse.duration = 0.4
+        pulse.autoreverses = true
+        pulse.repeatCount = .infinity
+        warningLayer.add(pulse, forKey: "warningPulse")
     }
-    
+
     func resetToNormal() {
         isWarningActive = false
         warningLayer.removeAllAnimations()
-        
+
         UIView.animate(withDuration: 0.3) {
             self.borderLayer.strokeColor = UIColor(red: 1.0, green: 0.6, blue: 0.2, alpha: 1.0).cgColor
             self.borderLayer.shadowColor = UIColor(red: 1.0, green: 0.6, blue: 0.2, alpha: 1.0).cgColor
