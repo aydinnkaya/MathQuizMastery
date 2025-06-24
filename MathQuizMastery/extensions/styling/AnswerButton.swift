@@ -197,7 +197,6 @@ import UIKit
         })
     }
     
-    
     private func applyTextGradient() {
         guard let title = self.title(for: .normal), let label = titleLabel else { return }
         

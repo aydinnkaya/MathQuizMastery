@@ -332,19 +332,16 @@ extension GameVC : GameScreenViewModelDelegate {
         finishLayer.frame = view.bounds
         
         if score >= 8 {
-            // Gold finish for excellent performance
             finishLayer.colors = [
                 UIColor(red: 1.0, green: 0.85, blue: 0.2, alpha: 0.3).cgColor,
                 UIColor(red: 1.0, green: 0.75, blue: 0.1, alpha: 0.2).cgColor
             ]
         } else if score >= 6 {
-            // Silver finish for good performance
             finishLayer.colors = [
                 UIColor(red: 0.8, green: 0.85, blue: 0.9, alpha: 0.3).cgColor,
                 UIColor(red: 0.7, green: 0.75, blue: 0.8, alpha: 0.2).cgColor
             ]
         } else {
-            // Bronze finish for fair performance
             finishLayer.colors = [
                 UIColor(red: 0.8, green: 0.5, blue: 0.2, alpha: 0.3).cgColor,
                 UIColor(red: 0.7, green: 0.4, blue: 0.1, alpha: 0.2).cgColor
@@ -381,7 +378,6 @@ extension GameVC {
     }
     
     func setupUIStyles() {
-        // Professional space theme background
         view.backgroundColor = UIColor(red: 0.02, green: 0.04, blue: 0.08, alpha: 1.0)
     }
 }
