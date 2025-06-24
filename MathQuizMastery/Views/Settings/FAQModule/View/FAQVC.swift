@@ -52,9 +52,11 @@ class FAQVC: UIViewController {
         let maxWidth = view.frame.width * 0.9
         popupView.frame.size = CGSize(width: maxWidth, height: maxHeight)
         popupView.center = view.center
-        // Gradient layer frame güncelle
+        // Gradient layer frame ve köşe yuvarlatma güncelle
         if let gradientLayer = popupView.layer.sublayers?.first as? CAGradientLayer {
             gradientLayer.frame = popupView.bounds
+            gradientLayer.cornerRadius = popupView.layer.cornerRadius
+            gradientLayer.masksToBounds = true
         }
         // PopupView'u öne getir
         view.bringSubviewToFront(popupView)
@@ -172,27 +174,34 @@ extension FAQVC {
     func stylePopupView() {
         popupView.layer.cornerRadius = 20
         popupView.clipsToBounds = true
-        
+
         // Space theme styling
-        let gradientLayer = CAGradientLayer()
+        let gradientLayer: CAGradientLayer
+        if let existing = popupView.layer.sublayers?.first as? CAGradientLayer {
+            gradientLayer = existing
+        } else {
+            gradientLayer = CAGradientLayer()
+            popupView.layer.insertSublayer(gradientLayer, at: 0)
+        }
         gradientLayer.frame = popupView.bounds
         gradientLayer.colors = [
             UIColor(red: 0.1, green: 0.1, blue: 0.2, alpha: 0.95).cgColor,
             UIColor(red: 0.05, green: 0.05, blue: 0.1, alpha: 0.95).cgColor
         ]
         gradientLayer.locations = [0.0, 1.0]
-        popupView.layer.insertSublayer(gradientLayer, at: 0)
-        
-        // Add subtle border glow
+        gradientLayer.cornerRadius = popupView.layer.cornerRadius
+        gradientLayer.masksToBounds = true
+
+        // Border
         popupView.layer.borderWidth = 1.0
         popupView.layer.borderColor = UIColor(red: 0.455, green: 0.816, blue: 0.988, alpha: 0.3).cgColor
-        
-        // Add shadow
+
+        // Shadow
         popupView.layer.shadowColor = UIColor(red: 0.455, green: 0.816, blue: 0.988, alpha: 0.5).cgColor
         popupView.layer.shadowOffset = CGSize(width: 0, height: 2)
         popupView.layer.shadowRadius = 15
         popupView.layer.shadowOpacity = 0.5
-        popupView.layer.masksToBounds = false
+        popupView.layer.masksToBounds = false // Shadow için gerekli
     }
     
     func framePopupView() {
