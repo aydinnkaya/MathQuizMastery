@@ -43,6 +43,23 @@ class FAQVC: UIViewController {
         animateIn()
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        // Arka plan view'unu tam ekran yap
+        backgroundView.frame = view.bounds
+        // PopupView'u responsive olarak boyutlandır
+        let maxHeight = view.frame.height * 0.7
+        let maxWidth = view.frame.width * 0.9
+        popupView.frame.size = CGSize(width: maxWidth, height: maxHeight)
+        popupView.center = view.center
+        // Gradient layer frame güncelle
+        if let gradientLayer = popupView.layer.sublayers?.first as? CAGradientLayer {
+            gradientLayer.frame = popupView.bounds
+        }
+        // PopupView'u öne getir
+        view.bringSubviewToFront(popupView)
+    }
+    
     private func setupUI() {
         view.backgroundColor = .clear
         backgroundView.alpha = 0
