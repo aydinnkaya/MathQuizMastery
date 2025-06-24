@@ -31,52 +31,51 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.01" green="0.01" blue="0.050000000000000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </imageView>
-                <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFill" alignment="center" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="SR5-gt-SJP" userLabel="Top Info Stack">
-                    <rect key="frame" x="20" y="128" width="353" height="150"/>
+                <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFill" distribution="fillEqually" alignment="center" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="SR5-gt-SJP" userLabel="Top Info Stack">
+                    <rect key="frame" x="20" y="128" width="353" height="130"/>
                     <subviews>
-                        <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score: 0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="saR-dP-Dvb" userLabel="Score Label" customClass="InfoLabel" customModule="MathQuizMastery" customModuleProvider="target">
+                        <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score: 0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="saR-dP-Dvb" userLabel="Score Label" customClass="InfoLabel" customModule="MathQuizMastery" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="40" width="87.666666666666671" height="70"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstAttribute="width" secondItem="saR-dP-Dvb" secondAttribute="height" multiplier="1.25:1" id="jTP-bL-pVV"/>
-                                <constraint firstAttribute="height" constant="70" id="score-height-constraint"/>
+                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="65" id="score-min-height"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" weight="black" pointSize="18"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="60" textAlignment="center" lineBreakMode="clip" minimumScaleFactor="0.40000000000000002" translatesAutoresizingMaskIntoConstraints="NO" id="FeE-No-nNG" userLabel="Quantum Timer" customClass="TimerLabel" customModule="MathQuizMastery" customModuleProvider="target">
-                            <rect key="frame" x="111.66666666666669" y="10" width="130" height="130"/>
+                            <rect key="frame" x="111.66666666666669" y="10" width="130" height="110"/>
                             <constraints>
-                                <constraint firstAttribute="width" secondItem="FeE-No-nNG" secondAttribute="height" multiplier="1:1" id="5BR-Gr-lnq"/>
-                                <constraint firstAttribute="height" constant="130" id="timer-height-constraint"/>
+                                <constraint firstAttribute="width" secondItem="FeE-No-nNG" secondAttribute="height" multiplier="1:1" id="timer-aspect-ratio"/>
+                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="70" id="timer-min-height"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" weight="black" pointSize="32"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 / 10" textAlignment="center" lineBreakMode="clip" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XmK-xK-bnP" userLabel="Question Progress" customClass="InfoLabel" customModule="MathQuizMastery" customModuleProvider="target">
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 / 10" textAlignment="center" lineBreakMode="clip" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="XmK-xK-bnP" userLabel="Question Progress" customClass="InfoLabel" customModule="MathQuizMastery" customModuleProvider="target">
                             <rect key="frame" x="265.66666666666669" y="40" width="87.333333333333314" height="70"/>
                             <constraints>
-                                <constraint firstAttribute="width" secondItem="XmK-xK-bnP" secondAttribute="height" multiplier="1.25:1" id="UaA-La-SSZ"/>
-                                <constraint firstAttribute="height" constant="70" id="progress-height-constraint"/>
+                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="65" id="progress-min-height"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" weight="black" pointSize="18"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
                     <constraints>
-                        <constraint firstAttribute="height" constant="150" id="top-stack-height"/>
+                        <constraint firstAttribute="height" constant="130" id="top-stack-height"/>
                     </constraints>
                 </stackView>
                 <stackView opaque="NO" contentMode="scaleAspectFit" axis="vertical" alignment="center" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="qiH-Di-pY7" userLabel="Game Content Stack">
                     <rect key="frame" x="30" y="298" width="333" height="466"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What is 2 + 2?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jrr-Ny-p4b" userLabel="Question Display" customClass="QuestionLabel" customModule="MathQuizMastery" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="0.0" width="333" height="53.333333333333336"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What is 2 + 2?" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jrr-Ny-p4b" userLabel="Question Display" customClass="QuestionLabel" customModule="MathQuizMastery" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="333" height="70"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="qiH-Di-pY7" secondAttribute="width" id="FqD-uL-X4R"/>
+                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="70" id="question-label-min-height"/>
                             </constraints>
-                            <fontDescription key="fontDescription" type="system" weight="black" pointSize="24"/>
+                            <fontDescription key="fontDescription" type="system" weight="black" pointSize="44"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
@@ -134,11 +133,11 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="qiH-Di-pY7" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="30" id="2px-Mo-dQZ"/>
-                <constraint firstItem="SR5-gt-SJP" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="INq-TK-jdZ"/>
+                <constraint firstItem="SR5-gt-SJP" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="INq-TK-jdZ-1"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="qiH-Di-pY7" secondAttribute="trailing" constant="30" id="Inh-4g-m1W"/>
                 <constraint firstItem="SR5-gt-SJP" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="10" id="JHX-lq-jdu"/>
-                <constraint firstItem="SR5-gt-SJP" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="RzQ-aL-HO7"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="SR5-gt-SJP" secondAttribute="trailing" constant="20" id="Ukd-Aq-TXh"/>
+                <constraint firstItem="SR5-gt-SJP" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="RzQ-aL-HO7-1"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="SR5-gt-SJP" secondAttribute="trailing" constant="20" id="Ukd-Aq-TXh-1"/>
                 <constraint firstItem="qiH-Di-pY7" firstAttribute="top" secondItem="SR5-gt-SJP" secondAttribute="bottom" constant="20" id="gPj-hm-WLB"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="qiH-Di-pY7" secondAttribute="bottom" constant="20" id="mQt-z6-rsd"/>
                 <constraint firstItem="qiH-Di-pY7" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="mpc-sO-S8y"/>

@@ -8,125 +8,101 @@
 import UIKit
 
 @objc class InfoLabel: UILabel {
-
+    
     private let backgroundGradient = CAGradientLayer()
     private let borderGradient = CAGradientLayer()
     private let borderMaskLayer = CAShapeLayer()
     private let glowView = UIView()
-
+    
     private let textGradientLayer = CAGradientLayer()
     private let textMaskLayer = CATextLayer()
-
-    private let gradientTextColors: [CGColor] = [
-        UIColor(red: 255/255, green: 180/255, blue: 50/255, alpha: 1).cgColor, // Altın
-        UIColor(red: 255/255, green: 100/255, blue: 0/255, alpha: 1).cgColor   // Turuncu
-    ]
-
+    
+    private let gradientTextColors: [CGColor] = UIColor.Custom.answerTextGradient.map { $0.cgColor }
+    
     @objc enum CosmicTheme: Int {
         case score = 0, questionNumber, timer
-
+        
         var backgroundColors: [CGColor] {
             switch self {
             case .score:
-                return [
-                    UIColor(red: 0.6, green: 0.3, blue: 0.9, alpha: 0.9).cgColor,
-                    UIColor(red: 0.4, green: 0.2, blue: 0.8, alpha: 0.9).cgColor
-                ]
+                return UIColor.Custom.infoScoreBackground
             case .questionNumber:
-                return [
-                    UIColor(red: 0.7, green: 0.0, blue: 1.0, alpha: 1).cgColor,
-                    UIColor(red: 0.2, green: 0.0, blue: 0.4, alpha: 1).cgColor
-                ]
+                return UIColor.Custom.infoQuestionBackground
             case .timer:
-                return [
-                    UIColor(red: 0.2, green: 0.2, blue: 0.2, alpha: 0.4).cgColor,
-                    UIColor(red: 0.1, green: 0.1, blue: 0.1, alpha: 0.6).cgColor
-                ]
+                return UIColor.Custom.infoTimerBackground
             }
         }
-
+        
         var borderColors: [CGColor] {
             switch self {
             case .score:
-                return [
-                    UIColor(red: 122/255, green: 208/255, blue: 255/255, alpha: 1).cgColor,
-                    UIColor(red: 138/255, green: 43/255, blue: 226/255, alpha: 1).cgColor
-                ]
+                return UIColor.Custom.infoScoreBorder
             case .questionNumber:
-                return [
-                    UIColor(red: 1.0, green: 0.2, blue: 1.0, alpha: 1).cgColor,
-                    UIColor(red: 1.0, green: 0.3, blue: 0.1, alpha: 1).cgColor
-                ]
+                return UIColor.Custom.infoQuestionBorder
             case .timer:
-                return [
-                    UIColor(white: 0.8, alpha: 0.8).cgColor,
-                    UIColor(white: 0.6, alpha: 0.6).cgColor
-                ]
+                return UIColor.Custom.infoTimerBorder
             }
         }
-
+        
         var glowColor: UIColor {
             switch self {
             case .score:
-                return UIColor(red: 1.0, green: 0.9, blue: 0.4, alpha: 1.0)
+                return UIColor.Custom.infoScoreGlow
             case .questionNumber:
-                return UIColor(red: 1.0, green: 0.2, blue: 0.8, alpha: 1)
+                return UIColor.Custom.infoQuestionGlow
             case .timer:
-                return .white
+                return UIColor.Custom.infoTimerGlow
             }
         }
-
+        
         var useGradientText: Bool {
             return self == .score || self == .questionNumber
         }
-
+        
         var solidTextColor: UIColor {
             switch self {
             case .timer:
                 return .white
             default:
-                return .clear // gradyan text kullanılıyor
+                return .clear
             }
         }
     }
-
+    
     var cosmicTheme: CosmicTheme = .score {
         didSet {
             updateTheme()
         }
     }
-
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupUI()
         updateTheme()
     }
-
+    
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         setupUI()
         updateTheme()
     }
-
+    
     private func setupUI() {
         backgroundColor = .clear
         clipsToBounds = false
         layer.cornerRadius = 20
         layer.masksToBounds = false
-
-        // Glow effect
+        
         glowView.layer.cornerRadius = 20
         glowView.layer.shadowOffset = .zero
         glowView.layer.shadowRadius = 30
         glowView.layer.shadowOpacity = 1.0
         glowView.backgroundColor = .clear
         insertSubview(glowView, at: 0)
-
-        // Background gradient
+        
         backgroundGradient.cornerRadius = 20
         layer.insertSublayer(backgroundGradient, at: 0)
-
-        // Border gradient
+        
         borderGradient.mask = borderMaskLayer
         layer.insertSublayer(borderGradient, above: backgroundGradient)
         borderMaskLayer.lineWidth = 4
@@ -134,48 +110,45 @@ import UIKit
         borderMaskLayer.lineCap = .round
         borderMaskLayer.strokeColor = UIColor.white.cgColor
         borderMaskLayer.fillColor = UIColor.clear.cgColor
-
-        // Text gradient mask setup
+        
         textGradientLayer.startPoint = CGPoint(x: 0.5, y: 0)
         textGradientLayer.endPoint = CGPoint(x: 0.5, y: 1)
         textGradientLayer.colors = gradientTextColors
         layer.addSublayer(textGradientLayer)
         textGradientLayer.mask = textMaskLayer
-
+        
         textMaskLayer.alignmentMode = .center
         textMaskLayer.contentsScale = UIScreen.main.scale
         textMaskLayer.truncationMode = .end
-
-        // UILabel properties
+        
         textAlignment = .center
         adjustsFontSizeToFitWidth = true
         minimumScaleFactor = 0.6
         numberOfLines = 1
         font = UIFont.systemFont(ofSize: 24, weight: .black)
     }
-
+    
     override func layoutSubviews() {
         super.layoutSubviews()
-
+        
         glowView.frame = bounds
         backgroundGradient.frame = bounds
         borderGradient.frame = bounds
         borderMaskLayer.frame = bounds
         textGradientLayer.frame = bounds
-
-        // Dikey ortalanmış CATextLayer çerçevesi
+        
         let textHeight = font.lineHeight
         let yOffset = (bounds.height - textHeight) / 2
         textMaskLayer.frame = CGRect(x: 0, y: yOffset, width: bounds.width, height: textHeight)
-
+        
         textMaskLayer.string = text ?? ""
         textMaskLayer.font = font
         textMaskLayer.fontSize = font.pointSize
-
+        
         let path = UIBezierPath(roundedRect: bounds.insetBy(dx: 1.5, dy: 1.5), cornerRadius: 20)
         borderMaskLayer.path = path.cgPath
     }
-
+    
     private func updateTheme() {
         backgroundGradient.colors = cosmicTheme.backgroundColors
         borderGradient.colors = cosmicTheme.borderColors
@@ -184,14 +157,14 @@ import UIKit
         textColor = cosmicTheme.solidTextColor
         setNeedsDisplay()
     }
-
+    
     func animateTextChange(newText: String) {
         UIView.transition(with: self, duration: 0.25, options: .transitionCrossDissolve) {
             self.text = newText
             self.textMaskLayer.string = newText
         }
     }
-
+    
     func activateHighlight() {
         UIView.animate(withDuration: 0.15, animations: {
             self.glowView.layer.shadowRadius = 36

@@ -24,7 +24,7 @@ enum PopupType {
 class AppCoordinator: Coordinator {
     
     var navigationController: UINavigationController
-    let backImage = UIImage(named: "back_button")?.withRenderingMode(.alwaysOriginal)
+    let backImage = UIImage(named: "back_buttonsss")?.withRenderingMode(.alwaysOriginal)
     private var currentPopupViewController: UIViewController?
     
     init(navigationController: UINavigationController) {

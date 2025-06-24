@@ -57,9 +57,8 @@
                 <constraint firstItem="hbZ-wj-p3v" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="ZiB-WX-pAl"/>
                 <constraint firstAttribute="trailing" secondItem="hbZ-wj-p3v" secondAttribute="trailing" id="bCk-8i-e4D"/>
                 <constraint firstItem="Kgc-Pr-FkT" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="bUx-Oe-Ygu"/>
-                <constraint firstItem="Kgc-Pr-FkT" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="cUx-Oe-Ygv"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Kgc-Pr-FkT" secondAttribute="trailing" constant="20" id="dUx-Oe-Ygw"/>
                 <constraint firstItem="hbZ-wj-p3v" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="pOd-xN-l1f"/>
+                <constraint firstItem="Kgc-Pr-FkT" firstAttribute="width" secondItem="fnl-2z-Ty3" secondAttribute="width" multiplier="0.75" id="popup-width-ratio-constraint"/>
             </constraints>
             <point key="canvasLocation" x="138.1679389312977" y="19.718309859154932"/>
         </view>

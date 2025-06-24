@@ -20,10 +20,7 @@ import UIKit
 
     private var isWarningActive = false
 
-    private let gradientTextColors: [CGColor] = [
-        UIColor(red: 255/255, green: 180/255, blue: 50/255, alpha: 1).cgColor, // Gold
-        UIColor(red: 255/255, green: 100/255, blue: 0/255, alpha: 1).cgColor   // Orange
-    ]
+    private let gradientTextColors: [CGColor] = UIColor.Custom.timerTextGradient.map { $0.cgColor }
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -40,17 +37,14 @@ import UIKit
         layer.masksToBounds = true
 
         // Background gradient
-        backgroundLayer.colors = [
-            UIColor(red: 0.4, green: 0.15, blue: 0.05, alpha: 0.95).cgColor,
-            UIColor(red: 0.5, green: 0.2, blue: 0.1, alpha: 0.95).cgColor
-        ]
+        backgroundLayer.colors = UIColor.Custom.timerBackground
         backgroundLayer.startPoint = CGPoint(x: 0, y: 0)
         backgroundLayer.endPoint = CGPoint(x: 1, y: 1)
         layer.insertSublayer(backgroundLayer, at: 0)
 
         // Glow effect
         glowLayer.backgroundColor = UIColor.clear.cgColor
-        glowLayer.shadowColor = UIColor(red: 1.0, green: 0.6, blue: 0.2, alpha: 1.0).cgColor
+        glowLayer.shadowColor = UIColor.Custom.timerGlow.cgColor
         glowLayer.shadowRadius = 18
         glowLayer.shadowOpacity = 0.8
         glowLayer.shadowOffset = .zero
@@ -58,9 +52,9 @@ import UIKit
 
         // Border
         borderLayer.fillColor = UIColor.clear.cgColor
-        borderLayer.strokeColor = UIColor(red: 1.0, green: 0.6, blue: 0.2, alpha: 1.0).cgColor
+        borderLayer.strokeColor = UIColor.Custom.timerBorder.cgColor
         borderLayer.lineWidth = 3.5
-        borderLayer.shadowColor = UIColor(red: 1.0, green: 0.6, blue: 0.2, alpha: 1.0).cgColor
+        borderLayer.shadowColor = UIColor.Custom.timerBorder.cgColor
         borderLayer.shadowRadius = 10
         borderLayer.shadowOpacity = 1.0
         borderLayer.shadowOffset = .zero
@@ -68,9 +62,9 @@ import UIKit
 
         // Warning effect
         warningLayer.fillColor = UIColor.clear.cgColor
-        warningLayer.strokeColor = UIColor(red: 1.0, green: 0.3, blue: 0.3, alpha: 1.0).cgColor
+        warningLayer.strokeColor = UIColor.Custom.timerWarning.cgColor
         warningLayer.lineWidth = 5
-        warningLayer.shadowColor = UIColor(red: 1.0, green: 0.3, blue: 0.3, alpha: 1.0).cgColor
+        warningLayer.shadowColor = UIColor.Custom.timerWarning.cgColor
         warningLayer.shadowRadius = 15
         warningLayer.shadowOpacity = 1.0
         warningLayer.shadowOffset = .zero
@@ -143,13 +137,10 @@ import UIKit
         isWarningActive = true
 
         UIView.animate(withDuration: 0.3) {
-            self.borderLayer.strokeColor = UIColor(red: 1.0, green: 0.3, blue: 0.3, alpha: 1.0).cgColor
-            self.borderLayer.shadowColor = UIColor(red: 1.0, green: 0.3, blue: 0.3, alpha: 1.0).cgColor
-            self.glowLayer.shadowColor = UIColor(red: 1.0, green: 0.3, blue: 0.3, alpha: 1.0).cgColor
-            self.backgroundLayer.colors = [
-                UIColor(red: 0.4, green: 0.1, blue: 0.1, alpha: 0.95).cgColor,
-                UIColor(red: 0.5, green: 0.15, blue: 0.15, alpha: 0.95).cgColor
-            ]
+            self.borderLayer.strokeColor = UIColor.Custom.timerWarning.cgColor
+            self.borderLayer.shadowColor = UIColor.Custom.timerWarning.cgColor
+            self.glowLayer.shadowColor = UIColor.Custom.timerWarning.cgColor
+            self.backgroundLayer.colors = UIColor.Custom.timerWarningBackground
         }
 
         let pulse = CABasicAnimation(keyPath: "opacity")
@@ -166,14 +157,12 @@ import UIKit
         warningLayer.removeAllAnimations()
 
         UIView.animate(withDuration: 0.3) {
-            self.borderLayer.strokeColor = UIColor(red: 1.0, green: 0.6, blue: 0.2, alpha: 1.0).cgColor
-            self.borderLayer.shadowColor = UIColor(red: 1.0, green: 0.6, blue: 0.2, alpha: 1.0).cgColor
-            self.glowLayer.shadowColor = UIColor(red: 1.0, green: 0.6, blue: 0.2, alpha: 1.0).cgColor
-            self.backgroundLayer.colors = [
-                UIColor(red: 0.4, green: 0.15, blue: 0.05, alpha: 0.95).cgColor,
-                UIColor(red: 0.5, green: 0.2, blue: 0.1, alpha: 0.95).cgColor
-            ]
+            self.borderLayer.strokeColor = UIColor.Custom.timerBorder.cgColor
+            self.borderLayer.shadowColor = UIColor.Custom.timerBorder.cgColor
+            self.glowLayer.shadowColor = UIColor.Custom.timerGlow.cgColor
+            self.backgroundLayer.colors = UIColor.Custom.timerBackground
             self.warningLayer.opacity = 0
         }
     }
 }
+

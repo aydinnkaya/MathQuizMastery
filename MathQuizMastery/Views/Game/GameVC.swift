@@ -61,33 +61,22 @@ class GameVC: UIViewController {
         }
     }
     
+    
     private func setupProfessionalSpaceBackground() {
-        view.backgroundColor = UIColor(red: 0.02, green: 0.04, blue: 0.08, alpha: 1.0)
+        view.backgroundColor = UIColor.Custom.backgroundDark1
         
-        // Deep space gradient background
-        spaceBackgroundLayer.colors = [
-            UIColor(red: 0.05, green: 0.08, blue: 0.15, alpha: 1.0).cgColor,  // Deep Space Blue
-            UIColor(red: 0.08, green: 0.12, blue: 0.20, alpha: 1.0).cgColor,  // Cosmic Navy
-            UIColor(red: 0.12, green: 0.16, blue: 0.25, alpha: 1.0).cgColor,  // Space Gray
-            UIColor(red: 0.06, green: 0.10, blue: 0.18, alpha: 1.0).cgColor   // Dark Void
-        ]
+        spaceBackgroundLayer.colors = UIColor.Custom.spaceBackgroundColors
         spaceBackgroundLayer.locations = [0.0, 0.4, 0.7, 1.0]
         spaceBackgroundLayer.startPoint = CGPoint(x: 0, y: 0)
         spaceBackgroundLayer.endPoint = CGPoint(x: 1, y: 1)
         view.layer.insertSublayer(spaceBackgroundLayer, at: 0)
         
-        // Subtle nebula effect
-        nebulaLayer.colors = [
-            UIColor(red: 0.15, green: 0.20, blue: 0.35, alpha: 0.3).cgColor,
-            UIColor(red: 0.20, green: 0.25, blue: 0.40, alpha: 0.2).cgColor,
-            UIColor(red: 0.10, green: 0.15, blue: 0.30, alpha: 0.1).cgColor
-        ]
+        nebulaLayer.colors = UIColor.Custom.nebulaGradientColors
         nebulaLayer.locations = [0.0, 0.5, 1.0]
         nebulaLayer.startPoint = CGPoint(x: 0.2, y: 0.2)
         nebulaLayer.endPoint = CGPoint(x: 0.8, y: 0.8)
         view.layer.insertSublayer(nebulaLayer, above: spaceBackgroundLayer)
         
-        // Professional star field
         setupStarField()
     }
     
@@ -105,7 +94,7 @@ class GameVC: UIViewController {
         star.scale = 0.4
         star.scaleRange = 0.3
         star.alphaRange = 0.6
-        star.color = UIColor(red: 0.85, green: 0.90, blue: 1.0, alpha: 1.0).cgColor
+        star.color = UIColor.Custom.starFieldColor
         
         starFieldLayer.emitterCells = [star]
         view.layer.insertSublayer(starFieldLayer, above: nebulaLayer)
@@ -126,7 +115,7 @@ class GameVC: UIViewController {
     
     private func setupTimeWarningEffect() {
         timeWarningLayer.fillColor = UIColor.clear.cgColor
-        timeWarningLayer.strokeColor = UIColor(red: 1.0, green: 0.3, blue: 0.3, alpha: 0.8).cgColor
+        timeWarningLayer.strokeColor = UIColor.Custom.timeWarningStrokeColor
         timeWarningLayer.lineWidth = 6
         timeWarningLayer.opacity = 0
         view.layer.addSublayer(timeWarningLayer)
@@ -138,7 +127,6 @@ class GameVC: UIViewController {
         starFieldLayer.frame = view.bounds
         starFieldLayer.emitterPosition = CGPoint(x: view.bounds.midX, y: 0)
         
-        // Update time warning effect
         let warningPath = UIBezierPath()
         warningPath.move(to: CGPoint(x: 20, y: view.bounds.height - 20))
         warningPath.addLine(to: CGPoint(x: view.bounds.width - 20, y: view.bounds.height - 20))
@@ -162,7 +150,6 @@ class GameVC: UIViewController {
     }
     
     private func handleAnswerSelection(selectedButton: AnswerButton, correct: Bool) {
-        // Disable all buttons
         [buttonFirst, buttonSecond, buttonThird].forEach { $0?.isEnabled = false }
         
         if correct {
@@ -174,7 +161,6 @@ class GameVC: UIViewController {
         }
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
-            // Reset all buttons
             [self.buttonFirst, self.buttonSecond, self.buttonThird].forEach { button in
                 button?.isEnabled = true
                 button?.resetToNormal()
@@ -184,10 +170,9 @@ class GameVC: UIViewController {
     }
     
     private func showCorrectAnswerEffect() {
-        // Professional success effect
         let successLayer = CALayer()
         successLayer.frame = view.bounds
-        successLayer.backgroundColor = UIColor(red: 0.20, green: 0.70, blue: 0.40, alpha: 0.15).cgColor
+        successLayer.backgroundColor = UIColor.Custom.successEffectBackground
         view.layer.addSublayer(successLayer)
         
         let fadeAnimation = CABasicAnimation(keyPath: "opacity")
@@ -196,13 +181,12 @@ class GameVC: UIViewController {
         fadeAnimation.duration = 0.8
         successLayer.add(fadeAnimation, forKey: "fade")
         
-        // Success particles
         let successEmitter = CAEmitterLayer()
         successEmitter.emitterPosition = CGPoint(x: view.bounds.midX, y: view.bounds.midY)
         successEmitter.emitterSize = CGSize(width: 50, height: 50)
         
         let successParticle = CAEmitterCell()
-        successParticle.contents = createSuccessParticle().cgImage
+        successParticle.contents = UIColor.Custom.successParticleColor
         successParticle.birthRate = 50
         successParticle.lifetime = 1.0
         successParticle.velocity = 100
@@ -222,7 +206,6 @@ class GameVC: UIViewController {
     }
     
     private func showWrongAnswerEffect() {
-        // Professional error effect
         let shakeAnimation = CABasicAnimation(keyPath: "transform.translation.x")
         shakeAnimation.fromValue = -10
         shakeAnimation.toValue = 10
@@ -233,7 +216,7 @@ class GameVC: UIViewController {
         
         let errorLayer = CALayer()
         errorLayer.frame = view.bounds
-        errorLayer.backgroundColor = UIColor(red: 0.70, green: 0.20, blue: 0.20, alpha: 0.12).cgColor
+        errorLayer.backgroundColor = UIColor.Custom.wrongEffectBackground
         view.layer.addSublayer(errorLayer)
         
         let fadeAnimation = CABasicAnimation(keyPath: "opacity")
@@ -245,19 +228,6 @@ class GameVC: UIViewController {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
             errorLayer.removeFromSuperlayer()
         }
-    }
-    
-    private func createSuccessParticle() -> UIImage {
-        let size = CGSize(width: 8, height: 8)
-        UIGraphicsBeginImageContextWithOptions(size, false, 0)
-        let context = UIGraphicsGetCurrentContext()!
-        
-        context.setFillColor(UIColor(red: 0.30, green: 0.80, blue: 0.45, alpha: 1.0).cgColor)
-        context.fillEllipse(in: CGRect(origin: .zero, size: size))
-        
-        let image = UIGraphicsGetImageFromCurrentImageContext()!
-        UIGraphicsEndImageContext()
-        return image
     }
     
     private func triggerTimeWarningEffect() {
@@ -303,7 +273,6 @@ extension GameVC : GameScreenViewModelDelegate {
     func onUpdateTime(time: String) {
         timeLabel.animateTextChange(newText: time)
         
-        // Professional time warning
         if let timeInt = Int(time) {
             if timeInt <= 10 && timeInt > 0 {
                 timeLabel.triggerWarning()
@@ -332,20 +301,11 @@ extension GameVC : GameScreenViewModelDelegate {
         finishLayer.frame = view.bounds
         
         if score >= 8 {
-            finishLayer.colors = [
-                UIColor(red: 1.0, green: 0.85, blue: 0.2, alpha: 0.3).cgColor,
-                UIColor(red: 1.0, green: 0.75, blue: 0.1, alpha: 0.2).cgColor
-            ]
+            finishLayer.colors = UIColor.Custom.finishEffectColorsHigh
         } else if score >= 6 {
-            finishLayer.colors = [
-                UIColor(red: 0.8, green: 0.85, blue: 0.9, alpha: 0.3).cgColor,
-                UIColor(red: 0.7, green: 0.75, blue: 0.8, alpha: 0.2).cgColor
-            ]
+            finishLayer.colors = UIColor.Custom.finishEffectColorsMedium
         } else {
-            finishLayer.colors = [
-                UIColor(red: 0.8, green: 0.5, blue: 0.2, alpha: 0.3).cgColor,
-                UIColor(red: 0.7, green: 0.4, blue: 0.1, alpha: 0.2).cgColor
-            ]
+            finishLayer.colors = UIColor.Custom.finishEffectColorsLow
         }
         
         view.layer.addSublayer(finishLayer)
@@ -378,6 +338,6 @@ extension GameVC {
     }
     
     func setupUIStyles() {
-        view.backgroundColor = UIColor(red: 0.02, green: 0.04, blue: 0.08, alpha: 1.0)
+        view.backgroundColor = UIColor.Custom.backgroundDark1
     }
 }
