@@ -27,6 +27,7 @@ class NotificationSettingCell: UITableViewCell {
     weak var delegate: NotificationSettingCellDelegate?
     private var setting: NotificationSetting?
     
+    
     // MARK: - Lifecycle
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -58,7 +59,7 @@ class NotificationSettingCell: UITableViewCell {
         containerView.backgroundColor = .white
         containerView.layer.cornerRadius = 12
         containerView.layer.borderWidth = 1
-        containerView.layer.borderColor = UIColor("#E5E5E5")?.cgColor
+        containerView.layer.borderColor = UIColor.Custom.settingBorderInactive.cgColor
         
         // Shadow
         containerView.layer.shadowColor = UIColor.black.cgColor
@@ -70,30 +71,30 @@ class NotificationSettingCell: UITableViewCell {
     
     private func setupLabels() {
         titleLabel.font = UIFont.boldSystemFont(ofSize: 16)
-        titleLabel.textColor = UIColor("#333333")
+        titleLabel.textColor = UIColor.Custom.settingTitle
         
         descriptionLabel.font = UIFont.systemFont(ofSize: 12)
-        descriptionLabel.textColor = UIColor("#666666")
+        descriptionLabel.textColor = UIColor.Custom.settingDescription
         descriptionLabel.numberOfLines = 2
         
         timeLabel.font = UIFont.systemFont(ofSize: 11)
-        timeLabel.textColor = UIColor("#999999")
+        timeLabel.textColor = UIColor.Custom.settingTime
         timeLabel.isHidden = true
     }
     
     private func setupSwitch() {
-        toggleSwitch.onTintColor = UIColor("#7B61FF")
+        toggleSwitch.onTintColor = UIColor.Custom.settingSwitchOn
         toggleSwitch.addTarget(self, action: #selector(switchValueChanged), for: .valueChanged)
     }
     
     private func setupButtons() {
         infoButton.setImage(UIImage(systemName: "info.circle"), for: .normal)
-        infoButton.tintColor = UIColor("#7B61FF")
+        infoButton.tintColor = UIColor.Custom.settingIcon
         infoButton.addTarget(self, action: #selector(infoButtonTapped), for: .touchUpInside)
     }
     
     private func setupImageView() {
-        iconImageView.tintColor = UIColor("#7B61FF")
+        iconImageView.tintColor = UIColor.Custom.settingIcon
         iconImageView.contentMode = .scaleAspectFit
     }
     
@@ -105,10 +106,8 @@ class NotificationSettingCell: UITableViewCell {
         descriptionLabel.text = setting.description
         toggleSwitch.isOn = setting.isEnabled
         
-        // Icon
         iconImageView.image = UIImage(systemName: setting.icon)
         
-        // Time label
         if let defaultTime = setting.defaultTime {
             timeLabel.text = defaultTime
             timeLabel.isHidden = false
@@ -143,29 +142,21 @@ class NotificationSettingCell: UITableViewCell {
         timeLabel.alpha = alpha
         
         containerView.layer.borderColor = isEnabled ?
-            UIColor("#7B61FF")?.withAlphaComponent(0.3).cgColor :
-            UIColor("#E5E5E5")?.cgColor
+        UIColor.Custom.settingBorderActive.cgColor :
+        UIColor.Custom.settingBorderInactive.cgColor
     }
     
     // MARK: - Actions
     @objc private func switchValueChanged() {
         guard let setting = setting else { return }
-        
-        // Haptic feedback
-        let impactFeedback = UIImpactFeedbackGenerator(style: .light)
-        impactFeedback.impactOccurred()
-        
+        UIImpactFeedbackGenerator(style: .light).impactOccurred()
         updateAppearance()
         delegate?.notificationSettingCell(self, didToggle: toggleSwitch.isOn, for: setting)
     }
     
     @objc private func infoButtonTapped() {
         guard let setting = setting else { return }
-        
-        // Haptic feedback
-        let impactFeedback = UIImpactFeedbackGenerator(style: .light)
-        impactFeedback.impactOccurred()
-        
+        UIImpactFeedbackGenerator(style: .light).impactOccurred()
         delegate?.notificationSettingCell(self, didTapInfo: setting)
     }
 }
@@ -177,7 +168,7 @@ extension NotificationSettingCell {
             self.transform = CGAffineTransform(scaleX: 0.98, y: 0.98)
         }) { _ in
             UIView.animate(withDuration: 0.1) {
-                self.transform = CGAffineTransform.identity
+                self.transform = .identity
             }
         }
     }

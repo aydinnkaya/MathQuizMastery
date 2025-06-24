@@ -201,5 +201,13 @@ extension UIColor {
             UIColor(red: 0.7, green: 0.4, blue: 0.1, alpha: 0.2).cgColor
         ]
         
+        // Notification Settings cell
+        static let settingTitle = UIColor("333333") ?? .black
+        static let settingDescription = UIColor("666666") ?? .darkGray
+        static let settingTime = UIColor("999999") ?? .lightGray
+        static let settingSwitchOn = UIColor("7B61FF") ?? .systemPurple
+        static let settingIcon = UIColor("7B61FF") ?? .systemPurple
+        static let settingBorderActive = UIColor("7B61FF")?.withAlphaComponent(0.3) ?? .lightGray
+        static let settingBorderInactive = UIColor("E5E5E5") ?? .lightGray
     }
 }

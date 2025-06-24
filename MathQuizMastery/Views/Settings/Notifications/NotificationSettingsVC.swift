@@ -18,6 +18,7 @@ class NotificationSettingsVC: UIViewController {
     @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var saveButton: UIButton!
     
+    
     // MARK: - Properties
     private let viewModel: NotificationSettingsViewModel
     weak var coordinator: AppCoordinator?
@@ -82,16 +83,16 @@ class NotificationSettingsVC: UIViewController {
     private func setupLabels() {
         titleLabel.text = L(.notification_settings_title)
         titleLabel.font = UIFont.boldSystemFont(ofSize: 18)
-        titleLabel.textColor = UIColor("#333333")
+        titleLabel.textColor = UIColor.Custom.settingTitle
     }
     
     private func setupButtons() {
         closeButton.setTitle("", for: .normal)
         closeButton.setImage(UIImage(systemName: "xmark"), for: .normal)
-        closeButton.tintColor = UIColor("#666666")
+        closeButton.tintColor = UIColor.Custom.settingDescription
         
         saveButton.setTitle(L(.save), for: .normal)
-        saveButton.backgroundColor = UIColor("#7B61FF")
+        saveButton.backgroundColor = UIColor.Custom.settingSwitchOn
         saveButton.setTitleColor(.white, for: .normal)
         saveButton.layer.cornerRadius = 8
         saveButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
@@ -147,7 +148,6 @@ class NotificationSettingsVC: UIViewController {
         )
         
         alert.addAction(UIAlertAction(title: L(.cancel), style: .cancel))
-        
         alert.addAction(UIAlertAction(title: L(.open_settings), style: .default) { _ in
             NotificationPermissionService.shared.openSettings()
         })
@@ -203,7 +203,7 @@ extension NotificationSettingsVC: UITableViewDelegate {
         let titleLabel = UILabel()
         titleLabel.text = viewModel.sectionTitle(for: section)
         titleLabel.font = UIFont.boldSystemFont(ofSize: 16)
-        titleLabel.textColor = UIColor("#7B61FF")
+        titleLabel.textColor = UIColor.Custom.settingSwitchOn
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         
         headerView.addSubview(titleLabel)
@@ -220,7 +220,6 @@ extension NotificationSettingsVC: UITableViewDelegate {
 extension NotificationSettingsVC: NotificationSettingCellDelegate {
     func notificationSettingCell(_ cell: NotificationSettingCell, didToggle isEnabled: Bool, for setting: NotificationSetting) {
         if isEnabled && !viewModel.hasNotificationPermission {
-            // İzin yoksa izin iste
             cell.setEnabled(false, animated: true)
             showPermissionDeniedAlert()
             return
@@ -268,7 +267,7 @@ extension NotificationSettingsVC {
     private func stylePopupView() {
         popupView.layer.cornerRadius = 20
         popupView.layer.borderWidth = 2.0
-        popupView.layer.borderColor = UIColor("#7B61FF")?.cgColor
+        popupView.layer.borderColor = UIColor.Custom.settingSwitchOn.cgColor
         popupView.backgroundColor = .white
         popupView.clipsToBounds = true
         
@@ -280,7 +279,7 @@ extension NotificationSettingsVC {
     
     private func framePopupView() {
         tableView.layoutIfNeeded()
-        let contentHeight = tableView.contentSize.height + 120 // Title + buttons için extra space
+        let contentHeight = tableView.contentSize.height + 120
         let maxHeight = view.frame.height * 0.8
         let finalHeight = min(contentHeight, maxHeight)
         
