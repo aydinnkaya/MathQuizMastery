@@ -10,6 +10,7 @@ import Foundation
 
 protocol FAQViewModelDelegate: AnyObject {
     func didUpdateFAQItems()
+    func didUpdateFAQItem(at index: Int)
 }
 
 class FAQViewModel {
@@ -44,6 +45,6 @@ class FAQViewModel {
     func toggleExpansion(at index: Int) {
         guard items.indices.contains(index) else { return }
         items[index].isExpanded.toggle()
-        delegate?.didUpdateFAQItems()
+        delegate?.didUpdateFAQItem(at: index)
     }
 }

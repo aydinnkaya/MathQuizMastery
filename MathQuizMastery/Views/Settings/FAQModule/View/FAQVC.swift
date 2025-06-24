@@ -17,6 +17,7 @@ class FAQVC: UIViewController {
 
     private let viewModel: FAQViewModel
     weak var coordinator: AppCoordinator?
+    private var lastAnimatedIndexPath: IndexPath?
     
     init(coordinator: AppCoordinator) {
         self.viewModel = FAQViewModel()
@@ -146,6 +147,11 @@ extension FAQVC: FAQViewModelDelegate {
     func didUpdateFAQItems() {
         tableView.reloadData()
     }
+    func didUpdateFAQItem(at index: Int) {
+        let indexPath = IndexPath(row: index, section: 0)
+        lastAnimatedIndexPath = indexPath
+        tableView.reloadRows(at: [indexPath], with: .none)
+    }
 }
 
 // MARK: - UITableViewDelegate, UITableViewDataSource
@@ -160,7 +166,8 @@ extension FAQVC: UITableViewDelegate, UITableViewDataSource {
         }
         
         let item = viewModel.item(at: indexPath.row)
-        cell.configure(with: item)
+        let animated = (indexPath == lastAnimatedIndexPath)
+        cell.configure(with: item, animated: animated)
         return cell
     }
     

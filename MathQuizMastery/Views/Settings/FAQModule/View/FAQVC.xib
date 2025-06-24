@@ -72,7 +72,7 @@
                         <constraint firstItem="header-stack" firstAttribute="top" secondItem="popup-view" secondAttribute="top" constant="20" id="header-top"/>
                         <constraint firstAttribute="trailing" secondItem="header-stack" secondAttribute="trailing" constant="20" id="header-trailing"/>
                         <constraint firstAttribute="height" constant="600" id="popup-height"/>
-                        <constraint firstAttribute="bottom" secondItem="table-view" secondAttribute="bottom" constant="20" id="table-bottom"/>
+                        <constraint firstAttribute="bottom" secondItem="table-view" secondAttribute="bottom" constant="64" id="table-bottom"/>
                         <constraint firstItem="table-view" firstAttribute="leading" secondItem="popup-view" secondAttribute="leading" id="table-leading"/>
                         <constraint firstItem="table-view" firstAttribute="top" secondItem="header-stack" secondAttribute="bottom" constant="20" id="table-top"/>
                         <constraint firstAttribute="trailing" secondItem="table-view" secondAttribute="trailing" id="table-trailing"/>

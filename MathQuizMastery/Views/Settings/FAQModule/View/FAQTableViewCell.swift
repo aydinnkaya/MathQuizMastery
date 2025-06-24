@@ -23,81 +23,72 @@ class FAQTableViewCell: UITableViewCell {
         selectionStyle = .none
         backgroundColor = .clear
         
-        // Question Label Styling
         questionLabel.font = .systemFont(ofSize: 16, weight: .semibold)
         questionLabel.textColor = .white
         questionLabel.numberOfLines = 0
         
-        // Answer Label Styling
         answerLabel.font = .systemFont(ofSize: 14, weight: .regular)
         answerLabel.textColor = UIColor(red: 0.455, green: 0.816, blue: 0.988, alpha: 1.0)
         answerLabel.numberOfLines = 0
         
-        // Arrow Image Styling
+        
         arrowImageView.tintColor = UIColor(red: 0.455, green: 0.816, blue: 0.988, alpha: 1.0)
         arrowImageView.contentMode = .scaleAspectFit
         
-        // Answer Container Styling
         answerContainer.backgroundColor = UIColor(red: 0.1, green: 0.1, blue: 0.1, alpha: 0.5)
         answerContainer.layer.cornerRadius = 8
         answerContainer.clipsToBounds = true
         answerContainer.alpha = 0
     }
     
-    func configure(with item: FAQItem) {
+    // MARK: - Hücreyi Yapılandır
+    func configure(with item: FAQItem, animated: Bool = true) {
         questionLabel.text = item.question
         answerLabel.text = item.answer
-        
-        // Pre-calculate the height before animation
         let targetHeight = item.isExpanded ? calculateAnswerHeight() : 0
         
-        // Update constraint immediately if not expanded
-        if !item.isExpanded {
-            answerHeightConstraint.constant = 0
-            answerContainer.alpha = 0
-            arrowImageView.transform = .identity
-            layoutIfNeeded()
-        }
-        
-        // Animate changes
-        UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.5, options: .curveEaseInOut) {
+        if animated {
+            if item.isExpanded {
+                answerHeightConstraint.constant = targetHeight
+                layoutIfNeeded()
+                answerContainer.transform = CGAffineTransform(translationX: 0, y: 16).scaledBy(x: 0.98, y: 0.98)
+                answerContainer.alpha = 0
+                UIView.animate(withDuration: 0.32, delay: 0, usingSpringWithDamping: 0.85, initialSpringVelocity: 0.5, options: [.curveEaseOut]) {
+                    self.answerContainer.alpha = 1
+                    self.answerContainer.transform = .identity
+                    self.arrowImageView.transform = CGAffineTransform(rotationAngle: .pi)
+                }
+            } else {
+                UIView.animate(withDuration: 0.22, delay: 0, options: [.curveEaseIn], animations: {
+                    self.answerContainer.transform = CGAffineTransform(scaleX: 0.85, y: 0.85)
+                    self.answerContainer.alpha = 0
+                    self.arrowImageView.transform = .identity
+                }) { _ in
+                    self.answerHeightConstraint.constant = 0
+                    self.answerContainer.transform = .identity
+                    self.layoutIfNeeded()
+                }
+            }
+        } else {
             self.answerContainer.alpha = item.isExpanded ? 1 : 0
             self.answerHeightConstraint.constant = targetHeight
+            self.answerContainer.transform = .identity
             self.arrowImageView.transform = item.isExpanded ? CGAffineTransform(rotationAngle: .pi) : .identity
             self.layoutIfNeeded()
         }
     }
     
+    // MARK: - Cevap Yüksekliğini Hesapla
     private func calculateAnswerHeight() -> CGFloat {
         guard let text = answerLabel.text else { return 0 }
-        
-        // Get the available width for the answer label
-        let availableWidth = answerContainer.bounds.width - 16 // 8pt padding on each side
-        
+        let availableWidth = answerContainer.bounds.width - 16
         let font = answerLabel.font ?? .systemFont(ofSize: 14)
         let constraintRect = CGSize(width: availableWidth, height: .greatestFiniteMagnitude)
         
-        // Calculate text height
         let boundingBox = text.boundingRect(with: constraintRect,
-                                          options: [.usesLineFragmentOrigin, .usesFontLeading],
-                                          attributes: [.font: font],
-                                          context: nil)
-        
-        // Add vertical padding (8pt top + 8pt bottom)
+                                            options: [.usesLineFragmentOrigin, .usesFontLeading],
+                                            attributes: [.font: font],
+                                            context: nil)
         return ceil(boundingBox.height) + 16
     }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        
-        // Update answer height if expanded
-        if answerHeightConstraint.constant > 0 {
-            let newHeight = calculateAnswerHeight()
-            if newHeight != answerHeightConstraint.constant {
-                answerHeightConstraint.constant = newHeight
-                layoutIfNeeded()
-            }
-        }
-    }
 }
-
