@@ -31,18 +31,26 @@ final class Localizer {
     }
     
     private func loadTranslations() {
-        guard let url = Bundle.main.url(forResource: localizationFileName, withExtension: localizationFileExtension) else {
-            log("[Localizer] Error: \(localizationFileName).\(localizationFileExtension) not found in bundle.")
-            translations = [:]
-            return
-        }
-        do {
-            let data = try Data(contentsOf: url)
-            translations = try JSONDecoder().decode([String: [String: String]].self, from: data)
-            log("[Localizer] Translations loaded. Available keys: \(translations.keys.count)")
-        } catch {
-            log("[Localizer] JSON decode error: \(error.localizedDescription)")
-            translations = [:]
+        DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+            guard let self = self else { return }
+            guard let url = Bundle.main.url(forResource: self.localizationFileName, withExtension: self.localizationFileExtension) else {
+                self.log("[Localizer] Error: \(self.localizationFileName).\(self.localizationFileExtension) not found in bundle.")
+                self.translations = [:]
+                return
+            }
+            do {
+                let data = try Data(contentsOf: url)
+                let decoded = try JSONDecoder().decode([String: [String: String]].self, from: data)
+                DispatchQueue.main.async {
+                    self.translations = decoded
+                    self.log("[Localizer] Translations loaded. Available keys: \(self.translations.keys.count)")
+                }
+            } catch {
+                DispatchQueue.main.async {
+                    self.log("[Localizer] JSON decode error: \(error.localizedDescription)")
+                    self.translations = [:]
+                }
+            }
         }
     }
     
