@@ -209,5 +209,9 @@ extension UIColor {
         static let settingIcon = UIColor("7B61FF") ?? .systemPurple
         static let settingBorderActive = UIColor("7B61FF")?.withAlphaComponent(0.3) ?? .lightGray
         static let settingBorderInactive = UIColor("E5E5E5") ?? .lightGray
+        
+        // FAQ
+        static let closeButton = UIColor(red: 0.455, green: 0.816, blue: 0.988, alpha: 1.0)
+        
     }
 }

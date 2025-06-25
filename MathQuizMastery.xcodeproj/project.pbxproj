@@ -59,6 +59,22 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		0F0F0CBB2E0C2F1100D371C1 /* Exceptions for "MathQuizMastery" folder in "MathQuizMasteryUITests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				PrivacyInfo.xcprivacy,
+				Utils/AppTrackingManager.swift,
+			);
+			target = 0FA0908A2D2FAEB300D83F96 /* MathQuizMasteryUITests */;
+		};
+		0F0F0CBC2E0C2F1100D371C1 /* Exceptions for "MathQuizMastery" folder in "MathQuizMasteryTests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				PrivacyInfo.xcprivacy,
+				Utils/AppTrackingManager.swift,
+			);
+			target = 0FCB455A2DA54295002D6239 /* MathQuizMasteryTests */;
+		};
 		0FA090932D2FAEB300D83F96 /* Exceptions for "MathQuizMastery" folder in "MathQuizMastery" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
@@ -73,6 +89,8 @@
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
 				0FA090932D2FAEB300D83F96 /* Exceptions for "MathQuizMastery" folder in "MathQuizMastery" target */,
+				0F0F0CBB2E0C2F1100D371C1 /* Exceptions for "MathQuizMastery" folder in "MathQuizMasteryUITests" target */,
+				0F0F0CBC2E0C2F1100D371C1 /* Exceptions for "MathQuizMastery" folder in "MathQuizMasteryTests" target */,
 			);
 			path = MathQuizMastery;
 			sourceTree = "<group>";

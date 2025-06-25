@@ -31,7 +31,6 @@ class FAQTableViewCell: UITableViewCell {
         answerLabel.textColor = UIColor(red: 0.455, green: 0.816, blue: 0.988, alpha: 1.0)
         answerLabel.numberOfLines = 0
         
-        
         arrowImageView.tintColor = UIColor(red: 0.455, green: 0.816, blue: 0.988, alpha: 1.0)
         arrowImageView.contentMode = .scaleAspectFit
         

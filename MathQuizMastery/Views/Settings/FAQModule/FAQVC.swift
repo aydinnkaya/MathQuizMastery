@@ -80,7 +80,7 @@ class FAQVC: UIViewController {
         titleLabel.font = .systemFont(ofSize: 20, weight: .bold)
         
         // Set up close button
-        closeButton.tintColor = UIColor(red: 0.455, green: 0.816, blue: 0.988, alpha: 1.0)
+        closeButton.tintColor = UIColor.Custom.closeButton
     }
     
     private func setupTableView() {

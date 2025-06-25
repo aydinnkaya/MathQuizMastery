@@ -64,6 +64,7 @@ class NotificationSettingsVC: UIViewController {
         stylePopupView()
         setupLabels()
         setupButtons()
+        closeButton.tintColor = UIColor.Custom.settingSwitchOn
     }
     
     private func setupTableView() {
@@ -270,20 +271,76 @@ extension NotificationSettingsVC {
         popupView.layer.borderColor = UIColor.Custom.settingSwitchOn.cgColor
         popupView.backgroundColor = .white
         popupView.clipsToBounds = true
-        
-        popupView.layer.shadowColor = UIColor.black.cgColor
+
+        popupView.layer.shadowColor = UIColor(red: 0.455, green: 0.816, blue: 0.988, alpha: 0.5).cgColor
         popupView.layer.shadowOpacity = 0.1
         popupView.layer.shadowOffset = CGSize(width: 0, height: 4)
         popupView.layer.shadowRadius = 8
+          popupView.layer.masksToBounds = false // Shadow için gerekli
+
     }
-    
+
     private func framePopupView() {
         tableView.layoutIfNeeded()
         let contentHeight = tableView.contentSize.height + 120
         let maxHeight = view.frame.height * 0.8
         let finalHeight = min(contentHeight, maxHeight)
-        
+
         popupView.frame.size.height = finalHeight
         popupView.center = view.center
     }
 }
+
+//extension NotificationSettingsVC {
+//    func stylePopupView() {
+//        popupView.layer.cornerRadius = 20
+//        popupView.clipsToBounds = true
+//        
+//        //        popupView.backgroundColor = UIColor.white
+//        //        popupView.layer.sublayers?.removeAll(where: { $0 is CAGradientLayer })
+//        
+//        // Space theme styling
+//        let gradientLayer: CAGradientLayer
+//        if let existing = popupView.layer.sublayers?.first as? CAGradientLayer {
+//            gradientLayer = existing
+//        } else {
+//            gradientLayer = CAGradientLayer()
+//            popupView.layer.insertSublayer(gradientLayer, at: 0)
+//        }
+//        gradientLayer.frame = popupView.bounds
+//        gradientLayer.colors = [
+//            UIColor.white
+////            UIColor(red: 0.1, green: 0.1, blue: 0.2, alpha: 0.95).cgColor,
+////            UIColor(red: 0.05, green: 0.05, blue: 0.1, alpha: 0.95).cgColor
+//        ]
+//        gradientLayer.locations = [0.0, 1.0]
+//        gradientLayer.cornerRadius = popupView.layer.cornerRadius
+//        gradientLayer.masksToBounds = true
+//        
+//        // Border
+//        popupView.layer.borderWidth = 5.0
+//        popupView.layer.borderColor = UIColor(red: 0.2588, green: 0.8902, blue: 0.9608, alpha: 0.3).cgColor
+//
+////        popupView.layer.borderColor = UIColor(red: 0.455, green: 0.816, blue: 0.988, alpha: 0.3).cgColor
+//        
+//        // Shadow
+//        popupView.layer.shadowColor = UIColor(red: 0.455, green: 0.816, blue: 0.988, alpha: 0.5).cgColor
+//        popupView.layer.shadowOffset = CGSize(width: 0, height: 2)
+//        popupView.layer.shadowRadius = 15
+//        popupView.layer.shadowOpacity = 0.5
+//        popupView.layer.masksToBounds = false // Shadow için gerekli
+//    }
+//    
+//    func framePopupView() {
+//        let maxHeight = view.frame.height * 0.7
+//        let maxWidth = view.frame.width * 0.9
+//        
+//        popupView.frame.size.width = maxWidth
+//        popupView.frame.size.height = maxHeight
+//        popupView.center = view.center
+//        
+//        if let gradientLayer = popupView.layer.sublayers?.first as? CAGradientLayer {
+//            gradientLayer.frame = popupView.bounds
+//        }
+//    }
+//}

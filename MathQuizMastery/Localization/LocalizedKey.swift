@@ -181,6 +181,16 @@ enum LocalizedKey: String {
     // MARK: - FAQ
     case faq_title = "faq_title"
     case faq_empty = "faq_empty"
+    case faq_q1 = "faq_q1"
+    case faq_a1 = "faq_a1"
+    case faq_q2 = "faq_q2"
+    case faq_a2 = "faq_a2"
+    case faq_q3 = "faq_q3"
+    case faq_a3 = "faq_a3"
+    case faq_q4 = "faq_q4"
+    case faq_a4 = "faq_a4"
+    case faq_q5 = "faq_q5"
+    case faq_a5 = "faq_a5"
     
     // MARK: - Report
     case report_title = "report_title"
@@ -188,6 +198,7 @@ enum LocalizedKey: String {
     case report_submit = "report_submit"
     case report_success = "report_success"
     case report_error = "report_error"
+    case report_placeholder = "report_placeholder"
     
     // MARK: - Other
     case notification_time_format
@@ -198,4 +209,14 @@ enum LocalizedKey: String {
     case notification_settings_title
     case open_settings
     case save
+    
+   
+    // MARK: - SettingsPopup Başlıkları
+    case settings_profile_title
+    case settings_notifications_title
+    case settings_faq_title
+    case settings_report_title
+    case settings_logout_title
+    
+    case save_button_title = "save_button_title"
 }

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>NSPrivacyCollectedDataTypes</key>
+    <array>
+        <dict>
+            <key>NSPrivacyCollectedDataType</key>
+            <string>NSPrivacyCollectedDataTypeEmailAddress</string>
+            <key>NSPrivacyCollectedDataTypePurposes</key>
+            <array>
+                <string>NSPrivacyCollectedDataTypePurposeAccountManagement</string>
+            </array>
+            <key>NSPrivacyCollectedDataTypeStorageDuration</key>
+            <string>NSPrivacyCollectedDataTypeStorageDurationUserSession</string>
+            <key>NSPrivacyCollectedDataTypeLinkedToUser</key>
+            <true/>
+            <key>NSPrivacyCollectedDataTypeIsOptional</key>
+            <false/>
+        </dict>
+        <dict>
+            <key>NSPrivacyCollectedDataType</key>
+            <string>NSPrivacyCollectedDataTypeDeviceIdentifier</string>
+            <key>NSPrivacyCollectedDataTypePurposes</key>
+            <array>
+                <string>NSPrivacyCollectedDataTypePurposeAnalytics</string>
+                <string>NSPrivacyCollectedDataTypePurposeAdvertising</string>
+                <string>NSPrivacyCollectedDataTypePurposeAppFunctionality</string>
+            </array>
+            <key>NSPrivacyCollectedDataTypeStorageDuration</key>
+            <string>NSPrivacyCollectedDataTypeStorageDurationOther</string>
+            <key>NSPrivacyCollectedDataTypeLinkedToUser</key>
+            <false/>
+            <key>NSPrivacyCollectedDataTypeIsOptional</key>
+            <true/>
+        </dict>
+    </array>
+    <key>NSPrivacyAccessedAPITypes</key>
+    <array>
+        <dict>
+            <key>NSPrivacyAccessedAPIType</key>
+            <string>NSPrivacyAccessedAPIUserDefaults</string>
+            <key>NSPrivacyAccessedAPITypeReasons</key>
+            <array>
+                <string>User Defaults is used to store user preferences and app settings locally on the device.</string>
+            </array>
+        </dict>
+        <dict>
+            <key>NSPrivacyAccessedAPIType</key>
+            <string>NSPrivacyAccessedAPINotification</string>
+            <key>NSPrivacyAccessedAPITypeReasons</key>
+            <array>
+                <string>Push Notifications are used to send quiz reminders and important updates to users.</string>
+            </array>
+        </dict>
+        <dict>
+            <key>NSPrivacyAccessedAPIType</key>
+            <string>NSPrivacyAccessedAPIAdvertisingIdentifier</string>
+            <key>NSPrivacyAccessedAPITypeReasons</key>
+            <array>
+                <string>Advertising Identifier is used to provide personalized ads and measure ad performance.</string>
+            </array>
+        </dict>
+        <dict>
+            <key>NSPrivacyAccessedAPIType</key>
+            <string>NSPrivacyAccessedAPIAnalytics</string>
+            <key>NSPrivacyAccessedAPITypeReasons</key>
+            <array>
+                <string>Analytics is used to understand app usage and improve user experience. Crash reporting helps identify and fix app issues.</string>
+            </array>
+        </dict>
+    </array>
+</dict>
+</plist> 

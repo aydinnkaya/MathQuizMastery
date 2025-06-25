@@ -121,17 +121,17 @@ extension SettingsPopupVC: SettingsPopupDelegate {
     
     func tappedReport() {
         let alert = UIAlertController(
-            title: "Sorun Bildir",
-            message: "Lütfen sorununuzu açıklayın",
+            title: L(.report_title),
+            message: L(.report_description),
             preferredStyle: .alert
         )
         
         alert.addTextField { textField in
-            textField.placeholder = "Sorununuzu yazın..."
+            textField.placeholder = L(.report_placeholder)
         }
         
-        alert.addAction(UIAlertAction(title: "İptal", style: .cancel))
-        alert.addAction(UIAlertAction(title: "Gönder", style: .default) { _ in
+        alert.addAction(UIAlertAction(title: L(.cancel), style: .cancel))
+        alert.addAction(UIAlertAction(title: L(.report_submit), style: .default) { _ in
             // Rapor gönderme işlemi
             print("Rapor gönderildi")
         })

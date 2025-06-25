@@ -47,18 +47,8 @@
                                 <rect key="frame" x="298" y="10.5" width="51" height="31"/>
                                 <color key="onTintColor" red="0.48235294117647065" green="0.38039215686274508" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </switch>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lGI-Ig-cYf">
-                                <rect key="frame" x="245" y="6" width="20" height="20"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="20" id="8J4-JZ-sHi"/>
-                                    <constraint firstAttribute="height" constant="20" id="iDb-Hl-aL7"/>
-                                </constraints>
-                                <state key="normal" image="info.circle" catalog="system">
-                                    <color key="titleColor" red="0.48235294117647065" green="0.38039215686274508" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="09:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MfL-Nc-cgh">
-                                <rect key="frame" x="243" y="29" width="31.5" height="13.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="09:00" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MfL-Nc-cgh">
+                                <rect key="frame" x="243" y="29" width="41" height="15"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
                                 <color key="textColor" red="0.48199999999999998" green="0.38" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -68,23 +58,32 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lGI-Ig-cYf">
+                                <rect key="frame" x="255" y="5" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="20" id="8J4-JZ-sHi"/>
+                                    <constraint firstAttribute="height" constant="20" id="iDb-Hl-aL7"/>
+                                </constraints>
+                                <state key="normal" image="info.circle" catalog="system">
+                                    <color key="titleColor" red="0.48235294117647065" green="0.38039215686274508" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="vuo-pI-eHp" firstAttribute="centerY" secondItem="mCP-Ag-wGF" secondAttribute="centerY" id="0Ns-qF-9YC"/>
                             <constraint firstAttribute="trailing" secondItem="wad-8A-drJ" secondAttribute="trailing" constant="12" id="0eZ-fS-gIk"/>
+                            <constraint firstItem="wad-8A-drJ" firstAttribute="centerY" secondItem="mCP-Ag-wGF" secondAttribute="centerY" id="3KI-2R-JSa"/>
                             <constraint firstItem="fEF-gW-7zT" firstAttribute="leading" secondItem="vuo-pI-eHp" secondAttribute="trailing" constant="12" id="8L9-gT-LbW"/>
                             <constraint firstItem="UZR-wK-Q3a" firstAttribute="leading" secondItem="vuo-pI-eHp" secondAttribute="trailing" constant="12" id="AH8-XJ-vYA"/>
                             <constraint firstItem="wad-8A-drJ" firstAttribute="centerY" secondItem="mCP-Ag-wGF" secondAttribute="centerY" id="BZR-Sx-QGL"/>
                             <constraint firstItem="vuo-pI-eHp" firstAttribute="leading" secondItem="mCP-Ag-wGF" secondAttribute="leading" constant="12" id="CLF-M4-b7L"/>
-                            <constraint firstItem="lGI-Ig-cYf" firstAttribute="trailing" secondItem="wad-8A-drJ" secondAttribute="leading" constant="-16" id="info-to-switch"/>
-                            <constraint firstItem="lGI-Ig-cYf" firstAttribute="centerY" secondItem="mCP-Ag-wGF" secondAttribute="centerY" id="frY-ce-lKj"/>
-                            <constraint firstItem="MfL-Nc-cgh" firstAttribute="top" secondItem="lGI-Ig-cYf" secondAttribute="bottom" constant="4" id="time-to-info-vertical"/>
-                            <constraint firstItem="MfL-Nc-cgh" firstAttribute="leading" secondItem="lGI-Ig-cYf" secondAttribute="leading" id="time-leading-to-info"/>
-                            <constraint firstItem="MfL-Nc-cgh" firstAttribute="trailing" secondItem="lGI-Ig-cYf" secondAttribute="trailing" id="time-trailing-to-info"/>
-                            <constraint firstAttribute="bottom" secondItem="MfL-Nc-cgh" secondAttribute="bottom" id="fBl-Hf-e6h"/>
-                            <constraint firstItem="fEF-gW-7zT" firstAttribute="top" secondItem="mCP-Ag-wGF" secondAttribute="top" constant="8" id="YlU-tl-DtF"/>
                             <constraint firstItem="UZR-wK-Q3a" firstAttribute="top" secondItem="fEF-gW-7zT" secondAttribute="bottom" constant="2" id="OQD-mq-dvC"/>
+                            <constraint firstItem="fEF-gW-7zT" firstAttribute="top" secondItem="mCP-Ag-wGF" secondAttribute="top" constant="8" id="YlU-tl-DtF"/>
+                            <constraint firstItem="lGI-Ig-cYf" firstAttribute="centerY" secondItem="mCP-Ag-wGF" secondAttribute="centerY" id="frY-ce-lKj"/>
+                            <constraint firstItem="lGI-Ig-cYf" firstAttribute="trailing" secondItem="wad-8A-drJ" secondAttribute="leading" constant="-16" id="info-to-switch"/>
+                            <constraint firstItem="MfL-Nc-cgh" firstAttribute="top" secondItem="lGI-Ig-cYf" secondAttribute="bottom" constant="1" id="time-to-info-vertical"/>
+                            <constraint firstItem="wad-8A-drJ" firstAttribute="leading" secondItem="MfL-Nc-cgh" secondAttribute="trailing" constant="14" id="vIE-ub-BdA"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -105,7 +104,7 @@
                 <outlet property="titleLabel" destination="fEF-gW-7zT" id="aBY-lx-c8m"/>
                 <outlet property="toggleSwitch" destination="wad-8A-drJ" id="5S4-VZ-Pnn"/>
             </connections>
-            <point key="canvasLocation" x="140" y="14"/>
+            <point key="canvasLocation" x="139.85507246376812" y="13.392857142857142"/>
         </tableViewCell>
     </objects>
     <resources>

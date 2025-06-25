@@ -27,11 +27,11 @@ class SettingsPopupViewModel: SettingsPopupViewModelProtocol {
     weak var delegate: SettingsPopupDelegate?
     
     let settings: [SettingItem] = [
-        SettingItem(title: "Profil", iconName: "profile_settings", type: .profile),
-        SettingItem(title: "Bildirimler", iconName: "settings_notification_icon", type: .notifications),
-        SettingItem(title: "SSS", iconName: "settings_question_icon", type: .faq),
-        SettingItem(title: "Sorun Bildir", iconName: "settings_report_icon", type: .report),
-        SettingItem(title: "Çıkış Yap", iconName: "settings_logout_icon", type: .logout)
+        SettingItem(title: L(.settings_profile_title), iconName: "profile_settings", type: .profile),
+        SettingItem(title: L(.settings_notifications_title), iconName: "settings_notification_icon", type: .notifications),
+        SettingItem(title: L(.settings_faq_title), iconName: "settings_question_icon", type: .faq),
+        SettingItem(title: L(.settings_report_title), iconName: "settings_report_icon", type: .report),
+        SettingItem(title: L(.settings_logout_title), iconName: "settings_logout_icon", type: .logout)
     ]
     
     func selectItem(at index: Int) {

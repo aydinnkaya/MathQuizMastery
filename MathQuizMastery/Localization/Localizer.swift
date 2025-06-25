@@ -10,64 +10,69 @@ import Foundation
 final class Localizer {
     static let shared = Localizer()
     
-    private var currentLanguage: String {
-        if #available(iOS 16, *) {
-            let languageCode = Locale.current.language.languageCode?.identifier ?? "en"
-            let regionCode = Locale.current.region?.identifier
-            
-            // Check if we have a translation for the full language-region code
-            let fullCode = regionCode != nil ? "\(languageCode)-\(regionCode!)" : languageCode
-            if translations.values.first?[fullCode] != nil {
-                return fullCode
-            }
-            
-            // Fallback to just the language code
-            return languageCode
-        } else {
-            // For older iOS versions, try to get the preferred language
-            let preferredLanguage = Bundle.main.preferredLocalizations.first ?? "en"
-            return preferredLanguage
+    // Uygulama içi dil değiştirme desteği için
+    private(set) var currentLanguage: String = Locale.preferredLanguages.first?.components(separatedBy: "-").first ?? "en" {
+        didSet {
+            loadTranslations()
         }
     }
-
+    
     private var translations: [String: [String: String]] = [:]
-
+    private let localizationFileName = "LocalizableTexts"
+    private let localizationFileExtension = "json"
+    private let debugMode = true
+    
     private init() {
         loadTranslations()
     }
-
+    
+    func setLanguage(_ language: String) {
+        currentLanguage = language
+    }
+    
     private func loadTranslations() {
-        guard let url = Bundle.main.url(forResource: "LocalizableTexts", withExtension: "json") else {
-            print("Error: LocalizableTexts.json not found.")
+        guard let url = Bundle.main.url(forResource: localizationFileName, withExtension: localizationFileExtension) else {
+            log("[Localizer] Error: \(localizationFileName).\(localizationFileExtension) not found in bundle.")
+            translations = [:]
             return
         }
-
         do {
             let data = try Data(contentsOf: url)
             translations = try JSONDecoder().decode([String: [String: String]].self, from: data)
+            log("[Localizer] Translations loaded. Available keys: \(translations.keys.count)")
         } catch {
-            print("JSON decode error: \(error.localizedDescription)")
+            log("[Localizer] JSON decode error: \(error.localizedDescription)")
+            translations = [:]
         }
     }
-
+    
     func localized(for key: LocalizedKey) -> String {
-        guard let translations = translations[key.rawValue] else {
+        guard let values = translations[key.rawValue] else {
+            log("[Localizer] Missing key: \(key.rawValue)")
             return key.rawValue
         }
-        
-        // Try exact match first
-        if let exactMatch = translations[currentLanguage] {
-            return exactMatch
+        // Önce tam dil kodu (örn: tr-TR) ile dene
+        if let exact = values[currentLanguage] {
+            return exact
         }
-        
-        // If no exact match, try language code without region
-        let languageCode = currentLanguage.split(separator: "-").first.map(String.init) ?? currentLanguage
-        if let languageMatch = translations[languageCode] {
-            return languageMatch
+        // Sadece dil kodu (örn: tr) ile dene
+        let langCode = currentLanguage.components(separatedBy: "-").first ?? currentLanguage
+        if let fallback = values[langCode] {
+            return fallback
         }
-        
-        // Fallback to English
-        return translations["en"] ?? key.rawValue
+        // İngilizce fallback
+        if let en = values["en"] {
+            return en
+        }
+        // Hiçbiri yoksa anahtarın kendisi
+        log("[Localizer] No translation for key: \(key.rawValue) in language: \(currentLanguage)")
+        return key.rawValue
+    }
+    
+    private func log(_ message: String) {
+        if debugMode {
+            print(message)
+        }
     }
 }
 

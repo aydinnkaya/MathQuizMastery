@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+
+    <!-- 1. COLLECTED DATA TYPES -->
+    <key>NSPrivacyCollectedDataTypes</key>
+    <array>
+
+        <!-- Firebase Auth -->
+        <dict>
+            <key>NSPrivacyCollectedDataType</key>
+            <string>NSPrivacyCollectedDataTypeEmailAddress</string>
+            <key>NSPrivacyCollectedDataTypePurposes</key>
+            <array>
+                <string>NSPrivacyCollectedDataTypePurposeAccountManagement</string>
+            </array>
+            <key>NSPrivacyCollectedDataTypeStorageDuration</key>
+            <string>NSPrivacyCollectedDataTypeStorageDurationUntilAccountDeletion</string>
+            <key>NSPrivacyCollectedDataTypeLinkedToUser</key>
+            <true/>
+            <key>NSPrivacyCollectedDataTypeIsOptional</key>
+            <false/>
+        </dict>
+
+        <!-- Firebase Analytics -->
+        <dict>
+            <key>NSPrivacyCollectedDataType</key>
+            <string>NSPrivacyCollectedDataTypeUsageData</string>
+            <key>NSPrivacyCollectedDataTypePurposes</key>
+            <array>
+                <string>NSPrivacyCollectedDataTypePurposeAnalytics</string>
+            </array>
+            <key>NSPrivacyCollectedDataTypeStorageDuration</key>
+            <string>NSPrivacyCollectedDataTypeStorageDurationOther</string>
+            <key>NSPrivacyCollectedDataTypeLinkedToUser</key>
+            <false/>
+            <key>NSPrivacyCollectedDataTypeIsOptional</key>
+            <true/>
+        </dict>
+
+        <!-- Firebase Crashlytics -->
+        <dict>
+            <key>NSPrivacyCollectedDataType</key>
+            <string>NSPrivacyCollectedDataTypeDiagnostics</string>
+            <key>NSPrivacyCollectedDataTypePurposes</key>
+            <array>
+                <string>NSPrivacyCollectedDataTypePurposeAnalytics</string>
+            </array>
+            <key>NSPrivacyCollectedDataTypeStorageDuration</key>
+            <string>NSPrivacyCollectedDataTypeStorageDurationOther</string>
+            <key>NSPrivacyCollectedDataTypeLinkedToUser</key>
+            <false/>
+            <key>NSPrivacyCollectedDataTypeIsOptional</key>
+            <true/>
+        </dict>
+
+        <!-- AppCheck / AdMob IDFA -->
+        <dict>
+            <key>NSPrivacyCollectedDataType</key>
+            <string>NSPrivacyCollectedDataTypeDeviceIdentifier</string>
+            <key>NSPrivacyCollectedDataTypePurposes</key>
+            <array>
+                <string>NSPrivacyCollectedDataTypePurposeAnalytics</string>
+                <string>NSPrivacyCollectedDataTypePurposeAdvertising</string>
+                <string>NSPrivacyCollectedDataTypePurposeAppFunctionality</string>
+            </array>
+            <key>NSPrivacyCollectedDataTypeStorageDuration</key>
+            <string>NSPrivacyCollectedDataTypeStorageDurationOther</string>
+            <key>NSPrivacyCollectedDataTypeLinkedToUser</key>
+            <false/>
+            <key>NSPrivacyCollectedDataTypeIsOptional</key>
+            <true/>
+        </dict>
+
+    </array>
+
+    <!-- 2. ACCESSED API TYPES -->
+    <key>NSPrivacyAccessedAPITypes</key>
+    <array>
+
+        <!-- UserDefaults -->
+        <dict>
+            <key>NSPrivacyAccessedAPIType</key>
+            <string>NSPrivacyAccessedAPIUserDefaults</string>
+            <key>NSPrivacyAccessedAPITypeReasons</key>
+            <array>
+                <string>To store user preferences and settings locally on the device.</string>
+            </array>
+        </dict>
+
+        <!-- Notifications -->
+        <dict>
+            <key>NSPrivacyAccessedAPIType</key>
+            <string>NSPrivacyAccessedAPINotification</string>
+            <key>NSPrivacyAccessedAPITypeReasons</key>
+            <array>
+                <string>To send push notifications for reminders and updates about the app.</string>
+            </array>
+        </dict>
+
+        <!-- IDFA (AdMob) -->
+        <dict>
+            <key>NSPrivacyAccessedAPIType</key>
+            <string>NSPrivacyAccessedAPIAdvertisingIdentifier</string>
+            <key>NSPrivacyAccessedAPITypeReasons</key>
+            <array>
+                <string>To provide personalized advertisements based on app usage.</string>
+            </array>
+        </dict>
+
+        <!-- Firebase Analytics -->
+        <dict>
+            <key>NSPrivacyAccessedAPIType</key>
+            <string>NSPrivacyAccessedAPIAnalytics</string>
+            <key>NSPrivacyAccessedAPITypeReasons</key>
+            <array>
+                <string>To understand user interaction with the app and improve stability and experience.</string>
+            </array>
+        </dict>
+
+    </array>
+
+    <!-- 3. TRACKING DOMAINS -->
+    <key>NSPrivacyTracking</key>
+    <dict>
+        <key>NSPrivacyTrackingDomains</key>
+        <array>
+            <!-- Firebase -->
+            <string>firebaseinstallations.googleapis.com</string>
+            <string>firebase-settings.crashlytics.com</string>
+            <string>app-measurement.com</string>
+
+            <!-- AdMob -->
+            <string>googleads.g.doubleclick.net</string>
+            <string>pagead2.googlesyndication.com</string>
+            <string>adservice.google.com</string>
+        </array>
+    </dict>
+
+</dict>
+</plist>

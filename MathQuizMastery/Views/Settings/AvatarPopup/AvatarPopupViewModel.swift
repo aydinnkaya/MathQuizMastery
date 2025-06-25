@@ -115,6 +115,7 @@ class AvatarPopupViewModel: AvatarPopupViewModelProtocol {
         
         // Kaydetme işlemini başlat
         saveUserData(uid: currentUser.uid, username: trimmedUsername, avatarIndex: selectedIndex, usernameChanged: usernameChanged, avatarChanged: avatarChanged)
+        
     }
     
     // MARK: - Private Methods

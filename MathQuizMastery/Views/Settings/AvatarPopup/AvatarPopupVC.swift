@@ -48,6 +48,13 @@ class AvatarPopupVC: UIViewController {
         setupTextField()
         setuStyles()
         setupBackgroundView()
+        saveButton.setTitle(L(.save_button_title), for: .normal)
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        framePopupView()
     }
     
     // MARK: - Setup Methods
@@ -76,6 +83,7 @@ class AvatarPopupVC: UIViewController {
     @IBAction func saveButtonTapped(_ sender: UIButton, forEvent event: UIEvent) {
         usernameTextField.resignFirstResponder()
         viewModel.handleSaveTapped()
+        coordinator?.dismissPopup()
     }
     
 }
@@ -88,7 +96,6 @@ extension AvatarPopupVC: UITextFieldDelegate {
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        // Username için karakter limiti (örn: 20 karakter)
         let maxLength = 20
         let currentString = (textField.text ?? "") as NSString
         let newString = currentString.replacingCharacters(in: range, with: string)
@@ -129,14 +136,13 @@ extension AvatarPopupVC : AvatarPopupViewModelDelegate {
     func userDataLoaded(username: String, avatar: Avatar) {
         DispatchQueue.main.async { [weak self] in
             self?.usernameTextField.text = username
-            
             if let image = UIImage(named: avatar.imageName) {
                 self?.profileImage.image = image
-                self?.profileImage.layer.cornerRadius = self?.profileImage.frame.width ?? 0 / 2
-                self?.profileImage.clipsToBounds = true
-                self?.profileImage.layer.borderColor = UIColor.green.cgColor
-                self?.profileImage.layer.borderWidth = 5.0
             }
+            self?.profileImage.layer.cornerRadius = self?.profileImage.frame.width ?? 0 / 2
+            self?.profileImage.clipsToBounds = true
+         //   self?.profileImage.layer.borderColor = UIColor.gray.cgColor
+       //     self?.profileImage.layer.borderWidth = 5.0
         }
     }
     
@@ -233,17 +239,16 @@ extension AvatarPopupVC {
         popupView.layer.borderWidth = 8.0
         popupView.layer.borderColor = UIColor("#7B61FF")?.cgColor;
         popupView.clipsToBounds = true
-        popupView.center = view.center
         
         collectionView.layer.cornerRadius = 12
         collectionView.layer.borderWidth = 3.0
         collectionView.layer.borderColor = UIColor.blue.cgColor
         collectionView.clipsToBounds = true
         
-        profileImage.layer.cornerRadius = profileImage.frame.width / 2
-        profileImage.layer.borderColor = UIColor.systemIndigo.cgColor
-        profileImage.layer.borderWidth = 4.0
-        profileImage.clipsToBounds = true
+//        profileImage.layer.cornerRadius = profileImage.frame.width / 2
+//        profileImage.layer.borderColor = UIColor.systemIndigo.cgColor
+//        profileImage.layer.borderWidth = 4.0
+//        profileImage.clipsToBounds = true
         
         usernameTextField.layer.borderColor = UIColor.systemTeal.cgColor
         usernameTextField.backgroundColor = UIColor(named: "NebulaGray")
@@ -260,5 +265,23 @@ extension AvatarPopupVC {
         let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: usernameTextField.frame.height))
         usernameTextField.leftView = paddingView
         usernameTextField.leftViewMode = .always
+    }
+    
+    func framePopupView(){
+        // Arka plan view'unu tam ekran yap
+        backgroundView.frame = view.bounds
+        // PopupView'u responsive olarak boyutlandır
+        let maxHeight = view.frame.height * 0.5
+        let maxWidth = view.frame.width * 0.7
+        popupView.frame.size = CGSize(width: maxWidth, height: maxHeight)
+        popupView.center = view.center
+        // Gradient layer frame ve köşe yuvarlatma güncelle
+        if let gradientLayer = popupView.layer.sublayers?.first as? CAGradientLayer {
+            gradientLayer.frame = popupView.bounds
+            gradientLayer.cornerRadius = popupView.layer.cornerRadius
+            gradientLayer.masksToBounds = true
+        }
+        // PopupView'u öne getir
+        view.bringSubviewToFront(popupView)
     }
 }

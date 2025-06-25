@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 protocol FAQViewModelDelegate: AnyObject {
     func didUpdateFAQItems()
     func didUpdateFAQItem(at index: Int)
@@ -16,21 +15,22 @@ protocol FAQViewModelDelegate: AnyObject {
 class FAQViewModel {
     weak var delegate: FAQViewModelDelegate?
     
+    // MARK: - Localized FAQ Items
     private var items: [FAQItem] = [
-        FAQItem(question: "Oyun nasıl oynanır?", 
-               answer: "Matematik sorularını doğru cevaplamaya çalışın. Her doğru cevap için puan kazanırsınız.", 
+        FAQItem(question: L(.faq_q1),
+               answer: L(.faq_a1),
                isExpanded: false),
-        FAQItem(question: "Puanlar nasıl hesaplanır?", 
-               answer: "Her doğru cevap için 10 puan kazanırsınız. Hızlı cevaplar için bonus puanlar verilir.", 
+        FAQItem(question: L(.faq_q2),
+               answer: L(.faq_a2),
                isExpanded: false),
-        FAQItem(question: "Seviyeler nasıl açılır?", 
-               answer: "Her kategoride belirli bir puana ulaştığınızda yeni seviyeler açılır.", 
+        FAQItem(question: L(.faq_q3),
+               answer: L(.faq_a3),
                isExpanded: false),
-        FAQItem(question: "Bildirimler ne işe yarar?", 
-               answer: "Günlük pratik hatırlatmaları ve haftalık başarı özetleri için bildirimler alabilirsiniz.", 
+        FAQItem(question: L(.faq_q4),
+               answer: L(.faq_a4),
                isExpanded: false),
-        FAQItem(question: "Profil resmimi nasıl değiştirebilirim?", 
-               answer: "Ayarlar > Profil menüsünden avatar seçimi yapabilirsiniz.", 
+        FAQItem(question: L(.faq_q5),
+               answer: L(.faq_a5),
                isExpanded: false)
     ]
     
