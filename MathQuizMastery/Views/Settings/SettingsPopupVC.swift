@@ -98,6 +98,7 @@ extension SettingsPopupVC {
 
 extension SettingsPopupVC: SettingsPopupDelegate {
     
+    
     func didSelectSetting(_ item: SettingItem) {
         print("Seçilen Ayar: \(item.title)")
     }
@@ -138,6 +139,12 @@ extension SettingsPopupVC: SettingsPopupDelegate {
         
         present(alert, animated: true)
     }
+    
+    func tappedAbout() {
+        coordinator?.goToPrivacyPolicy()
+        print("tappedAbout")
+    }
+    
     
     func tappedLogout() {
         let alert = UIAlertController(

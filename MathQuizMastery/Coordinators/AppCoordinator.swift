@@ -109,6 +109,31 @@ class AppCoordinator: Coordinator {
         presentPopupViewController(faqVC)
     }
     
+    func goToPrivacyPolicy() {
+        let url = "https://docs.google.com/document/d/1vxyHOi7SnfJpjBP6-epJG9rMzZUG_WP_VnUQuFP4qvQ/edit?usp=sharing"
+        
+        let presentWebVC = { [weak self] in
+            guard let self = self else { return }
+            
+            let webVC = WebViewController(nibName: "WebViewController", bundle: nil)
+            webVC.urlString = url
+            webVC.title = "Privacy Policy" // Navigation bar başlığı
+            
+            let navController = UINavigationController(rootViewController: webVC)
+            navController.modalPresentationStyle = .fullScreen
+            
+            self.navigationController.present(navController, animated: true, completion: nil)
+        }
+
+        if let presented = navigationController.presentedViewController {
+            presented.dismiss(animated: false) {
+                presentWebVC()
+            }
+        } else {
+            presentWebVC()
+        }
+    }
+
     func showPopup(_ type: PopupType) {
         switch type {
         case .settings:

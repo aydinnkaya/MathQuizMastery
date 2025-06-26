@@ -213,5 +213,8 @@ extension UIColor {
         // FAQ
         static let closeButton = UIColor(red: 0.455, green: 0.816, blue: 0.988, alpha: 1.0)
         
+        static let linkColor = UIColor(red: 0.26, green: 0.65, blue: 0.96, alpha: 1.0)
+        
+        
     }
 }

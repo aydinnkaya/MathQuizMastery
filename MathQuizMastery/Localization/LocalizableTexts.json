@@ -1258,5 +1258,47 @@
         "zh-Hans": "请描述您的问题...",
         "ar": "صف مشكلتك...",
         "nl": "Beschrijf uw probleem..."
+    },
+    "agreement_text": {
+        "en": "By continuing, you agree to the Terms of Service and Privacy Policy.",
+        "tr": "Giriş yaparak, Hizmet Sözleşmesi ve Gizlilik Politikası'nı okumuş, anlamış ve kabul etmiş olursunuz.",
+        "de": "Indem Sie fortfahren, akzeptieren Sie die Nutzungsbedingungen und die Datenschutzrichtlinie.",
+        "es": "Al continuar, aceptas los Términos de servicio y la Política de privacidad.",
+        "fr": "En continuant, vous acceptez les Conditions d'utilisation et la Politique de confidentialité.",
+        "it": "Continuando, accetti i Termini di servizio e l'Informativa sulla privacy.",
+        "pt-BR": "Ao continuar, você concorda com os Termos de Serviço e a Política de Privacidade.",
+        "ja": "続行することで、利用規約とプライバシーポリシーに同意したことになります。",
+        "ko": "계속하면 서비스 약관 및 개인정보 처리방침에 동의하게 됩니다.",
+        "zh-Hans": "继续表示您同意服务条款和隐私政策。",
+        "ar": "بالمتابعة، فإنك توافق على شروط الخدمة وسياسة الخصوصية.",
+        "nl": "Door door te gaan, ga je akkoord met de Servicevoorwaarden en het Privacybeleid."
+    },
+    "terms_of_service": {
+        "en": "Terms of Service",
+        "tr": "Hizmet Sözleşmesi",
+        "de": "Nutzungsbedingungen",
+        "es": "Términos de servicio",
+        "fr": "Conditions d'utilisation",
+        "it": "Termini di servizio",
+        "pt-BR": "Termos de Serviço",
+        "ja": "利用規約",
+        "ko": "서비스 약관",
+        "zh-Hans": "服务条款",
+        "ar": "شروط الخدمة",
+        "nl": "Servicevoorwaarden"
+    },
+    "privacy_policy": {
+        "en": "Privacy Policy",
+        "tr": "Gizlilik Politikası",
+        "de": "Datenschutzrichtlinie",
+        "es": "Política de privacidad",
+        "fr": "Politique de confidentialité",
+        "it": "Informativa sulla privacy",
+        "pt-BR": "Política de Privacidade",
+        "ja": "プライバシーポリシー",
+        "ko": "개인정보 처리방침",
+        "zh-Hans": "隐私政策",
+        "ar": "سياسة الخصوصية",
+        "nl": "Privacybeleid"
     }
 }

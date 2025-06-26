@@ -24,32 +24,6 @@ extension UITextField {
         }
     }
     
-    func applyStyledAppearance(placeholder: String, iconName: String) {
-        self.layer.cornerRadius = UIStyle.cornerRadius
-        self.layer.borderWidth = 2
-        self.layer.borderColor = UIStyle.borderDefault.cgColor
-        self.backgroundColor = .clear
-        self.textColor = UIStyle.textColor
-        self.font = UIStyle.textFont
-        
-        let iconAttachment = NSTextAttachment()
-        iconAttachment.image = UIImage(systemName: iconName)?.withTintColor(UIStyle.iconColor, renderingMode: .alwaysOriginal)
-        iconAttachment.bounds = CGRect(x: 0, y: -4, width: 25, height: 25)
-        
-        let iconString = NSAttributedString(attachment: iconAttachment)
-        let textString = NSAttributedString(string: " \(placeholder)", attributes: [
-            .foregroundColor: UIStyle.placeholderColor,
-            .font: UIStyle.placeholderFont
-        ])
-        
-        let combined = NSMutableAttributedString()
-        combined.append(iconString)
-        combined.append(textString)
-        
-        self.attributedPlaceholder = combined
-        self.contentVerticalAlignment = .center
-    }
-    
     func addStyledBackground(in container: UIView) {
         guard !hasStyledBackground else { return }
         hasStyledBackground = true

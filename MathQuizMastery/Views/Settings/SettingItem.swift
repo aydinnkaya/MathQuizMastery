@@ -12,6 +12,7 @@ enum SettingType {
     case notifications
     case faq
     case report
+    case about
     case logout
 }
 

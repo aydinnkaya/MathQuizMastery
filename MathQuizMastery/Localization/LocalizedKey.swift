@@ -9,6 +9,8 @@ import Foundation
 
 enum LocalizedKey: String {
     
+    
+    
     // MARK: - Register Ekranı
     case register_title
     case enter_name
@@ -31,6 +33,10 @@ enum LocalizedKey: String {
     case email_required
     case password_required
     case password_too_short
+    case agreement_text
+    case terms_of_service
+    case privacy_policy 
+    
     
     // MARK: - Genel Butonlar
     case ok

@@ -19,6 +19,7 @@ protocol SettingsPopupDelegate: AnyObject {
     func tappedNotifications()
     func tappedFAQ()
     func tappedReport()
+    func tappedAbout()
     func tappedLogout()
 }
 
@@ -31,6 +32,7 @@ class SettingsPopupViewModel: SettingsPopupViewModelProtocol {
         SettingItem(title: L(.settings_notifications_title), iconName: "settings_notification_icon", type: .notifications),
         SettingItem(title: L(.settings_faq_title), iconName: "settings_question_icon", type: .faq),
         SettingItem(title: L(.settings_report_title), iconName: "settings_report_icon", type: .report),
+        SettingItem(title: L(.settings_report_title), iconName: "about_icon", type: .about),
         SettingItem(title: L(.settings_logout_title), iconName: "settings_logout_icon", type: .logout)
     ]
     
@@ -47,6 +49,8 @@ class SettingsPopupViewModel: SettingsPopupViewModelProtocol {
             delegate?.tappedFAQ()
         case .report:
             delegate?.tappedReport()
+        case .about:
+            delegate?.tappedAbout()
         case .logout:
             delegate?.tappedLogout()
         }

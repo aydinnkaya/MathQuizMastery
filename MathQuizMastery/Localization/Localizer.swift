@@ -21,6 +21,8 @@ final class Localizer {
     private let localizationFileName = "LocalizableTexts"
     private let localizationFileExtension = "json"
     private let debugMode = true
+    private(set) var isLoaded: Bool = false
+    private var onLoadedBlocks: [() -> Void] = []
     
     private init() {
         loadTranslations()
@@ -35,7 +37,11 @@ final class Localizer {
             guard let self = self else { return }
             guard let url = Bundle.main.url(forResource: self.localizationFileName, withExtension: self.localizationFileExtension) else {
                 self.log("[Localizer] Error: \(self.localizationFileName).\(self.localizationFileExtension) not found in bundle.")
-                self.translations = [:]
+                DispatchQueue.main.async {
+                    self.translations = [:]
+                    self.isLoaded = true
+                    self.notifyLoaded()
+                }
                 return
             }
             do {
@@ -43,14 +49,31 @@ final class Localizer {
                 let decoded = try JSONDecoder().decode([String: [String: String]].self, from: data)
                 DispatchQueue.main.async {
                     self.translations = decoded
+                    self.isLoaded = true
+                    self.notifyLoaded()
                     self.log("[Localizer] Translations loaded. Available keys: \(self.translations.keys.count)")
                 }
             } catch {
                 DispatchQueue.main.async {
                     self.log("[Localizer] JSON decode error: \(error.localizedDescription)")
                     self.translations = [:]
+                    self.isLoaded = true
+                    self.notifyLoaded()
                 }
             }
+        }
+    }
+    
+    private func notifyLoaded() {
+        onLoadedBlocks.forEach { $0() }
+        onLoadedBlocks.removeAll()
+    }
+    
+    func onLoaded(_ block: @escaping () -> Void) {
+        if isLoaded {
+            block()
+        } else {
+            onLoadedBlocks.append(block)
         }
     }
     

@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0F0F0CC32E0C484700D371C1 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 0F0F0CC22E0C484700D371C1 /* Alamofire */; };
-		0F0F0CC52E0C484700D371C1 /* AlamofireDynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 0F0F0CC42E0C484700D371C1 /* AlamofireDynamic */; };
 		0FB3D00B2D40E8100004CB1A /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 0FB3D00A2D40E8100004CB1A /* IQKeyboardManagerSwift */; };
 		0FBB6D362DD779E80050162D /* SwiftMessages in Frameworks */ = {isa = PBXBuildFile; productRef = 0FBB6D352DD779E80050162D /* SwiftMessages */; };
 		0FCC52AB2DBE7217002D6794 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 0FCC52AA2DBE7217002D6794 /* FirebaseAnalytics */; };
@@ -123,7 +121,6 @@
 				0FCC52C92DBE7217002D6794 /* FirebaseInAppMessaging-Beta in Frameworks */,
 				0FCC52AF2DBE7217002D6794 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
 				0FBB6D362DD779E80050162D /* SwiftMessages in Frameworks */,
-				0F0F0CC32E0C484700D371C1 /* Alamofire in Frameworks */,
 				0FCC52B52DBE7217002D6794 /* FirebaseAuth in Frameworks */,
 				0FCC52C72DBE7217002D6794 /* FirebaseFunctionsCombine-Community in Frameworks */,
 				0FCC52D72DBE7217002D6794 /* FirebaseStorageCombine-Community in Frameworks */,
@@ -139,7 +136,6 @@
 				0FCC52B92DBE7217002D6794 /* FirebaseCore in Frameworks */,
 				0FCC52B72DBE7217002D6794 /* FirebaseAuthCombine-Community in Frameworks */,
 				0FCC52C52DBE7217002D6794 /* FirebaseFunctions in Frameworks */,
-				0F0F0CC52E0C484700D371C1 /* AlamofireDynamic in Frameworks */,
 				0FCC52BF2DBE7217002D6794 /* FirebaseDynamicLinks in Frameworks */,
 				0FCC52C32DBE7217002D6794 /* FirebaseFirestoreCombine-Community in Frameworks */,
 			);
@@ -228,8 +224,6 @@
 				0FCC52D62DBE7217002D6794 /* FirebaseStorageCombine-Community */,
 				0FCC52D82DBE7217002D6794 /* FirebaseVertexAI */,
 				0FBB6D352DD779E80050162D /* SwiftMessages */,
-				0F0F0CC22E0C484700D371C1 /* Alamofire */,
-				0F0F0CC42E0C484700D371C1 /* AlamofireDynamic */,
 			);
 			productName = MathQuizMastery;
 			productReference = 0FA090682D2FAEB000D83F96 /* MathQuizMastery.app */;
@@ -318,7 +312,6 @@
 				0FB3D0092D40E8100004CB1A /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 				0FCC52A92DBE7217002D6794 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				0FBB6D342DD779E80050162D /* XCRemoteSwiftPackageReference "SwiftMessages" */,
-				0F0F0CC12E0C484600D371C1 /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 0FA090692D2FAEB000D83F96 /* Products */;
@@ -689,14 +682,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		0F0F0CC12E0C484600D371C1 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.10.2;
-			};
-		};
 		0F7B152C2D35034300BAF7D4 /* XCRemoteSwiftPackageReference "Swinject" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Swinject/Swinject.git";
@@ -732,16 +717,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		0F0F0CC22E0C484700D371C1 /* Alamofire */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 0F0F0CC12E0C484600D371C1 /* XCRemoteSwiftPackageReference "Alamofire" */;
-			productName = Alamofire;
-		};
-		0F0F0CC42E0C484700D371C1 /* AlamofireDynamic */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 0F0F0CC12E0C484600D371C1 /* XCRemoteSwiftPackageReference "Alamofire" */;
-			productName = AlamofireDynamic;
-		};
 		0FB3D00A2D40E8100004CB1A /* IQKeyboardManagerSwift */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 0FB3D0092D40E8100004CB1A /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;

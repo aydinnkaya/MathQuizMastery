@@ -10,11 +10,12 @@ import UIKit
 @available(iOS 16, *)
 class LoginVC: UIViewController, UITextFieldDelegate {
     
-    @IBOutlet weak var emailTextField: UITextField!
-    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var emailTextField: CustomTextField!
+    @IBOutlet weak var passwordTextField: CustomTextField!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var fargotPasswordButtonLabel: UIButton!
     
+    @IBOutlet weak var agreementLabel: UILabel!
     @IBOutlet weak var createAnAccountButton: UIButton!
     
     private var errorLabels: [UITextField: UILabel] = [:]
@@ -43,19 +44,23 @@ class LoginVC: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel.delegate = self
-        loginButton.updateGradientFrameIfNeeded()
-        configureGesture()
-        assignDelegates()
+       
+        Localizer.shared.onLoaded { [weak self] in
+            self?.loginButton.updateGradientFrameIfNeeded()
+            self?.configureGesture()
+            self?.assignDelegates()
+            self?.setupUI()
+            self?.setupAgreementLabel()
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
         setupGradientBackground()
-        setupUI()
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-
+        agreementLabel.preferredMaxLayoutWidth = agreementLabel.frame.width
     }
     
     @IBAction func loginButtonTapped(_ sender: UIButton) {
@@ -116,14 +121,11 @@ extension LoginVC: LoginViewModelDelegate {
 
 extension LoginVC {
     func setupUI() {
-        emailTextField.applyStyledAppearance(placeholder: L(.enter_email), iconName: "envelope.fill")
-        emailTextField.addStyledBackground(in: view)
-        
-        passwordTextField.applyStyledAppearance(placeholder: L(.enter_password), iconName: "lock.fill")
-        passwordTextField.addStyledBackground(in: view)
-        
+        emailTextField.iconName = "paperplane.fill" // envelope.fill" 
+        emailTextField.placeholderText = L(.enter_email)
+        passwordTextField.iconName = "lock.fill"
+        passwordTextField.placeholderText = L(.enter_password)
         loginButton.applyStyledButton(withTitle: L(.log_in))
-        
         [emailTextField, passwordTextField].forEach { addErrorLabel(below: $0) }
     }
     
@@ -149,7 +151,7 @@ extension LoginVC {
         dismissKeyboard()
         clearErrors()
     }
-   
+    
     func setupGradientBackground() {
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = self.view.bounds
@@ -158,5 +160,77 @@ extension LoginVC {
         gradientLayer.endPoint = CGPoint(x: 1, y: 1)
         self.view.layer.insertSublayer(gradientLayer, at: 0)
     }
+    
+    func setupAgreementLabel(){
+        let fullText = L(.agreement_text)
+        let termsText = L(.terms_of_service)
+        let privacyText = L(.privacy_policy)
+        
+        let attributedString = NSMutableAttributedString(string: fullText)
+        
+        let linkColor = UIColor.blue
+        let termsRange = (fullText as NSString).range(of: termsText)
+        let privacyRange = (fullText as NSString).range(of: privacyText)
+        
+        [termsRange, privacyRange].forEach { range in
+            attributedString.addAttribute(.foregroundColor, value: linkColor, range: range)
+            attributedString.addAttribute(.underlineStyle, value: NSUnderlineStyle.single.rawValue, range: range)
+        }
+        
+        agreementLabel.attributedText = attributedString
+        agreementLabel.isUserInteractionEnabled = true
+        agreementLabel.numberOfLines = 0
+        agreementLabel.textAlignment = .center
+        agreementLabel.lineBreakMode = .byWordWrapping
+        agreementLabel.adjustsFontSizeToFitWidth = true
+        agreementLabel.minimumScaleFactor = 0.8
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleAgreementTap(_:)))
+        agreementLabel.addGestureRecognizer(tapGesture)
+    }
+    
+    func characterIndex(at point: CGPoint, in label: UILabel) -> Int? {
+        guard let attributedText = label.attributedText else { return nil }
+        
+        let textStorage = NSTextStorage(attributedString: attributedText)
+        let layoutManager = NSLayoutManager()
+        let textContainer = NSTextContainer(size: label.bounds.size)
+        
+        textContainer.lineFragmentPadding = 0
+        textContainer.maximumNumberOfLines = label.numberOfLines
+        textContainer.lineBreakMode = label.lineBreakMode
+        
+        layoutManager.addTextContainer(textContainer)
+        textStorage.addLayoutManager(layoutManager)
+        
+        return layoutManager.characterIndex(for: point, in: textContainer, fractionOfDistanceBetweenInsertionPoints: nil)
+    }
+    
+    func openURL(_ urlString: String) {
+        if let url = URL(string: urlString) {
+            UIApplication.shared.open(url)
+        }
+    }
+    
+    @objc func handleAgreementTap(_ gesture: UITapGestureRecognizer) {
+        guard let text = agreementLabel.attributedText?.string else { return }
+        
+        let termsText = NSLocalizedString(L(.terms_of_service), comment: "")
+        let privacyText = NSLocalizedString(L(.privacy_policy), comment: "")
+        
+        let termsRange = (text as NSString).range(of: termsText)
+        let privacyRange = (text as NSString).range(of: privacyText)
+        
+        let location = gesture.location(in: agreementLabel)
+        
+        if let index = characterIndex(at: location, in: agreementLabel) {
+            if NSLocationInRange(index, termsRange) {
+                openURL("https://docs.google.com/document/d/1aR8pAbu5c-VYw0kmCQH22qL4Z1VMjE9_Ca9iiYDHtdU/edit?usp=sharing")
+            } else if NSLocationInRange(index, privacyRange) {
+                openURL("https://docs.google.com/document/d/1vxyHOi7SnfJpjBP6-epJG9rMzZUG_WP_VnUQuFP4qvQ/edit?usp=sharing")
+            }
+        }
+    }
+    
 }
 

@@ -12,7 +12,7 @@ struct UIStyle {
     static let cornerRadius: CGFloat = 12
     static let textColor: UIColor = .black
     static let iconColor: UIColor = .black
-    static let placeholderColor: UIColor = .black
+    static let placeholderColor: UIColor = .darkGray
     static let borderDefault: UIColor = UIColor(red: 1.0, green: 0.8627, blue: 0.0, alpha: 1.0)
     static let textFont: UIFont = .systemFont(ofSize: 16, weight: .bold)
     static let placeholderFont: UIFont = .systemFont(ofSize: 16, weight: .medium)

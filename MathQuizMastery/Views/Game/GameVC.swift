@@ -291,9 +291,7 @@ extension GameVC : GameScreenViewModelDelegate {
     func onGameFinished(score: Int, expressionType: MathExpression.ExpressionType) {
         showGameFinishEffect(score: score)
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
             self.coordinator.goToResult(score: "\(score)", expressionType: expressionType)
-        }
     }
     
     private func showGameFinishEffect(score: Int) {

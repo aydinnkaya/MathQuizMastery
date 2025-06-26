@@ -14,10 +14,10 @@ import FirebaseFirestore
 
 class RegisterVC: UIViewController, UITextFieldDelegate {
     
-    @IBOutlet weak var registerFullNameField: UITextField!
-    @IBOutlet weak var registerEmailField: UITextField!
-    @IBOutlet weak var registerPasswordField: UITextField!
-    @IBOutlet weak var registerConfirmPasswordField: UITextField!
+    @IBOutlet weak var registerFullNameField: CustomTextField!
+    @IBOutlet weak var registerEmailField: CustomTextField!
+    @IBOutlet weak var registerPasswordField: CustomTextField!
+    @IBOutlet weak var registerConfirmPasswordField: CustomTextField!
     @IBOutlet weak var registerSubmitButton: UIButton!
     
     private var viewModel : RegisterViewModelProtocol
@@ -53,20 +53,23 @@ class RegisterVC: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel.delegate = self
-       
+        Localizer.shared.onLoaded { [weak self] in
+            self?.registerSubmitButton.updateGradientFrameIfNeeded()
+            self?.configureGesture()
+            self?.assignDelegates()
+            self?.setupUI()
+            self?.setupGradientBackground()
+            
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        registerSubmitButton.updateGradientFrameIfNeeded()
-        
-        setupUI()
-        configureGesture()
-        assignDelegates()
-        setupGradientBackground()
-
+    
     }
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+      
     }
     
     
@@ -126,15 +129,14 @@ extension RegisterVC: RegisterViewModelDelegate {
 
 extension RegisterVC {
     func setupUI(){
-        registerFullNameField.applyStyledAppearance(placeholder: L(.enter_name), iconName: "person.fill")
-        registerEmailField.applyStyledAppearance(placeholder: L(.enter_email), iconName: "envelope.fill")
-        registerPasswordField.applyStyledAppearance(placeholder: L(.enter_password), iconName: "lock.fill")
-        registerConfirmPasswordField.applyStyledAppearance(placeholder: L(.reenter_password), iconName: "lock.fill")
-        
-        registerFullNameField.addStyledBackground(in: view)
-        registerEmailField.addStyledBackground(in: view)
-        registerPasswordField.addStyledBackground(in: view)
-        registerConfirmPasswordField.addStyledBackground(in: view)
+        registerFullNameField.iconName = "person.fill"
+        registerFullNameField.placeholderText = L(.enter_name)
+        registerEmailField.iconName = "envelope.fill"
+        registerEmailField.placeholderText = L(.enter_email)
+        registerPasswordField.iconName = "lock.fill"
+        registerPasswordField.placeholderText = L(.enter_password)
+        registerConfirmPasswordField.iconName = "lock.fill"
+        registerConfirmPasswordField.placeholderText = L(.reenter_password)
         
         registerSubmitButton.applyStyledButton(withTitle: L(.register_title))
         
