@@ -10,7 +10,6 @@ import Foundation
 enum LocalizedKey: String {
     
     
-    
     // MARK: - Register Ekranı
     case register_title
     case enter_name
@@ -188,7 +187,7 @@ enum LocalizedKey: String {
     case result_score_text = "result_score_text"
     
     // MARK: - FAQ
-    case faq_title = "faq_title"
+    case faq_title
     case faq_empty = "faq_empty"
     case faq_q1 = "faq_q1"
     case faq_a1 = "faq_a1"

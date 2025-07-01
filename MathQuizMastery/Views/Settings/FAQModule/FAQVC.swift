@@ -75,11 +75,10 @@ class FAQVC: UIViewController {
         stylePopupView()
         
         // Set up title label
-        titleLabel.text = "Sıkça Sorulan Sorular"
+        titleLabel.text = L(.faq_title)
         titleLabel.textColor = .white
         titleLabel.font = .systemFont(ofSize: 20, weight: .bold)
         
-        // Set up close button
         closeButton.tintColor = UIColor.Custom.closeButton
     }
     
