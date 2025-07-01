@@ -15,7 +15,6 @@ class SettingsPopupVC: UIViewController {
     
     
     private let viewModel: SettingsPopupViewModel
-    //    private var notificationViewModel: NotificationSettingsViewModel?
     weak var coordinator: AppCoordinator?
     
     init(viewModel: SettingsPopupViewModel, coordinator: AppCoordinator) {
@@ -32,11 +31,14 @@ class SettingsPopupVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        backgroundView.frame = view.bounds
-        setupBackgroundView()
         viewModel.delegate = self
-        setupTableView()
-        stylePopupView()
+        backgroundView.frame = view.bounds
+        
+        Localizer.shared.onLoaded { [weak self] in
+            self?.setupBackgroundView()
+            self?.setupTableView()
+            self?.stylePopupView()
+        }
     }
     
     override func viewDidLayoutSubviews() {
@@ -133,7 +135,6 @@ extension SettingsPopupVC: SettingsPopupDelegate {
         
         alert.addAction(UIAlertAction(title: L(.cancel), style: .cancel))
         alert.addAction(UIAlertAction(title: L(.report_submit), style: .default) { _ in
-            // Rapor gönderme işlemi
             print("Rapor gönderildi")
         })
         

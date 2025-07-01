@@ -1300,5 +1300,77 @@
         "zh-Hans": "隐私政策",
         "ar": "سياسة الخصوصية",
         "nl": "Privacybeleid"
+    },
+    "settings_about_title": {
+        "en": "About",
+        "tr": "Hakkında",
+        "de": "Über",
+        "es": "Acerca de",
+        "fr": "À propos",
+        "it": "Informazioni",
+        "pt-BR": "Sobre",
+        "ja": "このアプリについて",
+        "ko": "정보",
+        "zh-Hans": "关于",
+        "ar": "حول",
+        "nl": "Over"
+    },
+    "create_account_title": {
+        "en": "Create an Account",
+        "tr": "Hesap Oluştur",
+        "de": "Konto erstellen",
+        "es": "Crear una cuenta",
+        "fr": "Créer un compte",
+        "it": "Crea un account",
+        "pt-BR": "Criar uma conta",
+        "ja": "アカウントを作成",
+        "ko": "계정 만들기",
+        "zh-Hans": "创建账户",
+        "ar": "إنشاء حساب",
+        "nl": "Account aanmaken"
+    },
+    "register_title_text": {
+        "en": "Launch Your Brain Into Orbit",
+        "tr": "Zihnini Yörüngeye Fırlat",
+        "de": "Schick dein Gehirn in den Orbit",
+        "es": "Lanza tu mente al espacio",
+        "fr": "Propulse ton esprit en orbite",
+        "it": "Lancia la tua mente in orbita",
+        "pt-BR": "Lance sua mente para a órbita",
+        "ja": "脳を軌道に打ち上げよう",
+        "ko": "당신의 두뇌를 궤도로 쏘아올리세요",
+        "zh-Hans": "将你的大脑送入轨道",
+        "ar": "أطلق عقلك إلى المدار",
+        "nl": "Lanceer je brein de ruimte in"
+    },
+    "no_account_question": {
+        "en": "Don't have an account?",
+        "tr": "Hesabınız yok mu?",
+        "de": "Sie haben kein Konto?",
+        "es": "¿No tienes una cuenta?",
+        "fr": "Vous n'avez pas de compte ?",
+        "it": "Non hai un account?",
+        "pt-BR": "Não tem uma conta?",
+        "ja": "アカウントをお持ちでないですか？",
+        "ko": "계정이 없으신가요?",
+        "zh-Hans": "还没有账户？",
+        "ar": "ليس لديك حساب؟",
+        "nl": "Heb je geen account?"
+    },
+    "register_now": {
+        "en": "Register Now",
+        "tr": "Kayıt Ol",
+        "de": "Jetzt registrieren",
+        "es": "Regístrate ahora",
+        "fr": "Inscrivez-vous maintenant",
+        "it": "Registrati ora",
+        "pt-BR": "Cadastre-se agora",
+        "ja": "今すぐ登録",
+        "ko": "지금 가입하세요",
+        "zh-Hans": "立即注册",
+        "ar": "سجّل الآن",
+        "nl": "Registreer nu"
     }
+
+
 }

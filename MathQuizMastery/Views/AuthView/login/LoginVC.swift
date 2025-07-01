@@ -14,7 +14,8 @@ class LoginVC: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var passwordTextField: CustomTextField!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var fargotPasswordButtonLabel: UIButton!
-    
+    @IBOutlet weak var noAccountLabel: UILabel!
+
     @IBOutlet weak var agreementLabel: UILabel!
     @IBOutlet weak var createAnAccountButton: UIButton!
     
@@ -127,6 +128,8 @@ extension LoginVC {
         passwordTextField.placeholderText = L(.enter_password)
         loginButton.applyStyledButton(withTitle: L(.log_in))
         [emailTextField, passwordTextField].forEach { addErrorLabel(below: $0) }
+        noAccountLabel.text = L(.no_account_question)
+              createAnAccountButton.setTitle(L(.register_now), for: .normal)
     }
     
     func assignDelegates() {

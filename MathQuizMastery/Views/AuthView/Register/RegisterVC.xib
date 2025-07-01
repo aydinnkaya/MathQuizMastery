@@ -16,6 +16,7 @@
                 <outlet property="registerFullNameField" destination="cUl-qh-ZdT" id="0i5-ZU-9oN"/>
                 <outlet property="registerPasswordField" destination="ZX8-8T-nzC" id="QSv-v0-wi4"/>
                 <outlet property="registerSubmitButton" destination="5N0-Zz-7zs" id="pqT-Ai-YgE"/>
+                <outlet property="registerTitle" destination="KkH-oE-Yg0" id="5UI-Lr-AmI"/>
                 <outlet property="view" destination="iN0-l3-epB" id="b7d-Lh-4Zh"/>
             </connections>
         </placeholder>

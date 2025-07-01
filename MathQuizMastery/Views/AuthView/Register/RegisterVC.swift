@@ -18,6 +18,7 @@ class RegisterVC: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var registerEmailField: CustomTextField!
     @IBOutlet weak var registerPasswordField: CustomTextField!
     @IBOutlet weak var registerConfirmPasswordField: CustomTextField!
+    @IBOutlet weak var registerTitle: UILabel!
     @IBOutlet weak var registerSubmitButton: UIButton!
     
     private var viewModel : RegisterViewModelProtocol
@@ -62,16 +63,11 @@ class RegisterVC: UIViewController, UITextFieldDelegate {
             
         }
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-    
-    }
-    
+ 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
       
     }
-    
     
     @IBAction func registerSubmitButtonTapped(_ sender: Any) {
         prepareForValidation()
@@ -137,8 +133,8 @@ extension RegisterVC {
         registerPasswordField.placeholderText = L(.enter_password)
         registerConfirmPasswordField.iconName = "lock.fill"
         registerConfirmPasswordField.placeholderText = L(.reenter_password)
-        
         registerSubmitButton.applyStyledButton(withTitle: L(.register_title))
+        registerTitle.text = L(.register_title)
         
         [registerFullNameField, registerEmailField, registerPasswordField, registerConfirmPasswordField].forEach { addErrorLabel(below: $0) }
     }

@@ -25,6 +25,7 @@ enum LocalizedKey: String {
     case weak_password
     case name_required
     case passwords_do_not_match
+    case register_title_text
     
     // MARK: - Login Ekranı
     case log_in
@@ -35,8 +36,10 @@ enum LocalizedKey: String {
     case password_too_short
     case agreement_text
     case terms_of_service
-    case privacy_policy 
-    
+    case privacy_policy
+    case create_account_title
+    case no_account_question
+    case register_now
     
     // MARK: - Genel Butonlar
     case ok
@@ -222,7 +225,9 @@ enum LocalizedKey: String {
     case settings_notifications_title
     case settings_faq_title
     case settings_report_title
+    case settings_about_title
     case settings_logout_title
     
     case save_button_title = "save_button_title"
+    
 }
