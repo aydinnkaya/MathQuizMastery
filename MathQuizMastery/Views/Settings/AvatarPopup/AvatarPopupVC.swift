@@ -43,12 +43,12 @@ class AvatarPopupVC: UIViewController {
     // MARK: - Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setupCollectionView()
         setupViewModel()
         setupTextField()
         setuStyles()
         setupBackgroundView()
-        saveButton.setTitle(L(.save_button_title), for: .normal)
     }
     
     override func viewDidLayoutSubviews() {
@@ -112,11 +112,9 @@ extension AvatarPopupVC: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AvatarCell", for: indexPath)
         
-        // Hücreyi yapılandır
         let avatar = viewModel.getAvatar(at: indexPath.row)
         let isSelected = (viewModel.getSelectedIndexPath() == indexPath)
         
-        // Extension ile hücreyi güncelleyelim
         cell.configure(with: avatar, isSelected: isSelected)
         
         return cell
@@ -210,7 +208,6 @@ extension UICollectionViewCell {
     
     func configure(with avatar: Avatar, isSelected: Bool) {
         
-        // Görsel daha önce eklenmediyse ekle
         if contentView.viewWithTag(100) == nil {
             let imageView = UIImageView(frame: contentView.bounds)
             imageView.contentMode = .scaleAspectFit
@@ -220,12 +217,10 @@ extension UICollectionViewCell {
             contentView.addSubview(imageView)
         }
         
-        // Görseli güncelle
         if let imageView = contentView.viewWithTag(100) as? UIImageView {
             imageView.image = UIImage(named: avatar.imageName)
         }
         
-        // Hücre Stili Güncellemeleri
         layer.cornerRadius = frame.width / 2
         layer.borderColor = isSelected ? UIColor.green.cgColor : UIColor.gray.cgColor
         layer.borderWidth = isSelected ? 3 : 2
@@ -244,12 +239,7 @@ extension AvatarPopupVC {
         collectionView.layer.borderWidth = 3.0
         collectionView.layer.borderColor = UIColor.blue.cgColor
         collectionView.clipsToBounds = true
-        
-//        profileImage.layer.cornerRadius = profileImage.frame.width / 2
-//        profileImage.layer.borderColor = UIColor.systemIndigo.cgColor
-//        profileImage.layer.borderWidth = 4.0
-//        profileImage.clipsToBounds = true
-        
+
         usernameTextField.layer.borderColor = UIColor.systemTeal.cgColor
         usernameTextField.backgroundColor = UIColor(named: "NebulaGray")
         usernameTextField.layer.cornerRadius = 8
@@ -261,27 +251,24 @@ extension AvatarPopupVC {
                 .foregroundColor: UIColor.lightGray
             ]
         )
-        
+        saveButton.setTitle(L(.save_button_title), for: .normal)
+
         let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: usernameTextField.frame.height))
         usernameTextField.leftView = paddingView
         usernameTextField.leftViewMode = .always
     }
     
     func framePopupView(){
-        // Arka plan view'unu tam ekran yap
         backgroundView.frame = view.bounds
-        // PopupView'u responsive olarak boyutlandır
         let maxHeight = view.frame.height * 0.5
         let maxWidth = view.frame.width * 0.7
         popupView.frame.size = CGSize(width: maxWidth, height: maxHeight)
         popupView.center = view.center
-        // Gradient layer frame ve köşe yuvarlatma güncelle
         if let gradientLayer = popupView.layer.sublayers?.first as? CAGradientLayer {
             gradientLayer.frame = popupView.bounds
             gradientLayer.cornerRadius = popupView.layer.cornerRadius
             gradientLayer.masksToBounds = true
         }
-        // PopupView'u öne getir
         view.bringSubviewToFront(popupView)
     }
 }

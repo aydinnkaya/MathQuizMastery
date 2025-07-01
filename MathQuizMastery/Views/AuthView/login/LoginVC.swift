@@ -17,7 +17,6 @@ class LoginVC: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var noAccountLabel: UILabel!
     
     @IBOutlet weak var agreementLabel: UILabel!
-    @IBOutlet weak var createAnAccountButton: UIButton!
     
     private var errorLabels: [UITextField: UILabel] = [:]
     private let viewModel: LoginScreenViewModelProtocol
@@ -52,6 +51,7 @@ class LoginVC: UIViewController, UITextFieldDelegate {
             self?.assignDelegates()
             self?.setupUI()
             self?.setupAgreementLabel()
+            self?.setupAccountQuestionLabel()
         }
     }
     
@@ -128,15 +128,13 @@ extension LoginVC {
         passwordTextField.placeholderText = L(.enter_password)
         loginButton.applyStyledButton(withTitle: L(.log_in))
         [emailTextField, passwordTextField].forEach { addErrorLabel(below: $0) }
-        noAccountLabel.text = L(.no_account_question)
-        createAnAccountButton.setTitle(L(.register_now), for: .normal)
     }
     
     func assignDelegates() {
         emailTextField.delegate = self
         passwordTextField.delegate = self
     }
-  
+    
     func configureGesture() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tap)
@@ -160,6 +158,61 @@ extension LoginVC {
         self.view.layer.insertSublayer(gradientLayer, at: 0)
     }
     
+    // MARK: - Account Question Label Setup
+    func setupAccountQuestionLabel() {
+        let questionText = L(.no_account_question)
+        let registerText = L(.register_now)
+        let fullText = "\(questionText) \(registerText)"
+        
+        let attributedString = NSMutableAttributedString(string: fullText)
+        
+        // Base styling for the question part
+        let questionRange = (fullText as NSString).range(of: questionText)
+        attributedString.addAttribute(.foregroundColor,
+                                      value: UIColor.white.withAlphaComponent(0.8),
+                                      range: questionRange)
+        attributedString.addAttribute(.font,
+                                      value: UIFont.systemFont(ofSize: 16),
+                                      range: questionRange)
+        
+        // Styling for the register part (clickable)
+        let registerRange = (fullText as NSString).range(of: registerText)
+        attributedString.addAttribute(.foregroundColor,
+                                      value: UIColor.systemYellow,
+                                      range: registerRange)
+        attributedString.addAttribute(.font,
+                                      value: UIFont.systemFont(ofSize: 16, weight: .semibold),
+                                      range: registerRange)
+        attributedString.addAttribute(.underlineStyle,
+                                      value: NSUnderlineStyle.single.rawValue,
+                                      range: registerRange)
+        
+        noAccountLabel.attributedText = attributedString
+        noAccountLabel.isUserInteractionEnabled = true
+        noAccountLabel.numberOfLines = 1
+        noAccountLabel.textAlignment = .center
+        noAccountLabel.lineBreakMode = .byTruncatingTail
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleAccountQuestionTap(_:)))
+        noAccountLabel.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc func handleAccountQuestionTap(_ gesture: UITapGestureRecognizer) {
+        guard let text = noAccountLabel.attributedText?.string else { return }
+        
+        let registerText = L(.register_now)
+        let registerRange = (text as NSString).range(of: registerText)
+        
+        let location = gesture.location(in: noAccountLabel)
+        
+        if let index = characterIndex(at: location, in: noAccountLabel) {
+            if NSLocationInRange(index, registerRange) {
+                HapticManager.shared.lightImpact()
+                viewModel.handleRegiserTapped()
+            }
+        }
+    }
+    
     func setupAgreementLabel(){
         let fullText = L(.agreement_text)
         let termsText = L(.terms_of_service)
@@ -167,7 +220,7 @@ extension LoginVC {
         
         let attributedString = NSMutableAttributedString(string: fullText)
         
-        let linkColor = UIColor.blue
+        let linkColor = UIColor.systemYellow
         let termsRange = (fullText as NSString).range(of: termsText)
         let privacyRange = (fullText as NSString).range(of: privacyText)
         

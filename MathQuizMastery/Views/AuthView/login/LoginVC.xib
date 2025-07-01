@@ -12,11 +12,10 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginVC" customModule="MathQuizMastery" customModuleProvider="target">
             <connections>
                 <outlet property="agreementLabel" destination="IhM-EM-S0A" id="S2D-CN-bft"/>
-                <outlet property="createAnAccountButton" destination="hGL-JW-lOX" id="PUO-rc-pYQ"/>
                 <outlet property="emailTextField" destination="o30-BG-YbN" id="BL1-Fo-48Q"/>
                 <outlet property="loginButton" destination="jVO-st-C1k" id="fuJ-U3-FK5"/>
-                <outlet property="passwordTextField" destination="yGO-sl-wzP" id="MJr-Ew-Kzj"/>
                 <outlet property="noAccountLabel" destination="8K3-hq-McB" id="A7Y-bN-4sM"/>
+                <outlet property="passwordTextField" destination="yGO-sl-wzP" id="MJr-Ew-Kzj"/>
                 <outlet property="view" destination="iN0-l3-epB" id="OPK-g0-894"/>
             </connections>
         </placeholder>
@@ -26,15 +25,14 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login_icon" highlighted="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GWY-1e-lVa">
-                    <rect key="frame" x="0.0" y="124" width="402" height="200"/>
+                    <rect key="frame" x="0.0" y="184" width="402" height="200"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="200" id="icon-height"/>
                     </constraints>
                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
                 </imageView>
-                
                 <stackView opaque="NO" contentMode="scaleAspectFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="NQ4-Qc-fEk">
-                    <rect key="frame" x="30" y="364" width="342" height="116"/>
+                    <rect key="frame" x="30" y="424" width="342" height="116"/>
                     <subviews>
                         <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" verticalHuggingPriority="253" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your email" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="o30-BG-YbN" customClass="CustomTextField" customModule="MathQuizMastery" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="0.0" width="342" height="48"/>
@@ -57,9 +55,8 @@
                         </textField>
                     </subviews>
                 </stackView>
-                
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jVO-st-C1k" userLabel="Log In Button">
-                    <rect key="frame" x="30" y="520" width="342" height="50"/>
+                    <rect key="frame" x="40" y="580" width="322" height="50"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="login-button-height"/>
                     </constraints>
@@ -89,45 +86,16 @@
                         <action selector="loginButtonTapped:" destination="-1" eventType="touchUpInside" id="ZNx-cB-EcH"/>
                     </connections>
                 </button>
-                
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X57-0d-jPk" userLabel="Separator Line">
-                    <rect key="frame" x="0.0" y="710" width="402" height="2"/>
-                    <color key="backgroundColor" red="1" green="0.70196078431372544" blue="0.0" alpha="0.6" colorSpace="custom" customColorSpace="sRGB"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="2" id="separator-height"/>
-                    </constraints>
-                </view>
-                
-                <stackView opaque="NO" contentMode="scaleToFill" axis="horizontal" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="VkJ-Ye-8Rt" userLabel="Account Question Stack">
-                    <rect key="frame" x="30" y="730" width="342" height="21"/>
-                    <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hesabınız yok mu?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8K3-hq-McB">
-                            <rect key="frame" x="0.0" y="0.0" width="138" height="21"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                            <color key="textColor" white="1" alpha="0.8" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hGL-JW-lOX">
-                            <rect key="frame" x="146" y="0.0" width="196" height="21"/>
-                            <state key="normal" title="Button"/>
-                            <buttonConfiguration key="configuration" style="plain" title="Kayıt Ol">
-                                <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="16"/>
-                                <color key="baseForegroundColor" systemColor="systemYellowColor"/>
-                            </buttonConfiguration>
-                            <connections>
-                                <action selector="createAnAccountTapped:forEvent:" destination="-1" eventType="touchUpInside" id="FtW-Cr-gmo"/>
-                            </connections>
-                        </button>
-                    </subviews>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="21" id="account-stack-height"/>
-                    </constraints>
-                </stackView>
-                
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IhM-EM-S0A">
-                    <rect key="frame" x="30" y="771" width="342" height="0.0"/>
+                    <rect key="frame" x="30" y="786" width="342" height="0.0"/>
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                    <color key="textColor" red="1" green="1" blue="0.97647058823529409" alpha="0.8" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="textColor" red="1" green="1" blue="0.97647058823529409" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hesabınız yok mu? Kayıt Ol" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8K3-hq-McB">
+                    <rect key="frame" x="64" y="646" width="274" height="19.333333333333371"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <color key="textColor" white="1" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
@@ -135,36 +103,21 @@
             <keyboardLayoutGuide key="keyboard" id="7xf-ep-1st"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <!-- Icon Constraints -->
-                <constraint firstItem="GWY-1e-lVa" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="icon-leading"/>
-                <constraint firstItem="GWY-1e-lVa" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="icon-trailing"/>
-                <constraint firstItem="GWY-1e-lVa" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="60" id="icon-top"/>
-                
-                <!-- Text Fields Stack Constraints -->
-                <constraint firstItem="NQ4-Qc-fEk" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="30" id="textfields-leading"/>
-                <constraint firstItem="NQ4-Qc-fEk" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" constant="-30" id="textfields-trailing"/>
-                <constraint firstItem="NQ4-Qc-fEk" firstAttribute="top" secondItem="GWY-1e-lVa" secondAttribute="bottom" constant="40" id="textfields-top"/>
-                
-                <!-- Login Button Constraints -->
-                <constraint firstItem="jVO-st-C1k" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="30" id="login-leading"/>
-                <constraint firstItem="jVO-st-C1k" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" constant="-30" id="login-trailing"/>
-                <constraint firstItem="jVO-st-C1k" firstAttribute="top" secondItem="NQ4-Qc-fEk" secondAttribute="bottom" constant="40" id="login-top"/>
-                
-                <!-- Separator Line Constraints -->
-                <constraint firstItem="X57-0d-jPk" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="separator-leading"/>
-                <constraint firstItem="X57-0d-jPk" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="separator-trailing"/>
-                <constraint firstItem="X57-0d-jPk" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" constant="-120" id="separator-bottom"/>
-                
-                <!-- Account Question Stack Constraints -->
-                <constraint firstItem="VkJ-Ye-8Rt" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="30" id="account-leading"/>
-                <constraint firstItem="VkJ-Ye-8Rt" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" constant="-30" id="account-trailing"/>
-                <constraint firstItem="VkJ-Ye-8Rt" firstAttribute="top" secondItem="X57-0d-jPk" secondAttribute="bottom" constant="18" id="account-top"/>
-                
-                <!-- Agreement Label Constraints -->
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="IhM-EM-S0A" secondAttribute="bottom" constant="20" id="agreement-bottom"/>
                 <constraint firstItem="IhM-EM-S0A" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="30" id="agreement-leading"/>
                 <constraint firstItem="IhM-EM-S0A" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" constant="-30" id="agreement-trailing"/>
-                <constraint firstItem="IhM-EM-S0A" firstAttribute="top" secondItem="VkJ-Ye-8Rt" secondAttribute="bottom" constant="20" id="agreement-top"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="IhM-EM-S0A" secondAttribute="bottom" constant="20" id="agreement-bottom"/>
+                <constraint firstItem="8K3-hq-McB" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="64" id="e0W-UO-8CE"/>
+                <constraint firstItem="GWY-1e-lVa" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="icon-leading"/>
+                <constraint firstItem="GWY-1e-lVa" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="60" id="icon-top"/>
+                <constraint firstItem="GWY-1e-lVa" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="icon-trailing"/>
+                <constraint firstItem="jVO-st-C1k" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="40" id="login-leading"/>
+                <constraint firstItem="jVO-st-C1k" firstAttribute="top" secondItem="NQ4-Qc-fEk" secondAttribute="bottom" constant="40" id="login-top"/>
+                <constraint firstItem="jVO-st-C1k" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" constant="-40" id="login-trailing"/>
+                <constraint firstItem="8K3-hq-McB" firstAttribute="top" secondItem="jVO-st-C1k" secondAttribute="bottom" constant="16" id="q1M-LX-CkH"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="8K3-hq-McB" secondAttribute="trailing" constant="64" id="qfm-vO-oa9"/>
+                <constraint firstItem="NQ4-Qc-fEk" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="30" id="textfields-leading"/>
+                <constraint firstItem="NQ4-Qc-fEk" firstAttribute="top" secondItem="GWY-1e-lVa" secondAttribute="bottom" constant="40" id="textfields-top"/>
+                <constraint firstItem="NQ4-Qc-fEk" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" constant="-30" id="textfields-trailing"/>
             </constraints>
             <point key="canvasLocation" x="-35.820895522388057" y="19.221967963386728"/>
         </view>
