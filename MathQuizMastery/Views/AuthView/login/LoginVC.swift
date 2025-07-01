@@ -13,9 +13,9 @@ class LoginVC: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var emailTextField: CustomTextField!
     @IBOutlet weak var passwordTextField: CustomTextField!
     @IBOutlet weak var loginButton: UIButton!
-    @IBOutlet weak var fargotPasswordButtonLabel: UIButton!
+    
     @IBOutlet weak var noAccountLabel: UILabel!
-
+    
     @IBOutlet weak var agreementLabel: UILabel!
     @IBOutlet weak var createAnAccountButton: UIButton!
     
@@ -45,7 +45,7 @@ class LoginVC: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel.delegate = self
-       
+        
         Localizer.shared.onLoaded { [weak self] in
             self?.loginButton.updateGradientFrameIfNeeded()
             self?.configureGesture()
@@ -122,25 +122,21 @@ extension LoginVC: LoginViewModelDelegate {
 
 extension LoginVC {
     func setupUI() {
-        emailTextField.iconName = "paperplane.fill" // envelope.fill" 
+        emailTextField.iconName = "paperplane.fill" // envelope.fill"
         emailTextField.placeholderText = L(.enter_email)
         passwordTextField.iconName = "lock.fill"
         passwordTextField.placeholderText = L(.enter_password)
         loginButton.applyStyledButton(withTitle: L(.log_in))
         [emailTextField, passwordTextField].forEach { addErrorLabel(below: $0) }
         noAccountLabel.text = L(.no_account_question)
-              createAnAccountButton.setTitle(L(.register_now), for: .normal)
+        createAnAccountButton.setTitle(L(.register_now), for: .normal)
     }
     
     func assignDelegates() {
         emailTextField.delegate = self
         passwordTextField.delegate = self
     }
-    
-    func bindViewModel() {
-        
-    }
-    
+  
     func configureGesture() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tap)
