@@ -15,7 +15,7 @@ protocol HomeViewModelProtocol {
 }
 
 protocol HomeViewModelDelegate: AnyObject {
-    func didReceiveUser(_ user: User?)
+    func didReceiveUser(_ user: AppUser?)
     func navigateToCategory()
 }
 
@@ -23,7 +23,7 @@ class HomeViewModel: HomeViewModelProtocol {
     
     weak var delegate: HomeViewModelDelegate?
     private let authService: AuthServiceProtocol
-    private(set) var user: User?
+    private(set) var user: AppUser?
     
     init(authService: AuthServiceProtocol = AuthService.shared) {
         self.authService = authService
@@ -59,7 +59,7 @@ class HomeViewModel: HomeViewModelProtocol {
                         }
                         
                         // User nesnesini oluştur
-                        self?.user = User(
+                        self?.user = AppUser(
                             uid: fetchedUser.uid,
                             username: fetchedUser.username,
                             email: fetchedUser.email,

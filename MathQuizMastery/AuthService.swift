@@ -14,7 +14,7 @@ protocol AuthServiceProtocol{
     func registerUser(with userRequest: RegisterUserRequest, completion: @escaping (Bool, Error?) -> Void)
     func signIn(with userRequest: LoginUserRequest, completion: @escaping (String?, Error?) -> Void)
     func signOut(completion: @escaping (Error?) -> Void)
-    func fetchUserData(uid: String, completion: @escaping (Result<User,Error>)-> Void)
+    func fetchUserData(uid: String, completion: @escaping (Result<AppUser,Error>)-> Void)
     func updateUserCoin(uid: String, by amount: Int, completion: @escaping (Result<Void, Error>) -> Void)
     func incrementUserCoin(uid: String, by amount: Int, completion: @escaping (Error?) -> Void)
     func updateUserAvatar(uid: String, avatarImageName: String, completion: @escaping (Error?) -> Void)
@@ -102,7 +102,7 @@ class AuthService : AuthServiceProtocol {
     /// - Parameters:
     ///   - uid: Kullanıcının benzersiz kimliği (UID).
     ///   - completion: İşlem başarılıysa `User` modeli, aksi takdirde hata döner.
-    public func fetchUserData(uid: String, completion: @escaping (Result<User,Error>)-> Void) {
+    public func fetchUserData(uid: String, completion: @escaping (Result<AppUser,Error>)-> Void) {
         db.collection("users").document(uid).getDocument(){ snapshot,error in
             if let error = error {
                 completion(.failure(error))
@@ -119,7 +119,7 @@ class AuthService : AuthServiceProtocol {
             }
             
             let avatarImageName = data["avatarImageName"] as? String
-            let user = User(uid: uid, username: username, email: email, coin: coin, avatarImageName: avatarImageName!)
+            let user = AppUser(uid: uid, username: username, email: email, coin: coin, avatarImageName: avatarImageName!)
             completion(.success(user))
         }
     }
@@ -245,7 +245,7 @@ class AuthService : AuthServiceProtocol {
 }
 
 // MARK: - User Model
-struct User {
+struct AppUser {
     let uid: String
     let username: String
     let email: String

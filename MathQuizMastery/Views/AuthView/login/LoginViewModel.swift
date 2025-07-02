@@ -15,7 +15,7 @@ protocol LoginScreenViewModelProtocol: AnyObject {
 }
 
 protocol LoginViewModelDelegate: AnyObject {
-    func didLoginSuccessfully(user: User)
+    func didLoginSuccessfully(user: AppUser)
     func didFailWithError(_ error: Error)
     func didValidationFail(results: [ValidationResult])
     func navigateToRegister()

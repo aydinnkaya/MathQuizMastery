@@ -73,7 +73,7 @@ class AppCoordinator: Coordinator {
         navigationController.pushViewController(registerVC, animated: true)
     }
     
-    func goToHome(with user: User) {
+    func goToHome(with user: AppUser) {
         let homeVC = HomeVC(user: user, coordinator: self)
         navigationController.setViewControllers([homeVC], animated: false)
     }

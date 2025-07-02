@@ -19,11 +19,11 @@ class HomeVC: UIViewController {
     @IBOutlet weak var settingsButton: UIButton!
     
     
-    var user: User?
+    var user: AppUser?
     private var viewModel: HomeViewModelProtocol!
     var coordinator: AppCoordinator?
     
-    init(user: User, coordinator: AppCoordinator, authService: AuthServiceProtocol = AuthService.shared) {
+    init(user: AppUser, coordinator: AppCoordinator, authService: AuthServiceProtocol = AuthService.shared) {
         self.viewModel = HomeViewModel(authService: authService)
         self.coordinator = coordinator
         super.init(nibName: nil, bundle: nil)
@@ -89,7 +89,7 @@ extension HomeVC: HomeViewModelDelegate {
         coordinator?.goToCategory()
     }
     
-    func didReceiveUser(_ user: User?) {
+    func didReceiveUser(_ user: AppUser?) {
         guard let user = user else { return }
         
         // Kullanıcı bilgilerini güncelle

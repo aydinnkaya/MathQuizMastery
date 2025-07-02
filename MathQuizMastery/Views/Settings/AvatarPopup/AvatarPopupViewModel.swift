@@ -148,7 +148,7 @@ class AvatarPopupViewModel: AvatarPopupViewModelProtocol {
         }
     }
     
-    private func handleUserDataLoaded(user: User) {
+    private func handleUserDataLoaded(user: AppUser) {
         // Username'i kaydet
         originalUsername = user.username
         currentUsername = user.username

@@ -26,6 +26,7 @@ protocol GameScreenViewModelDelegate : AnyObject { // AnyObject => Class
     func onUpdateTime(time : String)
     func onUpdateQuestionNumber(questionNumber: Int)
     func onGameFinished(score: Int, expressionType: MathExpression.ExpressionType)
+    func onStartCountdownAnimation() 
 }
 
 class GameScreenViewModel : GameScreenViewModelProtocol {
@@ -102,6 +103,10 @@ class GameScreenViewModel : GameScreenViewModelProtocol {
             self.timeRemaining -= 1
             let formattedTime = String(format: "%02d", self.timeRemaining)
             delegate?.onUpdateTime(time: formattedTime)
+            
+            if self.timeRemaining == 10 {
+                delegate?.onStartCountdownAnimation()
+            }
             
             if self.timeRemaining <= 0 {
                 self.timer?.invalidate()

@@ -106,7 +106,7 @@ extension LoginVC: LoginViewModelDelegate {
         )
     }
     
-    func didLoginSuccessfully(user: User) {
+    func didLoginSuccessfully(user: AppUser) {
         hideLoading()
         HapticManager.shared.success()
         ToastView.show(in: self.view, message: L(.login_success))
