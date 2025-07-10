@@ -14,6 +14,7 @@ protocol Coordinator {
     func start()
 }
 
+/// <#Description#>
 enum PopupType {
     case settings
     case avatar
@@ -21,6 +22,7 @@ enum PopupType {
     case notificationSettings
 }
 
+/// <#Description#>
 class AppCoordinator: Coordinator {
     
     var navigationController: UINavigationController
@@ -87,21 +89,24 @@ class AppCoordinator: Coordinator {
         navigationController.present(avatarPopupVC, animated: true, completion: nil)
     }
     
+    /// <#Description#>
     func goToSettingsPopup() {
         let viewModel = SettingsPopupViewModel()
         let popupVC = SettingsPopupVC(viewModel: viewModel, coordinator: self)
-        popupVC.view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
-        popupVC.modalPresentationStyle = .overFullScreen
-        popupVC.modalTransitionStyle = .flipHorizontal
-        navigationController.present(popupVC, animated: true, completion: nil)
+        presentPopupViewController(popupVC)
+//        popupVC.view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+//        popupVC.modalPresentationStyle = .overFullScreen
+//        popupVC.modalTransitionStyle = .flipHorizontal
+//        navigationController.present(popupVC, animated: true, completion: nil)
     }
     func goToNotificationSettingsPopup() {
         let viewModel = NotificationSettingsViewModel()
         let notificationSettingsVC = NotificationSettingsVC(viewModel: viewModel, coordinator: self)
-        notificationSettingsVC.view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
-        notificationSettingsVC.modalPresentationStyle = .overFullScreen
-        notificationSettingsVC.modalTransitionStyle = .flipHorizontal
-        navigationController.present(notificationSettingsVC, animated: true, completion: nil)
+        presentPopupViewController(notificationSettingsVC)
+//        notificationSettingsVC.view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+//        notificationSettingsVC.modalPresentationStyle = .overFullScreen
+//        notificationSettingsVC.modalTransitionStyle = .flipHorizontal
+//        navigationController.present(notificationSettingsVC, animated: true, completion: nil)
     }
     
     func goToFAQPopup() {
@@ -218,8 +223,9 @@ class AppCoordinator: Coordinator {
     
     // MARK: - Private Methods
     private func presentPopupViewController(_ viewController: UIViewController) {
+        viewController.view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
         viewController.modalPresentationStyle = .overFullScreen
-        viewController.modalTransitionStyle = .crossDissolve
+        viewController.modalTransitionStyle = .flipHorizontal
         
         if let presentedVC = navigationController.presentedViewController {
             presentedVC.dismiss(animated: false) { [weak self] in

@@ -2,34 +2,34 @@ import UIKit
 
 @IBDesignable
 class CustomTextField: UITextField {
-
+    
     private let iconImageView = UIImageView()
     private let padding: CGFloat = 8
     private let backgroundView = UIView()
     private let gradientLayer = CAGradientLayer()
-
+    
     @IBInspectable var iconName: String? {
         didSet {
             updateIcon()
         }
     }
-
+    
     @IBInspectable var placeholderText: String? {
         didSet {
             updatePlaceholder()
         }
     }
-
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
     }
-
+    
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         setup()
     }
-
+    
     private func setup() {
         // Gradient background
         gradientLayer.colors = UIStyle.textFieldGradientColors
@@ -47,7 +47,7 @@ class CustomTextField: UITextField {
         backgroundView.isUserInteractionEnabled = false
         insertSubview(backgroundView, at: 0)
         sendSubviewToBack(backgroundView)
-
+        
         // Border & text
         layer.cornerRadius = UIStyle.cornerRadius
         layer.borderWidth = 2
@@ -56,19 +56,19 @@ class CustomTextField: UITextField {
         textColor = UIStyle.textColor
         font = UIStyle.textFont
         contentVerticalAlignment = .center
-
+        
         // Icon
         iconImageView.contentMode = .scaleAspectFit
         updateIcon()
         updatePlaceholder()
     }
-
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         backgroundView.frame = bounds
         gradientLayer.frame = backgroundView.bounds
     }
-
+    
     private func updateIcon() {
         guard let iconName = iconName else {
             leftView = nil
@@ -82,7 +82,7 @@ class CustomTextField: UITextField {
         leftView = container
         leftViewMode = .always
     }
-
+    
     private func updatePlaceholder() {
         guard let placeholderText = placeholderText else { return }
         attributedPlaceholder = NSAttributedString(
@@ -93,7 +93,7 @@ class CustomTextField: UITextField {
             ]
         )
     }
-
+    
     // Padding for text
     override func textRect(forBounds bounds: CGRect) -> CGRect {
         return bounds.inset(by: UIEdgeInsets(top: 0, left: 36, bottom: 0, right: 8))
@@ -104,4 +104,4 @@ class CustomTextField: UITextField {
     override func placeholderRect(forBounds bounds: CGRect) -> CGRect {
         return textRect(forBounds: bounds)
     }
-} 
+}

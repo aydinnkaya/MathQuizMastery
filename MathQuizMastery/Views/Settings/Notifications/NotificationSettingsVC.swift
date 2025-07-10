@@ -114,7 +114,7 @@ class NotificationSettingsVC: UIViewController {
     
     // MARK: - Actions
     @IBAction func closeButtonTapped(_ sender: UIButton) {
-        coordinator?.dismissPopup()
+        self.dismissPopup()
     }
     
     @IBAction func saveButtonTapped(_ sender: UIButton) {
@@ -123,7 +123,7 @@ class NotificationSettingsVC: UIViewController {
     }
     
     @objc private func backgroundTapped() {
-        coordinator?.dismissPopup()
+        self.dismissPopup()
     }
     
     // MARK: - Private Methods
@@ -135,7 +135,7 @@ class NotificationSettingsVC: UIViewController {
         )
         
         alert.addAction(UIAlertAction(title: L(.ok), style: .default) { [weak self] _ in
-            self?.coordinator?.dismissPopup()
+            self?.dismissPopup()
         })
         
         present(alert, animated: true)
@@ -154,6 +154,24 @@ class NotificationSettingsVC: UIViewController {
         })
         
         present(alert, animated: true)
+    }
+    
+    private func dismissPopup() {
+        animateOut { [weak self] in
+            self?.coordinator?.dismissCurrentPopup {
+                self?.coordinator?.replacePopup(with: .settings)
+            }
+        }
+    }
+    
+    private func animateOut(completion: @escaping () -> Void) {
+        UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseIn) {
+            self.backgroundView.alpha = 0
+            self.popupView.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
+            self.popupView.alpha = 0
+        } completion: { _ in
+            completion()
+        }
     }
 }
 
@@ -290,57 +308,3 @@ extension NotificationSettingsVC {
         popupView.center = view.center
     }
 }
-
-//extension NotificationSettingsVC {
-//    func stylePopupView() {
-//        popupView.layer.cornerRadius = 20
-//        popupView.clipsToBounds = true
-//        
-//        //        popupView.backgroundColor = UIColor.white
-//        //        popupView.layer.sublayers?.removeAll(where: { $0 is CAGradientLayer })
-//        
-//        // Space theme styling
-//        let gradientLayer: CAGradientLayer
-//        if let existing = popupView.layer.sublayers?.first as? CAGradientLayer {
-//            gradientLayer = existing
-//        } else {
-//            gradientLayer = CAGradientLayer()
-//            popupView.layer.insertSublayer(gradientLayer, at: 0)
-//        }
-//        gradientLayer.frame = popupView.bounds
-//        gradientLayer.colors = [
-//            UIColor.white
-////            UIColor(red: 0.1, green: 0.1, blue: 0.2, alpha: 0.95).cgColor,
-////            UIColor(red: 0.05, green: 0.05, blue: 0.1, alpha: 0.95).cgColor
-//        ]
-//        gradientLayer.locations = [0.0, 1.0]
-//        gradientLayer.cornerRadius = popupView.layer.cornerRadius
-//        gradientLayer.masksToBounds = true
-//        
-//        // Border
-//        popupView.layer.borderWidth = 5.0
-//        popupView.layer.borderColor = UIColor(red: 0.2588, green: 0.8902, blue: 0.9608, alpha: 0.3).cgColor
-//
-////        popupView.layer.borderColor = UIColor(red: 0.455, green: 0.816, blue: 0.988, alpha: 0.3).cgColor
-//        
-//        // Shadow
-//        popupView.layer.shadowColor = UIColor(red: 0.455, green: 0.816, blue: 0.988, alpha: 0.5).cgColor
-//        popupView.layer.shadowOffset = CGSize(width: 0, height: 2)
-//        popupView.layer.shadowRadius = 15
-//        popupView.layer.shadowOpacity = 0.5
-//        popupView.layer.masksToBounds = false // Shadow için gerekli
-//    }
-//    
-//    func framePopupView() {
-//        let maxHeight = view.frame.height * 0.7
-//        let maxWidth = view.frame.width * 0.9
-//        
-//        popupView.frame.size.width = maxWidth
-//        popupView.frame.size.height = maxHeight
-//        popupView.center = view.center
-//        
-//        if let gradientLayer = popupView.layer.sublayers?.first as? CAGradientLayer {
-//            gradientLayer.frame = popupView.bounds
-//        }
-//    }
-//}
