@@ -83,13 +83,13 @@ class AppCoordinator: Coordinator {
     func goToAvatarPopup() {
         let viewModel = AvatarPopupViewModel()
         let avatarPopupVC = AvatarPopupVC(viewModel: viewModel, coordinator: self)
-        avatarPopupVC.view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
-        avatarPopupVC.modalPresentationStyle = .overFullScreen
-        avatarPopupVC.modalTransitionStyle = .flipHorizontal
-        navigationController.present(avatarPopupVC, animated: true, completion: nil)
+        presentPopupViewController(avatarPopupVC)
+//        avatarPopupVC.view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+//        avatarPopupVC.modalPresentationStyle = .overFullScreen
+//        avatarPopupVC.modalTransitionStyle = .flipHorizontal
+//        navigationController.present(avatarPopupVC, animated: true, completion: nil)
     }
     
-    /// <#Description#>
     func goToSettingsPopup() {
         let viewModel = SettingsPopupViewModel()
         let popupVC = SettingsPopupVC(viewModel: viewModel, coordinator: self)
