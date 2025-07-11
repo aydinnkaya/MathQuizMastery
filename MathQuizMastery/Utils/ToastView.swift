@@ -2,50 +2,95 @@
 //  ToastView.swift
 //  MathQuizMastery
 //
-//  Created by Aydın KAYA on 31.03.2025.
+//  Created by Aydın KAYA on 6.04.2025.
 //
 
-import Foundation
 import UIKit
 
-
-final class ToastView: UILabel {
+final class ToastView {
     
-    static func show(in view: UIView, message: String, duration: TimeInterval = 2.0) {
-        let toast = ToastView()
-        toast.text = message
-        toast.textColor = .white
-        toast.backgroundColor = UIColor.black.withAlphaComponent(0.8)
-        toast.textAlignment = .center
-        toast.font = .systemFont(ofSize: 14, weight: .medium)
-        toast.numberOfLines = 0
-        toast.layer.cornerRadius = 10
-        toast.clipsToBounds = true
-        toast.alpha = 0.0
-        
-        let maxWidth = view.frame.width * 0.8
-        let size = toast.sizeThatFits(CGSize(width: maxWidth, height: .greatestFiniteMagnitude))
-        toast.frame = CGRect(x: (view.frame.width - maxWidth) / 2, y: 100, width: maxWidth, height: size.height + 16)
-        toast.layer.zPosition = 999
-        
-        view.addSubview(toast)
-        
-        UIView.animate(withDuration: 0.3, animations: {
-            toast.alpha = 1.0
-        }) { _ in
-            UIView.animate(withDuration: 0.5, delay: duration, options: .curveEaseOut, animations: {
-                toast.alpha = 0.0
-            }, completion: { _ in
-                toast.removeFromSuperview()
-            })
+    // MARK: - Static Methods
+    static func show(in view: UIView, message: String, duration: TimeInterval = 3.0) {
+        DispatchQueue.main.async {
+            let toastView = createToastView(message: message)
+            view.addSubview(toastView)
+            
+            // Setup constraints
+            setupConstraints(for: toastView, in: view)
+            
+            // Initial state for animation
+            toastView.alpha = 0
+            toastView.transform = CGAffineTransform(translationX: 0, y: -50)
+            
+            // Animate in
+            UIView.animate(
+                withDuration: 0.3,
+                delay: 0,
+                usingSpringWithDamping: 0.8,
+                initialSpringVelocity: 0.5,
+                options: [.curveEaseOut]
+            ) {
+                toastView.alpha = 1
+                toastView.transform = .identity
+            }
+            
+            // Auto-dismiss after duration
+            DispatchQueue.main.asyncAfter(deadline: .now() + duration) {
+                hideToast(toastView)
+            }
         }
     }
     
-    private override init(frame: CGRect) {
-        super.init(frame: frame)
+    // MARK: - Private Methods
+    private static func createToastView(message: String) -> UIView {
+        let containerView = UIView()
+        containerView.backgroundColor = UIColor.black.withAlphaComponent(0.8)
+        containerView.layer.cornerRadius = 12
+        containerView.layer.shadowColor = UIColor.black.cgColor
+        containerView.layer.shadowOffset = CGSize(width: 0, height: 2)
+        containerView.layer.shadowOpacity = 0.3
+        containerView.layer.shadowRadius = 8
+        containerView.translatesAutoresizingMaskIntoConstraints = false
+        
+        let messageLabel = UILabel()
+        messageLabel.text = message
+        messageLabel.font = .systemFont(ofSize: 14, weight: .medium)
+        messageLabel.textColor = .white
+        messageLabel.numberOfLines = 0
+        messageLabel.textAlignment = .center
+        messageLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        containerView.addSubview(messageLabel)
+        
+        NSLayoutConstraint.activate([
+            messageLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 16),
+            messageLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -16),
+            messageLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 12),
+            messageLabel.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -12)
+        ])
+        
+        return containerView
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    private static func setupConstraints(for toastView: UIView, in parentView: UIView) {
+        NSLayoutConstraint.activate([
+            toastView.leadingAnchor.constraint(greaterThanOrEqualTo: parentView.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            toastView.trailingAnchor.constraint(lessThanOrEqualTo: parentView.safeAreaLayoutGuide.trailingAnchor, constant: -16),
+            toastView.centerXAnchor.constraint(equalTo: parentView.centerXAnchor),
+            toastView.topAnchor.constraint(equalTo: parentView.safeAreaLayoutGuide.topAnchor, constant: 16)
+        ])
+    }
+    
+    private static func hideToast(_ toastView: UIView) {
+        UIView.animate(
+            withDuration: 0.3,
+            animations: {
+                toastView.alpha = 0
+                toastView.transform = CGAffineTransform(translationX: 0, y: -50)
+            },
+            completion: { _ in
+                toastView.removeFromSuperview()
+            }
+        )
     }
 }

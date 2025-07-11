@@ -1384,8 +1384,105 @@
         "zh-Hans": "常见问题",
         "ar": "الأسئلة الشائعة",
         "nl": "Veelgestelde Vragen"
+    },
+    "email_too_long": {
+        "en": "Email is too long",
+        "tr": "E-posta çok uzun",
+        "de": "E-Mail ist zu lang",
+        "es": "El correo electrónico es demasiado largo",
+        "fr": "L'adresse e-mail est trop longue",
+        "it": "L'email è troppo lunga",
+        "pt-BR": "O e-mail é muito longo",
+        "ja": "メールアドレスが長すぎます",
+        "ko": "이메일이 너무 깁니다",
+        "zh-Hans": "电子邮件太长",
+        "ar": "البريد الإلكتروني طويل جدًا",
+        "nl": "E-mailadres is te lang"
+    },
+    "password_too_long": {
+        "en": "Password is too long",
+        "tr": "Şifre çok uzun",
+        "de": "Passwort ist zu lang",
+        "es": "La contraseña es demasiado larga",
+        "fr": "Le mot de passe est trop long",
+        "it": "La password è troppo lunga",
+        "pt-BR": "A senha é muito longa",
+        "ja": "パスワードが長すぎます",
+        "ko": "비밀번호가 너무 깁니다",
+        "zh-Hans": "密码太长",
+        "ar": "كلمة المرور طويلة جدًا",
+        "nl": "Wachtwoord is te lang"
+    },
+    "password_weak": {
+        "en": "Password is too weak",
+        "tr": "Şifre çok zayıf",
+        "de": "Passwort ist zu schwach",
+        "es": "La contraseña es demasiado débil",
+        "fr": "Le mot de passe est trop faible",
+        "it": "La password è troppo debole",
+        "pt-BR": "A senha é muito fraca",
+        "ja": "パスワードが弱すぎます",
+        "ko": "비밀번호가 너무 약합니다",
+        "zh-Hans": "密码太弱",
+        "ar": "كلمة المرور ضعيفة جدًا",
+        "nl": "Wachtwoord is te zwak"
+    },
+    "name_too_long": {
+        "en": "Name is too long",
+        "tr": "İsim çok uzun",
+        "de": "Name ist zu lang",
+        "es": "El nombre es demasiado largo",
+        "fr": "Le nom est trop long",
+        "it": "Il nome è troppo lungo",
+        "pt-BR": "O nome é muito longo",
+        "ja": "名前が長すぎます",
+        "ko": "이름이 너무 깁니다",
+        "zh-Hans": "姓名太长",
+        "ar": "الاسم طويل جدًا",
+        "nl": "Naam is te lang"
+    },
+    "name_invalid_characters": {
+        "en": "Name contains invalid characters",
+        "tr": "İsim geçersiz karakterler içeriyor",
+        "de": "Name enthält ungültige Zeichen",
+        "es": "El nombre contiene caracteres no válidos",
+        "fr": "Le nom contient des caractères invalides",
+        "it": "Il nome contiene caratteri non validi",
+        "pt-BR": "O nome contém caracteres inválidos",
+        "ja": "名前に無効な文字が含まれています",
+        "ko": "이름에 잘못된 문자가 포함되어 있습니다",
+        "zh-Hans": "姓名包含无效字符",
+        "ar": "يحتوي الاسم على أحرف غير صالحة",
+        "nl": "Naam bevat ongeldige tekens"
+    },
+    "confirm_password_required": {
+        "en": "Confirm password is required",
+        "tr": "Şifre onayı gerekli",
+        "de": "Passwortbestätigung erforderlich",
+        "es": "Confirmación de contraseña requerida",
+        "fr": "La confirmation du mot de passe est requise",
+        "it": "La conferma della password è obbligatoria",
+        "pt-BR": "Confirmação de senha obrigatória",
+        "ja": "パスワードの確認が必要です",
+        "ko": "비밀번호 확인이 필요합니다",
+        "zh-Hans": "需要确认密码",
+        "ar": "تأكيد كلمة المرور مطلوب",
+        "nl": "Bevestiging van wachtwoord vereist"
+    },
+    "error_network": {
+        "en": "Network error. Please try again.",
+        "tr": "Ağ hatası. Lütfen tekrar deneyin.",
+        "de": "Netzwerkfehler. Bitte versuchen Sie es erneut.",
+        "es": "Error de red. Por favor, inténtalo de nuevo.",
+        "fr": "Erreur réseau. Veuillez réessayer.",
+        "it": "Errore di rete. Per favore riprova.",
+        "pt-BR": "Erro de rede. Por favor, tente novamente.",
+        "ja": "ネットワークエラー。もう一度お試しください。",
+        "ko": "네트워크 오류입니다. 다시 시도해주세요.",
+        "zh-Hans": "网络错误。请再试一次。",
+        "ar": "خطأ في الشبكة. حاول مرة أخرى.",
+        "nl": "Netwerkfout. Probeer het opnieuw."
     }
-
-
-
+    
+    
 }

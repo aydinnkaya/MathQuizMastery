@@ -21,10 +21,9 @@ class RegisterVC: UIViewController {
     
     // MARK: - Properties
     private let viewModel: RegisterViewModelProtocol
-    private let coordinator: AppCoordinator?
-    private let hapticManager: HapticManagerProtocol
-    private let toastManager: ToastManagerProtocol
+    private var coordinator: AppCoordinator?
     
+    // UI Management
     private var errorLabels: [UITextField: UILabel] = [:]
     private var loadingAlert: UIAlertController?
     private var gradientLayer: CAGradientLayer?
@@ -42,14 +41,10 @@ class RegisterVC: UIViewController {
     // MARK: - Initialization
     init(
         viewModel: RegisterViewModelProtocol = RegisterViewModel(),
-        coordinator: AppCoordinator? = nil,
-        hapticManager: HapticManagerProtocol = HapticManager.shared,
-        toastManager: ToastManagerProtocol = ToastManager.shared
+        coordinator: AppCoordinator? = nil
     ) {
         self.viewModel = viewModel
         self.coordinator = coordinator
-        self.hapticManager = hapticManager
-        self.toastManager = toastManager
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -58,11 +53,29 @@ class RegisterVC: UIViewController {
         fatalError("Storyboard initialization not supported. Use dependency injection.")
     }
     
+    deinit {
+        viewModel.delegate = nil
+        loadingAlert?.dismiss(animated: false, completion: nil)
+        NotificationCenter.default.removeObserver(self)
+        print("🗑️ RegisterVC deallocated")
+    }
+    
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupViewModel()
-        setupUIWhenLocalizerLoaded()
+        viewModel.delegate = self
+        
+        Localizer.shared.onLoaded { [weak self] in
+            self?.setupUI()
+            self?.configureGestures()
+            self?.assignTextFieldDelegates()
+            self?.registerSubmitButton.updateGradientFrameIfNeeded()
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        setupGradientBackground()
     }
     
     override func viewDidLayoutSubviews() {
@@ -70,37 +83,12 @@ class RegisterVC: UIViewController {
         updateGradientFrame()
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        viewModel.clearState()
-    }
-    
     // MARK: - Actions
     @IBAction private func registerSubmitButtonTapped(_ sender: UIButton) {
-        handleRegistrationAttempt()
-    }
-    
-    // MARK: - Private Methods
-    private func setupViewModel() {
-        viewModel.delegate = self
-    }
-    
-    private func setupUIWhenLocalizerLoaded() {
-        Localizer.shared.onLoaded { [weak self] in
-            DispatchQueue.main.async {
-                self?.setupUI()
-                self?.setupGradientBackground()
-                self?.configureGestures()
-                self?.assignTextFieldDelegates()
-            }
-        }
-    }
-    
-    private func handleRegistrationAttempt() {
         prepareForValidation()
         
         let formData = collectFormData()
-        viewModel.validateAndRegister(
+        viewModel.validateInputs(
             name: formData.name,
             email: formData.email,
             password: formData.password,
@@ -108,155 +96,113 @@ class RegisterVC: UIViewController {
         )
     }
     
-    private func collectFormData() -> (name: String?, email: String?, password: String?, confirmPassword: String?) {
+    // MARK: - Private Methods
+    private func collectFormData() -> (name: String, email: String, password: String, confirmPassword: String) {
         return (
-            name: registerFullNameField.text?.trimmingCharacters(in: .whitespacesAndNewlines),
-            email: registerEmailField.text?.trimmingCharacters(in: .whitespacesAndNewlines),
-            password: registerPasswordField.text,
-            confirmPassword: registerConfirmPasswordField.text
+            name: registerFullNameField.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? "",
+            email: registerEmailField.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? "",
+            password: registerPasswordField.text ?? "",
+            confirmPassword: registerConfirmPasswordField.text ?? ""
         )
     }
     
     private func prepareForValidation() {
         dismissKeyboard()
         clearAllErrors()
-        disableSubmitButton()
     }
     
-    private func disableSubmitButton() {
-        registerSubmitButton.isEnabled = false
-        registerSubmitButton.alpha = 0.7
-    }
-    
-    private func enableSubmitButton() {
-        registerSubmitButton.isEnabled = true
-        registerSubmitButton.alpha = 1.0
+    @objc private func dismissKeyboard() {
+        view.endEditing(true)
     }
 }
 
 // MARK: - RegisterViewModelDelegate
 extension RegisterVC: RegisterViewModelDelegate {
-    func registrationStateDidChange(_ state: RegistrationState) {
-        switch state {
-        case .idle:
-            handleIdleState()
-        case .validating:
-            handleValidatingState()
-        case .registering:
-            handleRegisteringState()
-        case .success(let user):
-            handleSuccessState(user: user)
-        case .failure(let error):
-            handleFailureState(error: error)
-        }
+    func didRegisterSuccessfully(user: AppUser) {
+        hideLoading()
+        HapticManager.shared.success()
+        ToastView.show(in: self.view, message: L(.registration_success))
+        coordinator?.goToHome(with: user)
     }
     
-    private func handleIdleState() {
-       // hideLoading()
-        enableSubmitButton()
+    func didFailWithError(_ error: Error) {
+        hideLoading()
+        HapticManager.shared.error()
+        ToastView.show(in: self.view, message: error.localizedDescription)
     }
     
-    private func handleValidatingState() {
-        showLoading(message: L(.validation_error))
-    }
-    
-    private func handleRegisteringState() {
-        showLoading(message: L(.register_now))
-    }
-    
-    private func handleSuccessState(user: AppUser) {
-      //  hideLoading()
-        enableSubmitButton()
-        hapticManager.success()
-        toastManager.showSuccess(message: L(.registration_success))
+    func didValidationFail(results: [ValidationResult]) {
+        hideLoading()
+        clearAllErrors()
         
-        // Navigate to home after a short delay
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [weak self] in
-            self?.coordinator?.goToHome(with: user)
+        guard results.isEmpty else {
+            HapticManager.shared.error()
+            results.forEach { result in
+                if case .invalid(let field, let message) = result {
+                    fieldMap[field].map { setError(for: $0, message: message) }
+                }
+            }
+            return
         }
-    }
-    
-    private func handleFailureState(error: Error) {
-      //  hideLoading()
-        enableSubmitButton()
-        hapticManager.error()
         
-        if let registrationError = error as? RegistrationError {
-            handleRegistrationError(registrationError)
-        } else {
-            toastManager.showError(message: error.localizedDescription)
-        }
+        HapticManager.shared.mediumImpact()
+        showLoading()
+        
+        let formData = collectFormData()
+        viewModel.register(
+            name: formData.name,
+            email: formData.email,
+            password: formData.password
+        )
     }
-    
-    private func handleRegistrationError(_ error: RegistrationError) {
-        switch error {
-        case .invalidInput(let message):
-           // handleValidationErrors(message)
-        case .registrationFailed(let message):
-            toastManager.showError(message: message)
-        case .userDataMissing:
-            toastManager.showError(message: L(.error))
-        case .networkError:
-            toastManager.showError(message: L(.error))
-        }
-    }
-    
-
 }
 
 // MARK: - UI Setup
-private extension RegisterVC {
-    func setupUI() {
+extension RegisterVC {
+    private func setupUI() {
         setupTextFields()
         setupButton()
         setupLabels()
         setupErrorLabels()
     }
     
-    func setupTextFields() {
-        registerFullNameField.configure(
-            iconName: "person.fill",
-            placeholder: L(.enter_name),
-            keyboardType: .default,
-            returnKeyType: .next
-        )
+    private func setupTextFields() {
+        registerFullNameField.iconName = "person.fill"
+        registerFullNameField.placeholderText = L(.enter_name)
+        registerFullNameField.keyboardType = .default
+        registerFullNameField.returnKeyType = .next
         
-        registerEmailField.configure(
-            iconName: "envelope.fill",
-            placeholder: L(.enter_email),
-            keyboardType: .emailAddress,
-            returnKeyType: .next
-        )
+        registerEmailField.iconName = "envelope.fill"
+        registerEmailField.placeholderText = L(.enter_email)
+        registerEmailField.keyboardType = .emailAddress
+        registerEmailField.returnKeyType = .next
         
-        registerPasswordField.configure(
-            iconName: "lock.fill",
-            placeholder: L(.enter_password),
-            isSecureTextEntry: true,
-        )
+        registerPasswordField.iconName = "lock.fill"
+        registerPasswordField.placeholderText = L(.enter_password)
+        registerPasswordField.isSecureTextEntry = true
+        registerPasswordField.returnKeyType = .next
         
-        registerConfirmPasswordField.configure(
-            iconName: "lock.fill",
-            placeholder: L(.reenter_password),
-            
-        )
+        registerConfirmPasswordField.iconName = "lock.fill"
+        registerConfirmPasswordField.placeholderText = L(.reenter_password)
+        registerConfirmPasswordField.isSecureTextEntry = true
+        registerConfirmPasswordField.returnKeyType = .done
     }
     
-    func setupButton() {
+    private func setupButton() {
         registerSubmitButton.applyStyledButton(withTitle: L(.register_title))
-        registerSubmitButton.updateGradientFrameIfNeeded()
     }
     
-    func setupLabels() {
+    private func setupLabels() {
         registerTitle.text = L(.register_title)
         registerTitle.font = .systemFont(ofSize: 24, weight: .bold)
         registerTitle.textAlignment = .center
     }
     
-    func setupErrorLabels() {
+    private func setupErrorLabels() {
         fieldMap.values.forEach { addErrorLabel(below: $0) }
     }
     
-    func setupGradientBackground() {
+    private func setupGradientBackground() {
         gradientLayer?.removeFromSuperlayer()
         
         let gradient = CAGradientLayer()
@@ -269,29 +215,25 @@ private extension RegisterVC {
         gradientLayer = gradient
     }
     
-    func updateGradientFrame() {
+    private func updateGradientFrame() {
         gradientLayer?.frame = view.bounds
     }
     
-    func configureGestures() {
+    private func configureGestures() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         tapGesture.cancelsTouchesInView = false
         view.addGestureRecognizer(tapGesture)
     }
     
-    @objc func dismissKeyboard() {
-        view.endEditing(true)
-    }
-    
-    func assignTextFieldDelegates() {
+    private func assignTextFieldDelegates() {
         [registerFullNameField, registerEmailField, registerPasswordField, registerConfirmPasswordField]
             .forEach { $0?.delegate = self }
     }
 }
 
 // MARK: - Error Handling
-private extension RegisterVC {
-    func addErrorLabel(below textField: UITextField) {
+extension RegisterVC {
+    private func addErrorLabel(below textField: UITextField) {
         let errorLabel = UILabel()
         errorLabel.font = .systemFont(ofSize: 12, weight: .regular)
         errorLabel.textColor = .systemRed
@@ -310,39 +252,37 @@ private extension RegisterVC {
         errorLabels[textField] = errorLabel
     }
     
-//    func setError(for textField: UITextField, message: String) {
-//        guard let errorLabel = errorLabels[textField] else { return }
-//        
-//        errorLabel.text = message
-//        errorLabel.isHidden = false
-//        
-//        // Add subtle animation
-//        errorLabel.alpha = 0
-//        UIView.animate(withDuration: 0.3) {
-//            errorLabel.alpha = 1
-//        }
-//        
-//        // Add border color change
-//        textField.layer.borderColor = UIColor.systemRed.cgColor
-//        textField.layer.borderWidth = 1
-//    }
-//    
-    func clearAllErrors() {
+  
+    private func clearAllErrors() {
         errorLabels.values.forEach { label in
-            label.isHidden = true
-            label.text = nil
+            UIView.animate(withDuration: 0.2) {
+                label.alpha = 0
+            } completion: { _ in
+                label.isHidden = true
+                label.text = nil
+            }
         }
         
         fieldMap.values.forEach { textField in
-            textField.layer.borderColor = UIColor.clear.cgColor
-            textField.layer.borderWidth = 0
+            UIView.animate(withDuration: 0.3) {
+                textField.layer.borderColor = UIColor.clear.cgColor
+                textField.layer.borderWidth = 0
+            }
         }
+    }
+    
+    private func addShakeAnimation(to view: UIView) {
+        let animation = CAKeyframeAnimation(keyPath: "transform.translation.x")
+        animation.values = [0, -10, 10, -5, 5, 0]
+        animation.duration = 0.5
+        animation.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
+        view.layer.add(animation, forKey: "shake")
     }
 }
 
 // MARK: - Loading States
-private extension RegisterVC {
-    func showLoading(message: String = L(.loading)) {
+extension RegisterVC {
+    private func showLoading(message: String = L(.loading)) {
         guard loadingAlert == nil else { return }
         
         let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
@@ -350,6 +290,7 @@ private extension RegisterVC {
         let loadingIndicator = UIActivityIndicatorView(style: .medium)
         loadingIndicator.hidesWhenStopped = true
         loadingIndicator.startAnimating()
+        loadingIndicator.translatesAutoresizingMaskIntoConstraints = false
         
         alert.setValue(loadingIndicator, forKey: "accessoryView")
         
@@ -357,16 +298,14 @@ private extension RegisterVC {
         loadingAlert = alert
     }
     
-//    func hideLoading() {
-//        loadingAlert?.dismiss(animated: true) { [weak self] in
-//            self?.loadingAlert = nil
-//        }
-//    }
+   
 }
 
 // MARK: - UITextFieldDelegate
 extension RegisterVC: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        HapticManager.shared.lightImpact()
+        
         switch textField {
         case registerFullNameField:
             registerEmailField.becomeFirstResponder()
@@ -376,7 +315,7 @@ extension RegisterVC: UITextFieldDelegate {
             registerConfirmPasswordField.becomeFirstResponder()
         case registerConfirmPasswordField:
             textField.resignFirstResponder()
-            handleRegistrationAttempt()
+            registerSubmitButtonTapped(registerSubmitButton)
         default:
             textField.resignFirstResponder()
         }
@@ -385,62 +324,21 @@ extension RegisterVC: UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         // Clear error for this field when user starts editing
-        if let errorLabel = errorLabels[textField] {
-            errorLabel.isHidden = true
-            textField.layer.borderColor = UIColor.clear.cgColor
-            textField.layer.borderWidth = 0
-        }
-    }
-}
-
-// MARK: - Protocol Definitions for Testability
-protocol HapticManagerProtocol {
-    func success()
-    func error()
-}
-
-protocol ToastManagerProtocol {
-    func showSuccess(message: String)
-    func showError(message: String)
-}
-
-// MARK: - Default Implementations
-extension HapticManager: HapticManagerProtocol {}
-
-final class ToastManager: ToastManagerProtocol {
-    static let shared = ToastManager()
-    private init() {}
-    
-    func showSuccess(message: String) {
-        // Actual toast implementation would go here
-        DispatchQueue.main.async {
-            // Show success toast UI
-            print("✅ Success: \(message)")
+        if let errorLabel = errorLabels[textField], !errorLabel.isHidden {
+            UIView.animate(withDuration: 0.2) {
+                errorLabel.alpha = 0
+                textField.layer.borderColor = UIColor.clear.cgColor
+                textField.layer.borderWidth = 0
+            } completion: { _ in
+                errorLabel.isHidden = true
+            }
         }
     }
     
-    func showError(message: String) {
-        // Actual toast implementation would go here
-        DispatchQueue.main.async {
-            // Show error toast UI
-            print("❌ Error: \(message)")
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        // Trim whitespace for name and email fields
+        if textField == registerFullNameField || textField == registerEmailField {
+            textField.text = textField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
         }
-    }
-}
-
-// MARK: - CustomTextField Extension
-private extension CustomTextField {
-    func configure(
-        iconName: String,
-        placeholder: String,
-        keyboardType: UIKeyboardType = .default,
-        returnKeyType: UIReturnKeyType = .next,
-        isSecureTextEntry: Bool = false
-    ) {
-        self.iconName = iconName
-        self.placeholderText = placeholder
-        self.keyboardType = keyboardType
-        self.returnKeyType = returnKeyType
-        self.isSecureTextEntry = isSecureTextEntry
     }
 }

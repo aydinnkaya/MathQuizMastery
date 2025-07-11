@@ -218,7 +218,7 @@ enum LocalizedKey: String {
     case open_settings
     case save
     
-   
+    
     // MARK: - SettingsPopup Başlıkları
     case settings_profile_title
     case settings_notifications_title
@@ -228,5 +228,17 @@ enum LocalizedKey: String {
     case settings_logout_title
     
     case save_button_title = "save_button_title"
+    
+    // MARK: - Validation Messages
+    case email_too_long
+    case password_too_long
+    case password_weak
+    case name_too_long
+    case name_invalid_characters
+    case confirm_password_required
+    
+    case validation_in_progress 
+    // MARK: - Error Messages
+    case error_network
     
 }

@@ -70,7 +70,7 @@
                 <button opaque="NO" contentMode="scaleAspectFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xPF-hc-29E" userLabel="profileButton">
                     <rect key="frame" x="90" y="185" width="250" height="235"/>
                     <state key="normal" title="Button"/>
-                    <buttonConfiguration key="configuration" style="plain" image="batman"/>
+                    <buttonConfiguration key="configuration" style="plain" image="profile_image_19"/>
                     <connections>
                         <action selector="profileButtonTapped:" destination="-1" eventType="touchUpInside" id="079-vV-Qb6"/>
                     </connections>
@@ -117,10 +117,10 @@
     </objects>
     <resources>
         <image name="background_image" width="419" height="837"/>
-        <image name="batman" width="228" height="228"/>
         <image name="coin_icon" width="36" height="36"/>
         <image name="fly" width="167" height="167"/>
         <image name="profile_badge" width="250" height="374"/>
+        <image name="profile_image_19" width="228" height="228"/>
         <image name="settings_icon" width="66" height="66"/>
         <image name="user_icon" width="36" height="36"/>
         <systemColor name="systemBackgroundColor">

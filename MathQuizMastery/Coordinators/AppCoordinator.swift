@@ -75,6 +75,30 @@ class AppCoordinator: Coordinator {
         navigationController.pushViewController(registerVC, animated: true)
     }
     
+    func handleRegistrationSuccess(user: AppUser) {
+        // Add any additional logic needed after successful registration
+        // For example: analytics tracking, welcome flow, etc.
+        
+        print("🎉 Registration successful for user: \(user.username)")
+        
+        // Navigate to home
+        goToHome(with: user)
+    }
+    
+    func navigateToHome(with user: AppUser) {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            
+            // Dismiss any presented view controllers first
+            if let presentedVC = self.navigationController.presentedViewController {
+                presentedVC.dismiss(animated: false) {
+                    self.goToHome(with: user)
+                }
+            } else {
+                self.goToHome(with: user)
+            }
+        }
+    }
     func goToHome(with user: AppUser) {
         let homeVC = HomeVC(user: user, coordinator: self)
         navigationController.setViewControllers([homeVC], animated: false)
@@ -84,29 +108,29 @@ class AppCoordinator: Coordinator {
         let viewModel = AvatarPopupViewModel()
         let avatarPopupVC = AvatarPopupVC(viewModel: viewModel, coordinator: self)
         presentPopupViewController(avatarPopupVC)
-//        avatarPopupVC.view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
-//        avatarPopupVC.modalPresentationStyle = .overFullScreen
-//        avatarPopupVC.modalTransitionStyle = .flipHorizontal
-//        navigationController.present(avatarPopupVC, animated: true, completion: nil)
+        //        avatarPopupVC.view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+        //        avatarPopupVC.modalPresentationStyle = .overFullScreen
+        //        avatarPopupVC.modalTransitionStyle = .flipHorizontal
+        //        navigationController.present(avatarPopupVC, animated: true, completion: nil)
     }
     
     func goToSettingsPopup() {
         let viewModel = SettingsPopupViewModel()
         let popupVC = SettingsPopupVC(viewModel: viewModel, coordinator: self)
         presentPopupViewController(popupVC)
-//        popupVC.view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
-//        popupVC.modalPresentationStyle = .overFullScreen
-//        popupVC.modalTransitionStyle = .flipHorizontal
-//        navigationController.present(popupVC, animated: true, completion: nil)
+        //        popupVC.view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+        //        popupVC.modalPresentationStyle = .overFullScreen
+        //        popupVC.modalTransitionStyle = .flipHorizontal
+        //        navigationController.present(popupVC, animated: true, completion: nil)
     }
     func goToNotificationSettingsPopup() {
         let viewModel = NotificationSettingsViewModel()
         let notificationSettingsVC = NotificationSettingsVC(viewModel: viewModel, coordinator: self)
         presentPopupViewController(notificationSettingsVC)
-//        notificationSettingsVC.view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
-//        notificationSettingsVC.modalPresentationStyle = .overFullScreen
-//        notificationSettingsVC.modalTransitionStyle = .flipHorizontal
-//        navigationController.present(notificationSettingsVC, animated: true, completion: nil)
+        //        notificationSettingsVC.view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+        //        notificationSettingsVC.modalPresentationStyle = .overFullScreen
+        //        notificationSettingsVC.modalTransitionStyle = .flipHorizontal
+        //        navigationController.present(notificationSettingsVC, animated: true, completion: nil)
     }
     
     func goToFAQPopup() {
@@ -129,7 +153,7 @@ class AppCoordinator: Coordinator {
             
             self.navigationController.present(navController, animated: true, completion: nil)
         }
-
+        
         if let presented = navigationController.presentedViewController {
             presented.dismiss(animated: false) {
                 presentWebVC()
@@ -138,7 +162,7 @@ class AppCoordinator: Coordinator {
             presentWebVC()
         }
     }
-
+    
     func showPopup(_ type: PopupType) {
         switch type {
         case .settings:
