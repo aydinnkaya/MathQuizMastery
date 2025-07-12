@@ -78,6 +78,7 @@ final class HapticManager: HapticManagerProtocol {
         triggerHaptic(.lightImpact)
     }
     
+    //Medium
     func mediumImpact() {
         triggerHaptic(.mediumImpact)
     }
