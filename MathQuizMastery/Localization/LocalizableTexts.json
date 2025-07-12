@@ -1525,6 +1525,20 @@
         "zh-Hans": "网络错误。请再试一次。",
         "ar": "خطأ في الشبكة. حاول مرة أخرى.",
         "nl": "Netwerkfout. Probeer het opnieuw."
+    },
+    "no_internet_connection": {
+        "en": "No internet connection",
+        "tr": "İnternet bağlantısı yok",
+        "de": "Keine Internetverbindung",
+        "es": "Sin conexión a Internet",
+        "fr": "Pas de connexion Internet",
+        "it": "Nessuna connessione Internet",
+        "pt-BR": "Sem conexão com a internet",
+        "ja": "インターネット接続がありません",
+        "ko": "인터넷 연결 없음",
+        "zh-Hans": "无网络连接",
+        "ar": "لا يوجد اتصال بالإنترنت",
+        "nl": "Geen internetverbinding"
     }
     
     

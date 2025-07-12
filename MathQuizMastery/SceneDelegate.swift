@@ -12,14 +12,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     var window: UIWindow?
     var appCoordinator: AppCoordinator?
-    
+    private var networkAlert: UIAlertController?
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
-        AppTrackingManager.requestTrackingAuthorizationIfNeeded()
-
         let window = UIWindow(windowScene: windowScene)
         let navController = UINavigationController()
         let coordinator = AppCoordinator(navigationController: navController)
@@ -28,7 +25,38 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         self.window = window
         window.makeKeyAndVisible()
         coordinator.checkAuthentication()
+        
+        startNetworkMonitoring()
     }
+    
+    private func startNetworkMonitoring() {
+        NetworkMonitor.shared.onStatusChange = { [weak self] isConnected in
+            guard let self = self else { return }
+            if isConnected {
+                self.dismissNetworkToast()
+            } else {
+                self.showNetworkToast()
+            }
+        }
+    }
+    
+    private func showNetworkToast() {
+        guard let keyWindow = UIApplication.shared
+            .connectedScenes
+            .compactMap({ $0 as? UIWindowScene })
+            .flatMap({ $0.windows })
+            .first(where: { $0.isKeyWindow }) else {
+            print("❌ Aktif pencere bulunamadı")
+            return
+        }
+        
+        NetworkToastView.shared.show(in: keyWindow)
+    }
+    
+    private func dismissNetworkToast() {
+        NetworkToastView.shared.dismiss()
+    }
+    
     
     //    private func setupWindow(with scene: UIScene) {
     //        guard let windowScene = (scene as? UIWindowScene) else { return }

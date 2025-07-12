@@ -245,4 +245,6 @@ enum LocalizedKey: String {
     case launch_slogan
     case launch_loading
     
+    case no_internet_connection
+    
 }
