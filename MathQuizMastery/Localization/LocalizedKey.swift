@@ -241,4 +241,8 @@ enum LocalizedKey: String {
     // MARK: - Error Messages
     case error_network
     
+    case launch_title
+    case launch_slogan
+    case launch_loading
+    
 }

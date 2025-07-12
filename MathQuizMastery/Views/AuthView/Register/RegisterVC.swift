@@ -24,7 +24,6 @@ class RegisterVC: UIViewController {
     private var coordinator: AppCoordinator?
     
     // UI Management
-    private var errorLabels: [UITextField: UILabel] = [:]
     private var loadingAlert: UIAlertController?
     private var gradientLayer: CAGradientLayer?
     
@@ -69,7 +68,6 @@ class RegisterVC: UIViewController {
             self?.setupUI()
             self?.configureGestures()
             self?.assignTextFieldDelegates()
-            self?.registerSubmitButton.updateGradientFrameIfNeeded()
         }
     }
     
@@ -108,7 +106,7 @@ class RegisterVC: UIViewController {
     
     private func prepareForValidation() {
         dismissKeyboard()
-        clearAllErrors()
+        clearErrors()
     }
     
     @objc private func dismissKeyboard() {
@@ -133,7 +131,7 @@ extension RegisterVC: RegisterViewModelDelegate {
     
     func didValidationFail(results: [ValidationResult]) {
         hideLoading()
-        clearAllErrors()
+        clearErrors()
         
         guard results.isEmpty else {
             HapticManager.shared.error()
@@ -161,7 +159,6 @@ extension RegisterVC: RegisterViewModelDelegate {
 extension RegisterVC {
     private func setupUI() {
         setupTextFields()
-        setupButton()
         setupLabels()
         setupErrorLabels()
     }
@@ -188,12 +185,8 @@ extension RegisterVC {
         registerConfirmPasswordField.returnKeyType = .done
     }
     
-    private func setupButton() {
-        registerSubmitButton.applyStyledButton(withTitle: L(.register_title))
-    }
-    
     private func setupLabels() {
-        registerTitle.text = L(.register_title)
+        registerTitle.text = L(.register_title_text)
         registerTitle.font = .systemFont(ofSize: 24, weight: .bold)
         registerTitle.textAlignment = .center
     }
@@ -228,55 +221,6 @@ extension RegisterVC {
     private func assignTextFieldDelegates() {
         [registerFullNameField, registerEmailField, registerPasswordField, registerConfirmPasswordField]
             .forEach { $0?.delegate = self }
-    }
-}
-
-// MARK: - Error Handling
-extension RegisterVC {
-    private func addErrorLabel(below textField: UITextField) {
-        let errorLabel = UILabel()
-        errorLabel.font = .systemFont(ofSize: 12, weight: .regular)
-        errorLabel.textColor = .systemRed
-        errorLabel.numberOfLines = 0
-        errorLabel.isHidden = true
-        errorLabel.translatesAutoresizingMaskIntoConstraints = false
-        
-        view.addSubview(errorLabel)
-        
-        NSLayoutConstraint.activate([
-            errorLabel.topAnchor.constraint(equalTo: textField.bottomAnchor, constant: 4),
-            errorLabel.leadingAnchor.constraint(equalTo: textField.leadingAnchor),
-            errorLabel.trailingAnchor.constraint(equalTo: textField.trailingAnchor)
-        ])
-        
-        errorLabels[textField] = errorLabel
-    }
-    
-  
-    private func clearAllErrors() {
-        errorLabels.values.forEach { label in
-            UIView.animate(withDuration: 0.2) {
-                label.alpha = 0
-            } completion: { _ in
-                label.isHidden = true
-                label.text = nil
-            }
-        }
-        
-        fieldMap.values.forEach { textField in
-            UIView.animate(withDuration: 0.3) {
-                textField.layer.borderColor = UIColor.clear.cgColor
-                textField.layer.borderWidth = 0
-            }
-        }
-    }
-    
-    private func addShakeAnimation(to view: UIView) {
-        let animation = CAKeyframeAnimation(keyPath: "transform.translation.x")
-        animation.values = [0, -10, 10, -5, 5, 0]
-        animation.duration = 0.5
-        animation.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
-        view.layer.add(animation, forKey: "shake")
     }
 }
 

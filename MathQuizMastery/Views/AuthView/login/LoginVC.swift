@@ -18,7 +18,6 @@ class LoginVC: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var agreementLabel: UILabel!
     
-    private var errorLabels: [UITextField: UILabel] = [:]
     private let viewModel: LoginScreenViewModelProtocol
     private var loadingAlert: UIAlertController?
     var coordinator: AppCoordinator?
@@ -172,7 +171,7 @@ extension LoginVC {
                                       value: UIColor.white.withAlphaComponent(0.8),
                                       range: questionRange)
         attributedString.addAttribute(.font,
-                                      value: UIFont.systemFont(ofSize: 16),
+                                      value: UIFont.systemFont(ofSize: 13),
                                       range: questionRange)
         
         // Styling for the register part (clickable)

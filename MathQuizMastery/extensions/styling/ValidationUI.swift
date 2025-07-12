@@ -14,7 +14,7 @@ private var loadingKey: UInt8 = 1
 
 extension UIViewController {
     
-    private var errorLabels: [UITextField: UILabel] {
+     var errorLabels: [UITextField: UILabel] {
         get {
             return objc_getAssociatedObject(self, &errorLabelKey) as? [UITextField: UILabel] ?? [:]
         }
@@ -65,6 +65,7 @@ extension UIViewController {
     
     private func updateBorder(for textField: UITextField, color: UIColor) {
         textField.layer.borderColor = color.cgColor
+        textField.layer.borderWidth = 2
     }
     
     
