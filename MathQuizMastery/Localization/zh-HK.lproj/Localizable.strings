@@ -1,0 +1,18 @@
+"launch_title" = "數學測驗大師";
+"launch_slogan" = "啟動數學測驗大師！";
+"launch_loading" = "加載中...";
+"register_title" = "註冊";
+"enter_name" = "請輸入您的姓名...";
+"enter_email" = "請輸入您的電子郵件地址...";
+"enter_password" = "請輸入您的密碼...";
+"reenter_password" = "請再次輸入您的密碼...";
+"passwords_do_not_match" = "兩次輸入的密碼不一致。";
+"password_mismatch" = "兩次輸入的密碼不一致。";
+"field_required" = "這是必填欄位。";
+"registration_success" = "註冊成功！";
+"registration_failed" = "註冊失敗。請再試一次。";
+"invalid_email" = "請輸入有效的電子郵件地址...";
+"loading" = "請稍候...";
+"ok_button" = "確定";
+"cancel_button" = "取消";
+// ... (tüm anahtarlar için aynı şekilde, zh-HK varsa onu, yoksa zh-Hant, yoksa en) ... 

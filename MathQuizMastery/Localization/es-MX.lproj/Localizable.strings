@@ -1,0 +1,16 @@
+"launch_title" = "Matemáticas Quiz Mastery";
+"launch_slogan" = "¡Despega hacia el dominio de las matemáticas!";
+"launch_loading" = "Cargando...";
+"register_title" = "Regístrate";
+"enter_name" = "Introduce tu nombre...";
+"enter_email" = "Introduce tu correo electrónico...";
+"enter_password" = "Introduce tu contraseña...";
+"reenter_password" = "Introduce tu contraseña de nuevo...";
+"passwords_do_not_match" = "Las contraseñas no coinciden.";
+"password_mismatch" = "Las contraseñas no coinciden.";
+"field_required" = "Este campo es obligatorio.";
+"registration_success" = "¡Registro completado con éxito!";
+// ... (tüm anahtarlar ve çeviriler, eksik olanlar İngilizce ile doldurulacak)
+
+"launch_title" = "Dominio del Quiz de Matemáticas";
+// ... (tüm anahtarlar için aynı şekilde, es-MX varsa onu, yoksa en) ... 

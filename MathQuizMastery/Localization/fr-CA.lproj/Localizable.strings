@@ -1,0 +1,14 @@
+"launch_title" = "Mathématiques Quiz Mastery";
+"launch_slogan" = "Envolez-vous vers la maîtrise des maths !";
+"launch_loading" = "Chargement...";
+"register_title" = "S'inscrire";
+"enter_name" = "Entrez votre nom...";
+"enter_email" = "Entrez votre courriel...";
+"enter_password" = "Entrez votre mot de passe...";
+"reenter_password" = "Entrez à nouveau votre mot de passe...";
+"passwords_do_not_match" = "Les mots de passe ne correspondent pas.";
+"password_mismatch" = "Les mots de passe ne correspondent pas.";
+"field_required" = "Ce champ est obligatoire.";
+"registration_success" = "Inscription réussie !";
+
+

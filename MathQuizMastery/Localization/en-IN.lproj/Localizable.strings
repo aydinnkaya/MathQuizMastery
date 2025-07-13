@@ -1,0 +1,12 @@
+"launch_title" = "Math Quiz Mastery";
+"launch_slogan" = "Blast Off to Math Mastery!";
+"launch_loading" = "Loading...";
+"register_title" = "Register";
+"enter_name" = "Enter your name...";
+"enter_email" = "Enter your email...";
+"enter_password" = "Enter your password...";
+"reenter_password" = "Re-enter your password...";
+"passwords_do_not_match" = "Passwords do not match.";
+"password_mismatch" = "Passwords do not match.";
+"field_required" = "This field is required.";
+"registration_success" = "Registration completed successfully!";
