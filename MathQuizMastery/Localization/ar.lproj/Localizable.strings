@@ -54,7 +54,7 @@
 "notification_daily_challenge" = "تحدي يومي";
 "notification_daily_challenge_desc" = "واجه تحديًا جديدًا كل يوم.";
 "register_title_text" = "سجل في Math Quiz Mastery";
-"agreement_text" = "بالتسجيل، أنت توافق على الشروط.";
+"agreement_text" = "بالتسجيل، أنت توافق على شروط الخدمة وسياسة الخصوصية.";
 "terms_of_service" = "شروط الخدمة";
 "privacy_policy" = "سياسة الخصوصية";
 "create_account_title" = "إنشاء حساب";
@@ -160,7 +160,7 @@
 "result_play_again" = "العب مرة أخرى";
 "result_home" = "الصفحة الرئيسية للنتيجة";
 "result_share" = "مشاركة النتيجة";
-"result_score_text" = "نص نتيجة النتيجة";
+"result_score_text" = "تهانينا! لقد أنجزت المهمة بنجاح.";
 "faq_title" = "عنوان الأسئلة الشائعة";
 "faq_empty" = "الأسئلة الشائعة فارغة";
 "faq_q1" = "سؤال 1";

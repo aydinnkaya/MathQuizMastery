@@ -12,7 +12,7 @@
 "daily_challenge_body" = "Daily challenge body";
 "daily_challenge_title" = "Daily challenge title";
 "email_required" = "Email is required.";
-"email_too_long" = "Email is too long."a
+"email_too_long" = "Email is too long.";
 "enter_email" = "Enter your email";
 "enter_name" = "Enter your name";
 "enter_password" = "Enter your password";
@@ -147,7 +147,7 @@
 "result_new_record" = "Result new record";
 "result_play_again" = "Result play again";
 "result_score" = "Result score";
-"result_score_text" = "Result score text";
+"result_score_text" = "Congratulations! You've successfully completed the mission.";
 "result_share" = "Result share";
 "result_time" = "Result time";
 "result_title" = "Result title";

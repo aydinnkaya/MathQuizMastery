@@ -36,6 +36,9 @@ class HomeVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .black
+        backgroundImage?.contentMode = .scaleAspectFill
+        backgroundImage?.frame = view.bounds
         navigationItem.hidesBackButton = true
         viewModel.notifyViewDidLoad()
         setupUI()
@@ -62,8 +65,7 @@ class HomeVC: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        backgroundImage.frame = view.bounds
-        
+        backgroundImage?.frame = view.bounds
     }
     
     

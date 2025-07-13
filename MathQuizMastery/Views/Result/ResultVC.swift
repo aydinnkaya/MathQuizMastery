@@ -33,19 +33,22 @@ class ResultVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        scoreLabel.text = viewModel.getScoreText()
-        coinLabel.text = viewModel.getCoinText()
-        coinLabel.textAlignment = .center
-        coinLabel.textColor = .white
-        coinLabel.font = UIFont.boldSystemFont(ofSize: 51)
-        coinLabel.layer.shadowColor = UIColor.black.cgColor
-        coinLabel.layer.shadowRadius = 4
-        coinLabel.layer.shadowOpacity = 0.4
-        coinLabel.layer.shadowOffset = CGSize(width: 0, height: 2)
-        categoryButton.clipsToBounds = true
-        navigationItem.hidesBackButton = true
+        Localizer.shared.onLoaded { [weak self] in
+            guard let self = self else { return }
+            self.scoreLabel.text = self.viewModel.getScoreText()
+            self.coinLabel.text = self.viewModel.getCoinText()
+        }
+        self.coinLabel.textAlignment = .center
+        self.coinLabel.textColor = .white
+        self.coinLabel.font = UIFont.boldSystemFont(ofSize: 51)
+        self.coinLabel.layer.shadowColor = UIColor.black.cgColor
+        self.coinLabel.layer.shadowRadius = 4
+        self.coinLabel.layer.shadowOpacity = 0.4
+        self.coinLabel.layer.shadowOffset = CGSize(width: 0, height: 2)
+        self.categoryButton.clipsToBounds = true
+        self.navigationItem.hidesBackButton = true
         
-        viewModel.delegate = self
+        self.viewModel.delegate = self
         setupUI()
     }
     

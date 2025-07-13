@@ -101,7 +101,7 @@
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <keyboardLayoutGuide key="keyboard" id="7xf-ep-1st"/>
-            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="IhM-EM-S0A" secondAttribute="bottom" constant="20" id="agreement-bottom"/>
                 <constraint firstItem="IhM-EM-S0A" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="30" id="agreement-leading"/>

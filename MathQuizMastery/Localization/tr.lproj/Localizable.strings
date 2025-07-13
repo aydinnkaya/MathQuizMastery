@@ -54,9 +54,9 @@
 "notification_daily_challenge" = "Günlük Görev";
 "notification_daily_challenge_desc" = "Her gün yeni bir göreve katıl.";
 "register_title_text" = "Math Quiz Mastery'ye Kayıt Ol";
-"agreement_text" = "Kayıt olarak şartlarımızı kabul etmiş olursunuz.";
-"terms_of_service" = "Hizmet Şartları";
-"privacy_policy" = "Gizlilik Politikası";
+"agreement_text" = "Kayıt olarak Hizmet Şartlarımızı ve Gizlilik Politikamızı kabul etmiş olursunuz.";
+"terms_of_service" = "Hizmet Şartlarımız";
+"privacy_policy" = "Gizlilik Politikamız";
 "create_account_title" = "Hesap Oluştur";
 "no_account_question" = "Hesabınız yok mu?";
 "register_now" = "Şimdi Kaydol";
@@ -160,7 +160,7 @@
 "result_play_again" = "Result play again";
 "result_home" = "Result home";
 "result_share" = "Result share";
-"result_score_text" = "Result score text";
+"result_score_text" = "Tebrikler! Görevi başarıyla tamamladın.";
 "faq_title" = "Faq title";
 "faq_empty" = "Faq empty";
 "faq_q1" = "Faq q1";

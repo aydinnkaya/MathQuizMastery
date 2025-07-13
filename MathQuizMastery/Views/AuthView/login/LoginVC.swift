@@ -42,6 +42,7 @@ class LoginVC: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .black
         viewModel.delegate = self
         
         Localizer.shared.onLoaded { [weak self] in

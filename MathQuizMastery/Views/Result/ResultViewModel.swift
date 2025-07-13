@@ -47,8 +47,10 @@ class ResultViewModel : ResultViewModelProtocol{
         updateUserCoin()
     }
     func getScoreText() -> String {
-        let format = L(.result_score_text)
-        return String(format: format, String(describing: self.expressionType), score)
+        return L(.result_score_text)
+//        let format = L(.result_score_text)
+//        print(format)
+//        return String(format: format, String(describing: self.expressionType), score)
     }
     
     func getCoinText() -> String {

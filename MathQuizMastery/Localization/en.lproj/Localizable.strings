@@ -54,7 +54,7 @@
 "notification_daily_challenge" = "Daily Challenge";
 "notification_daily_challenge_desc" = "Take on a new challenge every day.";
 "register_title_text" = "Register to Math Quiz Mastery";
-"agreement_text" = "By registering, you agree to our terms.";
+"agreement_text" = "By registering, you agree to our Terms of Service and Privacy Policy.";
 "terms_of_service" = "Terms of Service";
 "privacy_policy" = "Privacy Policy";
 "create_account_title" = "Create Account";
@@ -160,7 +160,7 @@
 "result_play_again" = "Result play again";
 "result_home" = "Result home";
 "result_share" = "Result share";
-"result_score_text" = "Result score text";
+"result_score_text" = "Congratulations! You've successfully completed the mission.";
 "faq_title" = "Faq title";
 "faq_empty" = "Faq empty";
 "faq_q1" = "Faq q1";

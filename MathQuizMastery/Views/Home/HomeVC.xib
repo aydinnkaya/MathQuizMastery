@@ -95,7 +95,7 @@
                 </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="LvC-IR-oSL" secondAttribute="bottom" constant="70" id="0zC-xB-BrV"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="top" secondItem="qgW-hS-K1Q" secondAttribute="top" constant="16" id="1XT-oO-ri3"/>

@@ -33,6 +33,12 @@ final class Localizer {
     }
     
     private func loadTranslations() {
+        print("[Localizer-DEBUG] Bundle path: \(Bundle.main.bundlePath)")
+        if let url = Bundle.main.url(forResource: self.localizationFileName, withExtension: self.localizationFileExtension) {
+            print("[Localizer-DEBUG] LocalizableTexts.json bulundu: \(url)")
+        } else {
+            print("[Localizer-DEBUG] LocalizableTexts.json bulunamadı!")
+        }
         DispatchQueue.global(qos: .userInitiated).async { [weak self] in
             guard let self = self else { return }
             guard let url = Bundle.main.url(forResource: self.localizationFileName, withExtension: self.localizationFileExtension) else {
@@ -52,10 +58,12 @@ final class Localizer {
                     self.isLoaded = true
                     self.notifyLoaded()
                     self.log("[Localizer] Translations loaded. Available keys: \(self.translations.keys.count)")
+                    print("[Localizer-DEBUG] Available keys: \(self.translations.keys.sorted())")
                 }
             } catch {
                 DispatchQueue.main.async {
                     self.log("[Localizer] JSON decode error: \(error.localizedDescription)")
+                    print("[Localizer-DEBUG] JSON decode error: \(error.localizedDescription)")
                     self.translations = [:]
                     self.isLoaded = true
                     self.notifyLoaded()
@@ -103,6 +111,22 @@ final class Localizer {
     private func log(_ message: String) {
         if debugMode {
             print(message)
+        }
+    }
+    
+    // DEBUG: Test fonksiyonu
+    func debugCheckLocalization() {
+        print("[Localizer-DEBUG] Current language: \(currentLanguage)")
+        if let url = Bundle.main.url(forResource: self.localizationFileName, withExtension: self.localizationFileExtension) {
+            print("[Localizer-DEBUG] LocalizableTexts.json bulundu: \(url)")
+        } else {
+            print("[Localizer-DEBUG] LocalizableTexts.json bulunamadı!")
+        }
+        print("[Localizer-DEBUG] Loaded keys: \(translations.keys.sorted())")
+        if let value = translations["result_score_text"] {
+            print("[Localizer-DEBUG] result_score_text: \(value)")
+        } else {
+            print("[Localizer-DEBUG] result_score_text anahtarı bulunamadı!")
         }
     }
 }
