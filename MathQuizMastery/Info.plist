@@ -40,5 +40,10 @@
     <key>NSUserTrackingUsageDescription</key>
     <string>This identifier will be used to deliver personalized ads and app analytics.</string>
 
+    <key>UIBackgroundModes</key>
+    <array>
+        <string>remote-notification</string>
+    </array>
+
 </dict>
 </plist>

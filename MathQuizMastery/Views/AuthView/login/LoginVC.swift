@@ -119,6 +119,7 @@ extension LoginVC: LoginViewModelDelegate {
     }
 }
 
+@available(iOS 16, *)
 extension LoginVC {
     func setupUI() {
         emailTextField.iconName = "paperplane.fill" // envelope.fill"
