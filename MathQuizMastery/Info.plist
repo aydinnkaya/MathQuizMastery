@@ -2,6 +2,7 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+    <!-- Desteklenen diller -->
     <key>CFBundleLocalizations</key>
     <array>
         <string>en</string>
@@ -18,6 +19,7 @@
         <string>nl</string>
     </array>
 
+    <!-- SceneDelegate ayarları -->
     <key>UIApplicationSceneManifest</key>
     <dict>
         <key>UIApplicationSupportsMultipleScenes</key>
@@ -36,29 +38,33 @@
         </dict>
     </dict>
 
+    <!-- Şifreleme bildirimi -->
     <key>ITSAppUsesNonExemptEncryption</key>
     <false/>
 
+    <!-- IDFA izni -->
     <key>NSUserTrackingUsageDescription</key>
     <string>This identifier will be used to deliver personalized ads and app analytics.</string>
 
+    <!-- Arka plan bildirim desteği -->
     <key>UIBackgroundModes</key>
     <array>
         <string>remote-notification</string>
     </array>
 
+    <!-- Sadece iPhone cihazlar için destek -->
     <key>UIDeviceFamily</key>
     <array>
         <integer>1</integer>
     </array>
 
-    <!-- iPhone desteklenen yönler -->
+    <!-- iPhone için desteklenen yönler -->
     <key>UISupportedInterfaceOrientations</key>
     <array>
         <string>UIInterfaceOrientationPortrait</string>
     </array>
 
-    <!-- iPad desteklenmiyor ama Apple'ın validation'ı geçmek için tanımlıyoruz -->
+    <!-- iPad için zorunlu yön tanımlamaları (validation geçmek için) -->
     <key>UISupportedInterfaceOrientations~ipad</key>
     <array>
         <string>UIInterfaceOrientationPortrait</string>
