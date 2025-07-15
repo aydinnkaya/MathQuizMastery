@@ -17,7 +17,7 @@
         <string>ar</string>
         <string>nl</string>
     </array>
-    
+
     <key>UIApplicationSceneManifest</key>
     <dict>
         <key>UIApplicationSupportsMultipleScenes</key>
@@ -38,7 +38,7 @@
 
     <key>ITSAppUsesNonExemptEncryption</key>
     <false/>
-    <!-- ATT: IDFA izin mesajı -->
+
     <key>NSUserTrackingUsageDescription</key>
     <string>This identifier will be used to deliver personalized ads and app analytics.</string>
 
@@ -52,5 +52,19 @@
         <integer>1</integer>
     </array>
 
+    <!-- iPhone desteklenen yönler -->
+    <key>UISupportedInterfaceOrientations</key>
+    <array>
+        <string>UIInterfaceOrientationPortrait</string>
+    </array>
+
+    <!-- iPad desteklenmiyor ama Apple'ın validation'ı geçmek için tanımlıyoruz -->
+    <key>UISupportedInterfaceOrientations~ipad</key>
+    <array>
+        <string>UIInterfaceOrientationPortrait</string>
+        <string>UIInterfaceOrientationPortraitUpsideDown</string>
+        <string>UIInterfaceOrientationLandscapeLeft</string>
+        <string>UIInterfaceOrientationLandscapeRight</string>
+    </array>
 </dict>
 </plist>
