@@ -32,9 +32,8 @@ class SettingsPopupVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel.delegate = self
-        backgroundView.frame = view.bounds
-        
         Localizer.shared.onLoaded { [weak self] in
+            self?.backgroundView.frame = (self?.view.bounds)!
             self?.setupBackgroundView()
             self?.setupTableView()
             self?.stylePopupView()
