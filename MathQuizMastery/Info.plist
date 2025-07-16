@@ -42,10 +42,6 @@
     <key>ITSAppUsesNonExemptEncryption</key>
     <false/>
 
-    <!-- IDFA izni -->
-    <key>NSUserTrackingUsageDescription</key>
-    <string>This identifier will be used to deliver personalized ads and app analytics.</string>
-
     <!-- Arka plan bildirim desteği -->
     <key>UIBackgroundModes</key>
     <array>
@@ -62,15 +58,6 @@
     <key>UISupportedInterfaceOrientations</key>
     <array>
         <string>UIInterfaceOrientationPortrait</string>
-    </array>
-
-    <!-- iPad için zorunlu yön tanımlamaları (validation geçmek için) -->
-    <key>UISupportedInterfaceOrientations~ipad</key>
-    <array>
-        <string>UIInterfaceOrientationPortrait</string>
-        <string>UIInterfaceOrientationPortraitUpsideDown</string>
-        <string>UIInterfaceOrientationLandscapeLeft</string>
-        <string>UIInterfaceOrientationLandscapeRight</string>
     </array>
 </dict>
 </plist>
