@@ -54,10 +54,13 @@
         <integer>1</integer>
     </array>
 
-    <!-- iPhone için desteklenen yönler -->
+    <!-- Tüm yönleri destekle (iPhone için) -->
     <key>UISupportedInterfaceOrientations</key>
     <array>
         <string>UIInterfaceOrientationPortrait</string>
+        <string>UIInterfaceOrientationPortraitUpsideDown</string>
+        <string>UIInterfaceOrientationLandscapeLeft</string>
+        <string>UIInterfaceOrientationLandscapeRight</string>
     </array>
 </dict>
 </plist>
