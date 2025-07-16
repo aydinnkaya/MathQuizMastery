@@ -289,21 +289,21 @@ extension NotificationSettingsVC {
         popupView.layer.borderColor = UIColor.Custom.settingSwitchOn.cgColor
         popupView.backgroundColor = .white
         popupView.clipsToBounds = true
-
+        
         popupView.layer.shadowColor = UIColor(red: 0.455, green: 0.816, blue: 0.988, alpha: 0.5).cgColor
         popupView.layer.shadowOpacity = 0.1
         popupView.layer.shadowOffset = CGSize(width: 0, height: 4)
         popupView.layer.shadowRadius = 8
-          popupView.layer.masksToBounds = false // Shadow için gerekli
-
+        popupView.layer.masksToBounds = false // Shadow için gerekli
+        
     }
-
+    
     private func framePopupView() {
         tableView.layoutIfNeeded()
         let contentHeight = tableView.contentSize.height + 120
         let maxHeight = view.frame.height * 0.8
         let finalHeight = min(contentHeight, maxHeight)
-
+        
         popupView.frame.size.height = finalHeight
         popupView.center = view.center
     }

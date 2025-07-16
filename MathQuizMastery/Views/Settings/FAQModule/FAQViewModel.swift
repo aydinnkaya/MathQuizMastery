@@ -18,20 +18,20 @@ class FAQViewModel {
     // MARK: - Localized FAQ Items
     private var items: [FAQItem] = [
         FAQItem(question: L(.faq_q1),
-               answer: L(.faq_a1),
-               isExpanded: false),
+                answer: L(.faq_a1),
+                isExpanded: false),
         FAQItem(question: L(.faq_q2),
-               answer: L(.faq_a2),
-               isExpanded: false),
+                answer: L(.faq_a2),
+                isExpanded: false),
         FAQItem(question: L(.faq_q3),
-               answer: L(.faq_a3),
-               isExpanded: false),
+                answer: L(.faq_a3),
+                isExpanded: false),
         FAQItem(question: L(.faq_q4),
-               answer: L(.faq_a4),
-               isExpanded: false),
+                answer: L(.faq_a4),
+                isExpanded: false),
         FAQItem(question: L(.faq_q5),
-               answer: L(.faq_a5),
-               isExpanded: false)
+                answer: L(.faq_a5),
+                isExpanded: false)
     ]
     
     var numberOfItems: Int {

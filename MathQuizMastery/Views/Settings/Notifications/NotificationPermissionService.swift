@@ -89,7 +89,7 @@ class NotificationPermissionService : NSObject {
             }
         }
     }
-
+    
     /// Bildirim izni ister
     func requestPermission(completion: @escaping (Bool, NotificationPermissionError?) -> Void) {
         let options: UNAuthorizationOptions = [.alert, .sound, .badge]
@@ -257,7 +257,6 @@ extension NotificationPermissionService: UNUserNotificationCenterDelegate {
         willPresent notification: UNNotification,
         withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void
     ) {
-        // iOS 14+ için
         if #available(iOS 14.0, *) {
             completionHandler([.banner, .sound, .badge])
         } else {

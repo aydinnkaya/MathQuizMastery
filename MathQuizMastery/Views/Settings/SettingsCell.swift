@@ -45,8 +45,6 @@ class SettingsCell: UITableViewCell {
             iconImageView.centerYAnchor.constraint(equalTo: containerView.centerYAnchor),
             iconImageView.widthAnchor.constraint(equalToConstant: 24),
             iconImageView.heightAnchor.constraint(equalToConstant: 24),
-            
-        
         ])
     }
     
@@ -62,4 +60,4 @@ class SettingsCell: UITableViewCell {
         containerView.layer.shadowOpacity = 0.2
         containerView.layer.masksToBounds = false
     }
-} 
+}
