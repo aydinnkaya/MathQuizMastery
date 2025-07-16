@@ -1,181 +1,226 @@
-"launch_title" = "गणित Quiz Mastery";
-"launch_slogan" = "गणित Quiz मास्टरी को शुरू करें!";
+"launch_title" = "गणित Quiz मास्टरी";
+"launch_slogan" = "गणित Quiz मास्टरी शुरू करें!";
 "launch_loading" = "लोड हो रहा है...";
+
 "register_title" = "साइन अप करें";
 "enter_name" = "अपना नाम दर्ज करें...";
 "enter_email" = "अपना ईमेल दर्ज करें...";
 "enter_password" = "अपना पासवर्ड दर्ज करें...";
-"reenter_password" = "अपना पासवर्ड फिर से दर्ज करें...";
-"passwords_do_not_match" = "पासवर्ड समान नहीं हैं।";
-"password_mismatch" = "पासवर्ड समान नहीं हैं।";
+"reenter_password" = "पासवर्ड फिर से दर्ज करें...";
+"passwords_do_not_match" = "पासवर्ड मेल नहीं खाते।";
+"password_mismatch" = "पासवर्ड मेल नहीं खाते।";
 "field_required" = "यह फ़ील्ड आवश्यक है।";
-"registration_success" = "साइन अप करने का प्रक्रिया सफल हुई!";
-"registration_failed" = "साइन अप करने का प्रक्रिया विफल हुआ। कृपया फिर से प्रयास करें।";
-"invalid_email" = "कृपया एक वैध ईमेल पता दर्ज करें...";
+"registration_success" = "साइन अप सफल रहा!";
+"registration_failed" = "साइन अप विफल रहा। कृपया पुनः प्रयास करें।";
+"invalid_email" = "कृपया वैध ईमेल पता दर्ज करें।";
 "loading" = "कृपया प्रतीक्षा करें...";
 "ok_button" = "ठीक है";
 "cancel_button" = "रद्द करें";
-"weak_password" = "पासवर्ड कम से कम 6 वर्णों का होना आवश्यक है।";
-"login_success" = "साइन इन करने का प्रक्रिया सफल हुआ!";
-"log_in" = "साइन इन करें";
+"weak_password" = "पासवर्ड कम से कम 6 वर्णों का होना चाहिए।";
+
+"login_success" = "लॉगिन सफल!";
+"log_in" = "लॉगिन करें";
 "enter_password_required" = "अपना पासवर्ड दर्ज करें...";
 "email_required" = "अपना ईमेल दर्ज करें...";
 "password_required" = "पासवर्ड आवश्यक है।";
-"password_too_short" = "पासवर्ड बहुत छोटा है...";
-"name_required" = "अपना नाम दर्ज करें...";
+"password_too_short" = "पासवर्ड बहुत छोटा है।";
+"name_required" = "नाम आवश्यक है।";
 "success" = "सफलता";
+
 "settings_profile" = "प्रोफ़ाइल";
 "settings_notifications" = "सूचनाएं";
 "settings_faq" = "अक्सर पूछे जाने वाले प्रश्न";
-"settings_report" = "समस्या को रिपोर्ट करें";
-"settings_logout" = "साइन आउट करें";
+"settings_report" = "समस्या रिपोर्ट करें";
+"settings_logout" = "लॉग आउट";
 "settings_title" = "सेटिंग्स";
-"logout_title" = "साइन आउट करें";
-"logout_message" = "Are you sure you want to log out?";
+
+"logout_title" = "लॉग आउट";
+"logout_message" = "क्या आप वाकई लॉग आउट करना चाहते हैं?";
 "logout_cancel" = "रद्द करें";
-"logout_confirm" = "साइन आउट करें";
-"notification_permission_title" = "सूचनाएं सक्रिय करें";
-"notification_permission_message" = "कृपया सूचनाएं सक्रिय करें ताकि आप अपडेट हों।";
-"notification_permission_error" = "सूचनाएं अस्वीकृत हुई।";
+"logout_confirm" = "लॉग आउट";
+
+"notification_permission_title" = "सूचनाएं सक्षम करें";
+"notification_permission_message" = "कृपया सूचनाएं सक्षम करें ताकि आप अपडेट रहें।";
+"notification_permission_error" = "सूचनाएं अस्वीकृत की गईं।";
 "notification_permission_cancel" = "रद्द करें";
 "notification_permission_settings" = "सेटिंग्स खोलें";
-"notification_permission_denied" = "सूचनाएं अस्वीकृत हुई।";
-"notification_permission_granted" = "सूचनाएं सक्रिय हुई।";
-"notification_settings_title" = "सूचनाएं सेट करें";
+"notification_permission_denied" = "सूचनाएं अस्वीकृत की गईं।";
+"notification_permission_granted" = "सूचनाएं सक्षम हैं।";
+
+"notification_settings_title" = "सूचना सेटिंग्स";
 "notification_section_general" = "सामान्य";
-"notification_section_quiz" = "वर्चस्व परीक्षा";
-"notification_section_achievement" = "विजय";
-"notification_new_features" = "नयी सुविधाएं";
-"notification_new_features_desc" = "कृपया सूचनाएं सक्रिय करें ताकि आप अपडेट हों।";
-"notification_weekly_report" = "सप्ताहिक रिपोर्ट";
-"notification_weekly_report_desc" = "आपको सप्ताहिक रिपोर्ट मिलेगी।";
-"notification_quiz_reminder" = "वर्चस्व परीक्षा याद दें";
-"notification_quiz_reminder_desc" = "आपको एक दैनिक क्विज को हल करना नहीं भूलना चाहिए!";
+"notification_section_quiz" = "क्विज";
+"notification_section_achievement" = "उपलब्धियां";
+
+"notification_new_features" = "नई सुविधाएं";
+"notification_new_features_desc" = "अपडेट के लिए सूचनाएं सक्षम करें।";
+"notification_weekly_report" = "साप्ताहिक रिपोर्ट";
+"notification_weekly_report_desc" = "आपको साप्ताहिक रिपोर्ट मिलेगी।";
+"notification_quiz_reminder" = "क्विज अनुस्मारक";
+"notification_quiz_reminder_desc" = "दैनिक क्विज को हल करना न भूलें!";
 "notification_daily_challenge" = "दैनिक चुनौती";
-"notification_daily_challenge_desc" = "आपको एक नयी चुनौती को सोचने के लिए तैयार होना चाहिए हर दिन।";
-"register_title_text" = "Math Quiz Mastery में पंजीकरण करें";
-"agreement_text" = "पंजीकरण करके, आप हमारी शर्तों से सहमत होते हैं।";
+"notification_daily_challenge_desc" = "हर दिन नई चुनौती का सामना करें।";
+
+"register_title_text" = "Math Quiz Mastery में साइन अप करें";
+"agreement_text" = "साइन अप करके आप हमारी शर्तों से सहमत होते हैं।";
 "terms_of_service" = "सेवा की शर्तें";
 "privacy_policy" = "गोपनीयता नीति";
+
 "create_account_title" = "खाता बनाएं";
-"no_account_question" = "क्या आपके पास खाता नहीं है?";
-"register_now" = "अभी पंजीकरण करें";
+"no_account_question" = "क्या आपका खाता नहीं है?";
+"register_now" = "अभी साइन अप करें";
+
 "ok" = "ठीक है";
 "error" = "त्रुटि";
 "warning" = "चेतावनी";
 "error_title" = "त्रुटि हुई";
+
 "settings_logout_message" = "क्या आप वाकई लॉग आउट करना चाहते हैं?";
 "validation_error" = "मान्यता त्रुटि।";
+
 "email_too_long" = "ईमेल बहुत लंबा है।";
 "password_too_long" = "पासवर्ड बहुत लंबा है।";
 "password_weak" = "पासवर्ड बहुत कमजोर है।";
 "name_too_long" = "नाम बहुत लंबा है।";
-"name_invalid_characters" = "नाम में अमान्य वर्ण हैं।";
+"name_invalid_characters" = "नाम में अमान्य अक्षर हैं।";
+
 "confirm_password_required" = "पासवर्ड की पुष्टि आवश्यक है।";
-"validation_in_progress" = "मान्यता चल रही है...";
+"validation_in_progress" = "मान्यता जारी है...";
+
 "game_win_message" = "बधाई हो! आपने खेल जीत लिया!";
 "notification_time_format" = "समय प्रारूप: HH:mm";
-"notification_settings_saved" = "सूचना सेटिंग्स सहेजी गईं।";
+"notification_settings_saved" = "सूचना सेटिंग्स सहेज ली गई हैं।";
+
 "notification_permission_denied_title" = "अनुमति अस्वीकृत";
-"notification_permission_denied_message" = "आपने अधिसूचना अनुमतियाँ अस्वीकार कर दी हैं।";
+"notification_permission_denied_message" = "आपने सूचनाओं की अनुमति अस्वीकार कर दी है।";
+
 "settings_profile_title" = "प्रोफ़ाइल सेटिंग्स";
-"settings_notifications_title" = "सूचनाएं सेट करें";
+"settings_notifications_title" = "सूचना सेटिंग्स";
 "settings_faq_title" = "अक्सर पूछे जाने वाले प्रश्न सेटिंग्स";
 "settings_report_title" = "रिपोर्ट सेटिंग्स";
 "settings_about_title" = "सेटिंग्स के बारे में";
 "settings_logout_title" = "लॉगआउट सेटिंग्स";
+
 "open_settings" = "सेटिंग्स खोलें";
 "save" = "सहेजें";
 "save_button_title" = "परिवर्तनों को सहेजें";
+
 "error_network" = "नेटवर्क त्रुटि।";
 "no_internet_connection" = "कोई इंटरनेट कनेक्शन नहीं।";
-"cancel" = "Cancel";
-"settings" = "Settings";
-"login_title" = "Login title";
-"login_button" = "Login button";
-"register_button" = "Register button";
-"username_placeholder" = "Username placeholder";
-"password_placeholder" = "Password placeholder";
-"register_success" = "Register success";
-"register_error" = "Register error";
-"login_error" = "Login error";
-"game_title" = "Game title";
-"game_score" = "Game score";
-"game_time" = "Game time";
-"game_level" = "Game level";
-"game_over" = "Game over";
-"game_pause" = "Game pause";
-"game_resume" = "Game resume";
-"game_restart" = "Game restart";
-"game_quit" = "Game quit";
-"game_next" = "Game next";
-"game_previous" = "Game previous";
-"game_quit_message" = "Game quit message";
-"game_over_message" = "Game over message";
-"game_win" = "Game win";
-"notification_title" = "Notification title";
-"notification_message" = "Notification message";
-"notification_settings" = "Notification settings";
-"notifications_title" = "Notifications title";
-"notifications_enable" = "Notifications enable";
-"notifications_disable" = "Notifications disable";
-"notifications_daily" = "Notifications daily";
-"notifications_weekly" = "Notifications weekly";
-"notifications_time" = "Notifications time";
-"notification_streak_reminder" = "Notification streak reminder";
-"notification_streak_reminder_desc" = "Notification streak reminder desc";
-"notification_achievements" = "Notification achievements";
-"notification_achievements_desc" = "Notification achievements desc";
-"quiz_reminder_title" = "Quiz reminder title";
-"quiz_reminder_body" = "Quiz reminder body";
-"daily_challenge_title" = "Daily challenge title";
-"daily_challenge_body" = "Daily challenge body";
-"weekly_report_title" = "Weekly report title";
-"weekly_report_body" = "Weekly report body";
-"streak_reminder_title" = "Streak reminder title";
-"streak_reminder_body" = "Streak reminder body";
-"yes" = "Yes";
-"no" = "No";
-"home_title" = "Home title";
-"home_welcome" = "Home welcome";
-"home_play" = "Home play";
-"home_settings" = "Home settings";
-"home_profile" = "Home profile";
-"profile_title" = "Profile title";
-"profile_username" = "Profile username";
-"profile_score" = "Profile score";
-"profile_rank" = "Profile rank";
-"profile_achievements" = "Profile achievements";
-"category_title" = "Category title";
-"category_addition" = "Category addition";
-"category_subtraction" = "Category subtraction";
-"category_multiplication" = "Category multiplication";
-"category_division" = "Category division";
-"category_mixed" = "Category mixed";
-"result_title" = "Result title";
-"result_score" = "Result score";
-"result_time" = "Result time";
-"result_accuracy" = "Result accuracy";
-"result_new_record" = "Result new record";
-"result_play_again" = "Result play again";
-"result_home" = "Result home";
-"result_share" = "Result share";
+
+"cancel" = "रद्द करें";
+"settings" = "सेटिंग्स";
+
+"login_title" = "लॉगिन";
+"login_button" = "लॉगिन करें";
+"register_button" = "साइन अप करें";
+
+"username_placeholder" = "उपयोगकर्ता नाम";
+"password_placeholder" = "पासवर्ड";
+
+"register_success" = "सफलतापूर्वक साइन अप किया गया";
+"register_error" = "साइन अप में त्रुटि";
+"login_error" = "लॉगिन में त्रुटि";
+
+"game_title" = "खेल का शीर्षक";
+"game_score" = "स्कोर";
+"game_time" = "खेल का समय";
+"game_level" = "खेल स्तर";
+"game_over" = "खेल समाप्त";
+"game_pause" = "रोकें";
+"game_resume" = "जारी रखें";
+"game_restart" = "फिर से शुरू करें";
+"game_quit" = "खेल छोड़ें";
+"game_next" = "अगला";
+"game_previous" = "पिछला";
+
+"game_quit_message" = "क्या आप वाकई खेल छोड़ना चाहते हैं?";
+"game_over_message" = "खेल समाप्त हो गया!";
+"game_win" = "जीत!";
+
+"notification_title" = "सूचना शीर्षक";
+"notification_message" = "सूचना संदेश";
+
+"notification_settings" = "सूचना सेटिंग्स";
+"notifications_title" = "सूचनाएं";
+"notifications_enable" = "सूचनाएं सक्षम करें";
+"notifications_disable" = "सूचनाएं अक्षम करें";
+"notifications_daily" = "दैनिक सूचनाएं";
+"notifications_weekly" = "साप्ताहिक सूचनाएं";
+"notifications_time" = "सूचना का समय";
+
+"notification_streak_reminder" = "स्ट्रीक अनुस्मारक";
+"notification_streak_reminder_desc" = "अपनी जीत की लगातार जारी रखें!";
+
+"notification_achievements" = "उपलब्धियों की सूचनाएं";
+"notification_achievements_desc" = "अपनी उपलब्धियों के बारे में अपडेट रहें!";
+
+"quiz_reminder_title" = "क्विज़ अनुस्मारक";
+"quiz_reminder_body" = "आज का क्विज़ हल करना न भूलें!";
+
+"daily_challenge_title" = "दैनिक चुनौती";
+"daily_challenge_body" = "हर दिन नई चुनौती स्वीकार करें!";
+
+"weekly_report_title" = "साप्ताहिक रिपोर्ट";
+"weekly_report_body" = "आपकी साप्ताहिक प्रगति रिपोर्ट।";
+
+"streak_reminder_title" = "स्ट्रीक अनुस्मारक";
+"streak_reminder_body" = "अपनी जीत की लगातार जारी रखें!";
+
+"yes" = "हाँ";
+"no" = "नहीं";
+
+"home_title" = "होम";
+"home_welcome" = "स्वागत है";
+"home_play" = "खेलें";
+"home_settings" = "सेटिंग्स";
+"home_profile" = "प्रोफ़ाइल";
+
+"profile_title" = "प्रोफ़ाइल";
+"profile_username" = "उपयोगकर्ता नाम";
+"profile_score" = "स्कोर";
+"profile_rank" = "रैंक";
+"profile_achievements" = "उपलब्धियां";
+
+"category_title" = "श्रेणी";
+"category_addition" = "जोड़";
+"category_subtraction" = "घटाव";
+"category_multiplication" = "गुणा";
+"category_division" = "भाग";
+"category_mixed" = "मिश्रित";
+
+"result_title" = "परिणाम";
+"result_score" = "स्कोर";
+"result_time" = "समय";
+"result_accuracy" = "सटीकता";
+"result_new_record" = "नया रिकॉर्ड!";
+"result_play_again" = "फिर से खेलें";
+"result_home" = "होम";
+"result_share" = "शेयर करें";
+
 "result_score_text" = "बधाई हो! आपने मिशन सफलतापूर्वक पूरा किया।";
-"faq_title" = "Faq title";
-"faq_empty" = "Faq empty";
-"faq_q1" = "Faq q1";
-"faq_a1" = "Faq a1";
-"faq_q2" = "Faq q2";
-"faq_a2" = "Faq a2";
-"faq_q3" = "Faq q3";
-"faq_a3" = "Faq a3";
-"faq_q4" = "Faq q4";
-"faq_a4" = "Faq a4";
-"faq_q5" = "Faq q5";
-"faq_a5" = "Faq a5";
-"report_title" = "Report title";
-"report_description" = "Report description";
-"report_submit" = "Report submit";
-"report_success" = "Report success";
-"report_error" = "Report error";
-"report_placeholder" = "Report placeholder";
+
+"faq_title" = "अक्सर पूछे जाने वाले प्रश्न";
+"faq_empty" = "कोई प्रश्न उपलब्ध नहीं है।";
+
+"faq_q1" = "Math Quiz Mastery क्या है?";
+"faq_a1" = "यह एक मजेदार गणित क्विज़ ऐप है जो आपकी क्षमताओं को बढ़ाता है।";
+
+"faq_q2" = "मैं क्विज़ कैसे शुरू करूं?";
+"faq_a2" = "आप मुख्य स्क्रीन पर प्ले बटन दबाकर क्विज़ शुरू कर सकते हैं।";
+
+"faq_q3" = "क्या मैं अपनी प्रगति देख सकता हूँ?";
+"faq_a3" = "हाँ, आप अपनी प्रगति और उपलब्धियाँ प्रोफ़ाइल में देख सकते हैं।";
+
+"faq_q4" = "क्या Math Quiz Mastery मुफ्त है?";
+"faq_a4" = "डाउनलोड करना और खेलना मुफ्त है।";
+
+"faq_q5" = "मैं सपोर्ट से कैसे संपर्क करूं?";
+"faq_a5" = "आप ऐप में रिपोर्ट सेक्शन के जरिए सपोर्ट से संपर्क कर सकते हैं।";
+
+"report_title" = "रिपोर्ट";
+"report_description" = "रिपोर्ट विवरण";
+"report_submit" = "रिपोर्ट भेजें";
+"report_success" = "रिपोर्ट सफलतापूर्वक भेजी गई";
+"report_error" = "रिपोर्ट भेजने में त्रुटि हुई";
+"report_placeholder" = "यहाँ अपनी समस्या लिखें...";

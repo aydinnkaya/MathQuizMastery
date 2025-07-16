@@ -1,181 +1,226 @@
 "launch_title" = "Matematikk Quiz Mastery";
-"launch_slogan" = "Start Matematikk Quiz!";
+"launch_slogan" = "Start Matematikk-quiz!";
 "launch_loading" = "Laster inn...";
-"register_title" = "Registrere";
+
+"register_title" = "Registrer deg";
 "enter_name" = "Skriv inn navnet ditt...";
 "enter_email" = "Skriv inn e-postadressen din...";
 "enter_password" = "Skriv inn passordet ditt...";
 "reenter_password" = "Skriv inn passordet ditt igjen...";
 "passwords_do_not_match" = "Passordene er ikke like.";
 "password_mismatch" = "Passordene er ikke like.";
-"field_required" = "Dette feltet er påkrevd.";
+"field_required" = "Dette feltet er obligatorisk.";
 "registration_success" = "Registreringen er fullført!";
 "registration_failed" = "Registreringen feilet. Prøv igjen.";
 "invalid_email" = "Skriv inn en gyldig e-postadresse...";
-"loading" = "Vent venligst...";
+"loading" = "Vennligst vent...";
 "ok_button" = "OK";
 "cancel_button" = "Avbryt";
 "weak_password" = "Passordet må være minst 6 tegn langt.";
-"login_success" = "Innloggingen er vellykket!";
+
+"login_success" = "Innlogging vellykket!";
 "log_in" = "Logg inn";
 "enter_password_required" = "Skriv inn passordet ditt...";
-"email_required" = "Skriv inn e-postadressen din...";
+"email_required" = "E-postadresse er påkrevd.";
 "password_required" = "Passord er påkrevd.";
-"password_too_short" = "Passordet er for kort...";
+"password_too_short" = "Passordet er for kort.";
 "name_required" = "Navn er påkrevd.";
 "success" = "Suksess";
+
 "settings_profile" = "Profil";
 "settings_notifications" = "Varsler";
 "settings_faq" = "Ofte stilte spørsmål";
 "settings_report" = "Rapporter et problem";
 "settings_logout" = "Logg ut";
 "settings_title" = "Innstillinger";
+
 "logout_title" = "Logg ut";
-"logout_message" = "Are you sure you want to log out?";
+"logout_message" = "Er du sikker på at du vil logge ut?";
 "logout_cancel" = "Avbryt";
 "logout_confirm" = "Logg ut";
+
 "notification_permission_title" = "Aktiver varsler";
-"notification_permission_message" = "Tillad varsler for å holde deg oppdatert.";
-"notification_permission_error" = "Tilladelse for varsler nektet.";
+"notification_permission_message" = "Tillat varsler for å holde deg oppdatert.";
+"notification_permission_error" = "Tillatelse for varsler nektet.";
 "notification_permission_cancel" = "Avbryt";
 "notification_permission_settings" = "Åpne innstillinger";
-"notification_permission_denied" = "Tilladelse for varsler nektet.";
-"notification_permission_granted" = "Tilladelse for varsler.";
-"notification_settings_title" = "Varslingsinstellinger";
+"notification_permission_denied" = "Tillatelse for varsler nektet.";
+"notification_permission_granted" = "Tillatelse for varsler gitt.";
+
+"notification_settings_title" = "Varslingsinnstillinger";
 "notification_section_general" = "Generelt";
 "notification_section_quiz" = "Quiz";
-"notification_section_achievement" = "Suksess";
+"notification_section_achievement" = "Prestasjoner";
+
 "notification_new_features" = "Nye funksjoner";
-"notification_new_features_desc" = "Tillad varsler for å holde deg oppdatert.";
-"notification_weekly_report" = "Ukearkiv";
-"notification_weekly_report_desc" = "Du får din ukearkiv oplyst.";
-"notification_quiz_reminder" = "Quiz-erinering";
+"notification_new_features_desc" = "Få varsler om nye funksjoner.";
+"notification_weekly_report" = "Ukentlig rapport";
+"notification_weekly_report_desc" = "Du mottar din ukentlige rapport.";
+"notification_quiz_reminder" = "Quizpåminnelse";
 "notification_quiz_reminder_desc" = "Ikke glem å løse dagens quiz!";
 "notification_daily_challenge" = "Daglig utfordring";
 "notification_daily_challenge_desc" = "Vær klar for en ny utfordring hver dag.";
-"register_title_text" = "Registrer deg på Math Quiz Mastery";
+
+"register_title_text" = "Registrer deg hos Math Quiz Mastery";
 "agreement_text" = "Ved å registrere deg godtar du våre vilkår.";
 "terms_of_service" = "Vilkår for bruk";
 "privacy_policy" = "Personvernerklæring";
+
 "create_account_title" = "Opprett konto";
 "no_account_question" = "Har du ikke en konto?";
 "register_now" = "Registrer deg nå";
+
 "ok" = "OK";
 "error" = "Feil";
 "warning" = "Advarsel";
 "error_title" = "Det oppstod en feil";
+
 "settings_logout_message" = "Er du sikker på at du vil logge ut?";
 "validation_error" = "Valideringsfeil.";
-"email_too_long" = "E-posten er for lang.";
+
+"email_too_long" = "E-postadressen er for lang.";
 "password_too_long" = "Passordet er for langt.";
 "password_weak" = "Passordet er for svakt.";
-"name_too_long" = "Navn er for langt.";
+"name_too_long" = "Navnet er for langt.";
 "name_invalid_characters" = "Navnet inneholder ugyldige tegn.";
-"confirm_password_required" = "Bekreft passord er påkrevd.";
+
+"confirm_password_required" = "Bekreftelse av passord er påkrevd.";
 "validation_in_progress" = "Validering pågår...";
+
 "game_win_message" = "Gratulerer! Du vant spillet!";
 "notification_time_format" = "Tidsformat: HH:mm";
 "notification_settings_saved" = "Varslingsinnstillinger lagret.";
+
 "notification_permission_denied_title" = "Tillatelse nektet";
-"notification_permission_denied_message" = "Du har nektet varslingsrettigheter.";
+"notification_permission_denied_message" = "Du har nektet tilgang til varslinger.";
+
 "settings_profile_title" = "Profilinnstillinger";
-"settings_notifications_title" = "Varslingsinstellinger";
+"settings_notifications_title" = "Varslingsinnstillinger";
 "settings_faq_title" = "FAQ-innstillinger";
 "settings_report_title" = "Rapportinnstillinger";
 "settings_about_title" = "Om innstillinger";
 "settings_logout_title" = "Utloggingsinnstillinger";
+
 "open_settings" = "Åpne innstillinger";
 "save" = "Lagre";
 "save_button_title" = "Lagre endringer";
+
 "error_network" = "Nettverksfeil.";
 "no_internet_connection" = "Ingen internettforbindelse.";
-"cancel" = "Cancel";
-"settings" = "Settings";
-"login_title" = "Login title";
-"login_button" = "Login button";
-"register_button" = "Register button";
-"username_placeholder" = "Username placeholder";
-"password_placeholder" = "Password placeholder";
-"register_success" = "Register success";
-"register_error" = "Register error";
-"login_error" = "Login error";
-"game_title" = "Game title";
-"game_score" = "Game score";
-"game_time" = "Game time";
-"game_level" = "Game level";
-"game_over" = "Game over";
-"game_pause" = "Game pause";
-"game_resume" = "Game resume";
-"game_restart" = "Game restart";
-"game_quit" = "Game quit";
-"game_next" = "Game next";
-"game_previous" = "Game previous";
-"game_quit_message" = "Game quit message";
-"game_over_message" = "Game over message";
-"game_win" = "Game win";
-"notification_title" = "Notification title";
-"notification_message" = "Notification message";
-"notification_settings" = "Notification settings";
-"notifications_title" = "Notifications title";
-"notifications_enable" = "Notifications enable";
-"notifications_disable" = "Notifications disable";
-"notifications_daily" = "Notifications daily";
-"notifications_weekly" = "Notifications weekly";
-"notifications_time" = "Notifications time";
-"notification_streak_reminder" = "Notification streak reminder";
-"notification_streak_reminder_desc" = "Notification streak reminder desc";
-"notification_achievements" = "Notification achievements";
-"notification_achievements_desc" = "Notification achievements desc";
-"quiz_reminder_title" = "Quiz reminder title";
-"quiz_reminder_body" = "Quiz reminder body";
-"daily_challenge_title" = "Daily challenge title";
-"daily_challenge_body" = "Daily challenge body";
-"weekly_report_title" = "Weekly report title";
-"weekly_report_body" = "Weekly report body";
-"streak_reminder_title" = "Streak reminder title";
-"streak_reminder_body" = "Streak reminder body";
-"yes" = "Yes";
-"no" = "No";
-"home_title" = "Home title";
-"home_welcome" = "Home welcome";
-"home_play" = "Home play";
-"home_settings" = "Home settings";
-"home_profile" = "Home profile";
-"profile_title" = "Profile title";
-"profile_username" = "Profile username";
-"profile_score" = "Profile score";
-"profile_rank" = "Profile rank";
-"profile_achievements" = "Profile achievements";
-"category_title" = "Category title";
-"category_addition" = "Category addition";
-"category_subtraction" = "Category subtraction";
-"category_multiplication" = "Category multiplication";
-"category_division" = "Category division";
-"category_mixed" = "Category mixed";
-"result_title" = "Result title";
-"result_score" = "Result score";
-"result_time" = "Result time";
-"result_accuracy" = "Result accuracy";
-"result_new_record" = "Result new record";
-"result_play_again" = "Result play again";
-"result_home" = "Result home";
-"result_share" = "Result share";
+
+"cancel" = "Avbryt";
+"settings" = "Innstillinger";
+
+"login_title" = "Logg inn";
+"login_button" = "Logg inn";
+"register_button" = "Registrer";
+
+"username_placeholder" = "Brukernavn";
+"password_placeholder" = "Passord";
+
+"register_success" = "Registrering vellykket";
+"register_error" = "Registrering mislyktes";
+"login_error" = "Innlogging mislyktes";
+
+"game_title" = "Spilltittel";
+"game_score" = "Poengsum";
+"game_time" = "Spilletid";
+"game_level" = "Spillnivå";
+"game_over" = "Spillet er over";
+"game_pause" = "Pause";
+"game_resume" = "Fortsett";
+"game_restart" = "Start på nytt";
+"game_quit" = "Avslutt spill";
+"game_next" = "Neste";
+"game_previous" = "Forrige";
+
+"game_quit_message" = "Er du sikker på at du vil avslutte spillet?";
+"game_over_message" = "Spillet er over!";
+"game_win" = "Du vant!";
+
+"notification_title" = "Varslingstittel";
+"notification_message" = "Varslingsmelding";
+
+"notification_settings" = "Varslingsinnstillinger";
+"notifications_title" = "Varslinger";
+"notifications_enable" = "Slå på varslinger";
+"notifications_disable" = "Slå av varslinger";
+"notifications_daily" = "Daglige varslinger";
+"notifications_weekly" = "Ukentlige varslinger";
+"notifications_time" = "Varslingstid";
+
+"notification_streak_reminder" = "Påminnelse om serie";
+"notification_streak_reminder_desc" = "Spill hver dag for å holde serien i gang.";
+
+"notification_achievements" = "Prestasjoner";
+"notification_achievements_desc" = "Følg dine siste prestasjoner.";
+
+"quiz_reminder_title" = "Quizpåminnelse";
+"quiz_reminder_body" = "Ikke glem å ta dagens quiz!";
+
+"daily_challenge_title" = "Daglig utfordring";
+"daily_challenge_body" = "Klar for en ny utfordring i dag?";
+
+"weekly_report_title" = "Ukentlig rapport";
+"weekly_report_body" = "Din ukentlige rapport er klar.";
+
+"streak_reminder_title" = "Påminnelse om serie";
+"streak_reminder_body" = "Spill hver dag for å holde serien i gang.";
+
+"yes" = "Ja";
+"no" = "Nei";
+
+"home_title" = "Hjem";
+"home_welcome" = "Velkommen";
+"home_play" = "Spill";
+"home_settings" = "Innstillinger";
+"home_profile" = "Profil";
+
+"profile_title" = "Profil";
+"profile_username" = "Brukernavn";
+"profile_score" = "Poengsum";
+"profile_rank" = "Ranking";
+"profile_achievements" = "Prestasjoner";
+
+"category_title" = "Kategori";
+"category_addition" = "Addisjon";
+"category_subtraction" = "Subtraksjon";
+"category_multiplication" = "Multiplikasjon";
+"category_division" = "Divisjon";
+"category_mixed" = "Blandet";
+
+"result_title" = "Resultat";
+"result_score" = "Poengsum";
+"result_time" = "Tid";
+"result_accuracy" = "Nøyaktighet";
+"result_new_record" = "Ny rekord!";
+"result_play_again" = "Spill igjen";
+"result_home" = "Hjem";
+"result_share" = "Del";
+
 "result_score_text" = "Gratulerer! Du har fullført oppdraget.";
-"faq_title" = "Faq title";
-"faq_empty" = "Faq empty";
+
+"faq_title" = "Ofte stilte spørsmål";
+"faq_empty" = "Ingen spørsmål tilgjengelig";
+
 "faq_q1" = "Hva er Math Quiz Mastery?";
 "faq_a1" = "Det er en morsom matematikkquiz-app for å forbedre ferdighetene dine.";
+
 "faq_q2" = "Hvordan starter jeg en quiz?";
 "faq_a2" = "Du kan starte en quiz ved å trykke på spill-knappen på hovedskjermen.";
+
 "faq_q3" = "Kan jeg spore fremgangen min?";
 "faq_a3" = "Ja, du kan se fremgangen og prestasjonene dine i profilen din.";
+
 "faq_q4" = "Er Math Quiz Mastery gratis?";
 "faq_a4" = "Nedlasting og spilling er gratis.";
+
 "faq_q5" = "Hvordan kan jeg kontakte support?";
 "faq_a5" = "Du kan kontakte support via rapportseksjonen i appen.";
-"report_title" = "Report title";
-"report_description" = "Report description";
-"report_submit" = "Report submit";
-"report_success" = "Report success";
-"report_error" = "Report error";
-"report_placeholder" = "Report placeholder";
+
+"report_title" = "Rapporter et problem";
+"report_description" = "Beskrivelse av problemet";
+"report_submit" = "Send inn";
+"report_success" = "Rapport sendt";
+"report_error" = "Feil ved sending av rapport";
+"report_placeholder" = "Beskriv problemet her...";

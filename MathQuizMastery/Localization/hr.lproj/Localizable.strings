@@ -1,181 +1,226 @@
 "launch_title" = "Matematika Quiz Mastery";
-"launch_slogan" = "Započnite s matematikim kvizom!";
-"launch_loading" = "Učitam...";
-"register_title" = "Registrirajte";
+"launch_slogan" = "Započnite matematički kviz!";
+"launch_loading" = "Učitavanje...";
+
+"register_title" = "Registracija";
 "enter_name" = "Unesite svoje ime...";
-"enter_email" = "Unesite vašu e-mail adresu...";
-"enter_password" = "Unesite vašu lozinku...";
-"reenter_password" = "Unesite vašu lozinku ponovno...";
+"enter_email" = "Unesite svoju e-mail adresu...";
+"enter_password" = "Unesite svoju lozinku...";
+"reenter_password" = "Ponovno unesite lozinku...";
 "passwords_do_not_match" = "Lozinke se ne podudaraju.";
 "password_mismatch" = "Lozinke se ne podudaraju.";
-"field_required" = "Ovo polje je obvezno.";
+"field_required" = "Ovo polje je obavezno.";
 "registration_success" = "Registracija je uspješno završena!";
-"registration_failed" = "Registracija nije uspjela. Pokušajte ponovno.";
-"invalid_email" = "Unesite ispravnu email adresu...";
-"loading" = "Molim, pričekajte...";
+"registration_failed" = "Registracija nije uspjela. Molimo pokušajte ponovno.";
+"invalid_email" = "Unesite ispravnu e-mail adresu.";
+"loading" = "Molimo pričekajte...";
 "ok_button" = "U redu";
 "cancel_button" = "Odustani";
 "weak_password" = "Lozinka mora imati najmanje 6 znakova.";
-"login_success" = "Prijava je uspješno završena!";
+
+"login_success" = "Prijava uspješna!";
 "log_in" = "Prijava";
-"enter_password_required" = "Unesite vašu lozinku...";
-"email_required" = "Unesite vašu email adresu...";
-"password_required" = "Lozinka je obvezna.";
-"password_too_short" = "Lozinka je prekratka...";
-"name_required" = "Ime je obvezno.";
-"success" = "Uspeh";
+"enter_password_required" = "Unesite lozinku...";
+"email_required" = "Unesite e-mail adresu...";
+"password_required" = "Lozinka je obavezna.";
+"password_too_short" = "Lozinka je prekratka.";
+"name_required" = "Ime je obavezno.";
+"success" = "Uspjeh";
+
 "settings_profile" = "Profil";
 "settings_notifications" = "Obavijesti";
-"settings_faq" = "Najčešća pitanja";
-"settings_report" = "Prijavite problem";
+"settings_faq" = "Često postavljana pitanja";
+"settings_report" = "Prijavi problem";
 "settings_logout" = "Odjava";
 "settings_title" = "Postavke";
+
 "logout_title" = "Odjava";
-"logout_message" = "Are you sure you want to log out?";
+"logout_message" = "Jeste li sigurni da se želite odjaviti?";
 "logout_cancel" = "Odustani";
 "logout_confirm" = "Odjava";
+
 "notification_permission_title" = "Omogući obavijesti";
-"notification_permission_message" = "Molim, dopustite obavijesti kako bismo održali vašu vezu.";
+"notification_permission_message" = "Molimo omogućite obavijesti da biste bili obaviješteni o novostima.";
 "notification_permission_error" = "Obavijesti nisu dopuštene.";
 "notification_permission_cancel" = "Odustani";
 "notification_permission_settings" = "Postavke";
 "notification_permission_denied" = "Obavijesti nisu dopuštene.";
-"notification_permission_granted" = "Obavijesti su dopuštene.";
-"notification_settings_title" = "Postavke";
+"notification_permission_granted" = "Obavijesti su omogućene.";
+
+"notification_settings_title" = "Postavke obavijesti";
 "notification_section_general" = "Općenito";
 "notification_section_quiz" = "Kviz";
-"notification_section_achievement" = "Uspeh";
-"notification_new_features" = "Novi značajci";
-"notification_new_features_desc" = "Molim, dopustite obavijesti kako bismo održali vašu vezu.";
-"notification_weekly_report" = "Tjedni izvještaj";
-"notification_weekly_report_desc" = "Dobit ćete tjedni izvještaj.";
-"notification_quiz_reminder" = "Kvizni podsjetnik";
-"notification_quiz_reminder_desc" = "Ne zaboravite riješiti svakodnevni kviz!";
+"notification_section_achievement" = "Postignuća";
+
+"notification_new_features" = "Nove značajke";
+"notification_new_features_desc" = "Omogućite obavijesti za najnovije značajke.";
+"notification_weekly_report" = "Tjedno izvješće";
+"notification_weekly_report_desc" = "Primajte tjedna izvješća o napretku.";
+"notification_quiz_reminder" = "Podsjetnik za kviz";
+"notification_quiz_reminder_desc" = "Ne zaboravite riješiti dnevni kviz!";
 "notification_daily_challenge" = "Dnevni izazov";
-"notification_daily_challenge_desc" = "Svaki dan uzmite novu izazov.";
+"notification_daily_challenge_desc" = "Pripremite se za novi izazov svaki dan.";
+
 "register_title_text" = "Registrirajte se na Math Quiz Mastery";
-"agreement_text" = "Registracijom prihvaćate naše uvjete.";
-"terms_of_service" = "Uvjeti usluge";
+"agreement_text" = "Registracijom prihvaćate naše uvjete korištenja.";
+"terms_of_service" = "Uvjeti korištenja";
 "privacy_policy" = "Pravila privatnosti";
-"create_account_title" = "Izradi račun";
+
+"create_account_title" = "Kreiraj račun";
 "no_account_question" = "Nemate račun?";
 "register_now" = "Registriraj se sada";
+
 "ok" = "U redu";
 "error" = "Greška";
 "warning" = "Upozorenje";
-"error_title" = "Došlo je do greške";
+"error_title" = "Dogodila se greška";
+
 "settings_logout_message" = "Jeste li sigurni da se želite odjaviti?";
-"validation_error" = "Greška validacije.";
+"validation_error" = "Greška pri validaciji.";
+
 "email_too_long" = "E-mail je predugačak.";
 "password_too_long" = "Lozinka je predugačka.";
 "password_weak" = "Lozinka je preslaba.";
 "name_too_long" = "Ime je predugačko.";
 "name_invalid_characters" = "Ime sadrži nevažeće znakove.";
+
 "confirm_password_required" = "Potvrda lozinke je obavezna.";
 "validation_in_progress" = "Validacija u tijeku...";
-"game_win_message" = "Čestitamo! Pobijedili ste igru!";
+
+"game_win_message" = "Čestitamo! Pobijedili ste!";
 "notification_time_format" = "Format vremena: HH:mm";
-"notification_settings_saved" = "Postavke obavijesti spremljene.";
-"notification_permission_denied_title" = "Dopuštenje odbijeno";
+"notification_settings_saved" = "Postavke obavijesti su spremljene.";
+
+"notification_permission_denied_title" = "Dozvola odbijena";
 "notification_permission_denied_message" = "Odbili ste dopuštenja za obavijesti.";
+
 "settings_profile_title" = "Postavke profila";
-"settings_notifications_title" = "Postavke";
+"settings_notifications_title" = "Postavke obavijesti";
 "settings_faq_title" = "Postavke FAQ";
 "settings_report_title" = "Postavke izvješća";
 "settings_about_title" = "O postavkama";
 "settings_logout_title" = "Postavke odjave";
-"open_settings" = "Postavke";
+
+"open_settings" = "Otvori postavke";
 "save" = "Spremi";
 "save_button_title" = "Spremi promjene";
-"error_network" = "Mrežna pogreška.";
+
+"error_network" = "Pogreška mreže.";
 "no_internet_connection" = "Nema internetske veze.";
-"cancel" = "Cancel";
-"settings" = "Settings";
-"login_title" = "Login title";
-"login_button" = "Login button";
-"register_button" = "Register button";
-"username_placeholder" = "Username placeholder";
-"password_placeholder" = "Password placeholder";
-"register_success" = "Register success";
-"register_error" = "Register error";
-"login_error" = "Login error";
-"game_title" = "Game title";
-"game_score" = "Game score";
-"game_time" = "Game time";
-"game_level" = "Game level";
-"game_over" = "Game over";
-"game_pause" = "Game pause";
-"game_resume" = "Game resume";
-"game_restart" = "Game restart";
-"game_quit" = "Game quit";
-"game_next" = "Game next";
-"game_previous" = "Game previous";
-"game_quit_message" = "Game quit message";
-"game_over_message" = "Game over message";
-"game_win" = "Game win";
-"notification_title" = "Notification title";
-"notification_message" = "Notification message";
-"notification_settings" = "Notification settings";
-"notifications_title" = "Notifications title";
-"notifications_enable" = "Notifications enable";
-"notifications_disable" = "Notifications disable";
-"notifications_daily" = "Notifications daily";
-"notifications_weekly" = "Notifications weekly";
-"notifications_time" = "Notifications time";
-"notification_streak_reminder" = "Notification streak reminder";
-"notification_streak_reminder_desc" = "Notification streak reminder desc";
-"notification_achievements" = "Notification achievements";
-"notification_achievements_desc" = "Notification achievements desc";
-"quiz_reminder_title" = "Quiz reminder title";
-"quiz_reminder_body" = "Quiz reminder body";
-"daily_challenge_title" = "Daily challenge title";
-"daily_challenge_body" = "Daily challenge body";
-"weekly_report_title" = "Weekly report title";
-"weekly_report_body" = "Weekly report body";
-"streak_reminder_title" = "Streak reminder title";
-"streak_reminder_body" = "Streak reminder body";
-"yes" = "Yes";
-"no" = "No";
-"home_title" = "Home title";
-"home_welcome" = "Home welcome";
-"home_play" = "Home play";
-"home_settings" = "Home settings";
-"home_profile" = "Home profile";
-"profile_title" = "Profile title";
-"profile_username" = "Profile username";
-"profile_score" = "Profile score";
-"profile_rank" = "Profile rank";
-"profile_achievements" = "Profile achievements";
-"category_title" = "Category title";
-"category_addition" = "Category addition";
-"category_subtraction" = "Category subtraction";
-"category_multiplication" = "Category multiplication";
-"category_division" = "Category division";
-"category_mixed" = "Category mixed";
-"result_title" = "Result title";
-"result_score" = "Result score";
-"result_time" = "Result time";
-"result_accuracy" = "Result accuracy";
-"result_new_record" = "Result new record";
-"result_play_again" = "Result play again";
-"result_home" = "Result home";
-"result_share" = "Result share";
-"result_score_text" = "Čestitamo! Uspješno si završio misiju.";
-"faq_title" = "Faq title";
-"faq_empty" = "Faq empty";
-"faq_q1" = "Faq q1";
-"faq_a1" = "Faq a1";
-"faq_q2" = "Faq q2";
-"faq_a2" = "Faq a2";
-"faq_q3" = "Faq q3";
-"faq_a3" = "Faq a3";
-"faq_q4" = "Faq q4";
-"faq_a4" = "Faq a4";
-"faq_q5" = "Faq q5";
-"faq_a5" = "Faq a5";
-"report_title" = "Report title";
-"report_description" = "Report description";
-"report_submit" = "Report submit";
-"report_success" = "Report success";
-"report_error" = "Report error";
-"report_placeholder" = "Report placeholder";
+
+"cancel" = "Odustani";
+"settings" = "Postavke";
+
+"login_title" = "Prijava";
+"login_button" = "Prijava";
+"register_button" = "Registracija";
+
+"username_placeholder" = "Korisničko ime";
+"password_placeholder" = "Lozinka";
+
+"register_success" = "Registracija uspješna";
+"register_error" = "Pogreška pri registraciji";
+"login_error" = "Pogreška pri prijavi";
+
+"game_title" = "Naziv igre";
+"game_score" = "Bodovi";
+"game_time" = "Vrijeme igre";
+"game_level" = "Razina igre";
+"game_over" = "Kraj igre";
+"game_pause" = "Pauza";
+"game_resume" = "Nastavi";
+"game_restart" = "Ponovno pokreni";
+"game_quit" = "Izađi";
+"game_next" = "Sljedeći";
+"game_previous" = "Prethodni";
+
+"game_quit_message" = "Jeste li sigurni da želite napustiti igru?";
+"game_over_message" = "Igra je završila!";
+"game_win" = "Pobjeda!";
+
+"notification_title" = "Naslov obavijesti";
+"notification_message" = "Poruka obavijesti";
+
+"notification_settings" = "Postavke obavijesti";
+"notifications_title" = "Obavijesti";
+"notifications_enable" = "Omogući obavijesti";
+"notifications_disable" = "Onemogući obavijesti";
+"notifications_daily" = "Dnevne obavijesti";
+"notifications_weekly" = "Tjedne obavijesti";
+"notifications_time" = "Vrijeme obavijesti";
+
+"notification_streak_reminder" = "Podsjetnik na niz";
+"notification_streak_reminder_desc" = "Održavajte svoj niz pobjeda!";
+
+"notification_achievements" = "Obavijesti o postignućima";
+"notification_achievements_desc" = "Ostanite informirani o svojim postignućima!";
+
+"quiz_reminder_title" = "Podsjetnik na kviz";
+"quiz_reminder_body" = "Ne zaboravite odigrati današnji kviz!";
+
+"daily_challenge_title" = "Dnevni izazov";
+"daily_challenge_body" = "Novi izazov svakog dana!";
+
+"weekly_report_title" = "Tjedno izvješće";
+"weekly_report_body" = "Vaše tjedno izvješće o napretku.";
+
+"streak_reminder_title" = "Podsjetnik na niz";
+"streak_reminder_body" = "Održavajte svoj niz pobjeda!";
+
+"yes" = "Da";
+"no" = "Ne";
+
+"home_title" = "Početna";
+"home_welcome" = "Dobrodošli";
+"home_play" = "Igraj";
+"home_settings" = "Postavke";
+"home_profile" = "Profil";
+
+"profile_title" = "Profil";
+"profile_username" = "Korisničko ime";
+"profile_score" = "Bodovi";
+"profile_rank" = "Rang";
+"profile_achievements" = "Postignuća";
+
+"category_title" = "Kategorija";
+"category_addition" = "Zbrajanje";
+"category_subtraction" = "Oduzimanje";
+"category_multiplication" = "Množenje";
+"category_division" = "Dijeljenje";
+"category_mixed" = "Miješano";
+
+"result_title" = "Rezultat";
+"result_score" = "Bodovi";
+"result_time" = "Vrijeme";
+"result_accuracy" = "Točnost";
+"result_new_record" = "Novi rekord!";
+"result_play_again" = "Igraj ponovo";
+"result_home" = "Početna";
+"result_share" = "Podijeli";
+
+"result_score_text" = "Čestitamo! Uspješno ste završili zadatak.";
+
+"faq_title" = "Česta pitanja";
+"faq_empty" = "Nema dostupnih pitanja.";
+
+"faq_q1" = "Što je Math Quiz Mastery?";
+"faq_a1" = "Zabavna aplikacija za matematičke kvizove koja pomaže u poboljšanju vaših vještina.";
+
+"faq_q2" = "Kako započeti kviz?";
+"faq_a2" = "Kviz možete započeti pritiskom na gumb za igranje na glavnom zaslonu.";
+
+"faq_q3" = "Mogu li pratiti svoj napredak?";
+"faq_a3" = "Da, svoj napredak i postignuća možete pratiti u profilu.";
+
+"faq_q4" = "Je li Math Quiz Mastery besplatan?";
+"faq_a4" = "Preuzimanje i igranje aplikacije je besplatno.";
+
+"faq_q5" = "Kako kontaktirati podršku?";
+"faq_a5" = "Podršku možete kontaktirati putem sekcije za prijavu problema u aplikaciji.";
+
+"report_title" = "Prijava";
+"report_description" = "Opis problema";
+"report_submit" = "Pošalji prijavu";
+"report_success" = "Prijava uspješno poslana";
+"report_error" = "Došlo je do pogreške pri slanju prijave";
+"report_placeholder" = "Ovdje opišite problem...";

@@ -1,6 +1,7 @@
 "launch_title" = "数学クイズマスター";
-"launch_slogan" = "数学マスターへの打ち上げ！";
+"launch_slogan" = "数学マスターへの挑戦！";
 "launch_loading" = "読み込み中...";
+
 "register_title" = "登録";
 "enter_name" = "名前を入力してください";
 "enter_email" = "メールアドレスを入力してください";
@@ -16,6 +17,7 @@
 "ok_button" = "OK";
 "cancel_button" = "キャンセル";
 "weak_password" = "パスワードは6文字以上である必要があります。";
+
 "login_success" = "ログイン成功！";
 "log_in" = "ログイン";
 "enter_password_required" = "パスワードを入力してください。";
@@ -24,16 +26,19 @@
 "password_too_short" = "パスワードが短すぎます。";
 "name_required" = "名前は必須です。";
 "success" = "成功";
+
 "settings_profile" = "プロフィール";
 "settings_notifications" = "通知";
 "settings_faq" = "よくある質問";
 "settings_report" = "問題を報告";
 "settings_logout" = "ログアウト";
 "settings_title" = "設定";
+
 "logout_title" = "ログアウト";
 "logout_message" = "ログアウトしてもよろしいですか？";
 "logout_cancel" = "キャンセル";
 "logout_confirm" = "ログアウト";
+
 "notification_permission_title" = "通知を有効にする";
 "notification_permission_message" = "最新情報を受け取るには通知を許可してください。";
 "notification_permission_error" = "通知の許可が拒否されました。";
@@ -41,10 +46,12 @@
 "notification_permission_settings" = "設定を開く";
 "notification_permission_denied" = "通知の許可が拒否されました。";
 "notification_permission_granted" = "通知の許可が与えられました。";
+
 "notification_settings_title" = "通知設定";
 "notification_section_general" = "一般";
 "notification_section_quiz" = "クイズ";
 "notification_section_achievement" = "実績";
+
 "notification_new_features" = "新機能";
 "notification_new_features_desc" = "新機能について通知を受け取る。";
 "notification_weekly_report" = "週間レポート";
@@ -53,129 +60,167 @@
 "notification_quiz_reminder_desc" = "毎日のクイズを解くのを忘れずに！";
 "notification_daily_challenge" = "デイリーチャレンジ";
 "notification_daily_challenge_desc" = "毎日新しいチャレンジに挑戦しよう。";
+
 "register_title_text" = "Math Quiz Masteryに登録する";
 "agreement_text" = "登録することで、利用規約に同意したことになります。";
 "terms_of_service" = "利用規約";
 "privacy_policy" = "プライバシーポリシー";
+
 "create_account_title" = "アカウントを作成";
 "no_account_question" = "アカウントをお持ちでないですか？";
 "register_now" = "今すぐ登録";
+
 "ok" = "OK";
 "error" = "エラー";
 "warning" = "警告";
 "error_title" = "エラーが発生しました";
+
 "settings_logout_message" = "ログアウトしてもよろしいですか？";
 "validation_error" = "検証エラー。";
+
 "email_too_long" = "メールアドレスが長すぎます。";
 "password_too_long" = "パスワードが長すぎます。";
 "password_weak" = "パスワードが弱すぎます。";
 "name_too_long" = "名前が長すぎます。";
 "name_invalid_characters" = "名前に無効な文字が含まれています。";
+
 "confirm_password_required" = "パスワードの確認が必要です。";
 "validation_in_progress" = "検証中...";
+
 "game_win_message" = "おめでとうございます！ゲームに勝ちました！";
 "notification_time_format" = "時刻形式: HH:mm";
 "notification_settings_saved" = "通知設定が保存されました。";
+
 "notification_permission_denied_title" = "許可が拒否されました";
 "notification_permission_denied_message" = "通知の許可を拒否しました。";
+
 "settings_profile_title" = "プロフィール設定";
 "settings_notifications_title" = "通知設定";
 "settings_faq_title" = "FAQ設定";
 "settings_report_title" = "レポート設定";
 "settings_about_title" = "設定について";
 "settings_logout_title" = "ログアウト設定";
+
 "open_settings" = "設定を開く";
 "save" = "保存";
 "save_button_title" = "変更を保存";
+
 "error_network" = "ネットワークエラー。";
 "no_internet_connection" = "インターネット接続なし。";
-"cancel" = "Cancel";
-"settings" = "Settings";
-"login_title" = "Login title";
-"login_button" = "Login button";
-"register_button" = "Register button";
-"username_placeholder" = "Username placeholder";
-"password_placeholder" = "Password placeholder";
-"register_success" = "Register success";
-"register_error" = "Register error";
-"login_error" = "Login error";
-"game_title" = "Game title";
-"game_score" = "Game score";
-"game_time" = "Game time";
-"game_level" = "Game level";
-"game_over" = "Game over";
-"game_pause" = "Game pause";
-"game_resume" = "Game resume";
-"game_restart" = "Game restart";
-"game_quit" = "Game quit";
-"game_next" = "Game next";
-"game_previous" = "Game previous";
-"game_quit_message" = "Game quit message";
-"game_over_message" = "Game over message";
-"game_win" = "Game win";
-"notification_title" = "Notification title";
-"notification_message" = "Notification message";
-"notification_settings" = "Notification settings";
-"notifications_title" = "Notifications title";
-"notifications_enable" = "Notifications enable";
-"notifications_disable" = "Notifications disable";
-"notifications_daily" = "Notifications daily";
-"notifications_weekly" = "Notifications weekly";
-"notifications_time" = "Notifications time";
-"notification_streak_reminder" = "Notification streak reminder";
-"notification_streak_reminder_desc" = "Notification streak reminder desc";
-"notification_achievements" = "Notification achievements";
-"notification_achievements_desc" = "Notification achievements desc";
-"quiz_reminder_title" = "Quiz reminder title";
-"quiz_reminder_body" = "Quiz reminder body";
-"daily_challenge_title" = "Daily challenge title";
-"daily_challenge_body" = "Daily challenge body";
-"weekly_report_title" = "Weekly report title";
-"weekly_report_body" = "Weekly report body";
-"streak_reminder_title" = "Streak reminder title";
-"streak_reminder_body" = "Streak reminder body";
-"yes" = "Yes";
-"no" = "No";
-"home_title" = "Home title";
-"home_welcome" = "Home welcome";
-"home_play" = "Home play";
-"home_settings" = "Home settings";
-"home_profile" = "Home profile";
-"profile_title" = "Profile title";
-"profile_username" = "Profile username";
-"profile_score" = "Profile score";
-"profile_rank" = "Profile rank";
-"profile_achievements" = "Profile achievements";
-"category_title" = "Category title";
-"category_addition" = "Category addition";
-"category_subtraction" = "Category subtraction";
-"category_multiplication" = "Category multiplication";
-"category_division" = "Category division";
-"category_mixed" = "Category mixed";
-"result_title" = "Result title";
-"result_score" = "Result score";
-"result_time" = "Result time";
-"result_accuracy" = "Result accuracy";
-"result_new_record" = "Result new record";
-"result_play_again" = "Result play again";
-"result_home" = "Result home";
-"result_share" = "Result share";
+
+"cancel" = "キャンセル";
+"settings" = "設定";
+
+"login_title" = "ログイン";
+"login_button" = "ログイン";
+"register_button" = "登録";
+
+"username_placeholder" = "ユーザー名";
+"password_placeholder" = "パスワード";
+
+"register_success" = "登録成功";
+"register_error" = "登録失敗";
+"login_error" = "ログイン失敗";
+
+"game_title" = "ゲームタイトル";
+"game_score" = "スコア";
+"game_time" = "ゲーム時間";
+"game_level" = "ゲームレベル";
+"game_over" = "ゲームオーバー";
+"game_pause" = "一時停止";
+"game_resume" = "再開";
+"game_restart" = "再スタート";
+"game_quit" = "ゲーム終了";
+"game_next" = "次へ";
+"game_previous" = "前へ";
+
+"game_quit_message" = "ゲームを終了しますか？";
+"game_over_message" = "ゲームオーバーです！";
+"game_win" = "ゲーム勝利";
+
+"notification_title" = "通知タイトル";
+"notification_message" = "通知メッセージ";
+
+"notification_settings" = "通知設定";
+"notifications_title" = "通知";
+"notifications_enable" = "通知を有効にする";
+"notifications_disable" = "通知を無効にする";
+"notifications_daily" = "毎日の通知";
+"notifications_weekly" = "毎週の通知";
+"notifications_time" = "通知時間";
+
+"notification_streak_reminder" = "連続記録リマインダー";
+"notification_streak_reminder_desc" = "連続プレイを維持しましょう。";
+
+"notification_achievements" = "実績通知";
+"notification_achievements_desc" = "最新の実績を確認しましょう。";
+
+"quiz_reminder_title" = "クイズリマインダー";
+"quiz_reminder_body" = "今日のクイズをお忘れなく！";
+
+"daily_challenge_title" = "デイリーチャレンジ";
+"daily_challenge_body" = "今日の新しいチャレンジに挑戦しましょう！";
+
+"weekly_report_title" = "週間レポート";
+"weekly_report_body" = "週間の進捗レポートです。";
+
+"streak_reminder_title" = "連続プレイリマインダー";
+"streak_reminder_body" = "連続プレイを続けましょう。";
+
+"yes" = "はい";
+"no" = "いいえ";
+
+"home_title" = "ホーム";
+"home_welcome" = "ようこそ";
+"home_play" = "プレイ開始";
+"home_settings" = "設定";
+"home_profile" = "プロフィール";
+
+"profile_title" = "プロフィール";
+"profile_username" = "ユーザー名";
+"profile_score" = "スコア";
+"profile_rank" = "ランキング";
+"profile_achievements" = "実績";
+
+"category_title" = "カテゴリー";
+"category_addition" = "足し算";
+"category_subtraction" = "引き算";
+"category_multiplication" = "掛け算";
+"category_division" = "割り算";
+"category_mixed" = "混合";
+
+"result_title" = "結果";
+"result_score" = "スコア";
+"result_time" = "時間";
+"result_accuracy" = "正確さ";
+"result_new_record" = "新記録！";
+"result_play_again" = "もう一度遊ぶ";
+"result_home" = "ホームに戻る";
+"result_share" = "共有";
+
 "result_score_text" = "おめでとうございます！ミッションを無事に完了しました。";
-"faq_title" = "Faq title";
-"faq_empty" = "Faq empty";
-"faq_q1" = "Math Quiz Mastery とは何ですか？";
-"faq_a1" = "スキルを向上させるための楽しい数学クイズアプリです。";
-"faq_q2" = "クイズを始めるにはどうすればいいですか？";
-"faq_a2" = "メイン画面の再生ボタンをタップするとクイズを開始できます。";
+
+"faq_title" = "よくある質問";
+"faq_empty" = "質問が登録されていません。";
+
+"faq_q1" = "Math Quiz Masteryとは何ですか？";
+"faq_a1" = "スキル向上のための楽しい数学クイズアプリです。";
+
+"faq_q2" = "クイズはどうやって始めますか？";
+"faq_a2" = "メイン画面の再生ボタンを押して開始できます。";
+
 "faq_q3" = "進捗を追跡できますか？";
-"faq_a3" = "はい、プロフィールで進捗や実績を確認できます。";
-"faq_q4" = "Math Quiz Mastery は無料ですか？";
+"faq_a3" = "はい、プロフィールで進捗と実績を確認できます。";
+
+"faq_q4" = "Math Quiz Masteryは無料ですか？";
 "faq_a4" = "ダウンロードとプレイは無料です。";
-"faq_q5" = "サポートに連絡するにはどうすればいいですか？";
+
+"faq_q5" = "サポートにはどう連絡しますか？";
 "faq_a5" = "アプリ内のレポートセクションからサポートに連絡できます。";
-"report_title" = "Report title";
-"report_description" = "Report description";
-"report_submit" = "Report submit";
-"report_success" = "Report success";
-"report_error" = "Report error";
-"report_placeholder" = "Report placeholder";
+
+"report_title" = "問題報告";
+"report_description" = "問題の詳細を入力してください";
+"report_submit" = "報告を送信";
+"report_success" = "報告が正常に送信されました";
+"report_error" = "報告の送信に失敗しました";
+"report_placeholder" = "問題の内容を詳しく入力してください...";

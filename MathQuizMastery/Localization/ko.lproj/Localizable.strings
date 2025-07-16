@@ -1,21 +1,23 @@
 "launch_title" = "수학 퀴즈 마스터리";
 "launch_slogan" = "수학 마스터리로 출발!";
 "launch_loading" = "로딩 중...";
-"register_title" = "가입하기";
+
+"register_title" = "회원가입";
 "enter_name" = "이름을 입력하세요";
 "enter_email" = "이메일을 입력하세요";
 "enter_password" = "비밀번호를 입력하세요";
 "reenter_password" = "비밀번호를 다시 입력하세요";
 "passwords_do_not_match" = "비밀번호가 일치하지 않습니다.";
 "password_mismatch" = "비밀번호가 일치하지 않습니다.";
-"field_required" = "이 필드는 필수입니다.";
-"registration_success" = "등록이 완료되었습니다!";
-"registration_failed" = "등록에 실패했습니다. 다시 시도해주세요.";
+"field_required" = "필수 입력 항목입니다.";
+"registration_success" = "회원가입이 완료되었습니다!";
+"registration_failed" = "회원가입에 실패했습니다. 다시 시도해주세요.";
 "invalid_email" = "유효한 이메일 주소를 입력하세요.";
 "loading" = "잠시만 기다려주세요...";
 "ok_button" = "확인";
 "cancel_button" = "취소";
 "weak_password" = "비밀번호는 최소 6자 이상이어야 합니다.";
+
 "login_success" = "로그인 성공!";
 "log_in" = "로그인";
 "enter_password_required" = "비밀번호를 입력하세요.";
@@ -24,16 +26,19 @@
 "password_too_short" = "비밀번호가 너무 짧습니다.";
 "name_required" = "이름은 필수입니다.";
 "success" = "성공";
+
 "settings_profile" = "프로필";
 "settings_notifications" = "알림";
 "settings_faq" = "자주 묻는 질문";
 "settings_report" = "문제 신고";
 "settings_logout" = "로그아웃";
 "settings_title" = "설정";
+
 "logout_title" = "로그아웃";
-"logout_message" = "로그아웃 하시겠습니까?";
+"logout_message" = "정말 로그아웃 하시겠습니까?";
 "logout_cancel" = "취소";
 "logout_confirm" = "로그아웃";
+
 "notification_permission_title" = "알림 활성화";
 "notification_permission_message" = "최신 정보를 받으려면 알림을 허용하세요.";
 "notification_permission_error" = "알림 권한이 거부되었습니다.";
@@ -41,141 +46,181 @@
 "notification_permission_settings" = "설정 열기";
 "notification_permission_denied" = "알림 권한이 거부되었습니다.";
 "notification_permission_granted" = "알림 권한이 허용되었습니다.";
+
 "notification_settings_title" = "알림 설정";
 "notification_section_general" = "일반";
 "notification_section_quiz" = "퀴즈";
 "notification_section_achievement" = "업적";
+
 "notification_new_features" = "새로운 기능";
-"notification_new_features_desc" = "새로운 기능에 대한 알림을 받으세요.";
+"notification_new_features_desc" = "새로운 기능 알림을 받아보세요.";
 "notification_weekly_report" = "주간 보고서";
-"notification_weekly_report_desc" = "주간 진행 보고서를 받으세요.";
+"notification_weekly_report_desc" = "주간 진행 상황 보고서를 받아보세요.";
 "notification_quiz_reminder" = "퀴즈 알림";
-"notification_quiz_reminder_desc" = "일일 퀴즈를 푸는 것을 잊지 마세요!";
+"notification_quiz_reminder_desc" = "일일 퀴즈를 잊지 말고 풀어보세요!";
 "notification_daily_challenge" = "일일 도전";
-"notification_daily_challenge_desc" = "매일 새로운 도전에 도전하세요.";
-"register_title_text" = "Math Quiz Mastery에 등록하기";
-"agreement_text" = "등록함으로써 약관에 동의한 것으로 간주됩니다.";
-"terms_of_service" = "서비스 약관";
+"notification_daily_challenge_desc" = "매일 새로운 도전에 도전해보세요.";
+
+"register_title_text" = "Math Quiz Mastery 회원가입";
+"agreement_text" = "가입 시 이용 약관에 동의하는 것으로 간주됩니다.";
+"terms_of_service" = "이용 약관";
 "privacy_policy" = "개인정보 처리방침";
+
 "create_account_title" = "계정 만들기";
 "no_account_question" = "계정이 없으신가요?";
-"register_now" = "지금 등록하세요";
+"register_now" = "지금 가입하기";
+
 "ok" = "확인";
 "error" = "오류";
 "warning" = "경고";
-"error_title" = "오류가 발생했습니다";
+"error_title" = "오류 발생";
+
 "settings_logout_message" = "로그아웃 하시겠습니까?";
-"validation_error" = "유효성 검사 오류.";
+"validation_error" = "유효성 검사 오류";
+
 "email_too_long" = "이메일이 너무 깁니다.";
 "password_too_long" = "비밀번호가 너무 깁니다.";
 "password_weak" = "비밀번호가 너무 약합니다.";
 "name_too_long" = "이름이 너무 깁니다.";
-"name_invalid_characters" = "이름에 잘못된 문자가 포함되어 있습니다.";
+"name_invalid_characters" = "이름에 올바르지 않은 문자가 포함되어 있습니다.";
+
 "confirm_password_required" = "비밀번호 확인이 필요합니다.";
 "validation_in_progress" = "검증 중...";
-"game_win_message" = "축하합니다! 게임에서 이겼습니다!";
+
+"game_win_message" = "축하합니다! 게임에서 승리했습니다!";
 "notification_time_format" = "시간 형식: HH:mm";
 "notification_settings_saved" = "알림 설정이 저장되었습니다.";
-"notification_permission_denied_title" = "권한이 거부되었습니다";
+
+"notification_permission_denied_title" = "권한 거부됨";
 "notification_permission_denied_message" = "알림 권한을 거부했습니다.";
+
 "settings_profile_title" = "프로필 설정";
 "settings_notifications_title" = "알림 설정";
 "settings_faq_title" = "FAQ 설정";
-"settings_report_title" = "보고서 설정";
+"settings_report_title" = "신고 설정";
 "settings_about_title" = "설정 정보";
 "settings_logout_title" = "로그아웃 설정";
+
 "open_settings" = "설정 열기";
 "save" = "저장";
 "save_button_title" = "변경 사항 저장";
-"error_network" = "네트워크 오류.";
-"no_internet_connection" = "인터넷 연결 없음.";
-"cancel" = "Cancel";
-"settings" = "Settings";
-"login_title" = "Login title";
-"login_button" = "Login button";
-"register_button" = "Register button";
-"username_placeholder" = "Username placeholder";
-"password_placeholder" = "Password placeholder";
-"register_success" = "Register success";
-"register_error" = "Register error";
-"login_error" = "Login error";
-"game_title" = "Game title";
-"game_score" = "Game score";
-"game_time" = "Game time";
-"game_level" = "Game level";
-"game_over" = "Game over";
-"game_pause" = "Game pause";
-"game_resume" = "Game resume";
-"game_restart" = "Game restart";
-"game_quit" = "Game quit";
-"game_next" = "Game next";
-"game_previous" = "Game previous";
-"game_quit_message" = "Game quit message";
-"game_over_message" = "Game over message";
-"game_win" = "Game win";
-"notification_title" = "Notification title";
-"notification_message" = "Notification message";
-"notification_settings" = "Notification settings";
-"notifications_title" = "Notifications title";
-"notifications_enable" = "Notifications enable";
-"notifications_disable" = "Notifications disable";
-"notifications_daily" = "Notifications daily";
-"notifications_weekly" = "Notifications weekly";
-"notifications_time" = "Notifications time";
-"notification_streak_reminder" = "Notification streak reminder";
-"notification_streak_reminder_desc" = "Notification streak reminder desc";
-"notification_achievements" = "Notification achievements";
-"notification_achievements_desc" = "Notification achievements desc";
-"quiz_reminder_title" = "Quiz reminder title";
-"quiz_reminder_body" = "Quiz reminder body";
-"daily_challenge_title" = "Daily challenge title";
-"daily_challenge_body" = "Daily challenge body";
-"weekly_report_title" = "Weekly report title";
-"weekly_report_body" = "Weekly report body";
-"streak_reminder_title" = "Streak reminder title";
-"streak_reminder_body" = "Streak reminder body";
-"yes" = "Yes";
-"no" = "No";
-"home_title" = "Home title";
-"home_welcome" = "Home welcome";
-"home_play" = "Home play";
-"home_settings" = "Home settings";
-"home_profile" = "Home profile";
-"profile_title" = "Profile title";
-"profile_username" = "Profile username";
-"profile_score" = "Profile score";
-"profile_rank" = "Profile rank";
-"profile_achievements" = "Profile achievements";
-"category_title" = "Category title";
-"category_addition" = "Category addition";
-"category_subtraction" = "Category subtraction";
-"category_multiplication" = "Category multiplication";
-"category_division" = "Category division";
-"category_mixed" = "Category mixed";
-"result_title" = "Result title";
-"result_score" = "Result score";
-"result_time" = "Result time";
-"result_accuracy" = "Result accuracy";
-"result_new_record" = "Result new record";
-"result_play_again" = "Result play again";
-"result_home" = "Result home";
-"result_share" = "Result share";
+
+"error_network" = "네트워크 오류";
+"no_internet_connection" = "인터넷 연결이 없습니다.";
+
+"cancel" = "취소";
+"settings" = "설정";
+
+"login_title" = "로그인";
+"login_button" = "로그인";
+"register_button" = "회원가입";
+
+"username_placeholder" = "사용자 이름";
+"password_placeholder" = "비밀번호";
+
+"register_success" = "회원가입 성공";
+"register_error" = "회원가입 실패";
+"login_error" = "로그인 실패";
+
+"game_title" = "게임 제목";
+"game_score" = "점수";
+"game_time" = "게임 시간";
+"game_level" = "게임 단계";
+"game_over" = "게임 종료";
+"game_pause" = "일시 정지";
+"game_resume" = "재개";
+"game_restart" = "재시작";
+"game_quit" = "게임 종료";
+"game_next" = "다음";
+"game_previous" = "이전";
+
+"game_quit_message" = "게임을 종료하시겠습니까?";
+"game_over_message" = "게임이 종료되었습니다!";
+"game_win" = "게임 승리";
+
+"notification_title" = "알림 제목";
+"notification_message" = "알림 메시지";
+
+"notification_settings" = "알림 설정";
+"notifications_title" = "알림";
+"notifications_enable" = "알림 켜기";
+"notifications_disable" = "알림 끄기";
+"notifications_daily" = "일일 알림";
+"notifications_weekly" = "주간 알림";
+"notifications_time" = "알림 시간";
+
+"notification_streak_reminder" = "연속 알림";
+"notification_streak_reminder_desc" = "연속 플레이를 유지하세요.";
+
+"notification_achievements" = "업적 알림";
+"notification_achievements_desc" = "최신 업적을 확인하세요.";
+
+"quiz_reminder_title" = "퀴즈 알림";
+"quiz_reminder_body" = "오늘의 퀴즈를 잊지 마세요!";
+
+"daily_challenge_title" = "일일 도전";
+"daily_challenge_body" = "오늘의 새로운 도전에 도전해 보세요!";
+
+"weekly_report_title" = "주간 보고서";
+"weekly_report_body" = "주간 진행 상황 보고서입니다.";
+
+"streak_reminder_title" = "연속 플레이 알림";
+"streak_reminder_body" = "연속 플레이를 유지하세요.";
+
+"yes" = "예";
+"no" = "아니요";
+
+"home_title" = "홈";
+"home_welcome" = "환영합니다";
+"home_play" = "게임 시작";
+"home_settings" = "설정";
+"home_profile" = "프로필";
+
+"profile_title" = "프로필";
+"profile_username" = "사용자 이름";
+"profile_score" = "점수";
+"profile_rank" = "순위";
+"profile_achievements" = "업적";
+
+"category_title" = "카테고리";
+"category_addition" = "덧셈";
+"category_subtraction" = "뺄셈";
+"category_multiplication" = "곱셈";
+"category_division" = "나눗셈";
+"category_mixed" = "혼합";
+
+"result_title" = "결과";
+"result_score" = "점수";
+"result_time" = "시간";
+"result_accuracy" = "정확도";
+"result_new_record" = "새 기록!";
+"result_play_again" = "다시 하기";
+"result_home" = "홈으로";
+"result_share" = "공유";
+
 "result_score_text" = "축하합니다! 미션을 성공적으로 완료했습니다.";
-"faq_title" = "Faq title";
-"faq_empty" = "Faq empty";
-"faq_q1" = "Math Quiz Mastery 란 무엇인가요?";
-"faq_a1" = "기술을 향상시키는 재미있는 수학 퀴즈 앱입니다.";
+
+"faq_title" = "자주 묻는 질문";
+"faq_empty" = "등록된 질문이 없습니다.";
+
+"faq_q1" = "Math Quiz Mastery란 무엇인가요?";
+"faq_a1" = "수학 실력을 향상시키는 재미있는 퀴즈 앱입니다.";
+
 "faq_q2" = "퀴즈를 어떻게 시작하나요?";
-"faq_a2" = "메인 화면의 재생 버튼을 탭하면 퀴즈를 시작할 수 있습니다.";
-"faq_q3" = "내 진행 상황을 추적할 수 있나요?";
-"faq_a3" = "네, 프로필에서 진행 상황과 업적을 볼 수 있습니다.";
+"faq_a2" = "메인 화면에서 재생 버튼을 눌러 퀴즈를 시작하세요.";
+
+"faq_q3" = "내 진행 상황을 확인할 수 있나요?";
+"faq_a3" = "네, 프로필에서 진행 상황과 업적을 확인할 수 있습니다.";
+
 "faq_q4" = "Math Quiz Mastery는 무료인가요?";
-"faq_a4" = "다운로드와 플레이는 무료입니다.";
-"faq_q5" = "지원팀에 어떻게 연락할 수 있나요?";
-"faq_a5" = "앱의 신고 섹션을 통해 지원팀에 연락할 수 있습니다.";
-"report_title" = "Report title";
-"report_description" = "Report description";
-"report_submit" = "Report submit";
-"report_success" = "Report success";
-"report_error" = "Report error";
-"report_placeholder" = "Report placeholder";
+"faq_a4" = "앱 다운로드와 플레이는 무료입니다.";
+
+"faq_q5" = "지원팀에 어떻게 연락하나요?";
+"faq_a5" = "앱 내 신고 섹션을 통해 지원팀에 연락할 수 있습니다.";
+
+"report_title" = "문제 신고";
+"report_description" = "문제 내용을 입력하세요";
+"report_submit" = "신고 제출";
+"report_success" = "신고가 성공적으로 접수되었습니다";
+"report_error" = "신고 제출 중 오류가 발생했습니다";
+"report_placeholder" = "문제를 자세히 작성해주세요...";

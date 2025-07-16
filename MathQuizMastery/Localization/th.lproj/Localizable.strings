@@ -1,181 +1,226 @@
-"launch_title" = "คณิต Quiz Mastery";
-"launch_slogan" = "เริ่มคณิต Quiz!";
+"launch_title" = "คณิตศาสตร์ Quiz Mastery";
+"launch_slogan" = "เริ่มต้นควิซคณิตศาสตร์!";
 "launch_loading" = "กำลังโหลด...";
-"register_title" = "สมัคร";
+
+"register_title" = "สมัครสมาชิก";
 "enter_name" = "กรอกชื่อของคุณ...";
 "enter_email" = "กรอกอีเมลของคุณ...";
 "enter_password" = "กรอกรหัสผ่านของคุณ...";
-"reenter_password" = "กรอกรหัสผ่านของคุณอีกครั้ง...";
-"passwords_do_not_match" = "รหัสผ่านไม่ตรงกัน.";
-"password_mismatch" = "รหัสผ่านไม่ตรงกัน.";
-"field_required" = "นี่คือช่องที่จำเป็น";
-"registration_success" = "การลงทะเบียนเสร็จสมบูรณ์!";
-"registration_failed" = "การลงทะเบียนไม่สำเร็จ โปรดลองอีกครั้ง";
-"invalid_email" = "กรอกอีเมลที่ถูกต้อง...";
+"reenter_password" = "กรอกรหัสผ่านอีกครั้ง...";
+"passwords_do_not_match" = "รหัสผ่านไม่ตรงกัน";
+"password_mismatch" = "รหัสผ่านไม่ตรงกัน";
+"field_required" = "กรุณากรอกข้อมูลนี้";
+"registration_success" = "สมัครสมาชิกสำเร็จ!";
+"registration_failed" = "สมัครสมาชิกไม่สำเร็จ กรุณาลองใหม่อีกครั้ง";
+"invalid_email" = "กรุณากรอกอีเมลให้ถูกต้อง";
 "loading" = "กรุณารอสักครู่...";
 "ok_button" = "ตกลง";
 "cancel_button" = "ยกเลิก";
-"weak_password" = "รหัสผ่านต้องมีอย่างน้อย 6 ตัวอักษร.";
+"weak_password" = "รหัสผ่านต้องมีอย่างน้อย 6 ตัวอักษร";
+
 "login_success" = "เข้าสู่ระบบสำเร็จ!";
 "log_in" = "เข้าสู่ระบบ";
-"enter_password_required" = "กรอกรหัสผ่านของคุณ...";
+"enter_password_required" = "กรอกรหัสผ่าน...";
 "email_required" = "กรอกอีเมลของคุณ...";
-"password_required" = "รหัสผ่านจำเป็น";
-"password_too_short" = "รหัสผ่านสั้นเกินไป...";
-"name_required" = "ชื่อจำเป็น";
+"password_required" = "กรอกรหัสผ่าน";
+"password_too_short" = "รหัสผ่านสั้นเกินไป";
+"name_required" = "กรอกชื่อของคุณ";
 "success" = "สำเร็จ";
+
 "settings_profile" = "โปรไฟล์";
 "settings_notifications" = "การแจ้งเตือน";
-"settings_faq" = "คำถามที่ถามบ่อย";
+"settings_faq" = "คำถามที่พบบ่อย";
 "settings_report" = "รายงานปัญหา";
 "settings_logout" = "ออกจากระบบ";
 "settings_title" = "การตั้งค่า";
+
 "logout_title" = "ออกจากระบบ";
-"logout_message" = "Are you sure you want to log out?";
+"logout_message" = "คุณแน่ใจหรือไม่ว่าต้องการออกจากระบบ?";
 "logout_cancel" = "ยกเลิก";
 "logout_confirm" = "ออกจากระบบ";
+
 "notification_permission_title" = "เปิดใช้งานการแจ้งเตือน";
-"notification_permission_message" = "เปิดใช้งานการแจ้งเตือนเพื่อให้คุณอัปเดตข้อมูลเสมอ";
-"notification_permission_error" = "การอนุญาตสำหรับการแจ้งเตือนถูกปฏิเสธ.";
+"notification_permission_message" = "อนุญาตการแจ้งเตือนเพื่อรับข่าวสารล่าสุด";
+"notification_permission_error" = "ไม่สามารถเปิดใช้งานการแจ้งเตือนได้";
 "notification_permission_cancel" = "ยกเลิก";
-"notification_permission_settings" = "เปิดการตั้งค่า";
-"notification_permission_denied" = "การอนุญาตสำหรับการแจ้งเตือนถูกปฏิเสธ.";
-"notification_permission_granted" = "การอนุญาตสำหรับการแจ้งเตือนได้รับ.";
-"notification_settings_title" = "การตั้งค่าการแจ้งเตือน";
+"notification_permission_settings" = "ไปที่การตั้งค่า";
+"notification_permission_denied" = "คุณปฏิเสธการอนุญาตแจ้งเตือน";
+"notification_permission_granted" = "เปิดใช้งานการแจ้งเตือนแล้ว";
+
+"notification_settings_title" = "ตั้งค่าการแจ้งเตือน";
 "notification_section_general" = "ทั่วไป";
-"notification_section_quiz" = "การทดสอบ";
-"notification_section_achievement" = "ผลลัพธ์";
-"notification_new_features" = "ฟังก์ชันใหม่";
-"notification_new_features_desc" = "เปิดใช้งานการแจ้งเตือนเพื่อให้คุณอัปเดตข้อมูลเสมอ";
-"notification_weekly_report" = "รายงานสัปดาห์";
-"notification_weekly_report_desc" = "คุณจะได้รับรายงานสัปดาห์ของคุณ.";
-"notification_quiz_reminder" = "การเตือนการทดสอบ";
-"notification_quiz_reminder_desc" = "อย่าลืมแก้คำถามวันนี้!";
-"notification_daily_challenge" = "การท่องเที่ยววันนี้";
-"notification_daily_challenge_desc" = "วันนี้จงเตรียมตัวสำหรับความท้าทายใหม่ทุกวัน";
+"notification_section_quiz" = "แบบทดสอบ";
+"notification_section_achievement" = "ความสำเร็จ";
+
+"notification_new_features" = "ฟีเจอร์ใหม่";
+"notification_new_features_desc" = "เปิดแจ้งเตือนเพื่ออัปเดตฟีเจอร์ใหม่ ๆ";
+"notification_weekly_report" = "รายงานรายสัปดาห์";
+"notification_weekly_report_desc" = "รับรายงานสัปดาห์ของคุณทุกสัปดาห์";
+"notification_quiz_reminder" = "เตือนแบบทดสอบ";
+"notification_quiz_reminder_desc" = "อย่าลืมทำแบบทดสอบวันนี้!";
+"notification_daily_challenge" = "ความท้าทายประจำวัน";
+"notification_daily_challenge_desc" = "พร้อมรับความท้าทายใหม่ทุกวัน";
+
 "register_title_text" = "ลงทะเบียนกับ Math Quiz Mastery";
 "agreement_text" = "การลงทะเบียนแสดงว่าคุณยอมรับข้อกำหนดของเรา";
 "terms_of_service" = "ข้อกำหนดการให้บริการ";
 "privacy_policy" = "นโยบายความเป็นส่วนตัว";
+
 "create_account_title" = "สร้างบัญชี";
-"no_account_question" = "ยังไม่มีบัญชี?";
-"register_now" = "ลงทะเบียนตอนนี้";
+"no_account_question" = "ยังไม่มีบัญชีใช่ไหม?";
+"register_now" = "สมัครสมาชิกตอนนี้";
+
 "ok" = "ตกลง";
 "error" = "ข้อผิดพลาด";
 "warning" = "คำเตือน";
 "error_title" = "เกิดข้อผิดพลาด";
+
 "settings_logout_message" = "คุณแน่ใจหรือไม่ว่าต้องการออกจากระบบ?";
-"validation_error" = "ข้อผิดพลาดในการตรวจสอบ.";
-"email_too_long" = "อีเมลยาวเกินไป.";
-"password_too_long" = "รหัสผ่านยาวเกินไป.";
-"password_weak" = "รหัสผ่านอ่อนแอเกินไป.";
-"name_too_long" = "ชื่อนี้ยาวเกินไป.";
-"name_invalid_characters" = "ชื่อมีอักขระที่ไม่ถูกต้อง.";
-"confirm_password_required" = "ต้องยืนยันรหัสผ่าน.";
+"validation_error" = "เกิดข้อผิดพลาดในการตรวจสอบข้อมูล";
+
+"email_too_long" = "อีเมลยาวเกินไป";
+"password_too_long" = "รหัสผ่านยาวเกินไป";
+"password_weak" = "รหัสผ่านอ่อนแอเกินไป";
+"name_too_long" = "ชื่อนี้ยาวเกินไป";
+"name_invalid_characters" = "ชื่อมีตัวอักษรที่ไม่ถูกต้อง";
+
+"confirm_password_required" = "กรุณายืนยันรหัสผ่าน";
 "validation_in_progress" = "กำลังตรวจสอบ...";
-"game_win_message" = "ยินดีด้วย! คุณชนะเกม!";
+
+"game_win_message" = "ยินดีด้วย! คุณชนะเกมนี้!";
 "notification_time_format" = "รูปแบบเวลา: HH:mm";
-"notification_settings_saved" = "บันทึกการตั้งค่าการแจ้งเตือนแล้ว.";
+"notification_settings_saved" = "บันทึกการตั้งค่าแจ้งเตือนเรียบร้อยแล้ว";
+
 "notification_permission_denied_title" = "การอนุญาตถูกปฏิเสธ";
-"notification_permission_denied_message" = "คุณได้ปฏิเสธสิทธิ์การแจ้งเตือน.";
-"settings_profile_title" = "การตั้งค่าโปรไฟล์";
-"settings_notifications_title" = "การตั้งค่าการแจ้งเตือน";
-"settings_faq_title" = "การตั้งค่า FAQ";
-"settings_report_title" = "การตั้งค่ารายงาน";
-"settings_about_title" = "เกี่ยวกับการตั้งค่า";
-"settings_logout_title" = "การตั้งค่าการออกจากระบบ";
+"notification_permission_denied_message" = "คุณได้ปฏิเสธสิทธิ์การแจ้งเตือน";
+
+"settings_profile_title" = "ตั้งค่าโปรไฟล์";
+"settings_notifications_title" = "ตั้งค่าการแจ้งเตือน";
+"settings_faq_title" = "ตั้งค่าคำถามที่พบบ่อย";
+"settings_report_title" = "ตั้งค่าการรายงานปัญหา";
+"settings_about_title" = "เกี่ยวกับ";
+"settings_logout_title" = "ตั้งค่าการออกจากระบบ";
+
 "open_settings" = "เปิดการตั้งค่า";
 "save" = "บันทึก";
 "save_button_title" = "บันทึกการเปลี่ยนแปลง";
-"error_network" = "ข้อผิดพลาดของเครือข่าย.";
-"no_internet_connection" = "ไม่มีการเชื่อมต่ออินเทอร์เน็ต.";
-"cancel" = "Cancel";
-"settings" = "Settings";
-"login_title" = "Login title";
-"login_button" = "Login button";
-"register_button" = "Register button";
-"username_placeholder" = "Username placeholder";
-"password_placeholder" = "Password placeholder";
-"register_success" = "Register success";
-"register_error" = "Register error";
-"login_error" = "Login error";
-"game_title" = "Game title";
-"game_score" = "Game score";
-"game_time" = "Game time";
-"game_level" = "Game level";
-"game_over" = "Game over";
-"game_pause" = "Game pause";
-"game_resume" = "Game resume";
-"game_restart" = "Game restart";
-"game_quit" = "Game quit";
-"game_next" = "Game next";
-"game_previous" = "Game previous";
-"game_quit_message" = "Game quit message";
-"game_over_message" = "Game over message";
-"game_win" = "Game win";
-"notification_title" = "Notification title";
-"notification_message" = "Notification message";
-"notification_settings" = "Notification settings";
-"notifications_title" = "Notifications title";
-"notifications_enable" = "Notifications enable";
-"notifications_disable" = "Notifications disable";
-"notifications_daily" = "Notifications daily";
-"notifications_weekly" = "Notifications weekly";
-"notifications_time" = "Notifications time";
-"notification_streak_reminder" = "Notification streak reminder";
-"notification_streak_reminder_desc" = "Notification streak reminder desc";
-"notification_achievements" = "Notification achievements";
-"notification_achievements_desc" = "Notification achievements desc";
-"quiz_reminder_title" = "Quiz reminder title";
-"quiz_reminder_body" = "Quiz reminder body";
-"daily_challenge_title" = "Daily challenge title";
-"daily_challenge_body" = "Daily challenge body";
-"weekly_report_title" = "Weekly report title";
-"weekly_report_body" = "Weekly report body";
-"streak_reminder_title" = "Streak reminder title";
-"streak_reminder_body" = "Streak reminder body";
-"yes" = "Yes";
-"no" = "No";
-"home_title" = "Home title";
-"home_welcome" = "Home welcome";
-"home_play" = "Home play";
-"home_settings" = "Home settings";
-"home_profile" = "Home profile";
-"profile_title" = "Profile title";
-"profile_username" = "Profile username";
-"profile_score" = "Profile score";
-"profile_rank" = "Profile rank";
-"profile_achievements" = "Profile achievements";
-"category_title" = "Category title";
-"category_addition" = "Category addition";
-"category_subtraction" = "Category subtraction";
-"category_multiplication" = "Category multiplication";
-"category_division" = "Category division";
-"category_mixed" = "Category mixed";
-"result_title" = "Result title";
-"result_score" = "Result score";
-"result_time" = "Result time";
-"result_accuracy" = "Result accuracy";
-"result_new_record" = "Result new record";
-"result_play_again" = "Result play again";
-"result_home" = "Result home";
-"result_share" = "Result share";
+
+"error_network" = "เกิดข้อผิดพลาดเครือข่าย";
+"no_internet_connection" = "ไม่มีการเชื่อมต่ออินเทอร์เน็ต";
+
+"cancel" = "ยกเลิก";
+"settings" = "การตั้งค่า";
+
+"login_title" = "เข้าสู่ระบบ";
+"login_button" = "เข้าสู่ระบบ";
+"register_button" = "สมัครสมาชิก";
+
+"username_placeholder" = "ชื่อผู้ใช้";
+"password_placeholder" = "รหัสผ่าน";
+
+"register_success" = "สมัครสมาชิกสำเร็จ";
+"register_error" = "สมัครสมาชิกไม่สำเร็จ";
+"login_error" = "เข้าสู่ระบบไม่สำเร็จ";
+
+"game_title" = "ชื่อเกม";
+"game_score" = "คะแนน";
+"game_time" = "เวลา";
+"game_level" = "ระดับ";
+"game_over" = "เกมจบแล้ว";
+"game_pause" = "หยุดชั่วคราว";
+"game_resume" = "เล่นต่อ";
+"game_restart" = "เริ่มใหม่";
+"game_quit" = "ออกจากเกม";
+"game_next" = "ถัดไป";
+"game_previous" = "ก่อนหน้า";
+
+"game_quit_message" = "คุณต้องการออกจากเกมหรือไม่?";
+"game_over_message" = "เกมจบแล้ว!";
+"game_win" = "ชนะเกม";
+
+"notification_title" = "หัวข้อแจ้งเตือน";
+"notification_message" = "ข้อความแจ้งเตือน";
+
+"notification_settings" = "ตั้งค่าการแจ้งเตือน";
+"notifications_title" = "การแจ้งเตือน";
+"notifications_enable" = "เปิดแจ้งเตือน";
+"notifications_disable" = "ปิดแจ้งเตือน";
+"notifications_daily" = "แจ้งเตือนรายวัน";
+"notifications_weekly" = "แจ้งเตือนรายสัปดาห์";
+"notifications_time" = "เวลาการแจ้งเตือน";
+
+"notification_streak_reminder" = "เตือนต่อเนื่อง";
+"notification_streak_reminder_desc" = "อย่าลืมเล่นต่อเนื่องเพื่อรับรางวัล";
+
+"notification_achievements" = "ความสำเร็จ";
+"notification_achievements_desc" = "ตรวจสอบความสำเร็จล่าสุดของคุณ";
+
+"quiz_reminder_title" = "เตือนทำแบบทดสอบ";
+"quiz_reminder_body" = "อย่าลืมทำแบบทดสอบวันนี้!";
+
+"daily_challenge_title" = "ความท้าทายประจำวัน";
+"daily_challenge_body" = "พร้อมรับความท้าทายใหม่วันนี้";
+
+"weekly_report_title" = "รายงานรายสัปดาห์";
+"weekly_report_body" = "นี่คือรายงานสัปดาห์ของคุณ";
+
+"streak_reminder_title" = "เตือนต่อเนื่อง";
+"streak_reminder_body" = "เล่นต่อเนื่องเพื่อรับรางวัลสุดพิเศษ";
+
+"yes" = "ใช่";
+"no" = "ไม่ใช่";
+
+"home_title" = "หน้าหลัก";
+"home_welcome" = "ยินดีต้อนรับ";
+"home_play" = "เล่น";
+"home_settings" = "ตั้งค่า";
+"home_profile" = "โปรไฟล์";
+
+"profile_title" = "โปรไฟล์";
+"profile_username" = "ชื่อผู้ใช้";
+"profile_score" = "คะแนน";
+"profile_rank" = "อันดับ";
+"profile_achievements" = "ความสำเร็จ";
+
+"category_title" = "หมวดหมู่";
+"category_addition" = "บวก";
+"category_subtraction" = "ลบ";
+"category_multiplication" = "คูณ";
+"category_division" = "หาร";
+"category_mixed" = "ผสม";
+
+"result_title" = "ผลลัพธ์";
+"result_score" = "คะแนน";
+"result_time" = "เวลา";
+"result_accuracy" = "ความแม่นยำ";
+"result_new_record" = "สถิติใหม่!";
+"result_play_again" = "เล่นอีกครั้ง";
+"result_home" = "กลับหน้าหลัก";
+"result_share" = "แชร์";
+
 "result_score_text" = "ขอแสดงความยินดี! คุณทำภารกิจสำเร็จแล้ว";
-"faq_title" = "Faq title";
-"faq_empty" = "Faq empty";
-"faq_q1" = "Faq q1";
-"faq_a1" = "Faq a1";
-"faq_q2" = "Faq q2";
-"faq_a2" = "Faq a2";
-"faq_q3" = "Faq q3";
-"faq_a3" = "Faq a3";
-"faq_q4" = "Faq q4";
-"faq_a4" = "Faq a4";
-"faq_q5" = "Faq q5";
-"faq_a5" = "Faq a5";
-"report_title" = "Report title";
-"report_description" = "Report description";
-"report_submit" = "Report submit";
-"report_success" = "Report success";
-"report_error" = "Report error";
-"report_placeholder" = "Report placeholder";
+
+"faq_title" = "คำถามที่พบบ่อย";
+"faq_empty" = "ไม่มีคำถาม";
+
+"faq_q1" = "Math Quiz Mastery คืออะไร?";
+"faq_a1" = "เป็นแอปควิซคณิตศาสตร์สนุก ๆ เพื่อพัฒนาทักษะของคุณ";
+
+"faq_q2" = "เริ่มควิซอย่างไร?";
+"faq_a2" = "แตะปุ่มเล่นบนหน้าหลักเพื่อเริ่มควิซ";
+
+"faq_q3" = "ติดตามความคืบหน้าได้ไหม?";
+"faq_a3" = "ได้ คุณสามารถดูความคืบหน้าและความสำเร็จในโปรไฟล์ของคุณ";
+
+"faq_q4" = "Math Quiz Mastery ฟรีไหม?";
+"faq_a4" = "ดาวน์โหลดและเล่นได้ฟรี";
+
+"faq_q5" = "ติดต่อฝ่ายสนับสนุนได้อย่างไร?";
+"faq_a5" = "ติดต่อผ่านส่วนรายงานปัญหาในแอป";
+
+"report_title" = "รายงานปัญหา";
+"report_description" = "รายละเอียดปัญหา";
+"report_submit" = "ส่งรายงาน";
+"report_success" = "ส่งรายงานสำเร็จ";
+"report_error" = "ส่งรายงานไม่สำเร็จ";
+"report_placeholder" = "โปรดอธิบายปัญหาของคุณที่นี่...";

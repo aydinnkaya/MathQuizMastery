@@ -1,181 +1,226 @@
 "launch_title" = "Matematický Quiz Mastery";
 "launch_slogan" = "Začnite matematickým kvízom!";
 "launch_loading" = "Načítavam...";
+
 "register_title" = "Registrácia";
-"enter_name" = "Zadajte vaše meno...";
-"enter_email" = "Zadajte vašu emailovú adresu...";
-"enter_password" = "Zadajte vaše heslo...";
-"reenter_password" = "Zadajte vaše heslo znova...";
+"enter_name" = "Zadajte svoje meno...";
+"enter_email" = "Zadajte svoju e-mailovú adresu...";
+"enter_password" = "Zadajte svoje heslo...";
+"reenter_password" = "Zadajte svoje heslo znova...";
 "passwords_do_not_match" = "Heslá sa nezhodujú.";
 "password_mismatch" = "Heslá sa nezhodujú.";
 "field_required" = "Toto pole je povinné.";
 "registration_success" = "Registrácia prebehla úspešne!";
 "registration_failed" = "Registrácia sa nepodarila. Skúste to znova.";
-"invalid_email" = "Zadajte platnú emailovú adresu...";
+"invalid_email" = "Zadajte platnú e-mailovú adresu...";
 "loading" = "Prosím, počkajte...";
 "ok_button" = "OK";
 "cancel_button" = "Zrušiť";
 "weak_password" = "Heslo musí mať aspoň 6 znakov.";
+
 "login_success" = "Prihlásenie bolo úspešné!";
-"log_in" = "Prihlásiť";
-"enter_password_required" = "Zadajte vaše heslo...";
-"email_required" = "Zadajte vašu emailovú adresu...";
-"password_required" = "Heslo je potrebné.";
+"log_in" = "Prihlásiť sa";
+"enter_password_required" = "Zadajte svoje heslo...";
+"email_required" = "Zadajte svoju e-mailovú adresu...";
+"password_required" = "Heslo je povinné.";
 "password_too_short" = "Heslo je príliš krátke...";
 "name_required" = "Meno je povinné.";
 "success" = "Úspech";
+
 "settings_profile" = "Profil";
 "settings_notifications" = "Oznámenia";
 "settings_faq" = "Časté otázky";
-"settings_report" = "Vytvoriť problém";
-"settings_logout" = "Odhlásiť";
+"settings_report" = "Nahlásiť problém";
+"settings_logout" = "Odhlásiť sa";
 "settings_title" = "Nastavenia";
-"logout_title" = "Odhlásiť";
-"logout_message" = "Are you sure you want to log out?";
+
+"logout_title" = "Odhlásiť sa";
+"logout_message" = "Naozaj sa chcete odhlásiť?";
 "logout_cancel" = "Zrušiť";
-"logout_confirm" = "Odhlásiť";
+"logout_confirm" = "Odhlásiť sa";
+
 "notification_permission_title" = "Povoliť oznámenia";
-"notification_permission_message" = "Povolte oznámenia, aby sme vám mohli poskytnúť najnovšie informácie.";
+"notification_permission_message" = "Povoľte oznámenia, aby sme vám mohli poskytnúť najnovšie informácie.";
 "notification_permission_error" = "Oznámenia nie sú povolené.";
 "notification_permission_cancel" = "Zrušiť";
 "notification_permission_settings" = "Otvoriť nastavenia";
 "notification_permission_denied" = "Oznámenia nie sú povolené.";
 "notification_permission_granted" = "Oznámenia sú povolené.";
+
 "notification_settings_title" = "Nastavenia oznámení";
 "notification_section_general" = "Všeobecné";
 "notification_section_quiz" = "Kvíz";
-"notification_section_achievement" = "Výsledok";
+"notification_section_achievement" = "Úspechy";
+
 "notification_new_features" = "Nové funkcie";
-"notification_new_features_desc" = "Povolte oznámenia, aby sme vám mohli poskytnúť najnovšie informácie.";
-"notification_weekly_report" = "Týždenný hárka";
-"notification_weekly_report_desc" = "Dostanete týždenný hárka.";
-"notification_quiz_reminder" = "Kvízomemória";
-"notification_quiz_reminder_desc" = "Nezabudnite vyriešiť denný kvíz!";
-"notification_daily_challenge" = "Denne denný výzva";
-"notification_daily_challenge_desc" = "Každý deň sa pripravte na nový výzor.";
+"notification_new_features_desc" = "Povoľte oznámenia, aby ste dostávali najnovšie informácie.";
+"notification_weekly_report" = "Týždenná správa";
+"notification_weekly_report_desc" = "Dostanete svoju týždennú správu.";
+"notification_quiz_reminder" = "Pripomienka kvízu";
+"notification_quiz_reminder_desc" = "Nezabudnite vyriešiť dnešný kvíz!";
+"notification_daily_challenge" = "Denná výzva";
+"notification_daily_challenge_desc" = "Každý deň vás čaká nová výzva.";
+
 "register_title_text" = "Zaregistrujte sa do Math Quiz Mastery";
 "agreement_text" = "Registráciou súhlasíte s našimi podmienkami.";
 "terms_of_service" = "Podmienky služby";
 "privacy_policy" = "Zásady ochrany osobných údajov";
+
 "create_account_title" = "Vytvoriť účet";
 "no_account_question" = "Nemáte účet?";
 "register_now" = "Zaregistrujte sa teraz";
+
 "ok" = "OK";
 "error" = "Chyba";
 "warning" = "Upozornenie";
-"error_title" = "Došlo k chybe";
+"error_title" = "Nastala chyba";
+
 "settings_logout_message" = "Naozaj sa chcete odhlásiť?";
 "validation_error" = "Chyba overenia.";
+
 "email_too_long" = "E-mail je príliš dlhý.";
 "password_too_long" = "Heslo je príliš dlhé.";
 "password_weak" = "Heslo je príliš slabé.";
 "name_too_long" = "Meno je príliš dlhé.";
 "name_invalid_characters" = "Meno obsahuje neplatné znaky.";
+
 "confirm_password_required" = "Vyžaduje sa potvrdenie hesla.";
-"validation_in_progress" = "Prebieha overenie...";
+"validation_in_progress" = "Prebieha overovanie...";
+
 "game_win_message" = "Gratulujeme! Vyhrali ste hru!";
 "notification_time_format" = "Formát času: HH:mm";
 "notification_settings_saved" = "Nastavenia oznámení uložené.";
+
 "notification_permission_denied_title" = "Prístup zamietnutý";
-"notification_permission_denied_message" = "Odmietli ste povolenia na oznámenia.";
+"notification_permission_denied_message" = "Odmietli ste povolenie na oznámenia.";
+
 "settings_profile_title" = "Nastavenia profilu";
 "settings_notifications_title" = "Nastavenia oznámení";
-"settings_faq_title" = "Nastavenia FAQ";
-"settings_report_title" = "Nastavenia správy";
+"settings_faq_title" = "Nastavenia častých otázok";
+"settings_report_title" = "Nastavenia hlásení";
 "settings_about_title" = "O nastaveniach";
 "settings_logout_title" = "Nastavenia odhlásenia";
+
 "open_settings" = "Otvoriť nastavenia";
 "save" = "Uložiť";
 "save_button_title" = "Uložiť zmeny";
+
 "error_network" = "Chyba siete.";
-"no_internet_connection" = "Žiadne pripojenie na internet.";
-"cancel" = "Cancel";
-"settings" = "Settings";
-"login_title" = "Login title";
-"login_button" = "Login button";
-"register_button" = "Register button";
-"username_placeholder" = "Username placeholder";
-"password_placeholder" = "Password placeholder";
-"register_success" = "Register success";
-"register_error" = "Register error";
-"login_error" = "Login error";
-"game_title" = "Game title";
-"game_score" = "Game score";
-"game_time" = "Game time";
-"game_level" = "Game level";
-"game_over" = "Game over";
-"game_pause" = "Game pause";
-"game_resume" = "Game resume";
-"game_restart" = "Game restart";
-"game_quit" = "Game quit";
-"game_next" = "Game next";
-"game_previous" = "Game previous";
-"game_quit_message" = "Game quit message";
-"game_over_message" = "Game over message";
-"game_win" = "Game win";
-"notification_title" = "Notification title";
-"notification_message" = "Notification message";
-"notification_settings" = "Notification settings";
-"notifications_title" = "Notifications title";
-"notifications_enable" = "Notifications enable";
-"notifications_disable" = "Notifications disable";
-"notifications_daily" = "Notifications daily";
-"notifications_weekly" = "Notifications weekly";
-"notifications_time" = "Notifications time";
-"notification_streak_reminder" = "Notification streak reminder";
-"notification_streak_reminder_desc" = "Notification streak reminder desc";
-"notification_achievements" = "Notification achievements";
-"notification_achievements_desc" = "Notification achievements desc";
-"quiz_reminder_title" = "Quiz reminder title";
-"quiz_reminder_body" = "Quiz reminder body";
-"daily_challenge_title" = "Daily challenge title";
-"daily_challenge_body" = "Daily challenge body";
-"weekly_report_title" = "Weekly report title";
-"weekly_report_body" = "Weekly report body";
-"streak_reminder_title" = "Streak reminder title";
-"streak_reminder_body" = "Streak reminder body";
-"yes" = "Yes";
-"no" = "No";
-"home_title" = "Home title";
-"home_welcome" = "Home welcome";
-"home_play" = "Home play";
-"home_settings" = "Home settings";
-"home_profile" = "Home profile";
-"profile_title" = "Profile title";
-"profile_username" = "Profile username";
-"profile_score" = "Profile score";
-"profile_rank" = "Profile rank";
-"profile_achievements" = "Profile achievements";
-"category_title" = "Category title";
-"category_addition" = "Category addition";
-"category_subtraction" = "Category subtraction";
-"category_multiplication" = "Category multiplication";
-"category_division" = "Category division";
-"category_mixed" = "Category mixed";
-"result_title" = "Result title";
-"result_score" = "Result score";
-"result_time" = "Result time";
-"result_accuracy" = "Result accuracy";
-"result_new_record" = "Result new record";
-"result_play_again" = "Result play again";
-"result_home" = "Result home";
-"result_share" = "Result share";
+"no_internet_connection" = "Nie je pripojenie na internet.";
+
+"cancel" = "Zrušiť";
+"settings" = "Nastavenia";
+
+"login_title" = "Prihlásenie";
+"login_button" = "Prihlásiť sa";
+"register_button" = "Registrovať sa";
+
+"username_placeholder" = "Používateľské meno";
+"password_placeholder" = "Heslo";
+
+"register_success" = "Registrácia úspešná";
+"register_error" = "Registrácia zlyhala";
+"login_error" = "Prihlásenie zlyhalo";
+
+"game_title" = "Názov hry";
+"game_score" = "Skóre";
+"game_time" = "Čas";
+"game_level" = "Úroveň";
+"game_over" = "Koniec hry";
+"game_pause" = "Pauza";
+"game_resume" = "Pokračovať";
+"game_restart" = "Reštartovať";
+"game_quit" = "Ukončiť hru";
+"game_next" = "Ďalšia";
+"game_previous" = "Predchádzajúca";
+
+"game_quit_message" = "Naozaj chcete ukončiť hru?";
+"game_over_message" = "Hra skončila!";
+"game_win" = "Výhra";
+
+"notification_title" = "Názov oznámenia";
+"notification_message" = "Správa oznámenia";
+
+"notification_settings" = "Nastavenia oznámení";
+"notifications_title" = "Oznámenia";
+"notifications_enable" = "Povoliť oznámenia";
+"notifications_disable" = "Zakázať oznámenia";
+"notifications_daily" = "Denné oznámenia";
+"notifications_weekly" = "Týždenné oznámenia";
+"notifications_time" = "Čas oznámení";
+
+"notification_streak_reminder" = "Pripomienka série";
+"notification_streak_reminder_desc" = "Pokračujte v hraní denne a získavajte odmeny.";
+
+"notification_achievements" = "Úspechy";
+"notification_achievements_desc" = "Sledujte svoje najnovšie úspechy.";
+
+"quiz_reminder_title" = "Pripomienka kvízu";
+"quiz_reminder_body" = "Nezabudnite vyriešiť dnešný kvíz!";
+
+"daily_challenge_title" = "Denná výzva";
+"daily_challenge_body" = "Ste pripravení na dnešnú novú výzvu?";
+
+"weekly_report_title" = "Týždenná správa";
+"weekly_report_body" = "Tu je vaša týždenná správa.";
+
+"streak_reminder_title" = "Pripomienka série";
+"streak_reminder_body" = "Hrajte denne, aby ste udržali svoju sériu.";
+
+"yes" = "Áno";
+"no" = "Nie";
+
+"home_title" = "Domov";
+"home_welcome" = "Vitajte";
+"home_play" = "Hrať";
+"home_settings" = "Nastavenia";
+"home_profile" = "Profil";
+
+"profile_title" = "Profil";
+"profile_username" = "Používateľské meno";
+"profile_score" = "Skóre";
+"profile_rank" = "Hodnosť";
+"profile_achievements" = "Úspechy";
+
+"category_title" = "Kategória";
+"category_addition" = "Sčítanie";
+"category_subtraction" = "Odčítanie";
+"category_multiplication" = "Násobenie";
+"category_division" = "Delenie";
+"category_mixed" = "Zmiešané";
+
+"result_title" = "Výsledok";
+"result_score" = "Skóre";
+"result_time" = "Čas";
+"result_accuracy" = "Presnosť";
+"result_new_record" = "Nový rekord!";
+"result_play_again" = "Hrať znova";
+"result_home" = "Domov";
+"result_share" = "Zdieľať";
+
 "result_score_text" = "Gratulujeme! Úspešne ste dokončili misiu.";
-"faq_title" = "Faq title";
-"faq_empty" = "Faq empty";
-"faq_q1" = "Faq q1";
-"faq_a1" = "Faq a1";
-"faq_q2" = "Faq q2";
-"faq_a2" = "Faq a2";
-"faq_q3" = "Faq q3";
-"faq_a3" = "Faq a3";
-"faq_q4" = "Faq q4";
-"faq_a4" = "Faq a4";
-"faq_q5" = "Faq q5";
-"faq_a5" = "Faq a5";
-"report_title" = "Report title";
-"report_description" = "Report description";
-"report_submit" = "Report submit";
-"report_success" = "Report success";
-"report_error" = "Report error";
-"report_placeholder" = "Report placeholder";
+
+"faq_title" = "Časté otázky";
+"faq_empty" = "Žiadne otázky nie sú dostupné";
+
+"faq_q1" = "Čo je Math Quiz Mastery?";
+"faq_a1" = "Je to zábavná aplikácia na matematické kvízy, ktorá vám pomáha zlepšiť vaše schopnosti.";
+
+"faq_q2" = "Ako začať kvíz?";
+"faq_a2" = "Kvíz môžete spustiť kliknutím na tlačidlo hrať na hlavnej obrazovke.";
+
+"faq_q3" = "Môžem sledovať svoj pokrok?";
+"faq_a3" = "Áno, svoj pokrok a úspechy si môžete pozrieť vo svojom profile.";
+
+"faq_q4" = "Je Math Quiz Mastery zadarmo?";
+"faq_a4" = "Sťahovanie a hranie sú zadarmo.";
+
+"faq_q5" = "Ako môžem kontaktovať podporu?";
+"faq_a5" = "Podporu môžete kontaktovať cez sekciu na nahlasovanie problémov v aplikácii.";
+
+"report_title" = "Nahlásiť problém";
+"report_description" = "Popíšte problém";
+"report_submit" = "Odoslať správu";
+"report_success" = "Správa bola úspešne odoslaná";
+"report_error" = "Nepodarilo sa odoslať správu";
+"report_placeholder" = "Popíšte svoj problém tu...";

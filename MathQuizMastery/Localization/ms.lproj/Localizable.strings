@@ -1,181 +1,226 @@
-"launch_title" = "Kuis Matematik Mastery";
-"launch_slogan" = "Mulai Kuis Matematik!";
-"launch_loading" = "Memuat...";
+"launch_title" = "Kuasai Kuis Matematik";
+"launch_slogan" = "Mulakan Kuis Matematik!";
+"launch_loading" = "Sedang memuat...";
+
 "register_title" = "Daftar";
-"enter_name" = "Masukkan nama Anda...";
-"enter_email" = "Masukkan alamat email Anda...";
-"enter_password" = "Masukkan kata sandi Anda...";
-"reenter_password" = "Masukkan kata sandi Anda lagi...";
-"passwords_do_not_match" = "Kata sandi tidak sama.";
-"password_mismatch" = "Kata sandi tidak sama.";
-"field_required" = "Bidang ini wajib diisi.";
+"enter_name" = "Masukkan nama anda...";
+"enter_email" = "Masukkan alamat emel anda...";
+"enter_password" = "Masukkan kata laluan anda...";
+"reenter_password" = "Masukkan semula kata laluan anda...";
+"passwords_do_not_match" = "Kata laluan tidak sepadan.";
+"password_mismatch" = "Kata laluan tidak sepadan.";
+"field_required" = "Medan ini diperlukan.";
 "registration_success" = "Pendaftaran berjaya!";
-"registration_failed" = "Pendaftaran tidak berjaya. Sila cuba lagi.";
-"invalid_email" = "Masukkan alamat email yang sah...";
+"registration_failed" = "Pendaftaran gagal. Sila cuba lagi.";
+"invalid_email" = "Masukkan alamat emel yang sah...";
 "loading" = "Sila tunggu...";
 "ok_button" = "OK";
 "cancel_button" = "Batal";
-"weak_password" = "Kata sandi mesti terdiri daripada sekurang-kurangnya 6 aksara.";
+"weak_password" = "Kata laluan mesti sekurang-kurangnya 6 aksara.";
+
 "login_success" = "Log masuk berjaya!";
 "log_in" = "Log masuk";
-"enter_password_required" = "Masukkan kata sandi Anda...";
-"email_required" = "Masukkan alamat email Anda...";
-"password_required" = "Kata sandi wajib diisi.";
-"password_too_short" = "Kata sandi terlalu pendek...";
-"name_required" = "Nama perlu diisi.";
-"success" = "Kejayaan";
+"enter_password_required" = "Sila masukkan kata laluan anda...";
+"email_required" = "Emel diperlukan.";
+"password_required" = "Kata laluan diperlukan.";
+"password_too_short" = "Kata laluan terlalu pendek.";
+"name_required" = "Nama diperlukan.";
+"success" = "Berjaya";
+
 "settings_profile" = "Profil";
 "settings_notifications" = "Pemberitahuan";
-"settings_faq" = "Soalan umum";
-"settings_report" = "Laporkan masalah";
-"settings_logout" = "Log keluar";
+"settings_faq" = "Soalan Lazim";
+"settings_report" = "Laporkan Masalah";
+"settings_logout" = "Log Keluar";
 "settings_title" = "Tetapan";
-"logout_title" = "Log keluar";
-"logout_message" = "Are you sure you want to log out?";
+
+"logout_title" = "Log Keluar";
+"logout_message" = "Adakah anda pasti mahu log keluar?";
 "logout_cancel" = "Batal";
-"logout_confirm" = "Log keluar";
-"notification_permission_title" = "Aktifkan pemberitahuan";
-"notification_permission_message" = "Sila izinkan pemberitahuan untuk terus berlangganan.";
-"notification_permission_error" = "Izin pemberitahuan ditolak.";
+"logout_confirm" = "Log Keluar";
+
+"notification_permission_title" = "Aktifkan Pemberitahuan";
+"notification_permission_message" = "Benarkan pemberitahuan untuk kekal dikemas kini.";
+"notification_permission_error" = "Kebenaran pemberitahuan ditolak.";
 "notification_permission_cancel" = "Batal";
-"notification_permission_settings" = "Buka tetapan";
-"notification_permission_denied" = "Izin pemberitahuan ditolak.";
-"notification_permission_granted" = "Izin pemberitahuan diberikan.";
-"notification_settings_title" = "Tetapan notifikasi";
-"notification_section_general" = "Umum";
+"notification_permission_settings" = "Buka Tetapan";
+"notification_permission_denied" = "Kebenaran pemberitahuan ditolak.";
+"notification_permission_granted" = "Kebenaran pemberitahuan diberikan.";
+
+"notification_settings_title" = "Tetapan Pemberitahuan";
+"notification_section_general" = "Am";
 "notification_section_quiz" = "Kuis";
-"notification_section_achievement" = "Kemenangan";
-"notification_new_features" = "Fungsi baru";
-"notification_new_features_desc" = "Sila izinkan pemberitahuan untuk terus berlangganan.";
-"notification_weekly_report" = "Laporan mingguan";
-"notification_weekly_report_desc" = "Anda akan menerima laporan mingguan Anda.";
-"notification_quiz_reminder" = "Pengingat kuis";
-"notification_quiz_reminder_desc" = "Jangan lupa untuk menyelesaikan kuis harian Anda!";
-"notification_daily_challenge" = "Cabaran harian";
-"notification_daily_challenge_desc" = "Siapkan cabaran baru setiap hari.";
-"register_title_text" = "Daftar ke Math Quiz Mastery";
+"notification_section_achievement" = "Pencapaian";
+
+"notification_new_features" = "Ciri Baru";
+"notification_new_features_desc" = "Terima pemberitahuan mengenai ciri baru.";
+"notification_weekly_report" = "Laporan Mingguan";
+"notification_weekly_report_desc" = "Terima laporan kemajuan mingguan anda.";
+"notification_quiz_reminder" = "Peringatan Kuis";
+"notification_quiz_reminder_desc" = "Jangan lupa selesaikan kuis harian anda!";
+"notification_daily_challenge" = "Cabaran Harian";
+"notification_daily_challenge_desc" = "Sedia untuk cabaran baru setiap hari.";
+
+"register_title_text" = "Daftar di Math Quiz Mastery";
 "agreement_text" = "Dengan mendaftar, anda bersetuju dengan terma kami.";
 "terms_of_service" = "Terma Perkhidmatan";
 "privacy_policy" = "Dasar Privasi";
+
 "create_account_title" = "Buat Akaun";
 "no_account_question" = "Belum ada akaun?";
 "register_now" = "Daftar sekarang";
+
 "ok" = "OK";
 "error" = "Ralat";
 "warning" = "Amaran";
-"error_title" = "Berlaku ralat";
+"error_title" = "Terjadi Ralat";
+
 "settings_logout_message" = "Adakah anda pasti mahu log keluar?";
 "validation_error" = "Ralat pengesahan.";
-"email_too_long" = "E-mel terlalu panjang.";
+
+"email_too_long" = "Emel terlalu panjang.";
 "password_too_long" = "Kata laluan terlalu panjang.";
 "password_weak" = "Kata laluan terlalu lemah.";
 "name_too_long" = "Nama terlalu panjang.";
 "name_invalid_characters" = "Nama mengandungi aksara tidak sah.";
+
 "confirm_password_required" = "Pengesahan kata laluan diperlukan.";
 "validation_in_progress" = "Pengesahan sedang dijalankan...";
+
 "game_win_message" = "Tahniah! Anda memenangi permainan!";
 "notification_time_format" = "Format masa: HH:mm";
 "notification_settings_saved" = "Tetapan pemberitahuan disimpan.";
-"notification_permission_denied_title" = "Kebenaran ditolak";
+
+"notification_permission_denied_title" = "Kebenaran Ditolak";
 "notification_permission_denied_message" = "Anda telah menolak kebenaran pemberitahuan.";
-"settings_profile_title" = "Tetapan profil";
-"settings_notifications_title" = "Tetapan notifikasi";
+
+"settings_profile_title" = "Tetapan Profil";
+"settings_notifications_title" = "Tetapan Pemberitahuan";
 "settings_faq_title" = "Tetapan FAQ";
-"settings_report_title" = "Tetapan laporan";
-"settings_about_title" = "Mengenai tetapan";
-"settings_logout_title" = "Tetapan log keluar";
-"open_settings" = "Buka tetapan";
+"settings_report_title" = "Tetapan Laporan";
+"settings_about_title" = "Mengenai Tetapan";
+"settings_logout_title" = "Tetapan Log Keluar";
+
+"open_settings" = "Buka Tetapan";
 "save" = "Simpan";
-"save_button_title" = "Simpan perubahan";
-"error_network" = "Ralat rangkaian.";
-"no_internet_connection" = "Tiada sambungan internet.";
-"cancel" = "Cancel";
-"settings" = "Settings";
-"login_title" = "Login title";
-"login_button" = "Login button";
-"register_button" = "Register button";
-"username_placeholder" = "Username placeholder";
-"password_placeholder" = "Password placeholder";
-"register_success" = "Register success";
-"register_error" = "Register error";
-"login_error" = "Login error";
-"game_title" = "Game title";
-"game_score" = "Game score";
-"game_time" = "Game time";
-"game_level" = "Game level";
-"game_over" = "Game over";
-"game_pause" = "Game pause";
-"game_resume" = "Game resume";
-"game_restart" = "Game restart";
-"game_quit" = "Game quit";
-"game_next" = "Game next";
-"game_previous" = "Game previous";
-"game_quit_message" = "Game quit message";
-"game_over_message" = "Game over message";
-"game_win" = "Game win";
-"notification_title" = "Notification title";
-"notification_message" = "Notification message";
-"notification_settings" = "Notification settings";
-"notifications_title" = "Notifications title";
-"notifications_enable" = "Notifications enable";
-"notifications_disable" = "Notifications disable";
-"notifications_daily" = "Notifications daily";
-"notifications_weekly" = "Notifications weekly";
-"notifications_time" = "Notifications time";
-"notification_streak_reminder" = "Notification streak reminder";
-"notification_streak_reminder_desc" = "Notification streak reminder desc";
-"notification_achievements" = "Notification achievements";
-"notification_achievements_desc" = "Notification achievements desc";
-"quiz_reminder_title" = "Quiz reminder title";
-"quiz_reminder_body" = "Quiz reminder body";
-"daily_challenge_title" = "Daily challenge title";
-"daily_challenge_body" = "Daily challenge body";
-"weekly_report_title" = "Weekly report title";
-"weekly_report_body" = "Weekly report body";
-"streak_reminder_title" = "Streak reminder title";
-"streak_reminder_body" = "Streak reminder body";
-"yes" = "Yes";
-"no" = "No";
-"home_title" = "Home title";
-"home_welcome" = "Home welcome";
-"home_play" = "Home play";
-"home_settings" = "Home settings";
-"home_profile" = "Home profile";
-"profile_title" = "Profile title";
-"profile_username" = "Profile username";
-"profile_score" = "Profile score";
-"profile_rank" = "Profile rank";
-"profile_achievements" = "Profile achievements";
-"category_title" = "Category title";
-"category_addition" = "Category addition";
-"category_subtraction" = "Category subtraction";
-"category_multiplication" = "Category multiplication";
-"category_division" = "Category division";
-"category_mixed" = "Category mixed";
-"result_title" = "Result title";
-"result_score" = "Result score";
-"result_time" = "Result time";
-"result_accuracy" = "Result accuracy";
-"result_new_record" = "Result new record";
-"result_play_again" = "Result play again";
-"result_home" = "Result home";
-"result_share" = "Result share";
+"save_button_title" = "Simpan Perubahan";
+
+"error_network" = "Ralat Rangkaian.";
+"no_internet_connection" = "Tiada Sambungan Internet.";
+
+"cancel" = "Batal";
+"settings" = "Tetapan";
+
+"login_title" = "Log Masuk";
+"login_button" = "Log Masuk";
+"register_button" = "Daftar";
+
+"username_placeholder" = "Nama Pengguna";
+"password_placeholder" = "Kata Laluan";
+
+"register_success" = "Pendaftaran Berjaya";
+"register_error" = "Pendaftaran Gagal";
+"login_error" = "Log Masuk Gagal";
+
+"game_title" = "Tajuk Permainan";
+"game_score" = "Skor Permainan";
+"game_time" = "Masa Permainan";
+"game_level" = "Tahap Permainan";
+"game_over" = "Permainan Tamat";
+"game_pause" = "Jeda";
+"game_resume" = "Sambung";
+"game_restart" = "Mula Semula";
+"game_quit" = "Keluar Permainan";
+"game_next" = "Seterusnya";
+"game_previous" = "Sebelumnya";
+
+"game_quit_message" = "Adakah anda pasti mahu keluar dari permainan?";
+"game_over_message" = "Permainan telah tamat!";
+"game_win" = "Anda Menang!";
+
+"notification_title" = "Tajuk Pemberitahuan";
+"notification_message" = "Mesej Pemberitahuan";
+
+"notification_settings" = "Tetapan Pemberitahuan";
+"notifications_title" = "Pemberitahuan";
+"notifications_enable" = "Aktifkan Pemberitahuan";
+"notifications_disable" = "Lumpuhkan Pemberitahuan";
+"notifications_daily" = "Pemberitahuan Harian";
+"notifications_weekly" = "Pemberitahuan Mingguan";
+"notifications_time" = "Masa Pemberitahuan";
+
+"notification_streak_reminder" = "Peringatan Siri";
+"notification_streak_reminder_desc" = "Main setiap hari untuk mengekalkan siri anda.";
+
+"notification_achievements" = "Pencapaian";
+"notification_achievements_desc" = "Ikuti pencapaian terkini anda.";
+
+"quiz_reminder_title" = "Peringatan Kuis";
+"quiz_reminder_body" = "Jangan lupa ambil kuis hari ini!";
+
+"daily_challenge_title" = "Cabaran Harian";
+"daily_challenge_body" = "Bersedia untuk cabaran baru hari ini?";
+
+"weekly_report_title" = "Laporan Mingguan";
+"weekly_report_body" = "Laporan mingguan anda sudah tersedia.";
+
+"streak_reminder_title" = "Peringatan Siri";
+"streak_reminder_body" = "Main setiap hari untuk mengekalkan siri anda.";
+
+"yes" = "Ya";
+"no" = "Tidak";
+
+"home_title" = "Laman Utama";
+"home_welcome" = "Selamat Datang";
+"home_play" = "Main";
+"home_settings" = "Tetapan";
+"home_profile" = "Profil";
+
+"profile_title" = "Profil";
+"profile_username" = "Nama Pengguna";
+"profile_score" = "Skor";
+"profile_rank" = "Kedudukan";
+"profile_achievements" = "Pencapaian";
+
+"category_title" = "Kategori";
+"category_addition" = "Tambah";
+"category_subtraction" = "Tolak";
+"category_multiplication" = "Darab";
+"category_division" = "Bahagi";
+"category_mixed" = "Campuran";
+
+"result_title" = "Keputusan";
+"result_score" = "Skor";
+"result_time" = "Masa";
+"result_accuracy" = "Ketepatan";
+"result_new_record" = "Rekod Baru!";
+"result_play_again" = "Main Lagi";
+"result_home" = "Laman Utama";
+"result_share" = "Kongsi";
+
 "result_score_text" = "Tahniah! Anda telah berjaya menyelesaikan misi.";
-"faq_title" = "Faq title";
-"faq_empty" = "Faq empty";
-"faq_q1" = "Faq q1";
-"faq_a1" = "Faq a1";
-"faq_q2" = "Faq q2";
-"faq_a2" = "Faq a2";
-"faq_q3" = "Faq q3";
-"faq_a3" = "Faq a3";
-"faq_q4" = "Faq q4";
-"faq_a4" = "Faq a4";
-"faq_q5" = "Faq q5";
-"faq_a5" = "Faq a5";
-"report_title" = "Report title";
-"report_description" = "Report description";
-"report_submit" = "Report submit";
-"report_success" = "Report success";
-"report_error" = "Report error";
-"report_placeholder" = "Report placeholder";
+
+"faq_title" = "Soalan Lazim";
+"faq_empty" = "Tiada soalan tersedia";
+
+"faq_q1" = "Apakah Math Quiz Mastery?";
+"faq_a1" = "Ia adalah aplikasi kuis matematik yang menyeronokkan untuk meningkatkan kemahiran anda.";
+
+"faq_q2" = "Bagaimana saya memulakan kuis?";
+"faq_a2" = "Anda boleh mula kuis dengan menekan butang main di skrin utama.";
+
+"faq_q3" = "Bolehkah saya menjejaki kemajuan saya?";
+"faq_a3" = "Ya, anda boleh melihat kemajuan dan pencapaian anda dalam profil.";
+
+"faq_q4" = "Adakah Math Quiz Mastery percuma?";
+"faq_a4" = "Muat turun dan bermain adalah percuma.";
+
+"faq_q5" = "Bagaimana saya boleh menghubungi sokongan?";
+"faq_a5" = "Anda boleh menghubungi sokongan melalui bahagian laporan dalam aplikasi.";
+
+"report_title" = "Laporkan Masalah";
+"report_description" = "Penerangan masalah";
+"report_submit" = "Hantar Laporan";
+"report_success" = "Laporan berjaya dihantar";
+"report_error" = "Ralat semasa menghantar laporan";
+"report_placeholder" = "Sila terangkan masalah di sini...";

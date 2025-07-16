@@ -1,6 +1,7 @@
 "launch_title" = "Matematik Quiz Mastery";
 "launch_slogan" = "Börja med Matematik Quiz!";
 "launch_loading" = "Laddar...";
+
 "register_title" = "Registrera";
 "enter_name" = "Ange ditt namn...";
 "enter_email" = "Ange din e-postadress...";
@@ -16,6 +17,7 @@
 "ok_button" = "OK";
 "cancel_button" = "Avbryt";
 "weak_password" = "Lösenordet måste vara minst 6 tecken långt.";
+
 "login_success" = "Inloggningen lyckades!";
 "log_in" = "Logga in";
 "enter_password_required" = "Ange ditt lösenord...";
@@ -24,158 +26,201 @@
 "password_too_short" = "Lösenordet är för kort...";
 "name_required" = "Namn är obligatoriskt.";
 "success" = "Lyckad";
+
 "settings_profile" = "Profil";
 "settings_notifications" = "Notifikationer";
 "settings_faq" = "Vanliga frågor";
 "settings_report" = "Skicka in problem";
 "settings_logout" = "Logga ut";
 "settings_title" = "Inställningar";
+
 "logout_title" = "Logga ut";
-"logout_message" = "Are you sure you want to log out?";
+"logout_message" = "Är du säker på att du vill logga ut?";
 "logout_cancel" = "Avbryt";
 "logout_confirm" = "Logga ut";
+
 "notification_permission_title" = "Aktivera notifikationer";
 "notification_permission_message" = "Aktivera notifikationer så att vi kan hålla dig uppdaterad.";
-"notification_permission_error" = "Notifikationer ne är tillåtna.";
+"notification_permission_error" = "Notifikationer är inte tillåtna.";
 "notification_permission_cancel" = "Avbryt";
 "notification_permission_settings" = "Öppna inställningar";
-"notification_permission_denied" = "Notifikationer ne är tillåtna.";
+"notification_permission_denied" = "Notifikationer är inte tillåtna.";
 "notification_permission_granted" = "Notifikationer är tillåtna.";
+
 "notification_settings_title" = "Inställningar för notifikationer";
 "notification_section_general" = "Allmänt";
 "notification_section_quiz" = "Quiz";
-"notification_section_achievement" = "Vinst";
+"notification_section_achievement" = "Vinster";
+
 "notification_new_features" = "Nya funktioner";
-"notification_new_features_desc" = "Aktivera notifikationer så att vi kan hålla dig uppdaterad.";
+"notification_new_features_desc" = "Aktivera notifikationer för att få de senaste uppdateringarna.";
 "notification_weekly_report" = "Veckorapport";
-"notification_weekly_report_desc" = "Du får ditt veckorapport.";
-"notification_quiz_reminder" = "Kvisturinne";
-"notification_quiz_reminder_desc" = "Glöm inte att lösa ditt dagliga kviz!";
+"notification_weekly_report_desc" = "Du får din veckorapport.";
+"notification_quiz_reminder" = "Quizpåminnelse";
+"notification_quiz_reminder_desc" = "Glöm inte att göra dagens quiz!";
 "notification_daily_challenge" = "Daglig utmaning";
-"notification_daily_challenge_desc" = "Varje dag förbereder du dig för en ny utmaning.";
+"notification_daily_challenge_desc" = "Varje dag väntar en ny utmaning på dig.";
+
 "register_title_text" = "Registrera dig på Math Quiz Mastery";
 "agreement_text" = "Genom att registrera dig godkänner du våra villkor.";
 "terms_of_service" = "Användarvillkor";
 "privacy_policy" = "Integritetspolicy";
+
 "create_account_title" = "Skapa konto";
 "no_account_question" = "Har du inget konto?";
 "register_now" = "Registrera dig nu";
+
 "ok" = "OK";
 "error" = "Fel";
 "warning" = "Varning";
 "error_title" = "Ett fel inträffade";
+
 "settings_logout_message" = "Är du säker på att du vill logga ut?";
 "validation_error" = "Valideringsfel.";
+
 "email_too_long" = "E-postadressen är för lång.";
 "password_too_long" = "Lösenordet är för långt.";
 "password_weak" = "Lösenordet är för svagt.";
 "name_too_long" = "Namnet är för långt.";
 "name_invalid_characters" = "Namnet innehåller ogiltiga tecken.";
+
 "confirm_password_required" = "Bekräfta lösenord krävs.";
 "validation_in_progress" = "Validering pågår...";
+
 "game_win_message" = "Grattis! Du vann spelet!";
 "notification_time_format" = "Tidsformat: HH:mm";
 "notification_settings_saved" = "Aviseringsinställningar sparade.";
+
 "notification_permission_denied_title" = "Åtkomst nekad";
 "notification_permission_denied_message" = "Du har nekat aviseringstillstånd.";
+
 "settings_profile_title" = "Profilinställningar";
 "settings_notifications_title" = "Inställningar för notifikationer";
 "settings_faq_title" = "FAQ-inställningar";
 "settings_report_title" = "Rapportinställningar";
 "settings_about_title" = "Om inställningar";
 "settings_logout_title" = "Utloggningsinställningar";
+
 "open_settings" = "Öppna inställningar";
 "save" = "Spara";
 "save_button_title" = "Spara ändringar";
+
 "error_network" = "Nätverksfel.";
 "no_internet_connection" = "Ingen internetanslutning.";
-"cancel" = "Cancel";
-"settings" = "Settings";
-"login_title" = "Login title";
-"login_button" = "Login button";
-"register_button" = "Register button";
-"username_placeholder" = "Username placeholder";
-"password_placeholder" = "Password placeholder";
-"register_success" = "Register success";
-"register_error" = "Register error";
-"login_error" = "Login error";
-"game_title" = "Game title";
-"game_score" = "Game score";
-"game_time" = "Game time";
-"game_level" = "Game level";
-"game_over" = "Game over";
-"game_pause" = "Game pause";
-"game_resume" = "Game resume";
-"game_restart" = "Game restart";
-"game_quit" = "Game quit";
-"game_next" = "Game next";
-"game_previous" = "Game previous";
-"game_quit_message" = "Game quit message";
-"game_over_message" = "Game over message";
-"game_win" = "Game win";
-"notification_title" = "Notification title";
-"notification_message" = "Notification message";
-"notification_settings" = "Notification settings";
-"notifications_title" = "Notifications title";
-"notifications_enable" = "Notifications enable";
-"notifications_disable" = "Notifications disable";
-"notifications_daily" = "Notifications daily";
-"notifications_weekly" = "Notifications weekly";
-"notifications_time" = "Notifications time";
-"notification_streak_reminder" = "Notification streak reminder";
-"notification_streak_reminder_desc" = "Notification streak reminder desc";
-"notification_achievements" = "Notification achievements";
-"notification_achievements_desc" = "Notification achievements desc";
-"quiz_reminder_title" = "Quiz reminder title";
-"quiz_reminder_body" = "Quiz reminder body";
-"daily_challenge_title" = "Daily challenge title";
-"daily_challenge_body" = "Daily challenge body";
-"weekly_report_title" = "Weekly report title";
-"weekly_report_body" = "Weekly report body";
-"streak_reminder_title" = "Streak reminder title";
-"streak_reminder_body" = "Streak reminder body";
-"yes" = "Yes";
-"no" = "No";
-"home_title" = "Home title";
-"home_welcome" = "Home welcome";
-"home_play" = "Home play";
-"home_settings" = "Home settings";
-"home_profile" = "Home profile";
-"profile_title" = "Profile title";
-"profile_username" = "Profile username";
-"profile_score" = "Profile score";
-"profile_rank" = "Profile rank";
-"profile_achievements" = "Profile achievements";
-"category_title" = "Category title";
-"category_addition" = "Category addition";
-"category_subtraction" = "Category subtraction";
-"category_multiplication" = "Category multiplication";
-"category_division" = "Category division";
-"category_mixed" = "Category mixed";
-"result_title" = "Result title";
-"result_score" = "Result score";
-"result_time" = "Result time";
-"result_accuracy" = "Result accuracy";
-"result_new_record" = "Result new record";
-"result_play_again" = "Result play again";
-"result_home" = "Result home";
-"result_share" = "Result share";
+
+"cancel" = "Avbryt";
+"settings" = "Inställningar";
+
+"login_title" = "Logga in";
+"login_button" = "Logga in";
+"register_button" = "Registrera";
+
+"username_placeholder" = "Användarnamn";
+"password_placeholder" = "Lösenord";
+
+"register_success" = "Registrering lyckades";
+"register_error" = "Registrering misslyckades";
+"login_error" = "Inloggning misslyckades";
+
+"game_title" = "Speltitel";
+"game_score" = "Poäng";
+"game_time" = "Tid";
+"game_level" = "Nivå";
+"game_over" = "Spelet är slut";
+"game_pause" = "Pausa";
+"game_resume" = "Fortsätt";
+"game_restart" = "Starta om";
+"game_quit" = "Avsluta spel";
+"game_next" = "Nästa";
+"game_previous" = "Föregående";
+
+"game_quit_message" = "Vill du avsluta spelet?";
+"game_over_message" = "Spelet är slut!";
+"game_win" = "Vinst";
+
+"notification_title" = "Aviseringstitel";
+"notification_message" = "Aviseringsmeddelande";
+
+"notification_settings" = "Aviseringsinställningar";
+"notifications_title" = "Aviseringar";
+"notifications_enable" = "Aktivera aviseringar";
+"notifications_disable" = "Inaktivera aviseringar";
+"notifications_daily" = "Dagliga aviseringar";
+"notifications_weekly" = "Veckovisa aviseringar";
+"notifications_time" = "Aviseringstid";
+
+"notification_streak_reminder" = "Påminnelse om följd";
+"notification_streak_reminder_desc" = "Fortsätt spela dagligen för belöningar.";
+
+"notification_achievements" = "Prestationer";
+"notification_achievements_desc" = "Se dina senaste prestationer.";
+
+"quiz_reminder_title" = "Påminnelse om quiz";
+"quiz_reminder_body" = "Glöm inte att göra dagens quiz!";
+
+"daily_challenge_title" = "Daglig utmaning";
+"daily_challenge_body" = "Redo för dagens nya utmaning?";
+
+"weekly_report_title" = "Veckorapport";
+"weekly_report_body" = "Här är din rapport för veckan.";
+
+"streak_reminder_title" = "Påminnelse om följd";
+"streak_reminder_body" = "Spela dagligen för att behålla din följd.";
+
+"yes" = "Ja";
+"no" = "Nej";
+
+"home_title" = "Hem";
+"home_welcome" = "Välkommen";
+"home_play" = "Spela";
+"home_settings" = "Inställningar";
+"home_profile" = "Profil";
+
+"profile_title" = "Profil";
+"profile_username" = "Användarnamn";
+"profile_score" = "Poäng";
+"profile_rank" = "Rankning";
+"profile_achievements" = "Prestationer";
+
+"category_title" = "Kategori";
+"category_addition" = "Addition";
+"category_subtraction" = "Subtraktion";
+"category_multiplication" = "Multiplikation";
+"category_division" = "Division";
+"category_mixed" = "Blandat";
+
+"result_title" = "Resultat";
+"result_score" = "Poäng";
+"result_time" = "Tid";
+"result_accuracy" = "Precision";
+"result_new_record" = "Nytt rekord!";
+"result_play_again" = "Spela igen";
+"result_home" = "Hem";
+"result_share" = "Dela";
+
 "result_score_text" = "Grattis! Du har slutfört uppdraget.";
-"faq_title" = "Faq title";
-"faq_empty" = "Faq empty";
+
+"faq_title" = "Vanliga frågor";
+"faq_empty" = "Inga frågor tillgängliga";
+
 "faq_q1" = "Vad är Math Quiz Mastery?";
 "faq_a1" = "Det är en rolig mattequiz-app för att förbättra dina färdigheter.";
+
 "faq_q2" = "Hur startar jag ett quiz?";
-"faq_a2" = "Du kan starta quizet genom att trycka på uppspelningsknappen på huvudsidan.";
+"faq_a2" = "Tryck på spela-knappen på startsidan för att börja.";
+
 "faq_q3" = "Kan jag följa min utveckling?";
 "faq_a3" = "Ja, du kan se dina framsteg och prestationer i din profil.";
+
 "faq_q4" = "Är Math Quiz Mastery gratis?";
-"faq_a4" = "Att ladda ner och spela är gratis.";
+"faq_a4" = "Appen är gratis att ladda ner och använda.";
+
 "faq_q5" = "Hur kontaktar jag supporten?";
-"faq_a5" = "Du kan kontakta supporten via rapportavsnittet i appen.";
-"report_title" = "Report title";
-"report_description" = "Report description";
-"report_submit" = "Report submit";
-"report_success" = "Report success";
-"report_error" = "Report error";
-"report_placeholder" = "Report placeholder";
+"faq_a5" = "Kontakta support via rapportsektionen i appen.";
+
+"report_title" = "Rapportera problem";
+"report_description" = "Beskriv problemet";
+"report_submit" = "Skicka rapport";
+"report_success" = "Rapport skickad";
+"report_error" = "Kunde inte skicka rapport";
+"report_placeholder" = "Beskriv ditt problem här...";

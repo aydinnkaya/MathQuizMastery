@@ -1,6 +1,7 @@
 "launch_title" = "Matematică Quiz Mastery";
-"launch_slogan" = "Începe cu Quizul de Matematică!";
+"launch_slogan" = "Începe cu quizul de matematică!";
 "launch_loading" = "Se încarcă...";
+
 "register_title" = "Înregistrare";
 "enter_name" = "Introduceți numele...";
 "enter_email" = "Introduceți adresa de email...";
@@ -8,174 +9,218 @@
 "reenter_password" = "Introduceți parola din nou...";
 "passwords_do_not_match" = "Parolele nu se potrivesc.";
 "password_mismatch" = "Parolele nu se potrivesc.";
-"field_required" = "Acest câmp este obligator.";
+"field_required" = "Acest câmp este obligatoriu.";
 "registration_success" = "Înregistrare reușită!";
-"registration_failed" = "Înregistrare a eșuat. Reîncercați, vă rog.";
+"registration_failed" = "Înregistrarea a eșuat. Vă rugăm să încercați din nou.";
 "invalid_email" = "Introduceți o adresă de email validă...";
-"loading" = "Vă rugăm să vă așteptați...";
+"loading" = "Vă rugăm să așteptați...";
 "ok_button" = "În regulă";
 "cancel_button" = "Anulează";
 "weak_password" = "Parola trebuie să aibă cel puțin 6 caractere.";
+
 "login_success" = "Autentificare reușită!";
 "log_in" = "Autentificare";
 "enter_password_required" = "Introduceți parola...";
 "email_required" = "Introduceți adresa de email...";
 "password_required" = "Parola este obligatorie.";
 "password_too_short" = "Parola este prea scurtă...";
-"name_required" = "Numele este obligator.";
+"name_required" = "Numele este obligatoriu.";
 "success" = "Succes";
+
 "settings_profile" = "Profil";
 "settings_notifications" = "Notificări";
 "settings_faq" = "Întrebări frecvente";
 "settings_report" = "Raportează o problemă";
 "settings_logout" = "Delogare";
 "settings_title" = "Setări";
+
 "logout_title" = "Delogare";
-"logout_message" = "Are you sure you want to log out?";
+"logout_message" = "Sigur doriți să vă delogați?";
 "logout_cancel" = "Anulează";
 "logout_confirm" = "Delogare";
+
 "notification_permission_title" = "Permite notificări";
-"notification_permission_message" = "Permiteți notificări pentru a vă păstra conectați.";
+"notification_permission_message" = "Permiteți notificările pentru a rămâne la curent.";
 "notification_permission_error" = "Permisiunea pentru notificări a fost refuzată.";
 "notification_permission_cancel" = "Anulează";
 "notification_permission_settings" = "Deschide setările";
 "notification_permission_denied" = "Permisiunea pentru notificări a fost refuzată.";
 "notification_permission_granted" = "Permisiunea pentru notificări a fost acordată.";
+
 "notification_settings_title" = "Setările notificărilor";
 "notification_section_general" = "General";
 "notification_section_quiz" = "Quiz";
-"notification_section_achievement" = "Rezultat";
+"notification_section_achievement" = "Realizări";
+
 "notification_new_features" = "Funcții noi";
-"notification_new_features_desc" = "Permiteți notificări pentru a vă păstra conectați.";
+"notification_new_features_desc" = "Permiteți notificările pentru a primi ultimele noutăți.";
 "notification_weekly_report" = "Raport săptămânal";
-"notification_weekly_report_desc" = "Veți primi raportul săptămânal de progres.";
-"notification_quiz_reminder" = "Lărgește amintirea";
-"notification_quiz_reminder_desc" = "Nu nu mai uita să rezolvi quizul zilnic!";
-"notification_daily_challenge" = "Desafiu zilnic";
-"notification_daily_challenge_desc" = "Încercați o nouă provocare în fiecare zi.";
-"register_title_text" = "Înregistrează-te la Math Quiz Mastery";
+"notification_weekly_report_desc" = "Veți primi un raport săptămânal de progres.";
+"notification_quiz_reminder" = "Memento quiz";
+"notification_quiz_reminder_desc" = "Nu uita să rezolvi quizul zilnic!";
+"notification_daily_challenge" = "Provocare zilnică";
+"notification_daily_challenge_desc" = "Acceptă o nouă provocare în fiecare zi.";
+
+"register_title_text" = "Înregistrează-te în Math Quiz Mastery";
 "agreement_text" = "Prin înregistrare, sunteți de acord cu termenii noștri.";
 "terms_of_service" = "Termeni de serviciu";
 "privacy_policy" = "Politica de confidențialitate";
+
 "create_account_title" = "Creează cont";
 "no_account_question" = "Nu ai un cont?";
 "register_now" = "Înregistrează-te acum";
+
 "ok" = "În regulă";
 "error" = "Eroare";
 "warning" = "Avertisment";
 "error_title" = "A apărut o eroare";
+
 "settings_logout_message" = "Sigur doriți să vă deconectați?";
 "validation_error" = "Eroare de validare.";
-"email_too_long" = "E-mailul este prea lung.";
+
+"email_too_long" = "Adresa de email este prea lungă.";
 "password_too_long" = "Parola este prea lungă.";
 "password_weak" = "Parola este prea slabă.";
 "name_too_long" = "Numele este prea lung.";
 "name_invalid_characters" = "Numele conține caractere invalide.";
+
 "confirm_password_required" = "Confirmarea parolei este necesară.";
-"validation_in_progress" = "Validare în curs...";
+"validation_in_progress" = "Se efectuează validarea...";
+
 "game_win_message" = "Felicitări! Ai câștigat jocul!";
 "notification_time_format" = "Format orar: HH:mm";
 "notification_settings_saved" = "Setările notificărilor au fost salvate.";
+
 "notification_permission_denied_title" = "Permisiune refuzată";
-"notification_permission_denied_message" = "Ați refuzat permisiunile de notificare.";
+"notification_permission_denied_message" = "Ai refuzat permisiunea pentru notificări.";
+
 "settings_profile_title" = "Setări profil";
-"settings_notifications_title" = "Setările notificărilor";
-"settings_faq_title" = "Setări FAQ";
+"settings_notifications_title" = "Setări notificări";
+"settings_faq_title" = "Setări întrebări frecvente";
 "settings_report_title" = "Setări raport";
-"settings_about_title" = "Despre setări";
-"settings_logout_title" = "Setări deconectare";
+"settings_about_title" = "Despre aplicație";
+"settings_logout_title" = "Setări delogare";
+
 "open_settings" = "Deschide setările";
 "save" = "Salvează";
 "save_button_title" = "Salvează modificările";
+
 "error_network" = "Eroare de rețea.";
 "no_internet_connection" = "Nu există conexiune la internet.";
-"cancel" = "Cancel";
-"settings" = "Settings";
-"login_title" = "Login title";
-"login_button" = "Login button";
-"register_button" = "Register button";
-"username_placeholder" = "Username placeholder";
-"password_placeholder" = "Password placeholder";
-"register_success" = "Register success";
-"register_error" = "Register error";
-"login_error" = "Login error";
-"game_title" = "Game title";
-"game_score" = "Game score";
-"game_time" = "Game time";
-"game_level" = "Game level";
-"game_over" = "Game over";
-"game_pause" = "Game pause";
-"game_resume" = "Game resume";
-"game_restart" = "Game restart";
-"game_quit" = "Game quit";
-"game_next" = "Game next";
-"game_previous" = "Game previous";
-"game_quit_message" = "Game quit message";
-"game_over_message" = "Game over message";
-"game_win" = "Game win";
-"notification_title" = "Notification title";
-"notification_message" = "Notification message";
-"notification_settings" = "Notification settings";
-"notifications_title" = "Notifications title";
-"notifications_enable" = "Notifications enable";
-"notifications_disable" = "Notifications disable";
-"notifications_daily" = "Notifications daily";
-"notifications_weekly" = "Notifications weekly";
-"notifications_time" = "Notifications time";
-"notification_streak_reminder" = "Notification streak reminder";
-"notification_streak_reminder_desc" = "Notification streak reminder desc";
-"notification_achievements" = "Notification achievements";
-"notification_achievements_desc" = "Notification achievements desc";
-"quiz_reminder_title" = "Quiz reminder title";
-"quiz_reminder_body" = "Quiz reminder body";
-"daily_challenge_title" = "Daily challenge title";
-"daily_challenge_body" = "Daily challenge body";
-"weekly_report_title" = "Weekly report title";
-"weekly_report_body" = "Weekly report body";
-"streak_reminder_title" = "Streak reminder title";
-"streak_reminder_body" = "Streak reminder body";
-"yes" = "Yes";
-"no" = "No";
-"home_title" = "Home title";
-"home_welcome" = "Home welcome";
-"home_play" = "Home play";
-"home_settings" = "Home settings";
-"home_profile" = "Home profile";
-"profile_title" = "Profile title";
-"profile_username" = "Profile username";
-"profile_score" = "Profile score";
-"profile_rank" = "Profile rank";
-"profile_achievements" = "Profile achievements";
-"category_title" = "Category title";
-"category_addition" = "Category addition";
-"category_subtraction" = "Category subtraction";
-"category_multiplication" = "Category multiplication";
-"category_division" = "Category division";
-"category_mixed" = "Category mixed";
-"result_title" = "Result title";
-"result_score" = "Result score";
-"result_time" = "Result time";
-"result_accuracy" = "Result accuracy";
-"result_new_record" = "Result new record";
-"result_play_again" = "Result play again";
-"result_home" = "Result home";
-"result_share" = "Result share";
+
+"cancel" = "Anulează";
+"settings" = "Setări";
+
+"login_title" = "Autentificare";
+"login_button" = "Conectare";
+"register_button" = "Înregistrare";
+
+"username_placeholder" = "Nume utilizator";
+"password_placeholder" = "Parolă";
+
+"register_success" = "Înregistrare reușită";
+"register_error" = "Eroare la înregistrare";
+"login_error" = "Eroare la autentificare";
+
+"game_title" = "Titlul jocului";
+"game_score" = "Scor";
+"game_time" = "Timp";
+"game_level" = "Nivel";
+"game_over" = "Joc terminat";
+"game_pause" = "Pauză";
+"game_resume" = "Continuă";
+"game_restart" = "Reîncepe";
+"game_quit" = "Ieși din joc";
+"game_next" = "Următorul";
+"game_previous" = "Anterior";
+
+"game_quit_message" = "Sigur dorești să ieși din joc?";
+"game_over_message" = "Joc terminat!";
+"game_win" = "Ai câștigat!";
+
+"notification_title" = "Titlu notificare";
+"notification_message" = "Mesaj notificare";
+
+"notification_settings" = "Setări notificări";
+"notifications_title" = "Notificări";
+"notifications_enable" = "Activează notificările";
+"notifications_disable" = "Dezactivează notificările";
+"notifications_daily" = "Notificări zilnice";
+"notifications_weekly" = "Notificări săptămânale";
+"notifications_time" = "Ora notificărilor";
+
+"notification_streak_reminder" = "Memento serie de zile";
+"notification_streak_reminder_desc" = "Joacă zilnic pentru a menține seria.";
+
+"notification_achievements" = "Realizări";
+"notification_achievements_desc" = "Urmărește-ți ultimele realizări.";
+
+"quiz_reminder_title" = "Memento quiz";
+"quiz_reminder_body" = "Nu uita să faci quizul astăzi!";
+
+"daily_challenge_title" = "Provocare zilnică";
+"daily_challenge_body" = "Ești gata pentru noua provocare de azi?";
+
+"weekly_report_title" = "Raport săptămânal";
+"weekly_report_body" = "Raportul tău săptămânal este gata.";
+
+"streak_reminder_title" = "Memento serie";
+"streak_reminder_body" = "Joacă zilnic pentru a menține seria.";
+
+"yes" = "Da";
+"no" = "Nu";
+
+"home_title" = "Acasă";
+"home_welcome" = "Bine ai venit";
+"home_play" = "Joacă";
+"home_settings" = "Setări";
+"home_profile" = "Profil";
+
+"profile_title" = "Profil";
+"profile_username" = "Nume utilizator";
+"profile_score" = "Scor";
+"profile_rank" = "Clasament";
+"profile_achievements" = "Realizări";
+
+"category_title" = "Categorie";
+"category_addition" = "Adunare";
+"category_subtraction" = "Scădere";
+"category_multiplication" = "Înmulțire";
+"category_division" = "Împărțire";
+"category_mixed" = "Mixte";
+
+"result_title" = "Rezultat";
+"result_score" = "Scor";
+"result_time" = "Timp";
+"result_accuracy" = "Precizie";
+"result_new_record" = "Record nou!";
+"result_play_again" = "Joacă din nou";
+"result_home" = "Acasă";
+"result_share" = "Distribuie";
+
 "result_score_text" = "Felicitări! Ai finalizat cu succes misiunea.";
-"faq_title" = "Faq title";
-"faq_empty" = "Faq empty";
+
+"faq_title" = "Întrebări frecvente";
+"faq_empty" = "Nu există întrebări";
+
 "faq_q1" = "Ce este Math Quiz Mastery?";
-"faq_a1" = "Este o aplicație de quiz matematic distractivă pentru a-ți îmbunătăți abilitățile.";
+"faq_a1" = "Este o aplicație distractivă de quiz matematic pentru a-ți îmbunătăți abilitățile.";
+
 "faq_q2" = "Cum încep un quiz?";
-"faq_a2" = "Poți începe quizul apăsând butonul de redare de pe ecranul principal.";
-"faq_q3" = "Pot să-mi urmăresc progresul?";
-"faq_a3" = "Da, îți poți vedea progresul și realizările în profilul tău.";
+"faq_a2" = "Poți începe quizul apăsând butonul de start de pe ecranul principal.";
+
+"faq_q3" = "Pot urmări progresul meu?";
+"faq_a3" = "Da, poți vedea progresul și realizările tale în profil.";
+
 "faq_q4" = "Math Quiz Mastery este gratuit?";
 "faq_a4" = "Descărcarea și jocul sunt gratuite.";
+
 "faq_q5" = "Cum pot contacta suportul?";
 "faq_a5" = "Poți contacta suportul prin secțiunea de raportare din aplicație.";
-"report_title" = "Report title";
-"report_description" = "Report description";
-"report_submit" = "Report submit";
-"report_success" = "Report success";
-"report_error" = "Report error";
-"report_placeholder" = "Report placeholder";
+
+"report_title" = "Raport";
+"report_description" = "Descriere raport";
+"report_submit" = "Trimite raport";
+"report_success" = "Raport trimis cu succes";
+"report_error" = "Eroare la trimiterea raportului";
+"report_placeholder" = "Descrie problema aici...";

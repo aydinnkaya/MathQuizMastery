@@ -1,181 +1,226 @@
 "launch_title" = "Matematika Quiz Mastery";
-"launch_slogan" = "Kezdje meg a matematikai kvizet!";
+"launch_slogan" = "Kezdje el a matematikai kvízt!";
 "launch_loading" = "Betöltés...";
+
 "register_title" = "Regisztráció";
-"enter_name" = "Add meg a nevét...";
-"enter_email" = "Add meg az e-mail címét...";
-"enter_password" = "Add meg a jelszót...";
-"reenter_password" = "Add meg a jelszót újra...";
-"passwords_do_not_match" = "A jelszók nem egyeznek.";
-"password_mismatch" = "A jelszók nem egyeznek.";
+"enter_name" = "Adja meg a nevét...";
+"enter_email" = "Adja meg az e-mail címét...";
+"enter_password" = "Adja meg a jelszavát...";
+"reenter_password" = "Adja meg újra a jelszavát...";
+"passwords_do_not_match" = "A jelszavak nem egyeznek.";
+"password_mismatch" = "A jelszavak nem egyeznek.";
 "field_required" = "Ez a mező kötelező.";
-"registration_success" = "A regisztráció sikeresen megtörtént!";
-"registration_failed" = "A regisztráció sikertelen. Próbálja újra.";
-"invalid_email" = "Add meg az e-mail címét...";
-"loading" = "Kérem, várakozzon...";
+"registration_success" = "Sikeres regisztráció!";
+"registration_failed" = "Sikertelen regisztráció. Kérjük, próbálja újra.";
+"invalid_email" = "Érvényes e-mail címet adjon meg.";
+"loading" = "Kérem, várjon...";
 "ok_button" = "Rendben";
 "cancel_button" = "Mégsem";
 "weak_password" = "A jelszónak legalább 6 karakterből kell állnia.";
-"login_success" = "A bejelentkezés sikeresen megtörtént!";
+
+"login_success" = "Sikeres bejelentkezés!";
 "log_in" = "Bejelentkezés";
-"enter_password_required" = "Add meg a jelszót...";
-"email_required" = "Add meg az e-mail címét...";
-"password_required" = "A jelszó megadása kötelező.";
-"password_too_short" = "A jelszó túl rövid...";
-"name_required" = "A név megadása kötelező.";
+"enter_password_required" = "Adja meg a jelszavát.";
+"email_required" = "E-mail megadása kötelező.";
+"password_required" = "Jelszó megadása kötelező.";
+"password_too_short" = "A jelszó túl rövid.";
+"name_required" = "Név megadása kötelező.";
 "success" = "Siker";
+
 "settings_profile" = "Profil";
 "settings_notifications" = "Értesítések";
-"settings_faq" = "Gyakran feltett kérdések";
-"settings_report" = "Probléma jelentése";
+"settings_faq" = "Gyakran Ismételt Kérdések";
+"settings_report" = "Probléma Jelentése";
 "settings_logout" = "Kijelentkezés";
 "settings_title" = "Beállítások";
+
 "logout_title" = "Kijelentkezés";
-"logout_message" = "Are you sure you want to log out?";
+"logout_message" = "Biztosan ki szeretne jelentkezni?";
 "logout_cancel" = "Mégsem";
 "logout_confirm" = "Kijelentkezés";
+
 "notification_permission_title" = "Értesítések engedélyezése";
-"notification_permission_message" = "Kérem, engedélyezze a figyelmeztetéseket, hogy tudjuk, ha valami új.";
-"notification_permission_error" = "Értesítések engedélyezése megtagadva.";
+"notification_permission_message" = "Kérjük, engedélyezze az értesítéseket, hogy naprakész lehessen.";
+"notification_permission_error" = "Értesítési engedély megtagadva.";
 "notification_permission_cancel" = "Mégsem";
-"notification_permission_settings" = "Beállítások";
-"notification_permission_denied" = "Értesítések engedélyezése megtagadva.";
-"notification_permission_granted" = "Értesítések engedélyezése.";
-"notification_settings_title" = "Beállítások";
+"notification_permission_settings" = "Beállítások megnyitása";
+"notification_permission_denied" = "Értesítési engedély megtagadva.";
+"notification_permission_granted" = "Értesítési engedély megadva.";
+
+"notification_settings_title" = "Értesítési beállítások";
 "notification_section_general" = "Általános";
 "notification_section_quiz" = "Kvíz";
-"notification_section_achievement" = "Résultat";
+"notification_section_achievement" = "Eredmények";
+
 "notification_new_features" = "Új funkciók";
-"notification_new_features_desc" = "Kérem, engedélyezze a figyelmeztetéseket, hogy tudjuk, ha valami új.";
-"notification_weekly_report" = "Hetentei jelentés";
-"notification_weekly_report_desc" = "Heti jelentésed kap egy e-mailben.";
+"notification_new_features_desc" = "Kapjon értesítéseket az új funkciókról.";
+"notification_weekly_report" = "Heti jelentés";
+"notification_weekly_report_desc" = "Heti előrehaladási jelentést kap.";
 "notification_quiz_reminder" = "Kvíz emlékeztető";
-"notification_quiz_reminder_desc" = "Ne felejtsétek el megoldani a napi kvizet!";
+"notification_quiz_reminder_desc" = "Ne felejtse el kitölteni a napi kvízt!";
 "notification_daily_challenge" = "Napi kihívás";
-"notification_daily_challenge_desc" = "Minden napra készüljön fel egy új kihívásra.";
-"register_title_text" = "Regisztráljon a Math Quiz Mastery-re";
-"agreement_text" = "A regisztrációval elfogadja a feltételeinket.";
-"terms_of_service" = "Szolgáltatási feltételek";
+"notification_daily_challenge_desc" = "Minden nap egy új kihívás vár Önre.";
+
+"register_title_text" = "Regisztráció a Math Quiz Mastery alkalmazásba";
+"agreement_text" = "Regisztrációval elfogadja az Általános Szerződési Feltételeket.";
+"terms_of_service" = "Felhasználási feltételek";
 "privacy_policy" = "Adatvédelmi irányelvek";
+
 "create_account_title" = "Fiók létrehozása";
-"no_account_question" = "Nincs fiókod?";
-"register_now" = "Regisztrálj most";
+"no_account_question" = "Nincs még fiókja?";
+"register_now" = "Regisztráljon most";
+
 "ok" = "Rendben";
 "error" = "Hiba";
 "warning" = "Figyelmeztetés";
 "error_title" = "Hiba történt";
-"settings_logout_message" = "Biztosan ki akar jelentkezni?";
+
+"settings_logout_message" = "Biztosan ki szeretne jelentkezni?";
 "validation_error" = "Érvényesítési hiba.";
-"email_too_long" = "Az e-mail túl hosszú.";
+
+"email_too_long" = "Az e-mail cím túl hosszú.";
 "password_too_long" = "A jelszó túl hosszú.";
 "password_weak" = "A jelszó túl gyenge.";
 "name_too_long" = "A név túl hosszú.";
 "name_invalid_characters" = "A név érvénytelen karaktereket tartalmaz.";
-"confirm_password_required" = "A jelszó megerősítése kötelező.";
+
+"confirm_password_required" = "Jelszó megerősítése kötelező.";
 "validation_in_progress" = "Érvényesítés folyamatban...";
-"game_win_message" = "Gratulálunk! Megnyerted a játékot!";
+
+"game_win_message" = "Gratulálunk! Megnyerte a játékot!";
 "notification_time_format" = "Időformátum: HH:mm";
 "notification_settings_saved" = "Értesítési beállítások elmentve.";
+
 "notification_permission_denied_title" = "Engedély megtagadva";
 "notification_permission_denied_message" = "Elutasította az értesítési engedélyeket.";
-"settings_profile_title" = "Profilbeállítások";
-"settings_notifications_title" = "Beállítások";
+
+"settings_profile_title" = "Profil beállítások";
+"settings_notifications_title" = "Értesítési beállítások";
 "settings_faq_title" = "GYIK beállítások";
 "settings_report_title" = "Jelentés beállítások";
 "settings_about_title" = "A beállításokról";
 "settings_logout_title" = "Kijelentkezési beállítások";
-"open_settings" = "Beállítások";
+
+"open_settings" = "Beállítások megnyitása";
 "save" = "Mentés";
 "save_button_title" = "Változtatások mentése";
+
 "error_network" = "Hálózati hiba.";
 "no_internet_connection" = "Nincs internetkapcsolat.";
-"cancel" = "Cancel";
-"settings" = "Settings";
-"login_title" = "Login title";
-"login_button" = "Login button";
-"register_button" = "Register button";
-"username_placeholder" = "Username placeholder";
-"password_placeholder" = "Password placeholder";
-"register_success" = "Register success";
-"register_error" = "Register error";
-"login_error" = "Login error";
-"game_title" = "Game title";
-"game_score" = "Game score";
-"game_time" = "Game time";
-"game_level" = "Game level";
-"game_over" = "Game over";
-"game_pause" = "Game pause";
-"game_resume" = "Game resume";
-"game_restart" = "Game restart";
-"game_quit" = "Game quit";
-"game_next" = "Game next";
-"game_previous" = "Game previous";
-"game_quit_message" = "Game quit message";
-"game_over_message" = "Game over message";
-"game_win" = "Game win";
-"notification_title" = "Notification title";
-"notification_message" = "Notification message";
-"notification_settings" = "Notification settings";
-"notifications_title" = "Notifications title";
-"notifications_enable" = "Notifications enable";
-"notifications_disable" = "Notifications disable";
-"notifications_daily" = "Notifications daily";
-"notifications_weekly" = "Notifications weekly";
-"notifications_time" = "Notifications time";
-"notification_streak_reminder" = "Notification streak reminder";
-"notification_streak_reminder_desc" = "Notification streak reminder desc";
-"notification_achievements" = "Notification achievements";
-"notification_achievements_desc" = "Notification achievements desc";
-"quiz_reminder_title" = "Quiz reminder title";
-"quiz_reminder_body" = "Quiz reminder body";
-"daily_challenge_title" = "Daily challenge title";
-"daily_challenge_body" = "Daily challenge body";
-"weekly_report_title" = "Weekly report title";
-"weekly_report_body" = "Weekly report body";
-"streak_reminder_title" = "Streak reminder title";
-"streak_reminder_body" = "Streak reminder body";
-"yes" = "Yes";
-"no" = "No";
-"home_title" = "Home title";
-"home_welcome" = "Home welcome";
-"home_play" = "Home play";
-"home_settings" = "Home settings";
-"home_profile" = "Home profile";
-"profile_title" = "Profile title";
-"profile_username" = "Profile username";
-"profile_score" = "Profile score";
-"profile_rank" = "Profile rank";
-"profile_achievements" = "Profile achievements";
-"category_title" = "Category title";
-"category_addition" = "Category addition";
-"category_subtraction" = "Category subtraction";
-"category_multiplication" = "Category multiplication";
-"category_division" = "Category division";
-"category_mixed" = "Category mixed";
-"result_title" = "Result title";
-"result_score" = "Result score";
-"result_time" = "Result time";
-"result_accuracy" = "Result accuracy";
-"result_new_record" = "Result new record";
-"result_play_again" = "Result play again";
-"result_home" = "Result home";
-"result_share" = "Result share";
-"result_score_text" = "Gratulálunk! Sikeresen teljesítetted a küldetést.";
-"faq_title" = "Faq title";
-"faq_empty" = "Faq empty";
-"faq_q1" = "Faq q1";
-"faq_a1" = "Faq a1";
-"faq_q2" = "Faq q2";
-"faq_a2" = "Faq a2";
-"faq_q3" = "Faq q3";
-"faq_a3" = "Faq a3";
-"faq_q4" = "Faq q4";
-"faq_a4" = "Faq a4";
-"faq_q5" = "Faq q5";
-"faq_a5" = "Faq a5";
-"report_title" = "Report title";
-"report_description" = "Report description";
-"report_submit" = "Report submit";
-"report_success" = "Report success";
-"report_error" = "Report error";
-"report_placeholder" = "Report placeholder";
+
+"cancel" = "Mégsem";
+"settings" = "Beállítások";
+
+"login_title" = "Bejelentkezés";
+"login_button" = "Bejelentkezés";
+"register_button" = "Regisztráció";
+
+"username_placeholder" = "Felhasználónév";
+"password_placeholder" = "Jelszó";
+
+"register_success" = "Sikeres regisztráció";
+"register_error" = "Regisztrációs hiba";
+"login_error" = "Bejelentkezési hiba";
+
+"game_title" = "Játék címe";
+"game_score" = "Pontszám";
+"game_time" = "Játékidő";
+"game_level" = "Játékszint";
+"game_over" = "Játék vége";
+"game_pause" = "Szünet";
+"game_resume" = "Folytatás";
+"game_restart" = "Újraindítás";
+"game_quit" = "Kilépés";
+"game_next" = "Következő";
+"game_previous" = "Előző";
+
+"game_quit_message" = "Biztosan ki szeretne lépni a játékból?";
+"game_over_message" = "A játék véget ért!";
+"game_win" = "Győzelem!";
+
+"notification_title" = "Értesítés címe";
+"notification_message" = "Értesítés üzenete";
+
+"notification_settings" = "Értesítési beállítások";
+"notifications_title" = "Értesítések";
+"notifications_enable" = "Értesítések engedélyezése";
+"notifications_disable" = "Értesítések letiltása";
+"notifications_daily" = "Napi értesítések";
+"notifications_weekly" = "Heti értesítések";
+"notifications_time" = "Értesítés ideje";
+
+"notification_streak_reminder" = "Sorozat emlékeztető";
+"notification_streak_reminder_desc" = "Tartsa fenn a nyerő sorozatát!";
+
+"notification_achievements" = "Eredmények értesítése";
+"notification_achievements_desc" = "Maradjon naprakész az eredményeivel kapcsolatban!";
+
+"quiz_reminder_title" = "Kvíz emlékeztető";
+"quiz_reminder_body" = "Ne felejtse el kitölteni a mai kvízt!";
+
+"daily_challenge_title" = "Napi kihívás";
+"daily_challenge_body" = "Minden nap egy új kihívás vár Önre!";
+
+"weekly_report_title" = "Heti jelentés";
+"weekly_report_body" = "Ez a heti előrehaladási jelentése.";
+
+"streak_reminder_title" = "Sorozat emlékeztető";
+"streak_reminder_body" = "Tartsa fenn a nyerő sorozatát!";
+
+"yes" = "Igen";
+"no" = "Nem";
+
+"home_title" = "Főoldal";
+"home_welcome" = "Üdvözöljük";
+"home_play" = "Játék";
+"home_settings" = "Beállítások";
+"home_profile" = "Profil";
+
+"profile_title" = "Profil";
+"profile_username" = "Felhasználónév";
+"profile_score" = "Pontszám";
+"profile_rank" = "Rangsor";
+"profile_achievements" = "Eredmények";
+
+"category_title" = "Kategória";
+"category_addition" = "Összeadás";
+"category_subtraction" = "Kivonás";
+"category_multiplication" = "Szorzás";
+"category_division" = "Osztás";
+"category_mixed" = "Vegyes";
+
+"result_title" = "Eredmény";
+"result_score" = "Pontszám";
+"result_time" = "Idő";
+"result_accuracy" = "Pontosság";
+"result_new_record" = "Új rekord!";
+"result_play_again" = "Újrajátszás";
+"result_home" = "Vissza a főoldalra";
+"result_share" = "Megosztás";
+
+"result_score_text" = "Gratulálunk! Sikeresen teljesítette a küldetést.";
+
+"faq_title" = "GYIK";
+"faq_empty" = "Nincsenek kérdések.";
+
+"faq_q1" = "Mi az a Math Quiz Mastery?";
+"faq_a1" = "Ez egy szórakoztató matematikai kvíz alkalmazás a képességei fejlesztésére.";
+
+"faq_q2" = "Hogyan kezdhetek el egy kvízt?";
+"faq_a2" = "A főképernyőn a lejátszás gomb megérintésével indíthatja el a kvízt.";
+
+"faq_q3" = "Nyomon követhetem a fejlődésemet?";
+"faq_a3" = "Igen, megtekintheti előrehaladását és eredményeit a profiljában.";
+
+"faq_q4" = "Ingyenes a Math Quiz Mastery?";
+"faq_a4" = "Az alkalmazás letöltése és használata ingyenes.";
+
+"faq_q5" = "Hogyan léphetek kapcsolatba a támogatással?";
+"faq_a5" = "Az alkalmazás jelentés részén keresztül léphet kapcsolatba a támogatással.";
+
+"report_title" = "Jelentés";
+"report_description" = "Írja le a problémát részletesen";
+"report_submit" = "Jelentés küldése";
+"report_success" = "Jelentés sikeresen elküldve";
+"report_error" = "Hiba történt a jelentés küldésekor";
+"report_placeholder" = "Ide írja be a problémát...";

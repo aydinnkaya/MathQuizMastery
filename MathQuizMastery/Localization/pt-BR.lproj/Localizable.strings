@@ -1,6 +1,7 @@
 "launch_title" = "Mestre do Quiz de Matemática";
 "launch_slogan" = "Decole para o domínio da matemática!";
 "launch_loading" = "Carregando...";
+
 "register_title" = "Registrar";
 "enter_name" = "Digite seu nome";
 "enter_email" = "Digite seu e-mail";
@@ -16,6 +17,7 @@
 "ok_button" = "OK";
 "cancel_button" = "Cancelar";
 "weak_password" = "A senha deve ter pelo menos 6 caracteres.";
+
 "login_success" = "Login bem-sucedido!";
 "log_in" = "Entrar";
 "enter_password_required" = "Por favor, digite sua senha.";
@@ -24,16 +26,19 @@
 "password_too_short" = "A senha é muito curta.";
 "name_required" = "Nome é obrigatório.";
 "success" = "Sucesso";
+
 "settings_profile" = "Perfil";
 "settings_notifications" = "Notificações";
 "settings_faq" = "Perguntas Frequentes";
 "settings_report" = "Relatar um problema";
 "settings_logout" = "Sair";
 "settings_title" = "Configurações";
+
 "logout_title" = "Sair";
 "logout_message" = "Tem certeza que deseja sair?";
 "logout_cancel" = "Cancelar";
 "logout_confirm" = "Sair";
+
 "notification_permission_title" = "Ativar notificações";
 "notification_permission_message" = "Por favor, permita notificações para se manter atualizado.";
 "notification_permission_error" = "Permissão para notificações negada.";
@@ -41,10 +46,12 @@
 "notification_permission_settings" = "Abrir configurações";
 "notification_permission_denied" = "Permissão para notificações negada.";
 "notification_permission_granted" = "Permissão para notificações concedida.";
+
 "notification_settings_title" = "Configurações de notificação";
 "notification_section_general" = "Geral";
 "notification_section_quiz" = "Quiz";
 "notification_section_achievement" = "Conquista";
+
 "notification_new_features" = "Novos recursos";
 "notification_new_features_desc" = "Receba notificações sobre novos recursos.";
 "notification_weekly_report" = "Relatório semanal";
@@ -53,129 +60,167 @@
 "notification_quiz_reminder_desc" = "Não se esqueça de resolver seu quiz diário!";
 "notification_daily_challenge" = "Desafio diário";
 "notification_daily_challenge_desc" = "Encare um novo desafio todos os dias.";
+
 "register_title_text" = "Registre-se no Math Quiz Mastery";
 "agreement_text" = "Ao se registrar, você concorda com nossos termos.";
 "terms_of_service" = "Termos de serviço";
 "privacy_policy" = "Política de Privacidade";
+
 "create_account_title" = "Criar conta";
 "no_account_question" = "Não tem uma conta?";
 "register_now" = "Registre-se agora";
+
 "ok" = "OK";
 "error" = "Erro";
 "warning" = "Aviso";
 "error_title" = "Ocorreu um erro";
+
 "settings_logout_message" = "Tem certeza que deseja sair?";
 "validation_error" = "Erro de validação.";
+
 "email_too_long" = "O e-mail é muito longo.";
 "password_too_long" = "A senha é muito longa.";
 "password_weak" = "A senha é muito fraca.";
 "name_too_long" = "O nome é muito longo.";
 "name_invalid_characters" = "O nome contém caracteres inválidos.";
+
 "confirm_password_required" = "Confirmação de senha é obrigatória.";
 "validation_in_progress" = "Validação em andamento...";
+
 "game_win_message" = "Parabéns! Você ganhou o jogo!";
 "notification_time_format" = "Formato de hora: HH:mm";
 "notification_settings_saved" = "Configurações de notificação salvas.";
+
 "notification_permission_denied_title" = "Permissão negada";
 "notification_permission_denied_message" = "Você negou as permissões de notificação.";
+
 "settings_profile_title" = "Configurações de perfil";
 "settings_notifications_title" = "Configurações de notificação";
 "settings_faq_title" = "Configurações de FAQ";
 "settings_report_title" = "Configurações de relatório";
 "settings_about_title" = "Sobre as configurações";
 "settings_logout_title" = "Configurações de logout";
+
 "open_settings" = "Abrir configurações";
 "save" = "Salvar";
 "save_button_title" = "Salvar alterações";
+
 "error_network" = "Erro de rede.";
 "no_internet_connection" = "Sem conexão com a Internet.";
-"cancel" = "Cancel";
-"settings" = "Settings";
-"login_title" = "Login title";
-"login_button" = "Login button";
-"register_button" = "Register button";
-"username_placeholder" = "Username placeholder";
-"password_placeholder" = "Password placeholder";
-"register_success" = "Register success";
-"register_error" = "Register error";
-"login_error" = "Login error";
-"game_title" = "Game title";
-"game_score" = "Game score";
-"game_time" = "Game time";
-"game_level" = "Game level";
-"game_over" = "Game over";
-"game_pause" = "Game pause";
-"game_resume" = "Game resume";
-"game_restart" = "Game restart";
-"game_quit" = "Game quit";
-"game_next" = "Game next";
-"game_previous" = "Game previous";
-"game_quit_message" = "Game quit message";
-"game_over_message" = "Game over message";
-"game_win" = "Game win";
-"notification_title" = "Notification title";
-"notification_message" = "Notification message";
-"notification_settings" = "Notification settings";
-"notifications_title" = "Notifications title";
-"notifications_enable" = "Notifications enable";
-"notifications_disable" = "Notifications disable";
-"notifications_daily" = "Notifications daily";
-"notifications_weekly" = "Notifications weekly";
-"notifications_time" = "Notifications time";
-"notification_streak_reminder" = "Notification streak reminder";
-"notification_streak_reminder_desc" = "Notification streak reminder desc";
-"notification_achievements" = "Notification achievements";
-"notification_achievements_desc" = "Notification achievements desc";
-"quiz_reminder_title" = "Quiz reminder title";
-"quiz_reminder_body" = "Quiz reminder body";
-"daily_challenge_title" = "Daily challenge title";
-"daily_challenge_body" = "Daily challenge body";
-"weekly_report_title" = "Weekly report title";
-"weekly_report_body" = "Weekly report body";
-"streak_reminder_title" = "Streak reminder title";
-"streak_reminder_body" = "Streak reminder body";
-"yes" = "Yes";
-"no" = "No";
-"home_title" = "Home title";
-"home_welcome" = "Home welcome";
-"home_play" = "Home play";
-"home_settings" = "Home settings";
-"home_profile" = "Home profile";
-"profile_title" = "Profile title";
-"profile_username" = "Profile username";
-"profile_score" = "Profile score";
-"profile_rank" = "Profile rank";
-"profile_achievements" = "Profile achievements";
-"category_title" = "Category title";
-"category_addition" = "Category addition";
-"category_subtraction" = "Category subtraction";
-"category_multiplication" = "Category multiplication";
-"category_division" = "Category division";
-"category_mixed" = "Category mixed";
-"result_title" = "Result title";
-"result_score" = "Result score";
-"result_time" = "Result time";
-"result_accuracy" = "Result accuracy";
-"result_new_record" = "Result new record";
-"result_play_again" = "Result play again";
-"result_home" = "Result home";
-"result_share" = "Result share";
+
+"cancel" = "Cancelar";
+"settings" = "Configurações";
+
+"login_title" = "Entrar";
+"login_button" = "Entrar";
+"register_button" = "Registrar";
+
+"username_placeholder" = "Nome de usuário";
+"password_placeholder" = "Senha";
+
+"register_success" = "Registro efetuado com sucesso";
+"register_error" = "Erro no registro";
+"login_error" = "Erro ao entrar";
+
+"game_title" = "Título do jogo";
+"game_score" = "Pontuação";
+"game_time" = "Tempo de jogo";
+"game_level" = "Nível do jogo";
+"game_over" = "Fim do jogo";
+"game_pause" = "Pausa";
+"game_resume" = "Continuar";
+"game_restart" = "Reiniciar";
+"game_quit" = "Sair do jogo";
+"game_next" = "Próximo";
+"game_previous" = "Anterior";
+
+"game_quit_message" = "Tem certeza que deseja sair do jogo?";
+"game_over_message" = "Fim do jogo!";
+"game_win" = "Vitória!";
+
+"notification_title" = "Título da notificação";
+"notification_message" = "Mensagem da notificação";
+
+"notification_settings" = "Configurações de notificações";
+"notifications_title" = "Notificações";
+"notifications_enable" = "Ativar notificações";
+"notifications_disable" = "Desativar notificações";
+"notifications_daily" = "Notificações diárias";
+"notifications_weekly" = "Notificações semanais";
+"notifications_time" = "Hora das notificações";
+
+"notification_streak_reminder" = "Lembrete de sequência";
+"notification_streak_reminder_desc" = "Jogue todos os dias para manter a sequência.";
+
+"notification_achievements" = "Conquistas";
+"notification_achievements_desc" = "Acompanhe suas últimas conquistas.";
+
+"quiz_reminder_title" = "Lembrete do quiz";
+"quiz_reminder_body" = "Não se esqueça de fazer o quiz hoje!";
+
+"daily_challenge_title" = "Desafio diário";
+"daily_challenge_body" = "Pronto para o novo desafio de hoje?";
+
+"weekly_report_title" = "Relatório semanal";
+"weekly_report_body" = "Seu relatório semanal está pronto.";
+
+"streak_reminder_title" = "Lembrete de sequência";
+"streak_reminder_body" = "Jogue todos os dias para manter a sequência.";
+
+"yes" = "Sim";
+"no" = "Não";
+
+"home_title" = "Início";
+"home_welcome" = "Bem-vindo";
+"home_play" = "Jogar";
+"home_settings" = "Configurações";
+"home_profile" = "Perfil";
+
+"profile_title" = "Perfil";
+"profile_username" = "Nome de usuário";
+"profile_score" = "Pontuação";
+"profile_rank" = "Classificação";
+"profile_achievements" = "Conquistas";
+
+"category_title" = "Categoria";
+"category_addition" = "Adição";
+"category_subtraction" = "Subtração";
+"category_multiplication" = "Multiplicação";
+"category_division" = "Divisão";
+"category_mixed" = "Misto";
+
+"result_title" = "Resultado";
+"result_score" = "Pontuação";
+"result_time" = "Tempo";
+"result_accuracy" = "Precisão";
+"result_new_record" = "Novo recorde!";
+"result_play_again" = "Jogar novamente";
+"result_home" = "Início";
+"result_share" = "Compartilhar";
+
 "result_score_text" = "Parabéns! Você concluiu a missão com sucesso.";
-"faq_title" = "Faq title";
-"faq_empty" = "Faq empty";
-"faq_q1" = "O que é Math Quiz Mastery?";
-"faq_a1" = "É um aplicativo de quiz de matemática divertido para melhorar suas habilidades.";
+
+"faq_title" = "Perguntas Frequentes";
+"faq_empty" = "Nenhuma pergunta disponível";
+
+"faq_q1" = "O que é o Math Quiz Mastery?";
+"faq_a1" = "É um aplicativo divertido de quiz matemático para aprimorar suas habilidades.";
+
 "faq_q2" = "Como começo um quiz?";
-"faq_a2" = "Você pode iniciar um quiz tocando no botão de reprodução na tela principal.";
+"faq_a2" = "Você pode iniciar um quiz tocando no botão de jogar na tela principal.";
+
 "faq_q3" = "Posso acompanhar meu progresso?";
 "faq_a3" = "Sim, você pode ver seu progresso e conquistas no seu perfil.";
-"faq_q4" = "Math Quiz Mastery é gratuito?";
+
+"faq_q4" = "O Math Quiz Mastery é gratuito?";
 "faq_a4" = "Baixar e jogar são gratuitos.";
+
 "faq_q5" = "Como posso entrar em contato com o suporte?";
-"faq_a5" = "Você pode entrar em contato com o suporte pela seção de relatórios no aplicativo.";
-"report_title" = "Report title";
-"report_description" = "Report description";
-"report_submit" = "Report submit";
-"report_success" = "Report success";
-"report_error" = "Report error";
-"report_placeholder" = "Report placeholder";
+"faq_a5" = "Você pode entrar em contato com o suporte através da seção de relatórios no aplicativo.";
+
+"report_title" = "Relatar problema";
+"report_description" = "Descrição do problema";
+"report_submit" = "Enviar relatório";
+"report_success" = "Relatório enviado com sucesso";
+"report_error" = "Erro ao enviar relatório";
+"report_placeholder" = "Descreva o problema aqui...";
