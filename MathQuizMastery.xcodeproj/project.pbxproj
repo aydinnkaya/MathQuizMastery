@@ -62,7 +62,6 @@
 		0F0F0CBB2E0C2F1100D371C1 /* Exceptions for "MathQuizMastery" folder in "MathQuizMasteryUITests" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				PrivacyInfo.xcprivacy,
 				Utils/AppTrackingManager.swift,
 			);
 			target = 0FA0908A2D2FAEB300D83F96 /* MathQuizMasteryUITests */;
@@ -70,7 +69,6 @@
 		0F0F0CBC2E0C2F1100D371C1 /* Exceptions for "MathQuizMastery" folder in "MathQuizMasteryTests" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				PrivacyInfo.xcprivacy,
 				Utils/AppTrackingManager.swift,
 			);
 			target = 0FCB455A2DA54295002D6239 /* MathQuizMasteryTests */;
@@ -437,7 +435,9 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GENERATE_DEBUG_SYMBOLS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MathQuizMastery/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Math Quiz Mastery";
@@ -456,12 +456,10 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.aydinkaya.MathQuizMastery;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_DEBUG_SYMBOLS_DURING_COPY = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GENERATE_DEBUG_SYMBOLS = YES;
-				STRIP_DEBUG_SYMBOLS_DURING_COPY = NO;
 			};
 			name = Debug;
 		};
@@ -472,7 +470,9 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GENERATE_DEBUG_SYMBOLS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MathQuizMastery/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Math Quiz Mastery";
@@ -491,12 +491,10 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.aydinkaya.MathQuizMastery;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_DEBUG_SYMBOLS_DURING_COPY = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GENERATE_DEBUG_SYMBOLS = YES;
-				STRIP_DEBUG_SYMBOLS_DURING_COPY = NO;
 			};
 			name = Release;
 		};
