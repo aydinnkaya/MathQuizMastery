@@ -2,77 +2,65 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-    <key>NSPrivacyManifestVersion</key>
-    <string>1.0</string>
+
+    <!-- 1. TRACKING CONFIGURATION (ZORUNLU!) -->
     <key>NSPrivacyTracking</key>
     <false/>
+    
     <key>NSPrivacyTrackingDomains</key>
     <array>
-        <string>firebaseinstallations.googleapis.com</string>
-        <string>firebase-settings.crashlytics.com</string>
+        <!-- Boş array - tracking yapmıyoruz -->
     </array>
+
+    <!-- 2. COLLECTED DATA TYPES -->
     <key>NSPrivacyCollectedDataTypes</key>
     <array>
+
+        <!-- Firebase Auth - Email Address -->
         <dict>
             <key>NSPrivacyCollectedDataType</key>
-            <string>EmailAddress</string>
+            <string>NSPrivacyCollectedDataTypeEmailAddress</string>
             <key>NSPrivacyCollectedDataTypePurposes</key>
             <array>
-                <string>AccountManagement</string>
+                <string>NSPrivacyCollectedDataTypePurposeAccountManagement</string>
             </array>
-            <key>NSPrivacyCollectedDataTypeLinked</key>
+            <key>NSPrivacyCollectedDataTypeLinkedToUser</key>
             <true/>
-            <key>NSPrivacyCollectedDataTypeRetention</key>
-            <string>UntilAccountDeletion</string>
+            <key>NSPrivacyCollectedDataTypeTracking</key>
+            <false/>
         </dict>
+
+        <!-- Firebase Crashlytics - Crash Data -->
         <dict>
             <key>NSPrivacyCollectedDataType</key>
-            <string>Diagnostics</string>
+            <string>NSPrivacyCollectedDataTypeCrashData</string>
             <key>NSPrivacyCollectedDataTypePurposes</key>
             <array>
-                <string>AppFunctionality</string>
-                <string>Analytics</string>
+                <string>NSPrivacyCollectedDataTypePurposeAnalytics</string>
             </array>
-            <key>NSPrivacyCollectedDataTypeLinked</key>
+            <key>NSPrivacyCollectedDataTypeLinkedToUser</key>
             <false/>
-            <key>NSPrivacyCollectedDataTypeRetention</key>
-            <string>Other</string>
+            <key>NSPrivacyCollectedDataTypeTracking</key>
+            <false/>
         </dict>
+
     </array>
+
+    <!-- 3. ACCESSED API TYPES -->
     <key>NSPrivacyAccessedAPITypes</key>
     <array>
+        
+        <!-- User Defaults - App ayarları için -->
         <dict>
             <key>NSPrivacyAccessedAPIType</key>
-            <string>UserDefaults</string>
+            <string>NSPrivacyAccessedAPICategoryUserDefaults</string>
             <key>NSPrivacyAccessedAPITypeReasons</key>
             <array>
                 <string>CA92.1</string>
             </array>
         </dict>
-        <dict>
-            <key>NSPrivacyAccessedAPIType</key>
-            <string>FileTimestamp</string>
-            <key>NSPrivacyAccessedAPITypeReasons</key>
-            <array>
-                <string>C617.1</string>
-            </array>
-        </dict>
-        <dict>
-            <key>NSPrivacyAccessedAPIType</key>
-            <string>SystemBootTime</string>
-            <key>NSPrivacyAccessedAPITypeReasons</key>
-            <array>
-                <string>35F9.1</string>
-            </array>
-        </dict>
-        <dict>
-            <key>NSPrivacyAccessedAPIType</key>
-            <string>DiskSpace</string>
-            <key>NSPrivacyAccessedAPITypeReasons</key>
-            <array>
-                <string>E174.1</string>
-            </array>
-        </dict>
+
     </array>
+
 </dict>
 </plist>
