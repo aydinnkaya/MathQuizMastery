@@ -5,14 +5,17 @@
     <key>NSPrivacyManifestVersion</key>
     <string>1.0</string>
 
-    <!-- Takip yapılmadığı belirtiliyor -->
     <key>NSPrivacyTracking</key>
     <false/>
 
-    <!-- Toplanan veri tipleri -->
+    <key>NSPrivacyTrackingDomains</key>
+    <array>
+        <string>firebaseinstallations.googleapis.com</string>
+        <string>firebase-settings.crashlytics.com</string>
+    </array>
+    
     <key>NSPrivacyCollectedDataTypes</key>
     <array>
-        <!-- Firebase Auth üzerinden alınan email -->
         <dict>
             <key>NSPrivacyCollectedDataType</key>
             <string>EmailAddress</string>
@@ -27,8 +30,6 @@
             <key>NSPrivacyCollectedDataTypeRetention</key>
             <string>UntilAccountDeletion</string>
         </dict>
-
-        <!-- Firebase Crashlytics logları -->
         <dict>
             <key>NSPrivacyCollectedDataType</key>
             <string>CrashData</string>
@@ -44,8 +45,6 @@
             <key>NSPrivacyCollectedDataTypeRetention</key>
             <string>Other</string>
         </dict>
-
-        <!-- Firebase Firestore'da tutulan kullanıcı adı, coin, avatar bilgileri -->
         <dict>
             <key>NSPrivacyCollectedDataType</key>
             <string>UserID</string>
@@ -62,7 +61,6 @@
         </dict>
     </array>
 
-    <!-- Kullanılan erişim API'leri -->
     <key>NSPrivacyAccessedAPITypes</key>
     <array>
         <dict>
@@ -70,17 +68,10 @@
             <string>UserDefaults</string>
             <key>NSPrivacyAccessedAPITypeReasons</key>
             <array>
-                <string>CA92.1</string> <!-- Bildirim, ayar, tema gibi tercihler -->
-                <string>CA92.2</string> <!-- Avatar, coin gibi UI state bilgisi -->
+                <string>CA92.1</string>
+                <string>CA92.2</string>
             </array>
         </dict>
-    </array>
-
-    <!-- Firebase Crashlytics ve Installations domainleri (Apple öneriyor) -->
-    <key>NSPrivacyTrackingDomains</key>
-    <array>
-        <string>firebaseinstallations.googleapis.com</string>
-        <string>firebase-settings.crashlytics.com</string>
     </array>
 </dict>
 </plist>
