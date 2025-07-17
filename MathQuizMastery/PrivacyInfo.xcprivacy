@@ -23,22 +23,6 @@
             <false/>
         </dict>
 
-        <!-- Firebase Analytics -->
-        <dict>
-            <key>NSPrivacyCollectedDataType</key>
-            <string>NSPrivacyCollectedDataTypeUsageData</string>
-            <key>NSPrivacyCollectedDataTypePurposes</key>
-            <array>
-                <string>NSPrivacyCollectedDataTypePurposeAnalytics</string>
-            </array>
-            <key>NSPrivacyCollectedDataTypeStorageDuration</key>
-            <string>NSPrivacyCollectedDataTypeStorageDurationOther</string>
-            <key>NSPrivacyCollectedDataTypeLinkedToUser</key>
-            <false/>
-            <key>NSPrivacyCollectedDataTypeIsOptional</key>
-            <true/>
-        </dict>
-
         <!-- Firebase Crashlytics -->
         <dict>
             <key>NSPrivacyCollectedDataType</key>
@@ -55,67 +39,49 @@
             <true/>
         </dict>
 
-        <!-- AppCheck / AdMob IDFA -->
-        <dict>
-            <key>NSPrivacyCollectedDataType</key>
-            <string>NSPrivacyCollectedDataTypeDeviceIdentifier</string>
-            <key>NSPrivacyCollectedDataTypePurposes</key>
-            <array>
-                <string>NSPrivacyCollectedDataTypePurposeAnalytics</string>
-                <string>NSPrivacyCollectedDataTypePurposeAdvertising</string>
-                <string>NSPrivacyCollectedDataTypePurposeAppFunctionality</string>
-            </array>
-            <key>NSPrivacyCollectedDataTypeStorageDuration</key>
-            <string>NSPrivacyCollectedDataTypeStorageDurationOther</string>
-            <key>NSPrivacyCollectedDataTypeLinkedToUser</key>
-            <false/>
-            <key>NSPrivacyCollectedDataTypeIsOptional</key>
-            <true/>
-        </dict>
-
     </array>
 
     <!-- 2. ACCESSED API TYPES -->
     <key>NSPrivacyAccessedAPITypes</key>
     <array>
-
-        <!-- UserDefaults -->
+        
+        <!-- User Defaults API (if your app uses UserDefaults) -->
         <dict>
             <key>NSPrivacyAccessedAPIType</key>
-            <string>NSPrivacyAccessedAPIUserDefaults</string>
+            <string>NSPrivacyAccessedAPICategoryUserDefaults</string>
             <key>NSPrivacyAccessedAPITypeReasons</key>
             <array>
-                <string>To store user preferences and settings locally on the device.</string>
+                <string>CA92.1</string> <!-- App settings and preferences -->
             </array>
         </dict>
 
-        <!-- Notifications -->
+        <!-- File timestamp API (if your app checks file timestamps) -->
         <dict>
             <key>NSPrivacyAccessedAPIType</key>
-            <string>NSPrivacyAccessedAPINotification</string>
+            <string>NSPrivacyAccessedAPICategoryFileTimestamp</string>
             <key>NSPrivacyAccessedAPITypeReasons</key>
             <array>
-                <string>To send push notifications for reminders and updates about the app.</string>
+                <string>C617.1</string> <!-- Default reason for file timestamp access -->
             </array>
         </dict>
 
-        <!-- IDFA (AdMob) -->
+        <!-- System boot time API (if your app uses system boot time) -->
         <dict>
             <key>NSPrivacyAccessedAPIType</key>
-            <string>NSPrivacyAccessedAPIAdvertisingIdentifier</string>
+            <string>NSPrivacyAccessedAPICategorySystemBootTime</string>
             <key>NSPrivacyAccessedAPITypeReasons</key>
             <array>
-                <string>To provide personalized advertisements based on app usage.</string>
+                <string>35F9.1</string> <!-- Default reason for system boot time access -->
             </array>
         </dict>
 
-        <!-- Firebase Analytics -->
+        <!-- Disk space API (if your app checks disk space) -->
         <dict>
             <key>NSPrivacyAccessedAPIType</key>
-            <string>NSPrivacyAccessedAPIAnalytics</string>
+            <string>NSPrivacyAccessedAPICategoryDiskSpace</string>
             <key>NSPrivacyAccessedAPITypeReasons</key>
             <array>
-                <string>To understand user interaction with the app and improve stability and experience.</string>
+                <string>E174.1</string> <!-- Default reason for disk space access -->
             </array>
         </dict>
 
@@ -126,15 +92,9 @@
     <dict>
         <key>NSPrivacyTrackingDomains</key>
         <array>
-            <!-- Firebase -->
+            <!-- Firebase Crashlytics -->
             <string>firebaseinstallations.googleapis.com</string>
             <string>firebase-settings.crashlytics.com</string>
-            <string>app-measurement.com</string>
-
-            <!-- AdMob -->
-            <string>googleads.g.doubleclick.net</string>
-            <string>pagead2.googlesyndication.com</string>
-            <string>adservice.google.com</string>
         </array>
     </dict>
 
