@@ -2,101 +2,77 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-
-    <!-- 1. COLLECTED DATA TYPES -->
+    <key>NSPrivacyManifestVersion</key>
+    <string>1.0</string>
+    <key>NSPrivacyTracking</key>
+    <false/>
+    <key>NSPrivacyTrackingDomains</key>
+    <array>
+        <string>firebaseinstallations.googleapis.com</string>
+        <string>firebase-settings.crashlytics.com</string>
+    </array>
     <key>NSPrivacyCollectedDataTypes</key>
     <array>
-
-        <!-- Firebase Auth -->
         <dict>
             <key>NSPrivacyCollectedDataType</key>
-            <string>NSPrivacyCollectedDataTypeEmailAddress</string>
+            <string>EmailAddress</string>
             <key>NSPrivacyCollectedDataTypePurposes</key>
             <array>
-                <string>NSPrivacyCollectedDataTypePurposeAccountManagement</string>
+                <string>AccountManagement</string>
             </array>
-            <key>NSPrivacyCollectedDataTypeStorageDuration</key>
-            <string>NSPrivacyCollectedDataTypeStorageDurationUntilAccountDeletion</string>
-            <key>NSPrivacyCollectedDataTypeLinkedToUser</key>
+            <key>NSPrivacyCollectedDataTypeLinked</key>
             <true/>
-            <key>NSPrivacyCollectedDataTypeIsOptional</key>
-            <false/>
+            <key>NSPrivacyCollectedDataTypeRetention</key>
+            <string>UntilAccountDeletion</string>
         </dict>
-
-        <!-- Firebase Crashlytics -->
         <dict>
             <key>NSPrivacyCollectedDataType</key>
-            <string>NSPrivacyCollectedDataTypeDiagnostics</string>
+            <string>Diagnostics</string>
             <key>NSPrivacyCollectedDataTypePurposes</key>
             <array>
-                <string>NSPrivacyCollectedDataTypePurposeAnalytics</string>
+                <string>AppFunctionality</string>
+                <string>Analytics</string>
             </array>
-            <key>NSPrivacyCollectedDataTypeStorageDuration</key>
-            <string>NSPrivacyCollectedDataTypeStorageDurationOther</string>
-            <key>NSPrivacyCollectedDataTypeLinkedToUser</key>
+            <key>NSPrivacyCollectedDataTypeLinked</key>
             <false/>
-            <key>NSPrivacyCollectedDataTypeIsOptional</key>
-            <true/>
+            <key>NSPrivacyCollectedDataTypeRetention</key>
+            <string>Other</string>
         </dict>
-
     </array>
-
-    <!-- 2. ACCESSED API TYPES -->
     <key>NSPrivacyAccessedAPITypes</key>
     <array>
-        
-        <!-- User Defaults API (if your app uses UserDefaults) -->
         <dict>
             <key>NSPrivacyAccessedAPIType</key>
-            <string>NSPrivacyAccessedAPICategoryUserDefaults</string>
+            <string>UserDefaults</string>
             <key>NSPrivacyAccessedAPITypeReasons</key>
             <array>
-                <string>CA92.1</string> <!-- App settings and preferences -->
+                <string>CA92.1</string>
             </array>
         </dict>
-
-        <!-- File timestamp API (if your app checks file timestamps) -->
         <dict>
             <key>NSPrivacyAccessedAPIType</key>
-            <string>NSPrivacyAccessedAPICategoryFileTimestamp</string>
+            <string>FileTimestamp</string>
             <key>NSPrivacyAccessedAPITypeReasons</key>
             <array>
-                <string>C617.1</string> <!-- Default reason for file timestamp access -->
+                <string>C617.1</string>
             </array>
         </dict>
-
-        <!-- System boot time API (if your app uses system boot time) -->
         <dict>
             <key>NSPrivacyAccessedAPIType</key>
-            <string>NSPrivacyAccessedAPICategorySystemBootTime</string>
+            <string>SystemBootTime</string>
             <key>NSPrivacyAccessedAPITypeReasons</key>
             <array>
-                <string>35F9.1</string> <!-- Default reason for system boot time access -->
+                <string>35F9.1</string>
             </array>
         </dict>
-
-        <!-- Disk space API (if your app checks disk space) -->
         <dict>
             <key>NSPrivacyAccessedAPIType</key>
-            <string>NSPrivacyAccessedAPICategoryDiskSpace</string>
+            <string>DiskSpace</string>
             <key>NSPrivacyAccessedAPITypeReasons</key>
             <array>
-                <string>E174.1</string> <!-- Default reason for disk space access -->
+                <string>E174.1</string>
             </array>
         </dict>
-
     </array>
-
-    <!-- 3. TRACKING DOMAINS -->
-    <key>NSPrivacyTracking</key>
-    <dict>
-        <key>NSPrivacyTrackingDomains</key>
-        <array>
-            <!-- Firebase Crashlytics -->
-            <string>firebaseinstallations.googleapis.com</string>
-            <string>firebase-settings.crashlytics.com</string>
-        </array>
-    </dict>
-
 </dict>
 </plist>
