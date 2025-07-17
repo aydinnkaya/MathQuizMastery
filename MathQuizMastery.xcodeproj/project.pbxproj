@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F0D16142E2963A800A1D817 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 0F0D16132E2963A800A1D817 /* PrivacyInfo.xcprivacy */; };
 		0FB3D00B2D40E8100004CB1A /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 0FB3D00A2D40E8100004CB1A /* IQKeyboardManagerSwift */; };
 		0FBB6D362DD779E80050162D /* SwiftMessages in Frameworks */ = {isa = PBXBuildFile; productRef = 0FBB6D352DD779E80050162D /* SwiftMessages */; };
 		0FCC52AB2DBE7217002D6794 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 0FCC52AA2DBE7217002D6794 /* FirebaseAnalytics */; };
@@ -53,6 +54,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0F0D16132E2963A800A1D817 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		0FA090682D2FAEB000D83F96 /* MathQuizMastery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MathQuizMastery.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FA0908B2D2FAEB300D83F96 /* MathQuizMasteryUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MathQuizMasteryUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FCB455B2DA54295002D6239 /* MathQuizMasteryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MathQuizMasteryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -159,6 +161,7 @@
 		0FA0905F2D2FAEB000D83F96 = {
 			isa = PBXGroup;
 			children = (
+				0F0D16132E2963A800A1D817 /* PrivacyInfo.xcprivacy */,
 				0FA0906A2D2FAEB000D83F96 /* MathQuizMastery */,
 				0FA0908E2D2FAEB300D83F96 /* MathQuizMasteryUITests */,
 				0FCB455C2DA54296002D6239 /* MathQuizMasteryTests */,
@@ -371,6 +374,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F0D16142E2963A800A1D817 /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
