@@ -44,7 +44,47 @@
     <!-- 2. ACCESSED API TYPES -->
     <key>NSPrivacyAccessedAPITypes</key>
     <array>
-        <!-- No required reason APIs accessed -->
+        
+        <!-- User Defaults API (if your app uses UserDefaults) -->
+        <dict>
+            <key>NSPrivacyAccessedAPIType</key>
+            <string>NSPrivacyAccessedAPICategoryUserDefaults</string>
+            <key>NSPrivacyAccessedAPITypeReasons</key>
+            <array>
+                <string>CA92.1</string> <!-- App settings and preferences -->
+            </array>
+        </dict>
+
+        <!-- File timestamp API (if your app checks file timestamps) -->
+        <dict>
+            <key>NSPrivacyAccessedAPIType</key>
+            <string>NSPrivacyAccessedAPICategoryFileTimestamp</string>
+            <key>NSPrivacyAccessedAPITypeReasons</key>
+            <array>
+                <string>C617.1</string> <!-- Default reason for file timestamp access -->
+            </array>
+        </dict>
+
+        <!-- System boot time API (if your app uses system boot time) -->
+        <dict>
+            <key>NSPrivacyAccessedAPIType</key>
+            <string>NSPrivacyAccessedAPICategorySystemBootTime</string>
+            <key>NSPrivacyAccessedAPITypeReasons</key>
+            <array>
+                <string>35F9.1</string> <!-- Default reason for system boot time access -->
+            </array>
+        </dict>
+
+        <!-- Disk space API (if your app checks disk space) -->
+        <dict>
+            <key>NSPrivacyAccessedAPIType</key>
+            <string>NSPrivacyAccessedAPICategoryDiskSpace</string>
+            <key>NSPrivacyAccessedAPITypeReasons</key>
+            <array>
+                <string>E174.1</string> <!-- Default reason for disk space access -->
+            </array>
+        </dict>
+
     </array>
 
     <!-- 3. TRACKING DOMAINS -->
