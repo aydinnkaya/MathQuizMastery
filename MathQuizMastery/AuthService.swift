@@ -267,7 +267,7 @@ class AuthService: AuthServiceProtocol {
     
 
     /// Misafir olarak anonim giriş yapar.
-    /// Giriş başarılı olursa, AppUser modeli döner ve UserDefaults’a "misafir girdi" bilgisi işaretlenir.
+    /// Giriş başarılı olursa, AppUser modeli döner.
     /// - Parameter completion: Başarılıysa AppUser, başarısızsa hata döner.
     func signInAsGuest(completion: @escaping (Result<AppUser, Error>) -> Void) {
         Auth.auth().signInAnonymously { result, error in
