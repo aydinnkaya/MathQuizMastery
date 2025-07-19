@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_3" orientation="portrait" appearance="dark"/>
+    <device id="retina6_3" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
@@ -13,6 +13,7 @@
             <connections>
                 <outlet property="agreementLabel" destination="IhM-EM-S0A" id="S2D-CN-bft"/>
                 <outlet property="emailTextField" destination="o30-BG-YbN" id="BL1-Fo-48Q"/>
+                <outlet property="guestButton" destination="5RS-a4-LNK" id="G0h-tk-rIe"/>
                 <outlet property="loginButton" destination="jVO-st-C1k" id="fuJ-U3-FK5"/>
                 <outlet property="noAccountLabel" destination="8K3-hq-McB" id="A7Y-bN-4sM"/>
                 <outlet property="passwordTextField" destination="yGO-sl-wzP" id="MJr-Ew-Kzj"/>
@@ -55,37 +56,6 @@
                         </textField>
                     </subviews>
                 </stackView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jVO-st-C1k" userLabel="Log In Button">
-                    <rect key="frame" x="40" y="580" width="322" height="50"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="50" id="login-button-height"/>
-                    </constraints>
-                    <state key="normal" title="Button"/>
-                    <buttonConfiguration key="configuration" style="filled" title="Log In" cornerStyle="medium">
-                        <backgroundConfiguration key="background">
-                            <color key="backgroundColor" systemColor="systemYellowColor"/>
-                        </backgroundConfiguration>
-                        <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="18"/>
-                        <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </buttonConfiguration>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowRadius">
-                            <real key="value" value="4"/>
-                        </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
-                            <real key="value" value="0.25"/>
-                        </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="size" keyPath="layer.shadowOffset">
-                            <size key="value" width="0.0" height="2"/>
-                        </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="color" keyPath="layer.shadowColor">
-                            <color key="value" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        </userDefinedRuntimeAttribute>
-                    </userDefinedRuntimeAttributes>
-                    <connections>
-                        <action selector="loginButtonTapped:" destination="-1" eventType="touchUpInside" id="ZNx-cB-EcH"/>
-                    </connections>
-                </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IhM-EM-S0A">
                     <rect key="frame" x="30" y="786" width="342" height="0.0"/>
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -93,32 +63,103 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hesabınız yok mu? Kayıt Ol" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8K3-hq-McB">
-                    <rect key="frame" x="64" y="646" width="274" height="17"/>
+                    <rect key="frame" x="64" y="685" width="274" height="17"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <color key="textColor" white="1" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="arw-Iw-d74">
+                    <rect key="frame" x="30" y="566" width="342" height="82"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jVO-st-C1k" userLabel="Log In Button">
+                            <rect key="frame" x="0.0" y="0.0" width="342" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="login-button-height"/>
+                            </constraints>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="filled" title="Log In" cornerStyle="medium">
+                                <backgroundConfiguration key="background">
+                                    <color key="backgroundColor" systemColor="systemYellowColor"/>
+                                </backgroundConfiguration>
+                                <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="18"/>
+                                <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </buttonConfiguration>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowRadius">
+                                    <real key="value" value="4"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
+                                    <real key="value" value="0.25"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="size" keyPath="layer.shadowOffset">
+                                    <size key="value" width="0.0" height="2"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="layer.shadowColor">
+                                    <color key="value" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="loginButtonTapped:" destination="-1" eventType="touchUpInside" id="ZNx-cB-EcH"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5RS-a4-LNK" userLabel="GuestButton">
+                            <rect key="frame" x="0.0" y="52" width="342" height="30"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="kku-n8-u42"/>
+                            </constraints>
+                            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="filled" title="Continue as Guest" cornerStyle="medium">
+                                <backgroundConfiguration key="background">
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="strokeColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </backgroundConfiguration>
+                                <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="15"/>
+                                <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </buttonConfiguration>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowRadius">
+                                    <real key="value" value="4"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
+                                    <real key="value" value="0.25"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="size" keyPath="layer.shadowOffset">
+                                    <size key="value" width="0.0" height="2"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="layer.shadowColor">
+                                    <color key="value" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="guestButtonTapped:" destination="-1" eventType="touchUpInside" id="VXC-b8-sr9"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                </stackView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <keyboardLayoutGuide key="keyboard" id="7xf-ep-1st"/>
             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
+                <constraint firstItem="8K3-hq-McB" firstAttribute="top" secondItem="arw-Iw-d74" secondAttribute="bottom" constant="37" id="BTs-ay-20s"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="arw-Iw-d74" secondAttribute="trailing" constant="30" id="VBp-rL-bpz"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="IhM-EM-S0A" secondAttribute="bottom" constant="20" id="agreement-bottom"/>
                 <constraint firstItem="IhM-EM-S0A" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="30" id="agreement-leading"/>
                 <constraint firstItem="IhM-EM-S0A" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" constant="-30" id="agreement-trailing"/>
+                <constraint firstItem="arw-Iw-d74" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="bMk-x9-Gbo"/>
                 <constraint firstItem="8K3-hq-McB" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="64" id="e0W-UO-8CE"/>
                 <constraint firstItem="GWY-1e-lVa" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="icon-leading"/>
                 <constraint firstItem="GWY-1e-lVa" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="60" id="icon-top"/>
                 <constraint firstItem="GWY-1e-lVa" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="icon-trailing"/>
-                <constraint firstItem="jVO-st-C1k" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="40" id="login-leading"/>
-                <constraint firstItem="jVO-st-C1k" firstAttribute="top" secondItem="NQ4-Qc-fEk" secondAttribute="bottom" constant="40" id="login-top"/>
-                <constraint firstItem="jVO-st-C1k" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" constant="-40" id="login-trailing"/>
-                <constraint firstItem="8K3-hq-McB" firstAttribute="top" secondItem="jVO-st-C1k" secondAttribute="bottom" constant="16" id="q1M-LX-CkH"/>
+                <constraint firstItem="arw-Iw-d74" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="30" id="jvz-QH-FYm"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="8K3-hq-McB" secondAttribute="trailing" constant="64" id="qfm-vO-oa9"/>
                 <constraint firstItem="NQ4-Qc-fEk" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="30" id="textfields-leading"/>
                 <constraint firstItem="NQ4-Qc-fEk" firstAttribute="top" secondItem="GWY-1e-lVa" secondAttribute="bottom" constant="40" id="textfields-top"/>
                 <constraint firstItem="NQ4-Qc-fEk" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" constant="-30" id="textfields-trailing"/>
+                <constraint firstItem="arw-Iw-d74" firstAttribute="top" secondItem="NQ4-Qc-fEk" secondAttribute="bottom" constant="26" id="v2J-Wc-mzU"/>
             </constraints>
             <point key="canvasLocation" x="-35.820895522388057" y="19.221967963386728"/>
         </view>
@@ -126,7 +167,7 @@
     <resources>
         <image name="quiz_icon" width="264" height="264"/>
         <systemColor name="systemGray5Color">
-            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemYellowColor">
             <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -39,7 +39,7 @@ enum LocalizedKey: String {
     case create_account_title
     case no_account_question
     case register_now
-    
+    case continue_as_guest
     // MARK: - Genel Butonlar
     case ok
     case cancel

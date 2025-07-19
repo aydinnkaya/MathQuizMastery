@@ -14,7 +14,6 @@ protocol Coordinator {
     func start()
 }
 
-/// <#Description#>
 enum PopupType {
     case settings
     case avatar
@@ -22,7 +21,6 @@ enum PopupType {
     case notificationSettings
 }
 
-/// <#Description#>
 class AppCoordinator: Coordinator {
     
     var navigationController: UINavigationController
