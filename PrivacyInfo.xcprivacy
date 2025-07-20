@@ -5,15 +5,6 @@
     <key>NSPrivacyManifestVersion</key>
     <string>1.0</string>
 
-    <key>NSPrivacyTracking</key>
-    <false/>
-
-    <key>NSPrivacyTrackingDomains</key>
-    <array>
-        <string>firebaseinstallations.googleapis.com</string>
-        <string>firebase-settings.crashlytics.com</string>
-    </array>
-    
     <key>NSPrivacyCollectedDataTypes</key>
     <array>
         <dict>
@@ -58,19 +49,6 @@
             </array>
             <key>NSPrivacyCollectedDataTypeRetention</key>
             <string>UntilAccountDeletion</string>
-        </dict>
-    </array>
-
-    <key>NSPrivacyAccessedAPITypes</key>
-    <array>
-        <dict>
-            <key>NSPrivacyAccessedAPIType</key>
-            <string>UserDefaults</string>
-            <key>NSPrivacyAccessedAPITypeReasons</key>
-            <array>
-                <string>CA92.1</string>
-                <string>CA92.2</string>
-            </array>
         </dict>
     </array>
 </dict>
