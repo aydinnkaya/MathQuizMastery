@@ -13,7 +13,9 @@ enum SettingType {
     case faq
     case report
     case about
+    case deleteAccount
     case logout
+    
 }
 
 struct SettingItem {

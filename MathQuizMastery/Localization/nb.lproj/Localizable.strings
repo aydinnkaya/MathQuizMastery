@@ -224,3 +224,6 @@
 "report_success" = "Rapport sendt";
 "report_error" = "Feil ved sending av rapport";
 "report_placeholder" = "Beskriv problemet her...";
+
+"settings_delete_account_title" = "Slett konto";
+"delete_account_message" = "Er du sikker på at du vil slette kontoen din?";

@@ -227,8 +227,10 @@ enum LocalizedKey: String {
     case settings_faq_title
     case settings_report_title
     case settings_about_title
+    case settings_delete_title
     case settings_logout_title
-    
+    case delete_account_message
+    case delete 
     case save_button_title = "save_button_title"
     
     // MARK: - Validation Messages
@@ -248,5 +250,7 @@ enum LocalizedKey: String {
     case launch_loading
     
     case no_internet_connection
+    
+    case settings_delete_account_title
     
 }

@@ -179,3 +179,6 @@
 "report_success" = "问题已成功提交，感谢您的反馈！";
 "report_error" = "提交失败，请稍后再试。";
 "report_placeholder" = "请输入您的问题描述...";
+"settings_delete_account_title" = "删除账户";
+"delete_account_message" = "您确定要删除您的账户吗？";
+"delete" = "删除";

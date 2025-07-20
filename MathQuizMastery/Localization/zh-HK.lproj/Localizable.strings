@@ -60,6 +60,7 @@
 "settings_report_title" = "回報設定";
 "settings_about_title" = "關於";
 "settings_logout_title" = "登出設定";
+"settings_delete_account_title" = "刪除帳戶";
 
 /* Logout */
 "logout_title" = "登出";
@@ -184,3 +185,6 @@
 "report_success" = "回報成功！";
 "report_error" = "回報失敗，請稍後再試。";
 "report_placeholder" = "請輸入您的回報內容…";
+
+/* Delete Account */
+"delete_account_message" = "您確定要刪除您的帳戶嗎？";

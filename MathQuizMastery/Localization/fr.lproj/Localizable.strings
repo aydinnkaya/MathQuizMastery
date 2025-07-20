@@ -21,7 +21,7 @@
 "login_success" = "Connexion réussie !";
 "log_in" = "Connexion";
 "enter_password_required" = "Veuillez entrer votre mot de passe.";
-"email_required" = "L’e-mail est requis.";
+"email_required" = "L'e-mail est requis.";
 "password_required" = "Le mot de passe est requis.";
 "password_too_short" = "Le mot de passe est trop court.";
 "name_required" = "Le nom est requis.";
@@ -78,7 +78,7 @@
 "settings_logout_message" = "Voulez-vous vraiment vous déconnecter ?";
 "validation_error" = "Erreur de validation.";
 
-"email_too_long" = "L’e-mail est trop long.";
+"email_too_long" = "L'e-mail est trop long.";
 "password_too_long" = "Le mot de passe est trop long.";
 "password_weak" = "Le mot de passe est trop faible.";
 "name_too_long" = "Le nom est trop long.";
@@ -115,11 +115,11 @@
 "login_button" = "Se connecter";
 "register_button" = "S'inscrire";
 
-"username_placeholder" = "Nom d’utilisateur";
+"username_placeholder" = "Nom d'utilisateur";
 "password_placeholder" = "Mot de passe";
 
 "register_success" = "Inscription réussie";
-"register_error" = "Erreur lors de l’inscription";
+"register_error" = "Erreur lors de l'inscription";
 "login_error" = "Erreur de connexion";
 
 "game_title" = "Titre du jeu";
@@ -177,7 +177,7 @@
 "home_profile" = "Profil";
 
 "profile_title" = "Profil";
-"profile_username" = "Nom d’utilisateur";
+"profile_username" = "Nom d'utilisateur";
 "profile_score" = "Score";
 "profile_rank" = "Classement";
 "profile_achievements" = "Succès";
@@ -216,7 +216,7 @@
 "faq_a4" = "Le téléchargement et le jeu sont gratuits.";
 
 "faq_q5" = "Comment contacter le support ?";
-"faq_a5" = "Vous pouvez contacter le support via la section signalement dans l’application.";
+"faq_a5" = "Vous pouvez contacter le support via la section signalement dans l'application.";
 
 "report_title" = "Signalement";
 "report_description" = "Description du signalement";
@@ -224,3 +224,8 @@
 "report_success" = "Signalement envoyé avec succès";
 "report_error" = "Erreur lors de l'envoi du signalement";
 "report_placeholder" = "Décrivez ici votre problème...";
+
+"settings_delete_account_title" = "Supprimer le compte";
+"delete_account_message" = "Êtes-vous sûr de vouloir supprimer votre compte ?";
+
+"delete" = "Supprimer";

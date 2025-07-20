@@ -172,10 +172,13 @@
 "faq_q4" = "Je Math Quiz Mastery zdarma?";
 "faq_a4" = "Ano, aplikace je zdarma ke stažení i hraní.";
 "faq_q5" = "Jak mohu kontaktovat podporu?";
-"faq_a5" = "Podporu můžete kontaktovat prostřednictvím sekce „Nahlásit problém“ v aplikaci.";
+"faq_a5" = "Podporu můžete kontaktovat prostřednictvím sekce Nahlásit problém v aplikaci.";
 "report_title" = "Nahlásit problém";
 "report_description" = "Popište problém";
 "report_submit" = "Odeslat";
 "report_success" = "Hlášení bylo úspěšně odesláno.";
 "report_error" = "Nepodařilo se odeslat hlášení.";
 "report_placeholder" = "Popište svůj problém...";
+"settings_delete_account_title" = "Smazat účet";
+"delete_account_message" = "Opravdu chcete smazat svůj účet?";
+"delete" = "Smazat";

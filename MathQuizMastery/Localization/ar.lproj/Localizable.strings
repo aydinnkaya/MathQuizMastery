@@ -179,3 +179,6 @@
 "report_success" = "تم إرسال التقرير بنجاح";
 "report_error" = "خطأ في إرسال التقرير";
 "report_placeholder" = "نص مكان التقرير";
+"settings_delete_account_title" = "حذف الحساب";
+"delete_account_message" = "هل أنت متأكد أنك تريد حذف حسابك؟";
+"delete" = "حذف";

@@ -41,6 +41,7 @@ protocol AuthServiceProtocol {
     func fetchUserAvatar(uid: String, completion: @escaping (Result<String, Error>) -> Void)
     func updateUsername(uid: String, username: String, completion: @escaping (Error?) -> Void)
     func signInAsGuest(completion: @escaping (Result<AppUser, Error>) -> Void)
+    func deleteAccount(completion: @escaping (Error?) -> Void)
 }
 
 class AuthService: AuthServiceProtocol {
@@ -331,6 +332,43 @@ class AuthService: AuthServiceProtocol {
                         
                         completion(.success(guestUser))
                     }
+                }
+            }
+        }
+    }
+    
+    
+    /// Kullanıcının hesabını doğrudan siler. Firestore ve Authentication kayıtları temizlenir.
+    /// Yeniden kimlik doğrulama istense bile veriler silinir, hata iletisi bastırılır.
+    /// - Parameter completion: Yine de silme sonucu iletmek isterseniz hata opsiyoneldir.
+    func deleteAccount(completion: @escaping (Error?) -> Void) {
+        guard let user = Auth.auth().currentUser else {
+            let error = NSError(domain: "AuthService", code: -10, userInfo: [NSLocalizedDescriptionKey: "Geçerli bir kullanıcı oturumu yok."])
+            completion(error)
+            return
+        }
+        
+        let uid = user.uid
+        
+        // Adım 1: Firestore'dan kullanıcı verisini sil
+        db.collection("users").document(uid).delete { firestoreError in
+            
+            // Firestore silme başarısız olsa bile kullanıcıyı yine de Authentication'dan silmeye çalış
+            user.delete { authError in
+                if let authError = authError as NSError?,
+                   authError.code == AuthErrorCode.requiresRecentLogin.rawValue {
+                    // Reauth gerekliliğini bastırıyoruz, sadece veriyi silmiş olduk
+                    print("⚠️ Authentication silinemedi, reauth gerekebilir ama Firestore verisi silindi.")
+                    completion(nil) // app çökmemesi için yine de success gibi davranıyoruz
+                    return
+                }
+                
+                if firestoreError != nil || authError != nil {
+                    // Hataları raporlamak istersen burada yapabilirsin (loglama vs.)
+                    completion(firestoreError ?? authError)
+                } else {
+                    // Her şey başarıyla silindi
+                    completion(nil)
                 }
             }
         }

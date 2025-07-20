@@ -179,3 +179,5 @@
 "report_success" = "Report success";
 "report_error" = "Report error";
 "report_placeholder" = "Report placeholder";
+"settings_delete_account_title" = "Видалити обліковий запис";
+"delete_account_message" = "Ви впевнені, що хочете видалити свій обліковий запис?";

@@ -179,3 +179,6 @@
 "report_success" = "Ilmoitus lähetetty onnistuneesti.";
 "report_error" = "Lähetys epäonnistui. Yritä uudelleen.";
 "report_placeholder" = "Kirjoita ongelman kuvaus...";
+"settings_delete_account_title" = "Poista tili";
+"delete_account_message" = "Haluatko varmasti poistaa tilisi?";
+"delete" = "Poista";

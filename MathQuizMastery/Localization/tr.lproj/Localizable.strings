@@ -179,3 +179,6 @@
 "report_success" = "Rapor başarıyla gönderildi";
 "report_error" = "Rapor gönderme hatası";
 "report_placeholder" = "Rapor metni";
+"settings_delete_account_title" = "Hesabı Sil";
+"delete_account_message" = "Hesabınızı silmek istediğinize emin misiniz?";
+"delete" = "Sil";

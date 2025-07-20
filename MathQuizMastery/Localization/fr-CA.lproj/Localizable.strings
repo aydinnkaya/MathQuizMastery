@@ -224,3 +224,6 @@
 "report_success" = "Signalement envoyé avec succès";
 "report_error" = "Erreur lors de l’envoi du signalement";
 "report_placeholder" = "Décrivez ici votre problème...";
+
+"settings_delete_account_title" = "Supprimer le compte";
+"delete_account_message" = "Êtes-vous sûr de vouloir supprimer votre compte?";

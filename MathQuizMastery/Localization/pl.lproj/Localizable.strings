@@ -224,3 +224,6 @@
 "report_success" = "Zgłoszenie zostało wysłane pomyślnie";
 "report_error" = "Wystąpił błąd podczas wysyłania zgłoszenia";
 "report_placeholder" = "Opisz tutaj problem...";
+
+"settings_delete_account_title" = "Usuń konto";
+"delete_account_message" = "Czy na pewno chcesz usunąć swoje konto?";

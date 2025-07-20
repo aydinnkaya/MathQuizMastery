@@ -224,3 +224,6 @@
 "report_success" = "ส่งรายงานสำเร็จ";
 "report_error" = "ส่งรายงานไม่สำเร็จ";
 "report_placeholder" = "โปรดอธิบายปัญหาของคุณที่นี่...";
+
+"settings_delete_account_title" = "ลบบัญชี";
+"delete_account_message" = "คุณแน่ใจหรือไม่ว่าต้องการลบบัญชีของคุณ?";

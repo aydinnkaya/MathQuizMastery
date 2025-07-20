@@ -31,6 +31,7 @@ class AppCoordinator: Coordinator {
         self.navigationController = navigationController
     }
     
+    var currentUser: AppUser?
     func start() {
         checkAuthentication()
     }
@@ -96,9 +97,9 @@ class AppCoordinator: Coordinator {
     
     func goToAvatarPopup() {
         if let user = Auth.auth().currentUser, user.isAnonymous {
-              // Kullanıcı misafir => izin verme
-              showGuestWarningPopup()
-              return
+            // Kullanıcı misafir => izin verme
+            showGuestWarningPopup()
+            return
         }
         
         let viewModel = AvatarPopupViewModel()
@@ -111,7 +112,8 @@ class AppCoordinator: Coordinator {
     }
     
     func goToSettingsPopup() {
-        let viewModel = SettingsPopupViewModel()
+        guard let user = CurrentSession.shared.user else { return }
+        let viewModel = SettingsPopupViewModel(user: user)
         let popupVC = SettingsPopupVC(viewModel: viewModel, coordinator: self)
         presentPopupViewController(popupVC)
         //        popupVC.view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
@@ -189,15 +191,12 @@ class AppCoordinator: Coordinator {
         }
     }
     
-    func dismissPopup(completion: (() -> Void)? = nil) {
-        dismissCurrentPopup(completion: completion)
-    }
     
     func goToCategory() {
         let viewModel = CategoryViewModel()
         let categoryVC = CategoryVC(viewModel: viewModel, coordinator: self)
         configureCustomBackButton(for: categoryVC, iconName: "back_buttons")
-
+        
         navigationController.pushViewController(categoryVC, animated: true)
     }
     
@@ -243,21 +242,109 @@ class AppCoordinator: Coordinator {
         goToGameVC(with: type)
     }
     
-    func showGuestWarningPopup() {
-        _ = UniversalPopupViewModel(
-            messageText:"Bu özelliği kullanmak için giriş yapmalısınız.",
-            primaryButtonText: "Giriş Yap",
-            secondaryButtonText:"İptal",
-            iconImage: UIImage(named: "warning_icon")
-        )
+    
+    
+    //    // MARK: - Private Methods
+    //    private func presentPopupViewController(_ viewController: UIViewController) {
+    //        viewController.view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+    //        viewController.modalPresentationStyle = .overFullScreen
+    //        viewController.modalTransitionStyle = .flipHorizontal
+    //
+    //        if let presentedVC = navigationController.presentedViewController {
+    //            presentedVC.dismiss(animated: false) { [weak self] in
+    //                self?.navigationController.present(viewController, animated: true)
+    //                self?.currentPopupViewController = viewController
+    //            }
+    //        } else {
+    //            navigationController.present(viewController, animated: true)
+    //            currentPopupViewController = viewController
+    //        }
+    //    }
+    //
+    
+    //    func dismissPopup(completion: (() -> Void)? = nil) {
+    //        dismissCurrentPopup(completion: completion)
+    //    }
+    
+}
 
+
+// MARK: - AppCoordinator Extension for Popup Handling
+extension AppCoordinator: UniversalPopupDelegate {
+    
+    // MARK: - Popup Gösterimi
+    
+    func showDeleteAccountPopup() {
+        let viewModel = UniversalPopupViewModel(
+            messageText: L(.delete_account_message),
+            primaryButtonText: L(.delete),
+            secondaryButtonText: L(.cancel),
+            iconImage: UIImage(named: "delete_account_icon")
+        )
+        
         let popupVC = UniversalPopupView()
+        popupVC.configure(with: viewModel)
+        popupVC.purpose = .deleteAccount
         popupVC.delegate = self
         presentPopupViewController(popupVC)
     }
     
-    // MARK: - Private Methods
-    private func presentPopupViewController(_ viewController: UIViewController) {
+    func showGuestWarningPopup() {
+        let viewModel = UniversalPopupViewModel(
+            messageText: "Bu özelliği kullanmak için giriş yapmalısınız.",
+            primaryButtonText: "Giriş Yap",
+            secondaryButtonText: "İptal",
+            iconImage: UIImage(named: "warning_icon")
+        )
+        
+        let popupVC = UniversalPopupView()
+        popupVC.configure(with: viewModel)
+        popupVC.purpose = .guestWarning
+        popupVC.delegate = self
+        presentPopupViewController(popupVC)
+    }
+    
+    // MARK: - Popup Delegate
+    
+    func universalPopupPrimaryTapped() {
+        guard let popup = navigationController.presentedViewController as? UniversalPopupView else {
+            dismissPopup()
+            return
+        }
+        
+        switch popup.purpose {
+        case .deleteAccount:
+            deleteAccountAndNavigate()
+        case .guestWarning:
+            dismissPopup { [weak self] in
+                self?.goToLogin()
+            }
+        case .generic:
+            dismissPopup()
+        }
+    }
+    
+    func universalPopupSecondaryTapped() {
+        dismissPopup()
+    }
+    
+    // MARK: - Hesap Silme
+    
+    private func deleteAccountAndNavigate() {
+        AuthService.shared.deleteAccount { [weak self] error in
+            DispatchQueue.main.async {
+                if let error = error {
+                    print("Hesap silinirken hata oluştu: \(error.localizedDescription)")
+                    return
+                }
+                self?.goToLogin()
+            }
+        }
+    }
+    
+    // MARK: - Popup Present/Dismiss
+    
+    func presentPopupViewController(_ viewController: UIViewController) {
         viewController.view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
         viewController.modalPresentationStyle = .overFullScreen
         viewController.modalTransitionStyle = .flipHorizontal
@@ -273,17 +360,15 @@ class AppCoordinator: Coordinator {
         }
     }
     
-}
-
-extension AppCoordinator: UniversalPopupDelegate {
-    func universalPopupPrimaryTapped() {
-        dismissPopup { [weak self] in
-            self?.goToLogin()
+    func dismissPopup(completion: (() -> Void)? = nil) {
+        if let presentedVC = navigationController.presentedViewController {
+            presentedVC.dismiss(animated: false) {
+                self.currentPopupViewController = nil
+                completion?()
+            }
+        } else {
+            completion?()
         }
-    }
-
-    func universalPopupSecondaryTapped() {
-        dismissPopup()
     }
 }
 
@@ -293,7 +378,7 @@ extension AppCoordinator {
     @objc func handleCustomBackButton() {
         navigationController.popViewController(animated: true)
     }
-
+    
     func createCustomBackButton(iconName: String, action: Selector) -> UIButton {
         let button = UIButton(type: .custom)
         button.setImage(UIImage(named: iconName), for: .normal)

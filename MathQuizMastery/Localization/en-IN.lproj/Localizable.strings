@@ -167,6 +167,7 @@
 "settings_report" = "Report a Problem";
 "settings_report_title" = "Report Settings";
 "settings_title" = "Settings";
+"settings_delete_account_title" = "Delete Account";
 "streak_reminder_body" = "Streak reminder body";
 "streak_reminder_title" = "Streak reminder title";
 "success" = "Success";
@@ -179,3 +180,4 @@
 "weekly_report_body" = "Weekly report body";
 "weekly_report_title" = "Weekly report title";
 "yes" = "Yes";
+"delete_account_message" = "Are you sure you want to delete your account?";

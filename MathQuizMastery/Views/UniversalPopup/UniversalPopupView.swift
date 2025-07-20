@@ -14,6 +14,14 @@ protocol UniversalPopupDelegate: AnyObject {
     func universalPopupSecondaryTapped()
 }
 
+// MARK: - UniversalPopupPurpose Enum
+enum UniversalPopupPurpose {
+    case deleteAccount
+    case guestWarning
+    case generic
+}
+
+
 class UniversalPopupView: UIViewController {
     @IBOutlet weak var popupView: UIView!
     @IBOutlet weak var iconImageView: UIImageView!
@@ -22,28 +30,39 @@ class UniversalPopupView: UIViewController {
     @IBOutlet weak var secondaryButton: UIButton!
     
     // MARK: - Properties
+    var purpose: UniversalPopupPurpose = .generic
+    
     weak var delegate: UniversalPopupDelegate?
     
     private var viewModel: UniversalPopupViewModel?
     
-     init() {
+    init() {
         super.init(nibName: "UniversalPopupView", bundle: nil)
     }
     override func viewDidLoad() {
-       
         setupUI()
+        if let viewModel = self.viewModel {
+            messageLabel.text = viewModel.messageText
+            primaryButton.setTitle(viewModel.primaryButtonText, for: .normal)
+            secondaryButton.setTitle(viewModel.secondaryButtonText, for: .normal)
+            iconImageView.image = viewModel.iconImage
+        }
     }
     
     override func viewDidLayoutSubviews() {
         framePopupView()
     }
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
     
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
     // MARK: - Configuration
     func configure(with viewModel: UniversalPopupViewModel) {
         self.viewModel = viewModel
+    }
+    
+    private func configureViewWithModel() {
+        guard let viewModel = self.viewModel else { return }
         messageLabel.text = viewModel.messageText
         primaryButton.setTitle(viewModel.primaryButtonText, for: .normal)
         secondaryButton.setTitle(viewModel.secondaryButtonText, for: .normal)
@@ -82,16 +101,16 @@ class UniversalPopupView: UIViewController {
     }
     
     func framePopupView(){
-//        let maxHeight = view.frame.height * 0.35
-//        let maxWidth = view.frame.width * 0.87
-//        popupView.frame.size = CGSize(width: maxWidth, height: maxHeight)
-//        popupView.center = view.center
-//        if let gradientLayer = popupView.layer.sublayers?.first as? CAGradientLayer {
-//            gradientLayer.frame = popupView.bounds
-//            gradientLayer.cornerRadius = popupView.layer.cornerRadius
-//            gradientLayer.masksToBounds = true
-//        }
-//        view.bringSubviewToFront(popupView)
+        //        let maxHeight = view.frame.height * 0.35
+        //        let maxWidth = view.frame.width * 0.87
+        //        popupView.frame.size = CGSize(width: maxWidth, height: maxHeight)
+        //        popupView.center = view.center
+        //        if let gradientLayer = popupView.layer.sublayers?.first as? CAGradientLayer {
+        //            gradientLayer.frame = popupView.bounds
+        //            gradientLayer.cornerRadius = popupView.layer.cornerRadius
+        //            gradientLayer.masksToBounds = true
+        //        }
+        //        view.bringSubviewToFront(popupView)
     }
     // MARK: - Actions
     @IBAction func primaryButtonTapped(_ sender: UIButton) {

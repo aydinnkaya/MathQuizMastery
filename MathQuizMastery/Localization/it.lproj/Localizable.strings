@@ -224,3 +224,8 @@
 "report_success" = "Segnalazione inviata con successo";
 "report_error" = "Errore durante l'invio della segnalazione";
 "report_placeholder" = "Descrivi qui il problema...";
+
+"settings_delete_account_title" = "Elimina account";
+"delete_account_message" = "Sei sicuro di voler eliminare il tuo account?";
+
+"delete" = "Elimina";

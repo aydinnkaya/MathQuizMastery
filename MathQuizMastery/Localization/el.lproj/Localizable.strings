@@ -167,6 +167,8 @@
 "settings_report" = "Αναφορά προβλήματος";
 "settings_report_title" = "Ρυθμίσεις αναφοράς";
 "settings_title" = "Ρυθμίσεις";
+"settings_delete_account_title" = "Διαγραφή λογαριασμού";
+"delete_account_message" = "Είστε σίγουροι ότι θέλετε να διαγράψετε τον λογαριασμό σας;";
 "streak_reminder_body" = "Συνέχισε την επιτυχημένη σου σειρά!";
 "streak_reminder_title" = "Υπενθύμιση σειράς";
 "success" = "Επιτυχία";
@@ -179,3 +181,4 @@
 "weekly_report_body" = "Ο εβδομαδιαίος σας απολογισμός είναι έτοιμος.";
 "weekly_report_title" = "Εβδομαδιαία αναφορά";
 "yes" = "Ναι";
+"delete" = "Διαγραφή";

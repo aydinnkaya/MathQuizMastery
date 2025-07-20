@@ -224,3 +224,8 @@
 "report_success" = "신고가 성공적으로 접수되었습니다";
 "report_error" = "신고 제출 중 오류가 발생했습니다";
 "report_placeholder" = "문제를 자세히 작성해주세요...";
+
+"settings_delete_account_title" = "계정 삭제";
+"delete_account_message" = "계정을 삭제하시겠습니까?";
+
+"delete" = "삭제";

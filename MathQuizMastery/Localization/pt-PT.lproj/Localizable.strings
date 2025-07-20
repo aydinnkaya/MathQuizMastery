@@ -224,3 +224,6 @@
 "report_success" = "Relatório enviado com sucesso";
 "report_error" = "Erro ao enviar relatório";
 "report_placeholder" = "Descreva o problema aqui...";
+
+"settings_delete_account_title" = "Eliminar conta";
+"delete_account_message" = "Tem a certeza de que pretende eliminar a sua conta?";

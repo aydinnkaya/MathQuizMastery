@@ -224,3 +224,6 @@
 "report_success" = "Raport trimis cu succes";
 "report_error" = "Eroare la trimiterea raportului";
 "report_placeholder" = "Descrie problema aici...";
+
+"settings_delete_account_title" = "Șterge contul";
+"delete_account_message" = "Sigur doriți să vă ștergeți contul?";

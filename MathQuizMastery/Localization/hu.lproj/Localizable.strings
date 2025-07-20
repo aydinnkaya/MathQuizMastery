@@ -224,3 +224,6 @@
 "report_success" = "Jelentés sikeresen elküldve";
 "report_error" = "Hiba történt a jelentés küldésekor";
 "report_placeholder" = "Ide írja be a problémát...";
+
+"settings_delete_account_title" = "Fiók törlése";
+"delete_account_message" = "Biztosan törölni szeretné a fiókját?";
