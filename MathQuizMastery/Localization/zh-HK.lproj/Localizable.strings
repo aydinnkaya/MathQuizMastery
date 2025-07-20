@@ -188,3 +188,6 @@
 
 /* Delete Account */
 "delete_account_message" = "您確定要刪除您的帳戶嗎？";
+
+/* Login Required Message */
+"login_required_message" = "您必須登入才能使用此功能。";

@@ -227,3 +227,5 @@
 
 "settings_delete_account_title" = "Hapus Akun";
 "delete_account_message" = "Apakah Anda yakin ingin menghapus akun Anda?";
+
+"login_required_message" = "Anda harus masuk untuk menggunakan fitur ini.";

@@ -227,3 +227,5 @@
 
 "settings_delete_account_title" = "Удалить аккаунт";
 "delete_account_message" = "Вы уверены, что хотите удалить свой аккаунт?";
+
+"login_required_message" = "Чтобы использовать эту функцию, необходимо войти в систему.";

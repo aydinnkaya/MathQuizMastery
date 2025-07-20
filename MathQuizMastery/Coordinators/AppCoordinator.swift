@@ -291,10 +291,10 @@ extension AppCoordinator: UniversalPopupDelegate {
     
     func showGuestWarningPopup() {
         let viewModel = UniversalPopupViewModel(
-            messageText: "Bu özelliği kullanmak için giriş yapmalısınız.",
-            primaryButtonText: "Giriş Yap",
-            secondaryButtonText: "İptal",
-            iconImage: UIImage(named: "warning_icon")
+            messageText: L(.login_required_message),
+            primaryButtonText: L(.log_in),
+            secondaryButtonText: L(.cancel),
+            iconImage: UIImage(named: "person.crop.circle")
         )
         
         let popupVC = UniversalPopupView()

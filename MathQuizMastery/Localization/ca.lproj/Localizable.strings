@@ -182,3 +182,4 @@
 "settings_delete_account_title" = "Suprimeix el compte";
 "delete_account_message" = "Esteu segur que voleu suprimir el vostre compte?";
 "delete" = "Suprimeix";
+"login_required_message" = "Has d'iniciar sessió per utilitzar aquesta funció.";

@@ -229,3 +229,5 @@
 "delete_account_message" = "Jeste li sigurni da želite izbrisati svoj račun?";
 
 "delete" = "Izbriši";
+
+"login_required_message" = "Morate se prijaviti da biste koristili ovu značajku.";

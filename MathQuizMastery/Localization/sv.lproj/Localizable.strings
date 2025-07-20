@@ -227,3 +227,5 @@
 
 "settings_delete_account_title" = "Radera konto";
 "delete_account_message" = "Är du säker på att du vill radera ditt konto?";
+
+"login_required_message" = "Du måste logga in för att använda den här funktionen.";

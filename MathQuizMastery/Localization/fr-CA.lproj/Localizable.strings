@@ -227,3 +227,5 @@
 
 "settings_delete_account_title" = "Supprimer le compte";
 "delete_account_message" = "Êtes-vous sûr de vouloir supprimer votre compte?";
+
+"login_required_message" = "Vous devez vous connecter pour utiliser cette fonctionnalité.";

@@ -25,11 +25,11 @@
                     <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kgc-Pr-FkT" userLabel="PopupView">
-                    <rect key="frame" x="49" y="226" width="295" height="400"/>
+                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kgc-Pr-FkT" userLabel="PopupView">
+                    <rect key="frame" x="39.333333333333343" y="226" width="314.33333333333326" height="400"/>
                     <subviews>
-                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="tbl-Pr-FkT">
-                            <rect key="frame" x="0.0" y="0.0" width="295" height="400"/>
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="tbl-Pr-FkT">
+                            <rect key="frame" x="0.0" y="0.0" width="314.33333333333331" height="400"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </tableView>
                     </subviews>
@@ -39,7 +39,7 @@
                         <constraint firstAttribute="trailing" secondItem="tbl-Pr-FkT" secondAttribute="trailing" id="7Ux-Oe-Ygq"/>
                         <constraint firstItem="tbl-Pr-FkT" firstAttribute="top" secondItem="Kgc-Pr-FkT" secondAttribute="top" id="8Ux-Oe-Ygr"/>
                         <constraint firstAttribute="bottom" secondItem="tbl-Pr-FkT" secondAttribute="bottom" id="9Ux-Oe-Ygs"/>
-                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="400" priority="999" id="aUx-Oe-Ygt"/>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" priority="999" constant="400" id="aUx-Oe-Ygt"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -59,8 +59,8 @@
                 <constraint firstAttribute="trailing" secondItem="hbZ-wj-p3v" secondAttribute="trailing" id="bCk-8i-e4D"/>
                 <constraint firstItem="Kgc-Pr-FkT" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="bUx-Oe-Ygu"/>
                 <constraint firstItem="hbZ-wj-p3v" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="pOd-xN-l1f"/>
-                <constraint firstItem="Kgc-Pr-FkT" firstAttribute="width" secondItem="fnl-2z-Ty3" secondAttribute="width" multiplier="0.8" id="popup-width-ratio-constraint"/>
                 <constraint firstItem="Kgc-Pr-FkT" firstAttribute="height" relation="lessThanOrEqual" secondItem="fnl-2z-Ty3" secondAttribute="height" multiplier="0.65" id="popup-max-height-constraint"/>
+                <constraint firstItem="Kgc-Pr-FkT" firstAttribute="width" secondItem="fnl-2z-Ty3" secondAttribute="width" multiplier="0.8" id="popup-width-ratio-constraint"/>
             </constraints>
             <point key="canvasLocation" x="138.1679389312977" y="19.718309859154932"/>
         </view>

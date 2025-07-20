@@ -45,7 +45,7 @@ class SettingsPopupViewModel: SettingsPopupViewModelProtocol {
         if !user.isGuest {
             items.append(contentsOf: [
                 SettingItem(title: L(.settings_delete_title), iconName: "delete_account_icon", type: .deleteAccount),
-                SettingItem(title: L(.settings_logout_title), iconName: "settings_logout_icon", type: .logout)
+                SettingItem(title: L(.settings_logout), iconName: "settings_logout_icon", type: .logout)
             ])
         }
 

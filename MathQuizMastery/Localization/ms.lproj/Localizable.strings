@@ -227,3 +227,5 @@
 
 "settings_delete_account_title" = "Padam Akaun";
 "delete_account_message" = "Adakah anda pasti mahu memadam akaun anda?";
+
+"login_required_message" = "Anda mesti log masuk untuk menggunakan ciri ini.";

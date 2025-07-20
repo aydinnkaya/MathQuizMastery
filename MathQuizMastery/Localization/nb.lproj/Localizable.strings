@@ -227,3 +227,5 @@
 
 "settings_delete_account_title" = "Slett konto";
 "delete_account_message" = "Er du sikker på at du vil slette kontoen din?";
+
+"login_required_message" = "Du må logge inn for å bruke denne funksjonen.";

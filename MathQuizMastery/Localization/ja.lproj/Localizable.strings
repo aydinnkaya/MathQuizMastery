@@ -229,3 +229,5 @@
 "delete_account_message" = "アカウントを削除してもよろしいですか？";
 
 "delete" = "削除";
+
+"login_required_message" = "この機能を利用するにはログインが必要です。";

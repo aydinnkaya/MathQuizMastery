@@ -229,3 +229,5 @@
 "delete_account_message" = "Sei sicuro di voler eliminare il tuo account?";
 
 "delete" = "Elimina";
+
+"login_required_message" = "Devi accedere per usare questa funzione.";

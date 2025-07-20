@@ -181,3 +181,4 @@
 "report_placeholder" = "Escribe aquí tu mensaje o comentario...";
 "settings_delete_account_title" = "Eliminar cuenta";
 "delete_account_message" = "¿Estás seguro de que deseas eliminar tu cuenta?";
+"login_required_message" = "Debe iniciar sesión para usar esta función.";

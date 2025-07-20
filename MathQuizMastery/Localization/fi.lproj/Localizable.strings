@@ -182,3 +182,4 @@
 "settings_delete_account_title" = "Poista tili";
 "delete_account_message" = "Haluatko varmasti poistaa tilisi?";
 "delete" = "Poista";
+"login_required_message" = "Sinun täytyy kirjautua sisään käyttääksesi tätä ominaisuutta.";

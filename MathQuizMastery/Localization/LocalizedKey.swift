@@ -41,7 +41,7 @@ enum LocalizedKey: String {
     case register_now
     case continue_as_guest
     case guest
-    
+    case login_required_message
     // MARK: - Genel Butonlar
     case ok
     case cancel
@@ -230,9 +230,9 @@ enum LocalizedKey: String {
     case settings_delete_title
     case settings_logout_title
     case delete_account_message
-    case delete 
+    case delete
     case save_button_title = "save_button_title"
-    
+    case settings_about
     // MARK: - Validation Messages
     case email_too_long
     case password_too_long

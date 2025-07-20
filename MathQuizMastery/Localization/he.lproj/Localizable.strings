@@ -229,3 +229,5 @@
 "delete_account_message" = "האם אתה בטוח שברצונך למחוק את החשבון שלך?";
 
 "delete" = "מחק";
+
+"login_required_message" = "עליך להיכנס כדי להשתמש בתכונה זו.";

@@ -229,3 +229,5 @@
 "delete_account_message" = "계정을 삭제하시겠습니까?";
 
 "delete" = "삭제";
+
+"login_required_message" = "이 기능을 사용하려면 로그인해야 합니다.";

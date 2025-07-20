@@ -182,3 +182,4 @@
 "settings_delete_account_title" = "删除账户";
 "delete_account_message" = "您确定要删除您的账户吗？";
 "delete" = "删除";
+"login_required_message" = "您必须登录才能使用此功能。";

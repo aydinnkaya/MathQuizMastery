@@ -229,3 +229,5 @@
 "delete_account_message" = "Tem certeza de que deseja excluir sua conta?";
 
 "delete" = "Excluir";
+
+"login_required_message" = "Você precisa fazer login para usar este recurso.";

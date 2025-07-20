@@ -182,3 +182,4 @@
 "settings_delete_account_title" = "Hesabı Sil";
 "delete_account_message" = "Hesabınızı silmek istediğinize emin misiniz?";
 "delete" = "Sil";
+"login_required_message" = "Bu özelliği kullanmak için giriş yapmalısınız.";
