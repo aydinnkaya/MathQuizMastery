@@ -74,8 +74,7 @@ class LoginVC: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func guestButtonTapped(_ sender: Any) {
-        
-        
+        viewModel.handleGuestLogin()
     }
     
     @IBAction func createAnAccountTapped(_ sender: Any, forEvent event: UIEvent) {

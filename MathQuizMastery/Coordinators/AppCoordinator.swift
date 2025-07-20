@@ -98,11 +98,18 @@ class AppCoordinator: Coordinator {
         }
     }
     func goToHome(with user: AppUser) {
+        CurrentSession.shared.user = user
         let homeVC = HomeVC(user: user, coordinator: self)
         navigationController.setViewControllers([homeVC], animated: false)
     }
     
     func goToAvatarPopup() {
+        if let user = Auth.auth().currentUser, user.isAnonymous {
+              // Kullanıcı misafir => izin verme
+              showGuestWarningPopup()
+              return
+        }
+        
         let viewModel = AvatarPopupViewModel()
         let avatarPopupVC = AvatarPopupVC(viewModel: viewModel, coordinator: self)
         presentPopupViewController(avatarPopupVC)
@@ -243,6 +250,19 @@ class AppCoordinator: Coordinator {
         goToGameVC(with: type)
     }
     
+    func showGuestWarningPopup() {
+        _ = UniversalPopupViewModel(
+            messageText:"Bu özelliği kullanmak için giriş yapmalısınız.",
+            primaryButtonText: "Giriş Yap",
+            secondaryButtonText:"İptal",
+            iconImage: UIImage(named: "warning_icon")
+        )
+
+        let popupVC = UniversalPopupView()
+        popupVC.delegate = self
+        presentPopupViewController(popupVC)
+    }
+    
     // MARK: - Private Methods
     private func presentPopupViewController(_ viewController: UIViewController) {
         viewController.view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
@@ -258,5 +278,17 @@ class AppCoordinator: Coordinator {
             navigationController.present(viewController, animated: true)
             currentPopupViewController = viewController
         }
+    }
+}
+
+extension AppCoordinator: UniversalPopupDelegate {
+    func universalPopupPrimaryTapped() {
+        dismissPopup { [weak self] in
+            self?.goToLogin()
+        }
+    }
+
+    func universalPopupSecondaryTapped() {
+        dismissPopup()
     }
 }

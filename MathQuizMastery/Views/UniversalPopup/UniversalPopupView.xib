@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UniversalPopupView" customModule="MathQuizMastery" customModuleProvider="target">
+            <connections>
+                <outlet property="iconImageView" destination="iconImageView" id="Cf5-Bl-eS2"/>
+                <outlet property="messageLabel" destination="messageLabel" id="O9Y-za-g28"/>
+                <outlet property="popupView" destination="popupView" id="lsc-uh-Ndl"/>
+                <outlet property="primaryButton" destination="primaryButton" id="3pd-7O-mzJ"/>
+                <outlet property="secondaryButton" destination="secondaryButton" id="EUy-Sb-PWp"/>
+                <outlet property="view" destination="c5T-Bq-UTZ" id="G5U-yt-U7c"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view opaque="NO" contentMode="scaleToFill" id="c5T-Bq-UTZ">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="popupView">
+                    <rect key="frame" x="31.666666666666629" y="336" width="329.66666666666674" height="180"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="iconImageView">
+                            <rect key="frame" x="128.66666666666666" y="16" width="72" height="72"/>
+                            <color key="tintColor" name="535353"/>
+                            <imageReference key="image" image="person.crop.circle" catalog="system" symbolScale="default"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="72" id="iconWidth"/>
+                                <constraint firstAttribute="height" constant="72" id="iconHeight"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" text="Profilini düzenleyebilmek için giriş yapmalısın." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" translatesAutoresizingMaskIntoConstraints="NO" id="messageLabel">
+                            <rect key="frame" x="24" y="100" width="281.66666666666674" height="43"/>
+                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="buttonStackView">
+                            <rect key="frame" x="24" y="159" width="281.66666666666674" height="44"/>
+                            <subviews>
+                                <button contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" translatesAutoresizingMaskIntoConstraints="NO" id="secondaryButton">
+                                    <rect key="frame" x="0.0" y="0.0" width="134.66666666666666" height="44"/>
+                                    <color key="backgroundColor" systemColor="systemBlueColor"/>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                                    <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    <state key="normal" title="İptal">
+                                        <color key="titleColor" systemColor="systemYellowColor"/>
+                                    </state>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                            <integer key="value">12</integer>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                            <integer key="value">1</integer>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
+                                            <color key="value" systemColor="systemYellowColor"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <action selector="secondaryButtonTapped:" destination="-1" eventType="touchUpInside" id="d9M-S0-0A5"/>
+                                    </connections>
+                                </button>
+                                <button contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" translatesAutoresizingMaskIntoConstraints="NO" id="primaryButton">
+                                    <rect key="frame" x="146.66666666666666" y="0.0" width="135" height="44"/>
+                                    <color key="backgroundColor" systemColor="systemBlueColor"/>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                                    <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    <state key="normal" title="Giriş Yap">
+                                        <color key="titleColor" systemColor="systemBackgroundColor"/>
+                                    </state>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                            <integer key="value">12</integer>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <action selector="primaryButtonTapped:" destination="-1" eventType="touchUpInside" id="yVG-dG-K31"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="44" id="stackViewHeight"/>
+                            </constraints>
+                        </stackView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <!-- Icon Constraints - SABİT KONUMDA -->
+                        <constraint firstItem="iconImageView" firstAttribute="top" secondItem="popupView" secondAttribute="top" constant="16" priority="1000" id="iconTop"/>
+                        <constraint firstItem="iconImageView" firstAttribute="centerX" secondItem="popupView" secondAttribute="centerX" priority="1000" id="iconCenterX"/>
+                        
+                        <!-- Message Label Constraints - SABİT SPACING -->
+                        <constraint firstItem="messageLabel" firstAttribute="top" secondItem="iconImageView" secondAttribute="bottom" constant="12" priority="1000" id="labelTop"/>
+                        <constraint firstItem="messageLabel" firstAttribute="leading" secondItem="popupView" secondAttribute="leading" constant="24" priority="1000" id="labelLeading"/>
+                        <constraint firstItem="messageLabel" firstAttribute="trailing" secondItem="popupView" secondAttribute="trailing" constant="-24" priority="1000" id="labelTrailing"/>
+                        
+                        <!-- Button Stack View Constraints - SABİT SPACING -->
+                        <constraint firstItem="buttonStackView" firstAttribute="top" secondItem="messageLabel" secondAttribute="bottom" constant="16" priority="1000" id="stackTop"/>
+                        <constraint firstItem="buttonStackView" firstAttribute="leading" secondItem="popupView" secondAttribute="leading" constant="24" priority="1000" id="stackLeading"/>
+                        <constraint firstItem="buttonStackView" firstAttribute="trailing" secondItem="popupView" secondAttribute="trailing" constant="-24" priority="1000" id="stackTrailing"/>
+                        <constraint firstItem="buttonStackView" firstAttribute="bottom" secondItem="popupView" secondAttribute="bottom" constant="-16" priority="1000" id="stackBottom"/>
+                        
+                        <!-- Content Hugging - BOŞLUK ENGELLE -->
+                        <constraint firstItem="messageLabel" firstAttribute="bottom" relation="lessThanOrEqual" secondItem="buttonStackView" secondAttribute="top" constant="-16" priority="999" id="contentCompression"/>
+                    </constraints>
+                    <viewLayer key="layer">
+                        <cornerRadius key="cornerRadius" value="24"/>
+                    </viewLayer>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="hGD-Pk-rTh"/>
+            <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <!-- Popup View Container Constraints - CENTER BASED -->
+                <constraint firstItem="popupView" firstAttribute="centerX" secondItem="c5T-Bq-UTZ" secondAttribute="centerX" priority="1000" id="popupCenterX"/>
+                <constraint firstItem="popupView" firstAttribute="centerY" secondItem="c5T-Bq-UTZ" secondAttribute="centerY" priority="1000" id="popupCenterY"/>
+                
+                <!-- Width Constraints - RESPONSIVE AMA SINIRLI -->
+                <constraint firstItem="popupView" firstAttribute="width" relation="lessThanOrEqual" secondItem="c5T-Bq-UTZ" secondAttribute="width" multiplier="0.84" priority="999" id="popupMaxWidth"/>
+                <constraint firstItem="popupView" firstAttribute="width" relation="greaterThanOrEqual" constant="280" priority="1000" id="popupMinWidth"/>
+                <constraint firstItem="popupView" firstAttribute="width" relation="lessThanOrEqual" constant="340" priority="1000" id="popupAbsoluteMaxWidth"/>
+                
+                <!-- Height Constraints - COMPACT TUTMAK İÇİN -->
+                <constraint firstItem="popupView" firstAttribute="height" relation="greaterThanOrEqual" constant="180" priority="1000" id="popupMinHeight"/>
+                <constraint firstItem="popupView" firstAttribute="height" relation="lessThanOrEqual" constant="220" priority="1000" id="popupMaxHeight"/>
+                
+                <!-- Safe Area Constraints -->
+                <constraint firstItem="popupView" firstAttribute="top" relation="greaterThanOrEqual" secondItem="hGD-Pk-rTh" secondAttribute="top" constant="20" priority="999" id="popupTopSafe"/>
+                <constraint firstItem="popupView" firstAttribute="bottom" relation="lessThanOrEqual" secondItem="hGD-Pk-rTh" secondAttribute="bottom" constant="-20" priority="999" id="popupBottomSafe"/>
+                <constraint firstItem="popupView" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="hGD-Pk-rTh" secondAttribute="leading" constant="20" priority="999" id="popupLeadingSafe"/>
+                <constraint firstItem="popupView" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="hGD-Pk-rTh" secondAttribute="trailing" constant="-20" priority="999" id="popupTrailingSafe"/>
+            </constraints>
+            <point key="canvasLocation" x="-77.099236641221367" y="-779.57746478873241"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="person.crop.circle" catalog="system" width="128" height="123"/>
+        <namedColor name="535353">
+            <color red="0.32549019607843138" green="0.32549019607843138" blue="0.32549019607843138" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

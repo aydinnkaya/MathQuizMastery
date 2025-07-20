@@ -40,6 +40,7 @@ protocol AuthServiceProtocol {
     func updateUserAvatar(uid: String, avatarImageName: String, completion: @escaping (Error?) -> Void)
     func fetchUserAvatar(uid: String, completion: @escaping (Result<String, Error>) -> Void)
     func updateUsername(uid: String, username: String, completion: @escaping (Error?) -> Void)
+    func signInAsGuest(completion: @escaping (Result<AppUser, Error>) -> Void)
 }
 
 class AuthService: AuthServiceProtocol {
@@ -265,7 +266,7 @@ class AuthService: AuthServiceProtocol {
     }
     
     
-
+    
     /// Misafir olarak anonim giriş yapar.
     /// Giriş başarılı olursa, AppUser modeli döner.
     /// - Parameter completion: Başarılıysa AppUser, başarısızsa hata döner.
@@ -275,57 +276,61 @@ class AuthService: AuthServiceProtocol {
                 completion(.failure(error))
                 return
             }
-
+            
             guard let user = result?.user else {
                 let err = NSError(domain: "GuestLogin", code: -1, userInfo: [NSLocalizedDescriptionKey: "Kullanıcı oluşturulamadı."])
                 completion(.failure(err))
                 return
             }
-
+            
             let db = Firestore.firestore()
             let counterRef = db.collection("counters").document("guestCounter")
-
-            db.runTransaction({ (transaction, errorPointer) -> Any? in
-                let counterSnapshot: DocumentSnapshot
-                do {
-                    try counterSnapshot = transaction.getDocument(counterRef)
-                } catch let fetchError {
-                    errorPointer?.pointee = fetchError as NSError
-                    return nil
+            
+            // Önce guestCounter sayısını al
+            counterRef.getDocument { snapshot, error in
+                var newCount = 1
+                if let data = snapshot?.data(), let currentCount = data["count"] as? Int {
+                    newCount = currentCount + 1
                 }
-
-                let currentCount = (counterSnapshot.data()?["count"] as? Int) ?? 0
-                let newCount = currentCount + 1
-                transaction.updateData(["count": newCount], forDocument: counterRef)
-
-                let guestUsername = "Misafir \(newCount)"
+                
+                let guestUsername = "\(L(.guest)) \(newCount)"
                 let guestEmail = "guest\(newCount)@guest.com"
-
+                
                 let guestUser = AppUser(
                     uid: user.uid,
                     username: guestUsername,
                     email: guestEmail,
                     coin: 0,
-                    avatarImageName: "profile_icon_1",
+                    avatarImageName: "profile_image_1",
                     isGuest: true
                 )
-
-                // Firestore'a kullanıcıyı yaz
+                
+                // Kullanıcı verisini ekle
                 let userRef = db.collection("users").document(user.uid)
-                transaction.setData([
+                let userData: [String: Any] = [
                     "username": guestUsername,
                     "email": guestEmail,
                     "coin": 0,
-                    "avatarImageName": "profile_icon_1",
-                    "isGuest": true
-                ], forDocument: userRef)
-
-                return guestUser
-            }) { (object, error) in
-                if let error = error {
-                    completion(.failure(error))
-                } else if let guestUser = object as? AppUser {
-                    completion(.success(guestUser))
+                    "avatarImageName": "profile_image_1",
+                    "isGuest": true,
+                    "createdAt": Timestamp()
+                ]
+                
+                userRef.setData(userData, merge: true) { error in
+                    if let error = error {
+                        completion(.failure(error))
+                        return
+                    }
+                    
+                    // Sayaç güncelle
+                    counterRef.setData(["count": newCount], merge: true) { error in
+                        if let error = error {
+                            completion(.failure(error))
+                            return
+                        }
+                        
+                        completion(.success(guestUser))
+                    }
                 }
             }
         }
