@@ -224,3 +224,14 @@
 "report_success" = "रिपोर्ट सफलतापूर्वक भेजी गई";
 "report_error" = "रिपोर्ट भेजने में त्रुटि हुई";
 "report_placeholder" = "यहाँ अपनी समस्या लिखें...";
+
+"settings_delete_account_title" = "खाता हटाएं";
+"delete_account_message" = "क्या आप वाकई अपना खाता हटाना चाहते हैं?";
+
+"delete" = "हटाएं";
+
+"login_required_message" = "इस सुविधा का उपयोग करने के लिए आपको लॉग इन करना होगा।";
+
+"settings_about" = "जानकारी";
+
+"settings_delete_title" = "खाता हटाएं";

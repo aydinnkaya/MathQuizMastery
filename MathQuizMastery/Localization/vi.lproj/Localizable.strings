@@ -179,3 +179,8 @@
 "report_success" = "Đã gửi báo cáo thành công. Cảm ơn bạn!";
 "report_error" = "Gửi báo cáo thất bại. Vui lòng thử lại.";
 "report_placeholder" = "Nhập chi tiết vấn đề...";
+"settings_delete_account_title" = "Xóa tài khoản";
+"delete_account_message" = "Bạn có chắc chắn muốn xóa tài khoản của mình không?";
+"login_required_message" = "Bạn phải đăng nhập để sử dụng tính năng này.";
+"settings_about" = "Giới thiệu";
+"settings_delete_title" = "Xóa Tài Khoản";

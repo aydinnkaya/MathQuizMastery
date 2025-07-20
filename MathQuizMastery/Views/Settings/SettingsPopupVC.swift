@@ -41,7 +41,7 @@ class SettingsPopupVC: UIViewController {
     }
     
     override func viewDidLayoutSubviews() {
-        framePopupView()
+    //    framePopupView()
     }
     
     private func setupTableView(){
@@ -98,6 +98,7 @@ extension SettingsPopupVC {
 }
 
 extension SettingsPopupVC: SettingsPopupDelegate {
+  
     
     
     func didSelectSetting(_ item: SettingItem) {
@@ -143,6 +144,11 @@ extension SettingsPopupVC: SettingsPopupDelegate {
     func tappedAbout() {
         coordinator?.goToPrivacyPolicy()
         print("tappedAbout")
+    }
+    
+    func tappedDeleteAccount() {
+        coordinator?.showDeleteAccountPopup()
+
     }
     
     
@@ -209,11 +215,59 @@ extension SettingsPopupVC {
     }
     
     func framePopupView(){
-        tableView.layoutIfNeeded()
-        let contentHeight = tableView.contentSize.height
-        let maxHeight = view.frame.height * 0.8
-        let finalHeight = min(contentHeight, maxHeight)
-        popupView.frame.size.height = finalHeight
-        popupView.center = view.center
+        
+        
+            tableView.reloadData()
+            tableView.layoutIfNeeded()
+            
+            // Sadece layout'u güncelle
+            view.setNeedsLayout()
+            view.layoutIfNeeded()
+    
+        
+//        // Table view'ı önce reload et ve layout'u güncelle
+//        tableView.reloadData()
+//        tableView.layoutIfNeeded()
+//        
+//        let contentHeight = tableView.contentSize.height
+//        let screenHeight = view.safeAreaLayoutGuide.layoutFrame.height
+//        let screenWidth = view.safeAreaLayoutGuide.layoutFrame.width
+//        
+//        // Cihaza göre dinamik oranlar
+//        let maxHeightRatio: CGFloat = 0.75
+//        let widthRatio: CGFloat = screenWidth > 400 ? 0.75 : 0.85 // Büyük cihazlarda daha dar
+//        
+//        let maxHeight = screenHeight * maxHeightRatio
+//        let padding: CGFloat = 40 // Üst/alt padding
+//        let finalHeight = min(contentHeight + padding, maxHeight)
+//        let finalWidth = screenWidth * widthRatio
+//        
+//        print("Screen: \(screenWidth)x\(screenHeight)")
+//        print("Content height: \(contentHeight)")
+//        print("Final size: \(finalWidth)x\(finalHeight)")
+//        
+//        // Popup view'ın height constraint'ini güncelle
+//        for constraint in popupView.constraints {
+//            if constraint.firstAttribute == .height {
+//                constraint.constant = finalHeight
+//                constraint.isActive = true
+//            }
+//        }
+//        
+//        // Width constraint'ini de güncelle
+//        for constraint in view.constraints {
+//            if constraint.identifier == "popup-width-ratio-constraint" {
+//                constraint.isActive = false
+//            }
+//        }
+//        
+//        // Yeni width constraint ekle
+//        popupView.translatesAutoresizingMaskIntoConstraints = false
+//        popupView.widthAnchor.constraint(equalToConstant: finalWidth).isActive = true
+//        
+//        // Layout'u zorla güncelle
+//        UIView.animate(withDuration: 0.2) {
+//            self.view.layoutIfNeeded()
+//        }
     }
 }

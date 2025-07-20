@@ -224,3 +224,12 @@
 "report_success" = "Správa bola úspešne odoslaná";
 "report_error" = "Nepodarilo sa odoslať správu";
 "report_placeholder" = "Popíšte svoj problém tu...";
+
+"settings_delete_account_title" = "Odstrániť účet";
+"delete_account_message" = "Naozaj chcete odstrániť svoj účet?";
+
+"login_required_message" = "Na použitie tejto funkcie sa musíte prihlásiť.";
+
+"settings_about" = "O aplikácii";
+
+"settings_delete_title" = "Vymazať Účet";

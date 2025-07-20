@@ -14,6 +14,7 @@ class LoginVC: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var passwordTextField: CustomTextField!
     @IBOutlet weak var loginButton: UIButton!
     
+    @IBOutlet weak var guestButton: UIButton!
     @IBOutlet weak var noAccountLabel: UILabel!
     
     @IBOutlet weak var agreementLabel: UILabel!
@@ -70,6 +71,10 @@ class LoginVC: UIViewController, UITextFieldDelegate {
             email: emailTextField.text ?? "",
             password: passwordTextField.text ?? ""
         )
+    }
+    
+    @IBAction func guestButtonTapped(_ sender: Any) {
+        viewModel.handleGuestLogin()
     }
     
     @IBAction func createAnAccountTapped(_ sender: Any, forEvent event: UIEvent) {
@@ -129,6 +134,7 @@ extension LoginVC {
         passwordTextField.placeholderText = L(.enter_password)
         loginButton.applyStyledButton(withTitle: L(.log_in))
         [emailTextField, passwordTextField].forEach { addErrorLabel(below: $0) }
+        setupGuestButton()
     }
     
     func assignDelegates() {
@@ -148,6 +154,17 @@ extension LoginVC {
     func prepareForValidation() {
         dismissKeyboard()
         clearErrors()
+    }
+    
+    
+    func setupGuestButton() {
+            guestButton.setTitle(L(.continue_as_guest), for: .normal)
+            guestButton.setTitleColor(.white, for: .normal)
+            guestButton.titleLabel?.font = .systemFont(ofSize: 17, weight: .semibold)
+            guestButton.backgroundColor = .clear
+            guestButton.layer.borderColor = UIColor.white.cgColor
+            guestButton.layer.borderWidth = 1.5
+            guestButton.layer.cornerRadius = 12
     }
     
     func setupGradientBackground() {

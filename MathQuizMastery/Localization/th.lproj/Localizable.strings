@@ -224,3 +224,12 @@
 "report_success" = "ส่งรายงานสำเร็จ";
 "report_error" = "ส่งรายงานไม่สำเร็จ";
 "report_placeholder" = "โปรดอธิบายปัญหาของคุณที่นี่...";
+
+"settings_delete_account_title" = "ลบบัญชี";
+"delete_account_message" = "คุณแน่ใจหรือไม่ว่าต้องการลบบัญชีของคุณ?";
+
+"login_required_message" = "คุณต้องเข้าสู่ระบบเพื่อใช้คุณลักษณะนี้";
+
+"settings_about" = "เกี่ยวกับ";
+
+"settings_delete_title" = "ลบบัญชี";

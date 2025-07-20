@@ -14,7 +14,6 @@ protocol Coordinator {
     func start()
 }
 
-/// <#Description#>
 enum PopupType {
     case settings
     case avatar
@@ -22,17 +21,17 @@ enum PopupType {
     case notificationSettings
 }
 
-/// <#Description#>
 class AppCoordinator: Coordinator {
     
     var navigationController: UINavigationController
-    let backImage = UIImage(named: "back_buttonsss")?.withRenderingMode(.alwaysOriginal)
+    let backImage = UIImage(named: "back_icon")?.withRenderingMode(.alwaysOriginal)
     private var currentPopupViewController: UIViewController?
     
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
     }
     
+    var currentUser: AppUser?
     func start() {
         checkAuthentication()
     }
@@ -68,20 +67,11 @@ class AppCoordinator: Coordinator {
     func goToRegister() {
         let viewModel = RegisterViewModel()
         let registerVC = RegisterVC(viewModel: viewModel, coordinator: self)
-        
-        navigationController.navigationBar.backIndicatorImage = backImage
-        navigationController.navigationBar.backIndicatorTransitionMaskImage = backImage
-        navigationController.topViewController?.navigationItem.backButtonTitle = ""
+        configureCustomBackButton(for: registerVC, iconName: "back_buttons")
         navigationController.pushViewController(registerVC, animated: true)
     }
     
     func handleRegistrationSuccess(user: AppUser) {
-        // Add any additional logic needed after successful registration
-        // For example: analytics tracking, welcome flow, etc.
-        
-        print("🎉 Registration successful for user: \(user.username)")
-        
-        // Navigate to home
         goToHome(with: user)
     }
     
@@ -100,11 +90,18 @@ class AppCoordinator: Coordinator {
         }
     }
     func goToHome(with user: AppUser) {
+        CurrentSession.shared.user = user
         let homeVC = HomeVC(user: user, coordinator: self)
         navigationController.setViewControllers([homeVC], animated: false)
     }
     
     func goToAvatarPopup() {
+        if let user = Auth.auth().currentUser, user.isAnonymous {
+            // Kullanıcı misafir => izin verme
+            showGuestWarningPopup()
+            return
+        }
+        
         let viewModel = AvatarPopupViewModel()
         let avatarPopupVC = AvatarPopupVC(viewModel: viewModel, coordinator: self)
         presentPopupViewController(avatarPopupVC)
@@ -115,7 +112,8 @@ class AppCoordinator: Coordinator {
     }
     
     func goToSettingsPopup() {
-        let viewModel = SettingsPopupViewModel()
+        guard let user = CurrentSession.shared.user else { return }
+        let viewModel = SettingsPopupViewModel(user: user)
         let popupVC = SettingsPopupVC(viewModel: viewModel, coordinator: self)
         presentPopupViewController(popupVC)
         //        popupVC.view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
@@ -193,21 +191,18 @@ class AppCoordinator: Coordinator {
         }
     }
     
-    func dismissPopup(completion: (() -> Void)? = nil) {
-        dismissCurrentPopup(completion: completion)
-    }
     
     func goToCategory() {
         let viewModel = CategoryViewModel()
         let categoryVC = CategoryVC(viewModel: viewModel, coordinator: self)
-        navigationController.navigationBar.backIndicatorImage = backImage
-        navigationController.navigationBar.backIndicatorTransitionMaskImage = backImage
-        navigationController.topViewController?.navigationItem.backButtonTitle = ""
+        configureCustomBackButton(for: categoryVC, iconName: "back_buttons")
+        
         navigationController.pushViewController(categoryVC, animated: true)
     }
     
     func goToGameVC(with type: MathExpression.ExpressionType) {
         let gameVC = GameVC(viewModel: nil, coordinator: self, selectedExpressionType: type)
+        configureCustomBackButton(for: gameVC, iconName: "game_back_icon")
         navigationController.pushViewController(gameVC, animated: true)
     }
     
@@ -242,11 +237,124 @@ class AppCoordinator: Coordinator {
     }
     
     func restartGame(with type: MathExpression.ExpressionType) {
+        let gameVC = GameVC(viewModel: nil, coordinator: self, selectedExpressionType: type)
+        configureCustomBackButton(for: gameVC, iconName: "game_back_icon")
         goToGameVC(with: type)
     }
     
-    // MARK: - Private Methods
-    private func presentPopupViewController(_ viewController: UIViewController) {
+    
+    
+    //    // MARK: - Private Methods
+    //    private func presentPopupViewController(_ viewController: UIViewController) {
+    //        viewController.view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+    //        viewController.modalPresentationStyle = .overFullScreen
+    //        viewController.modalTransitionStyle = .flipHorizontal
+    //
+    //        if let presentedVC = navigationController.presentedViewController {
+    //            presentedVC.dismiss(animated: false) { [weak self] in
+    //                self?.navigationController.present(viewController, animated: true)
+    //                self?.currentPopupViewController = viewController
+    //            }
+    //        } else {
+    //            navigationController.present(viewController, animated: true)
+    //            currentPopupViewController = viewController
+    //        }
+    //    }
+    //
+    
+    //    func dismissPopup(completion: (() -> Void)? = nil) {
+    //        dismissCurrentPopup(completion: completion)
+    //    }
+    
+}
+
+
+// MARK: - AppCoordinator Extension for Popup Handling
+extension AppCoordinator: UniversalPopupDelegate {
+    
+    // MARK: - Popup Gösterimi
+    
+    func showDeleteAccountPopup() {
+        let viewModel = UniversalPopupViewModel(
+            messageText: L(.delete_account_message),
+            primaryButtonText: L(.delete),
+            secondaryButtonText: L(.cancel),
+            iconImage: UIImage(named: "delete_account_icon")
+        )
+        
+        let popupVC = UniversalPopupView()
+        popupVC.configure(with: viewModel)
+        popupVC.purpose = .deleteAccount
+        popupVC.delegate = self
+        presentPopupViewController(popupVC)
+    }
+    
+    func showGuestWarningPopup() {
+        let viewModel = UniversalPopupViewModel(
+            messageText: L(.login_required_message),
+            primaryButtonText: L(.log_in),
+            secondaryButtonText: L(.cancel),
+            iconImage: UIImage(systemName: "person.crop.circle")
+        )
+        
+        let popupVC = UniversalPopupView()
+        popupVC.configure(with: viewModel)
+        popupVC.purpose = .guestWarning
+        popupVC.delegate = self
+        presentPopupViewController(popupVC)
+    }
+    
+    // MARK: - Popup Delegate
+    
+    func universalPopupPrimaryTapped() {
+        guard let popup = navigationController.presentedViewController as? UniversalPopupView else {
+            dismissPopup()
+            return
+        }
+        
+        switch popup.purpose {
+        case .deleteAccount:
+            deleteAccountAndNavigate()
+        case .guestWarning:
+            dismissPopup { [weak self] in
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                    self?.goToLogin()
+                }
+            }
+        case .generic:
+            dismissPopup()
+        }
+    }
+    
+    func universalPopupSecondaryTapped() {
+        dismissPopup()
+    }
+    
+    // MARK: - Hesap Silme
+    
+    private func deleteAccountAndNavigate() {
+        AuthService.shared.deleteAccount { [weak self] error in
+            DispatchQueue.main.async {
+                guard let self = self else { return }
+                
+                if let error = error {
+                    print("Hesap silinirken hata oluştu: \(error.localizedDescription)")
+                    return
+                }
+                
+                self.dismissPopup {
+                    // Popup kapandıktan sonra login ekranına yönlendir
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                        self.goToLogin()
+                    }
+                }
+            }
+        }
+    }
+    
+    // MARK: - Popup Present/Dismiss
+    
+    func presentPopupViewController(_ viewController: UIViewController) {
         viewController.view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
         viewController.modalPresentationStyle = .overFullScreen
         viewController.modalTransitionStyle = .flipHorizontal
@@ -260,5 +368,44 @@ class AppCoordinator: Coordinator {
             navigationController.present(viewController, animated: true)
             currentPopupViewController = viewController
         }
+    }
+    
+    func dismissPopup(completion: (() -> Void)? = nil) {
+        if let presentedVC = navigationController.presentedViewController {
+            presentedVC.dismiss(animated: false) {
+                self.currentPopupViewController = nil
+                completion?()
+            }
+        } else {
+            completion?()
+        }
+    }
+}
+
+// MARK: - Custom Back Button
+extension AppCoordinator {
+    
+    @objc func handleCustomBackButton() {
+        navigationController.popViewController(animated: true)
+    }
+    
+    func createCustomBackButton(iconName: String, action: Selector) -> UIButton {
+        let button = UIButton(type: .custom)
+        button.setImage(UIImage(named: iconName), for: .normal)
+        button.frame = CGRect(x: 0, y: 0, width: 48, height: 48)
+        button.layer.cornerRadius = 24
+        button.backgroundColor = .clear
+        button.clipsToBounds = true
+        button.addTarget(self, action: action, for: .touchUpInside)
+        return button
+    }
+    
+    
+    func configureCustomBackButton(for viewController: UIViewController, iconName: String) {
+        let backButton = createCustomBackButton(iconName: iconName, action: #selector(handleCustomBackButton))
+        let spacer = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
+        spacer.width = -8
+        
+        viewController.navigationItem.leftBarButtonItems = [spacer, UIBarButtonItem(customView: backButton)]
     }
 }

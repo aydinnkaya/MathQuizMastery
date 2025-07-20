@@ -224,3 +224,12 @@
 "report_success" = "Zgłoszenie zostało wysłane pomyślnie";
 "report_error" = "Wystąpił błąd podczas wysyłania zgłoszenia";
 "report_placeholder" = "Opisz tutaj problem...";
+
+"settings_delete_account_title" = "Usuń konto";
+"delete_account_message" = "Czy na pewno chcesz usunąć swoje konto?";
+
+"login_required_message" = "Aby korzystać z tej funkcji, musisz się zalogować.";
+
+"settings_about" = "O aplikacji";
+
+"settings_delete_title" = "Usuń Konto";

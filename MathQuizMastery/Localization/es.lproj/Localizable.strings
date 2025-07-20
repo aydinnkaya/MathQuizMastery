@@ -179,3 +179,9 @@
 "report_success" = "¡Gracias! Tu informe ha sido enviado.";
 "report_error" = "Error al enviar el informe.";
 "report_placeholder" = "Escribe tu problema aquí...";
+"settings_delete_account_title" = "Eliminar cuenta";
+"delete_account_message" = "¿Estás seguro de que deseas eliminar tu cuenta?";
+"delete" = "Eliminar";
+"login_required_message" = "Debe iniciar sesión para usar esta función.";
+"settings_about" = "Acerca de";
+"settings_delete_title" = "Eliminar Cuenta";

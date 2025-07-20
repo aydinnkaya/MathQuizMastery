@@ -224,3 +224,14 @@
 "report_success" = "Relatório enviado com sucesso";
 "report_error" = "Erro ao enviar relatório";
 "report_placeholder" = "Descreva o problema aqui...";
+
+"settings_delete_account_title" = "Excluir conta";
+"delete_account_message" = "Tem certeza de que deseja excluir sua conta?";
+
+"delete" = "Excluir";
+
+"login_required_message" = "Você precisa fazer login para usar este recurso.";
+
+"settings_about" = "Sobre";
+
+"settings_delete_title" = "Excluir Conta";

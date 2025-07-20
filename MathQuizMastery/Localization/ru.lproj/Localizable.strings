@@ -224,3 +224,12 @@
 "report_success" = "Сообщение успешно отправлено";
 "report_error" = "Ошибка при отправке сообщения";
 "report_placeholder" = "Опишите вашу проблему здесь...";
+
+"settings_delete_account_title" = "Удалить аккаунт";
+"delete_account_message" = "Вы уверены, что хотите удалить свой аккаунт?";
+
+"login_required_message" = "Чтобы использовать эту функцию, необходимо войти в систему.";
+
+"settings_about" = "О приложении";
+
+"settings_delete_title" = "Удалить Аккаунт";

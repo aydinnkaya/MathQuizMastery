@@ -224,3 +224,12 @@
 "report_success" = "Laporan berjaya dihantar";
 "report_error" = "Ralat semasa menghantar laporan";
 "report_placeholder" = "Sila terangkan masalah di sini...";
+
+"settings_delete_account_title" = "Padam Akaun";
+"delete_account_message" = "Adakah anda pasti mahu memadam akaun anda?";
+
+"login_required_message" = "Anda mesti log masuk untuk menggunakan ciri ini.";
+
+"settings_about" = "Mengenai";
+
+"settings_delete_title" = "Padam Akaun";

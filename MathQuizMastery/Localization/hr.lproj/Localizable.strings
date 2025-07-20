@@ -224,3 +224,14 @@
 "report_success" = "Prijava uspješno poslana";
 "report_error" = "Došlo je do pogreške pri slanju prijave";
 "report_placeholder" = "Ovdje opišite problem...";
+
+"settings_delete_account_title" = "Izbriši račun";
+"delete_account_message" = "Jeste li sigurni da želite izbrisati svoj račun?";
+
+"delete" = "Izbriši";
+
+"login_required_message" = "Morate se prijaviti da biste koristili ovu značajku.";
+
+"settings_about" = "O aplikaciji";
+
+"settings_delete_title" = "Izbriši Račun";

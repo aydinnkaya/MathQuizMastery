@@ -224,3 +224,14 @@
 "report_success" = "報告が正常に送信されました";
 "report_error" = "報告の送信に失敗しました";
 "report_placeholder" = "問題の内容を詳しく入力してください...";
+
+"settings_delete_account_title" = "アカウントを削除";
+"delete_account_message" = "アカウントを削除してもよろしいですか？";
+
+"delete" = "削除";
+
+"login_required_message" = "この機能を利用するにはログインが必要です。";
+
+"settings_about" = "概要";
+
+"settings_delete_title" = "アカウント削除";

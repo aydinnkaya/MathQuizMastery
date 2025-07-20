@@ -224,3 +224,14 @@
 "report_success" = "Melding succesvol verzonden";
 "report_error" = "Fout bij verzenden melding";
 "report_placeholder" = "Beschrijf hier het probleem...";
+
+"settings_delete_account_title" = "Account verwijderen";
+"delete_account_message" = "Weet je zeker dat je je account wilt verwijderen?";
+
+"delete" = "Verwijderen";
+
+"login_required_message" = "U moet inloggen om deze functie te gebruiken.";
+
+"settings_about" = "Over";
+
+"settings_delete_title" = "Account Verwijderen";

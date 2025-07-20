@@ -12,6 +12,7 @@ protocol LoginScreenViewModelProtocol: AnyObject {
     func login(email: String, password: String)
     func validateInputs(email: String, password: String)
     func handleRegiserTapped()
+    func handleGuestLogin()
 }
 
 protocol LoginViewModelDelegate: AnyObject {
@@ -22,6 +23,7 @@ protocol LoginViewModelDelegate: AnyObject {
 }
 
 class LoginViewModel: LoginScreenViewModelProtocol {
+    
     weak var delegate: LoginViewModelDelegate?
     private var validator: ValidatorProtocol
     private var authService: AuthServiceProtocol
@@ -59,6 +61,23 @@ class LoginViewModel: LoginScreenViewModelProtocol {
                 }
             }
             
+        }
+    }
+    
+    func handleGuestLogin() {
+        print("➡️ handleGuestLogin başladı")
+        authService.signInAsGuest { [weak self] result in
+            guard let self = self else { return }
+            print("➡️ handleGuestLogin - signInAsGuest tamamlandı")
+
+            switch result {
+            case .success(let user):
+                print("✅ Guest login başarıyla döndü: \(user.uid)")
+                self.delegate?.didLoginSuccessfully(user: user)
+            case .failure(let error):
+                print("❌ Guest login hatası: \(error.localizedDescription)")
+                self.delegate?.didFailWithError(error)
+            }
         }
     }
     

@@ -224,3 +224,12 @@
 "report_success" = "Laporan berhasil dikirim";
 "report_error" = "Terjadi kesalahan saat mengirim laporan";
 "report_placeholder" = "Tuliskan masalah Anda di sini...";
+
+"settings_delete_account_title" = "Hapus Akun";
+"delete_account_message" = "Apakah Anda yakin ingin menghapus akun Anda?";
+
+"login_required_message" = "Anda harus masuk untuk menggunakan fitur ini.";
+
+"settings_about" = "Tentang";
+
+"settings_delete_title" = "Hapus Akun";
