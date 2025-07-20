@@ -24,7 +24,7 @@ enum PopupType {
 class AppCoordinator: Coordinator {
     
     var navigationController: UINavigationController
-    let backImage = UIImage(named: "back_buttonsss")?.withRenderingMode(.alwaysOriginal)
+    let backImage = UIImage(named: "back_icon")?.withRenderingMode(.alwaysOriginal)
     private var currentPopupViewController: UIViewController?
     
     init(navigationController: UINavigationController) {
@@ -66,20 +66,11 @@ class AppCoordinator: Coordinator {
     func goToRegister() {
         let viewModel = RegisterViewModel()
         let registerVC = RegisterVC(viewModel: viewModel, coordinator: self)
-        
-        navigationController.navigationBar.backIndicatorImage = backImage
-        navigationController.navigationBar.backIndicatorTransitionMaskImage = backImage
-        navigationController.topViewController?.navigationItem.backButtonTitle = ""
+        configureCustomBackButton(for: registerVC, iconName: "back_buttons")
         navigationController.pushViewController(registerVC, animated: true)
     }
     
     func handleRegistrationSuccess(user: AppUser) {
-        // Add any additional logic needed after successful registration
-        // For example: analytics tracking, welcome flow, etc.
-        
-        print("🎉 Registration successful for user: \(user.username)")
-        
-        // Navigate to home
         goToHome(with: user)
     }
     
@@ -205,14 +196,14 @@ class AppCoordinator: Coordinator {
     func goToCategory() {
         let viewModel = CategoryViewModel()
         let categoryVC = CategoryVC(viewModel: viewModel, coordinator: self)
-        navigationController.navigationBar.backIndicatorImage = backImage
-        navigationController.navigationBar.backIndicatorTransitionMaskImage = backImage
-        navigationController.topViewController?.navigationItem.backButtonTitle = ""
+        configureCustomBackButton(for: categoryVC, iconName: "back_buttons")
+
         navigationController.pushViewController(categoryVC, animated: true)
     }
     
     func goToGameVC(with type: MathExpression.ExpressionType) {
         let gameVC = GameVC(viewModel: nil, coordinator: self, selectedExpressionType: type)
+        configureCustomBackButton(for: gameVC, iconName: "game_back_icon")
         navigationController.pushViewController(gameVC, animated: true)
     }
     
@@ -247,6 +238,8 @@ class AppCoordinator: Coordinator {
     }
     
     func restartGame(with type: MathExpression.ExpressionType) {
+        let gameVC = GameVC(viewModel: nil, coordinator: self, selectedExpressionType: type)
+        configureCustomBackButton(for: gameVC, iconName: "game_back_icon")
         goToGameVC(with: type)
     }
     
@@ -279,6 +272,7 @@ class AppCoordinator: Coordinator {
             currentPopupViewController = viewController
         }
     }
+    
 }
 
 extension AppCoordinator: UniversalPopupDelegate {
@@ -290,5 +284,33 @@ extension AppCoordinator: UniversalPopupDelegate {
 
     func universalPopupSecondaryTapped() {
         dismissPopup()
+    }
+}
+
+// MARK: - Custom Back Button
+extension AppCoordinator {
+    
+    @objc func handleCustomBackButton() {
+        navigationController.popViewController(animated: true)
+    }
+
+    func createCustomBackButton(iconName: String, action: Selector) -> UIButton {
+        let button = UIButton(type: .custom)
+        button.setImage(UIImage(named: iconName), for: .normal)
+        button.frame = CGRect(x: 0, y: 0, width: 48, height: 48)
+        button.layer.cornerRadius = 24
+        button.backgroundColor = .clear
+        button.clipsToBounds = true
+        button.addTarget(self, action: action, for: .touchUpInside)
+        return button
+    }
+    
+    
+    func configureCustomBackButton(for viewController: UIViewController, iconName: String) {
+        let backButton = createCustomBackButton(iconName: iconName, action: #selector(handleCustomBackButton))
+        let spacer = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
+        spacer.width = -8
+        
+        viewController.navigationItem.leftBarButtonItems = [spacer, UIBarButtonItem(customView: backButton)]
     }
 }

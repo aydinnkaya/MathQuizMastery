@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "back_button.png",
+      "filename" : "game_back_icon.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "back_button_2x.png",
+      "filename" : "game_back_icon@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "back_button@3x.png",
+      "filename" : "game_back_icon@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

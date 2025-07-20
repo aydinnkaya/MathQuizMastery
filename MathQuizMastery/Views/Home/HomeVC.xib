@@ -32,15 +32,15 @@
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </imageView>
-                <stackView opaque="NO" contentMode="TopLeft" distribution="equalSpacing" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="eMT-6c-NYX" userLabel="User Info Stack View">
-                    <rect key="frame" x="16" y="84" width="183.33333333333334" height="36"/>
+                <stackView opaque="NO" contentMode="TopLeft" distribution="equalSpacing" alignment="top" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="eMT-6c-NYX" userLabel="User Info Stack View">
+                    <rect key="frame" x="16" y="84" width="186.33333333333334" height="36"/>
                     <subviews>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user_icon" translatesAutoresizingMaskIntoConstraints="NO" id="ioc-zA-4GR" userLabel="UsernameBadgeView">
                             <rect key="frame" x="0.0" y="0.0" width="36" height="36"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" semanticContentAttribute="forceLeftToRight" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="test1fdsfds" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="neT-YG-6a3" userLabel="usernameLabel">
-                            <rect key="frame" x="36" y="0.0" width="147.33333333333334" height="33.666666666666664"/>
+                            <rect key="frame" x="39" y="0.0" width="147.33333333333334" height="33.666666666666664"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
