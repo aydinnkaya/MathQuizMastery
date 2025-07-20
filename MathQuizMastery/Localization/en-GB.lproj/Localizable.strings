@@ -182,3 +182,5 @@
 "settings_delete_account_title" = "Delete Account";
 "delete_account_message" = "Are you sure you want to delete your account?";
 "login_required_message" = "You must log in to use this feature.";
+"settings_about" = "About";
+"settings_delete_title" = "Delete Account";

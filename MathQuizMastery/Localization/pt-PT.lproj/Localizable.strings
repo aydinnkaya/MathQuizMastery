@@ -229,3 +229,7 @@
 "delete_account_message" = "Tem a certeza de que pretende eliminar a sua conta?";
 
 "login_required_message" = "Tem de iniciar sessão para usar esta funcionalidade.";
+
+"settings_about" = "Sobre";
+
+"settings_delete_title" = "Eliminar Conta";

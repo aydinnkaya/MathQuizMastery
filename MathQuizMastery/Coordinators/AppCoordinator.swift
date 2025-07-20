@@ -294,7 +294,7 @@ extension AppCoordinator: UniversalPopupDelegate {
             messageText: L(.login_required_message),
             primaryButtonText: L(.log_in),
             secondaryButtonText: L(.cancel),
-            iconImage: UIImage(named: "person.crop.circle")
+            iconImage: UIImage(systemName: "person.crop.circle")
         )
         
         let popupVC = UniversalPopupView()
@@ -317,7 +317,9 @@ extension AppCoordinator: UniversalPopupDelegate {
             deleteAccountAndNavigate()
         case .guestWarning:
             dismissPopup { [weak self] in
-                self?.goToLogin()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                    self?.goToLogin()
+                }
             }
         case .generic:
             dismissPopup()
@@ -333,11 +335,19 @@ extension AppCoordinator: UniversalPopupDelegate {
     private func deleteAccountAndNavigate() {
         AuthService.shared.deleteAccount { [weak self] error in
             DispatchQueue.main.async {
+                guard let self = self else { return }
+                
                 if let error = error {
                     print("Hesap silinirken hata oluştu: \(error.localizedDescription)")
                     return
                 }
-                self?.goToLogin()
+                
+                self.dismissPopup {
+                    // Popup kapandıktan sonra login ekranına yönlendir
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                        self.goToLogin()
+                    }
+                }
             }
         }
     }

@@ -183,3 +183,5 @@
 "delete_account_message" = "Er du sikker på, at du vil slette din konto?";
 "delete" = "Slet";
 "login_required_message" = "Du skal logge ind for at bruge denne funktion.";
+"settings_about" = "Om";
+"settings_delete_title" = "Slet Konto";

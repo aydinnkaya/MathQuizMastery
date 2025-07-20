@@ -231,3 +231,7 @@
 "delete" = "삭제";
 
 "login_required_message" = "이 기능을 사용하려면 로그인해야 합니다.";
+
+"settings_about" = "정보";
+
+"settings_delete_title" = "계정 삭제";

@@ -231,3 +231,7 @@
 "delete" = "Supprimer";
 
 "login_required_message" = "Vous devez vous connecter pour utiliser cette fonctionnalité.";
+
+"settings_about" = "À propos";
+
+"settings_delete_title" = "Supprimer Le Compte";

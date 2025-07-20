@@ -231,3 +231,7 @@
 "delete" = "Elimina";
 
 "login_required_message" = "Devi accedere per usare questa funzione.";
+
+"settings_about" = "Informazioni";
+
+"settings_delete_title" = "Elimina Account";

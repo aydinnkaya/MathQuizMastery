@@ -183,3 +183,5 @@
 "delete_account_message" = "您确定要删除您的账户吗？";
 "delete" = "删除";
 "login_required_message" = "您必须登录才能使用此功能。";
+"settings_about" = "关于";
+"settings_delete_title" = "删除账户";

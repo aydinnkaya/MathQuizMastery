@@ -229,3 +229,7 @@
 "delete_account_message" = "Naozaj chcete odstrániť svoj účet?";
 
 "login_required_message" = "Na použitie tejto funkcie sa musíte prihlásiť.";
+
+"settings_about" = "O aplikácii";
+
+"settings_delete_title" = "Vymazať Účet";

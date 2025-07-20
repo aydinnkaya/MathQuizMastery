@@ -229,3 +229,7 @@
 "delete_account_message" = "Sigur doriți să vă ștergeți contul?";
 
 "login_required_message" = "Trebuie să te conectezi pentru a folosi această funcție.";
+
+"settings_about" = "Despre";
+
+"settings_delete_title" = "Șterge Contul";

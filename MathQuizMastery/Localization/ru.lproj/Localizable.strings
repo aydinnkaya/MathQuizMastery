@@ -229,3 +229,7 @@
 "delete_account_message" = "Вы уверены, что хотите удалить свой аккаунт?";
 
 "login_required_message" = "Чтобы использовать эту функцию, необходимо войти в систему.";
+
+"settings_about" = "О приложении";
+
+"settings_delete_title" = "Удалить Аккаунт";

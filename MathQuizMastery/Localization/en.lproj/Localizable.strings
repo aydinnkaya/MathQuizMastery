@@ -185,3 +185,5 @@
 "login_required_message" = "You must log in to use this feature.";
 "login_button" = "Log In";
 "cancel_button" = "Cancel";
+"settings_about" = "About";
+"settings_delete_title" = "Delete Account";

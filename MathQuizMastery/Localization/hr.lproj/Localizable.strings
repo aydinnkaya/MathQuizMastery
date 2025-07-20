@@ -231,3 +231,7 @@
 "delete" = "Izbriši";
 
 "login_required_message" = "Morate se prijaviti da biste koristili ovu značajku.";
+
+"settings_about" = "O aplikaciji";
+
+"settings_delete_title" = "Izbriši Račun";

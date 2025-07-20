@@ -182,3 +182,5 @@
 "settings_delete_account_title" = "刪除帳戶";
 "delete_account_message" = "您確定要刪除您的帳戶嗎？";
 "login_required_message" = "您必須登入才能使用此功能。";
+"settings_about" = "關於";
+"settings_delete_title" = "刪除帳戶";

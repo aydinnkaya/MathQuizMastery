@@ -231,3 +231,7 @@
 "delete" = "Excluir";
 
 "login_required_message" = "Você precisa fazer login para usar este recurso.";
+
+"settings_about" = "Sobre";
+
+"settings_delete_title" = "Excluir Conta";

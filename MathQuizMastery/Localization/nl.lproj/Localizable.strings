@@ -231,3 +231,7 @@
 "delete" = "Verwijderen";
 
 "login_required_message" = "U moet inloggen om deze functie te gebruiken.";
+
+"settings_about" = "Over";
+
+"settings_delete_title" = "Account Verwijderen";

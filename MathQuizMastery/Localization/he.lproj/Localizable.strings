@@ -231,3 +231,7 @@
 "delete" = "מחק";
 
 "login_required_message" = "עליך להיכנס כדי להשתמש בתכונה זו.";
+
+"settings_about" = "על אודות";
+
+"settings_delete_title" = "מחיקת חשבון";

@@ -183,3 +183,5 @@
 "delete_account_message" = "Hesabınızı silmek istediğinize emin misiniz?";
 "delete" = "Sil";
 "login_required_message" = "Bu özelliği kullanmak için giriş yapmalısınız.";
+"settings_about" = "Hakkında";
+"settings_delete_title" = "Hesap Silme";

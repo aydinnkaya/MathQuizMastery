@@ -183,3 +183,5 @@
 "delete_account_message" = "¿Estás seguro de que deseas eliminar tu cuenta?";
 "delete" = "Eliminar";
 "login_required_message" = "Debe iniciar sesión para usar esta función.";
+"settings_about" = "Acerca de";
+"settings_delete_title" = "Eliminar Cuenta";

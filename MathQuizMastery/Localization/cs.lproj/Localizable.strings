@@ -183,3 +183,5 @@
 "delete_account_message" = "Opravdu chcete smazat svůj účet?";
 "delete" = "Smazat";
 "login_required_message" = "Pro použití této funkce se musíte přihlásit.";
+"settings_about" = "O aplikaci";
+"settings_delete_title" = "Smazat Účet";

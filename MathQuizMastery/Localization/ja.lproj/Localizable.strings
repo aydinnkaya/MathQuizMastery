@@ -231,3 +231,7 @@
 "delete" = "削除";
 
 "login_required_message" = "この機能を利用するにはログインが必要です。";
+
+"settings_about" = "概要";
+
+"settings_delete_title" = "アカウント削除";

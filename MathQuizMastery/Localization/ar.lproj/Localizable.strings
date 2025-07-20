@@ -183,3 +183,5 @@
 "delete_account_message" = "هل أنت متأكد أنك تريد حذف حسابك؟";
 "delete" = "حذف";
 "login_required_message" = "يجب عليك تسجيل الدخول لاستخدام هذه الميزة.";
+"settings_about" = "حول";
+"settings_delete_title" = "حذف الحساب";
