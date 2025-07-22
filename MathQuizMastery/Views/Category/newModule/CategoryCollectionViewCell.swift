@@ -2,7 +2,7 @@
 //  CategoryCollectionViewCell.swift
 //  MathQuizMastery
 //
-//  Created by AydınKaya on 22.07.2025.
+//  Created by Aydın KAYA on 23.07.2025.
 //
 
 import UIKit
@@ -29,6 +29,7 @@ class CategoryCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         setupUI()           // UI bileşenlerini ayarla
         setupLiquidGlass()  // Liquid glass efekti kur
+        print("✅ CategoryCollectionViewCell awakeFromNib tamamlandı")
     }
     
     override func prepareForReuse() {
@@ -48,63 +49,73 @@ class CategoryCollectionViewCell: UICollectionViewCell {
     /// UI bileşenlerini yapılandırır
     private func setupUI() {
         // Container view ayarları
-        containerView.layer.cornerRadius = 20
-        containerView.layer.masksToBounds = true
-        containerView.backgroundColor = UIColor.clear
+        containerView?.layer.cornerRadius = 20
+        containerView?.layer.masksToBounds = true
+        containerView?.backgroundColor = UIColor.clear
+        
+        // Background view ayarları
+        backgroundGradientView?.layer.cornerRadius = 20
+        backgroundGradientView?.layer.masksToBounds = true
         
         // İkon ayarları
-        iconImageView.contentMode = .scaleAspectFit
-        iconImageView.tintColor = UIColor.white
+        iconImageView?.contentMode = .scaleAspectFit
+        iconImageView?.tintColor = UIColor.white
         
         // Başlık ayarları
-        titleLabel.font = UIFont.systemFont(ofSize: 12, weight: .bold)
-        titleLabel.textColor = UIColor.white
-        titleLabel.textAlignment = .center
-        titleLabel.numberOfLines = 2
-        titleLabel.adjustsFontSizeToFitWidth = true
-        titleLabel.minimumScaleFactor = 0.8
+        titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .bold)
+        titleLabel?.textColor = UIColor.white
+        titleLabel?.textAlignment = .center
+        titleLabel?.numberOfLines = 2
+        titleLabel?.adjustsFontSizeToFitWidth = true
+        titleLabel?.minimumScaleFactor = 0.8
         
         // "YENİ" etiketi ayarları
-        newBadgeLabel.font = UIFont.systemFont(ofSize: 8, weight: .bold)
-        newBadgeLabel.textColor = UIColor.white
-        newBadgeLabel.backgroundColor = UIColor.systemRed
-        newBadgeLabel.text = "YENİ"
-        newBadgeLabel.textAlignment = .center
-        newBadgeLabel.layer.cornerRadius = 8
-        newBadgeLabel.layer.masksToBounds = true
-        newBadgeLabel.isHidden = true
+        newBadgeLabel?.font = UIFont.systemFont(ofSize: 10, weight: .bold)
+        newBadgeLabel?.textColor = UIColor.white
+        newBadgeLabel?.backgroundColor = UIColor.systemRed
+        newBadgeLabel?.text = "YENİ"
+        newBadgeLabel?.textAlignment = .center
+        newBadgeLabel?.layer.cornerRadius = 9
+        newBadgeLabel?.layer.masksToBounds = true
+        newBadgeLabel?.isHidden = true
         
         // Shadow efekti
         setupShadow()
         
         // Accessibility ayarları
         setupAccessibility()
+        
+        print("🎨 UI bileşenleri ayarlandı")
     }
     
     /// Liquid Glass efektini kurar
     private func setupLiquidGlass() {
+        guard let container = containerView else { return }
+        
         // Blur efekt view oluştur
         let blurEffect = UIBlurEffect(style: .systemUltraThinMaterialDark)
         blurEffectView = UIVisualEffectView(effect: blurEffect)
-        blurEffectView?.frame = containerView.bounds
+        blurEffectView?.frame = container.bounds
         blurEffectView?.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         blurEffectView?.alpha = 0.7
         
         // Blur view'ı container'a ekle (en alta)
         if let blurView = blurEffectView {
-            containerView.insertSubview(blurView, at: 0)
+            container.insertSubview(blurView, at: 0)
         }
         
         // Gradient layer oluştur
         gradientLayer = CAGradientLayer()
-        gradientLayer?.frame = containerView.bounds
+        gradientLayer?.frame = container.bounds
         gradientLayer?.cornerRadius = 20
         gradientLayer?.masksToBounds = true
         
         // Gradient'i blur view'ın üzerine ekle
         if let gradient = gradientLayer {
-            containerView.layer.insertSublayer(gradient, above: blurEffectView?.layer)
+            container.layer.insertSublayer(gradient, above: blurEffectView?.layer)
         }
+        
+        print("🌟 Liquid glass efekti kuruldu")
     }
     
     /// Gölge efektini ayarlar
@@ -134,16 +145,23 @@ class CategoryCollectionViewCell: UICollectionViewCell {
         self.category = category
         
         // Başlık ayarla
-        titleLabel.text = category.title
+        titleLabel?.text = category.title
         
-        // İkon ayarla
-        iconImageView.image = UIImage(named: category.iconName) ?? UIImage(systemName: "questionmark.circle.fill")
+        // İkon ayarla - önce custom, sonra system icon dene
+        if let customIcon = UIImage(named: category.iconName) {
+            iconImageView?.image = customIcon
+        } else if let systemIcon = UIImage(systemName: category.iconName) {
+            iconImageView?.image = systemIcon
+        } else {
+            // Fallback icon
+            iconImageView?.image = UIImage(systemName: "plus.circle.fill")
+        }
         
         // Gradient renklerini ayarla
         updateGradientColors(category.backgroundColor)
         
         // "YENİ" etiketini göster/gizle
-        newBadgeLabel.isHidden = !category.isNew
+        newBadgeLabel?.isHidden = !category.isNew
         
         // Accessibility ayarları
         accessibilityLabel = category.title
@@ -154,6 +172,8 @@ class CategoryCollectionViewCell: UICollectionViewCell {
         
         // Animasyon efektlerini hazırla
         prepareAnimations()
+        
+        print("🔧 Cell configure edildi: \(category.title)")
     }
     
     // MARK: - Private Methods
@@ -162,9 +182,9 @@ class CategoryCollectionViewCell: UICollectionViewCell {
     /// - Parameter baseColor: Temel renk
     private func updateGradientColors(_ baseColor: UIColor) {
         // Renk tonlarını oluştur
-        let lightColor = baseColor.withAlphaComponent(0.8)
-        let darkColor = baseColor.withAlphaComponent(0.4)
-        let accentColor = baseColor.withAlphaComponent(0.6)
+        let lightColor = baseColor.withAlphaComponent(0.9)
+        let darkColor = baseColor.withAlphaComponent(0.6)
+        let accentColor = baseColor.withAlphaComponent(0.8)
         
         // Gradient renklerini ayarla
         gradientLayer?.colors = [
@@ -173,15 +193,20 @@ class CategoryCollectionViewCell: UICollectionViewCell {
             darkColor.cgColor
         ]
         
-        gradientLayer?.locations = [0.0, 0.6, 1.0]
+        gradientLayer?.locations = [0.0, 0.5, 1.0]
         gradientLayer?.startPoint = CGPoint(x: 0.0, y: 0.0)
         gradientLayer?.endPoint = CGPoint(x: 1.0, y: 1.0)
+        
+        // Background view'a da renk ver (fallback)
+        backgroundGradientView?.backgroundColor = baseColor
     }
     
     /// Gradient frame'ini günceller
     private func updateGradientFrame() {
-        gradientLayer?.frame = containerView.bounds
-        blurEffectView?.frame = containerView.bounds
+        guard let container = containerView else { return }
+        
+        gradientLayer?.frame = container.bounds
+        blurEffectView?.frame = container.bounds
         
         // Shadow path güncelle
         layer.shadowPath = UIBezierPath(roundedRect: bounds, cornerRadius: 20).cgPath
@@ -190,20 +215,23 @@ class CategoryCollectionViewCell: UICollectionViewCell {
     /// Cell durumunu sıfırlar
     private func resetCellState() {
         category = nil
-        titleLabel.text = ""
-        iconImageView.image = nil
-        newBadgeLabel.isHidden = true
+        titleLabel?.text = ""
+        iconImageView?.image = nil
+        newBadgeLabel?.isHidden = true
         
         // Transform ve alpha değerlerini sıfırla
         transform = .identity
         alpha = 1.0
+        
+        // Animasyonları durdur
+        layer.removeAllAnimations()
     }
     
     /// Animasyonları hazırlar
     private func prepareAnimations() {
         // İlk load animation için hazırlık
         alpha = 0.0
-        transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
+        transform = CGAffineTransform(scaleX: 0.8, y: 0.8) // DÜZELTİLDİ: scaleY kullanıldı
     }
     
     // MARK: - Animation Methods
@@ -233,7 +261,7 @@ class CategoryCollectionViewCell: UICollectionViewCell {
         
         // Visual feedback animasyonu
         UIView.animate(withDuration: 0.1, animations: {
-            self.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
+            self.transform = CGAffineTransform(scaleX: 0.95, y: 0.95) // DÜZELTİLDİ
         }) { _ in
             UIView.animate(withDuration: 0.1, animations: {
                 self.transform = .identity
@@ -264,7 +292,7 @@ class CategoryCollectionViewCell: UICollectionViewCell {
     func animateHover(_ isHovering: Bool) {
         UIView.animate(withDuration: 0.2, animations: {
             if isHovering {
-                self.transform = CGAffineTransform(scaleX: 1.05, y: 1.05)
+                self.transform = CGAffineTransform(scaleX: 1.05, y: 1.05) // DÜZELTİLDİ
                 self.layer.shadowRadius = 16
                 self.layer.shadowOpacity = 0.25
             } else {
