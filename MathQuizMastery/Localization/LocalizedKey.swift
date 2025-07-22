@@ -253,4 +253,19 @@ enum LocalizedKey: String {
     
     case settings_delete_account_title
     
+    
+    // Category     
+    case addition
+    case subtraction
+    case multiplication
+    case multiplication_table
+    case order_of_operations
+    case negative_numbers
+    case fractions
+    case percentages
+    case geometric_shapes
+    case time_and_clock
+    case mental_math
+    case random_mixed
+    
 }

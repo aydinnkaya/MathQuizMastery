@@ -13,7 +13,7 @@ final class AppTrackingManager {
     
     static func requestTrackingAuthorizationIfNeeded() {
         guard #available(iOS 14, *) else { return }
-
+        
         ATTrackingManager.requestTrackingAuthorization { status in
             switch status {
             case .authorized:

@@ -8,37 +8,37 @@
 import UIKit
 
 @objc class QuestionLabel: UILabel {
-
+    
     private let borderLayer = CAShapeLayer()
     private let glowLayer = CALayer()
     private let backgroundGradient = CAGradientLayer()
-
+    
     private let textGradientLayer = CAGradientLayer()
     private let textMaskLayer = CATextLayer()
-
+    
     private let gradientTextColors: [CGColor] = UIColor.Custom.questionTextGradient.map { $0.cgColor }
-
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupLabel()
     }
-
+    
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         setupLabel()
     }
-
+    
     private func setupLabel() {
         clipsToBounds = false
         layer.masksToBounds = false
-
+        
         // Background Gradient
         backgroundGradient.colors = UIColor.Custom.questionBackground
         backgroundGradient.startPoint = CGPoint(x: 0.0, y: 0.0)
         backgroundGradient.endPoint = CGPoint(x: 1.0, y: 1.0)
         backgroundGradient.cornerRadius = 20
         layer.insertSublayer(backgroundGradient, at: 0)
-
+        
         // Glow Layer
         glowLayer.backgroundColor = UIColor.clear.cgColor
         glowLayer.shadowColor = UIColor.Custom.questionGlow.cgColor
@@ -47,7 +47,7 @@ import UIKit
         glowLayer.shadowOffset = .zero
         glowLayer.cornerRadius = 20
         layer.insertSublayer(glowLayer, above: backgroundGradient)
-
+        
         // Border Layer
         borderLayer.fillColor = UIColor.clear.cgColor
         borderLayer.strokeColor = UIColor.Custom.questionBorder.cgColor
@@ -57,19 +57,19 @@ import UIKit
         borderLayer.shadowOpacity = 1.0
         borderLayer.shadowOffset = .zero
         layer.addSublayer(borderLayer)
-
+        
         // Gradient Text
         textGradientLayer.colors = gradientTextColors
         textGradientLayer.startPoint = CGPoint(x: 0.5, y: 0)
         textGradientLayer.endPoint = CGPoint(x: 0.5, y: 1)
         layer.addSublayer(textGradientLayer)
         textGradientLayer.mask = textMaskLayer
-
+        
         textMaskLayer.alignmentMode = .center
         textMaskLayer.truncationMode = .end
         textMaskLayer.contentsScale = UIScreen.main.scale
         textMaskLayer.isWrapped = true
-
+        
         // UILabel Properties
         textAlignment = .center
         textColor = .clear
@@ -77,14 +77,14 @@ import UIKit
         numberOfLines = 1
         adjustsFontSizeToFitWidth = true
         minimumScaleFactor = 0.8
-
+        
         // Shadow for readability
         layer.shadowColor = UIColor.white.cgColor
         layer.shadowRadius = 3
         layer.shadowOpacity = 0.9
         layer.shadowOffset = .zero
     }
-
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         backgroundGradient.frame = bounds
@@ -100,25 +100,25 @@ import UIKit
         let borderPath = UIBezierPath(roundedRect: bounds, cornerRadius: 20)
         borderLayer.path = borderPath.cgPath
     }
-
+    
     override var text: String? {
         didSet {
             textMaskLayer.string = text ?? ""
         }
     }
-
+    
     override var font: UIFont! {
         didSet {
             textMaskLayer.font = font
             textMaskLayer.fontSize = font.pointSize
         }
     }
-
+    
     func animateTextChange(newText: String) {
         UIView.transition(with: self, duration: 0.4, options: .transitionFlipFromTop) {
             self.text = newText
         }
-
+        
         let pulseAnimation = CABasicAnimation(keyPath: "shadowOpacity")
         pulseAnimation.fromValue = 0.9
         pulseAnimation.toValue = 1.0

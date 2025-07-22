@@ -18,75 +18,167 @@ class GameVC: UIViewController {
     
     @IBOutlet weak var backgroundImage: UIImageView!
     
-    private let spaceBackgroundLayer = CAGradientLayer()
-    private let nebulaLayer = CAGradientLayer()
-    private let starFieldLayer = CAEmitterLayer()
-    private let timeWarningLayer = CAShapeLayer()
+    // MARK: - Visual Effect Layers
+    private let spaceBackgroundLayer = CAGradientLayer()        // Uzay arka planı
+    private let nebulaLayer = CAGradientLayer()                 // Nebula efekti
+    private let starFieldLayer = CAEmitterLayer()               // Yıldız alanı
+    private let timeWarningLayer = CAShapeLayer()               // Zaman uyarısı
     
-    private var viewModel: GameScreenViewModelProtocol!
-    private var coordinator: AppCoordinator!
-    var selectedExpressionType: MathExpression.ExpressionType?
+    // MARK: - Properties
+    private var viewModel: GameScreenViewModelProtocol!        // ViewModel referansı
+    private weak var coordinator: AppCoordinator!              // Coordinator referansı
+    private let selectedExpressionType: MathExpression.ExpressionType // Seçili matematik türü
     
-    init(viewModel: GameScreenViewModelProtocol!, coordinator: AppCoordinator!, selectedExpressionType: MathExpression.ExpressionType? = nil) {
-        self.viewModel = viewModel
+    // MARK: - Answer Buttons Array
+    /// Cevap butonlarının dizisi - kolayca erişim için
+    private var answerButtons: [AnswerButton] {
+        return [buttonFirst, buttonSecond, buttonThird]
+    }
+    
+    // MARK: - Initializer
+    /// GameVC başlatıcı metodu
+    /// - Parameters:
+    ///   - viewModel: Game ViewModel (opsiyonel, nil ise oluşturulacak)
+    ///   - coordinator: App Coordinator referansı
+    ///   - selectedExpressionType: Matematik işlem türü
+    init(viewModel: GameScreenViewModelProtocol? = nil,
+         coordinator: AppCoordinator,
+         selectedExpressionType: MathExpression.ExpressionType) {
+        
         self.coordinator = coordinator
         self.selectedExpressionType = selectedExpressionType
         super.init(nibName: "GameVC", bundle: nil)
+        
+        // ViewModel'i ayarla
+        self.viewModel = viewModel ?? GameScreenViewModel(
+            delegate: nil,
+            expressionType: selectedExpressionType
+        )
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureViewModel()
-        setupProfessionalSpaceBackground()
-        setupUIElements()
-        setupTimeWarningEffect()
-        viewModel.startGame()
-        navigationItem.hidesBackButton = true
+        setupViewController()
+        print("🎮 GameVC yüklendi - Tip: \(selectedExpressionType.displayName)")
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        updateSpaceBackground()
-        setupUIStyles()
-        backgroundImage.frame = view.bounds
+        updateVisualEffects()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        // Navigation bar'ı gizle
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        // ViewModel'i temizle
+        viewModel.endGame()
+    }
+    
+    // MARK: - Setup Methods
+    
+    /// View controller'ı başlangıç ayarlarını yapar
+    private func setupViewController() {
+        configureViewModel()           // ViewModel'i yapılandır
+        setupSpaceBackground()         // Uzay arka planını oluştur
+        setupUIElements()              // UI bileşenlerini ayarla
+        setupTimeWarningEffect()       // Zaman uyarısı efektini hazırla
+        startGame()                    // Oyunu başlat
+        
+        // Navigation ayarları
+        navigationItem.hidesBackButton = true
+        navigationController?.interactivePopGestureRecognizer?.isEnabled = false
+    }
+    
+    /// ViewModel'i yapılandırır ve delegate'i ayarlar
     private func configureViewModel() {
-        if let expressionType = selectedExpressionType {
-            viewModel = GameScreenViewModel(delegate: self, expressionType: expressionType)
+        // Eğer viewModel nil ise yeni bir tane oluştur
+        if viewModel == nil {
+            viewModel = GameScreenViewModel(
+                delegate: self,
+                expressionType: selectedExpressionType
+            )
         }
+        
+        // Delegate'i kendisi olarak ayarla
+        if let gameViewModel = viewModel as? GameScreenViewModel {
+            gameViewModel.delegate = self
+        }
+        
+        print("🔧 ViewModel yapılandırıldı")
     }
     
+    /// Oyunu başlatır
+    private func startGame() {
+        viewModel.startGame()
+        print("🚀 Oyun başlatıldı")
+    }
     
-    private func setupProfessionalSpaceBackground() {
+    // MARK: - UI Setup Methods
+    
+    /// UI bileşenlerini başlangıç ayarlarını yapar
+    private func setupUIElements() {
+        // Skor etiketi
+        scoreLabel.text = "Skor: 0"
+        scoreLabel.cosmicTheme = .score
+        
+        // Soru numarası etiketi
+        questionNumberLabel.text = "1 / \(viewModel.totalQuestions)"
+        questionNumberLabel.cosmicTheme = .questionNumber
+        
+        // Zaman etiketi
+        timeLabel.text = "\(viewModel.timeRemaining)"
+        
+        // Cevap butonlarını başlangıç durumuna getir
+        answerButtons.forEach { button in
+            button.isEnabled = true
+            button.resetToNormal()
+        }
+        
+        print("🎨 UI bileşenleri ayarlandı")
+    }
+    
+    /// Uzay temalı arka plan efektlerini oluşturur
+    private func setupSpaceBackground() {
         view.backgroundColor = UIColor.Custom.backgroundDark1
         
+        // Ana uzay arka planı
         spaceBackgroundLayer.colors = UIColor.Custom.spaceBackgroundColors
         spaceBackgroundLayer.locations = [0.0, 0.4, 0.7, 1.0]
         spaceBackgroundLayer.startPoint = CGPoint(x: 0, y: 0)
         spaceBackgroundLayer.endPoint = CGPoint(x: 1, y: 1)
         view.layer.insertSublayer(spaceBackgroundLayer, at: 0)
         
+        // Nebula efekti
         nebulaLayer.colors = UIColor.Custom.nebulaGradientColors
         nebulaLayer.locations = [0.0, 0.5, 1.0]
         nebulaLayer.startPoint = CGPoint(x: 0.2, y: 0.2)
         nebulaLayer.endPoint = CGPoint(x: 0.8, y: 0.8)
         view.layer.insertSublayer(nebulaLayer, above: spaceBackgroundLayer)
         
+        // Yıldız alanı
         setupStarField()
+        
+        print("🌌 Uzay arka planı oluşturuldu")
     }
     
+    /// Yıldız alanı efektini oluşturur
     private func setupStarField() {
         starFieldLayer.emitterPosition = CGPoint(x: 200, y: 0)
         starFieldLayer.emitterSize = CGSize(width: 400, height: 900)
         starFieldLayer.renderMode = .additive
         
         let star = CAEmitterCell()
-        star.contents = createStar().cgImage
+        star.contents = createStarImage().cgImage
         star.birthRate = 25
         star.lifetime = Float.infinity
         star.velocity = 0
@@ -100,7 +192,9 @@ class GameVC: UIViewController {
         view.layer.insertSublayer(starFieldLayer, above: nebulaLayer)
     }
     
-    private func createStar() -> UIImage {
+    /// Yıldız resmi oluşturur
+    /// - Returns: Yıldız UIImage'i
+    private func createStarImage() -> UIImage {
         let size = CGSize(width: 3, height: 3)
         UIGraphicsBeginImageContextWithOptions(size, false, 0)
         let context = UIGraphicsGetCurrentContext()!
@@ -113,6 +207,7 @@ class GameVC: UIViewController {
         return image
     }
     
+    /// Zaman uyarısı efektini hazırlar
     private func setupTimeWarningEffect() {
         timeWarningLayer.fillColor = UIColor.clear.cgColor
         timeWarningLayer.strokeColor = UIColor.Custom.timeWarningStrokeColor
@@ -121,38 +216,86 @@ class GameVC: UIViewController {
         view.layer.addSublayer(timeWarningLayer)
     }
     
-    private func updateSpaceBackground() {
+    /// Visual efektleri günceller (layout değişimlerinde)
+    private func updateVisualEffects() {
         spaceBackgroundLayer.frame = view.bounds
         nebulaLayer.frame = view.bounds
         starFieldLayer.frame = view.bounds
         starFieldLayer.emitterPosition = CGPoint(x: view.bounds.midX, y: 0)
+        backgroundImage.frame = view.bounds
         
+        // Zaman uyarısı path'i
         let warningPath = UIBezierPath()
         warningPath.move(to: CGPoint(x: 20, y: view.bounds.height - 20))
         warningPath.addLine(to: CGPoint(x: view.bounds.width - 20, y: view.bounds.height - 20))
         timeWarningLayer.path = warningPath.cgPath
     }
     
-    private func updateUI(question: String, answers: [String]) {
+    // MARK: - Game Logic Methods
+    
+    /// UI'ı soru ve cevaplarla günceller
+    /// - Parameters:
+    ///   - question: Soru metni
+    ///   - answers: Cevap seçenekleri
+    private func updateQuestionUI(question: String, answers: [String]) {
+        // Soru metnini animasyonlu güncelle
         questionLabel.animateTextChange(newText: question)
         
-        UIView.animate(withDuration: 0.3) {
-            self.buttonFirst.setTitle(answers[0], for: .normal)
-            self.buttonSecond.setTitle(answers[1], for: .normal)
-            self.buttonThird.setTitle(answers[2], for: .normal)
+        // Cevap butonlarını güncelle
+        UIView.animate(withDuration: 0.3) { [weak self] in
+            guard let self = self else { return }
+            
+            for (index, button) in self.answerButtons.enumerated() {
+                if index < answers.count {
+                    button.setTitle(answers[index], for: .normal)
+                    button.isHidden = false
+                } else {
+                    button.isHidden = true
+                }
+            }
         }
-    }
-    
-    private func handleAnswer(for button: AnswerButton) {
-        guard let selectedAnswer = button.title(for: .normal), let selectedAnswerInt = Int(selectedAnswer) else { return }
-        let isCorrect = viewModel.checkAnswer(selectedAnswer: selectedAnswerInt)
-        handleAnswerSelection(selectedButton: button, correct: isCorrect)
-    }
-    
-    private func handleAnswerSelection(selectedButton: AnswerButton, correct: Bool) {
-        [buttonFirst, buttonSecond, buttonThird].forEach { $0?.isEnabled = false }
         
-        if correct {
+        print("🔄 UI güncellendi - Soru: \(question)")
+    }
+    
+    /// Cevap butonuna tıklanma işlemini yönetir
+    /// - Parameter button: Tıklanan buton
+    private func handleAnswerButtonTap(for button: AnswerButton) {
+        guard let selectedAnswerText = button.title(for: .normal) else {
+            print("❌ Cevap metni alınamadı")
+            return
+        }
+        
+        // String'i Double'a çevir
+        let selectedAnswer: Double
+        if let intValue = Int(selectedAnswerText) {
+            selectedAnswer = Double(intValue)
+        } else if let doubleValue = Double(selectedAnswerText) {
+            selectedAnswer = doubleValue
+        } else {
+            print("❌ Geçersiz cevap formatı: \(selectedAnswerText)")
+            return
+        }
+        
+        // ViewModel'den cevabı kontrol et
+        let isCorrect = viewModel.checkAnswer(selectedAnswer: selectedAnswer)
+        
+        // Cevap işlemini yönet
+        handleAnswerFeedback(selectedButton: button, isCorrect: isCorrect)
+        
+        print("🎯 Cevap kontrol edildi: \(selectedAnswerText) - \(isCorrect ? "Doğru" : "Yanlış")")
+    }
+    
+    /// Cevap verildikten sonraki geri bildirim işlemlerini yönetir
+    /// - Parameters:
+    ///   - selectedButton: Seçilen buton
+    ///   - isCorrect: Cevap doğru mu?
+    private func handleAnswerFeedback(selectedButton: AnswerButton, isCorrect: Bool) {
+        // Tüm butonları devre dışı bırak
+        answerButtons.forEach { $0.isEnabled = false }
+        
+        // Cevap animasyonu
+        if isCorrect {
             selectedButton.triggerCorrectAnswer()
             showCorrectAnswerEffect()
         } else {
@@ -160,27 +303,82 @@ class GameVC: UIViewController {
             showWrongAnswerEffect()
         }
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
-            [self.buttonFirst, self.buttonSecond, self.buttonThird].forEach { button in
-                button?.isEnabled = true
-                button?.resetToNormal()
+        // 1.2 saniye sonra sonraki soruya geç
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) { [weak self] in
+            guard let self = self else { return }
+            
+            // Butonları yeniden etkinleştir ve sıfırla
+            self.answerButtons.forEach { button in
+                button.isEnabled = true
+                button.resetToNormal()
             }
+            
+            // Sonraki soruya geç
             self.viewModel.nextQuestion()
         }
     }
     
+    // MARK: - Visual Effect Methods
+    
+    /// Doğru cevap efektini gösterir
     private func showCorrectAnswerEffect() {
+        // Başarı arka plan efekti
         let successLayer = CALayer()
         successLayer.frame = view.bounds
         successLayer.backgroundColor = UIColor.Custom.successEffectBackground
         view.layer.addSublayer(successLayer)
         
+        // Fade animasyonu
         let fadeAnimation = CABasicAnimation(keyPath: "opacity")
         fadeAnimation.fromValue = 1.0
         fadeAnimation.toValue = 0.0
         fadeAnimation.duration = 0.8
         successLayer.add(fadeAnimation, forKey: "fade")
         
+        // Parçacık efekti
+        createSuccessParticleEffect()
+        
+        // Temizleme
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
+            successLayer.removeFromSuperlayer()
+        }
+        
+        print("✅ Doğru cevap efekti gösterildi")
+    }
+    
+    /// Yanlış cevap efektini gösterir
+    private func showWrongAnswerEffect() {
+        // Ekran sarsıntısı
+        let shakeAnimation = CABasicAnimation(keyPath: "transform.translation.x")
+        shakeAnimation.fromValue = -10
+        shakeAnimation.toValue = 10
+        shakeAnimation.duration = 0.08
+        shakeAnimation.autoreverses = true
+        shakeAnimation.repeatCount = 4
+        view.layer.add(shakeAnimation, forKey: "shake")
+        
+        // Hata arka plan efekti
+        let errorLayer = CALayer()
+        errorLayer.frame = view.bounds
+        errorLayer.backgroundColor = UIColor.Custom.wrongEffectBackground
+        view.layer.addSublayer(errorLayer)
+        
+        let fadeAnimation = CABasicAnimation(keyPath: "opacity")
+        fadeAnimation.fromValue = 1.0
+        fadeAnimation.toValue = 0.0
+        fadeAnimation.duration = 0.6
+        errorLayer.add(fadeAnimation, forKey: "fade")
+        
+        // Temizleme
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
+            errorLayer.removeFromSuperlayer()
+        }
+        
+        print("❌ Yanlış cevap efekti gösterildi")
+    }
+    
+    /// Başarı parçacık efekti oluşturur
+    private func createSuccessParticleEffect() {
         let successEmitter = CAEmitterLayer()
         successEmitter.emitterPosition = CGPoint(x: view.bounds.midX, y: view.bounds.midY)
         successEmitter.emitterSize = CGSize(width: 50, height: 50)
@@ -199,38 +397,14 @@ class GameVC: UIViewController {
         successEmitter.emitterCells = [successParticle]
         view.layer.addSublayer(successEmitter)
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
-            successLayer.removeFromSuperlayer()
+        // Temizleme
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
             successEmitter.removeFromSuperlayer()
         }
     }
     
-    private func showWrongAnswerEffect() {
-        let shakeAnimation = CABasicAnimation(keyPath: "transform.translation.x")
-        shakeAnimation.fromValue = -10
-        shakeAnimation.toValue = 10
-        shakeAnimation.duration = 0.08
-        shakeAnimation.autoreverses = true
-        shakeAnimation.repeatCount = 4
-        view.layer.add(shakeAnimation, forKey: "shake")
-        
-        let errorLayer = CALayer()
-        errorLayer.frame = view.bounds
-        errorLayer.backgroundColor = UIColor.Custom.wrongEffectBackground
-        view.layer.addSublayer(errorLayer)
-        
-        let fadeAnimation = CABasicAnimation(keyPath: "opacity")
-        fadeAnimation.fromValue = 1.0
-        fadeAnimation.toValue = 0.0
-        fadeAnimation.duration = 0.6
-        errorLayer.add(fadeAnimation, forKey: "fade")
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
-            errorLayer.removeFromSuperlayer()
-        }
-    }
-    
-    private func triggerTimeWarningEffect() {
+    /// Zaman uyarısı efektini başlatır
+    private func startTimeWarningEffect() {
         let pulseAnimation = CABasicAnimation(keyPath: "opacity")
         pulseAnimation.fromValue = 0.0
         pulseAnimation.toValue = 1.0
@@ -238,66 +412,25 @@ class GameVC: UIViewController {
         pulseAnimation.autoreverses = true
         pulseAnimation.repeatCount = .infinity
         timeWarningLayer.add(pulseAnimation, forKey: "timeWarning")
+        
+        print("⚠️ Zaman uyarısı efekti başlatıldı")
     }
     
+    /// Zaman uyarısı efektini durdurur
     private func stopTimeWarningEffect() {
         timeWarningLayer.removeAnimation(forKey: "timeWarning")
         timeWarningLayer.opacity = 0
-    }
-    
-    @IBAction func answerFirstButton(_ sender: AnswerButton) {
-        handleAnswer(for: sender)
-    }
-    
-    @IBAction func answerSecondButton(_ sender: AnswerButton) {
-        handleAnswer(for: sender)
-    }
-    
-    @IBAction func answerThirdButton(_ sender: AnswerButton) {
-        handleAnswer(for: sender)
-    }
-}
-
-// MARK: - GameScreenViewModelDelegate
-extension GameVC : GameScreenViewModelDelegate {
-    
-    func onUpdateUI(questionText: String, answers: [String]) {
-        self.updateUI(question: questionText, answers: answers)
-    }
-    
-    func onUpdateScore(score: Int) {
-        scoreLabel.animateTextChange(newText: "Score: \(score)")
-        scoreLabel.activateHighlight()
-    }
-    
-    func onUpdateTime(time: String) {
-        timeLabel.animateTextChange(newText: time)
         
-        if let timeInt = Int(time) {
-            if timeInt <= 10 && timeInt > 0 {
-                timeLabel.triggerWarning()
-               // triggerTimeWarningEffect()
-            } else {
-                timeLabel.resetToNormal()
-                stopTimeWarningEffect()
-            }
-        }
+        print("⏹️ Zaman uyarısı efekti durduruldu")
     }
     
-    func onUpdateQuestionNumber(questionNumber: Int) {
-        questionNumberLabel.animateTextChange(newText: "\(questionNumber) / 10")
-    }
-    
-    func onGameFinished(score: Int, expressionType: MathExpression.ExpressionType) {
-        showGameFinishEffect(score: score)
-        
-            self.coordinator.goToResult(score: "\(score)", expressionType: expressionType)
-    }
-    
+    /// Oyun bitişi efektini gösterir
+    /// - Parameter score: Final skoru
     private func showGameFinishEffect(score: Int) {
         let finishLayer = CAGradientLayer()
         finishLayer.frame = view.bounds
         
+        // Skora göre renk seç
         if score >= 8 {
             finishLayer.colors = UIColor.Custom.finishEffectColorsHigh
         } else if score >= 6 {
@@ -308,6 +441,7 @@ extension GameVC : GameScreenViewModelDelegate {
         
         view.layer.addSublayer(finishLayer)
         
+        // Pulse animasyonu
         let pulseAnimation = CABasicAnimation(keyPath: "opacity")
         pulseAnimation.fromValue = 0.0
         pulseAnimation.toValue = 1.0
@@ -316,51 +450,175 @@ extension GameVC : GameScreenViewModelDelegate {
         pulseAnimation.repeatCount = 4
         finishLayer.add(pulseAnimation, forKey: "pulse")
         
+        // Temizleme
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
             finishLayer.removeFromSuperlayer()
         }
+        
+        print("🏁 Oyun bitişi efekti gösterildi - Skor: \(score)")
     }
     
+    // MARK: - IBAction Methods
     
-    func onStartCountdownAnimation() {
-        // Hangi animasyonu kullanmak istiyorsanız burada belirtin:
-        
-        setupVibrantRocketLaunchAnimation()
-        // Seçenek 1: Uzay aracı fırlatma
-      // startCountdownAnimation(type: .spaceshipLaunch)
-        
-        // Seçenek 2: Wormhole portal
-        //startCountdownAnimation(type: .wormhole)
-        
-        // Seçenek 3: Asteroid belt
-    //   startCountdownAnimation(type: .asteroidBelt)
-        
-        // Seçenek 4: Kozmik fırtına
-      // startCountdownAnimation(type: .cosmicStorm)
-        
-        // Titreşim efekti de eklenebilir
-        let impactFeedback = UIImpactFeedbackGenerator(style: .heavy)
-        impactFeedback.impactOccurred()
+    @IBAction func answerFirstButton(_ sender: AnswerButton) {
+        handleAnswerButtonTap(for: sender)
     }
     
+    @IBAction func answerSecondButton(_ sender: AnswerButton) {
+        handleAnswerButtonTap(for: sender)
+    }
+    
+    @IBAction func answerThirdButton(_ sender: AnswerButton) {
+        handleAnswerButtonTap(for: sender)
+    }
+    
+    /// Memory warning alındığında çağrılır
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        print("⚠️ GameVC: Memory warning alındı")
+        
+        // Görsel efektleri temizle
+        cleanupVisualEffects()
+    }
+    
+    /// Görsel efektleri temizler
+    private func cleanupVisualEffects() {
+        starFieldLayer.removeFromSuperlayer()
+        timeWarningLayer.removeFromSuperlayer()
+        print("🧹 Görsel efektler temizlendi")
+    }
+    
+    deinit {
+        // ViewModel'i temizle
+        viewModel?.endGame()
+        
+        // Katmanları temizle
+        cleanupVisualEffects()
+        
+        print("🗑️ GameVC deinit edildi")
+    }
 }
 
-// MARK: - GameVC Extension for Countdown Animations
-extension GameVC {
+// MARK: - GameScreenViewModelDelegate
+extension GameVC: GameScreenViewModelDelegate {
+    
+    /// Soru güncellendi
+    func didUpdateQuestion(questionText: String, answerOptions: [String]) {
+        updateQuestionUI(question: questionText, answers: answerOptions)
+    }
+    
+    /// Skor güncellendi
+    func didUpdateScore(newScore: Int) {
+        DispatchQueue.main.async { [weak self] in
+            self?.scoreLabel.animateTextChange(newText: "Skor: \(newScore)")
+            self?.scoreLabel.activateHighlight()
+        }
+        print("📊 Skor güncellendi: \(newScore)")
+    }
+    
+    /// Zaman güncellendi
+    func didUpdateTime(formattedTime: String) {
+        DispatchQueue.main.async { [weak self] in
+            self?.timeLabel.animateTextChange(newText: formattedTime)
+            
+            // Zaman uyarısı kontrolü
+            if let timeInt = Int(formattedTime) {
+                if timeInt <= 10 && timeInt > 0 {
+                    self?.timeLabel.triggerWarning()
+                } else {
+                    self?.timeLabel.resetToNormal()
+                    self?.stopTimeWarningEffect()
+                }
+            }
+        }
+    }
+    
+    /// Soru numarası güncellendi
+    func didUpdateQuestionNumber(current: Int, total: Int) {
+        DispatchQueue.main.async { [weak self] in
+            self?.questionNumberLabel.animateTextChange(newText: "\(current) / \(total)")
+        }
+        print("🔢 Soru numarası: \(current)/\(total)")
+    }
+    
+    /// Oyun bitti
+    func didFinishGame(finalScore: Int, expressionType: MathExpression.ExpressionType) {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            
+            // Bitişi efekti göster
+            self.showGameFinishEffect(score: finalScore)
+            
+            // 2.5 saniye sonra sonuç ekranına git
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
+                self.coordinator?.goToResult(score: "\(finalScore)", expressionType: expressionType)
+            }
+        }
+        
+        print("🏆 Oyun bitti - Final skoru: \(finalScore)")
+    }
+    
+    /// Countdown uyarısı başladı
+    func didStartCountdownWarning() {
+        DispatchQueue.main.async { [weak self] in
+            self?.setupVibrantRocketLaunchAnimation()
+            
+            // Haptic feedback
+            let impactFeedback = UIImpactFeedbackGenerator(style: .heavy)
+            impactFeedback.impactOccurred()
+        }
+        
+        print("🚨 Countdown uyarısı başlatıldı")
+    }
+    
+    /// Cevap verildi
+    func didAnswerQuestion(isCorrect: Bool, correctAnswer: String) {
+        // Bu delegate method'u UI tarafında zaten handle ediliyor
+        // Ek işlemler gerekirse burada yapılabilir
+        print("💭 Cevap işlendi: \(isCorrect ? "Doğru" : "Yanlış") - Doğru cevap: \(correctAnswer)")
+    }
+    
+    /// Hata oluştu
+    func didEncounterError(error: GameError) {
+        DispatchQueue.main.async { [weak self] in
+            let alert = UIAlertController(
+                title: "Oyun Hatası",
+                message: error.localizedDescription,
+                preferredStyle: .alert
+            )
+            
+            alert.addAction(UIAlertAction(title: "Tekrar Dene", style: .default) { _ in
+                self?.viewModel.startGame()
+            })
+            
+            alert.addAction(UIAlertAction(title: "Ana Menü", style: .cancel) { _ in
+                self?.coordinator?.goBackToHomeFromCategory()
+            })
+            
+            self?.present(alert, animated: true)
+        }
+        
+        print("❌ Oyun hatası: \(error.localizedDescription)")
+    }
+}
 
+// MARK: - Countdown Animations
+extension GameVC {
+    
+    /// Canlı roket fırlatma animasyonu
     private func setupVibrantRocketLaunchAnimation() {
         let spaceshipContainer = UIView()
         spaceshipContainer.frame = CGRect(x: view.bounds.width / 2 - 40, y: view.bounds.height + 200, width: 80, height: 200)
         view.addSubview(spaceshipContainer)
         
-        // 🛡️ Roket gövdesi (parlak beyaz gövde, dar ve uzun)
+        // Roket gövdesi
         let rocketBody = CAShapeLayer()
         let bodyPath = UIBezierPath()
         bodyPath.move(to: CGPoint(x: 35, y: 170))
         bodyPath.addLine(to: CGPoint(x: 45, y: 170))
         bodyPath.addLine(to: CGPoint(x: 50, y: 100))
         bodyPath.addLine(to: CGPoint(x: 45, y: 40))
-        bodyPath.addLine(to: CGPoint(x: 40, y: 10))  // burun
+        bodyPath.addLine(to: CGPoint(x: 40, y: 10))
         bodyPath.addLine(to: CGPoint(x: 35, y: 40))
         bodyPath.addLine(to: CGPoint(x: 30, y: 100))
         bodyPath.close()
@@ -371,7 +629,41 @@ extension GameVC {
         rocketBody.lineWidth = 2
         spaceshipContainer.layer.addSublayer(rocketBody)
         
-        // 🟥 Kanatlar (canlı kırmızı, daha büyük üçgen şekiller)
+        // Kanatlar
+        addRocketFins(to: spaceshipContainer)
+        
+        // Cam
+        addRocketCockpit(to: spaceshipContainer)
+        
+        // Alevler
+        addRocketFlames(to: spaceshipContainer)
+        
+        // Kıvılcımlar
+        addSparkEffect(to: spaceshipContainer)
+        
+        // Haptic feedback
+        let generator = UIImpactFeedbackGenerator(style: .heavy)
+        generator.prepare()
+        generator.impactOccurred()
+        
+        // Ekran sarsıntısı
+        let shake = CAKeyframeAnimation(keyPath: "transform.translation.x")
+        shake.values = [-5, 5, -4, 4, -2, 2, 0]
+        shake.duration = 0.4
+        view.layer.add(shake, forKey: "shake")
+        
+        // Fırlatma animasyonu
+        UIView.animate(withDuration: 6.0, delay: 0, options: [.curveEaseOut], animations: {
+            spaceshipContainer.transform = CGAffineTransform(translationX: 0, y: -self.view.bounds.height - 300).rotated(by: CGFloat.pi / 40)
+            spaceshipContainer.alpha = 0
+        }) { _ in
+            spaceshipContainer.removeFromSuperview()
+        }
+    }
+    
+    /// Roket kanatlarını ekler
+    private func addRocketFins(to container: UIView) {
+        // Sol kanat
         let leftFin = CAShapeLayer()
         let leftFinPath = UIBezierPath()
         leftFinPath.move(to: CGPoint(x: 30, y: 100))
@@ -380,8 +672,9 @@ extension GameVC {
         leftFinPath.close()
         leftFin.path = leftFinPath.cgPath
         leftFin.fillColor = UIColor.red.cgColor
-        spaceshipContainer.layer.addSublayer(leftFin)
-
+        container.layer.addSublayer(leftFin)
+        
+        // Sağ kanat
         let rightFin = CAShapeLayer()
         let rightFinPath = UIBezierPath()
         rightFinPath.move(to: CGPoint(x: 50, y: 100))
@@ -390,9 +683,11 @@ extension GameVC {
         rightFinPath.close()
         rightFin.path = rightFinPath.cgPath
         rightFin.fillColor = UIColor.red.cgColor
-        spaceshipContainer.layer.addSublayer(rightFin)
-        
-        // 🔵 Cam (parlak mavi)
+        container.layer.addSublayer(rightFin)
+    }
+    
+    /// Roket camını ekler
+    private func addRocketCockpit(to container: UIView) {
         let cockpit = CAShapeLayer()
         let cockpitPath = UIBezierPath(ovalIn: CGRect(x: 38, y: 25, width: 8, height: 8))
         cockpit.path = cockpitPath.cgPath
@@ -401,55 +696,62 @@ extension GameVC {
         cockpit.shadowRadius = 3
         cockpit.shadowOpacity = 0.8
         cockpit.shadowOffset = .zero
-        spaceshipContainer.layer.addSublayer(cockpit)
-
-        // 🔥 Alevler – Üç katmanlı
-        let flameRed = CAShapeLayer()
-        let flameRedPath = UIBezierPath()
-        flameRedPath.move(to: CGPoint(x: 35, y: 170))
-        flameRedPath.addLine(to: CGPoint(x: 45, y: 170))
-        flameRedPath.addLine(to: CGPoint(x: 40, y: 200))
-        flameRedPath.close()
-        flameRed.path = flameRedPath.cgPath
-        flameRed.fillColor = UIColor.red.cgColor
-        spaceshipContainer.layer.addSublayer(flameRed)
-
-        let flameYellow = CAShapeLayer()
-        let flameYellowPath = UIBezierPath()
-        flameYellowPath.move(to: CGPoint(x: 36, y: 170))
-        flameYellowPath.addLine(to: CGPoint(x: 44, y: 170))
-        flameYellowPath.addLine(to: CGPoint(x: 40, y: 190))
-        flameYellowPath.close()
-        flameYellow.path = flameYellowPath.cgPath
-        flameYellow.fillColor = UIColor.yellow.cgColor
-        spaceshipContainer.layer.addSublayer(flameYellow)
-
-        let flameBlue = CAShapeLayer()
-        let flameBluePath = UIBezierPath()
-        flameBluePath.move(to: CGPoint(x: 37, y: 170))
-        flameBluePath.addLine(to: CGPoint(x: 43, y: 170))
-        flameBluePath.addLine(to: CGPoint(x: 40, y: 185))
-        flameBluePath.close()
-        flameBlue.path = flameBluePath.cgPath
-        flameBlue.fillColor = UIColor.systemBlue.cgColor
-        spaceshipContainer.layer.addSublayer(flameBlue)
-
-        // ✨ Alev parlaması animasyonu
-        let flicker = CABasicAnimation(keyPath: "opacity")
-        flicker.fromValue = 0.5
-        flicker.toValue = 1.0
-        flicker.duration = 0.1
-        flicker.autoreverses = true
-        flicker.repeatCount = .infinity
-        flameRed.add(flicker, forKey: "flicker")
-        flameYellow.add(flicker, forKey: "flicker")
-        flameBlue.add(flicker, forKey: "flicker")
-
-        // ✨ Kıvılcım efektleri (altın sarısı)
+        container.layer.addSublayer(cockpit)
+    }
+    
+    /// Roket alevlerini ekler
+    private func addRocketFlames(to container: UIView) {
+        // Kırmızı alev
+        let flameRed = createFlameLayer(path: createFlamePath(width: 10, height: 30), color: .red)
+        flameRed.position = CGPoint(x: 40, y: 185)
+        container.layer.addSublayer(flameRed)
+        
+        // Sarı alev
+        let flameYellow = createFlameLayer(path: createFlamePath(width: 8, height: 20), color: .yellow)
+        flameYellow.position = CGPoint(x: 40, y: 180)
+        container.layer.addSublayer(flameYellow)
+        
+        // Mavi alev
+        let flameBlue = createFlameLayer(path: createFlamePath(width: 6, height: 15), color: .systemBlue)
+        flameBlue.position = CGPoint(x: 40, y: 175)
+        container.layer.addSublayer(flameBlue)
+        
+        // Alev animasyonları
+        [flameRed, flameYellow, flameBlue].forEach { flame in
+            let flicker = CABasicAnimation(keyPath: "opacity")
+            flicker.fromValue = 0.5
+            flicker.toValue = 1.0
+            flicker.duration = 0.1
+            flicker.autoreverses = true
+            flicker.repeatCount = .infinity
+            flame.add(flicker, forKey: "flicker")
+        }
+    }
+    
+    /// Alev katmanı oluşturur
+    private func createFlameLayer(path: UIBezierPath, color: UIColor) -> CAShapeLayer {
+        let flame = CAShapeLayer()
+        flame.path = path.cgPath
+        flame.fillColor = color.cgColor
+        return flame
+    }
+    
+    /// Alev path'i oluşturur
+    private func createFlamePath(width: CGFloat, height: CGFloat) -> UIBezierPath {
+        let path = UIBezierPath()
+        path.move(to: CGPoint(x: -width/2, y: 0))
+        path.addLine(to: CGPoint(x: width/2, y: 0))
+        path.addLine(to: CGPoint(x: 0, y: height))
+        path.close()
+        return path
+    }
+    
+    /// Kıvılcım efekti ekler
+    private func addSparkEffect(to container: UIView) {
         let sparkEmitter = CAEmitterLayer()
         sparkEmitter.emitterPosition = CGPoint(x: 40, y: 170)
         sparkEmitter.emitterShape = .point
-
+        
         let sparkCell = CAEmitterCell()
         sparkCell.birthRate = 120
         sparkCell.lifetime = 0.6
@@ -460,358 +762,15 @@ extension GameVC {
         sparkCell.scaleRange = 0.01
         sparkCell.color = UIColor.yellow.cgColor
         sparkCell.contents = UIImage(systemName: "sparkle")?.withTintColor(.yellow).cgImage
-
+        
         sparkEmitter.emitterCells = [sparkCell]
-        spaceshipContainer.layer.addSublayer(sparkEmitter)
-
-        // 📳 Haptic feedback
-        let generator = UIImpactFeedbackGenerator(style: .heavy)
-        generator.prepare()
-        generator.impactOccurred()
-
-        // 📱 Ekran sarsıntısı (shake)
-        let shake = CAKeyframeAnimation(keyPath: "transform.translation.x")
-        shake.values = [-5, 5, -4, 4, -2, 2, 0]
-        shake.duration = 0.4
-        view.layer.add(shake, forKey: "shake")
-
-        // 🚀 Fırlatma animasyonu
-        UIView.animate(withDuration: 6.0, delay: 0, options: [.curveEaseOut], animations: {
-            spaceshipContainer.transform = CGAffineTransform(translationX: 0, y: -self.view.bounds.height - 300).rotated(by: CGFloat.pi / 40)
-            spaceshipContainer.alpha = 0
-        }) { _ in
-            spaceshipContainer.removeFromSuperview()
+        container.layer.addSublayer(sparkEmitter)
+        
+        // Temizlik
+        DispatchQueue.main.asyncAfter(deadline: .now() + 6.0) {
             sparkEmitter.removeFromSuperlayer()
         }
     }
-
-
-    // MARK: - Animasyon 1: Uzay Aracı Fırlatma
-    private func setupSpaceshipLaunchAnimation() {
-        let spaceshipContainer = UIView()
-        spaceshipContainer.frame = CGRect(x: view.bounds.width/2 - 30, y: view.bounds.height + 100, width: 90, height: 180)
-        view.addSubview(spaceshipContainer)
-        
-        // Uzay aracı gövdesi
-        let rocketBody = CAShapeLayer()
-        let bodyPath = UIBezierPath()
-        bodyPath.move(to: CGPoint(x: 20, y: 100))
-        bodyPath.addLine(to: CGPoint(x: 40, y: 100))
-        bodyPath.addLine(to: CGPoint(x: 45, y: 60))
-        bodyPath.addLine(to: CGPoint(x: 40, y: 20))
-        bodyPath.addLine(to: CGPoint(x: 30, y: 5))
-        bodyPath.addLine(to: CGPoint(x: 20, y: 20))
-        bodyPath.addLine(to: CGPoint(x: 15, y: 60))
-        bodyPath.close()
-        
-        rocketBody.path = bodyPath.cgPath
-        rocketBody.fillColor = UIColor.systemOrange.cgColor
-        rocketBody.strokeColor = UIColor.purple.cgColor
-        rocketBody.lineWidth = 2
-        spaceshipContainer.layer.addSublayer(rocketBody)
-        
-        // Roket alevi
-        let flame = CAShapeLayer()
-        let flamePath = UIBezierPath()
-        flamePath.move(to: CGPoint(x: 25, y: 100))
-        flamePath.addLine(to: CGPoint(x: 35, y: 100))
-        flamePath.addLine(to: CGPoint(x: 30, y: 120))
-        flamePath.close()
-        
-        flame.path = flamePath.cgPath
-        flame.fillColor = UIColor.systemRed.cgColor
-        spaceshipContainer.layer.addSublayer(flame)
-        
-        // Alev animasyonu
-        let flameFlicker = CABasicAnimation(keyPath: "opacity")
-        flameFlicker.fromValue = 0.3
-        flameFlicker.toValue = 1.0
-        flameFlicker.duration = 0.1
-        flameFlicker.autoreverses = true
-        flameFlicker.repeatCount = .infinity
-        flame.add(flameFlicker, forKey: "flicker")
-        
-        // Fırlatma animasyonu
-        UIView.animate(withDuration: 10.0, delay: 0, options: [.curveEaseIn], animations: {
-            spaceshipContainer.transform = CGAffineTransform(translationX: 0, y: -self.view.bounds.height - 200)
-            spaceshipContainer.alpha = 0.0
-        }) { _ in
-            spaceshipContainer.removeFromSuperview()
-        }
-        
-        // Titreşim efekti
-        let shake = CABasicAnimation(keyPath: "transform.translation.x")
-        shake.fromValue = -2
-        shake.toValue = 2
-        shake.duration = 0.05
-        shake.autoreverses = true
-        shake.repeatCount = .infinity
-        spaceshipContainer.layer.add(shake, forKey: "shake")
-    }
-    
-    // MARK: - Animasyon 2: Wormhole Portal
-    private func setupWormholeAnimation() {
-        let portalContainer = UIView()
-        portalContainer.frame = CGRect(x: view.bounds.width/2 - 75, y: view.bounds.height - 200, width: 150, height: 150)
-        view.addSubview(portalContainer)
-        
-        // Ana portal halkası
-        let portalRing1 = CAShapeLayer()
-        portalRing1.path = UIBezierPath(ovalIn: CGRect(x: 10, y: 10, width: 130, height: 130)).cgPath
-        portalRing1.fillColor = UIColor.clear.cgColor
-        portalRing1.strokeColor = UIColor.systemPurple.withAlphaComponent(0.8).cgColor
-        portalRing1.lineWidth = 4
-        portalContainer.layer.addSublayer(portalRing1)
-        
-        let portalRing2 = CAShapeLayer()
-        portalRing2.path = UIBezierPath(ovalIn: CGRect(x: 25, y: 25, width: 100, height: 100)).cgPath
-        portalRing2.fillColor = UIColor.clear.cgColor
-        portalRing2.strokeColor = UIColor.systemBlue.withAlphaComponent(0.6).cgColor
-        portalRing2.lineWidth = 3
-        portalContainer.layer.addSublayer(portalRing2)
-        
-        let portalRing3 = CAShapeLayer()
-        portalRing3.path = UIBezierPath(ovalIn: CGRect(x: 40, y: 40, width: 70, height: 70)).cgPath
-        portalRing3.fillColor = UIColor.clear.cgColor
-        portalRing3.strokeColor = UIColor.systemTeal.withAlphaComponent(0.4).cgColor
-        portalRing3.lineWidth = 2
-        portalContainer.layer.addSublayer(portalRing3)
-        
-        // Portal merkezi
-        let portalCenter = CAShapeLayer()
-        portalCenter.path = UIBezierPath(ovalIn: CGRect(x: 60, y: 60, width: 30, height: 30)).cgPath
-        portalCenter.fillColor = UIColor.white.withAlphaComponent(0.9).cgColor
-        portalContainer.layer.addSublayer(portalCenter)
-        
-        // Dönme animasyonları
-        let rotation1 = CABasicAnimation(keyPath: "transform.rotation")
-        rotation1.fromValue = 0
-        rotation1.toValue = Double.pi * 2
-        rotation1.duration = 3.0
-        rotation1.repeatCount = .infinity
-        portalRing1.add(rotation1, forKey: "rotate1")
-        
-        let rotation2 = CABasicAnimation(keyPath: "transform.rotation")
-        rotation2.fromValue = 0
-        rotation2.toValue = -Double.pi * 2
-        rotation2.duration = 2.0
-        rotation2.repeatCount = .infinity
-        portalRing2.add(rotation2, forKey: "rotate2")
-        
-        let rotation3 = CABasicAnimation(keyPath: "transform.rotation")
-        rotation3.fromValue = 0
-        rotation3.toValue = Double.pi * 2
-        rotation3.duration = 1.5
-        rotation3.repeatCount = .infinity
-        portalRing3.add(rotation3, forKey: "rotate3")
-        
-        // Portal büyüme animasyonu
-        UIView.animate(withDuration: 10.0, animations: {
-            portalContainer.transform = CGAffineTransform(scaleX: 3.0, y: 3.0)
-            portalContainer.alpha = 0.0
-        }) { _ in
-            portalContainer.removeFromSuperview()
-        }
-        
-        // Parçacık efekti
-        addPortalParticles(to: portalContainer)
-    }
-    
-    private func addPortalParticles(to container: UIView) {
-        let particleEmitter = CAEmitterLayer()
-        particleEmitter.emitterPosition = CGPoint(x: 75, y: 75)
-        particleEmitter.emitterSize = CGSize(width: 150, height: 150)
-        particleEmitter.renderMode = .additive
-        
-        let particle = CAEmitterCell()
-        particle.contents = UIImage(systemName: "star.fill")?.cgImage
-        particle.birthRate = 20
-        particle.lifetime = 2.0
-        particle.velocity = 50
-        particle.velocityRange = 30
-        particle.emissionRange = .pi * 2
-        particle.scale = 0.3
-        particle.scaleRange = 0.2
-        particle.alphaSpeed = -0.5
-        particle.color = UIColor.systemPurple.cgColor
-        
-        particleEmitter.emitterCells = [particle]
-        container.layer.addSublayer(particleEmitter)
-    }
-    
-    // MARK: - Animasyon 3: Asteroid Belt Warning
-    private func setupAsteroidBeltAnimation() {
-        let asteroidContainer = UIView()
-        asteroidContainer.frame = view.bounds
-        view.addSubview(asteroidContainer)
-        
-        // Birden fazla asteroid oluştur
-        for i in 0..<8 {
-            let asteroid = createAsteroid()
-            let startX = CGFloat.random(in: -100...view.bounds.width + 100)
-            let startY = CGFloat.random(in: view.bounds.height + 50...view.bounds.height + 200)
-            
-            asteroid.frame = CGRect(x: startX, y: startY, width: 40, height: 40)
-            asteroidContainer.addSubview(asteroid)
-            
-            // Asteroid hareketi
-            UIView.animate(withDuration: Double.random(in: 8.0...12.0), delay: Double(i) * 0.5, options: [.curveLinear], animations: {
-                asteroid.transform = CGAffineTransform(translationX: CGFloat.random(in: -200...200), y: -self.view.bounds.height - 300)
-                asteroid.transform = asteroid.transform.rotated(by: CGFloat.random(in: 0...Double.pi * 4))
-            }) { _ in
-                asteroid.removeFromSuperview()
-            }
-        }
-        
-        // Container temizleme
-        DispatchQueue.main.asyncAfter(deadline: .now() + 10.0) {
-            asteroidContainer.removeFromSuperview()
-        }
-    }
-    
-    private func createAsteroid() -> UIView {
-        let asteroid = UIView()
-        asteroid.backgroundColor = UIColor.systemBrown
-        asteroid.layer.cornerRadius = 20
-        
-        // Asteroid detayları
-        let crater1 = UIView()
-        crater1.backgroundColor = UIColor.systemBrown.withAlphaComponent(0.5)
-        crater1.layer.cornerRadius = 3
-        crater1.frame = CGRect(x: 8, y: 10, width: 6, height: 6)
-        asteroid.addSubview(crater1)
-        
-        let crater2 = UIView()
-        crater2.backgroundColor = UIColor.systemBrown.withAlphaComponent(0.3)
-        crater2.layer.cornerRadius = 4
-        crater2.frame = CGRect(x: 20, y: 15, width: 8, height: 8)
-        asteroid.addSubview(crater2)
-        
-        // Parıltı efekti
-        let glow = CALayer()
-        glow.frame = asteroid.bounds
-        glow.cornerRadius = 20
-        glow.backgroundColor = UIColor.systemOrange.withAlphaComponent(0.3).cgColor
-        glow.shadowColor = UIColor.systemOrange.cgColor
-        glow.shadowRadius = 10
-        glow.shadowOpacity = 0.5
-        asteroid.layer.insertSublayer(glow, at: 0)
-        
-        return asteroid
-    }
-    
-    // MARK: - Animasyon 4: Cosmic Storm
-    private func setupCosmicStormAnimation() {
-        let stormContainer = UIView()
-        stormContainer.frame = view.bounds
-        view.addSubview(stormContainer)
-        
-        // Elektrik şimşekleri
-        for i in 0..<5 {
-            let lightning = createLightningBolt()
-            let x = CGFloat.random(in: 0...view.bounds.width)
-            lightning.frame = CGRect(x: x, y: view.bounds.height, width: 4, height: view.bounds.height)
-            stormContainer.addSubview(lightning)
-            
-            // Şimşek animasyonu
-            DispatchQueue.main.asyncAfter(deadline: .now() + Double(i) * 0.5) {
-                UIView.animate(withDuration: 0.3, animations: {
-                    lightning.transform = CGAffineTransform(translationX: 0, y: -self.view.bounds.height)
-                    lightning.alpha = 1.0
-                }) { _ in
-                    UIView.animate(withDuration: 0.2, animations: {
-                        lightning.alpha = 0.0
-                    }) { _ in
-                        lightning.removeFromSuperview()
-                    }
-                }
-            }
-        }
-        
-        // Enerji dalgaları
-        for i in 0..<3 {
-            let wave = createEnergyWave()
-            wave.center = CGPoint(x: view.bounds.width/2, y: view.bounds.height + 100)
-            stormContainer.addSubview(wave)
-            
-            DispatchQueue.main.asyncAfter(deadline: .now() + Double(i) * 2.0) {
-                UIView.animate(withDuration: 6.0, animations: {
-                    wave.transform = CGAffineTransform(scaleX: 8.0, y: 8.0)
-                    wave.alpha = 0.0
-                }) { _ in
-                    wave.removeFromSuperview()
-                }
-            }
-        }
-        
-        // Container temizleme
-        DispatchQueue.main.asyncAfter(deadline: .now() + 10.0) {
-            stormContainer.removeFromSuperview()
-        }
-    }
-    
-    private func createLightningBolt() -> UIView {
-        let lightning = UIView()
-        lightning.backgroundColor = UIColor.systemYellow
-        lightning.alpha = 0.0
-        
-        // Şimşek efekti
-        lightning.layer.shadowColor = UIColor.systemYellow.cgColor
-        lightning.layer.shadowRadius = 15
-        lightning.layer.shadowOpacity = 0.8
-        
-        return lightning
-    }
-    
-    private func createEnergyWave() -> UIView {
-        let wave = UIView()
-        wave.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
-        wave.layer.cornerRadius = 50
-        wave.layer.borderWidth = 3
-        wave.layer.borderColor = UIColor.systemPurple.withAlphaComponent(0.6).cgColor
-        wave.backgroundColor = UIColor.systemPurple.withAlphaComponent(0.1)
-        
-        return wave
-    }
-    
-    // MARK: - Ana Fonksiyon - Animasyon Başlatıcı
-    func startCountdownAnimation(type: CountdownAnimationType) {
-        switch type {
-        case .spaceshipLaunch:
-            setupSpaceshipLaunchAnimation()
-        case .wormhole:
-            setupWormholeAnimation()
-        case .asteroidBelt:
-            setupAsteroidBeltAnimation()
-        case .cosmicStorm:
-            setupCosmicStormAnimation()
-        }
-    }
-}
-
-// MARK: - Countdown Animation Types
-enum CountdownAnimationType {
-    case spaceshipLaunch    // Uzay aracı fırlatma
-    case wormhole          // Solucan deliği
-    case asteroidBelt      // Asteroid kuşağı
-    case cosmicStorm       // Kozmik fırtına
 }
 
 
-// MARK: - UI Setup
-extension GameVC {
-    
-    func setupUIElements() {
-        scoreLabel.text = "Score: 0"
-        scoreLabel.cosmicTheme = .score
-        
-        questionNumberLabel.text = "1 / 10"
-        questionNumberLabel.cosmicTheme = .questionNumber
-        
-        timeLabel.text = "60"
-    }
-    
-    func setupUIStyles() {
-        view.backgroundColor = UIColor.Custom.backgroundDark1
-    }
-}

@@ -8,9 +8,9 @@
 import UIKit
 
 final class NetworkToastView: UIView {
-
+    
     static let shared = NetworkToastView()
-
+    
     private let label: UILabel = {
         let label = UILabel()
         label.text = L(.no_internet_connection)
@@ -20,7 +20,7 @@ final class NetworkToastView: UIView {
         label.numberOfLines = 2
         return label
     }()
-
+    
     private override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = UIColor.red.withAlphaComponent(0.85)
@@ -61,38 +61,38 @@ final class NetworkToastView: UIView {
         self.clipsToBounds = true
         self.layoutMargins = UIEdgeInsets(top: 18, left: 24, bottom: 18, right: 24)
     }
-
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         label.frame = bounds.insetBy(dx: 12, dy: 8)
     }
-
+    
     func show(in window: UIWindow) {
         DispatchQueue.main.async {
             self.removeFromSuperview()
-
+            
             let width: CGFloat = window.bounds.width - 40
             let height: CGFloat = 50
             let topPadding = window.safeAreaInsets.top
-
+            
             self.frame = CGRect(x: 20, y: topPadding + 12, width: width, height: height)
             self.alpha = 0
             window.addSubview(self)
-
+            
             UIView.animate(withDuration: 0.3) {
                 self.alpha = 1
             }
         }
     }
-
+    
     func dismiss() {
         DispatchQueue.main.async {
             guard self.superview != nil else { return }
-
+            
             UIView.animate(withDuration: 0.3, animations: {
                 self.alpha = 0
             }) { _ in

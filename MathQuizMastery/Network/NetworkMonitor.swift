@@ -10,13 +10,13 @@ import Network
 
 final class NetworkMonitor {
     static let shared = NetworkMonitor()
-
+    
     private let monitor = NWPathMonitor()
     private let queue = DispatchQueue(label: "NetworkMonitor")
-
+    
     private(set) var isConnected: Bool = true
     var onStatusChange: ((Bool) -> Void)?
-
+    
     private init() {
         monitor.pathUpdateHandler = { [weak self] path in
             guard let self = self else { return }
