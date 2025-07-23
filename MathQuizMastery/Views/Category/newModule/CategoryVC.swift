@@ -7,12 +7,11 @@
 
 import UIKit
 
-// MARK: - Category View Controller (XIB'siz)
+// MARK: - Category View Controller (Modern Redesign)
 /// Matematik kategorilerini gösteren ana ekran controller'ı
 class CategoryVC: UIViewController {
     
     // MARK: - UI Components (Programmatic)
-    private var titleLabel: UILabel!                    // Ana başlık etiketi
     private var collectionView: UICollectionView!       // Kategori collection view
     private var loadingIndicator: UIActivityIndicatorView! // Yükleme göstergesi
     
@@ -28,14 +27,11 @@ class CategoryVC: UIViewController {
     // MARK: - Lifecycle
     
     /// CategoryVC başlatıcı metodu
-    /// - Parameters:
-    ///   - viewModel: CategoryViewModel instance
-    ///   - coordinator: AppCoordinator referansı
     init(viewModel: CategoryViewModel, coordinator: AppCoordinator) {
         self.viewModel = viewModel
         self.coordinator = coordinator
-        super.init(nibName: nil, bundle: nil) // XIB YOK
-        print("✅ CategoryVC programmatic init")
+        super.init(nibName: nil, bundle: nil)
+        print("✅ CategoryVC modern init")
     }
     
     required init?(coder: NSCoder) {
@@ -44,39 +40,53 @@ class CategoryVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupUI()                    // UI bileşenlerini ayarla
-        setupConstraints()           // Constraint'leri ayarla
-        setupCollectionView()        // Collection view'ı yapılandır
-        setupBindings()              // ViewModel bağlantılarını kur
-        loadData()                   // Veri yüklemeyi başlat
-        print("🎯 CategoryVC viewDidLoad tamamlandı")
+        setupUI()
+        setupConstraints()
+        setupCollectionView()
+        setupBindings()
+        loadData()
+        
+        // Collection view touch behavior override
+        overrideCollectionViewTouchBehavior()
+        
+        print("🎯 CategoryVC modern viewDidLoad tamamlandı")
+    }
+    
+    /// Collection view touch davranışını override eder
+    private func overrideCollectionViewTouchBehavior() {
+        // Collection view'ın tüm subview'larını kontrol et
+        for subview in collectionView.subviews {
+            if let scrollView = subview as? UIScrollView {
+                scrollView.delaysContentTouches = false
+            }
+        }
+        
+        // Collection view'ın kendi touch handling'ini disable et
+        collectionView.canCancelContentTouches = false
+        
+        print("🔧 Collection view touch behavior override edildi")
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setupNavigationBar()         // Navigation bar ayarlarını yap
+        setupNavigationBar()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        animateContentAppearance()   // İçerik görünüm animasyonu
+        animateContentAppearance()
+        
+        // Ekran görününce tüm selection'ları temizle
+        clearAllSelections()
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         
-        // Orientation değişiminde grid'i güncelle
         coordinator.animate(alongsideTransition: { [weak self] context in
             guard let self = self else { return }
             self.updateLayoutForSizeChange(size)
         }, completion: nil)
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        print("⚠️ CategoryVC: Memory warning alındı")
-        
-        // Gerekirse cache temizlik işlemleri yapılabilir
     }
     
     deinit {
@@ -86,141 +96,142 @@ class CategoryVC: UIViewController {
     
     // MARK: - Setup Methods
     
-    /// UI bileşenlerini programmatik olarak oluşturur
+    /// Modern UI bileşenlerini oluşturur
     private func setupUI() {
         view.backgroundColor = UIColor.systemBackground
         
-        // Ana başlık oluştur
-        titleLabel = UILabel()
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.text = "MATH QUIZ MASTERY"
-        titleLabel.font = UIFont.systemFont(ofSize: 28, weight: .bold)
-        titleLabel.textColor = UIColor.label
-        titleLabel.textAlignment = .center
-        titleLabel.numberOfLines = 1
-        titleLabel.adjustsFontSizeToFitWidth = true
-        titleLabel.minimumScaleFactor = 0.8
-        view.addSubview(titleLabel)
+        // Modern liquid glass arka plan
+        setupModernLiquidGlassBackground()
         
-        // Collection view oluştur
+        // Collection view oluştur (full screen)
         let layout = UICollectionViewFlowLayout()
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.backgroundColor = UIColor.clear
         collectionView.showsVerticalScrollIndicator = false
         collectionView.showsHorizontalScrollIndicator = false
+        collectionView.contentInsetAdjustmentBehavior = .automatic
+        
+        // Touch davranışını kontrol et
+        collectionView.delaysContentTouches = false
+        
         view.addSubview(collectionView)
         
-        // Loading indicator oluştur
+        // Loading indicator
         loadingIndicator = UIActivityIndicatorView(style: .large)
         loadingIndicator.translatesAutoresizingMaskIntoConstraints = false
         loadingIndicator.color = UIColor.systemBlue
         loadingIndicator.hidesWhenStopped = true
         view.addSubview(loadingIndicator)
         
-        // Liquid Glass efekti için arka plan
-        setupLiquidGlassBackground()
-        
-        print("🎨 UI bileşenleri programmatik olarak oluşturuldu")
+        print("🎨 Modern UI bileşenleri oluşturuldu")
     }
     
-    /// Auto Layout constraint'lerini ayarlar
+    /// Constraint'leri ayarlar (title label yok)
     private func setupConstraints() {
         let safeArea = view.safeAreaLayoutGuide
         
         NSLayoutConstraint.activate([
-            // Title Label Constraints
-            titleLabel.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 20),
-            titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            titleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            titleLabel.heightAnchor.constraint(equalToConstant: 40),
-            
-            // Collection View Constraints
-            collectionView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 20),
+            // Collection View - Full Screen (title yok)
+            collectionView.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 10),
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             collectionView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor),
             
-            // Loading Indicator Constraints (centered)
+            // Loading Indicator
             loadingIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             loadingIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])
         
-        print("🔗 Constraint'ler programmatik olarak eklendi")
+        print("🔗 Modern constraint'ler eklendi")
     }
     
-    /// Collection view'ı yapılandırır
+    /// Modern collection view setup
     private func setupCollectionView() {
-        print("🔧 CollectionView setup başlatılıyor (XIB'siz)...")
+        print("🔧 Modern CollectionView setup...")
         
-        // Collection view temizle ve ayarla
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.backgroundColor = UIColor.clear
         
-        // SADECE PROGRAMMATIC CELL REGISTRATION
+        // Highlight ve selection davranışını kontrol et
+        collectionView.allowsSelection = true
+        collectionView.allowsMultipleSelection = false
+        
+        // Cell registration
         collectionView.register(CategoryCollectionViewCell.self, forCellWithReuseIdentifier: "CategoryCollectionViewCell")
-        print("✅ Programmatic cell register edildi")
         
-        // Flow layout ayarları
+        // Responsive layout ayarları
+        setupResponsiveLayout()
+        
+        print("✅ Modern CollectionView setup tamamlandı")
+    }
+    
+    /// Responsive layout setup
+    private func setupResponsiveLayout() {
         flowLayout.scrollDirection = .vertical
-        flowLayout.minimumInteritemSpacing = 16
-        flowLayout.minimumLineSpacing = 20
-        flowLayout.sectionInset = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
         
-        // Initial grid configuration
+        // Cihaza göre dinamik spacing
+        let screenWidth = UIScreen.main.bounds.width
+        let isIPad = UIDevice.current.userInterfaceIdiom == .pad
+        
+        if isIPad {
+            // iPad için daha geniş spacing
+            flowLayout.minimumInteritemSpacing = 20
+            flowLayout.minimumLineSpacing = 25
+            flowLayout.sectionInset = UIEdgeInsets(top: 30, left: 30, bottom: 30, right: 30)
+        } else {
+            // iPhone için kompakt spacing
+            flowLayout.minimumInteritemSpacing = 12
+            flowLayout.minimumLineSpacing = 16
+            flowLayout.sectionInset = UIEdgeInsets(top: 20, left: 16, bottom: 20, right: 16)
+        }
+        
         updateCollectionViewLayout()
-        
-        print("🎯 CollectionView setup tamamlandı")
     }
     
-    /// Navigation bar ayarlarını yapar
+    /// Navigation bar setup
     private func setupNavigationBar() {
-        navigationController?.navigationBar.prefersLargeTitles = false
-        navigationItem.title = ""
-        
-        // Navigation bar şeffaf yap
-        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        navigationController?.navigationBar.shadowImage = UIImage()
-        navigationController?.navigationBar.isTranslucent = true
+        // Navigation bar'ı gizlemeyi kaldır - görünür olsun
+        navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
-    /// Liquid Glass arka plan efekti kurar
-    private func setupLiquidGlassBackground() {
-        // Gradient arka plan oluştur
+    /// Modern liquid glass arka plan efekti
+    private func setupModernLiquidGlassBackground() {
+        // Animated gradient background
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = view.bounds
         gradientLayer.colors = [
-            UIColor.systemBlue.withAlphaComponent(0.1).cgColor,
-            UIColor.systemPurple.withAlphaComponent(0.05).cgColor,
-            UIColor.systemIndigo.withAlphaComponent(0.1).cgColor
+            UIColor.systemBlue.withAlphaComponent(0.08).cgColor,
+            UIColor.systemPurple.withAlphaComponent(0.06).cgColor,
+            UIColor.systemIndigo.withAlphaComponent(0.08).cgColor,
+            UIColor.systemTeal.withAlphaComponent(0.04).cgColor
         ]
-        gradientLayer.locations = [0.0, 0.5, 1.0]
+        gradientLayer.locations = [0.0, 0.3, 0.7, 1.0]
         gradientLayer.startPoint = CGPoint(x: 0, y: 0)
         gradientLayer.endPoint = CGPoint(x: 1, y: 1)
         
-        // Arka plana gradient ekle
         view.layer.insertSublayer(gradientLayer, at: 0)
         
-        // Blur efekti ekle
+        // Ultra thin material blur
         let blurEffect = UIBlurEffect(style: .systemUltraThinMaterial)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
         blurEffectView.frame = view.bounds
         blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        blurEffectView.alpha = 0.3
+        blurEffectView.alpha = 0.5
         
         view.insertSubview(blurEffectView, at: 1)
         
-        print("🌟 Liquid glass arka plan efekti kuruldu")
+        print("🌟 Modern liquid glass arka plan kuruldu")
     }
     
-    /// ViewModel ile bağlantıları kurar
+    /// ViewModel bağlantıları
     private func setupBindings() {
         viewModel.delegate = self
         print("🔗 ViewModel bağlantıları kuruldu")
     }
     
-    /// Veri yüklemeyi başlatır
+    /// Veri yükleme
     private func loadData() {
         showLoadingState(true)
         viewModel.loadCategories()
@@ -229,33 +240,54 @@ class CategoryVC: UIViewController {
     
     // MARK: - Layout Methods
     
-    /// Boyut değişimi için layout'u günceller
-    /// - Parameter newSize: Yeni ekran boyutu
+    /// Boyut değişimi için responsive layout
     private func updateLayoutForSizeChange(_ newSize: CGSize) {
-        viewModel.updateGridConfiguration(for: newSize, traitCollection: traitCollection)
-        updateCollectionViewLayout()
+        setupResponsiveLayout()
         
-        // Layout güncellemeyi animate et
         UIView.animate(withDuration: 0.3, animations: {
             self.collectionView.collectionViewLayout.invalidateLayout()
         })
     }
     
-    /// Collection view layout'unu günceller
+    /// Collection view layout güncelleme
     private func updateCollectionViewLayout() {
-        let config = viewModel.gridConfiguration
-        let itemSize = config.itemSize(for: view.bounds.width)
+        let screenWidth = UIScreen.main.bounds.width
+        let isIPad = UIDevice.current.userInterfaceIdiom == .pad
+        let isLandscape = UIScreen.main.bounds.width > UIScreen.main.bounds.height
+        
+        // Responsive grid calculation
+        let sectionInsets = flowLayout.sectionInset
+        let spacing = flowLayout.minimumInteritemSpacing
+        let availableWidth = screenWidth - sectionInsets.left - sectionInsets.right
+        
+        var itemsPerRow: Int
+        var itemSize: CGSize
+        
+        if isIPad {
+            // iPad: 4-6 columns based on orientation
+            itemsPerRow = isLandscape ? 6 : 4
+            let itemWidth = (availableWidth - (CGFloat(itemsPerRow - 1) * spacing)) / CGFloat(itemsPerRow)
+            itemSize = CGSize(width: itemWidth, height: itemWidth * 1.1) // Slightly taller
+        } else {
+            // iPhone: 2-3 columns based on screen size
+            if screenWidth >= 414 { // iPhone Pro Max
+                itemsPerRow = isLandscape ? 4 : 3
+            } else { // Regular iPhone
+                itemsPerRow = isLandscape ? 3 : 2
+            }
+            
+            let itemWidth = (availableWidth - (CGFloat(itemsPerRow - 1) * spacing)) / CGFloat(itemsPerRow)
+            itemSize = CGSize(width: itemWidth, height: itemWidth * 1.15) // Card-like ratio
+        }
         
         flowLayout.itemSize = itemSize
-        flowLayout.minimumInteritemSpacing = config.spacing
-        flowLayout.minimumLineSpacing = config.spacing
-        flowLayout.sectionInset = config.sectionInsets
+        
+        print("📐 Layout güncellendi: \(itemsPerRow) columns, size: \(itemSize)")
     }
     
     // MARK: - Animation Methods
     
-    /// Loading durumunu gösterir/gizler
-    /// - Parameter show: Gösterilecek mi?
+    /// Loading state
     private func showLoadingState(_ show: Bool) {
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
@@ -270,57 +302,24 @@ class CategoryVC: UIViewController {
         }
     }
     
-    /// İçerik görünüm animasyonu
+    /// Content appearance - artık animasyon yok
     private func animateContentAppearance() {
-        // Başlık animasyonu
-        titleLabel.transform = CGAffineTransform(translationX: 0, y: -50)
-        titleLabel.alpha = 0
-        
-        // Collection view animasyonu
-        collectionView.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
-        collectionView.alpha = 0
-        
-        UIView.animate(withDuration: 0.8, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.5, options: [.allowUserInteraction], animations: {
-            // Başlık animasyonu
-            self.titleLabel.transform = .identity
-            self.titleLabel.alpha = 1.0
-        }, completion: nil)
-        
-        UIView.animate(withDuration: 0.8, delay: 0.2, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.5, options: [.allowUserInteraction], animations: {
-            // Collection view animasyonu
-            self.collectionView.transform = .identity
-            self.collectionView.alpha = 1.0
-        }, completion: nil)
+        // Collection view direkt görünür
+        collectionView.alpha = 1.0
     }
     
-    /// Kategori seçim animasyonu
-    /// - Parameter indexPath: Seçilen cell'in index path'i
+    /// Cell selection animation
     private func animateCategorySelection(at indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath) as? CategoryCollectionViewCell else { return }
         
-        // Bounce animasyon efekti
-        UIView.animate(withDuration: 0.1, animations: {
-            cell.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
+        // Modern bounce effect
+        UIView.animate(withDuration: 0.15, animations: {
+            cell.transform = CGAffineTransform(scaleX: 0.92, y: 0.92)
         }) { _ in
-            UIView.animate(withDuration: 0.1, animations: {
+            UIView.animate(withDuration: 0.15, delay: 0.05, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.8, options: [], animations: {
                 cell.transform = .identity
-            })
+            }, completion: nil)
         }
-    }
-    
-    // MARK: - Helper Methods
-    
-    /// Kategori sayısına göre section sayısını hesaplar
-    /// - Returns: Section sayısı
-    private func numberOfSections() -> Int {
-        return 1 // Basit grid için tek section
-    }
-    
-    /// Section'daki öğe sayısını hesaplar
-    /// - Parameter section: Section indeksi
-    /// - Returns: O section'daki öğe sayısı
-    private func numberOfItemsInSection(_ section: Int) -> Int {
-        return viewModel.numberOfCategories
     }
 }
 
@@ -333,16 +332,25 @@ extension CategoryVC: CategoryViewModelDelegate {
             self.showLoadingState(false)
             self.collectionView.reloadData()
             
-            // Kategoriler yüklendikten sonra görünüm animasyonu
-            self.animateContentAppearance()
+            // TÜM SEÇİMLERİ TEMİZLE
+            self.clearAllSelections()
             
-            print("✅ Kategoriler yüklendi ve UI güncellendi")
+            print("✅ Kategoriler yüklendi - ALL SELECTIONS CLEARED")
         }
     }
     
+    /// Tüm selection'ları temizler
+    private func clearAllSelections() {
+        // Tüm selected indexPath'leri al ve temizle
+        for indexPath in collectionView.indexPathsForSelectedItems ?? [] {
+            collectionView.deselectItem(at: indexPath, animated: false)
+        }
+        
+        print("🧹 All selections cleared")
+    }
+    
     func categorySelectionDidChange(_ category: MathCategory?) {
-        // Kategori seçimi değiştiğinde yapılacak işlemler
-        print("🎯 Seçili kategori değişti: \(category?.title ?? "None")")
+        print("🎯 Seçili kategori: \(category?.title ?? "None")")
     }
     
     func errorDidOccur(_ error: Error) {
@@ -352,10 +360,9 @@ extension CategoryVC: CategoryViewModelDelegate {
             
             print("❌ Kategori yükleme hatası: \(error.localizedDescription)")
             
-            // Hata durumunda kullanıcıya alert göster
             let alert = UIAlertController(
-                title: "Hata",
-                message: "Kategoriler yüklenirken bir hata oluştu. Lütfen tekrar deneyin.",
+                title: "Bağlantı Hatası",
+                message: "Kategoriler yüklenirken bir sorun oluştu. İnternet bağlantınızı kontrol edin.",
                 preferredStyle: .alert
             )
             alert.addAction(UIAlertAction(title: "Tamam", style: .default))
@@ -371,53 +378,35 @@ extension CategoryVC: CategoryViewModelDelegate {
 extension CategoryVC: UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return numberOfSections()
+        return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        let count = numberOfItemsInSection(section)
-        print("📊 Kategori sayısı: \(count)")
+        let count = viewModel.numberOfCategories
+        print("📊 Toplam kategori: \(count)")
         return count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        print("🔄 Cell oluşturuluyor: \(indexPath)")
-        
-        // Programmatic cell'i dequeue et
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CategoryCollectionViewCell", for: indexPath)
         
-        // CategoryCollectionViewCell'e cast et
         guard let categoryCell = cell as? CategoryCollectionViewCell else {
-            print("❌ Cell cast hatası: \(indexPath) - \(type(of: cell))")
-            
-            // Emergency fallback cell
-            let fallbackCell = UICollectionViewCell()
-            fallbackCell.backgroundColor = .systemGray
-            fallbackCell.layer.cornerRadius = 20
-            return fallbackCell
+            print("❌ Cell cast hatası: \(indexPath)")
+            return UICollectionViewCell()
         }
         
-        // Index path'e göre kategoriyi al
         if let category = viewModel.category(at: indexPath.item) {
-            print("✅ Kategori yüklendi: \(category.title)")
-            
             categoryCell.configure(with: category)
-            
-            // Cell animasyonu (ilk görünümde)
-            if !collectionView.visibleCells.contains(categoryCell) {
-                categoryCell.animateAppearance(withDelay: Double(indexPath.item) * 0.05)
-            }
+            // Staggered animation kaldırıldı - direkt görünür
             
         } else {
-            print("⚠️ Kategori yok: \(indexPath.item)")
             configureFallbackCell(categoryCell, at: indexPath)
         }
         
         return categoryCell
     }
     
-    /// Fallback cell konfigürasyonu
     private func configureFallbackCell(_ cell: CategoryCollectionViewCell, at indexPath: IndexPath) {
         let fallbackCategory = MathCategory(
             id: indexPath.item,
@@ -428,7 +417,6 @@ extension CategoryVC: UICollectionViewDataSource {
         )
         
         cell.configure(with: fallbackCategory)
-        print("🔄 Fallback cell yapılandırıldı: \(indexPath)")
     }
 }
 
@@ -436,24 +424,34 @@ extension CategoryVC: UICollectionViewDataSource {
 extension CategoryVC: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("👆 Cell seçildi: \(indexPath)")
+        print("👆 Kategori seçildi: \(indexPath)")
         
-        // Seçim animasyonu
-        animateCategorySelection(at: indexPath)
+        // SEÇİMİ HEMEN KALDIR - HIGHLIGHT STATE'İ ENGELLE
+        collectionView.deselectItem(at: indexPath, animated: false)
         
-        // Seçilen kategoriyi al ve işle
+        // Cell'in kendi animateSelection metodunu çağır
+        if let cell = collectionView.cellForItem(at: indexPath) as? CategoryCollectionViewCell {
+            cell.animateSelection()
+        }
+        
         guard let category = viewModel.category(at: indexPath.item) else {
-            print("❌ Seçilen kategori bulunamadı: \(indexPath)")
+            print("❌ Kategori bulunamadı: \(indexPath)")
             return
         }
         
-        // ViewModel'de seçimi kaydet
         viewModel.selectCategory(category)
         
-        // Coordinator'a kategori seçimini bildir (0.3 saniye gecikme ile animasyon tamamlandıktan sonra)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { [weak self] in
-            self?.coordinator?.goToGameVC(with: category.expressionType)
-            print("🎮 Oyun ekranına geçiş: \(category.title)")
+        // Smooth transition delay
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) { [weak self] in // Reduced delay
+            // Enhanced navigation method kullan
+            if let strongSelf = self, let coordinator = strongSelf.coordinator {
+                coordinator.goToGameFromCategory(
+                    with: category.expressionType,
+                    fromCategory: category,
+                    animated: true
+                )
+            }
+            print("🎮 Enhanced oyun geçişi: \(category.title)")
         }
     }
     
@@ -462,18 +460,16 @@ extension CategoryVC: UICollectionViewDelegate {
     }
     
     func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
-        // Highlight animasyonu
-        guard let cell = collectionView.cellForItem(at: indexPath) as? CategoryCollectionViewCell else { return }
+        guard let cell = collectionView.cellForItem(at: indexPath) else { return }
         
         UIView.animate(withDuration: 0.1, animations: {
-            cell.transform = CGAffineTransform(scaleX: 0.98, y: 0.98)
-            cell.alpha = 0.8
+            cell.transform = CGAffineTransform(scaleX: 0.96, y: 0.96)
+            cell.alpha = 0.85
         })
     }
     
     func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
-        // Unhighlight animasyonu
-        guard let cell = collectionView.cellForItem(at: indexPath) as? CategoryCollectionViewCell else { return }
+        guard let cell = collectionView.cellForItem(at: indexPath) else { return }
         
         UIView.animate(withDuration: 0.1, animations: {
             cell.transform = .identity
@@ -486,26 +482,18 @@ extension CategoryVC: UICollectionViewDelegate {
 extension CategoryVC: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let config = viewModel.gridConfiguration
-        let size = config.itemSize(for: collectionView.bounds.width)
-        return size
+        return flowLayout.itemSize
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return viewModel.gridConfiguration.spacing
+        return flowLayout.minimumInteritemSpacing
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return viewModel.gridConfiguration.spacing
+        return flowLayout.minimumLineSpacing
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return viewModel.gridConfiguration.sectionInsets
+        return flowLayout.sectionInset
     }
-}
-
-// MARK: - Memory Management
-extension CategoryVC {
-    
-
 }

@@ -123,28 +123,28 @@ class AppCoordinator: Coordinator {
         print("🏠 Ana sayfaya geçiş yapıldı")
     }
     
-    /// Ana sayfadan kategori ekranına geçiş
+    /// Ana sayfadan kategori ekranına geçiş - UPDATED
     func goToCategory() {
         // Analytics kaydı
-        trackScreenNavigation(from: "home", to: "category")
+        trackScreenNavigation(from: "home", to: "category_direct")
         
         let viewModel = CategoryViewModel()
         let categoryVC = CategoryVC(viewModel: viewModel, coordinator: self)
         configureCustomBackButton(for: categoryVC, iconName: "back_buttons")
         
         navigationController.pushViewController(categoryVC, animated: true)
-        print("🏠➡️📚 Kategori ekranına geçiş yapıldı")
+        print("🏠➡️📚 Kategori ekranına geçiş yapıldı (Direct Colored Glass)")
     }
     
-    /// Kategori ekranından oyun ekranına geçiş
+    /// Kategori ekranından oyun ekranına geçiş - LEGACY SUPPORT
     func goToGameVC(with type: MathExpression.ExpressionType) {
         // Analytics kaydı
-        trackScreenNavigation(from: "category", to: "game")
+        trackScreenNavigation(from: "category", to: "game_legacy")
         
         let gameVC = GameVC(viewModel: nil, coordinator: self, selectedExpressionType: type)
         configureCustomBackButton(for: gameVC, iconName: "game_back_icon")
         navigationController.pushViewController(gameVC, animated: true)
-        print("📚➡️🎮 Oyun ekranına geçiş yapıldı: \(type.displayName)")
+        print("📚➡️🎮 Oyun ekranına geçiş yapıldı (Legacy): \(type.displayName)")
     }
     
     /// Oyun bitince sonuç ekranına geçiş
@@ -459,31 +459,32 @@ extension AppCoordinator {
     }
 }
 
-// MARK: - Category Enhanced Navigation
+// MARK: - Enhanced Category Navigation
 extension AppCoordinator {
     
-    /// Kategori ekranına gelişmiş geçiş (animasyon ile)
+    /// Kategori ekranına gelişmiş geçiş (Direct Colored Glass optimized)
     func goToCategoryWithAnimation(animated: Bool = true, completion: (() -> Void)? = nil) {
         // Analytics kaydı
-        trackScreenNavigation(from: "home", to: "category_animated")
+        trackScreenNavigation(from: "home", to: "category_enhanced")
         
         let viewModel = CategoryViewModel()
         let categoryVC = CategoryVC(viewModel: viewModel, coordinator: self)
         configureCustomBackButton(for: categoryVC, iconName: "back_buttons")
         
         if animated {
-            // Özel geçiş animasyonu
+            // Smooth transition animasyonu (Direct colored glass için optimize)
             CATransaction.begin()
-            CATransaction.setAnimationDuration(0.5)
+            CATransaction.setAnimationDuration(0.4) // Daha hızlı
             CATransaction.setCompletionBlock {
                 completion?()
-                print("🎬 Kategori ekranı animasyon ile açıldı")
+                print("🎬 Enhanced kategori ekranı açıldı (Direct Colored Glass)")
             }
             
             let transition = CATransition()
-            transition.duration = 0.5
+            transition.duration = 0.4
             transition.type = .fade
             transition.subtype = .fromRight
+            transition.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
             navigationController.view.layer.add(transition, forKey: kCATransition)
             
             navigationController.pushViewController(categoryVC, animated: false)
@@ -494,32 +495,40 @@ extension AppCoordinator {
         }
     }
     
-    /// Kategoriden oyun ekranına özel geçiş
+    /// Kategoriden oyun ekranına gelişmiş geçiş - ENHANCED VERSION
     func goToGameFromCategory(
         with type: MathExpression.ExpressionType,
         fromCategory category: MathCategory,
         animated: Bool = true
     ) {
-        print("🎮 Kategoriden oyuna geçiş: \(category.title) -> \(type.displayName)")
+        print("🎮 Enhanced kategoriden oyuna geçiş: \(category.title) -> \(type.displayName)")
         
         // Analytics için kategori seçimini kaydet
         trackCategorySelection(category)
         
-        // Haptic feedback
-        let impactFeedback = UIImpactFeedbackGenerator(style: .medium)
-        impactFeedback.impactOccurred()
+        // Enhanced haptic feedback sequence
+        let selectionFeedback = UISelectionFeedbackGenerator()
+        selectionFeedback.selectionChanged()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            let impactFeedback = UIImpactFeedbackGenerator(style: .medium)
+            impactFeedback.impactOccurred()
+        }
         
         // Oyun ekranını oluştur
         let gameVC = GameVC(viewModel: nil, coordinator: self, selectedExpressionType: type)
         configureCustomBackButton(for: gameVC, iconName: "game_back_icon")
         
         if animated {
-            // Özel geçiş animasyonu
+            // Enhanced smooth transition
             CATransaction.begin()
-            CATransaction.setAnimationDuration(0.6)
+            CATransaction.setAnimationDuration(0.5)
+            CATransaction.setCompletionBlock {
+                print("✅ Enhanced oyun geçişi tamamlandı: \(category.title)")
+            }
             
             let transition = CATransition()
-            transition.duration = 0.6
+            transition.duration = 0.5
             transition.type = .push
             transition.subtype = .fromRight
             transition.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
@@ -542,6 +551,18 @@ extension AppCoordinator {
             goToHomeAfterResult()
         }
     }
+    
+    /// Instant kategori navigation (animasyon yok - direkt renkli için)
+    func goToCategoryInstant() {
+        trackScreenNavigation(from: "home", to: "category_instant")
+        
+        let viewModel = CategoryViewModel()
+        let categoryVC = CategoryVC(viewModel: viewModel, coordinator: self)
+        configureCustomBackButton(for: categoryVC, iconName: "back_buttons")
+        
+        navigationController.pushViewController(categoryVC, animated: false)
+        print("⚡ Instant kategori geçişi (Direct Colored Glass)")
+    }
 }
 
 // MARK: - Analytics and Tracking
@@ -553,23 +574,26 @@ extension AppCoordinator {
             "from_screen": from,
             "to_screen": to,
             "timestamp": Date().timeIntervalSince1970,
-            "user_id": Auth.auth().currentUser?.uid ?? "anonymous"
+            "user_id": Auth.auth().currentUser?.uid ?? "anonymous",
+            "liquid_glass_mode": "direct_colored" // New tracking
         ]
         
-        print("📊 Navigation - \(from) → \(to)")
+        print("📊 Navigation - \(from) → \(to) (Direct Colored Glass)")
     }
     
-    /// Kategori seçim analytics'i
+    /// Kategori seçim analytics'i - ENHANCED
     private func trackCategorySelection(_ category: MathCategory) {
         let analyticsData: [String: Any] = [
             "category_id": category.id,
             "category_title": category.title,
             "category_type": category.expressionType.rawValue,
+            "category_color": category.backgroundColor.hexString ?? "unknown",
             "is_new_category": category.isNew,
+            "interaction_type": "direct_colored_glass",
             "timestamp": Date().timeIntervalSince1970
         ]
         
-        print("📊 Analytics - Kategori seçildi: \(category.title)")
+        print("📊 Enhanced Analytics - Kategori seçildi: \(category.title) (Renk: \(category.backgroundColor.hexString ?? "N/A"))")
     }
     
     /// Oyun yeniden başlatma analytics'i
@@ -577,28 +601,43 @@ extension AppCoordinator {
         let analyticsData: [String: Any] = [
             "game_type": type.rawValue,
             "action": "restart",
+            "source": "enhanced_category",
             "timestamp": Date().timeIntervalSince1970
         ]
         
         print("📊 Analytics - Oyun yeniden başlatıldı: \(type.displayName)")
     }
     
-    /// Kategori ekranında geçirilen süre
-    func trackCategoryScreenTime(timeSpent: TimeInterval, categoriesViewed: Int) {
+    /// Kategori ekranında geçirilen süre - ENHANCED
+    func trackCategoryScreenTime(timeSpent: TimeInterval, categoriesViewed: Int, interactionCount: Int = 0) {
         let analyticsData: [String: Any] = [
             "time_spent_seconds": timeSpent,
             "categories_viewed": categoriesViewed,
-            "screen_name": "category_selection"
+            "interaction_count": interactionCount,
+            "screen_name": "category_selection_direct_colored",
+            "avg_time_per_category": categoriesViewed > 0 ? timeSpent / Double(categoriesViewed) : 0
         ]
         
-        print("⏱️ Analytics - Kategori ekranı süresi: \(timeSpent)s, görüntülenen: \(categoriesViewed)")
+        print("⏱️ Enhanced Analytics - Kategori ekranı: \(timeSpent)s, görüntülenen: \(categoriesViewed), etkileşim: \(interactionCount)")
+    }
+    
+    /// Liquid glass performance tracking
+    func trackLiquidGlassPerformance(renderTime: TimeInterval, cellCount: Int) {
+        let analyticsData: [String: Any] = [
+            "render_time_ms": renderTime * 1000,
+            "cell_count": cellCount,
+            "avg_render_per_cell": renderTime / Double(cellCount),
+            "liquid_glass_type": "direct_colored"
+        ]
+        
+        print("🔮 Performance - Liquid Glass render: \(Int(renderTime * 1000))ms, \(cellCount) cells")
     }
 }
 
 // MARK: - Deep Links and Notifications
 extension AppCoordinator {
     
-    /// Deep link ile kategoriye geçiş
+    /// Deep link ile kategoriye geçiş - ENHANCED
     func navigateToCategory(withId categoryId: Int, completion: @escaping (Bool) -> Void) {
         guard let targetCategory = MathCategoryFactory.shared.getCategoryById(categoryId) else {
             print("❌ Kategori bulunamadı: \(categoryId)")
@@ -606,8 +645,9 @@ extension AppCoordinator {
             return
         }
         
+        // Direct colored glass için optimize edilmiş deep link
         goToCategoryWithAnimation(animated: true) { [weak self] in
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { // Reduced delay
                 self?.goToGameFromCategory(
                     with: targetCategory.expressionType,
                     fromCategory: targetCategory,
@@ -628,53 +668,55 @@ extension AppCoordinator {
         }
         
         navigateToCategory(withId: categoryId) { success in
-            print(success ? "✅ Deep link başarılı" : "❌ Deep link başarısız")
+            print(success ? "✅ Enhanced deep link başarılı" : "❌ Deep link başarısız")
         }
         
         return true
     }
     
-    /// Push notification kategori önerisi
+    /// Push notification kategori önerisi - ENHANCED
     func handleCategoryNotification(_ userInfo: [AnyHashable: Any]) {
         guard let categoryId = userInfo["category_id"] as? Int else {
             print("❌ Notification'da kategori ID'si bulunamadı")
             return
         }
         
-        showCategoryRecommendationAlert(categoryId: categoryId)
+        showEnhancedCategoryRecommendationAlert(categoryId: categoryId)
     }
     
-    /// Kategori önerisi alert'i
-    private func showCategoryRecommendationAlert(categoryId: Int) {
+    /// Enhanced kategori önerisi alert'i
+    private func showEnhancedCategoryRecommendationAlert(categoryId: Int) {
         guard let category = MathCategoryFactory.shared.getCategoryById(categoryId),
               let topViewController = navigationController.topViewController else {
             return
         }
         
+        let colorEmoji = category.backgroundColor.brightnessFactor > 0.5 ? "🌟" : "💎"
+        
         let alert = UIAlertController(
-            title: "📚 Kategori Önerisi",
-            message: "\(category.title) kategorisinde pratik yapmak ister misiniz?",
+            title: "\(colorEmoji) Kategori Önerisi",
+            message: "\(category.title) kategorisinde pratik yapmaya hazır mısınız? Liquid glass tasarımıyla yeni deneyimi keşfedin!",
             preferredStyle: .alert
         )
         
-        alert.addAction(UIAlertAction(title: "✨ Hadi Başlayalım!", style: .default) { [weak self] _ in
+        alert.addAction(UIAlertAction(title: "✨ Hemen Başla!", style: .default) { [weak self] _ in
             self?.navigateToCategory(withId: categoryId) { success in
-                print(success ? "✅ Öneriden navigasyon başarılı" : "❌ Öneriden navigasyon başarısız")
+                print(success ? "✅ Enhanced öneriden navigasyon başarılı" : "❌ Öneriden navigasyon başarısız")
             }
         })
         
-        alert.addAction(UIAlertAction(title: "Şimdi Değil", style: .cancel))
+        alert.addAction(UIAlertAction(title: "Sonra", style: .cancel))
         
         topViewController.present(alert, animated: true)
-        print("💡 Kategori önerisi gösterildi: \(category.title)")
+        print("💡 Enhanced kategori önerisi gösterildi: \(category.title)")
     }
 }
 
 // MARK: - State Management
 extension AppCoordinator {
     
-    /// Kategori ekranı durumunu kaydet
-    func saveCategoryScreenState(selectedCategoryId: Int?, scrollPosition: CGPoint) {
+    /// Kategori ekranı durumunu kaydet - ENHANCED
+    func saveCategoryScreenState(selectedCategoryId: Int?, scrollPosition: CGPoint, lastInteractionTime: Date = Date()) {
         let userDefaults = UserDefaults.standard
         
         if let categoryId = selectedCategoryId {
@@ -685,13 +727,15 @@ extension AppCoordinator {
         
         userDefaults.set(scrollPosition.x, forKey: "categoryScrollX")
         userDefaults.set(scrollPosition.y, forKey: "categoryScrollY")
+        userDefaults.set(lastInteractionTime.timeIntervalSince1970, forKey: "lastInteractionTime")
+        userDefaults.set("direct_colored_glass", forKey: "lastDisplayMode")
         userDefaults.synchronize()
         
-        print("💾 Kategori ekranı durumu kaydedildi")
+        print("💾 Enhanced kategori ekranı durumu kaydedildi")
     }
     
-    /// Kategori ekranı durumunu geri yükle
-    func restoreCategoryScreenState() -> (selectedCategoryId: Int?, scrollPosition: CGPoint) {
+    /// Kategori ekranı durumunu geri yükle - ENHANCED
+    func restoreCategoryScreenState() -> (selectedCategoryId: Int?, scrollPosition: CGPoint, lastInteractionTime: Date?, displayMode: String?) {
         let userDefaults = UserDefaults.standard
         
         let selectedId = userDefaults.object(forKey: "lastSelectedCategoryId") as? Int
@@ -699,46 +743,237 @@ extension AppCoordinator {
         let scrollY = userDefaults.double(forKey: "categoryScrollY")
         let scrollPosition = CGPoint(x: scrollX, y: scrollY)
         
-        print("📂 Kategori ekranı durumu geri yüklendi")
+        let lastInteractionTimestamp = userDefaults.double(forKey: "lastInteractionTime")
+        let lastInteractionTime = lastInteractionTimestamp > 0 ? Date(timeIntervalSince1970: lastInteractionTimestamp) : nil
         
-        return (selectedId, scrollPosition)
+        let displayMode = userDefaults.string(forKey: "lastDisplayMode")
+        
+        print("📂 Enhanced kategori ekranı durumu geri yüklendi")
+        
+        return (selectedId, scrollPosition, lastInteractionTime, displayMode)
     }
 }
 
 // MARK: - Error Handling
 extension AppCoordinator {
     
-    /// Kategori ekranı hata yönetimi
+    /// Kategori ekranı hata yönetimi - ENHANCED
     func handleCategoryError(_ error: Error, from sourceViewController: UIViewController) {
         let errorMessage: String
+        let errorIcon: String
         
         switch error {
         case is NetworkError:
-            errorMessage = "İnternet bağlantısı sorunu. Lütfen bağlantınızı kontrol edin."
+            errorMessage = "İnternet bağlantısı sorunu. Liquid glass efektleri için stabil bağlantı gerekli."
+            errorIcon = "🌐"
         case is ValidationError:
             errorMessage = "Kategori verileri doğrulanamadı. Lütfen uygulamayı yeniden başlatın."
+            errorIcon = "⚠️"
         default:
             errorMessage = "Beklenmeyen bir hata oluştu. \(error.localizedDescription)"
+            errorIcon = "❌"
         }
         
         let alert = UIAlertController(
-            title: "⚠️ Hata",
+            title: "\(errorIcon) Hata",
             message: errorMessage,
             preferredStyle: .alert
         )
         
-        alert.addAction(UIAlertAction(title: "Tekrar Dene", style: .default) { [weak self] _ in
+        alert.addAction(UIAlertAction(title: "🔄 Tekrar Dene", style: .default) { [weak self] _ in
             if let categoryVC = sourceViewController as? CategoryVC {
-                print("🔄 Kategori verileri yeniden yükleniyor...")
+                print("🔄 Enhanced kategori verileri yeniden yükleniyor...")
                 // CategoryVC'de reload çağırabilir
             }
         })
         
-        alert.addAction(UIAlertAction(title: "Ana Sayfaya Dön", style: .default) { [weak self] _ in
+        alert.addAction(UIAlertAction(title: "🏠 Ana Sayfaya Dön", style: .default) { [weak self] _ in
             self?.goBackToHomeFromCategory()
         })
         
+        alert.addAction(UIAlertAction(title: "⚡ Instant Mod", style: .cancel) { [weak self] _ in
+            // Fallback: Instant mode without animations
+            self?.goToCategoryInstant()
+        })
+        
         sourceViewController.present(alert, animated: true)
-        print("❌ Hata gösterildi: \(errorMessage)")
+        print("❌ Enhanced hata gösterildi: \(errorMessage)")
+    }
+    
+    /// Liquid glass render error handling
+    func handleLiquidGlassRenderError(_ error: Error, cellIndex: Int) {
+        print("🔮 Liquid Glass Render Error - Cell \(cellIndex): \(error.localizedDescription)")
+        
+        // Analytics için render error kaydet
+        let analyticsData: [String: Any] = [
+            "error_type": "liquid_glass_render",
+            "cell_index": cellIndex,
+            "error_description": error.localizedDescription,
+            "timestamp": Date().timeIntervalSince1970
+        ]
+        
+        // Fallback: Basit mod'a geç
+        UserDefaults.standard.set(true, forKey: "useFallbackMode")
+        print("🔄 Fallback mode aktifleştirildi")
+    }
+}
+
+// MARK: - Performance Monitoring
+extension AppCoordinator {
+    
+    /// Kategori ekranı performans izleme
+    func monitorCategoryPerformance() {
+        let startTime = CFAbsoluteTimeGetCurrent()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            let endTime = CFAbsoluteTimeGetCurrent()
+            let loadTime = endTime - startTime
+            
+            if loadTime > 2.0 {
+                print("⚠️ Kategori ekranı yavaş yüklendi: \(loadTime)s")
+                self.trackPerformanceIssue(loadTime: loadTime)
+            } else {
+                print("✅ Kategori ekranı performansı iyi: \(loadTime)s")
+            }
+        }
+    }
+    
+    /// Performance issue tracking
+    private func trackPerformanceIssue(loadTime: TimeInterval) {
+        let analyticsData: [String: Any] = [
+            "performance_issue": "slow_category_load",
+            "load_time_seconds": loadTime,
+            "device_model": UIDevice.current.model,
+            "ios_version": UIDevice.current.systemVersion,
+            "timestamp": Date().timeIntervalSince1970
+        ]
+        
+        print("📊 Performance Issue Tracked: \(loadTime)s load time")
+    }
+}
+
+// MARK: - Accessibility Enhancements
+extension AppCoordinator {
+    
+    /// Accessibility için kategori navigasyonu
+    func navigateToCategoryWithAccessibility(announcement: String? = nil) {
+        goToCategory()
+        
+        if let announcement = announcement {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                UIAccessibility.post(notification: .announcement, argument: announcement)
+            }
+        }
+    }
+    
+    /// VoiceOver için enhanced kategori seçimi
+    func handleAccessibilityCategory(
+        categoryId: Int,
+        voiceOverDescription: String
+    ) {
+        guard let category = MathCategoryFactory.shared.getCategoryById(categoryId) else {
+            return
+        }
+        
+        // VoiceOver announcement
+        let announcement = "\(category.title) kategorisi seçildi. \(voiceOverDescription)"
+        UIAccessibility.post(notification: .announcement, argument: announcement)
+        
+        // Enhanced navigation with accessibility
+        goToGameFromCategory(
+            with: category.expressionType,
+            fromCategory: category,
+            animated: UIAccessibility.isReduceMotionEnabled ? false : true
+        )
+    }
+}
+
+// MARK: - Debug and Development Tools
+#if DEBUG
+extension AppCoordinator {
+    
+    /// Debug için kategori bilgilerini logla
+    func debugLogCategoryInfo() {
+        let categoryCount = MathCategoryFactory.shared.getAllCategories().count
+        let memoryUsage = getMemoryUsage()
+        
+        print("""
+        🔍 DEBUG - Category Info:
+        📚 Total Categories: \(categoryCount)
+        💾 Memory Usage: \(memoryUsage) MB
+        🎨 Display Mode: Direct Colored Glasse
+        📱 Device: \(UIDevice.current.model)
+        📐 Screen: \(UIScreen.main.bounds.size)
+        """)
+    }
+    
+    /// Memory usage calculator
+    private func getMemoryUsage() -> Int {
+        var info = mach_task_basic_info()
+        var count = mach_msg_type_number_t(MemoryLayout<mach_task_basic_info>.size)/4
+        
+        let kerr: kern_return_t = withUnsafeMutablePointer(to: &info) {
+            $0.withMemoryRebound(to: integer_t.self, capacity: 1) {
+                task_info(mach_task_self_,
+                         task_flavor_t(MACH_TASK_BASIC_INFO),
+                         $0,
+                         &count)
+            }
+        }
+        
+        if kerr == KERN_SUCCESS {
+            return Int(info.resident_size) / 1024 / 1024
+        }
+        return 0
+    }
+    
+    /// Force kategori reload (debug)
+    func debugReloadCategories() {
+        if let categoryVC = navigationController.topViewController as? CategoryVC {
+            print("🔄 DEBUG - Force reloading categories")
+            // CategoryVC'de debug reload metodunu çağır
+        }
+    }
+    
+    /// Test all category transitions
+    func debugTestAllCategories() {
+        let categories = MathCategoryFactory.shared.getAllCategories()
+        
+        for (index, category) in categories.enumerated() {
+            DispatchQueue.main.asyncAfter(deadline: .now() + Double(index) * 0.5) {
+                print("🧪 DEBUG - Testing category: \(category.title)")
+                self.trackCategorySelection(category)
+            }
+        }
+    }
+}
+#endif
+
+// MARK: - Extensions for Color and Utility
+extension UIColor {
+    /// Color brightness factor for enhanced analytics
+    var brightnessFactor: CGFloat {
+        var hue: CGFloat = 0
+        var saturation: CGFloat = 0
+        var brightness: CGFloat = 0
+        var alpha: CGFloat = 0
+        
+        if getHue(&hue, saturation: &saturation, brightness: &brightness, alpha: &alpha) {
+            return brightness
+        }
+        return 0.5 // Default middle brightness
+    }
+    
+    /// Hex string representation
+    var hexString: String? {
+        guard let components = cgColor.components, components.count >= 3 else {
+            return nil
+        }
+        
+        let red = Int(components[0] * 255.0)
+        let green = Int(components[1] * 255.0)
+        let blue = Int(components[2] * 255.0)
+        
+        return String(format: "#%02X%02X%02X", red, green, blue)
     }
 }
