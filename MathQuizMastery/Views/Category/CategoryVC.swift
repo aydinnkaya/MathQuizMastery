@@ -10,10 +10,8 @@ import UIKit
 class CategoryVC: UIViewController{
     
     @IBOutlet weak var collectionView: UICollectionView!
-    
     @IBOutlet weak var categoryView: UIView!
     @IBOutlet weak var backgroundView: UIImageView!
-    
     
     var viewModel: CategoryViewModelProtocol?
     var coordinator: AppCoordinator!
@@ -47,12 +45,32 @@ class CategoryVC: UIViewController{
         collectionView.collectionViewLayout.invalidateLayout()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        // Layout'u yeniden hesapla
+        DispatchQueue.main.async {
+            self.collectionView.collectionViewLayout.invalidateLayout()
+        }
+    }
+    
     private func setupCollectionView() {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "CategoryCell")
+        
+        // CollectionView için güvenli alan ayarları
+        collectionView.contentInsetAdjustmentBehavior = .never
+        collectionView.automaticallyAdjustsScrollIndicatorInsets = false
     }
     
+    // Cihaz tipini belirleme yardımcı fonksiyonu
+    private func getDeviceType() -> (isIpad: Bool, screenSize: CGSize, safeAreaInsets: UIEdgeInsets) {
+        let bounds = UIScreen.main.bounds
+        let safeArea = view.safeAreaInsets
+        let isIpad = UIDevice.current.userInterfaceIdiom == .pad
+        
+        return (isIpad, bounds.size, safeArea)
+    }
 }
 
 extension CategoryVC: CategoryViewModelDelegate {
@@ -94,7 +112,7 @@ extension CategoryVC: UICollectionViewDelegate, UICollectionViewDataSource {
         if indexPath.section == 0 {
             viewModel?.categorySelected(at: indexPath.row)
         } else {
-            viewModel?.categorySelected(at: viewModel!.numberOfItems - 1) 
+            viewModel?.categorySelected(at: viewModel!.numberOfItems - 1)
         }
     }
 }
@@ -102,40 +120,167 @@ extension CategoryVC: UICollectionViewDelegate, UICollectionViewDataSource {
 extension CategoryVC: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 130, height: 130)
+        let deviceInfo = getDeviceType()
+        
+        if deviceInfo.isIpad {
+            // iPad için daha büyük hücreler
+            return CGSize(width: 180, height: 180)
+        } else {
+            // iPhone için mevcut boyutlar
+            let screenWidth = deviceInfo.screenSize.width
+            if screenWidth <= 375 {
+                // iPhone SE, 6, 7, 8 için küçük boyut
+                return CGSize(width: 110, height: 110)
+            } else if screenWidth <= 414 {
+                // iPhone 6+, 7+, 8+, XR, 11 için orta boyut
+                return CGSize(width: 130, height: 130)
+            } else {
+                // iPhone X, XS, 11 Pro, 12, 13, 14 ve üzeri için büyük boyut
+                return CGSize(width: 140, height: 140)
+            }
+        }
     }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         
-        let screenWidth = UIScreen.main.bounds.width
-        let screenHeight = UIScreen.main.bounds.height
-        
+        let deviceInfo = getDeviceType()
+        let screenWidth = deviceInfo.screenSize.width
+        let screenHeight = deviceInfo.screenSize.height
+        let safeAreaBottom = deviceInfo.safeAreaInsets.bottom
+        let safeAreaTop = deviceInfo.safeAreaInsets.top
+        let isIpad = deviceInfo.isIpad
         
         if section == 0 {
             // Ana kategoriler (üstteki dört işlem)
-            let sideInset = screenWidth <= 375 ? 16 : 32
-            return UIEdgeInsets(top: 100, left: CGFloat(sideInset), bottom: 100, right: CGFloat(sideInset))
+            if isIpad {
+                // iPad için büyük margin'ler
+                let sideInset: CGFloat = screenWidth * 0.15 // Ekran genişliğinin %15'i
+                let topInset: CGFloat = safeAreaTop + 120
+                let bottomInset: CGFloat = 120
+                return UIEdgeInsets(top: topInset, left: sideInset, bottom: bottomInset, right: sideInset)
+            } else {
+                // iPhone için responsive margin'ler
+                let sideInset: CGFloat
+                let topInset: CGFloat
+                let bottomInset: CGFloat = 60  // Section 0 için daha az alt boşluk
+                
+                switch screenWidth {
+                case 0...375:
+                    // iPhone SE, 6, 7, 8
+                    sideInset = 20
+                    topInset = safeAreaTop + 30
+                case 376...389:
+                    // iPhone 6+, 7+, 8+, XR, 11
+                    sideInset = 32
+                    topInset = safeAreaTop + 40
+                case 390...414:
+                    // iPhone 12, 13, 14, 15, 16 Pro
+                    sideInset = 45
+                    topInset = safeAreaTop + 50  // Daha da yukarı
+                case 415...430:
+                    // iPhone 12 Pro Max, 13 Pro Max, 14 Pro Max, 15 Pro Max, 16 Pro Max
+                    sideInset = 50
+                    topInset = safeAreaTop + 40  // Daha da yukarı
+                default:
+                    // iPhone X, XS, 11 Pro, 12, 13, 14, 15, 16 ve diğerleri
+                    sideInset = 40
+                    topInset = safeAreaTop + 45
+                }
+                
+                return UIEdgeInsets(top: topInset, left: sideInset, bottom: bottomInset, right: sideInset)
+            }
         } else {
             // Random Buton (Alttaki tek buton)
-            
-            // 🔍 1️⃣ collectionView genişliği
             let collectionViewWidth = collectionView.frame.width
+            let cellWidth: CGFloat = isIpad ? 180 : (screenWidth <= 375 ? 110 : (screenWidth <= 414 ? 130 : 140))
             
-            // 🔍 2️⃣ Hücre genişliği (130)
-            let totalCellWidth: CGFloat = 130
+            // Sol ve sağ eşit aralığı hesapla
+            let horizontalInset = max((collectionViewWidth - cellWidth) / 2, 16)
             
-            // 🔍 3️⃣ Sol ve sağ eşit aralığı hesapla
-            let inset = (collectionViewWidth - totalCellWidth) / 2
+            // Alt boşluk hesaplama - tüm cihazlar için güvenli alan dikkate alınarak
+            let bottomInset: CGFloat
+            if isIpad {
+                bottomInset = max(safeAreaBottom + 60, 80)
+            } else {
+                // iPhone için daha detaylı hesaplama
+                switch screenHeight {
+                case 0...667:
+                    // iPhone SE, 6, 7, 8 (küçük ekranlar)
+                    bottomInset = max(safeAreaBottom + 80, 100)
+                case 668...736:
+                    // iPhone 6+, 7+, 8+ (orta ekranlar)
+                    bottomInset = max(safeAreaBottom + 70, 90)
+                case 737...812:
+                    // iPhone X, XS, 11 Pro (notch'lu ekranlar)
+                    bottomInset = max(safeAreaBottom + 60, 80)
+                case 813...896:
+                    // iPhone XR, 11, 12, 13 mini
+                    bottomInset = max(safeAreaBottom + 60, 80)
+                default:
+                    // iPhone 12, 13, 14 Pro Max ve üzeri (büyük ekranlar)
+                    bottomInset = max(safeAreaBottom + 50, 70)
+                }
+            }
             
-            // 🔍 4️⃣ Negatif inset olursa en az 0 olarak ayarla
-            let safeInset = max(inset, 0)
+            let topInset: CGFloat = 20
             
-            // 🔍 5️⃣ Küçük ekranlarda ek bir alt boşluk ayarla
-            let bottomInset: CGFloat = screenHeight <= 700 ? 100 : 50
+            print("🔍 Cihaz: \(isIpad ? "iPad" : "iPhone"), Ekran: \(screenWidth)x\(screenHeight)")
+            print("🔍 SafeArea Bottom: \(safeAreaBottom), Hesaplanan Bottom Inset: \(bottomInset)")
+            print("🔍 Horizontal Inset: \(horizontalInset)")
             
-            print("🔍 Hesaplanan inset değeri: \(safeInset)")
-            
-            // 🔍 6️⃣ Tam ortalanmış şekilde döndür
-            return UIEdgeInsets(top: 10, left: safeInset, bottom: bottomInset, right: safeInset)
+            return UIEdgeInsets(top: topInset, left: horizontalInset, bottom: bottomInset, right: horizontalInset)
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        let deviceInfo = getDeviceType()
+        let screenWidth = deviceInfo.screenSize.width
+        
+        if section == 0 {
+            // Ana kategoriler arası dikey boşluk - iPhone 16 Pro Max için özel ayar
+            if deviceInfo.isIpad {
+                return 60
+            } else {
+                switch screenWidth {
+                case 415...430:
+                    // iPhone 12 Pro Max, 13 Pro Max, 14 Pro Max, 15 Pro Max, 16 Pro Max
+                    return 100  // Çok daha fazla dikey boşluk
+                case 390...414:
+                    // iPhone 12, 13, 14, 15, 16 Pro
+                    return 90   // Çok daha fazla dikey boşluk
+                default:
+                    return 70   // Diğer cihazlar için daha da artırıldı
+                }
+            }
+        } else {
+            // Random buton için boşluk
+            return 0
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        let deviceInfo = getDeviceType()
+        let screenWidth = deviceInfo.screenSize.width
+        
+        if section == 0 {
+            // Ana kategoriler arası yatay boşluk - iPhone 16 Pro Max için özel ayar
+            if deviceInfo.isIpad {
+                return 40
+            } else {
+                switch screenWidth {
+                case 415...430:
+                    // iPhone 12 Pro Max, 13 Pro Max, 14 Pro Max, 15 Pro Max, 16 Pro Max
+                    return 50  // Yatay boşluk da artırıldı
+                case 390...414:
+                    // iPhone 12, 13, 14, 15, 16 Pro
+                    return 40  // Yatay boşluk da artırıldı
+                default:
+                    return 30  // Diğer cihazlar için artırıldı
+                }
+            }
+        } else {
+            // Random buton için boşluk
+            return 0
         }
     }
 }
@@ -143,36 +288,49 @@ extension CategoryVC: UICollectionViewDelegateFlowLayout {
 extension UICollectionViewCell {
     
     func configureCategoryCell(with viewModel: CategoryViewModelProtocol, at indexPath: IndexPath) {
-        if contentView.viewWithTag(10) == nil {
-            let imageView = UIImageView(frame: contentView.bounds)
-            imageView.contentMode = .scaleAspectFit
-            imageView.layer.cornerRadius = frame.width / 2
-            imageView.clipsToBounds = true
-            imageView.tag = 10
-            contentView.addSubview(imageView)
-        }
+        // Mevcut imageView'ı temizle
+        contentView.subviews.forEach { $0.removeFromSuperview() }
         
-        if let imageView = contentView.viewWithTag(10) as? UIImageView {
-            let category = viewModel.category(at: indexPath.row)
-            if let image = UIImage(named: category.iconName) {
-                imageView.image = image
-            }
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
+        imageView.layer.cornerRadius = frame.width / 2
+        imageView.clipsToBounds = true
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        contentView.addSubview(imageView)
+        
+        // AutoLayout ile tam merkezleme
+        NSLayoutConstraint.activate([
+            imageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            imageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            imageView.widthAnchor.constraint(equalTo: contentView.widthAnchor),
+            imageView.heightAnchor.constraint(equalTo: contentView.heightAnchor)
+        ])
+        
+        let category = viewModel.category(at: indexPath.row)
+        if let image = UIImage(named: category.iconName) {
+            imageView.image = image
         }
     }
     
     func configureRandomIcon() {
-        if contentView.viewWithTag(10) == nil {
-            let imageView = UIImageView(frame: contentView.bounds)
-            imageView.contentMode = .scaleAspectFit
-            imageView.layer.cornerRadius = frame.width / 2
-            imageView.clipsToBounds = true
-            imageView.tag = 10
-            contentView.addSubview(imageView)
-        }
+        // Mevcut imageView'ı temizle
+        contentView.subviews.forEach { $0.removeFromSuperview() }
         
-        if let imageView = contentView.viewWithTag(10) as? UIImageView {
-            imageView.image = UIImage(named: "random_icon")
-        }
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
+        imageView.layer.cornerRadius = frame.width / 2
+        imageView.clipsToBounds = true
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        contentView.addSubview(imageView)
+        
+        // AutoLayout ile tam merkezleme
+        NSLayoutConstraint.activate([
+            imageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            imageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            imageView.widthAnchor.constraint(equalTo: contentView.widthAnchor),
+            imageView.heightAnchor.constraint(equalTo: contentView.heightAnchor)
+        ])
+        
+        imageView.image = UIImage(named: "random_icon")
     }
-    
 }

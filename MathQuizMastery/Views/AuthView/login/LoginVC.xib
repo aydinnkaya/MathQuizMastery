@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_3" orientation="portrait" appearance="light"/>
+    <device id="retina6_3" orientation="portrait" appearance="dark"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
@@ -63,7 +63,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hesabınız yok mu? Kayıt Ol" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8K3-hq-McB">
-                    <rect key="frame" x="64" y="685" width="274" height="17"/>
+                    <rect key="frame" x="64" y="670" width="274" height="17"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <color key="textColor" white="1" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
@@ -144,7 +144,7 @@
             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="8K3-hq-McB" firstAttribute="top" secondItem="arw-Iw-d74" secondAttribute="bottom" constant="37" id="BTs-ay-20s"/>
+                <constraint firstItem="8K3-hq-McB" firstAttribute="top" secondItem="arw-Iw-d74" secondAttribute="bottom" constant="22" id="BTs-ay-20s"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="arw-Iw-d74" secondAttribute="trailing" constant="30" id="VBp-rL-bpz"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="IhM-EM-S0A" secondAttribute="bottom" constant="20" id="agreement-bottom"/>
                 <constraint firstItem="IhM-EM-S0A" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="30" id="agreement-leading"/>
